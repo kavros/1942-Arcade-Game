@@ -181,7 +181,7 @@ void Sprite::collisionCheck(Sprite* s){
 
 //collision detection functions
 void Sprite::notifyCollision(Sprite* arg){
-    if( _type==SUPER_ACE && _state==DRIPLING)
+    if( _type==SUPER_ACE && _state==MANEUVER)
         return;
     
     if( !_handlers.empty() )
@@ -230,3 +230,11 @@ void Sprite::clearHandlers(void){
 
 
 
+void Sprite::setState(SpriteState state){
+	assert(FLYING <= state && state <= MANEUVER);
+	_state = state;
+}
+
+SpriteState Sprite::getState(){
+	return _state;
+}

@@ -32,7 +32,7 @@ void Game::OnEvent(SDL_Event* event) {
 			if (event->type == SDL_KEYDOWN){
 				Sprite* superAce = (Sprite*)SpritesHolder::getSpritesHolder()->getSprites(SUPER_ACE)->front();
 				//MovingPathAnimator* superAceAnimator = (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimator");
-				
+
                 MovingPathAnimator* superAceAnimatorLeft =
 							(MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorLeft");
 
@@ -80,13 +80,16 @@ void Game::OnEvent(SDL_Event* event) {
 					break;
 				}
 				case SDLK_SPACE:{
+					if(superAceAnimatorManeuever->getState() == ANIMATOR_RUNNING){
+						return;
+					}
 					((SuperAce*)superAce)->fire();
 					break;
 				}
 				case SDLK_a:{
 					if (_remaining_loops_num > 0){
-
-						superAceAnimatorManeuever->start(getGameTime());
+						superAce->setState(MANEUVER);
+						superAceAnimatorManeuever->start(getGameTime());						
 						_remaining_loops_num--;
 						if (_remaining_loops_num == 2){
 							_remaining_loops->changeString("RR", WIN_WIDTH - 24, WIN_HEIGHT - 12);
