@@ -63,6 +63,9 @@ private:
 	
 	SpriteString* _remaining_loops;
 	unsigned _remaining_loops_num = 3;
+
+
+	SDL_GameController *_controller =nullptr;
 public:
     Game();
     

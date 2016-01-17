@@ -30,7 +30,11 @@ void Game::OnEvent(SDL_Event* event) {
             break;
         case SINGLEPLAYER_GAME:
 			
-			if (event->type == SDL_KEYDOWN){
+			if (event->type == SDL_KEYDOWN || event->type == SDL_CONTROLLERBUTTONDOWN){
+				/*
+				if (event->cbutton.button == SDL_CONTROLLER_BUTTON_A){
+					cout << "AAA" << endl; 
+				}*/
 				Sprite* superAce = (Sprite*)SpritesHolder::getSpritesHolder()->getSprites(SUPER_ACE)->front();
 				//MovingPathAnimator* superAceAnimator = (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimator");
 
@@ -50,14 +54,15 @@ void Game::OnEvent(SDL_Event* event) {
 							(MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorManeuver");
 
 				assert(superAce->getType() == SUPER_ACE);
-				switch (event->key.keysym.sym) {
-				case SDLK_ESCAPE:
+				switch (event->key.keysym.sym ) {
+				case (SDLK_ESCAPE ) :
+					
 					//pause
 					break;
 				case SDLK_q:
 					//quit?
 					break;
-				case SDLK_LEFT:{
+				case SDLK_LEFT  : {
 
 
 					superAceAnimatorLeft->start(getGameTime());
@@ -75,12 +80,12 @@ void Game::OnEvent(SDL_Event* event) {
 					superAceAnimatorUp->start(getGameTime());
 					break;
 				}
-				case SDLK_DOWN:{
+				case (SDLK_DOWN ):{
 
 					superAceAnimatorDown->start(getGameTime());
 					break;
 				}
-				case SDLK_SPACE:{
+				case (SDLK_SPACE ) : {
 					if(superAceAnimatorManeuever->getState() == ANIMATOR_RUNNING){
 						return;
 					}

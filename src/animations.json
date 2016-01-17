@@ -257,6 +257,34 @@
 				"frameNo": 1,
 				"delay": 10
 			}]
+		},{
+			"id": "superAceStartingAnimation",
+			"paths": [{
+				"dx": -5,
+				"dy": 0,
+				"frameNo": 13,
+				"delay": 90
+			},{
+				"dx": -5,
+				"dy": 0,
+				"frameNo": 15,
+				"delay": 90
+			},{
+				"dx": -5,
+				"dy": 0,
+				"frameNo": 15,
+				"delay": 10
+			},{
+				"dx": 5,
+				"dy": 0,
+				"frameNo": 0,
+				"delay": 10
+			},{
+				"dx": 5,
+				"dy": 0,
+				"frameNo": 0,
+				"delay": 10
+			}]
 		}, {
 			"id": "superAceAnimationRight",
 			"paths": [{

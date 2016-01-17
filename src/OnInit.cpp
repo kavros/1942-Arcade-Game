@@ -1,11 +1,20 @@
 #include "Game.hpp"
 
 bool Game::OnInit(){
-	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER) != 0){
+	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER | SDL_INIT_GAMECONTROLLER) != 0){
 		std::cout << "SDL_Init Error: " << SDL_GetError() << std::endl;
 		return false;
 	}
+	
+	for (int i = 0; i < SDL_NumJoysticks(); ++i){
+		if (SDL_IsGameController(i)){
 
+			_controller = SDL_GameControllerOpen(i);
+			std::cout << SDL_GameControllerMapping(_controller) << endl;
+			break;
+		}
+	}
+	//std::cout << SDL_GameControllerAddMapping("0,X360 Controller, a:b6,b:b10");
     InitWindow();
 	
     InitRenderer();
@@ -32,13 +41,13 @@ void Game::InitSuperAceAnimator(){
     animid_t id = "SuperAceAnimation";
     
     Sprite* superAce = SpritesHolder::getSpritesHolder()->getSprites(SUPER_ACE)->front();
-	/*
+	
 	MovingPathAnimation* superAceStartingAnimation =
 		(MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("superAceStartingAnimation");
 	MovingPathAnimator* superAceStartingAnimator  =	new MovingPathAnimator(
 		"SuperAceStartingAnimator", superAce, superAceStartingAnimation
 		);
-	*/
+	
 	MovingPathAnimation* superAceAnimationManeuver	=
 			(MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("superAceAnimationManeuver");	
 	MovingPathAnimator* superAceAnimatorManeuever	= new MovingPathAnimator(
@@ -82,7 +91,7 @@ void Game::InitSuperAceAnimator(){
 	AnimatorHolder::getAnimatorHolder()->Register(superAceAnimatorDown);
 	AnimatorHolder::getAnimatorHolder()->Register(superAceAnimatorLeft);
 	AnimatorHolder::getAnimatorHolder()->Register(superAceAnimatorManeuever);
-	//AnimatorHolder::getAnimatorHolder()->Register(superAceStartingAnimator);
+	AnimatorHolder::getAnimatorHolder()->Register(superAceStartingAnimator);
 
 
 
