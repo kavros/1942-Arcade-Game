@@ -25,7 +25,7 @@ typedef enum SpriteType {
 typedef enum SpriteState {
     FLYING = 0,
     FIRING,
-    DRIPLING
+	MANEUVER
 }SpriteState;
 
 class Sprite : public LatelyDestroyable{
@@ -68,6 +68,7 @@ public:
     void clearHandlers(void);
     
 	//setters
+	void setState(SpriteState);
     void setId(std::string);
     void setFrame(unsigned  i);
     void setVisibility (bool v);
@@ -84,7 +85,7 @@ public:
 	bool getVisibility (void) const;
     void collisionCheck (Sprite* s);
 	SpriteType getType();
-
+	SpriteState getState();
     void changeDstRectX(int dx);
     void changeDstRectY(int dy);
     
