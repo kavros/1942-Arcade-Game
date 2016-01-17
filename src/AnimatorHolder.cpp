@@ -106,6 +106,7 @@ void AnimatorHolder::triggerAnimators(){
         assert(animationFilm);
         
         Sprite* sprite = SpritesHolder::getSpritesHolder()->getSprite(SpriteType::ALIEN_SHIP, "GreenJet0"); //new Sprite("spriteStraightEnemyAttack", 0, dstRect, {0,0}, true, ALIEN_SHIP, fireAnimationFilm);
+        
         assert(sprite);
         
         
@@ -115,7 +116,7 @@ void AnimatorHolder::triggerAnimators(){
         //AnimationHolder::getAnimationHolder()->add(fireAnimation);
         
         MovingPathAnimator* animator = new MovingPathAnimator("animatorStraightEnemyAttack", sprite, (MovingPathAnimation*)animation);
-        
+        sprite->setVisibility(true);
         AnimatorHolder::getAnimatorHolder()->Register(animator);
         
         //Sprite* superAce = (Sprite*)SpritesHolder::getSpritesHolder()->getSprites(SUPER_ACE)->front();
