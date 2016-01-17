@@ -102,11 +102,11 @@ void AnimatorHolder::triggerAnimators(){
         dstRect.w=32;
         dstRect.h=31;
         
-        AnimationFilm* fireAnimationFilm = AnimationFilmHolder::Get()->GetFilm("straightEnemyAttack");
-        assert(fireAnimationFilm);
+        AnimationFilm* animationFilm = AnimationFilmHolder::Get()->GetFilm("green_jet");
+        assert(animationFilm);
         
-        Sprite* fireSprite = new Sprite("spriteStraightEnemyAttack", 0, dstRect, {0,0}, true, ALIEN_SHIP, fireAnimationFilm);
-        assert(fireSprite);
+        Sprite* sprite = SpritesHolder::getSpritesHolder()->getSprite(SpriteType::ALIEN_SHIP, "GreenJet0"); //new Sprite("spriteStraightEnemyAttack", 0, dstRect, {0,0}, true, ALIEN_SHIP, fireAnimationFilm);
+        assert(sprite);
         
         Animation* fireAnimation = AnimationHolder::getAnimationHolder()->getAnimation("straightEnemyAttack");
         assert(fireAnimation);

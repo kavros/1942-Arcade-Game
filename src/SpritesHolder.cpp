@@ -168,9 +168,9 @@ void    SpritesHolder::Load (const std::string& cataloge/*,SDL_Renderer* _render
         
         //add Sprite 2 Sprite Holder
         if(spriteType == SpriteType::SUPER_ACE)
-            add(new SuperAce(id, frameNo, destRect, point, isVisible, spriteType,animationFilm));
+            new SuperAce(id, frameNo, destRect, point, isVisible, spriteType,animationFilm);
         else
-            add(new Sprite(id, frameNo, destRect, point, isVisible, spriteType,animationFilm));
+            new Sprite(id, frameNo, destRect, point, isVisible, spriteType,animationFilm);
     }
     
 }
