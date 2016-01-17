@@ -98,7 +98,8 @@ void AnimatorHolder::triggerAnimators(){
         AnimationFilm* animationFilm = AnimationFilmHolder::Get()->GetFilm("green_jet");
         assert(animationFilm);
         
-        Sprite* sprite = SpritesHolder::getSpritesHolder()->getSprite(SpriteType::ALIEN_SHIP, "GreenJet0");
+        Sprite* sprite = SpritesHolder::getSpritesHolder()->getSprite(SpriteType::ALIEN_SHIP, "GreenJet0"); //new Sprite("spriteStraightEnemyAttack", 0, dstRect, {0,0}, true, ALIEN_SHIP, fireAnimationFilm);
+        
         assert(sprite);
         
         Animation* animation = AnimationHolder::getAnimationHolder()->getAnimation("green_jet_changing_down");
