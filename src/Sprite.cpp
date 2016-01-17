@@ -15,6 +15,7 @@ Sprite::Sprite(){
     _state=FLYING;
     _currFilm=nullptr;
     alive=true;
+    //assert(0);
 }
 
 Sprite::Sprite(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point point,bool isVisible,SpriteType type,AnimationFilm* currFilm){
@@ -29,6 +30,8 @@ Sprite::Sprite(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point poin
     _currFilm=currFilm;
     _state=FLYING;
     alive=true;
+    
+    registerCollision();
 }
 
 Sprite::Sprite(std::string id, SDL_Rect dstRect,bool isVisible,SpriteType type,AnimationFilm* currFilm){
@@ -43,6 +46,9 @@ Sprite::Sprite(std::string id, SDL_Rect dstRect,bool isVisible,SpriteType type,A
     _currFilm=currFilm;
     _state=FLYING;
     alive=true;
+    
+    registerCollision();
+
 }
 
 Sprite::~Sprite(){
@@ -156,18 +162,57 @@ bool Sprite::isOutOfWindow(){
 }
 
 // TODO :: CollisionCheck body
-bool Sprite::collisionCheck(Sprite* s){
+void Sprite::collisionCheck(Sprite* s){
     //compare _dstRect with s->getDstRect()
     if(
         _dstRect.x < s->getDstRect().x + s->getDstRect().w &&
         _dstRect.x + _dstRect.w > s->getDstRect().x &&
         _dstRect.y < s->getDstRect().y + s->getDstRect().h &&
         _dstRect.h + _dstRect.y > s->getDstRect().y
-    ){
+       )
         notifyCollision(s);
-        return true;
-    }
-
-    return false;
 }
+
+/*
+ typedef enum SpriteType {
+ MAIN_MENU_SINGLEPLAYER = 0,
+ MAIN_MENU_MULTIPLAYER,
+ TERRAIN,
+ SUPER_ACE,
+ ALIEN_SHIP,
+ BIG_ALIEN_SHIP,
+ POWER_UPS,
+ GAME_INFO,
+ UNDEFINED
+ }SpriteType;
+ 
+ CollisionChecker::Register(superAce,fireSprite);
+ */
+
+void Sprite::registerCollision(){
+    
+    if( _type >=SUPER_ACE && _type <=BIG_ALIEN_SHIP ){
+        
+        SpriteType st = SUPER_ACE;
+        while(st >=SUPER_ACE && st <=BIG_ALIEN_SHIP){
+            if(st != _type){
+                
+                SpriteList* sl = SpritesHolder::getSpritesHolder()->getSprites(st);
+                
+                if(sl)
+                    for (SpriteList::iterator it=sl->begin(); it != sl->end(); ++it){
+                    
+                        CollisionChecker::Register(this,*it);
+                    }
+                
+            }
+            
+            st = SpriteType(st+1);
+        }
+    }
+}
+
+
+
+
 

@@ -4,6 +4,7 @@
 #include "includes.h"
 #include "AnimationFilm.hpp"
 #include "LatelyDestroyable.h"
+#include "CollisionChecker.hpp"
 
 #define SPRITE_TYPE_SIZE 8
 
@@ -43,6 +44,7 @@ protected:
     SpriteState _state;
     Handlers _handlers;
     void notifyCollision(Sprite* arg){
+        assert(0);
         for(Handlers::iterator i = _handlers.begin(); i!=_handlers.end(); ++i ){
             (**i)(this,arg);
         }
@@ -92,7 +94,7 @@ public:
     unsigned  getFrame(void) const;
     SDL_Rect getDstRect(void) const;
 	bool getVisibility (void) const;
-    bool collisionCheck (Sprite* s);
+    void collisionCheck (Sprite* s);
 	SpriteType getType();
 
     void changeDstRectX(int dx);
@@ -128,6 +130,8 @@ public:
     void display (SDL_Renderer* renderer);
     
     bool isOutOfWindow();
+    
+    void registerCollision();
 };
 
 #endif

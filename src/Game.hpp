@@ -17,6 +17,7 @@
 #include "AnimationFilmHolder.hpp"
 #include "AnimationHolder.h"
 #include "SpritesHolder.hpp"
+#include "CollisionChecker.hpp"
 
 //sprites
 #include "SpriteAlphaNum.hpp"
