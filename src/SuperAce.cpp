@@ -159,8 +159,7 @@ void SuperAce::filterMotion(int* dx, int* dy) const {
     int old_y = _dstRect.y;
     int new_x = _dstRect.x + *dx;
     int new_y = _dstRect.y + *dy;
-    
-    
+        
     //adjust new_y if out of screen bounds
     int max_y = 0;
     if (new_y < max_y)

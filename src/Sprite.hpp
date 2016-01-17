@@ -88,7 +88,7 @@ public:
 	SpriteState getState();
     void changeDstRectX(int dx);
     void changeDstRectY(int dy);
-    
+
 	//constructors
     Sprite();
     Sprite(std::string id, SDL_Rect dstRect,bool isVisible,SpriteType type,AnimationFilm* currFilm);
