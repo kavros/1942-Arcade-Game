@@ -117,19 +117,17 @@ void AnimatorHolder::triggerAnimators(){
 }
 
 void AnimatorHolder::createExplosion(SDL_Rect dstRect){
-
-    //change    AnimationFilm ID , Animation ID , MovingPathAnimator
     
-    AnimationFilm* fireAnimationFilm = AnimationFilmHolder::Get()->GetFilm("big_fire_up");
+    AnimationFilm* fireAnimationFilm = AnimationFilmHolder::Get()->GetFilm("explosion");
     assert(fireAnimationFilm);
     
-    Sprite* explosion = new Sprite("explosion", 0, dstRect, {0,0}, true, POWER_UPS, fireAnimationFilm);
+    Sprite* explosion = new Sprite("explosionSprite", 0, dstRect, {0,0}, true, POWER_UPS, fireAnimationFilm);
     assert(explosion);
     
-    Animation* explosionAnimation = AnimationHolder::getAnimationHolder()->getAnimation("superAceFire");
+    Animation* explosionAnimation = AnimationHolder::getAnimationHolder()->getAnimation("explosion");
     assert(explosionAnimation);
     
-    MovingAnimator* explosionAnimator = new MovingAnimator("animatorSuperAceFire", explosion, (MovingAnimation*)explosionAnimation);
+    MovingPathAnimator* explosionAnimator = new MovingPathAnimator("animatorExplosion", explosion, (MovingPathAnimation*)explosionAnimation);
     
     AnimatorHolder::getAnimatorHolder()->Register(explosionAnimator);
     
