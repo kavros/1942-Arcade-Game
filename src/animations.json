@@ -308,6 +308,39 @@
                                                       "visibility": true,
                                                       "delay": 10
                                                       }]
+                                            },{
+                                            "id": "superAceStartingAnimation",
+                                            "paths": [{
+                                                      "dx": -5,
+                                                      "dy": 0,
+                                                      "frameNo": 13,
+                                                      "visibility": true,
+                                                      "delay": 90
+                                                      },{
+                                                      "dx": -5,
+                                                      "dy": 0,
+                                                      "frameNo": 15,
+                                                      "visibility": true,
+                                                      "delay": 90
+                                                      },{
+                                                      "dx": -5,
+                                                      "visibility": true,
+                                                      "dy": 0,
+                                                      "frameNo": 15,
+                                                      "delay": 10
+                                                      },{
+                                                      "dx": 5,
+                                                      "dy": 0,
+                                                      "visibility": true,
+                                                      "frameNo": 0,
+                                                      "delay": 10
+                                                      },{
+                                                      "dx": 5,
+                                                      "dy": 0,
+                                                      "frameNo": 0,
+                                                      "visibility": true,
+                                                      "delay": 10
+                                                      }]
                                             }, {
                                             "id": "superAceAnimationRight",
                                             "paths": [{

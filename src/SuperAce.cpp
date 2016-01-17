@@ -36,8 +36,8 @@ SuperAce::SuperAce(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point 
     
     _bulletDstRect.x=this->getDstRect().x + (this->getSuperAceWidth()/4);
     _bulletDstRect.y=this->getDstRect().y - this->getSuperAceHeigth();
-    _bulletDstRect.w=9;
-    _bulletDstRect.h=20;
+    _bulletDstRect.w=11;
+    _bulletDstRect.h=10;
     
     this->addCollisionHandler(touchHandler());
 
@@ -87,10 +87,10 @@ unsigned SuperAce::getSuperAceHeigth(){
 }
 
 SDL_Rect SuperAce::getBulletDstRect(){
-    _bulletDstRect.x=this->getDstRect().x + (this->getSuperAceWidth()/4);
+    _bulletDstRect.x=(this->getSuperAceWidth()/4);
     _bulletDstRect.y=this->getDstRect().y - this->getSuperAceHeigth();
-    _bulletDstRect.w=9;
-    _bulletDstRect.h=20;
+    _bulletDstRect.w=11;
+    _bulletDstRect.h=10;
     
     return _bulletDstRect;
 }
@@ -128,10 +128,10 @@ void SuperAce::fire(void){
     };
     
     /*bullet test*/
-    AnimationFilm* fireAnimationFilm = AnimationFilmHolder::Get()->GetFilm("big_fire_up");
+    AnimationFilm* fireAnimationFilm = AnimationFilmHolder::Get()->GetFilm("bullets");
     assert(fireAnimationFilm);
     
-    Sprite* bullet = new Sprite("spriteSuperAceFire", 0, getBulletDstRect(), {0,0}, true, SUPER_ACE, fireAnimationFilm);
+    Sprite* bullet = new Sprite("spriteSuperAceFire", 2, getBulletDstRect(), {0,0}, true, SUPER_ACE, fireAnimationFilm);
     assert(bullet);
         
     //fireAnimation
