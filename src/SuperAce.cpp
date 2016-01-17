@@ -119,7 +119,7 @@ void SuperAce::fire(void){
             bullet->Destroy();
             arg->Destroy();
 
-            AnimatorHolder::createExplosion( bullet->getDstRect() );
+            AnimatorHolder::createExplosion( arg->getDstRect() );
         }
         fireHandler* Clone(void) const{
             return new fireHandler();
