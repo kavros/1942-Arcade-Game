@@ -11,6 +11,7 @@ void Game::OnEvent(SDL_Event* event) {
     switch (_gameState) {
         case SINGLEPLAYER_MENU:
             if (event->type == SDL_MOUSEBUTTONDOWN){
+
                 _gameState=SINGLEPLAYER_GAME;
             }
             else if (event->key.keysym.sym == SDLK_DOWN){

@@ -21,38 +21,33 @@ bool Game::OnInit(){
 
     InitGameInfo();
     
-    InitTestAnimator();
+	InitSuperAceAnimator();
 	
     return true;
 }
 
-void Game::InitTestAnimator(){
+void Game::InitSuperAceAnimator(){
     
-    /*offset_t dx = 0;
-    offset_t dy = -5;
-    delay_t delay = 4;
-    bool cont = false;*/
+
     animid_t id = "SuperAceAnimation";
     
     Sprite* superAce = SpritesHolder::getSpritesHolder()->getSprites(SUPER_ACE)->front();
 
-	 //Animation initialization
-     //_planeAnimationTest = new MovingAnimation(dx, dy, delay, cont, id);
+
 	
-	MovingPathAnimation* superAceAnimationManeuver = (MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("superAceAnimationManeuver");
-	
+	MovingPathAnimation* superAceAnimationManeuver = (MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("superAceAnimationManeuver");	
 	MovingPathAnimator* superAceAnimatorManeuever = new MovingPathAnimator(
 		"SuperAceAnimatorManeuver", superAce, superAceAnimationManeuver
 		);
 
-	//using fixed animations for all superAce movements
-/////////////////////////////////////////////////////////////
+
+
     MovingPathAnimation* superAceAnimationUp = (MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("superAceAnimationUp");
 	MovingPathAnimator* superAceAnimatorUp = new MovingPathAnimator(
 		"SuperAceAnimatorUp", superAce, superAceAnimationUp
 		);
 
-////////////////////////////////////////////////////
+
 
 
 	MovingPathAnimation* superAceAnimationDown = (MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("superAceAnimationDown");
@@ -60,7 +55,7 @@ void Game::InitTestAnimator(){
 	MovingPathAnimator* superAceAnimatorDown = new MovingPathAnimator(
 		"SuperAceAnimatorDown", superAce, superAceAnimationDown
 		);
-/////////////////////////////////////////
+
 
 	MovingPathAnimation* superAceAnimationRight = (MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("superAceAnimationRight");
 
@@ -68,15 +63,13 @@ void Game::InitTestAnimator(){
 		"SuperAceAnimatorRight", superAce, superAceAnimationRight
 		);
 
-////////////////////////////////////////////////
-
 
 	MovingPathAnimation* superAceAnimationLeft = (MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("superAceAnimationLeft");
 	MovingPathAnimator* superAceAnimatorLeft = new MovingPathAnimator(
 		"SuperAceAnimatorLeft", superAce, superAceAnimationLeft
 		);
 
-///////////////////////////////////////////////////
+
 	
 	AnimatorHolder::getAnimatorHolder()->Register(superAceAnimatorUp);
 	AnimatorHolder::getAnimatorHolder()->Register(superAceAnimatorRight);
@@ -85,47 +78,6 @@ void Game::InitTestAnimator(){
 	AnimatorHolder::getAnimatorHolder()->Register(superAceAnimatorManeuever);
 
 
-	/*
-     offset_t dx = 0;
-     offset_t dy = -10;
-     delay_t delay = 0;
-     bool cont = false;
-
-	  dx = 0;
-	  dy = -7;
-	  id = "SuperAceAnimatiorUp";
-	 MovingAnimation* _planeAnimationUp = new MovingAnimation(dx, dy, delay, cont, id);
-	 MovingAnimator* planeAnimatorUp = new MovingAnimator(id, superAce, _planeAnimationUp);
-	 dx = 0;
-	 dy = 7;
-	 id = "SuperAceAnimatiorDown";
-	 MovingAnimation* _planeAnimationDown = new MovingAnimation(dx, dy, delay, cont, id);
-	 MovingAnimator* planeAnimatorDown = new MovingAnimator(id, superAce, _planeAnimationDown);
-
-	  dx = 7;
-	  dy = 0;
-	  id = "SuperAceAnimatiorRight";
-	 MovingAnimation* _planeAnimationRight = new MovingAnimation(dx, dy, delay, cont, id);
-	 MovingAnimator* planeAnimatorRight = new MovingAnimator(id, superAce, _planeAnimationRight);
-
-	  dx = -7;
-	  dy = 0;
-	  id = "SuperAceAnimatiorLeft";
-     MovingAnimation* _planeAnimationLeft = new MovingAnimation(dx, dy, delay, cont, id);
-     MovingAnimator* planeAnimatorLeft = new MovingAnimator(id,superAce, _planeAnimationLeft);
-	 
-     AnimationHolder::getAnimationHolder()->add(_planeAnimationUp);
-	 AnimationHolder::getAnimationHolder()->add(_planeAnimationDown);
-	 AnimationHolder::getAnimationHolder()->add(_planeAnimationRight);
-	 AnimationHolder::getAnimationHolder()->add(_planeAnimationLeft);
-
-	 AnimatorHolder::getAnimatorHolder()->Register(planeAnimatorUp);
-	 AnimatorHolder::getAnimatorHolder()->Register(planeAnimatorDown);
-	 AnimatorHolder::getAnimatorHolder()->Register(planeAnimatorRight);
-	 AnimatorHolder::getAnimatorHolder()->Register(planeAnimatorLeft);*/
-	 
-
-	//cout << AnimationHolder::getAnimation("SuperAceAnimationLeft")->getId() << endl;
 
 	 
 
