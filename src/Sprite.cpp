@@ -192,6 +192,33 @@ void Sprite::notifyCollision(Sprite* arg){
 
 void Sprite::addCollisionHandler(const CollisionHandler& h){
     _handlers.push_back(h.Clone());
+    
+    if( _type == SUPER_ACE){
+        SpriteList* aliens;
+        SpriteList* bigAliens;
+        
+        aliens = SpritesHolder::getSpritesHolder()->getSprites(ALIEN_SHIP);
+        bigAliens = SpritesHolder::getSpritesHolder()->getSprites(BIG_ALIEN_SHIP);
+        
+        if (aliens)
+            for (SpriteList::iterator it=aliens->begin(); it != aliens->end(); ++it){
+                CollisionChecker::Register(this,*it);
+            }
+        if (bigAliens)
+            for (SpriteList::iterator it=bigAliens->begin(); it != bigAliens->end(); ++it){
+                CollisionChecker::Register(this,*it);
+            }
+    }
+    if( _type == ALIEN_SHIP || _type == BIG_ALIEN_SHIP){
+        SpriteList* superAce;
+        
+        superAce = SpritesHolder::getSpritesHolder()->getSprites(ALIEN_SHIP);
+        
+        if (superAce)
+            for (SpriteList::iterator it=superAce->begin(); it != superAce->end(); ++it){
+                CollisionChecker::Register(this,*it);
+            }
+    }
 }
 
 void Sprite::clearHandlers(void){

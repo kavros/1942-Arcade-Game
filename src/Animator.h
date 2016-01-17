@@ -1,8 +1,11 @@
 #ifndef ANIMATOR_H
 #define ANIMATOR_H
 #include "includes.h"
+
+
 typedef unsigned long timestamp_t;
 typedef std::string animid_t;
+
 enum animatorstate_t{
 	ANIMATOR_FINISHED	= 0,
 	ANIMATOR_RUNNING	= 1,
