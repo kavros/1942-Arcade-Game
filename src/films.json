@@ -289,6 +289,18 @@
               "path": "xaki_plane/xaki_down.png",
               "rects": [ [0, 0, 32, 31] ]
               },{
+              "id": "explosion",
+              "path": "explosion.png",
+              "rects": [
+                        [0, 2, 13, 11],
+                        [15, 2, 14, 14],
+                        [32, 0, 15, 16],
+                        [52, 0, 15, 17],
+                        [73, 0, 15, 15],
+                        [92, 0, 15, 16]
+                        
+                        ]
+              },{
               "id": "green_jet",
               "path": "mini.png",
               "rects": [

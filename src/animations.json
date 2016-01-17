@@ -109,6 +109,11 @@
                                                       "dy": 5,
                                                       "frameNo": 15,
                                                       "delay": 150
+                                                      }, {
+                                                      "dx": 20,
+                                                      "dy": 5,
+                                                      "frameNo": 0,
+                                                      "delay": 150
                                                       }]
                                             }, {
                                             "id": "superAceAnimationDown",
