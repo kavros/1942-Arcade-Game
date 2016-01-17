@@ -14,154 +14,154 @@
 			"continuous": true
 		}]
 	}, {
-                   "MovingPathAnimations": [{
-                                            "id": "superAceAnimationUp",
-                                            "paths": [{
-                                                      "dx": 0,
-                                                      "dy": -5,
-                                                      "frameNo": 0,
-                                                      "delay": 10
-                                                      }, {
-                                                      "dx": 0,
-                                                      "dy": -5,
-                                                      "frameNo": 1,
-                                                      "delay": 10
-                                                      }]
-                                            },{
-                                            "id": "explosion",
-                                            "paths": [{
-                                                      "dx": 0,
-                                                      "dy": 2,
-                                                      "frameNo": 0,
-                                                      "delay": 90
-                                                      }, {
-                                                      "dx": 0,
-                                                      "dy": 2,
-                                                      "frameNo": 1,
-                                                      "delay": 90
-                                                      }, {
-                                                      "dx": 0,
-                                                      "dy": 2,
-                                                      "frameNo": 2,
-                                                      "delay": 90
-                                                      }, {
-                                                      "dx": 0,
-                                                      "dy": 2,
-                                                      "frameNo": 3,
-                                                      "delay": 90
-                                                      }, {
-                                                      "dx": 0,
-                                                      "dy": 2,
-                                                      "frameNo": 4,
-                                                      "delay": 90
-                                                      }, {
-                                                      "dx": 0,
-                                                      "dy": 2,
-                                                      "frameNo": 5,
-                                                      "delay": 90
-                                                      }]
-                                            }, {
-                                            "id": "green_jet_changing_down",
-                                            "paths": [{
-                                                      "dx": 20,
-                                                      "dy": 5,
-                                                      "frameNo": 0,
-                                                      "delay": 150
-                                                      }, {
-                                                      "dx": 20,
-                                                      "dy": 5,
-                                                      "frameNo": 1,
-                                                      "delay": 150
-                                                      },{
-                                                      "dx": 20,
-                                                      "dy": 5,
-                                                      "frameNo": 2,
-                                                      "delay": 150
-                                                      }, {
-                                                      "dx": 20,
-                                                      "dy": 5,
-                                                      "frameNo": 3,
-                                                      "delay": 150
-                                                      },{
-                                                      "dx": 20,
-                                                      "dy": 5,
-                                                      "frameNo": 4,
-                                                      "delay": 150
-                                                      }, {
-                                                      "dx": 20,
-                                                      "dy": 5,
-                                                      "frameNo": 5,
-                                                      "delay": 150
-                                                      },{
-                                                      "dx": 20,
-                                                      "dy": 5,
-                                                      "frameNo": 6,
-                                                      "delay": 150
-                                                      }, {
-                                                      "dx": 20,
-                                                      "dy": 5,
-                                                      "frameNo": 7,
-                                                      "delay": 150
-                                                      },{
-                                                      "dx": 20,
-                                                      "dy": 5,
-                                                      "frameNo": 8,
-                                                      "delay": 150
-                                                      }, {
-                                                      "dx": 20,
-                                                      "dy": 5,
-                                                      "frameNo": 9,
-                                                      "delay": 150
-                                                      },{
-                                                      "dx": 20,
-                                                      "dy": 5,
-                                                      "frameNo": 10,
-                                                      "delay": 150
-                                                      }, {
-                                                      "dx": 20,
-                                                      "dy": 5,
-                                                      "frameNo": 11,
-                                                      "delay": 150
-                                                      },{
-                                                      "dx": 20,
-                                                      "dy": 5,
-                                                      "frameNo": 12,
-                                                      "delay": 150
-                                                      }, {
-                                                      "dx": 20,
-                                                      "dy": 5,
-                                                      "frameNo": 13,
-                                                      "delay": 150
-                                                      },{
-                                                      "dx": 20,
-                                                      "dy": 5,
-                                                      "frameNo": 14,
-                                                      "delay": 150
-                                                      }, {
-                                                      "dx": 20,
-                                                      "dy": 5,
-                                                      "frameNo": 15,
-                                                      "delay": 150
-                                                      }, {
-                                                      "dx": 20,
-                                                      "dy": 5,
-                                                      "frameNo": 0,
-                                                      "delay": 150
-                                                      }]
-                                            }, {
-                                            "id": "superAceAnimationDown",
-                                            "paths": [{
-                                                      "dx": 0,
-                                                      "dy": 5,
-                                                      "frameNo": 0,
-                                                      "delay": 10
-                                                      }, {
-                                                      "dx": 0,
-                                                      "dy": 5,
-                                                      "frameNo": 0,
-                                                      "delay": 10
-                                                      }]
-                                            }, {
+		"MovingPathAnimations": [{
+			"id": "superAceAnimationUp",
+			"paths": [{
+				"dx": 0,
+				"dy": -5,
+				"frameNo": 0,
+				"delay": 10
+			}, {
+				"dx": 0,
+				"dy": -5,
+				"frameNo": 1,
+				"delay": 10
+			}]
+		}, {
+			"id": "explosion",
+			"paths": [{
+				"dx": 0,
+				"dy": 2,
+				"frameNo": 0,
+				"delay": 90
+			}, {
+				"dx": 0,
+				"dy": 2,
+				"frameNo": 1,
+				"delay": 90
+			}, {
+				"dx": 0,
+				"dy": 2,
+				"frameNo": 2,
+				"delay": 90
+			}, {
+				"dx": 0,
+				"dy": 2,
+				"frameNo": 3,
+				"delay": 90
+			}, {
+				"dx": 0,
+				"dy": 2,
+				"frameNo": 4,
+				"delay": 90
+			}, {
+				"dx": 0,
+				"dy": 2,
+				"frameNo": 5,
+				"delay": 90
+			}]
+		}, {
+			"id": "green_jet_changing_down",
+			"paths": [{
+				"dx": 20,
+				"dy": 5,
+				"frameNo": 0,
+				"delay": 150
+			}, {
+				"dx": 20,
+				"dy": 5,
+				"frameNo": 1,
+				"delay": 150
+			}, {
+				"dx": 20,
+				"dy": 5,
+				"frameNo": 2,
+				"delay": 150
+			}, {
+				"dx": 20,
+				"dy": 5,
+				"frameNo": 3,
+				"delay": 150
+			}, {
+				"dx": 20,
+				"dy": 5,
+				"frameNo": 4,
+				"delay": 150
+			}, {
+				"dx": 20,
+				"dy": 5,
+				"frameNo": 5,
+				"delay": 150
+			}, {
+				"dx": 20,
+				"dy": 5,
+				"frameNo": 6,
+				"delay": 150
+			}, {
+				"dx": 20,
+				"dy": 5,
+				"frameNo": 7,
+				"delay": 150
+			}, {
+				"dx": 20,
+				"dy": 5,
+				"frameNo": 8,
+				"delay": 150
+			}, {
+				"dx": 20,
+				"dy": 5,
+				"frameNo": 9,
+				"delay": 150
+			}, {
+				"dx": 20,
+				"dy": 5,
+				"frameNo": 10,
+				"delay": 150
+			}, {
+				"dx": 20,
+				"dy": 5,
+				"frameNo": 11,
+				"delay": 150
+			}, {
+				"dx": 20,
+				"dy": 5,
+				"frameNo": 12,
+				"delay": 150
+			}, {
+				"dx": 20,
+				"dy": 5,
+				"frameNo": 13,
+				"delay": 150
+			}, {
+				"dx": 20,
+				"dy": 5,
+				"frameNo": 14,
+				"delay": 150
+			}, {
+				"dx": 20,
+				"dy": 5,
+				"frameNo": 15,
+				"delay": 150
+			}, {
+				"dx": 20,
+				"dy": 5,
+				"frameNo": 0,
+				"delay": 150
+			}]
+		}, {
+			"id": "superAceAnimationDown",
+			"paths": [{
+				"dx": 0,
+				"dy": 5,
+				"frameNo": 0,
+				"delay": 10
+			}, {
+				"dx": 0,
+				"dy": 5,
+				"frameNo": 0,
+				"delay": 10
+			}]
+		}, {
 			"id": "superAceAnimationManeuver",
 			"paths": [{
 				"dx": 0,
@@ -173,103 +173,103 @@
 				"dy": -1,
 				"frameNo": 10,
 				"delay": 90
-			},{
+			}, {
 				"dx": 0,
 				"dy": -1,
 				"frameNo": 11,
 				"delay": 90
-			},{
+			}, {
 				"dx": 0,
 				"dy": -1,
 				"frameNo": 12,
 				"delay": 90
-			},{
+			}, {
 				"dx": 0,
 				"dy": -1,
 				"frameNo": 13,
 				"delay": 90
-			},{
+			}, {
 				"dx": 0,
 				"dy": -1,
 				"frameNo": 14,
 				"delay": 90
-			},{
+			}, {
 				"dx": 0,
 				"dy": -1,
 				"frameNo": 15,
 				"delay": 90
-			},{
+			}, {
 				"dx": 0,
 				"dy": -1,
 				"frameNo": 16,
 				"delay": 90
-			},{
+			}, {
 				"dx": 0,
 				"dy": -1,
 				"frameNo": 17,
 				"delay": 90
-			},{
+			}, {
 				"dx": 0,
 				"dy": 1,
 				"frameNo": 18,
 				"delay": 90
-			},{
+			}, {
 				"dx": 0,
 				"dy": 1,
 				"frameNo": 19,
 				"delay": 90
-			},{
+			}, {
 				"dx": 0,
 				"dy": 1,
 				"frameNo": 20,
 				"delay": 90
-			},{
+			}, {
 				"dx": 0,
 				"dy": 1,
 				"frameNo": 21,
 				"delay": 90
-			},{
+			}, {
 				"dx": 0,
 				"dy": 1,
 				"frameNo": 22,
 				"delay": 90
-			},{
+			}, {
 				"dx": 0,
 				"dy": 1,
 				"frameNo": 23,
 				"delay": 90
-			},{
+			}, {
 				"dx": 0,
 				"dy": -1,
 				"frameNo": 0,
 				"delay": 0
 			}]
 		}, {
-                                            "id": "superAceAnimationLeft",
-                                            "paths": [{
-                                                      "dx": -5,
-                                                      "dy": 0,
-                                                      "frameNo": 0,
-                                                      "delay": 10
-                                                      }, {
-                                                      "dx": -5,
-                                                      "dy": 0,
-                                                      "frameNo": 1,
-                                                      "delay": 10
-                                                      }]
-                                            }, {
-                                            "id": "superAceAnimationRight",
-                                            "paths": [{
-                                                      "dx": 5,
-                                                      "dy": 0,
-                                                      "frameNo": 0,
-                                                      "delay": 10
-                                                      }, {
-                                                      "dx": 5,
-                                                      "dy": 0,
-                                                      "frameNo": 0,
-                                                      "delay": 10
-                                                      }]
-                                            }]
-                   }]
+			"id": "superAceAnimationLeft",
+			"paths": [{
+				"dx": -5,
+				"dy": 0,
+				"frameNo": 0,
+				"delay": 10
+			}, {
+				"dx": -5,
+				"dy": 0,
+				"frameNo": 1,
+				"delay": 10
+			}]
+		}, {
+			"id": "superAceAnimationRight",
+			"paths": [{
+				"dx": 5,
+				"dy": 0,
+				"frameNo": 0,
+				"delay": 10
+			}, {
+				"dx": 5,
+				"dy": 0,
+				"frameNo": 0,
+				"delay": 10
+			}]
+		}]
+	}]
 }
