@@ -100,10 +100,6 @@ SDL_Rect Sprite::getDstRect(void) const{
     return _dstRect;
 }
 
-SpriteType Sprite::getType(){
-    return _type;
-}
-
 void Sprite::changeDstRectX(int dx){
     _dstRect.x+=dx;
 }
@@ -117,6 +113,14 @@ void Sprite::setVisibility (bool v) {
 
 bool Sprite::getVisibility (void) const{
     return _isVisible;
+}
+
+SpriteState Sprite::getState(){
+    return _state;
+}
+
+SpriteType Sprite::getType(){
+    return _type;
 }
 
 void Sprite::move (int dx, int dy){
@@ -235,6 +239,3 @@ void Sprite::setState(SpriteState state){
 	_state = state;
 }
 
-SpriteState Sprite::getState(){
-	return _state;
-}

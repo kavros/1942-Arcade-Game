@@ -15,6 +15,8 @@ SuperAce::SuperAce(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point 
             aircraft->Destroy();
             arg->Destroy();
             
+            AnimatorHolder::createExplosion( aircraft->getDstRect() );
+
         }
         touchHandler* Clone(void) const{
             return new touchHandler();
@@ -116,8 +118,8 @@ void SuperAce::fire(void){
             
             bullet->Destroy();
             arg->Destroy();
-            
-//            createExplosion();
+
+            AnimatorHolder::createExplosion( bullet->getDstRect() );
         }
         fireHandler* Clone(void) const{
             return new fireHandler();
@@ -157,8 +159,7 @@ void SuperAce::filterMotion(int* dx, int* dy) const {
     int old_y = _dstRect.y;
     int new_x = _dstRect.x + *dx;
     int new_y = _dstRect.y + *dy;
-    
-    
+        
     //adjust new_y if out of screen bounds
     int max_y = 0;
     if (new_y < max_y)
