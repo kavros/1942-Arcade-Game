@@ -15,6 +15,10 @@ Sprite::Sprite(){
     _state=FLYING;
     _currFilm=nullptr;
     alive=true;
+    _parent=nullptr;
+    
+    SpritesHolder::getSpritesHolder()->add(this);
+
 }
 
 Sprite::Sprite(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point point,bool isVisible,SpriteType type,AnimationFilm* currFilm){
@@ -29,7 +33,10 @@ Sprite::Sprite(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point poin
     _currFilm=currFilm;
     _state=FLYING;
     alive=true;
-    
+    _parent=nullptr;
+
+    SpritesHolder::getSpritesHolder()->add(this);
+
 }
 
 Sprite::Sprite(std::string id, SDL_Rect dstRect,bool isVisible,SpriteType type,AnimationFilm* currFilm){
@@ -44,7 +51,10 @@ Sprite::Sprite(std::string id, SDL_Rect dstRect,bool isVisible,SpriteType type,A
     _currFilm=currFilm;
     _state=FLYING;
     alive=true;
-    
+    _parent=nullptr;
+
+    SpritesHolder::getSpritesHolder()->add(this);
+
 }
 
 Sprite::~Sprite(){
@@ -174,9 +184,10 @@ void Sprite::notifyCollision(Sprite* arg){
     if( _type==SUPER_ACE && _state==DRIPLING)
         return;
     
-    for(Handlers::iterator i = _handlers.begin(); i!=_handlers.end(); ++i ){
-        (**i)(this,arg);
-    }
+    if( !_handlers.empty() )
+        for(Handlers::iterator i = _handlers.begin(); i!=_handlers.end(); ++i ){
+            (**i)(this,arg);
+        }       
 }
 
 void Sprite::addCollisionHandler(const CollisionHandler& h){
