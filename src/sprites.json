@@ -1,6 +1,14 @@
 {
     
     "Sprites": [{
+                "id": "GreenJet0",
+                "frameNo": 0,
+                "destRect": [244, 10, 32, 31],
+                "point": [0, 0],
+                "visible": false,
+                "spriteType": 4,
+                "animFilmId": "green_jet"
+                },{
                 "id": "SuperAce",
                 "frameNo": 0,
                 "destRect": [244, 494, 24, 18],

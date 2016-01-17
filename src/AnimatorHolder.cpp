@@ -102,27 +102,25 @@ void AnimatorHolder::triggerAnimators(){
         dstRect.w=32;
         dstRect.h=31;
         
-        AnimationFilm* fireAnimationFilm = AnimationFilmHolder::Get()->GetFilm("green_jet");
-        assert(fireAnimationFilm);
+        AnimationFilm* animationFilm = AnimationFilmHolder::Get()->GetFilm("green_jet");
+        assert(animationFilm);
         
-        Sprite* fireSprite = new Sprite("spriteStraightEnemyAttack", 0, dstRect, {0,0}, true, ALIEN_SHIP, fireAnimationFilm);
-        assert(fireSprite);
+        Sprite* sprite = SpritesHolder::getSpritesHolder()->getSprite(SpriteType::ALIEN_SHIP, "GreenJet0"); //new Sprite("spriteStraightEnemyAttack", 0, dstRect, {0,0}, true, ALIEN_SHIP, fireAnimationFilm);
+        assert(sprite);
         
-        SpritesHolder::getSpritesHolder()->add(fireSprite);
-
         
         //MovingAnimation* fireAnimation = new MovingAnimation(dx, dy, delay, cont, id);
-        Animation* fireAnimation = AnimationHolder::getAnimationHolder()->getAnimation("straightEnemyAttack");
+        Animation* animation = AnimationHolder::getAnimationHolder()->getAnimation("green_jet_changing_down");
 
-        AnimationHolder::getAnimationHolder()->add(fireAnimation);
+        //AnimationHolder::getAnimationHolder()->add(fireAnimation);
         
-        MovingAnimator* fireAnimator = new MovingAnimator("animatorStraightEnemyAttack", fireSprite, (MovingAnimation*)fireAnimation);
+        MovingPathAnimator* animator = new MovingPathAnimator("animatorStraightEnemyAttack", sprite, (MovingPathAnimation*)animation);
         
-        AnimatorHolder::getAnimatorHolder()->Register(fireAnimator);
+        AnimatorHolder::getAnimatorHolder()->Register(animator);
         
         //Sprite* superAce = (Sprite*)SpritesHolder::getSpritesHolder()->getSprites(SUPER_ACE)->front();
                 
-        fireAnimator->start(Game::getGameTime());
+        animator->start(Game::getGameTime());
         
     }
     i++;
