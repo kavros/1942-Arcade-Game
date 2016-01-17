@@ -87,7 +87,7 @@ Animator* AnimatorHolder::getAnimator(animid_t id){
 
 void AnimatorHolder::triggerAnimators(){
     static int i=0;
-    if(i==100){
+    if(i%100 == 0 && i < 1000 && i > 10){
                 
         SDL_Rect dstRect;
         dstRect.x=WIN_WIDTH/2;
@@ -98,17 +98,16 @@ void AnimatorHolder::triggerAnimators(){
         AnimationFilm* animationFilm = AnimationFilmHolder::Get()->GetFilm("green_jet");
         assert(animationFilm);
         
-        Sprite* sprite = SpritesHolder::getSpritesHolder()->getSprite(SpriteType::ALIEN_SHIP, "GreenJet0"); //new Sprite("spriteStraightEnemyAttack", 0, dstRect, {0,0}, true, ALIEN_SHIP, fireAnimationFilm);
+        Sprite* sprite = SpritesHolder::getSpritesHolder()->getSprite(SpriteType::ALIEN_SHIP, "GreenJet" + std::to_string(i)); //new Sprite("spriteStraightEnemyAttack", 0, dstRect, {0,0}, true, ALIEN_SHIP, fireAnimationFilm);
         
         assert(sprite);
         
         Animation* animation = AnimationHolder::getAnimationHolder()->getAnimation("green_jet_changing_down");
         assert(animation);
         
-        MovingPathAnimator* animator = new MovingPathAnimator("animatorStraightEnemyAttack", sprite, (MovingPathAnimation*)animation);
-        sprite->setVisibility(true);
+        MovingPathAnimator* animator = new MovingPathAnimator(string("animatorStraightEnemyAttack") + std::to_string(i), sprite, (MovingPathAnimation*)animation);
         AnimatorHolder::getAnimatorHolder()->Register(animator);
-        
+        cout<<"AAAAAAA"<<std::endl;
         animator->start(Game::getGameTime());
         
     }

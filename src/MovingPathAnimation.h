@@ -11,11 +11,12 @@
 	offset_t				_dx, _dy;
 	frame_t					_frame;
 	delay_t					_delay;
+     bool                   _visibility;
 
-	PathEntry(void) :_dx(0), _frame(0), _delay(0){}
+	PathEntry(void) :_dx(0), _frame(0), _delay(0), _visibility(true){}
 
 	PathEntry(const PathEntry* p) :_dx(p->_dx), _dy(p->_dy),
-		_frame(p->_frame), _delay(p->_delay){}
+		_frame(p->_frame), _visibility(p->_visibility), _delay(p->_delay){}
 };
 
 
@@ -31,12 +32,13 @@ public:
 	Animation* clone(animid_t newId) const {
 		return new MovingPathAnimation(_path, newId);
 	}
-	MovingPathAnimation(const std::list<PathEntry>& _path, animid_t id) :
-		_path(_path), Animation(id){}
+	MovingPathAnimation(const std::list<PathEntry>& path, animid_t id) :
+		_path(path), Animation(id){}
 
 private:
 	typedef std::list<PathEntry> PathsList;
 	std::list<PathEntry> _path;
+    bool _visibility;
 
 };
 

@@ -31,8 +31,8 @@ SuperAce::SuperAce(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point 
     _type = type;
     _currFilm = currFilm;
     setFrame(frameNo);
-    _superAceWidth=_currFilm->getFrameBox(0).w;
-    _superAceHeight=_currFilm->getFrameBox(0).h;
+    _superAceWidth= dstRect.w ;//_currFilm->getFrameBox(0).w;
+    _superAceHeight= dstRect.h; //_currFilm->getFrameBox(0).h;
     
     _bulletDstRect.x=this->getDstRect().x + (this->getSuperAceWidth()/4);
     _bulletDstRect.y=this->getDstRect().y - this->getSuperAceHeigth();

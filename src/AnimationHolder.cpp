@@ -94,6 +94,7 @@ void    AnimationHolder::Load (const std::string& cataloge){
             PathEntry pe;
             const Value& path = paths[j];
             //dx
+            pe._visibility = path["visibility"].GetBool();
             pe._dx = path["dx"].GetInt();
             pe._dy = path["dy"].GetInt();
             pe._frame = path["frameNo"].GetInt();

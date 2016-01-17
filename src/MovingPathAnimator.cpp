@@ -30,7 +30,7 @@ void MovingPathAnimator::progress(timestamp_t currTime){
         
         _sprite->move(_currPath->_dx, _currPath->_dy);
 		_sprite->setFrame(_currPath->_frame);
-			
+        _sprite->setVisibility(_currPath->_visibility);
         _lastTime += (_currPath->_delay);
         //cout << "Curr time = " << currTime << "\tlast time = " << _lastTime << "\n";
         _currPath++;
