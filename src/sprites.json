@@ -3,7 +3,7 @@
     "Sprites": [{
                 "id": "GreenJet0",
                 "frameNo": 0,
-                "destRect": [32, 10, 32, 31],
+                "destRect": [32, 10, 15, 15],
                 "point": [0, 0],
                 "visible": false,
                 "spriteType": 4,
