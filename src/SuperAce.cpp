@@ -15,6 +15,7 @@ SuperAce::SuperAce(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point 
     _bulletDstRect.y=this->getDstRect().y - this->getSuperAceHeigth();
     _bulletDstRect.w=9;
     _bulletDstRect.h=20;
+    SpritesHolder::getSpritesHolder()->add(this);
     
 }
 

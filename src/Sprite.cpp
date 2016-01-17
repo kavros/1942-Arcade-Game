@@ -17,7 +17,7 @@ Sprite::Sprite(){
     alive=true;
     _parent=nullptr;
     
-    SpritesHolder::getSpritesHolder()->add(this);
+    //SpritesHolder::getSpritesHolder()->add(this);
 
 }
 
