@@ -39,6 +39,11 @@ void Game::InitTestAnimator(){
 	 //Animation initialization
      //_planeAnimationTest = new MovingAnimation(dx, dy, delay, cont, id);
 	
+	MovingPathAnimation* superAceAnimationManeuver = (MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("superAceAnimationManeuver");
+	
+	MovingPathAnimator* superAceAnimatorManeuever = new MovingPathAnimator(
+		"SuperAceAnimatorManeuver", superAce, superAceAnimationManeuver
+		);
 
 	//using fixed animations for all superAce movements
 /////////////////////////////////////////////////////////////
@@ -77,6 +82,8 @@ void Game::InitTestAnimator(){
 	AnimatorHolder::getAnimatorHolder()->Register(superAceAnimatorRight);
 	AnimatorHolder::getAnimatorHolder()->Register(superAceAnimatorDown);
 	AnimatorHolder::getAnimatorHolder()->Register(superAceAnimatorLeft);
+	AnimatorHolder::getAnimatorHolder()->Register(superAceAnimatorManeuever);
+
 
 	/*
      offset_t dx = 0;
