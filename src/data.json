@@ -1,0 +1,407 @@
+{
+    
+    "Animations": [{"MovingAnimations": [    {
+                                         "id":"superAceFire",
+                                         "dx":0,
+                                         "dy":-4,
+                                         "delay":10,
+                                         "continuous":true
+                                         },
+                                         {
+                                         "id":"straightEnemyAttack",
+                                         "dx":0,
+                                         "dy":2,
+                                         "delay":10,
+                                         "continuous":true
+                                         }
+                                         ]},{
+                   "MovingPathAnimations": [{
+                                            "id": "superAceAnimationUp",
+                                            "paths": [{
+                                                      "dx": 0,
+                                                      "dy": -5,
+                                                      "frameNo": 0,
+                                                      "delay": 10
+                                                      }, {
+                                                      "dx": 0,
+                                                      "dy": -5,
+                                                      "frameNo": 0,
+                                                      "delay": 10
+                                                      }]
+                                            }, {
+                                            "id": "superAceAnimationDown",
+                                            "paths": [{
+                                                      "dx": 0,
+                                                      "dy": 5,
+                                                      "frameNo": 0,
+                                                      "delay": 10
+                                                      }, {
+                                                      "dx": 0,
+                                                      "dy": 5,
+                                                      "frameNo": 0,
+                                                      "delay": 10
+                                                      }]
+                                            }, {
+                                            "id": "superAceAnimationLeft",
+                                            "paths": [{
+                                                      "dx": -5,
+                                                      "dy": 0,
+                                                      "frameNo": 0,
+                                                      "delay": 10
+                                                      }, {
+                                                      "dx": -5,
+                                                      "dy": 0,
+                                                      "frameNo": 0,
+                                                      "delay": 10
+                                                      }]
+                                            }, {
+                                            "id": "superAceAnimationRight",
+                                            "paths": [{
+                                                      "dx": 5,
+                                                      "dy": 0,
+                                                      "frameNo": 0,
+                                                      "delay": 10
+                                                      }, {
+                                                      "dx": 5,
+                                                      "dy": 0,
+                                                      "frameNo": 0,
+                                                      "delay": 10
+                                                      }]
+                                            }]
+                   }],
+    
+    "Sprites": [{
+                "id": "mainMenuSingleSprite",
+                "frameNo": 0,
+                "destRect": [0, 0, 512, 512],
+                "point": [0, 0],
+                "visible": true,
+                "spriteType": 0,
+                "animFilmId": "mainMenuSingleplayer"
+                }, {
+                "id": "mainMenuMultiSprite",
+                "frameNo": 0,
+                "destRect": [0, 0, 512, 512],
+                "point": [0, 0],
+                "visible": true,
+                "spriteType": 1,
+                "animFilmId": "mainMenuMultiplayer"
+                }, {
+                "id": "spriteAircraftCarrier0",
+                "frameNo": 0,
+                "destRect": [195, -200, 150, 333],
+                "point": [0, 0],
+                "visible": true,
+                "spriteType": 2,
+                "animFilmId": "aircraft_carrier"
+                }, {
+                "id": "spriteAircraftCarrier1",
+                "frameNo": 0,
+                "destRect": [195, -600, 150, 333],
+                "point": [0, 0],
+                "visible": true,
+                "spriteType": 2,
+                "animFilmId": "aircraft_carrier"
+                }, {
+                "id": "spriteAircraftCarrier2",
+                "frameNo": 0,
+                "destRect": [195, -3500, 150, 333],
+                "point": [0, 0],
+                "visible": true,
+                "spriteType": 2,
+                "animFilmId": "aircraft_carrier"
+                }, {
+                "id": "spriteLand0",
+                "frameNo": 0,
+                "destRect": [0, -3000, 512, 2435],
+                "point": [0, 0],
+                "visible": true,
+                "spriteType": 2,
+                "animFilmId":"land"
+                }
+                ]
+    ,
+    "Films": [{
+              "id": "Super.Ace",
+              "path": "super_ace/SuperAce.png",
+              "rects": [
+                        [0, 0, 59, 44]
+                        ]
+              }, {
+              "id": "A",
+              "path": "numbers_and_scores/A.png",
+              "rects": [
+                        [0, 0, 9, 13]
+                        ]
+              }, {
+              "id": "B",
+              "path": "numbers_and_scores/B.png",
+              "rects": [
+                        [0, 0, 9, 13]
+                        ]
+              }, {
+              "id": "C",
+              "path": "numbers_and_scores/C.png",
+              "rects": [
+                        [0, 0, 10, 13]
+                        ]
+              }, {
+              "id": "D",
+              "path": "numbers_and_scores/D.png",
+              "rects": [
+                        [0, 0, 9, 13]
+                        ]
+              }, {
+              "id": "E",
+              "path": "numbers_and_scores/E.png",
+              "rects": [
+                        [0, 0, 9, 13]
+                        ]
+              }, {
+              "id": "F",
+              "path": "numbers_and_scores/F.png",
+              "rects": [
+                        [0, 0, 9, 13]
+                        ]
+              }, {
+              "id": "G",
+              "path": "numbers_and_scores/G.png",
+              "rects": [
+                        [0, 0, 9, 13]
+                        ]
+              }, {
+              "id": "H",
+              "path": "numbers_and_scores/H.png",
+              "rects": [
+                        [0, 0, 9, 13]
+                        ]
+              }, {
+              "id": "I",
+              "path": "numbers_and_scores/I.png",
+              "rects": [
+                        [0, 0, 9, 13]
+                        ]
+              }, {
+              "id": "J",
+              "path": "numbers_and_scores/J.png",
+              "rects": [
+                        [0, 0, 9, 13]
+                        ]
+              }, {
+              "id": "K",
+              "path": "numbers_and_scores/K.png",
+              "rects": [
+                        [0, 0, 9, 13]
+                        ]
+              }, {
+              "id": "L",
+              "path": "numbers_and_scores/L.png",
+              "rects": [
+                        [0, 0, 9, 13]
+                        ]
+              }, {
+              "id": "M",
+              "path": "numbers_and_scores/M.png",
+              "rects": [
+                        [0, 0, 9, 13]
+                        ]
+              }, {
+              "id": "N",
+              "path": "numbers_and_scores/N.png",
+              "rects": [
+                        [0, 0, 10, 13]
+                        ]
+              }, {
+              "id": "O",
+              "path": "numbers_and_scores/O.png",
+              "rects": [
+                        [0, 0, 10, 13]
+                        ]
+              }, {
+              "id": "P",
+              "path": "numbers_and_scores/P.png",
+              "rects": [
+                        [0, 0, 9, 13]
+                        ]
+              }, {
+              "id": "Q",
+              "path": "numbers_and_scores/Q.png",
+              "rects": [
+                        [0, 0, 9, 13]
+                        ]
+              }, {
+              "id": "R",
+              "path": "numbers_and_scores/R.png",
+              "rects": [
+                        [0, 0, 11, 13]
+                        ]
+              }, {
+              "id": "S",
+              "path": "numbers_and_scores/S.png",
+              "rects": [
+                        [0, 0, 10, 13]
+                        ]
+              }, {
+              "id": "T",
+              "path": "numbers_and_scores/T.png",
+              "rects": [
+                        [0, 0, 9, 13]
+                        ]
+              }, {
+              "id": "U",
+              "path": "numbers_and_scores/U.png",
+              "rects": [
+                        [0, 0, 9, 13]
+                        ]
+              }, {
+              "id": "V",
+              "path": "numbers_and_scores/V.png",
+              "rects": [
+                        [0, 0, 9, 13]
+                        ]
+              }, {
+              "id": "W",
+              "path": "numbers_and_scores/W.png",
+              "rects": [
+                        [0, 0, 9, 13]
+                        ]
+              }, {
+              "id": "X",
+              "path": "numbers_and_scores/X.png",
+              "rects": [
+                        [0, 0, 9, 13]
+                        ]
+              }, {
+              "id": "Y",
+              "path": "numbers_and_scores/Y.png",
+              "rects": [
+                        [0, 0, 9, 13]
+                        ]
+              }, {
+              "id": "Z",
+              "path": "numbers_and_scores/Z.png",
+              "rects": [
+                        [0, 0, 9, 13]
+                        ]
+              }, {
+              "id": "0",
+              "path": "numbers_and_scores/0.png",
+              "rects": [
+                        [0, 0, 10, 13]
+                        ]
+              }, {
+              "id": "1",
+              "path": "numbers_and_scores/1.png",
+              "rects": [
+                        [0, 0, 9, 13]
+                        ]
+              }, {
+              "id": "2",
+              "path": "numbers_and_scores/2.png",
+              "rects": [
+                        [0, 0, 9, 13]
+                        ]
+              }, {
+              "id": "3",
+              "path": "numbers_and_scores/3.png",
+              "rects": [
+                        [0, 0, 9, 13]
+                        ]
+              }, {
+              "id": "4",
+              "path": "numbers_and_scores/4.png",
+              "rects": [
+                        [0, 0, 10, 13]
+                        ]
+              }, {
+              "id": "5",
+              "path": "numbers_and_scores/5.png",
+              "rects": [
+                        [0, 0, 9, 13]
+                        ]
+              }, {
+              "id": "6",
+              "path": "numbers_and_scores/6.png",
+              "rects": [
+                        [0, 0, 9, 13]
+                        ]
+              }, {
+              "id": "7",
+              "path": "numbers_and_scores/7.png",
+              "rects": [
+                        [0, 0, 9, 13]
+                        ]
+              }, {
+              "id": "8",
+              "path": "numbers_and_scores/8.png",
+              "rects": [
+                        [0, 0, 10, 13]
+                        ]
+              }, {
+              "id": "9",
+              "path": "numbers_and_scores/9.png",
+              "rects": [
+                        [0, 0, 10, 13]
+                        ]
+              }, {
+              "id": "aircraft_carrier",
+              "path": "terrain/aircraft_carrier.png",
+              "rects": [
+                        [0, 0, 150, 333]
+                        ]
+              }, {
+              "id": "Super.Ace.1942",
+              "path": "super_ace/SuperAceAll.png",
+              "rects": [
+                        [0, 0, 24, 18],
+                        [33, 0, 24, 18],
+						[63, 0, 24, 18],
+						[96, 0, 24, 18],
+						[129, 0, 24, 18],
+						[161, 0, 24, 18],
+						[195, 0, 24, 18],
+                        [221, 0, 24, 18],
+						[0, 22, 24, 18],
+                        [33, 22, 24, 18],
+						[63, 22, 24, 18],
+						[96, 22, 24, 18],
+						[129, 22, 24, 18],
+						[161, 22, 24, 18],
+						[195, 22, 24, 18],
+                        [221, 22, 24, 18]
+						]
+              }, {
+              "id": "empty_sea_background",
+              "path": "terrain/empty_sea_background.bmp",
+              "rects": [
+                        [0, 0, 223, 1228]
+                        ]
+              }, {
+              "id": "land",
+              "path": "terrain/land.bmp",
+              "rects": [
+                        [0, 0, 223, 2435]
+                        ]
+              }, {
+              "id": "mainMenuSingleplayer",
+              "path": "main_menu/single.png",
+              "rects": [
+                        [0, 0, 479, 546]
+                        ]
+              }, {
+              "id": "mainMenuMultiplayer",
+              "path": "main_menu/multi.png",
+              "rects": [
+                        [0, 0, 479, 546]
+                        ]
+              }, {
+              "id": "big_fire_up",
+              "path": "fire/big_fire_up.png",
+              "rects": [ [0, 0, 9, 20] ]
+              }, {
+              "id": "straightEnemyAttack",
+              "path": "xaki_plane/xaki_down.png",
+              "rects": [ [0, 0, 32, 31] ]
+              }
+              ]
+}
