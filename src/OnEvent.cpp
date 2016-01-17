@@ -45,6 +45,8 @@ void Game::OnEvent(SDL_Event* event) {
 				MovingPathAnimator* superAceAnimatorDown = 
 							(MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorDown");
 
+				MovingPathAnimator* superAceAnimatorManeuever =
+							(MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorManeuver");
 
 				assert(superAce->getType() == SUPER_ACE);
 				switch (event->key.keysym.sym) {
@@ -81,6 +83,9 @@ void Game::OnEvent(SDL_Event* event) {
                         ((SuperAce*)superAce)->fire();
                         break;
                     }
+					case SDLK_a:{
+						superAceAnimatorManeuever->start(getGameTime());
+					}
                 }
             }
 			break;

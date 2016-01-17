@@ -9,8 +9,8 @@
 #define includes_h
 
 #ifdef  _WIN32
-#define SRC_PATH  string("C:/Users/αλεξης/Source/Repos/1942/src/")
-#define IMG_PATH  string("C:/Users/αλεξης/Source/Repos/1942/images/")
+#define SRC_PATH  string("C:\\Users\\Alexis\\Source\\Repos\\1942\\src\\")
+#define IMG_PATH  string("C:\\Users\\Alexis\\Source\\Repos\\1942\\images\\")
 #define SLASH "\\" 
 #include <SDL_image.h>
 #include <SDL.h>
