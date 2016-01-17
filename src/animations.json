@@ -24,7 +24,7 @@
                                                       }, {
                                                       "dx": 0,
                                                       "dy": -5,
-                                                      "frameNo": 0,
+                                                      "frameNo": 1,
                                                       "delay": 10
                                                       }]
                                             }, {
@@ -50,7 +50,7 @@
                                                       }, {
                                                       "dx": -5,
                                                       "dy": 0,
-                                                      "frameNo": 0,
+                                                      "frameNo": 1,
                                                       "delay": 10
                                                       }]
                                             }, {

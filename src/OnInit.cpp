@@ -241,7 +241,7 @@ bool Game::InitBackground(){
 
 bool Game::InitSuperAce(){
     
-    SpritesHolder::getSpritesHolder()->add(new SuperAce());
+    //SpritesHolder::getSpritesHolder()->add(new SuperAce());
     
     return true;
 }
