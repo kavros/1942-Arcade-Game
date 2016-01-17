@@ -50,43 +50,58 @@ void Game::OnEvent(SDL_Event* event) {
 
 				assert(superAce->getType() == SUPER_ACE);
 				switch (event->key.keysym.sym) {
-                    case SDLK_ESCAPE:
-                        //pause
-                        break;
-                    case SDLK_q:
-                        //quit?
-                        break;
-                    case SDLK_LEFT:{
+				case SDLK_ESCAPE:
+					//pause
+					break;
+				case SDLK_q:
+					//quit?
+					break;
+				case SDLK_LEFT:{
 
 
-                        superAceAnimatorLeft->start(getGameTime());
-                        break;
-                    }
-                    case SDLK_RIGHT:{
+					superAceAnimatorLeft->start(getGameTime());
+					break;
+				}
+				case SDLK_RIGHT:{
 
-                        
-						superAceAnimatorRight->start( getGameTime());
-                        break;
-                    }
-                    case SDLK_UP:{
 
-                        
-						superAceAnimatorUp->start( getGameTime());
-                        break;
-                    }
-                    case SDLK_DOWN:{
+					superAceAnimatorRight->start(getGameTime());
+					break;
+				}
+				case SDLK_UP:{
 
-						superAceAnimatorDown->start(getGameTime());
-                        break;
-                    }
-                    case SDLK_SPACE:{
-                        ((SuperAce*)superAce)->fire();
-                        break;
-                    }
-					case SDLK_a:{
+
+					superAceAnimatorUp->start(getGameTime());
+					break;
+				}
+				case SDLK_DOWN:{
+
+					superAceAnimatorDown->start(getGameTime());
+					break;
+				}
+				case SDLK_SPACE:{
+					((SuperAce*)superAce)->fire();
+					break;
+				}
+				case SDLK_a:{
+					if (_remaining_loops_num > 0){
+
 						superAceAnimatorManeuever->start(getGameTime());
+						_remaining_loops_num--;
+						if (_remaining_loops_num == 2){
+							_remaining_loops->changeString("RR", WIN_WIDTH - 24, WIN_HEIGHT - 12);
+						}
+						else if(_remaining_loops_num == 1){
+							_remaining_loops->changeString("R", WIN_WIDTH - 12, WIN_HEIGHT - 12);
+						}else if (_remaining_loops_num == 0){
+							_remaining_loops->getSpriteAlphaNum(0)->setVisibility(false);
+						}
+					}else if (_remaining_loops_num == 0){
+										
+						//there are no loops
 					}
-                }
+				}
+				}
             }
 			break;
         case MULTIPLAYER_GAME:
