@@ -15,6 +15,8 @@ SuperAce::SuperAce(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point 
             aircraft->Destroy();
             arg->Destroy();
             
+            AnimatorHolder::createExplosion( aircraft->getDstRect() );
+
         }
         touchHandler* Clone(void) const{
             return new touchHandler();
@@ -116,8 +118,8 @@ void SuperAce::fire(void){
             
             bullet->Destroy();
             arg->Destroy();
-            
-//            createExplosion();
+
+            AnimatorHolder::createExplosion( bullet->getDstRect() );
         }
         fireHandler* Clone(void) const{
             return new fireHandler();

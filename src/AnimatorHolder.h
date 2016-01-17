@@ -65,6 +65,8 @@ public:
     
     static void triggerAnimators();
 
+    static void createExplosion(SDL_Rect dstRect);
+
 };
 
 #endif

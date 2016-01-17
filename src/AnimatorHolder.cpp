@@ -115,3 +115,7 @@ void AnimatorHolder::triggerAnimators(){
     i++;
 
 }
+
+void AnimatorHolder::createExplosion(SDL_Rect dstRect){
+
+}
