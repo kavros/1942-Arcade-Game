@@ -210,7 +210,7 @@ void Sprite::registerCollision(){
 
 //collision detection functions
 void Sprite::notifyCollision(Sprite* arg){
-    if( _type==SUPER_ACE && _state==DRIPLING)
+    if( _type==SUPER_ACE && _state==MANEUVER)
         return;
     
     for(Handlers::iterator i = _handlers.begin(); i!=_handlers.end(); ++i ){
@@ -233,3 +233,11 @@ void Sprite::clearHandlers(void){
 
 
 
+void Sprite::setState(SpriteState state){
+	assert(FLYING <= state && state <= MANEUVER);
+	_state = state;
+}
+
+SpriteState Sprite::getState(){
+	return _state;
+}

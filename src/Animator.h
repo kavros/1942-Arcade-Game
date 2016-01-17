@@ -45,6 +45,9 @@ public:
     void* getProgressClosure(void)const;
     void setOnProgress(ProgressCallback f, void* c = (void*) 0);
 	/////////////////////////////////////////////////
+	enum animatorstate_t getState(){
+		return _state;
+	}
 
 	Animator();
 	virtual ~Animator(){ };

@@ -67,7 +67,6 @@ void SuperAce::setSuperAceHeigth(unsigned height){
 
 void SuperAce::fire(void){
     /* spawn SuperAce bullets */
-    
     /*bullet test*/
     
     SDL_Rect dstRect;
