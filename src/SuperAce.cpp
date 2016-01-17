@@ -1,5 +1,18 @@
 #include "SuperAce.h"
 
+SuperAce::SuperAce(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point point,bool isVisible,SpriteType type,AnimationFilm* currFilm){
+    _spriteId = id;
+    _dstRect = dstRect;
+    _point = point;
+    _isVisible = isVisible;
+    _type = type;
+    _currFilm = currFilm;
+    setFrame(frameNo);
+    _superAceWidth=_currFilm->getFrameBox(0).w;
+    _superAceHeight=_currFilm->getFrameBox(0).h;
+    SpritesHolder::getSpritesHolder()->add(this);
+}
+
 SuperAce::SuperAce(){
 
 	AnimationFilmHolder *animation = AnimationFilmHolder::Get();

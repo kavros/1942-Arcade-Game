@@ -1,0 +1,71 @@
+{
+    "Animations": [{"MovingAnimations": [    {
+                                         "id":"superAceFire",
+                                         "dx":0,
+                                         "dy":-4,
+                                         "delay":10,
+                                         "continuous":true
+                                         },
+                                         {
+                                         "id":"straightEnemyAttack",
+                                         "dx":0,
+                                         "dy":2,
+                                         "delay":10,
+                                         "continuous":true
+                                         }
+                                         ]},{
+                   "MovingPathAnimations": [{
+                                            "id": "superAceAnimationUp",
+                                            "paths": [{
+                                                      "dx": 0,
+                                                      "dy": -5,
+                                                      "frameNo": 0,
+                                                      "delay": 10
+                                                      }, {
+                                                      "dx": 0,
+                                                      "dy": -5,
+                                                      "frameNo": 0,
+                                                      "delay": 10
+                                                      }]
+                                            }, {
+                                            "id": "superAceAnimationDown",
+                                            "paths": [{
+                                                      "dx": 0,
+                                                      "dy": 5,
+                                                      "frameNo": 0,
+                                                      "delay": 10
+                                                      }, {
+                                                      "dx": 0,
+                                                      "dy": 5,
+                                                      "frameNo": 0,
+                                                      "delay": 10
+                                                      }]
+                                            }, {
+                                            "id": "superAceAnimationLeft",
+                                            "paths": [{
+                                                      "dx": -5,
+                                                      "dy": 0,
+                                                      "frameNo": 0,
+                                                      "delay": 10
+                                                      }, {
+                                                      "dx": -5,
+                                                      "dy": 0,
+                                                      "frameNo": 0,
+                                                      "delay": 10
+                                                      }]
+                                            }, {
+                                            "id": "superAceAnimationRight",
+                                            "paths": [{
+                                                      "dx": 5,
+                                                      "dy": 0,
+                                                      "frameNo": 0,
+                                                      "delay": 10
+                                                      }, {
+                                                      "dx": 5,
+                                                      "dy": 0,
+                                                      "frameNo": 0,
+                                                      "delay": 10
+                                                      }]
+                                            }]
+                   }]
+}

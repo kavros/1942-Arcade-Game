@@ -167,13 +167,13 @@ bool Game::InitData(){
     
     
     AnimationFilmHolder* anFh = AnimationFilmHolder::Get();
-	anFh->Load("data.json", _renderer);
+	anFh->Load("films.json", _renderer);
     
     SpritesHolder* sh = SpritesHolder::getSpritesHolder();
-    sh->Load("data.json");
+    sh->Load("sprites.json");
     
     AnimationHolder* anh = AnimationHolder::getAnimationHolder();
-    anh->Load("data.json");
+    anh->Load("animations.json");
     return true;
 }
 
