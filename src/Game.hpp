@@ -92,7 +92,7 @@ public:
     bool InitBackground();
     bool InitSuperAce();
     bool InitGameInfo();
-    void InitTestAnimator();
+	void InitSuperAceAnimator();
 
     //</akatsarakis>
     
