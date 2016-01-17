@@ -52,7 +52,6 @@ Sprite::Sprite(std::string id, SDL_Rect dstRect,bool isVisible,SpriteType type,A
 
 Sprite::~Sprite(){
     clearHandlers();
-    Destroy();
 }
 
 void Sprite::setId(std::string id){

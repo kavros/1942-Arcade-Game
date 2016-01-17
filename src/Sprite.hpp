@@ -5,6 +5,7 @@
 #include "AnimationFilm.hpp"
 #include "LatelyDestroyable.h"
 #include "CollisionChecker.hpp"
+#include "CollisionHandler.hpp"
 
 #define SPRITE_TYPE_SIZE 8
 
@@ -27,13 +28,6 @@ typedef enum SpriteState {
     FIRING,
     DRIPLING
 }SpriteState;
-
-class CollisionHandler{
-public:
-    virtual void operator()(Sprite* caller, Sprite* arg) const = 0;
-    virtual CollisionHandler* Clone(void) const = 0;
-    virtual ~CollisionHandler(){};
-};
 
 class Sprite : public LatelyDestroyable{
     
