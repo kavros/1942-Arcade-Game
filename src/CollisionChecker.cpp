@@ -31,8 +31,8 @@ void CollisionChecker::Cancel(Sprite* s1, Sprite* s2){
 }
 
 void CollisionChecker::Check(void){
-    CollisionChecker* holder = CollisionChecker::getCollsionCheckerHolder();
-    std::for_each(  holder->pairs.begin(), holder->pairs.end(), CheckFunctor()  );
+    //CollisionChecker* holder = CollisionChecker::getCollsionCheckerHolder();
+    //std::for_each(  holder->pairs.begin(), holder->pairs.end(), CheckFunctor()  );
 }
 
 
