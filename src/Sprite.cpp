@@ -30,7 +30,6 @@ Sprite::Sprite(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point poin
     _state=FLYING;
     alive=true;
     
-    registerCollision();
 }
 
 Sprite::Sprite(std::string id, SDL_Rect dstRect,bool isVisible,SpriteType type,AnimationFilm* currFilm){
@@ -46,8 +45,6 @@ Sprite::Sprite(std::string id, SDL_Rect dstRect,bool isVisible,SpriteType type,A
     _state=FLYING;
     alive=true;
     
-    registerCollision();
-
 }
 
 Sprite::~Sprite(){
@@ -172,50 +169,12 @@ void Sprite::collisionCheck(Sprite* s){
         notifyCollision(s);
 }
 
-void Sprite::registerCollision(){
-    SpriteList* sl = nullptr;
-    
-    //if for collision
-    if( _type >=SUPER_ACE && _type <=BIG_ALIEN_SHIP ){
-        
-        SpriteType st = SUPER_ACE;
-        while(st >=SUPER_ACE && st <=BIG_ALIEN_SHIP){
-            if(st != _type){
-                
-                if( ( sl = SpritesHolder::getSpritesHolder()->getSprites(st) ) && sl )
-                    for (SpriteList::iterator it=sl->begin(); it != sl->end(); ++it){
-                        CollisionChecker::Register(this,*it);
-                        
-                        /*
-                        CollisionHandler h;
-                        addCollisionHandler(h);
-                        
-                         void Sprite::addCollisionHandler(const CollisionHandler& h){
-                         
-                         
-                         class CollisionHandler{
-                         public:
-                         virtual void operator()(Sprite* caller, Sprite* arg) const = 0;
-                         virtual CollisionHandler* Clone(void) const = 0;
-                         virtual ~CollisionHandler(){};
-                         };
-                         */
-                        
-                    }
-            }
-            st = SpriteType(st+1);
-        }
-    }
-}
-
 //collision detection functions
 void Sprite::notifyCollision(Sprite* arg){
     if( _type==SUPER_ACE && _state==DRIPLING)
         return;
     
     for(Handlers::iterator i = _handlers.begin(); i!=_handlers.end(); ++i ){
-        //assert then collision handler added
-        assert(0);
         (**i)(this,arg);
     }
 }

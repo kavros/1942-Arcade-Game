@@ -67,6 +67,23 @@ void SuperAce::setSuperAceHeigth(unsigned height){
 
 void SuperAce::fire(void){
     /* spawn SuperAce bullets */
+    /*
+    class CollisionHandler{
+    public:
+        virtual void operator()(Sprite* caller, Sprite* arg) const = 0;
+        virtual CollisionHandler* Clone(void) const = 0;
+        virtual ~CollisionHandler(){};
+    };
+    */
+    struct Handler : public Sprite::CollisionHandler{
+        void operator()(Sprite* bullet,Sprite* arg) const{
+            assert(0);
+        }
+        Handler* Clone(void) const{
+            return nullptr;
+        }
+        ~Handler(){};
+    };
     
     /*bullet test*/
     
@@ -79,18 +96,36 @@ void SuperAce::fire(void){
     AnimationFilm* fireAnimationFilm = AnimationFilmHolder::Get()->GetFilm("big_fire_up");
     assert(fireAnimationFilm);
     
-    Sprite* fireSprite = new Sprite("spriteSuperAceFire", 0, dstRect, {0,0}, true, SUPER_ACE, fireAnimationFilm);
-    assert(fireSprite);
+    Sprite* bullet = new Sprite("spriteSuperAceFire", 0, dstRect, {0,0}, true, SUPER_ACE, fireAnimationFilm);
+    assert(bullet);
     
-    SpritesHolder::getSpritesHolder()->add(fireSprite);
+    SpritesHolder::getSpritesHolder()->add(bullet);
     
     //fireAnimation
     Animation* fireAnimation = AnimationHolder::getAnimationHolder()->getAnimation("superAceFire");
     
-    MovingAnimator* fireAnimator = new MovingAnimator("animatorSuperAceFire", fireSprite, (MovingAnimation*)fireAnimation);
+    MovingAnimator* fireAnimator = new MovingAnimator("animatorSuperAceFire", bullet, (MovingAnimation*)fireAnimation);
     
     AnimatorHolder::getAnimatorHolder()->Register(fireAnimator);
     fireAnimator->start(Game::getGameTime());
+    
+    bullet->addCollisionHandler(Handler());
+
+    
+    SpriteList* aliens;
+    SpriteList* bigAliens;
+    
+    aliens = SpritesHolder::getSpritesHolder()->getSprites(ALIEN_SHIP);
+    bigAliens = SpritesHolder::getSpritesHolder()->getSprites(BIG_ALIEN_SHIP);
+
+    if (aliens)
+        for (SpriteList::iterator it=aliens->begin(); it != aliens->end(); ++it){
+            CollisionChecker::Register(bullet,*it);
+        }
+    if (bigAliens)
+        for (SpriteList::iterator it=bigAliens->begin(); it != bigAliens->end(); ++it){
+            CollisionChecker::Register(bullet,*it);
+        }
     
     /*bullet test end*/
 
