@@ -2,6 +2,8 @@
 #define ANIMATION_H
 #include <string>
 
+class AnimationHolder;
+
 typedef signed short offset_t;
 typedef unsigned short delay_t;
 typedef std::string animid_t;
@@ -14,7 +16,8 @@ public:
 	//pure virtual  function
 	virtual Animation*		clone(animid_t newId) const = 0;
 
-	Animation(animid_t _id) : id(_id){}
+	Animation(animid_t _id) : id(_id){
+    }
 	virtual ~Animation(){}
 
 private:

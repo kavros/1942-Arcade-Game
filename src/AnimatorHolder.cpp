@@ -26,14 +26,7 @@ void AnimatorHolder::markAsSuspended(Animator* a){
 
 void AnimatorHolder::progress(timestamp_t currTime) {
     AnimatorHolder* h = AnimatorHolder::getAnimatorHolder();
-	/*
-    for (AnimatorList::iterator it=h->_running.begin(); it !=h->_running.end(); ++it){
-		AnimatorList::iterator it2 = it;
-		it2++;
-        (*it)->progress(currTime);
 
-    }*/
-	
 	AnimatorList::iterator it = h->_running.begin();
     AnimatorList::iterator it2;
 	while (it != h->_running.end()){
@@ -102,27 +95,21 @@ void AnimatorHolder::triggerAnimators(){
         dstRect.w=32;
         dstRect.h=31;
         
-        AnimationFilm* fireAnimationFilm = AnimationFilmHolder::Get()->GetFilm("straightEnemyAttack");
-        assert(fireAnimationFilm);
+        AnimationFilm* animationFilm = AnimationFilmHolder::Get()->GetFilm("green_jet");
+        assert(animationFilm);
         
-        Sprite* fireSprite = new Sprite("spriteStraightEnemyAttack", 0, dstRect, {0,0}, true, ALIEN_SHIP, fireAnimationFilm);
-        assert(fireSprite);
+        Sprite* sprite = SpritesHolder::getSpritesHolder()->getSprite(SpriteType::ALIEN_SHIP, "GreenJet0"); //new Sprite("spriteStraightEnemyAttack", 0, dstRect, {0,0}, true, ALIEN_SHIP, fireAnimationFilm);
         
-        SpritesHolder::getSpritesHolder()->add(fireSprite);
-
+        assert(sprite);
         
-        //MovingAnimation* fireAnimation = new MovingAnimation(dx, dy, delay, cont, id);
-        Animation* fireAnimation = AnimationHolder::getAnimationHolder()->getAnimation("straightEnemyAttack");
-
-        AnimationHolder::getAnimationHolder()->add(fireAnimation);
+        Animation* animation = AnimationHolder::getAnimationHolder()->getAnimation("green_jet_changing_down");
+        assert(animation);
         
-        MovingAnimator* fireAnimator = new MovingAnimator("animatorStraightEnemyAttack", fireSprite, (MovingAnimation*)fireAnimation);
+        MovingPathAnimator* animator = new MovingPathAnimator("animatorStraightEnemyAttack", sprite, (MovingPathAnimation*)animation);
+        sprite->setVisibility(true);
+        AnimatorHolder::getAnimatorHolder()->Register(animator);
         
-        AnimatorHolder::getAnimatorHolder()->Register(fireAnimator);
-        
-        //Sprite* superAce = (Sprite*)SpritesHolder::getSpritesHolder()->getSprites(SUPER_ACE)->front();
-                
-        fireAnimator->start(Game::getGameTime());
+        animator->start(Game::getGameTime());
         
     }
     i++;

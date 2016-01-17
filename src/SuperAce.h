@@ -30,10 +30,10 @@ public:
 class SuperAce:public Sprite{
     
 private:
-    int _dx, _dy;
     unsigned _superAceWidth;
     unsigned _superAceHeight;
-    
+    SDL_Rect _bulletDstRect;
+
 public:
 
 	//constructor
@@ -49,7 +49,7 @@ public:
 	//get
     unsigned getSuperAceWidth();
     unsigned getSuperAceHeigth();
-    
+    SDL_Rect getBulletDstRect();
     //set
     void setSuperAceWidth(unsigned width);
     void setSuperAceHeigth(unsigned height);

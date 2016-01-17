@@ -5,7 +5,6 @@
 #include "AnimationFilm.hpp"
 #include "LatelyDestroyable.h"
 #include "CollisionChecker.hpp"
-#include "CollisionHandler.hpp"
 
 #define SPRITE_TYPE_SIZE 8
 
@@ -32,6 +31,13 @@ typedef enum SpriteState {
 class Sprite : public LatelyDestroyable{
     
 protected:
+    
+    class CollisionHandler{
+    public:
+        virtual void operator()(Sprite* caller, Sprite* arg) const = 0;
+        virtual CollisionHandler* Clone(void) const = 0;
+        virtual ~CollisionHandler(){};
+    };
     
     //collision detection variables
     typedef std::list<CollisionHandler*> Handlers;
@@ -114,7 +120,6 @@ public:
     
     bool isOutOfWindow();
     
-    void registerCollision();
 };
 
 #endif

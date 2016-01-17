@@ -9,6 +9,10 @@
 #include "MovingAnimator.h"
 #include "Game.hpp"
 
+class Animator;
+
+typedef unsigned long timestamp_t;
+
 class AnimatorHolder{
 private:
     typedef std::map<std::string, Animator*> AnimatorMap;

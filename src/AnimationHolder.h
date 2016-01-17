@@ -1,6 +1,6 @@
 #ifndef ANIMATIONHOLDER_H
-
 #define ANIMATIONHOLDER_H
+
 #include "Animation.h"
 #include "includes.h"
 #include "../rapidjson/document.h"
@@ -9,6 +9,7 @@
 #include <fstream>
 #include "MovingPathAnimation.h"
 #include "MovingAnimation.h"
+
 class AnimationHolder{
     
 private:

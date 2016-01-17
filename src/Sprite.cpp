@@ -15,6 +15,10 @@ Sprite::Sprite(){
     _state=FLYING;
     _currFilm=nullptr;
     alive=true;
+    _parent=nullptr;
+    
+    //SpritesHolder::getSpritesHolder()->add(this);
+
 }
 
 Sprite::Sprite(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point point,bool isVisible,SpriteType type,AnimationFilm* currFilm){
@@ -29,8 +33,10 @@ Sprite::Sprite(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point poin
     _currFilm=currFilm;
     _state=FLYING;
     alive=true;
-    
-    registerCollision();
+    _parent=nullptr;
+
+    SpritesHolder::getSpritesHolder()->add(this);
+
 }
 
 Sprite::Sprite(std::string id, SDL_Rect dstRect,bool isVisible,SpriteType type,AnimationFilm* currFilm){
@@ -45,8 +51,9 @@ Sprite::Sprite(std::string id, SDL_Rect dstRect,bool isVisible,SpriteType type,A
     _currFilm=currFilm;
     _state=FLYING;
     alive=true;
-    
-    registerCollision();
+    _parent=nullptr;
+
+    SpritesHolder::getSpritesHolder()->add(this);
 
 }
 
@@ -172,56 +179,46 @@ void Sprite::collisionCheck(Sprite* s){
         notifyCollision(s);
 }
 
-void Sprite::registerCollision(){
-    SpriteList* sl = nullptr;
-    
-    //if for collision
-    if( _type >=SUPER_ACE && _type <=BIG_ALIEN_SHIP ){
-        
-        SpriteType st = SUPER_ACE;
-        while(st >=SUPER_ACE && st <=BIG_ALIEN_SHIP){
-            if(st != _type){
-                
-                if( ( sl = SpritesHolder::getSpritesHolder()->getSprites(st) ) && sl )
-                    for (SpriteList::iterator it=sl->begin(); it != sl->end(); ++it){
-                        CollisionChecker::Register(this,*it);
-                        
-                        /*
-                        CollisionHandler h;
-                        addCollisionHandler(h);
-                        
-                         void Sprite::addCollisionHandler(const CollisionHandler& h){
-                         
-                         
-                         class CollisionHandler{
-                         public:
-                         virtual void operator()(Sprite* caller, Sprite* arg) const = 0;
-                         virtual CollisionHandler* Clone(void) const = 0;
-                         virtual ~CollisionHandler(){};
-                         };
-                         */
-                        
-                    }
-            }
-            st = SpriteType(st+1);
-        }
-    }
-}
-
 //collision detection functions
 void Sprite::notifyCollision(Sprite* arg){
     if( _type==SUPER_ACE && _state==MANEUVER)
         return;
     
-    for(Handlers::iterator i = _handlers.begin(); i!=_handlers.end(); ++i ){
-        //assert then collision handler added
-        assert(0);
-        (**i)(this,arg);
-    }
+    if( !_handlers.empty() )
+        for(Handlers::iterator i = _handlers.begin(); i!=_handlers.end(); ++i ){
+            (**i)(this,arg);
+        }       
 }
 
 void Sprite::addCollisionHandler(const CollisionHandler& h){
     _handlers.push_back(h.Clone());
+    
+    if( _type == SUPER_ACE){
+        SpriteList* aliens;
+        SpriteList* bigAliens;
+        
+        aliens = SpritesHolder::getSpritesHolder()->getSprites(ALIEN_SHIP);
+        bigAliens = SpritesHolder::getSpritesHolder()->getSprites(BIG_ALIEN_SHIP);
+        
+        if (aliens)
+            for (SpriteList::iterator it=aliens->begin(); it != aliens->end(); ++it){
+                CollisionChecker::Register(this,*it);
+            }
+        if (bigAliens)
+            for (SpriteList::iterator it=bigAliens->begin(); it != bigAliens->end(); ++it){
+                CollisionChecker::Register(this,*it);
+            }
+    }
+    if( _type == ALIEN_SHIP || _type == BIG_ALIEN_SHIP){
+        SpriteList* superAce;
+        
+        superAce = SpritesHolder::getSpritesHolder()->getSprites(ALIEN_SHIP);
+        
+        if (superAce)
+            for (SpriteList::iterator it=superAce->begin(); it != superAce->end(); ++it){
+                CollisionChecker::Register(this,*it);
+            }
+    }
 }
 
 void Sprite::clearHandlers(void){
