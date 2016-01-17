@@ -62,16 +62,6 @@
                                                       },{
                                                       "dx": 0,
                                                       "dy": 5,
-                                                      "frameNo": 6,
-                                                      "delay": 90
-                                                      }, {
-                                                      "dx": 0,
-                                                      "dy": 5,
-                                                      "frameNo": 7,
-                                                      "delay": 90
-                                                      },{
-                                                      "dx": 0,
-                                                      "dy": 5,
                                                       "frameNo": 0,
                                                       "delay": 90
                                                       }, {
@@ -98,16 +88,6 @@
                                                       "dx": 0,
                                                       "dy": 5,
                                                       "frameNo": 5,
-                                                      "delay": 90
-                                                      },{
-                                                      "dx": 0,
-                                                      "dy": 5,
-                                                      "frameNo": 6,
-                                                      "delay": 90
-                                                      }, {
-                                                      "dx": 0,
-                                                      "dy": 5,
-                                                      "frameNo": 7,
                                                       "delay": 90
                                                       }]
                                             }, {
