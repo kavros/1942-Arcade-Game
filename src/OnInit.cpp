@@ -82,7 +82,7 @@ void Game::InitSuperAceAnimator(){
 	AnimatorHolder::getAnimatorHolder()->Register(superAceAnimatorDown);
 	AnimatorHolder::getAnimatorHolder()->Register(superAceAnimatorLeft);
 	AnimatorHolder::getAnimatorHolder()->Register(superAceAnimatorManeuever);
-	AnimatorHolder::getAnimatorHolder()->Register(superAceStartingAnimator);
+	//AnimatorHolder::getAnimatorHolder()->Register(superAceStartingAnimator);
 
 
 
