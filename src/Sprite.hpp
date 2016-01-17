@@ -43,12 +43,7 @@ protected:
     typedef std::list<CollisionHandler*> Handlers;
     SpriteState _state;
     Handlers _handlers;
-    void notifyCollision(Sprite* arg){
-        assert(0);
-        for(Handlers::iterator i = _handlers.begin(); i!=_handlers.end(); ++i ){
-            (**i)(this,arg);
-        }
-    }
+    void notifyCollision(Sprite* arg);
     
     std::string _spriteId;
     unsigned  _frameNo;
@@ -69,15 +64,8 @@ protected:
     
 public:
     //collision detection functions
-    void addCollisionHandler(const CollisionHandler& h){
-        _handlers.push_back(h.Clone());
-    }
-    void clearHandlers(void){
-        for(Handlers::iterator i = _handlers.begin(); i!=_handlers.end(); ++i ){
-            delete *i;
-        }
-        _handlers.clear();
-    }
+    void addCollisionHandler(const CollisionHandler& h);
+    void clearHandlers(void);
     
 	//setters
     void setId(std::string);
