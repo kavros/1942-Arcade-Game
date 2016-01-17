@@ -105,7 +105,7 @@ void AnimatorHolder::triggerAnimators(){
         assert(animation);
         
         MovingPathAnimator* animator = new MovingPathAnimator("animatorStraightEnemyAttack", sprite, (MovingPathAnimation*)animation);
-        
+        sprite->setVisibility(true);
         AnimatorHolder::getAnimatorHolder()->Register(animator);
         
         animator->start(Game::getGameTime());
