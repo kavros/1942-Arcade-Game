@@ -38,7 +38,7 @@ public:
 
 	//constructor
     SuperAce();
-
+    SuperAce(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point point,bool isVisible,SpriteType type,AnimationFilm* currFilm);
 	void handleEvent(SDL_Event e);
     
     virtual void filterMotion(int* dx, int* dy) const override;

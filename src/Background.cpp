@@ -1,10 +1,4 @@
-//
-//  background.cpp
-//  1942
-//
-//  Created by Nikos Xenakis on 03/01/16.
-//  Copyright © 2016 Nikos Xenakis. All rights reserved.
-//
+
 
 #include "Background.hpp"
 

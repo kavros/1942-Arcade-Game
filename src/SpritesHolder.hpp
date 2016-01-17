@@ -1,11 +1,3 @@
-//
-//  SpritesHolder.hpp
-//  1942
-//
-//  Created by Nikos Xenakis on 30/12/15.
-//  Copyright © 2015 Nikos Xenakis. All rights reserved.
-//
-
 #ifndef SpritesHolder_hpp
 #define SpritesHolder_hpp
 
