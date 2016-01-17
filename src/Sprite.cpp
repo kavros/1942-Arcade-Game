@@ -29,6 +29,8 @@ Sprite::Sprite(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point poin
     _currFilm=currFilm;
     _state=FLYING;
     alive=true;
+    
+    registerCollision();
 }
 
 Sprite::Sprite(std::string id, SDL_Rect dstRect,bool isVisible,SpriteType type,AnimationFilm* currFilm){
@@ -43,6 +45,9 @@ Sprite::Sprite(std::string id, SDL_Rect dstRect,bool isVisible,SpriteType type,A
     _currFilm=currFilm;
     _state=FLYING;
     alive=true;
+    
+    registerCollision();
+
 }
 
 Sprite::~Sprite(){
@@ -156,18 +161,75 @@ bool Sprite::isOutOfWindow(){
 }
 
 // TODO :: CollisionCheck body
-bool Sprite::collisionCheck(Sprite* s){
+void Sprite::collisionCheck(Sprite* s){
     //compare _dstRect with s->getDstRect()
     if(
         _dstRect.x < s->getDstRect().x + s->getDstRect().w &&
         _dstRect.x + _dstRect.w > s->getDstRect().x &&
         _dstRect.y < s->getDstRect().y + s->getDstRect().h &&
         _dstRect.h + _dstRect.y > s->getDstRect().y
-    ){
+       )
         notifyCollision(s);
-        return true;
-    }
-
-    return false;
 }
+
+void Sprite::registerCollision(){
+    SpriteList* sl = nullptr;
+    
+    //if for collision
+    if( _type >=SUPER_ACE && _type <=BIG_ALIEN_SHIP ){
+        
+        SpriteType st = SUPER_ACE;
+        while(st >=SUPER_ACE && st <=BIG_ALIEN_SHIP){
+            if(st != _type){
+                
+                if( ( sl = SpritesHolder::getSpritesHolder()->getSprites(st) ) && sl )
+                    for (SpriteList::iterator it=sl->begin(); it != sl->end(); ++it){
+                        CollisionChecker::Register(this,*it);
+                        
+                        /*
+                        CollisionHandler h;
+                        addCollisionHandler(h);
+                        
+                         void Sprite::addCollisionHandler(const CollisionHandler& h){
+                         
+                         
+                         class CollisionHandler{
+                         public:
+                         virtual void operator()(Sprite* caller, Sprite* arg) const = 0;
+                         virtual CollisionHandler* Clone(void) const = 0;
+                         virtual ~CollisionHandler(){};
+                         };
+                         */
+                        
+                    }
+            }
+            st = SpriteType(st+1);
+        }
+    }
+}
+
+//collision detection functions
+void Sprite::notifyCollision(Sprite* arg){
+    if( _type==SUPER_ACE && _state==DRIPLING)
+        return;
+    
+    for(Handlers::iterator i = _handlers.begin(); i!=_handlers.end(); ++i ){
+        //assert then collision handler added
+        assert(0);
+        (**i)(this,arg);
+    }
+}
+
+void Sprite::addCollisionHandler(const CollisionHandler& h){
+    _handlers.push_back(h.Clone());
+}
+
+void Sprite::clearHandlers(void){
+    for(Handlers::iterator i = _handlers.begin(); i!=_handlers.end(); ++i ){
+        delete *i;
+    }
+    _handlers.clear();
+}
+
+
 

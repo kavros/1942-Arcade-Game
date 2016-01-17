@@ -105,7 +105,7 @@ void AnimatorHolder::triggerAnimators(){
         AnimationFilm* fireAnimationFilm = AnimationFilmHolder::Get()->GetFilm("straightEnemyAttack");
         assert(fireAnimationFilm);
         
-        Sprite* fireSprite = new Sprite("spriteStraightEnemyAttack", 0, dstRect, {0,0}, true, SUPER_ACE, fireAnimationFilm);
+        Sprite* fireSprite = new Sprite("spriteStraightEnemyAttack", 0, dstRect, {0,0}, true, ALIEN_SHIP, fireAnimationFilm);
         assert(fireSprite);
         
         SpritesHolder::getSpritesHolder()->add(fireSprite);
@@ -119,6 +119,9 @@ void AnimatorHolder::triggerAnimators(){
         MovingAnimator* fireAnimator = new MovingAnimator("animatorStraightEnemyAttack", fireSprite, (MovingAnimation*)fireAnimation);
         
         AnimatorHolder::getAnimatorHolder()->Register(fireAnimator);
+        
+        //Sprite* superAce = (Sprite*)SpritesHolder::getSpritesHolder()->getSprites(SUPER_ACE)->front();
+                
         fireAnimator->start(Game::getGameTime());
         
     }

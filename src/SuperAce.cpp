@@ -41,6 +41,7 @@ SuperAce::SuperAce(){
 	_dx = 6;
 	_dy = 6;
 
+    //assert(0);
 }
 
 void SuperAce::render(SDL_Renderer * renderer){

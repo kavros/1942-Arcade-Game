@@ -4,6 +4,8 @@
 #include "includes.h"
 #include "AnimationFilm.hpp"
 #include "LatelyDestroyable.h"
+#include "CollisionChecker.hpp"
+#include "CollisionHandler.hpp"
 
 #define SPRITE_TYPE_SIZE 8
 
@@ -27,13 +29,6 @@ typedef enum SpriteState {
     DRIPLING
 }SpriteState;
 
-class CollisionHandler{
-public:
-    virtual void operator()(Sprite* caller, Sprite* arg) const = 0;
-    virtual CollisionHandler* Clone(void) const = 0;
-    virtual ~CollisionHandler(){};
-};
-
 class Sprite : public LatelyDestroyable{
     
 protected:
@@ -42,11 +37,7 @@ protected:
     typedef std::list<CollisionHandler*> Handlers;
     SpriteState _state;
     Handlers _handlers;
-    void notifyCollision(Sprite* arg){
-        for(Handlers::iterator i = _handlers.begin(); i!=_handlers.end(); ++i ){
-            (**i)(this,arg);
-        }
-    }
+    void notifyCollision(Sprite* arg);
     
     std::string _spriteId;
     unsigned  _frameNo;
@@ -67,15 +58,8 @@ protected:
     
 public:
     //collision detection functions
-    void addCollisionHandler(const CollisionHandler& h){
-        _handlers.push_back(h.Clone());
-    }
-    void clearHandlers(void){
-        for(Handlers::iterator i = _handlers.begin(); i!=_handlers.end(); ++i ){
-            delete *i;
-        }
-        _handlers.clear();
-    }
+    void addCollisionHandler(const CollisionHandler& h);
+    void clearHandlers(void);
     
 	//setters
     void setId(std::string);
@@ -92,7 +76,7 @@ public:
     unsigned  getFrame(void) const;
     SDL_Rect getDstRect(void) const;
 	bool getVisibility (void) const;
-    bool collisionCheck (Sprite* s);
+    void collisionCheck (Sprite* s);
 	SpriteType getType();
 
     void changeDstRectX(int dx);
@@ -128,6 +112,8 @@ public:
     void display (SDL_Renderer* renderer);
     
     bool isOutOfWindow();
+    
+    void registerCollision();
 };
 
 #endif

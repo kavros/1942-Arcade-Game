@@ -1,10 +1,3 @@
-//
-//  Game.hpp
-//  1942
-//
-//  Created by Nikos Xenakis on 29/12/15.
-//  Copyright © 2015 Nikos Xenakis. All rights reserved.
-//
 
 
 #ifndef Game_hpp
@@ -17,6 +10,7 @@
 #include "AnimationFilmHolder.hpp"
 #include "AnimationHolder.h"
 #include "SpritesHolder.hpp"
+#include "CollisionChecker.hpp"
 
 //sprites
 #include "SpriteAlphaNum.hpp"

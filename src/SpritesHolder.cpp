@@ -1,11 +1,5 @@
-//
-//  SpritesHolder.cpp
-//  1942
-//
-//  Created by Nikos Xenakis on 30/12/15.
-//  Copyright © 2015 Nikos Xenakis. All rights reserved.
-//
 
+#include "SuperAce.h"
 #include "SpritesHolder.hpp"
  SpritesHolder* SpritesHolder::_holder;
 
@@ -173,7 +167,10 @@ void    SpritesHolder::Load (const std::string& cataloge/*,SDL_Renderer* _render
         assert(sprite["destRect"].IsArray());
         
         //add Sprite 2 Sprite Holder
-        add(new Sprite(id, frameNo, destRect, point, isVisible, spriteType,animationFilm));
+        if(spriteType == SpriteType::SUPER_ACE)
+            add(new SuperAce(id, frameNo, destRect, point, isVisible, spriteType,animationFilm));
+        else
+            add(new Sprite(id, frameNo, destRect, point, isVisible, spriteType,animationFilm));
     }
     
 }

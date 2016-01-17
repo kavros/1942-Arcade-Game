@@ -1,6 +1,14 @@
 {
     
     "Sprites": [{
+                "id": "SuperAce",
+                "frameNo": 0,
+                "destRect": [244, 494, 24, 18],
+                "point": [0, 0],
+                "visible": true,
+                "spriteType": 3,
+                "animFilmId": "Super.Ace.1942"
+                },{
                 "id": "mainMenuSingleSprite",
                 "frameNo": 0,
                 "destRect": [0, 0, 512, 512],
