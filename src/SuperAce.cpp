@@ -10,7 +10,12 @@ SuperAce::SuperAce(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point 
     setFrame(frameNo);
     _superAceWidth=_currFilm->getFrameBox(0).w;
     _superAceHeight=_currFilm->getFrameBox(0).h;
-    SpritesHolder::getSpritesHolder()->add(this);
+    
+    _bulletDstRect.x=this->getDstRect().x + (this->getSuperAceWidth()/4);
+    _bulletDstRect.y=this->getDstRect().y - this->getSuperAceHeigth();
+    _bulletDstRect.w=9;
+    _bulletDstRect.h=20;
+    
 }
 
 SuperAce::SuperAce(){
@@ -56,6 +61,15 @@ unsigned SuperAce::getSuperAceHeigth(){
     return _superAceHeight;
 }
 
+SDL_Rect SuperAce::getBulletDstRect(){
+    _bulletDstRect.x=this->getDstRect().x + (this->getSuperAceWidth()/4);
+    _bulletDstRect.y=this->getDstRect().y - this->getSuperAceHeigth();
+    _bulletDstRect.w=9;
+    _bulletDstRect.h=20;
+    
+    return _bulletDstRect;
+}
+
 //set
 void SuperAce::setSuperAceWidth(unsigned width){
     _superAceWidth = width;
@@ -66,31 +80,59 @@ void SuperAce::setSuperAceHeigth(unsigned height){
 }
 
 void SuperAce::fire(void){
-    /* spawn SuperAce bullets */
+
+    struct Handler : public Sprite::CollisionHandler{
+        void operator()(Sprite* bullet,Sprite* arg) const{
+            if(!bullet || !arg)
+                return;
+            if( !bullet->getVisibility() || !arg->getVisibility())
+                return;
+            
+            bullet->setVisibility(false);
+            arg->setVisibility(false);
+
+            bullet->Destroy();
+            arg->Destroy();
+            
+        }
+        Handler* Clone(void) const{
+            return new Handler();
+        }
+        ~Handler(){};
+    };
     
     /*bullet test*/
-    
-    SDL_Rect dstRect;
-    dstRect.x=this->getDstRect().x + (this->getSuperAceWidth()/4);
-    dstRect.y=this->getDstRect().y - this->getSuperAceHeigth();
-    dstRect.w=9;
-    dstRect.h=20;
-    
     AnimationFilm* fireAnimationFilm = AnimationFilmHolder::Get()->GetFilm("big_fire_up");
     assert(fireAnimationFilm);
     
-    Sprite* fireSprite = new Sprite("spriteSuperAceFire", 0, dstRect, {0,0}, true, SUPER_ACE, fireAnimationFilm);
-    assert(fireSprite);
-    
-    SpritesHolder::getSpritesHolder()->add(fireSprite);
-    
+    Sprite* bullet = new Sprite("spriteSuperAceFire", 0, getBulletDstRect(), {0,0}, true, SUPER_ACE, fireAnimationFilm);
+    assert(bullet);
+        
     //fireAnimation
     Animation* fireAnimation = AnimationHolder::getAnimationHolder()->getAnimation("superAceFire");
     
-    MovingAnimator* fireAnimator = new MovingAnimator("animatorSuperAceFire", fireSprite, (MovingAnimation*)fireAnimation);
+    MovingAnimator* fireAnimator = new MovingAnimator("animatorSuperAceFire", bullet, (MovingAnimation*)fireAnimation);
     
     AnimatorHolder::getAnimatorHolder()->Register(fireAnimator);
     fireAnimator->start(Game::getGameTime());
+    
+    bullet->addCollisionHandler(Handler());
+
+    
+    SpriteList* aliens;
+    SpriteList* bigAliens;
+    
+    aliens = SpritesHolder::getSpritesHolder()->getSprites(ALIEN_SHIP);
+    bigAliens = SpritesHolder::getSpritesHolder()->getSprites(BIG_ALIEN_SHIP);
+
+    if (aliens)
+        for (SpriteList::iterator it=aliens->begin(); it != aliens->end(); ++it){
+            CollisionChecker::Register(bullet,*it);
+        }
+    if (bigAliens)
+        for (SpriteList::iterator it=bigAliens->begin(); it != bigAliens->end(); ++it){
+            CollisionChecker::Register(bullet,*it);
+        }
     
     /*bullet test end*/
 
