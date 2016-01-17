@@ -30,7 +30,6 @@ public:
 class SuperAce:public Sprite{
     
 private:
-    int _dx, _dy;
     unsigned _superAceWidth;
     unsigned _superAceHeight;
     SDL_Rect _bulletDstRect;

@@ -26,14 +26,7 @@ void AnimatorHolder::markAsSuspended(Animator* a){
 
 void AnimatorHolder::progress(timestamp_t currTime) {
     AnimatorHolder* h = AnimatorHolder::getAnimatorHolder();
-	/*
-    for (AnimatorList::iterator it=h->_running.begin(); it !=h->_running.end(); ++it){
-		AnimatorList::iterator it2 = it;
-		it2++;
-        (*it)->progress(currTime);
 
-    }*/
-	
 	AnimatorList::iterator it = h->_running.begin();
     AnimatorList::iterator it2;
 	while (it != h->_running.end()){
@@ -109,18 +102,13 @@ void AnimatorHolder::triggerAnimators(){
         
         assert(sprite);
         
-        
-        //MovingAnimation* fireAnimation = new MovingAnimation(dx, dy, delay, cont, id);
         Animation* animation = AnimationHolder::getAnimationHolder()->getAnimation("green_jet_changing_down");
-
-        //AnimationHolder::getAnimationHolder()->add(fireAnimation);
+        assert(animation);
         
         MovingPathAnimator* animator = new MovingPathAnimator("animatorStraightEnemyAttack", sprite, (MovingPathAnimation*)animation);
         sprite->setVisibility(true);
         AnimatorHolder::getAnimatorHolder()->Register(animator);
         
-        //Sprite* superAce = (Sprite*)SpritesHolder::getSpritesHolder()->getSprites(SUPER_ACE)->front();
-                
         animator->start(Game::getGameTime());
         
     }
