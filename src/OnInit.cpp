@@ -268,6 +268,7 @@ bool Game::InitGameInfo(){
     new SpriteString("SCORE",250,10);
     new SpriteString("FPS",450,10);
     _fps_sprite = new SpriteString("0000",450,24);
+	_remaining_loops = new SpriteString("RRR", WIN_WIDTH - 36, WIN_HEIGHT - 12);
     //SpritesHolder::getSpritesHolder()->add(three);
     return true;
 }

@@ -28,6 +28,7 @@ void AnimationHolder::add(Animation* anim){
 }
 
 Animation* AnimationHolder::getAnimation(animid_t str){
+	
 	if (AnimationHolder::getAnimationHolder()->_map[str] == nullptr){
 		cout << "Error: Animation is not in map with animations !" << endl;
 	}

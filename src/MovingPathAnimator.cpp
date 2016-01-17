@@ -22,7 +22,9 @@ MovingPathAnimator::MovingPathAnimator(std::string id, Sprite* sprite,MovingPath
 
 void MovingPathAnimator::progress(timestamp_t currTime){
 	//cout << _anim->getPath().begin()->_delay << endl;
-	
+	/*if (_state == ANIMATOR_RUNNING){
+		return;
+	}*/
 	
 	while ( (currTime > _lastTime ) && (currTime - _lastTime >= _currPath->_delay)){
         
@@ -55,14 +57,15 @@ MovingPathAnimation* MovingPathAnimator::getMovingAnimationPath(){
 }
 
 //start
-void MovingPathAnimator::start(timestamp_t t){
-	
+void MovingPathAnimator::start(timestamp_t t){	
 	 _currPath = _anim->getPath().begin();
 	_lastTime = t;
+
 	if (_state == ANIMATOR_RUNNING){
-		cout << "Error ANIMATOR is Still running" << endl;
-        assert(0);
+		//cout << "Error ANIMATOR is Still running" << endl;
+		return;
 	}
+	
 	_state = ANIMATOR_RUNNING;
 	AnimatorHolder::markAsRunning(this);
 }

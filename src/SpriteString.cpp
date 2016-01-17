@@ -15,6 +15,7 @@ SpriteString::SpriteString(string str,int x, int y){
     
 }
 
+
 /*SpriteString::~SpriteString(){
  
  for(int i=0; i < getSizeOfSpriteString();i++){

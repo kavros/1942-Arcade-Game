@@ -60,7 +60,9 @@ private:
 	static unsigned long _currTime ;
 	void setGameTime(){ _currTime = SDL_GetTicks(); }
     SpriteString* _fps_sprite;
-
+	
+	SpriteString* _remaining_loops;
+	unsigned _remaining_loops_num = 3;
 public:
     Game();
     
