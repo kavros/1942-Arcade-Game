@@ -28,12 +28,31 @@ void Game::OnEvent(SDL_Event* event) {
                 printf("UP\n");
             }
             break;
-        case SINGLEPLAYER_GAME:
+		case SINGLEPLAYER_GAME:
+		{
+			Sprite* superAce = (Sprite*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce");
+			MovingPathAnimator* superAceStartingAnimator =
+				(MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceStartingAnimator");
+
+			if (superAce->getState() == STARTING){
+				superAceStartingAnimator->start(getGameTime());
+			}
+			if (superAceStartingAnimator->getState() == ANIMATOR_RUNNING){
+				return;
+			}
+			else{
+				for (int i = 0; i < 5; ++i){
+					_startingReadyLogo->getSpriteAlphaNum(i)->setVisibility(false);
+				}
+				for (int i = 0; i < 6; ++i){
+					_startingPlayerLogo->getSpriteAlphaNum(i)->setVisibility(false);
+				}
+				_numberOne->getSpriteAlphaNum(0)->setVisibility(false);
+			}
 
 			if (event->type == SDL_KEYDOWN || event->type == SDL_CONTROLLERBUTTONDOWN){
 
-				Sprite* superAce = (Sprite*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce");
-                assert(superAce);
+				assert(superAce);
 				//MovingPathAnimator* superAceAnimator = (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimator");
 
 				MovingPathAnimator* superAceAnimatorLeft =
@@ -58,59 +77,67 @@ void Game::OnEvent(SDL_Event* event) {
 				if (event->key.keysym.sym == SDLK_ESCAPE) {
 
 					//pause
-				}else if (event->key.keysym.sym == SDLK_q 
+				}
+				else if (event->key.keysym.sym == SDLK_q
 					|| event->cbutton.button == SDL_CONTROLLER_BUTTON_START){
-				//quit?
+					//quit?
 
 				}
-				else if (event->key.keysym.sym == SDLK_LEFT 
+				else if (event->key.keysym.sym == SDLK_LEFT
 					|| event->cbutton.button == SDL_CONTROLLER_BUTTON_DPAD_LEFT) {
 
 					superAceAnimatorLeft->start(getGameTime());
-				}else if (event->key.keysym.sym == SDLK_RIGHT
+				}
+				else if (event->key.keysym.sym == SDLK_RIGHT
 					|| event->cbutton.button == SDL_CONTROLLER_BUTTON_DPAD_RIGHT){
 					superAceAnimatorRight->start(getGameTime());
-				
-				}else if (event->key.keysym.sym == SDLK_UP
+
+				}
+				else if (event->key.keysym.sym == SDLK_UP
 					|| event->cbutton.button == SDL_CONTROLLER_BUTTON_DPAD_UP){
 					superAceAnimatorUp->start(getGameTime());
-				}else if (event->key.keysym.sym == SDLK_DOWN 
+				}
+				else if (event->key.keysym.sym == SDLK_DOWN
 					|| event->cbutton.button == SDL_CONTROLLER_BUTTON_DPAD_DOWN){
 					superAceAnimatorDown->start(getGameTime());
-					
+
 				}
-				else if (event->key.keysym.sym == SDLK_SPACE 
+				else if (event->key.keysym.sym == SDLK_SPACE
 					|| event->cbutton.button == SDL_CONTROLLER_BUTTON_A){
-					
-					if(superAceAnimatorManeuever->getState() == ANIMATOR_RUNNING){
+
+					if (superAceAnimatorManeuever->getState() == ANIMATOR_RUNNING){
 						return;
 					}
 
 					((SuperAce*)superAce)->fire();
 					break;
-				}else if (event->key.keysym.sym == SDLK_a
+				}
+				else if (event->key.keysym.sym == SDLK_a
 					|| event->cbutton.button == SDL_CONTROLLER_BUTTON_X){
 					if (_remaining_loops_num > 0){
 						superAce->setState(MANEUVER);
-						superAceAnimatorManeuever->start(getGameTime());						
+						superAceAnimatorManeuever->start(getGameTime());
 						_remaining_loops_num--;
 						if (_remaining_loops_num == 2){
 							_remaining_loops->changeString("RR", WIN_WIDTH - 24, WIN_HEIGHT - 12);
 						}
-						else if(_remaining_loops_num == 1){
+						else if (_remaining_loops_num == 1){
 							_remaining_loops->changeString("R", WIN_WIDTH - 12, WIN_HEIGHT - 12);
-						}else if (_remaining_loops_num == 0){
+						}
+						else if (_remaining_loops_num == 0){
 							_remaining_loops->getSpriteAlphaNum(0)->setVisibility(false);
 						}
-					}else if (_remaining_loops_num == 0){
-										
+					}
+					else if (_remaining_loops_num == 0){
+
 						//there are no loops
 					}
 				}
 
 
-            }
+			}
 			break;
+		}
         case MULTIPLAYER_GAME:
             break;
         case EXIT:
