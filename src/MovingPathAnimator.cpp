@@ -46,6 +46,9 @@ void MovingPathAnimator::progress(timestamp_t currTime){
 	if (_sprite->getState() == MANEUVER){
 		_sprite->setState(FLYING);
 	}
+	if (_sprite->getState() == STARTING){
+		_sprite->setState(FLYING);
+	}
 	
 }
 

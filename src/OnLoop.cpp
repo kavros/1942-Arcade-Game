@@ -25,7 +25,7 @@ void Game::OnLoop() {
             
             
             //Move Background
-            Background::Get()->moveBackground(0,+2);
+            Background::Get()->moveBackground(0,+1);
             
             //collision checker
             CollisionChecker::Check();

@@ -44,7 +44,7 @@ void SpritesHolder::printSprites(SpriteType type){
 }
 
 SpriteList * SpritesHolder::getSprites(SpriteType type){
-    assert(type>=0 && type<SPRITE_TYPE_SIZE);
+    assert(type>=0 && type<=SPRITE_TYPE_SIZE);
 
     SpriteByType::const_iterator i = _sprites.find(type);
     
@@ -53,7 +53,7 @@ SpriteList * SpritesHolder::getSprites(SpriteType type){
 }
 
 void SpritesHolder::displaySprites(SDL_Renderer* renderer, SpriteType type){
-    assert(type>=0 && type<SPRITE_TYPE_SIZE);
+    assert(type>=0 && type<=SPRITE_TYPE_SIZE);
     
     SpriteList* sl = SpritesHolder::getSprites(type);
     if(!sl){
