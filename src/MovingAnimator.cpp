@@ -73,7 +73,7 @@ void MovingAnimator::checkAnimatorForDelete(void){
 
     assert(_sprite);
     
-    if( _sprite->isOutOfWindow()){
+    if( _sprite->isOutOfWindow() || !_sprite->isAlive()){
 
         //stop the animator
         _state = ANIMATOR_FINISHED;

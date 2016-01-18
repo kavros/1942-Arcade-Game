@@ -103,7 +103,7 @@ void AnimatorHolder::triggerAnimators(){
         
         assert(sprite);
         
-        Animation* animation = AnimationHolder::getAnimationHolder()->getAnimation("green_jet_changing_down");
+        Animation* animation = AnimationHolder::getAnimationHolder()->getAnimation("circle_250_250_30");
         assert(animation);
         
         MovingPathAnimator* animator = new MovingPathAnimator(string("animatorStraightEnemyAttack") + std::to_string(i), sprite, (MovingPathAnimation*)animation);
