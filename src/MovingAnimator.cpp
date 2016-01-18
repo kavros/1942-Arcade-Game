@@ -79,12 +79,12 @@ void MovingAnimator::checkAnimatorForDelete(void){
         setOnFinished(finishCallB);
         stop();
         AnimatorHolder::getAnimatorHolder()->cancel(this);
-
+        /*
         _sprite->destroy();
         SpritesHolder::getSpritesHolder()->remove(_sprite);
         _anim = nullptr;
         _sprite = nullptr;
-        
+        */
         //delete MovingAnimator
         this->~MovingAnimator();
     }
