@@ -117,7 +117,7 @@ void SuperAce::fire(void){
             
             bullet->setVisibility(false);
             arg->setVisibility(false);
-            
+           // AnimatorHolder::getAnimatorListBySprite(arg->getId());
             bullet->Destroy();
             arg->Destroy();
 
