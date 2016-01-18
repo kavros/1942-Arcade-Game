@@ -120,6 +120,16 @@ void AnimatorHolder::triggerAnimators(){
 
 }
 
+void AnimatorHolder::triggerBullets(){
+    static int i=0;
+    if(i == 100){
+        i=0;
+        //choose someone to fire
+        
+    }
+    i++;
+}
+
 void AnimatorHolder::createExplosion(SDL_Rect dstRect){
     
     AnimationFilm* fireAnimationFilm = AnimationFilmHolder::Get()->GetFilm("explosion");
@@ -139,12 +149,3 @@ void AnimatorHolder::createExplosion(SDL_Rect dstRect){
     
 }
 
-void AnimatorHolder::triggerBullets(){
-    static int i=0;
-    if(i == 100){
-        i=0;
-        //choose someone to fire
-        
-    }
-    i++;
-}

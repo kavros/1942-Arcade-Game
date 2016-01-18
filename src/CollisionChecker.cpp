@@ -38,7 +38,8 @@ void CollisionChecker::Check (void){
     
     if(!holder->pairs->empty())
         for (PairList::iterator it = holder->pairs->begin(); it != holder->pairs->end(); ++it){
-            ((*it)->first)->collisionCheck((*it)->second);
+            if( *it && (*it)->first && (*it)->second )
+                        ((*it)->first)->collisionCheck((*it)->second);
         }
     
 }

@@ -30,7 +30,6 @@ void Sprite::touchHandler::operator()(Sprite* aircraft,Sprite* arg) const{
     
     SuperAce* superAce = (SuperAce*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce");
     if( superAce == aircraft  &&  superAce->getSuperAceLives()>0 ){
-        //assert(0);
         superAce->setSuperAceLives( superAce->getSuperAceLives() - 1 );
         Game::setState(SINGLEPLAYER_MENU);
     }
