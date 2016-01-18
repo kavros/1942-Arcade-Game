@@ -36,9 +36,10 @@ void CollisionChecker::Check (void){
     CollisionChecker* holder = CollisionChecker::getCollsionCheckerHolder();
     //std::for_each(  holder->pairs.begin(), holder->pairs.end(), CheckFunctor()  );
     
-    for (PairList::iterator it = holder->pairs->begin(); it != holder->pairs->end(); ++it){
-        ((*it)->first)->collisionCheck((*it)->second);
-    }
+    if(!holder->pairs->empty())
+        for (PairList::iterator it = holder->pairs->begin(); it != holder->pairs->end(); ++it){
+            ((*it)->first)->collisionCheck((*it)->second);
+        }
     
 }
 
