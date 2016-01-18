@@ -95,8 +95,12 @@ void AnimatorHolder::triggerAnimators(){
         dstRect.y=10 + (i/100)*5;
         dstRect.w=32;
         dstRect.h=31;*/
+        AnimationFilm* animationFilm;
+        if(i%200 == 0)
+            animationFilm = AnimationFilmHolder::Get()->GetFilm("green_jet");
+        else
+            animationFilm = AnimationFilmHolder::Get()->GetFilm("green_double_engine");
         
-        AnimationFilm* animationFilm = AnimationFilmHolder::Get()->GetFilm("green_jet");
         assert(animationFilm);
         
         Sprite* sprite = SpritesHolder::getSpritesHolder()->getSprite(SpriteType::ALIEN_SHIP, "GreenJet" + std::to_string(i)); //new Sprite("spriteStraightEnemyAttack", 0, dstRect, {0,0}, true, ALIEN_SHIP, fireAnimationFilm);
