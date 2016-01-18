@@ -120,6 +120,9 @@ void SuperAce::fire(void){
            // AnimatorHolder::getAnimatorListBySprite(arg->getId());
             bullet->Destroy();
             arg->Destroy();
+            
+            //bullet->setAlive(false);
+            //arg->setAlive(false);
 
             AnimatorHolder::createExplosion( arg->getDstRect() );
         }

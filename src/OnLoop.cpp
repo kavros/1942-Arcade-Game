@@ -11,8 +11,7 @@ void Game::OnLoop() {
             break;
         case SINGLEPLAYER_GAME:{
             
-            //check animators
-            AnimatorHolder::checkAnimatorsForDelete();
+
             
             //commit destruction
             //proxeiri ilipoiisi ala nikola
@@ -29,6 +28,9 @@ void Game::OnLoop() {
             
             //collision checker
             CollisionChecker::Check();
+            
+            //check animators
+            AnimatorHolder::checkAnimatorsForDelete();
             
             //trigger animators
             AnimatorHolder::triggerAnimators();
