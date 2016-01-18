@@ -239,3 +239,11 @@ void Sprite::setState(SpriteState state){
 	_state = state;
 }
 
+void Sprite::Destroy(void){
+    SpritesHolder::getSpritesHolder()->remove(this);
+    
+    // supports auto detach policy
+    LatelyDestroyable::destroy();
+    if (_parent)	// is attached
+        _parent->detach(_name, false);
+}
