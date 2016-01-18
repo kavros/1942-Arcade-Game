@@ -1,5 +1,6 @@
 #include "Sprite.hpp"
 #include "SpritesHolder.hpp"
+#include "AnimatorHolder.h"
 
 void Sprite::moveAttached (int dx, int dy) {
     for (auto& i : _attached)

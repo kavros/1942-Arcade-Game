@@ -31,9 +31,11 @@ void Game::OnEvent(SDL_Event* event) {
 		case SINGLEPLAYER_GAME:
 		{
 			Sprite* superAce = (Sprite*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce");
-			MovingPathAnimator* superAceStartingAnimator =
-				(MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceStartingAnimator");
-
+            assert(superAce);
+            
+			MovingPathAnimator* superAceStartingAnimator = (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceStartingAnimator");
+            assert(superAceStartingAnimator);
+            
 			if (superAce->getState() == STARTING){
 				superAceStartingAnimator->start(getGameTime());
 			}
