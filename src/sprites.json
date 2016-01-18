@@ -23,7 +23,7 @@
                 "point": [0, 0],
                 "visible": false,
                 "spriteType": 4,
-                "animFilmId": "green_jet"
+                "animFilmId": "green_double_engine"
                 },{
                 "id": "GreenJet300",
                 "frameNo": 0,
@@ -39,7 +39,7 @@
                 "point": [0, 0],
                 "visible": false,
                 "spriteType": 4,
-                "animFilmId": "green_jet"
+                "animFilmId": "green_double_engine"
                 },{
                 "id": "GreenJet500",
                 "frameNo": 0,
@@ -55,7 +55,7 @@
                 "point": [0, 0],
                 "visible": false,
                 "spriteType": 4,
-                "animFilmId": "green_jet"
+                "animFilmId": "green_double_engine"
                 },{
                 "id": "GreenJet700",
                 "frameNo": 0,
@@ -71,7 +71,7 @@
                 "point": [0, 0],
                 "visible": false,
                 "spriteType": 4,
-                "animFilmId": "green_jet"
+                "animFilmId": "green_double_engine"
                 },{
                 "id": "GreenJet900",
                 "frameNo": 0,
