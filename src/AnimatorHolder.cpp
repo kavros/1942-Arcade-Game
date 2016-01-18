@@ -90,11 +90,11 @@ void AnimatorHolder::triggerAnimators(){
     static int i=0;
     if(i%100 == 0 && i < 1000 && i > 10){
                 
-        SDL_Rect dstRect;
-        dstRect.x=WIN_WIDTH/2;
-        dstRect.y=10;
+        /*SDL_Rect dstRect;
+        dstRect.x=WIN_WIDTH/2 + (i/100)*5;
+        dstRect.y=10 + (i/100)*5;
         dstRect.w=32;
-        dstRect.h=31;
+        dstRect.h=31;*/
         
         AnimationFilm* animationFilm = AnimationFilmHolder::Get()->GetFilm("green_jet");
         assert(animationFilm);
