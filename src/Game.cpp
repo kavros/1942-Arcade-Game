@@ -15,7 +15,6 @@ Game::Game(){
     _fps_lasttime = SDL_GetTicks(); //the last recorded time.
     _fps_frames = 0; //frames passed since the last recorded fps.
     _fps_current = 0;
-    _gameState =SINGLEPLAYER_MENU;
 }
 
 int Game::OnExecute(){
@@ -51,7 +50,11 @@ SDL_Renderer * Game::getRenderer(){
 }
 
 GameState Game::getState(){
-    return _gameState;
+    return Game::_gameState;
+}
+
+void Game::setState(GameState gameState){
+    Game::_gameState = gameState;
 }
 
 bool Game::isExit(){
@@ -88,3 +91,4 @@ unsigned long Game::getGameTime(){
 
 SDL_Window * Game::_window;
 SDL_Renderer * Game::_renderer;
+GameState Game::_gameState =SINGLEPLAYER_MENU;

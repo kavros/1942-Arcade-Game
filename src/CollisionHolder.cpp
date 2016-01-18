@@ -1,5 +1,6 @@
 #include "Sprite.hpp"
 #include "AnimatorHolder.h"
+#include "Game.hpp"
 
 void Sprite::fireHandler::operator()(Sprite* bullet,Sprite* arg) const{
     if(!bullet || !arg)
@@ -27,11 +28,20 @@ void Sprite::touchHandler::operator()(Sprite* aircraft,Sprite* arg) const{
     if( !aircraft->getVisibility() || !arg->getVisibility())
         return;
     
-    aircraft->setVisibility(false);
-    arg->setVisibility(false);
-    
-    aircraft->Destroy();
-    arg->Destroy();
+    SuperAce* superAce = (SuperAce*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce");
+    if( superAce == aircraft  &&  superAce->getSuperAceLives()>0 ){
+        //assert(0);
+        superAce->setSuperAceLives( superAce->getSuperAceLives() - 1 );
+        Game::setState(SINGLEPLAYER_MENU);
+    }
+    else{
+        aircraft->setVisibility(false);
+        arg->setVisibility(false);
+        
+        aircraft->Destroy();
+        arg->Destroy();
+    }
+
     
     AnimatorHolder::createExplosion( aircraft->getDstRect() );
     
