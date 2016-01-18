@@ -22,7 +22,7 @@ Sprite::Sprite(){
 }
 
 Sprite::Sprite(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point point,bool isVisible,SpriteType type,AnimationFilm* currFilm){
-    assert(frameNo>=0 && currFilm!=NULL && type>=0 && type<SPRITE_TYPE_SIZE);
+    assert(frameNo>=0 && currFilm!=NULL && type>=0 && type<=SPRITE_TYPE_SIZE);
     //cout<<"TYPE "<<type;
     _spriteId = id;
     _frameNo=frameNo;
@@ -190,8 +190,7 @@ void Sprite::notifyCollision(Sprite* arg){
     
     if( !_handlers.empty() )
         for(Handlers::iterator i = _handlers.begin(); i!=_handlers.end(); ++i ){
-            (**i)(this,arg);
-        }       
+            (**i)(this,arg);         }       
 }
 
 void Sprite::addCollisionHandler(const CollisionHandler& h){

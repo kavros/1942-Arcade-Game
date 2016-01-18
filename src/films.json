@@ -1,5 +1,11 @@
 {
     "Films": [{
+              "id": "ReadyLogo",
+              "path": "numbers_and_scores/ReadyLogo.png",
+              "rects": [
+                        [0, 0, 194, 77]
+                        ]
+              },{
               "id": "Super.Ace",
               "path": "super_ace/SuperAce.png",
               "rects": [

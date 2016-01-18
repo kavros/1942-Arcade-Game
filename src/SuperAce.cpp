@@ -33,7 +33,7 @@ SuperAce::SuperAce(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point 
     setFrame(frameNo);
     _superAceWidth= dstRect.w ;//_currFilm->getFrameBox(0).w;
     _superAceHeight= dstRect.h; //_currFilm->getFrameBox(0).h;
-    
+	_state = STARTING;
     
     AnimationFilm* animationBulletFilm = AnimationFilmHolder::Get()->GetFilm("bullets");
     

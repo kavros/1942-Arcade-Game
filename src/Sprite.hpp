@@ -25,7 +25,8 @@ typedef enum SpriteType {
 typedef enum SpriteState {
     FLYING = 0,
     FIRING,
-	MANEUVER
+	MANEUVER,
+	STARTING
 }SpriteState;
 
 class Sprite : public LatelyDestroyable{

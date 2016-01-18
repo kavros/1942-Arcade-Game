@@ -47,6 +47,9 @@ void MovingPathAnimator::progress(timestamp_t currTime){
 	if (_sprite->getState() == MANEUVER){
 		_sprite->setState(FLYING);
 	}
+	if (_sprite->getState() == STARTING){
+		_sprite->setState(FLYING);
+	}
 	
 }
 
@@ -82,5 +85,22 @@ void MovingPathAnimator::finishCallB(Animator* anim,void* b){
 }
 
 void MovingPathAnimator::checkAnimatorForDelete(void){
-     
+    
+    assert(_sprite && _anim);
+    
+    if( _sprite->isOutOfWindow() || !_sprite->isAlive()){
+        
+        //stop the animator
+        _state = ANIMATOR_FINISHED;
+        setOnFinished(finishCallB);
+        stop();
+        
+        AnimatorHolder::getAnimatorHolder()->cancel(this);
+        _anim = nullptr; 
+        _sprite = nullptr;
+        
+        //delete MovingAnimator
+        this->~MovingPathAnimator();
+    }
+    
 }

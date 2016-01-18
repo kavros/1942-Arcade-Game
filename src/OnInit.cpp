@@ -235,8 +235,12 @@ bool Game::InitGameInfo(){
     new SpriteString("HIGH",200,10);
     new SpriteString("SCORE",250,10);
     new SpriteString("FPS",450,10);
-    _fps_sprite = new SpriteString("0000",450,24);
-	_remaining_loops = new SpriteString("RRR", WIN_WIDTH - 36, WIN_HEIGHT - 12);
+
+    _fps_sprite				 = new SpriteString("0000",450,24);
+	_remaining_loops		 = new SpriteString("RRR", WIN_WIDTH - 36, WIN_HEIGHT - 12);
+	_startingReadyLogo		 = new SpriteString("READY", (WIN_WIDTH / 2)-40, WIN_HEIGHT / 2);
+	_startingPlayerLogo	 = new SpriteString("PLAYER", (WIN_WIDTH / 2)-40, (WIN_HEIGHT / 2)+20);
+	_numberOne				 = new  SpriteString("1", (WIN_WIDTH / 2)+30, (WIN_HEIGHT / 2)+20);
     //SpritesHolder::getSpritesHolder()->add(three);
     return true;
 }
