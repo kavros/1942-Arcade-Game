@@ -190,8 +190,7 @@ void Sprite::notifyCollision(Sprite* arg){
     
     if( !_handlers.empty() )
         for(Handlers::iterator i = _handlers.begin(); i!=_handlers.end(); ++i ){
-            (**i)(this,arg);
-        }       
+            (**i)(this,arg);         }       
 }
 
 void Sprite::addCollisionHandler(const CollisionHandler& h){

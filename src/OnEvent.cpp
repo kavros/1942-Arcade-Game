@@ -29,11 +29,11 @@ void Game::OnEvent(SDL_Event* event) {
             }
             break;
         case SINGLEPLAYER_GAME:
-			
 
 			if (event->type == SDL_KEYDOWN || event->type == SDL_CONTROLLERBUTTONDOWN){
 
-				Sprite* superAce = (Sprite*)SpritesHolder::getSpritesHolder()->getSprites(SUPER_ACE)->front();
+				Sprite* superAce = (Sprite*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce");
+                assert(superAce);
 				//MovingPathAnimator* superAceAnimator = (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimator");
 
 				MovingPathAnimator* superAceAnimatorLeft =
