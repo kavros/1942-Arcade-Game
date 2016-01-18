@@ -14,6 +14,7 @@ void Game::OnRender() {
             SpritesHolder::getSpritesHolder()->displaySprites(_renderer,MAIN_MENU_MULTIPLAYER);
             break;
         case SINGLEPLAYER_GAME:
+
             SpritesHolder::getSpritesHolder()->displayGameSprites(_renderer);
             break;
         case MULTIPLAYER_GAME:

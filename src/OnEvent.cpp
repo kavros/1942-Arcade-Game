@@ -30,11 +30,9 @@ void Game::OnEvent(SDL_Event* event) {
             break;
         case SINGLEPLAYER_GAME:
 			
+
 			if (event->type == SDL_KEYDOWN || event->type == SDL_CONTROLLERBUTTONDOWN){
-				/*
-				if (event->cbutton.button == SDL_CONTROLLER_BUTTON_A){
-				cout << "AAA" << endl;
-				}*/
+
 				Sprite* superAce = (Sprite*)SpritesHolder::getSpritesHolder()->getSprites(SUPER_ACE)->front();
 				//MovingPathAnimator* superAceAnimator = (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimator");
 

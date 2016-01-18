@@ -107,7 +107,7 @@ void AnimatorHolder::triggerAnimators(){
         
         MovingPathAnimator* animator = new MovingPathAnimator(string("animatorStraightEnemyAttack") + std::to_string(i), sprite, (MovingPathAnimation*)animation);
         AnimatorHolder::getAnimatorHolder()->Register(animator);
-        cout<<"AAAAAAA"<<std::endl;
+        
         animator->start(Game::getGameTime());
         
     }
