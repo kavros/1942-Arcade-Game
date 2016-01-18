@@ -30,7 +30,8 @@ void MovingPathAnimator::progress(timestamp_t currTime){
         
         _sprite->move(_currPath->_dx, _currPath->_dy);
 		_sprite->setFrame(_currPath->_frame);
-        _sprite->setVisibility(_currPath->_visibility);
+        if(_sprite->isAlive())
+            _sprite->setVisibility(_currPath->_visibility);
         _lastTime += (_currPath->_delay);
         //cout << "Curr time = " << currTime << "\tlast time = " << _lastTime << "\n";
         _currPath++;
@@ -84,5 +85,22 @@ void MovingPathAnimator::finishCallB(Animator* anim,void* b){
 }
 
 void MovingPathAnimator::checkAnimatorForDelete(void){
-     
+    
+    assert(_sprite && _anim);
+    
+    if( _sprite->isOutOfWindow() || !_sprite->isAlive()){
+        
+        //stop the animator
+        _state = ANIMATOR_FINISHED;
+        setOnFinished(finishCallB);
+        stop();
+        
+        AnimatorHolder::getAnimatorHolder()->cancel(this);
+        _anim = nullptr; 
+        _sprite = nullptr;
+        
+        //delete MovingAnimator
+        this->~MovingPathAnimator();
+    }
+    
 }

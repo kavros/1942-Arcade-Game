@@ -85,6 +85,7 @@ Animator* AnimatorHolder::getAnimator(animid_t id){
     return _holder->_map[id];
 }
 
+
 void AnimatorHolder::triggerAnimators(){
     static int i=0;
     if(i%100 == 0 && i < 1000 && i > 10){

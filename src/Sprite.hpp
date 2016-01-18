@@ -110,13 +110,7 @@ public:
     
     Sprite* getAttached(const std::string& name) const;
     
-    virtual void Destroy(void){
-        // supports auto detach policy
-       	LatelyDestroyable::destroy();
-        if (_parent)	// is attached
-            _parent->detach(_name, false);
-    }
-
+    virtual void Destroy(void);
     void display (SDL_Renderer* renderer);
     
     bool isOutOfWindow();

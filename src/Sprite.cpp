@@ -190,8 +190,7 @@ void Sprite::notifyCollision(Sprite* arg){
     
     if( !_handlers.empty() )
         for(Handlers::iterator i = _handlers.begin(); i!=_handlers.end(); ++i ){
-            (**i)(this,arg);
-        }       
+            (**i)(this,arg);         }       
 }
 
 void Sprite::addCollisionHandler(const CollisionHandler& h){
@@ -239,3 +238,11 @@ void Sprite::setState(SpriteState state){
 	_state = state;
 }
 
+void Sprite::Destroy(void){
+    SpritesHolder::getSpritesHolder()->remove(this);
+    
+    // supports auto detach policy
+    LatelyDestroyable::destroy();
+    if (_parent)	// is attached
+        _parent->detach(_name, false);
+}

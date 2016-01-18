@@ -20,7 +20,7 @@ protected:
 	bool alive;
 	bool inDestruction;
 	virtual ~LatelyDestroyable() { assert(inDestruction); }
-
+    
 	class Delete : public std::unary_function<LatelyDestroyable*, void>
 	{
 		public: void operator()(LatelyDestroyable* o) const;
@@ -33,7 +33,9 @@ public:
 		if (alive) {
 			alive = false;
 			DestructionManager::Register(this);
-		}
+        }else{
+            assert(0);
+        }
 	}
 	void operator()(LatelyDestroyable* o) const;
     void setAlive(bool a);

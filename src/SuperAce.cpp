@@ -117,9 +117,12 @@ void SuperAce::fire(void){
             
             bullet->setVisibility(false);
             arg->setVisibility(false);
-            
+           // AnimatorHolder::getAnimatorListBySprite(arg->getId());
             bullet->Destroy();
             arg->Destroy();
+            
+            //bullet->setAlive(false);
+            //arg->setAlive(false);
 
             AnimatorHolder::createExplosion( arg->getDstRect() );
         }
