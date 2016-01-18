@@ -54,7 +54,7 @@ private:
     
 	SDL_Event e;
 
-    GameState _gameState;
+    static GameState _gameState;
 
 	//usefull for animation 
 	static unsigned long _currTime ;
@@ -108,11 +108,12 @@ public:
     static SDL_Renderer * getRenderer();
     SDL_Surface * getSurface();
     SDL_Texture * getTexture();
-    GameState getState();
+    static GameState getState();
     static unsigned long getGameTime();
     
     //set
-    
+    static void setState(GameState gameState);
+
     //boolean
     bool isExit();
     bool isMainMenu();

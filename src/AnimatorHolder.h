@@ -64,6 +64,7 @@ public:
 	static Animator* getAnimator(animid_t );
     
     static void triggerAnimators();
+    static void triggerBullets();
 
     static void createExplosion(SDL_Rect dstRect);
 

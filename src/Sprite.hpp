@@ -40,6 +40,18 @@ protected:
         virtual ~CollisionHandler(){};
     };
     
+    struct fireHandler : public Sprite::CollisionHandler{
+        void operator()(Sprite* bullet,Sprite* arg) const;
+        fireHandler* Clone(void) const;
+        ~fireHandler();
+    };
+    
+    struct touchHandler : public Sprite::CollisionHandler{
+        void operator()(Sprite* bullet,Sprite* arg) const;
+        touchHandler* Clone(void) const;
+        ~touchHandler();
+    };
+    
     //collision detection variables
     typedef std::list<CollisionHandler*> Handlers;
     SpriteState _state;

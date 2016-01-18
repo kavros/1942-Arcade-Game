@@ -28,13 +28,14 @@ void Game::OnLoop() {
             
             //collision checker
             CollisionChecker::Check();
-            
+
             //check animators
             AnimatorHolder::checkAnimatorsForDelete();
             
-            //trigger animators
+            //trigger animators and bullets
             AnimatorHolder::triggerAnimators();
-            
+            AnimatorHolder::triggerBullets();
+
             //progress animators
 			AnimatorHolder::progress(getGameTime());
             

@@ -4,36 +4,37 @@
 void Game::OnEvent(SDL_Event* event) {
     
     if (event->type == SDL_QUIT){
-        _gameState=EXIT;
+        setState(EXIT);
         return ;
     }
     
-    switch (_gameState) {
+    switch (getState()) {
         case SINGLEPLAYER_MENU:
             if (event->type == SDL_MOUSEBUTTONDOWN){
-
-                _gameState=SINGLEPLAYER_GAME;
+                setState(SINGLEPLAYER_GAME);
             }
             else if (event->key.keysym.sym == SDLK_DOWN){
-                _gameState = MULTIPLAYER_MENU;
+                setState(MULTIPLAYER_MENU);
                 printf("DOWN\n");
             }
             break;
         case MULTIPLAYER_MENU:
             if (event->type == SDL_MOUSEBUTTONDOWN){
-                _gameState=MULTIPLAYER_GAME;
+                setState(MULTIPLAYER_GAME);
             }
             else if (event->key.keysym.sym == SDLK_UP){
-                _gameState = SINGLEPLAYER_MENU;
+                setState(SINGLEPLAYER_MENU);
                 printf("UP\n");
             }
             break;
 		case SINGLEPLAYER_GAME:
 		{
 			Sprite* superAce = (Sprite*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce");
-			MovingPathAnimator* superAceStartingAnimator =
-				(MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceStartingAnimator");
-
+            assert(superAce);
+            
+			MovingPathAnimator* superAceStartingAnimator = (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceStartingAnimator");
+            assert(superAceStartingAnimator);
+            
 			if (superAce->getState() == STARTING){
 				superAceStartingAnimator->start(getGameTime());
 			}
