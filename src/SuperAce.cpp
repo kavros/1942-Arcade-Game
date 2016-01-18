@@ -34,10 +34,13 @@ SuperAce::SuperAce(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point 
     _superAceWidth= dstRect.w ;//_currFilm->getFrameBox(0).w;
     _superAceHeight= dstRect.h; //_currFilm->getFrameBox(0).h;
     
+    
+    AnimationFilm* animationBulletFilm = AnimationFilmHolder::Get()->GetFilm("bullets");
+    
     _bulletDstRect.x=this->getDstRect().x + (this->getSuperAceWidth()/4);
     _bulletDstRect.y=this->getDstRect().y - this->getSuperAceHeigth();
-    _bulletDstRect.w=11;
-    _bulletDstRect.h=10;
+    _bulletDstRect.w=animationBulletFilm->getFrameBox(2).w;
+    _bulletDstRect.h=animationBulletFilm->getFrameBox(2).h;
     
     this->addCollisionHandler(touchHandler());
 
@@ -87,11 +90,10 @@ unsigned SuperAce::getSuperAceHeigth(){
 }
 
 SDL_Rect SuperAce::getBulletDstRect(){
-    _bulletDstRect.x=(this->getSuperAceWidth()/4);
-    _bulletDstRect.y=this->getDstRect().y - this->getSuperAceHeigth();
-    _bulletDstRect.w=11;
-    _bulletDstRect.h=10;
     
+    _bulletDstRect.x=(this->getDstRect().x + this->getDstRect().w/3 + 2);
+    _bulletDstRect.y=this->getDstRect().y - this->getSuperAceHeigth()/3;
+
     return _bulletDstRect;
 }
 
