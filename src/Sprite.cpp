@@ -173,6 +173,9 @@ void Sprite::collisionCheck(Sprite* s){
     assert(this->isAlive());
     assert(s->isAlive());
     
+    if( !this->getVisibility() || !s->getVisibility() ){
+        return;
+    }
     //compare _dstRect with s->getDstRect()
     if(
         _dstRect.x < s->getDstRect().x + s->getDstRect().w &&
@@ -190,14 +193,20 @@ void Sprite::notifyCollision(Sprite* arg){
     assert(this->isAlive());
     assert(arg->isAlive());
 
+    Handlers::iterator i = _handlers.begin();
+    Handlers::iterator i2;
+    
     if( _type==SUPER_ACE && _state==MANEUVER)
         return;
     
-    if( !_handlers.empty() )
-        for(Handlers::iterator i = _handlers.begin(); i!=_handlers.end(); ++i ){
-            if( *i )
-                (**i)(this,arg);
-        }
+    while(i!=_handlers.end()){
+        i2=i;
+        i2++;
+        
+        (**i)(this,arg);
+            
+        i=i2;
+    }
 }
 
 void Sprite::addCollisionHandler(const CollisionHandler& h){
@@ -232,7 +241,7 @@ void Sprite::addCollisionHandler(const CollisionHandler& h){
 }
 
 void Sprite::clearHandlers(void){
-    for(Handlers::iterator i = _handlers.begin(); i!=_handlers.end(); ++i ){
+    for(Handlers::const_iterator i = _handlers.begin(); i!=_handlers.end(); ++i ){
         delete *i;
     }
     
@@ -246,11 +255,12 @@ void Sprite::setState(SpriteState state){
 }
 
 void Sprite::destroySprite(void){
-
+    
+    //collisions
     CollisionChecker::CancelAll(this);
-
     clearHandlers();
 
+    //SpritesHolder
     SpritesHolder::getSpritesHolder()->remove(this);
     
     LatelyDestroyable::destroy();

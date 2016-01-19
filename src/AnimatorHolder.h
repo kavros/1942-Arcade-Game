@@ -56,7 +56,7 @@ public:
     static void progress(timestamp_t currTime);
     
     static void checkAnimatorsForDelete(void);
-
+    
     static unsigned long getTotalRunning();
     
     static unsigned long getTotalSuspended();

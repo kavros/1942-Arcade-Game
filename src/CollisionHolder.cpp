@@ -10,8 +10,8 @@ void Sprite::fireHandler::operator()(Sprite* bullet,Sprite* arg) const{
     assert(bullet && arg);
     assert(bullet->isAlive() && arg->isAlive());
     
-    //bullet->setVisibility(false);
-    //arg->setVisibility(false);
+    bullet->setVisibility(false);
+    arg->setVisibility(false);
     bullet->destroySprite();
     arg->destroySprite();
     
@@ -38,8 +38,8 @@ void Sprite::touchHandler::operator()(Sprite* aircraft,Sprite* arg) const{
         //Game::setState(SINGLEPLAYER_MENU);
     }
     else{
-        //aircraft->setVisibility(false);
-        //arg->setVisibility(false);
+        aircraft->setVisibility(false);
+        arg->setVisibility(false);
         aircraft->destroySprite();
         arg->destroySprite();
     }
