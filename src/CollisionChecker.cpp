@@ -1,13 +1,14 @@
 #include "CollisionChecker.hpp"
+#include "Sprite.hpp"
 
 CollisionChecker* CollisionChecker::holder = 0;
 
 CollisionChecker::CollisionChecker(){
-    pairs = new PairList();
+  //  pairs = new PairList();
 }
 
 CollisionChecker::~CollisionChecker(){
-    pairs->clear();
+    pairs.clear();
 }
 
 CollisionChecker* CollisionChecker::getCollsionCheckerHolder(){
@@ -23,70 +24,63 @@ void CollisionChecker::Register(Sprite* s1, Sprite* s2){
     
     CollisionChecker* holder = CollisionChecker::getCollsionCheckerHolder();
 
-    Pair* p = new Pair(s1,s2);
-    holder->pairs->push_back(p);
+    holder->pairs.push_back(Pair(s1,s2));
     
 }
 
 void CollisionChecker::Cancel(Sprite* s1, Sprite* s2){
     CollisionChecker* holder = CollisionChecker::getCollsionCheckerHolder();
-    PairList::const_iterator it = holder->pairs->begin();
+    PairList::const_iterator it = holder->pairs.begin();
     PairList::const_iterator it2;
 
-	if (!holder->pairs->empty()){
-		while (it != holder->pairs->end()){
-			it2 = it;
-			it2++;
-			if (((*it)->first->getId() == s1->getId()) && ((*it)->second->getId() == s2->getId())){
-				holder->pairs->erase(it);
-				// (*it)->first = nullptr;
-				// (*it)->second = nullptr;
-			}
-			it = it2;
-		}
-	}
+    if(!holder->pairs.empty())
+        while (it != holder->pairs.end()){
+            it2=it;
+            it2++;
+            if( (*it).first == s1 && (*it).second == s2){
+                holder->pairs.erase(it);
+            }
+            it=it2;
+        }
 }
 
 void CollisionChecker::Check (void){
     CollisionChecker* holder = CollisionChecker::getCollsionCheckerHolder();
-    //std::for_each(  holder->pairs.begin(), holder->pairs.end(), CheckFunctor()  );
-    Sprite* s1=nullptr;
-    Sprite* s2=nullptr;
-    PairList::const_iterator it = holder->pairs->begin();
-    PairList::const_iterator it2;
-
-    while(it != holder->pairs->end()){
-        s1 = (*it)->first;
-        s2 = (*it)->second;
-        
-        assert(s1->isAlive());
-        assert(s2->isAlive());
-
-        it2=it;
-        it2++;
-        if( s1->getVisibility() && s2->getVisibility() ){
-            s1->collisionCheck(s2);
-        }
-        it=it2;
-    }
+    std::for_each(  holder->pairs.begin(), holder->pairs.end(), checkFunctor()  );
 }
 
 void CollisionChecker::CancelAll(Sprite* s){
     assert(s->isAlive());
     
     CollisionChecker* holder = CollisionChecker::getCollsionCheckerHolder();
-    PairList::const_iterator it = holder->pairs->begin();
+    PairList::const_iterator it = holder->pairs.begin();
     PairList::const_iterator it2;
 
-    if(!holder->pairs->empty())
-        while (it != holder->pairs->end()){
+    if(!holder->pairs.empty())
+        while (it != holder->pairs.end()){
             it2=it;
             it2++;
-            if( (*it)->first == s){
-                assert((*it)->second->isAlive());
-                CollisionChecker::Cancel(s, (*it)->second);
+            if( (*it).first == s){
+                assert((*it).second->isAlive());
+                CollisionChecker::Cancel(s, (*it).second);
             }
             it=it2;
         }
 }
 
+void CollisionChecker::checkFunctor::operator()(const Pair& p) const {
+    Sprite* s1=p.first;
+    Sprite* s2=p.second;
+
+    if(s1 && s2)
+        if(s1->isAlive() && s2->isAlive()){
+            
+            assert(s1->isAlive());
+            assert(s2->isAlive());
+            
+            if( s1->getVisibility() && s2->getVisibility() ){
+                s1->collisionCheck(s2);
+            }
+            
+        }
+}

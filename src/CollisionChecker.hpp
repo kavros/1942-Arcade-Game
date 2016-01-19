@@ -1,7 +1,7 @@
 #ifndef Collision_checker_hpp
 #define Collision_checker_hpp
 
-#include "Sprite.hpp"
+#include "includes.h"
 
 class Sprite;
 
@@ -11,13 +11,13 @@ class CollisionChecker {
 private:
     
     typedef std::pair<Sprite*, Sprite*> Pair;
-    typedef std::list<Pair*> PairList;
-    /*
+    typedef std::list<Pair> PairList;
+    
     struct checkFunctor : public std::unary_function<Pair, void> {
-        void operator()(const Pair& p) const { p.first->collisionCheck(p.second); }
+        void operator()(const Pair& p) const;
     };
-    */
-    PairList* pairs;
+    
+    PairList pairs;
     
     static CollisionChecker* holder;
     

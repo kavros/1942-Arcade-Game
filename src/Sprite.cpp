@@ -1,4 +1,4 @@
-#include "Sprite.hpp"
+  #include "Sprite.hpp"
 #include "SpritesHolder.hpp"
 #include "AnimatorHolder.h"
 
@@ -255,7 +255,7 @@ void Sprite::setState(SpriteState state){
 }
 
 void Sprite::destroySprite(void){
-    
+    assert(this->isAlive());
     //collisions
     CollisionChecker::CancelAll(this);
     clearHandlers();
