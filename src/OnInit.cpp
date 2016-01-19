@@ -239,8 +239,19 @@ bool Game::InitGameInfo(){
     _fps_sprite				 = new SpriteString("0000",450,24);
 	_remaining_loops		 = new SpriteString("RRR", WIN_WIDTH - 36, WIN_HEIGHT - 12);
 	_startingReadyLogo		 = new SpriteString("READY", (WIN_WIDTH / 2)-40, WIN_HEIGHT / 2);
-	_startingPlayerLogo	 = new SpriteString("PLAYER", (WIN_WIDTH / 2)-40, (WIN_HEIGHT / 2)+20);
-	_numberOne				 = new  SpriteString("1", (WIN_WIDTH / 2)+30, (WIN_HEIGHT / 2)+20);
+	_startingPlayerLogo		 = new SpriteString("PLAYER", (WIN_WIDTH / 2)-40, (WIN_HEIGHT / 2)+20);
+	_numberOne				 = new SpriteString("1", (WIN_WIDTH / 2)+30, (WIN_HEIGHT / 2)+20);
+	_pause					 = new SpriteString("PAUSE", (WIN_WIDTH / 2), (WIN_HEIGHT / 2));
+	
+	for (int i = 0; i < 5; ++i){
+		_pause->getSpriteAlphaNum(i)->setVisibility(false);
+		_pause->getSpriteAlphaNum(i)->setAlive(true);
+		_startingReadyLogo->getSpriteAlphaNum(i)->setAlive(true);
+		_startingPlayerLogo->getSpriteAlphaNum(i)->setAlive(true);
+	}
+	_startingPlayerLogo->getSpriteAlphaNum(5)->setAlive(true);
+	_numberOne->getSpriteAlphaNum(0)->setAlive(true);
+
     //SpritesHolder::getSpritesHolder()->add(three);
     return true;
 }

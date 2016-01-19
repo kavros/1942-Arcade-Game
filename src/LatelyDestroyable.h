@@ -30,7 +30,7 @@ protected:
 public:
 	bool isAlive(void) const { return alive; }
 	void destroy(void) {
-		if (alive) {
+      		if (alive) {
 			alive = false;
 			DestructionManager::Register(this);
         }else{

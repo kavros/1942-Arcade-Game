@@ -144,3 +144,17 @@ void AnimatorHolder::triggerBullets(){
     }
     i++;
 }
+
+void AnimatorHolder::timeShiftAnimators(timestamp_t offset){
+	AnimatorHolder* h = AnimatorHolder::getAnimatorHolder();
+	AnimatorList::iterator it = h->_running.begin();
+	AnimatorList::iterator it2;
+
+	while (it != h->_running.end()){
+		it2 = it;
+		it2++;
+		(*it)->timeShift(offset);
+		it = it2;
+	}
+}
+
