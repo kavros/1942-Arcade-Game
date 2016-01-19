@@ -106,15 +106,15 @@ void Game::InitSuperAceAnimator(){
                                                                          );
 
 
-	AnimatorHolder::getAnimatorHolder()->Register(superAceMovingAnimator);
-	AnimatorHolder::getAnimatorHolder()->Register(superAceAnimatorUp);
-	AnimatorHolder::getAnimatorHolder()->Register(superAceAnimatorRight);
-	AnimatorHolder::getAnimatorHolder()->Register(superAceAnimatorRightRight);
-	AnimatorHolder::getAnimatorHolder()->Register(superAceAnimatorDown);
-	AnimatorHolder::getAnimatorHolder()->Register(superAceAnimatorLeft);
-	AnimatorHolder::getAnimatorHolder()->Register(superAceAnimatorLeftLeft);
-	AnimatorHolder::getAnimatorHolder()->Register(superAceAnimatorManeuever);
-	AnimatorHolder::getAnimatorHolder()->Register(superAceStartingAnimator);
+	AnimatorHolder::Register(superAceMovingAnimator);
+	AnimatorHolder::Register(superAceAnimatorUp);
+	AnimatorHolder::Register(superAceAnimatorRight);
+	AnimatorHolder::Register(superAceAnimatorRightRight);
+	AnimatorHolder::Register(superAceAnimatorDown);
+	AnimatorHolder::Register(superAceAnimatorLeft);
+	AnimatorHolder::Register(superAceAnimatorLeftLeft);
+	AnimatorHolder::Register(superAceAnimatorManeuever);
+	AnimatorHolder::Register(superAceStartingAnimator);
 
 
 

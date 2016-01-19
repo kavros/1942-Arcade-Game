@@ -113,7 +113,7 @@ void SuperAce::fire(void){
     
     MovingAnimator* fireAnimator = new MovingAnimator("animatorFire", bullet, (MovingAnimation*)fireAnimation);
     
-    AnimatorHolder::getAnimatorHolder()->Register(fireAnimator);
+    AnimatorHolder::Register(fireAnimator);
 
     fireAnimator->start(Game::getGameTime());
     

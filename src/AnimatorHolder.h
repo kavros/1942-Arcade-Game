@@ -33,16 +33,13 @@ private:
     ~AnimatorHolder();
 
 public:
-    void Register(Animator* a);
-    void cancel(Animator* a);
+    static void Register(Animator* a);
+    static void cancel(Animator* a);
 	
     //get
     static AnimatorHolder* getAnimatorHolder();
     
-    static void cleanup(){
-        _holder->~AnimatorHolder();
-        _holder = NULL;
-    }
+    static void cleanup();
     
 	//marking state
     static void markAsRunning(Animator* a);
