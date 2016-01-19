@@ -56,9 +56,12 @@ animid_t Animator::getId(){
     return _id;
 }
 
-void Animator::destroyAnimator(){
-    AnimatorHolder::getAnimatorHolder()->cancel(this);
-        
-    LatelyDestroyable::destroy();
+void Animator::setState(enum animatorstate_t state){
+	_state = state;
 }
 
+void Animator::destroyAnimator(){
+	AnimatorHolder::getAnimatorHolder()->cancel(this);
+
+	LatelyDestroyable::destroy();
+}

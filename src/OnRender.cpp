@@ -24,6 +24,9 @@ void Game::OnRender() {
         case EXIT:
             cout<<"Exit\n";
             break;
+		case PAUSE_MENU:
+			SpritesHolder::getSpritesHolder()->displayGameSprites(_renderer);
+			break;
         default:
             assert(0);
             break;

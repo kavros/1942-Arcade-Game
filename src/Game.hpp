@@ -29,6 +29,7 @@ enum GameState {
 	MULTIPLAYER_MENU,
     SINGLEPLAYER_GAME,
     MULTIPLAYER_GAME,
+	PAUSE_MENU,
 	EXIT
 };
 
@@ -71,7 +72,10 @@ private:
 	SpriteString* _startingReadyLogo;
 	SpriteString* _startingPlayerLogo;
 	SpriteString* _numberOne;
+	
 	SpriteString* _pause;
+
+	
 	SDL_GameController *_controller =nullptr;
 
 public:
