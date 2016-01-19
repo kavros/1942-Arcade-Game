@@ -118,7 +118,7 @@ void AnimatorHolder::triggerAnimators(){
         
         //Game::get
         animator->start(Game::getGameTime());
-        
+        Game::setScore(Game::getScore()+ 30);
     }
     i++;
 

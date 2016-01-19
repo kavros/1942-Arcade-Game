@@ -84,8 +84,8 @@ void Game::setScore(int s){
     _score = s;
     updateScoreSprite();
     if (_score > _highScore){
-        updateHighScoreSprite();
         setHighScore(_score);
+        updateHighScoreSprite();
     }
 }
 
@@ -103,7 +103,7 @@ void Game::updateScoreSprite(){
 
 void Game::updateHighScoreSprite(){
     std::string highScore = std::to_string(_highScore);
-    _highScoreSprite->changeString(highScore,WIN_WIDTH/2 - (int) (highScore.size()*6), WIN_HEIGHT - 12);
+    _highScoreSprite->changeString(highScore,WIN_WIDTH/2 - (int) (highScore.size()*6), 30);
 }
 
 
