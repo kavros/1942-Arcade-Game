@@ -186,12 +186,16 @@ void Sprite::collisionCheck(Sprite* s){
 
 //collision detection functions
 void Sprite::notifyCollision(Sprite* arg){
+    assert(arg);
+    
     if( _type==SUPER_ACE && _state==MANEUVER)
         return;
     
     if( !_handlers.empty() )
         for(Handlers::iterator i = _handlers.begin(); i!=_handlers.end(); ++i ){
-            (**i)(this,arg);         }       
+            if( *i )
+                (**i)(this,arg);
+        }
 }
 
 void Sprite::addCollisionHandler(const CollisionHandler& h){

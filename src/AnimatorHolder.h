@@ -68,6 +68,7 @@ public:
 
     static void createExplosion(SDL_Rect dstRect);
 
+	static void timeShiftAnimators(timestamp_t offset);
 };
 
 #endif

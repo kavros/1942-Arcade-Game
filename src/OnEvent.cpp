@@ -38,12 +38,16 @@ void Game::OnEvent(SDL_Event* event) {
 			if (superAce->getState() == STARTING){
 				superAceStartingAnimator->start(getGameTime());
 			}
+
+			//if starting animator running then don't start any animator
+			//when starting animator is finished remove all letters
 			if (superAceStartingAnimator->getState() == ANIMATOR_RUNNING){
 				return;
-			}
-			else{
+			}else{
 				for (int i = 0; i < 5; ++i){
 					_startingReadyLogo->getSpriteAlphaNum(i)->setVisibility(false);
+					//_startingReadyLogo->getSpriteAlphaNum(i)->Destroy();
+
 				}
 				for (int i = 0; i < 6; ++i){
 					_startingPlayerLogo->getSpriteAlphaNum(i)->setVisibility(false);
@@ -76,12 +80,17 @@ void Game::OnEvent(SDL_Event* event) {
 
 
 
-				if (event->key.keysym.sym == SDLK_ESCAPE) {
+				if (event->key.keysym.sym == SDLK_ESCAPE
+					|| event->cbutton.button == SDL_CONTROLLER_BUTTON_START) {
+					
 
+					for (int i = 0; i < 5; ++i){
+						_pause->getSpriteAlphaNum(i)->setVisibility(true);
+					}
 					//pause
 				}
 				else if (event->key.keysym.sym == SDLK_q
-					|| event->cbutton.button == SDL_CONTROLLER_BUTTON_START){
+					){
 					//quit?
 
 				}

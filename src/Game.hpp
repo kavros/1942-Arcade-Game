@@ -67,7 +67,7 @@ private:
 	SpriteString* _startingReadyLogo;
 	SpriteString* _startingPlayerLogo;
 	SpriteString* _numberOne;
-
+	SpriteString* _pause;
 	SDL_GameController *_controller =nullptr;
 
 public:
