@@ -64,6 +64,10 @@ private:
 	SpriteString* _remaining_loops;
 	unsigned _remaining_loops_num = 3;
 
+    static int _highScore;
+    static int _score;
+    static SpriteString* _highScoreSprite;
+    static SpriteString* _scoreSprite;
 	SpriteString* _startingReadyLogo;
 	SpriteString* _startingPlayerLogo;
 	SpriteString* _numberOne;
@@ -82,7 +86,7 @@ public:
     bool OnInit();
     
     void OnEvent(SDL_Event* e);
-    void    LoadGameInfo (const std::string& cataloge);
+    void LoadGameInfo (const std::string& cataloge);
     void OnLoop();
     
     void OnRender();
@@ -110,7 +114,14 @@ public:
     SDL_Texture * getTexture();
     static GameState getState();
     static unsigned long getGameTime();
-    
+    static int getHighScore(void)  ;
+    static void setHighScore(int s);
+    static int getScore(void)  ;
+    static void setScore(int s);
+    SpriteString* getHighScoreSprite(void) ;
+    SpriteString* getScoreSprite(void) ;
+    static void updateHighScoreSprite();
+    static void updateScoreSprite();
     //set
     static void setState(GameState gameState);
 
