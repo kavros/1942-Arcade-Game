@@ -263,6 +263,7 @@ void    Game::LoadGameInfo (const std::string& cataloge){
     document.Parse(data);
     assert(document.IsObject());
     _remaining_loops_num =document["superAceLoops"].GetInt();
+    _highScore = document["highScore"].GetInt();
 }
 
 bool Game::InitGameInfo(){
@@ -275,16 +276,20 @@ bool Game::InitGameInfo(){
     //SpriteAlphaNum* three = new SpriteAlphaNum('3',0,0);
     /*SpriteString* thirtythree = */
     new SpriteString("SCORE",20,10);
-    new SpriteString("00000",20,24);
+    // new SpriteString("00000",20,24);
     new SpriteString("HIGH",200,10);
     new SpriteString("SCORE",250,10);
     new SpriteString("FPS",450,10);
 
-    _fps_sprite				 = new SpriteString("0000",450,24);
+    _fps_sprite				 = new SpriteString("0000",450,30);
     std::string str = "";
     for(int i = 0; i<  _remaining_loops_num; i++){
        str += "R";
     }
+    std::string score = std::to_string(_score);
+    std::string highScore = std::to_string(_highScore);
+    _scoreSprite             = new SpriteString(score, 20 ,30);
+    _highScoreSprite         = new SpriteString(highScore, WIN_WIDTH/2 - (int) (highScore.size()*6), 30);
 	_remaining_loops		 = new SpriteString(str, WIN_WIDTH - _remaining_loops_num*12, WIN_HEIGHT - 12);
 	_startingReadyLogo		 = new SpriteString("READY", (WIN_WIDTH / 2)-40, WIN_HEIGHT / 2);
 	_startingPlayerLogo		 = new SpriteString("PLAYER", (WIN_WIDTH / 2)-40, (WIN_HEIGHT / 2)+20);
