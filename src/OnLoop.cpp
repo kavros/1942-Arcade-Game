@@ -11,8 +11,6 @@ void Game::OnLoop() {
             break;
         case SINGLEPLAYER_GAME:{
             
-
-            
             //commit destruction
             //proxeiri ilipoiisi ala nikola
             //DestructionManager::printDestructionManager();
@@ -28,7 +26,7 @@ void Game::OnLoop() {
             
             //collision checker
             CollisionChecker::Check();
-            
+
             //check animators
             AnimatorHolder::checkAnimatorsForDelete();
             

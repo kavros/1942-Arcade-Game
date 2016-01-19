@@ -12,7 +12,7 @@ SuperAce::SuperAce(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point 
     _superAceWidth= dstRect.w ;//_currFilm->getFrameBox(0).w;
     _superAceHeight= dstRect.h; //_currFilm->getFrameBox(0).h;
 	_state = STARTING;
-    
+    _superAceLives = 3;
     AnimationFilm* animationBulletFilm = AnimationFilmHolder::Get()->GetFilm("bullets");
     
     _bulletDstRect.x=this->getDstRect().x + (this->getSuperAceWidth()/4);
@@ -50,6 +50,8 @@ SuperAce::SuperAce(){
 	_point.x = 0;
 	_point.y = 0;
 
+    _superAceLives = 3;
+
     SpritesHolder::getSpritesHolder()->add(this);
 
     assert(0);
@@ -75,6 +77,10 @@ SDL_Rect SuperAce::getBulletDstRect(){
     return _bulletDstRect;
 }
 
+unsigned int SuperAce::getSuperAceLives(){
+    return _superAceLives;
+}
+
 //set
 void SuperAce::setSuperAceWidth(unsigned width){
     _superAceWidth = width;
@@ -82,6 +88,10 @@ void SuperAce::setSuperAceWidth(unsigned width){
 
 void SuperAce::setSuperAceHeigth(unsigned height){
     _superAceHeight = height;
+}
+
+void SuperAce::setSuperAceLives(unsigned int superAceLives){
+    _superAceLives = superAceLives;
 }
 
 void SuperAce::fire(void){
