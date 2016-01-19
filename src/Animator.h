@@ -9,7 +9,8 @@ typedef std::string animid_t;
 enum animatorstate_t{
 	ANIMATOR_FINISHED	= 0,
 	ANIMATOR_RUNNING	= 1,
-	ANIMATOR_STOPPED	= 2
+	ANIMATOR_STOPPED	= 2,
+	ANIMATOR_PAUSED		= 3
 };
 
 class Animator : public LatelyDestroyable{

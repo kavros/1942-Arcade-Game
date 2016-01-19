@@ -163,7 +163,7 @@ void AnimatorHolder::wakeUpAnimators(timestamp_t currTime){
 	while (it != h->_suspended.end()){
 		it2 = it;
 		it2++;
-		if ((*it)->getState() == ANIMATOR_STOPPED){
+		if ((*it)->getState() == ANIMATOR_PAUSED ){
 			timestamp_t offset = (currTime - (*it)->getLastTime());
 			(*it)->timeShift(offset);
 
@@ -186,12 +186,12 @@ void AnimatorHolder::pauseAnimators(){
 	AnimatorList::iterator it = h->_running.begin();
 	AnimatorList::iterator it2;
 
-	//set all running animators as stoped
+	//set all running animators as paused
 	it = h->_running.begin();
 	while (it != h->_running.end()){
 		it2 = it;
 		it2++;
-		(*it)->setState(ANIMATOR_STOPPED);		
+		(*it)->setState(ANIMATOR_PAUSED);		
 		AnimatorHolder::markAsSuspended(*it);
 		it = it2;
 	}
