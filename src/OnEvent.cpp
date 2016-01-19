@@ -37,30 +37,29 @@ void Game::OnEvent(SDL_Event* event) {
             MovingPathAnimator* superAceStartingAnimator = (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceStartingAnimator");
             assert(superAceStartingAnimator);
             
-            if (superAce->getState() == STARTING){
-                superAceStartingAnimator->start(getGameTime());
-            }
-            
-            //if starting animator running then don't start any animator
-            //when starting animator is finished remove all letters
-            if (superAceStartingAnimator->getState() == ANIMATOR_RUNNING){
-                return;
-            }else{
-                for (int i = 0; i < 5; ++i){
-                    _startingReadyLogo->getSpriteAlphaNum(i)->setVisibility(false);
-                    //_startingReadyLogo->getSpriteAlphaNum(i)->Destroy();
-                    
-                }
-                for (int i = 0; i < 6; ++i){
-                    _startingPlayerLogo->getSpriteAlphaNum(i)->setVisibility(false);
-                }
-                _numberOne->getSpriteAlphaNum(0)->setVisibility(false);
-            }
-            
-            if (event->type == SDL_KEYDOWN || event->type == SDL_CONTROLLERBUTTONDOWN){
-                
-                assert(superAce);
-                //MovingPathAnimator* superAceAnimatorMoving = (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorMoving");
+			if (superAce->getState() == STARTING){
+				superAceStartingAnimator->start(getGameTime());
+			}
+
+			//if starting animator running then don't start any animator
+			//when starting animator is finished remove all letters
+			if (superAceStartingAnimator->getState() == ANIMATOR_RUNNING){
+				return;
+			}else{
+				for (int i = 0; i < 5; ++i){
+					_startingReadyLogo->getSpriteAlphaNum(i)->setVisibility(false);
+
+				}
+				for (int i = 0; i < 6; ++i){
+					_startingPlayerLogo->getSpriteAlphaNum(i)->setVisibility(false);
+				}
+				_numberOne->getSpriteAlphaNum(0)->setVisibility(false);
+			}
+
+			if (event->type == SDL_KEYDOWN || event->type == SDL_CONTROLLERBUTTONDOWN){
+
+				assert(superAce);
+				MovingPathAnimator* superAceAnimatorMoving = (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorMoving");
                 //superAceAnimatorMoving->start(getGameTime());
                 
                 MovingPathAnimator* superAceAnimatorLeft =

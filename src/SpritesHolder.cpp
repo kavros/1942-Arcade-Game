@@ -4,6 +4,13 @@
  SpritesHolder* SpritesHolder::_holder;
 
 SpritesHolder::SpritesHolder(){
+    
+    SpriteType type;
+    
+    for(type=SpriteType(0); type <= SpriteType(SPRITE_TYPE_SIZE); type = SpriteType(type+1)){
+        _sprites[type] = new SpriteList();
+    }
+
 }
 
 SpritesHolder::~SpritesHolder(){
@@ -12,9 +19,11 @@ SpritesHolder::~SpritesHolder(){
 
 void SpritesHolder::add(Sprite *s){
     assert(s && s->getType()>=0 && s->getType()<= SPRITE_TYPE_SIZE);
+   /*
     if (_sprites[s->getType()] == nullptr) {
         _sprites[s->getType()] = new SpriteList();
     }
+    */
     _sprites[s->getType()]->push_back(s);
     
 }
@@ -48,7 +57,7 @@ SpriteList * SpritesHolder::getSprites(SpriteType type){
 
     SpriteByType::const_iterator i = _sprites.find(type);
     
-    return i != _sprites.end() ? i->second : ( SpriteList*) 0;
+    return i != _sprites.end() ? i->second : nullptr;
     
 }
 
@@ -172,7 +181,32 @@ void    SpritesHolder::Load (const std::string& cataloge/*,SDL_Renderer* _render
         else
             new Sprite(id, frameNo, destRect, point, isVisible, spriteType,animationFilm);
     }
-    
+
 }
 
+void SpritesHolder::checkSpritesForDelete(){
+    
+    SpritesHolder* h = SpritesHolder::getSpritesHolder();
+    SpriteType type = SUPER_ACE;
+    SpriteList* sl = NULL;
+    SpriteList::const_iterator it;
+    SpriteList::const_iterator it2;
 
+    for(type=SUPER_ACE; type <= GAME_INFO; type = SpriteType(type+1)){
+        sl = h->getSprites(type);
+        if(sl == nullptr){
+            assert(0);
+        }
+
+        it=sl->begin();
+        
+        while(it!=sl->end()){
+            it2 = it;
+            it2++;
+            if( (*it)->isOutOfWindow() ){
+                (*it)->destroySprite();
+            }
+            it = it2;
+        }
+    }
+}

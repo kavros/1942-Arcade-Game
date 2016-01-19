@@ -71,21 +71,20 @@ Sprite* MovingAnimator::getSprite(){
 
 void MovingAnimator::checkAnimatorForDelete(void){
 
-    assert(_sprite && _anim);
+    assert(_sprite && _anim && _sprite->isAlive());
     
-    if( _sprite->isOutOfWindow() || !_sprite->isAlive()){
+    if( _sprite->isOutOfWindow()){
 
         //stop the animator
         _state = ANIMATOR_FINISHED;
         setOnFinished(finishCallB);
         stop();
         
-        AnimatorHolder::getAnimatorHolder()->cancel(this);
         _anim = nullptr;
         _sprite = nullptr;
-
+        
         //delete MovingAnimator
-        this->~MovingAnimator();
+        this->destroyAnimator();
     }
     
 }
