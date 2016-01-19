@@ -29,16 +29,19 @@ public:
 		_path.clear();
 		_path = p;
 	}
+    bool getContinuous(void) const { return _continuous; }
+    void setContinuous(bool c) { _continuous = c; }
 	Animation* clone(animid_t newId) const {
-		return new MovingPathAnimation(_path, newId);
+		return new MovingPathAnimation(_path, newId,_continuous);
 	}
-	MovingPathAnimation(const std::list<PathEntry>& path, animid_t id) :
-		_path(path), Animation(id){}
+	MovingPathAnimation(const std::list<PathEntry>& path, animid_t id,bool continuous) :
+		_path(path), Animation(id), _continuous(continuous){}
 
 private:
 	typedef std::list<PathEntry> PathsList;
 	std::list<PathEntry> _path;
     bool _visibility;
+    bool _continuous;
 
 };
 

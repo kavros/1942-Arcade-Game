@@ -12,6 +12,7 @@ class MovingPathAnimator :public Animator{
 private:
 	Sprite*					_sprite;
 	MovingPathAnimation*	_anim;
+    bool                    _continuous;
     std::list<PathEntry>::const_iterator  _currPath;
 
 public:

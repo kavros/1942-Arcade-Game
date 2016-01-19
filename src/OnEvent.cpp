@@ -54,7 +54,8 @@ void Game::OnEvent(SDL_Event* event) {
 			if (event->type == SDL_KEYDOWN || event->type == SDL_CONTROLLERBUTTONDOWN){
 
 				assert(superAce);
-				//MovingPathAnimator* superAceAnimator = (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimator");
+				MovingPathAnimator* superAceAnimatorMoving = (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorMoving");
+                //superAceAnimatorMoving->start(getGameTime());
 
 				MovingPathAnimator* superAceAnimatorLeft =
 					(MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorLeft");

@@ -89,7 +89,10 @@ Animator* AnimatorHolder::getAnimator(animid_t id){
 void AnimatorHolder::triggerAnimators(){
     static int i=0;
     if(i%100 == 0 && i < 1000 && i > 10){
-                
+        if(i == 100){
+            MovingPathAnimator* movingSuperAce = (MovingPathAnimator*) AnimatorHolder::getAnimator("SuperAceMovingAnimator");
+            movingSuperAce->start(Game::getGameTime());
+        }
         /*SDL_Rect dstRect;
         dstRect.x=WIN_WIDTH/2 + (i/100)*5;
         dstRect.y=10 + (i/100)*5;

@@ -6,7 +6,6 @@ MovingPathAnimator::MovingPathAnimator(std::string id, Sprite* sprite,MovingPath
 	_sprite = sprite;
 	_anim = anim;
     _currPath = _anim->getPath().begin();
-
 	/*
 	//!!!prepei na pernw to dx dy apo ton SuperAce
 	PathEntry upsidePath;
@@ -35,11 +34,13 @@ void MovingPathAnimator::progress(timestamp_t currTime){
         _lastTime += (_currPath->_delay);
         //cout << "Curr time = " << currTime << "\tlast time = " << _lastTime << "\n";
         _currPath++;
-        if(_currPath == _anim->getPath().end()){
+        if(_currPath == _anim->getPath().end() && !_anim->getContinuous()){
             _state = ANIMATOR_FINISHED;
             setOnFinished(finishCallB);
             stop();
             break ;
+        }else if(_anim->getContinuous()){
+            _currPath = _anim->getPath().begin();
         }
         
 	}

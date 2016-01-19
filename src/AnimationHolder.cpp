@@ -89,6 +89,7 @@ void    AnimationHolder::Load (const std::string& cataloge){
         assert(paths.IsArray());
         //id
         std::string id = mPathAnimation["id"].GetString();
+        bool continuous = mPathAnimation["continuous"].GetBool();
         for(rapidjson::SizeType j = 0; j < paths.Size(); j++){
             
             PathEntry pe;
@@ -102,7 +103,7 @@ void    AnimationHolder::Load (const std::string& cataloge){
             _paths.push_back(pe);
             
         }
-        AnimationHolder::getAnimationHolder()->add(new MovingPathAnimation(_paths,id));
+        AnimationHolder::getAnimationHolder()->add(new MovingPathAnimation(_paths,id,continuous));
         //add Sprite 2 Sprite Holder
     }
 }
