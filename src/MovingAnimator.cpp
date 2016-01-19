@@ -70,7 +70,7 @@ Sprite* MovingAnimator::getSprite(){
 
 void MovingAnimator::checkAnimatorForDelete(void){
 
-    assert(_sprite && _anim && _sprite->isAlive());
+    assert(_sprite && _anim);
     
     if( _sprite->isOutOfWindow()){
 
