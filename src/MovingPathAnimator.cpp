@@ -24,6 +24,7 @@ void MovingPathAnimator::progress(timestamp_t currTime){
 	/*if (_state == ANIMATOR_RUNNING){
 		return;
 	}*/
+    static int j = 0;
 
 	while ( (currTime > _lastTime ) && (currTime - _lastTime >= _currPath->_delay)){
 
@@ -40,6 +41,8 @@ void MovingPathAnimator::progress(timestamp_t currTime){
             _state = ANIMATOR_FINISHED;
             setOnFinished(finishCallB);
             stop();
+            std::cout<<j<<": aaaaa"<<std::endl;
+            j++;
             break ;
         }else if(_anim->getContinuous() && _currPath == _anim->getPath().end() ){
             _currPath = _anim->getPath().begin();
