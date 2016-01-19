@@ -16,7 +16,7 @@ void Game::OnLoop() {
             //DestructionManager::printDestructionManager();
             if(loopsRemainingToDelete == 0){
                 DestructionManager::commit();
-                loopsRemainingToDelete = 100;
+                loopsRemainingToDelete = 10000;
             }
             loopsRemainingToDelete--;
             
@@ -27,9 +27,10 @@ void Game::OnLoop() {
             //collision checker
             CollisionChecker::Check();
 
-            //check animators
+            //check animators and sprites
             AnimatorHolder::checkAnimatorsForDelete();
-            
+            SpritesHolder::checkSpritesForDelete();
+
             //trigger animators and bullets
             AnimatorHolder::triggerAnimators();
             AnimatorHolder::triggerBullets();

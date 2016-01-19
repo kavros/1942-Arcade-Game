@@ -15,7 +15,6 @@ Sprite::Sprite(){
     _type=UNDEFINED;
     _state=FLYING;
     _currFilm=nullptr;
-    alive=true;
     _parent=nullptr;
     
     //SpritesHolder::getSpritesHolder()->add(this);
@@ -33,7 +32,6 @@ Sprite::Sprite(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point poin
     _type=type;
     _currFilm=currFilm;
     _state=FLYING;
-    alive=true;
     _parent=nullptr;
 
     SpritesHolder::getSpritesHolder()->add(this);
@@ -51,7 +49,6 @@ Sprite::Sprite(std::string id, SDL_Rect dstRect,bool isVisible,SpriteType type,A
     _type=type;
     _currFilm=currFilm;
     _state=FLYING;
-    alive=true;
     _parent=nullptr;
 
     SpritesHolder::getSpritesHolder()->add(this);
@@ -59,7 +56,6 @@ Sprite::Sprite(std::string id, SDL_Rect dstRect,bool isVisible,SpriteType type,A
 }
 
 Sprite::~Sprite(){
-    clearHandlers();
 }
 
 void Sprite::setId(std::string id){
@@ -138,15 +134,15 @@ void Sprite::attach (Sprite* s, const std::string& name){
     s->_name = name;
 }
 
-void Sprite::detach(const std::string& name, bool destroy){
+void Sprite::detach(const std::string& name, bool forDestroy){
     auto i  (_attached.find(name));
     assert(i != _attached.end());
     auto* s (i->second);
     s->_parent = nullptr;
     s->_name.clear();
     _attached.erase(i);
-    if (destroy)
-        s->Destroy();
+    if (forDestroy)
+        s->destroySprite();
 }
 
 Sprite* Sprite::getAttached(const std::string& name) const{
@@ -174,6 +170,9 @@ bool Sprite::isOutOfWindow(){
 
 // TODO :: CollisionCheck body
 void Sprite::collisionCheck(Sprite* s){
+    assert(this->isAlive());
+    assert(s->isAlive());
+    
     //compare _dstRect with s->getDstRect()
     if(
         _dstRect.x < s->getDstRect().x + s->getDstRect().w &&
@@ -181,13 +180,16 @@ void Sprite::collisionCheck(Sprite* s){
         _dstRect.y < s->getDstRect().y + s->getDstRect().h &&
         _dstRect.h + _dstRect.y > s->getDstRect().y
        )
+        
         notifyCollision(s);
 }
 
 //collision detection functions
 void Sprite::notifyCollision(Sprite* arg){
     assert(arg);
-    
+    assert(this->isAlive());
+    assert(arg->isAlive());
+
     if( _type==SUPER_ACE && _state==MANEUVER)
         return;
     
@@ -233,21 +235,27 @@ void Sprite::clearHandlers(void){
     for(Handlers::iterator i = _handlers.begin(); i!=_handlers.end(); ++i ){
         delete *i;
     }
+    
     _handlers.clear();
+
 }
-
-
 
 void Sprite::setState(SpriteState state){
 	assert(FLYING <= state && state <= MANEUVER);
 	_state = state;
 }
 
-void Sprite::Destroy(void){
+void Sprite::destroySprite(void){
+
+    CollisionChecker::CancelAll(this);
+
+    clearHandlers();
+
     SpritesHolder::getSpritesHolder()->remove(this);
     
-    // supports auto detach policy
     LatelyDestroyable::destroy();
+    
+    // supports auto detach policy
     if (_parent)	// is attached
         _parent->detach(_name, false);
 }

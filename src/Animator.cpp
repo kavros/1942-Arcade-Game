@@ -1,4 +1,5 @@
 #include "Animator.h"
+#include "AnimatorHolder.h"
 
 void Animator::stop(void){
     if (hasFinished()){
@@ -33,6 +34,9 @@ void Animator::timeShift(timestamp_t offset)
 Animator::Animator(void) : _lastTime(0), _state(ANIMATOR_FINISHED), _onFinish((FinishCallback)0), _finishClosure((void*)0){
 }
 
+Animator::~Animator(){
+}
+
 void Animator::setOnFinished(FinishCallback f,  void* c ){
     _onFinish =f;
 }
@@ -52,4 +56,9 @@ animid_t Animator::getId(){
     return _id;
 }
 
+void Animator::destroyAnimator(){
+    AnimatorHolder::getAnimatorHolder()->cancel(this);
+        
+    LatelyDestroyable::destroy();
+}
 

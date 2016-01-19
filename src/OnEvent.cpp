@@ -46,7 +46,6 @@ void Game::OnEvent(SDL_Event* event) {
 			}else{
 				for (int i = 0; i < 5; ++i){
 					_startingReadyLogo->getSpriteAlphaNum(i)->setVisibility(false);
-					//_startingReadyLogo->getSpriteAlphaNum(i)->Destroy();
 
 				}
 				for (int i = 0; i < 6; ++i){

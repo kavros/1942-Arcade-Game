@@ -252,12 +252,7 @@ bool Game::InitGameInfo(){
 	
 	for (int i = 0; i < 5; ++i){
 		_pause->getSpriteAlphaNum(i)->setVisibility(false);
-		_pause->getSpriteAlphaNum(i)->setAlive(true);
-		_startingReadyLogo->getSpriteAlphaNum(i)->setAlive(true);
-		_startingPlayerLogo->getSpriteAlphaNum(i)->setAlive(true);
 	}
-	_startingPlayerLogo->getSpriteAlphaNum(5)->setAlive(true);
-	_numberOne->getSpriteAlphaNum(0)->setAlive(true);
 
     //SpritesHolder::getSpritesHolder()->add(three);
     return true;
