@@ -39,7 +39,7 @@ void MovingPathAnimator::progress(timestamp_t currTime){
             setOnFinished(finishCallB);
             stop();
             break ;
-        }else if(_anim->getContinuous()){
+        }else if(_anim->getContinuous() && _currPath == _anim->getPath().end() ){
             _currPath = _anim->getPath().begin();
         }
         
