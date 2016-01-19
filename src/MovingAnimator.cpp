@@ -33,9 +33,7 @@ void MovingAnimator::progress(timestamp_t currTime){
 	*/
     
     assert(_anim && _sprite);
-    
 	while ( (currTime > _lastTime) && (currTime - _lastTime >= _anim->getDelay()) ){
-        
 		
         _sprite->move(_anim->getDx(), _anim->getDy());
 
@@ -60,6 +58,7 @@ void MovingAnimator::progress(timestamp_t currTime){
 void MovingAnimator::finishCallB(Animator* a,void* b){
     AnimatorHolder::markAsSuspended(a);
 }
+
 
 MovingAnimation* MovingAnimator::getMovingAnimation(){
 	return _anim;

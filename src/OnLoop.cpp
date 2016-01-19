@@ -47,6 +47,8 @@ void Game::OnLoop() {
             break;
         case EXIT:
             break;
+		case PAUSE_MENU:
+			break;
         default:
             break;
     }
