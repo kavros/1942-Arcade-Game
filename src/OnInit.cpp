@@ -1,5 +1,7 @@
 #include "Game.hpp"
-
+#include "../rapidjson/document.h"
+#include "../rapidjson/writer.h"
+#include "../rapidjson/stringbuffer.h"
 bool Game::OnInit(){
 	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER | SDL_INIT_GAMECONTROLLER) != 0){
 		std::cout << "SDL_Init Error: " << SDL_GetError() << std::endl;
@@ -20,6 +22,7 @@ bool Game::OnInit(){
     InitRenderer();
 
     InitData();
+    LoadGameInfo("config.json");
     
     InitMainMenuSinglePlayer();
     InitMainMenuMultiPlayer();
@@ -84,19 +87,32 @@ void Game::InitSuperAceAnimator(){
 		"SuperAceAnimatorRight", superAce, superAceAnimationRight
 		);
 
+    MovingPathAnimation* superAceAnimationRightRight =
+    (MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("superAceAnimationRightRight");
+    MovingPathAnimator* superAceAnimatorRightRight = new MovingPathAnimator(
+                                                                       "SuperAceAnimatorRightRight", superAce, superAceAnimationRightRight
+                                                                       );
 
 	MovingPathAnimation* superAceAnimationLeft	= 
 		(MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("superAceAnimationLeft");
 	MovingPathAnimator* superAceAnimatorLeft	= new MovingPathAnimator(
 		"SuperAceAnimatorLeft", superAce, superAceAnimationLeft
 		);
+    
+    MovingPathAnimation* superAceAnimationLeftLeft	=
+    (MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("superAceAnimationLeftLeft");
+    MovingPathAnimator* superAceAnimatorLeftLeft	= new MovingPathAnimator(
+                                                                         "SuperAceAnimatorLeftLeft", superAce, superAceAnimationLeftLeft
+                                                                         );
 
 
 	AnimatorHolder::getAnimatorHolder()->Register(superAceMovingAnimator);
 	AnimatorHolder::getAnimatorHolder()->Register(superAceAnimatorUp);
 	AnimatorHolder::getAnimatorHolder()->Register(superAceAnimatorRight);
+	AnimatorHolder::getAnimatorHolder()->Register(superAceAnimatorRightRight);
 	AnimatorHolder::getAnimatorHolder()->Register(superAceAnimatorDown);
 	AnimatorHolder::getAnimatorHolder()->Register(superAceAnimatorLeft);
+	AnimatorHolder::getAnimatorHolder()->Register(superAceAnimatorLeftLeft);
 	AnimatorHolder::getAnimatorHolder()->Register(superAceAnimatorManeuever);
 	AnimatorHolder::getAnimatorHolder()->Register(superAceStartingAnimator);
 
@@ -228,6 +244,28 @@ bool Game::InitSuperAce(){
     return true;
 }
 
+using namespace rapidjson;
+void    Game::LoadGameInfo (const std::string& cataloge){
+    std::string line, text;
+    
+    static  std::string  dataFilePath = SRC_PATH + string(cataloge);
+    
+    std::ifstream file(dataFilePath);
+    
+    while(std::getline(file, line))
+    {
+        text += line + "\n";
+    }
+    const char* data = text.c_str();
+    
+    
+    Document document;
+    document.Parse(data);
+    assert(document.IsObject());
+    _remaining_loops_num =document["superAceLoops"].GetInt();
+    _highScore = document["highScore"].GetInt();
+}
+
 bool Game::InitGameInfo(){
     static int unique = 0;
     if(unique >1){
@@ -238,13 +276,21 @@ bool Game::InitGameInfo(){
     //SpriteAlphaNum* three = new SpriteAlphaNum('3',0,0);
     /*SpriteString* thirtythree = */
     new SpriteString("SCORE",20,10);
-    new SpriteString("00000",20,24);
+    // new SpriteString("00000",20,24);
     new SpriteString("HIGH",200,10);
     new SpriteString("SCORE",250,10);
     new SpriteString("FPS",450,10);
 
-    _fps_sprite				 = new SpriteString("0000",450,24);
-	_remaining_loops		 = new SpriteString("RRR", WIN_WIDTH - 36, WIN_HEIGHT - 12);
+    _fps_sprite				 = new SpriteString("0000",450,30);
+    std::string str = "";
+    for(int i = 0; i<  _remaining_loops_num; i++){
+       str += "R";
+    }
+    std::string score = std::to_string(_score);
+    std::string highScore = std::to_string(_highScore);
+    _scoreSprite             = new SpriteString(score, 20 ,30);
+    _highScoreSprite         = new SpriteString(highScore, WIN_WIDTH/2 - (int) (highScore.size()*6), 30);
+	_remaining_loops		 = new SpriteString(str, WIN_WIDTH - _remaining_loops_num*12, WIN_HEIGHT - 12);
 	_startingReadyLogo		 = new SpriteString("READY", (WIN_WIDTH / 2)-40, WIN_HEIGHT / 2);
 	_startingPlayerLogo		 = new SpriteString("PLAYER", (WIN_WIDTH / 2)-40, (WIN_HEIGHT / 2)+20);
 	_numberOne				 = new SpriteString("1", (WIN_WIDTH / 2)+30, (WIN_HEIGHT / 2)+20);
@@ -252,12 +298,7 @@ bool Game::InitGameInfo(){
 	
 	for (int i = 0; i < 5; ++i){
 		_pause->getSpriteAlphaNum(i)->setVisibility(false);
-		_pause->getSpriteAlphaNum(i)->setAlive(true);
-		_startingReadyLogo->getSpriteAlphaNum(i)->setAlive(true);
-		_startingPlayerLogo->getSpriteAlphaNum(i)->setAlive(true);
 	}
-	_startingPlayerLogo->getSpriteAlphaNum(5)->setAlive(true);
-	_numberOne->getSpriteAlphaNum(0)->setAlive(true);
 
     //SpritesHolder::getSpritesHolder()->add(three);
     return true;

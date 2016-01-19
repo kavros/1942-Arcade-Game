@@ -75,10 +75,13 @@ protected:
     
     void moveAttached(int dx, int dy);
     
+    ~Sprite();
+
+    void clearHandlers(void);
+
 public:
     //collision detection functions
     void addCollisionHandler(const CollisionHandler& h);
-    void clearHandlers(void);
     
 	//setters
 	void setState(SpriteState);
@@ -107,7 +110,6 @@ public:
     Sprite(std::string id, SDL_Rect dstRect,bool isVisible,SpriteType type,AnimationFilm* currFilm);
     Sprite(std::string id, unsigned  _frameNo, SDL_Rect _dstRect,SDL_Point  _point,bool _isVisible,SpriteType _type,AnimationFilm* _currFilm);
 
-    ~Sprite();
     
     //basic functionallity
     virtual void move (int dx, int dy);
@@ -118,11 +120,11 @@ public:
     
     void attach(Sprite* s, const std::string& name);
     
-    void detach(const std::string& name, bool destroy);
+    void detach(const std::string& name, bool forDestroy);
     
     Sprite* getAttached(const std::string& name) const;
     
-    virtual void Destroy(void);
+    virtual void destroySprite(void);
     void display (SDL_Renderer* renderer);
     
     bool isOutOfWindow();

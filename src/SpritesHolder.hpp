@@ -44,7 +44,9 @@ public:
     void CleanUp(void);
 
     void Load (const std::string& cataloge/*,SDL_Renderer* _renderer*/);
-        
+    
+    static void checkSpritesForDelete();
+
 };
 
 #endif /* SpritesHolder_hpp */

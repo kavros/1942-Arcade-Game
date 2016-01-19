@@ -30,6 +30,8 @@ public:
     
     static void Register(Sprite* s1, Sprite* s2);
     static void Cancel (Sprite* s1, Sprite* s2);
+    static void CancelAll(Sprite* s);
+
     static void Check (void);
     
 };

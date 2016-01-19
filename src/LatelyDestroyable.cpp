@@ -2,9 +2,9 @@
 
 std::list<LatelyDestroyable*> DestructionManager::_dead;
 
-void LatelyDestroyable::Delete::operator()(LatelyDestroyable* o) const
-{
-	o->inDestruction = true; delete o;
+void LatelyDestroyable::Delete::operator()(LatelyDestroyable* o) const{
+	o->inDestruction = true;
+    delete o;
 }
 
 void LatelyDestroyable::setAlive(bool a){

@@ -1,7 +1,7 @@
 #ifndef ANIMATOR_H
 #define ANIMATOR_H
 #include "includes.h"
-
+#include "LatelyDestroyable.h"
 
 typedef unsigned long timestamp_t;
 typedef std::string animid_t;
@@ -12,7 +12,7 @@ enum animatorstate_t{
 	ANIMATOR_STOPPED	= 2
 };
 
-class Animator{
+class Animator : public LatelyDestroyable{
 public:
 	typedef void(*ProgressCallback)(Animator* ,void*);
 	typedef void(*FinishCallback) (Animator*, void*);
@@ -30,6 +30,8 @@ protected:
 	void notifyStopped(void);
     void notifyProgressed(void);
     
+    virtual ~Animator();
+
 public:
 	//functions apo lectures///////////////
 	void stop(void);
@@ -58,8 +60,9 @@ public:
 	timestamp_t getLastTime(){ return _lastTime; }
 
 	Animator();
-	virtual ~Animator(){ };
 
     virtual void checkAnimatorForDelete(void) = 0;
+    
+    void destroyAnimator();
 };
 #endif

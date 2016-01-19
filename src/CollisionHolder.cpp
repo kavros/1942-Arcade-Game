@@ -3,15 +3,17 @@
 #include "Game.hpp"
 
 void Sprite::fireHandler::operator()(Sprite* bullet,Sprite* arg) const{
-    if(!bullet || !arg)
-        return;
-    if( !bullet->getVisibility() || !arg->getVisibility())
+    
+    if( !bullet->getVisibility() || !arg->getVisibility() )
         return;
     
-    bullet->setVisibility(false);
-    arg->setVisibility(false);
-    bullet->Destroy();
-    arg->Destroy();
+    assert(bullet && arg);
+    assert(bullet->isAlive() && arg->isAlive());
+    
+    //bullet->setVisibility(false);
+    //arg->setVisibility(false);
+    bullet->destroySprite();
+    arg->destroySprite();
     
     AnimatorHolder::createExplosion( arg->getDstRect() );
 }
@@ -36,11 +38,10 @@ void Sprite::touchHandler::operator()(Sprite* aircraft,Sprite* arg) const{
         //Game::setState(SINGLEPLAYER_MENU);
     }
     else{
-        aircraft->setVisibility(false);
-        arg->setVisibility(false);
-        
-        aircraft->Destroy();
-        arg->Destroy();
+        //aircraft->setVisibility(false);
+        //arg->setVisibility(false);
+        aircraft->destroySprite();
+        arg->destroySprite();
     }
 
     

@@ -9,6 +9,10 @@
 #include "Game.hpp"
 
 unsigned long Game::_currTime = 0;
+int Game::_score = 0;
+int Game::_highScore = 0;
+SpriteString* Game::_scoreSprite =nullptr;
+SpriteString* Game::_highScoreSprite = nullptr;
 Game::Game(){
     
     //FPS init
@@ -64,6 +68,45 @@ bool Game::isExit(){
     return false;
 }
 
+int Game::getHighScore() {
+    return _highScore;
+}
+
+void Game::setHighScore(int s){
+    _highScore = s;
+}
+
+int Game::getScore() {
+    return _score;
+}
+
+void Game::setScore(int s){
+    _score = s;
+    updateScoreSprite();
+    if (_score > _highScore){
+        setHighScore(_score);
+        updateHighScoreSprite();
+    }
+}
+
+SpriteString* Game::getScoreSprite(void) {
+    return _scoreSprite;
+}
+SpriteString* Game::getHighScoreSprite(void) {
+    return _highScoreSprite;
+}
+
+void Game::updateScoreSprite(){
+    std::string score = std::to_string(_score);
+    _scoreSprite->changeString(score,20, 30);
+}
+
+void Game::updateHighScoreSprite(){
+    std::string highScore = std::to_string(_highScore);
+    _highScoreSprite->changeString(highScore,WIN_WIDTH/2 - (int) (highScore.size()*6), 30);
+}
+
+
 bool Game::isMainMenu(){
     if (_gameState==SINGLEPLAYER_MENU || _gameState==MULTIPLAYER_MENU) {
         return true;
@@ -81,7 +124,7 @@ void Game::fpsLoop(){
        // std::cout<<"FPS: "<<_fps_current<<std::endl;
         _fps_frames = 0;
     }
-    _fps_sprite->changeString(std::to_string(_fps_current),450,24);
+    _fps_sprite->changeString(std::to_string(_fps_current),450,30);
     
 }
 

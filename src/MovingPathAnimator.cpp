@@ -91,9 +91,9 @@ void MovingPathAnimator::finishCallB(Animator* anim,void* b){
 
 void MovingPathAnimator::checkAnimatorForDelete(void){
     
-    assert(_sprite && _anim);
+    assert(_sprite && _anim );
     
-    if( _sprite->isOutOfWindow() || !_sprite->isAlive()){
+    if( _sprite->isOutOfWindow()){
         
         //stop the animator
         _state = ANIMATOR_FINISHED;
@@ -105,7 +105,8 @@ void MovingPathAnimator::checkAnimatorForDelete(void){
         _sprite = nullptr;
         
         //delete MovingAnimator
-        this->~MovingPathAnimator();
+        this->destroyAnimator();
+        //this->~MovingPathAnimator();
     }
     
 }
