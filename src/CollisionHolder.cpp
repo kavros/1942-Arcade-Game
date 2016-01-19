@@ -4,11 +4,11 @@
 
 void Sprite::fireHandler::operator()(Sprite* bullet,Sprite* arg) const{
     
-    if( !bullet->getVisibility() || !arg->getVisibility() )
-        return;
-    
     assert(bullet && arg);
     assert(bullet->isAlive() && arg->isAlive());
+    
+    if( !bullet->getVisibility() || !arg->getVisibility() )
+        return;
     
     bullet->setVisibility(false);
     arg->setVisibility(false);
@@ -25,8 +25,10 @@ Sprite::fireHandler* Sprite::fireHandler::Clone(void) const{
 Sprite::fireHandler::~fireHandler(){};
 
 void Sprite::touchHandler::operator()(Sprite* aircraft,Sprite* arg) const{
-    if(!aircraft || !arg)
-        return;
+    
+    assert(aircraft && arg);
+    assert(aircraft->isAlive() && arg->isAlive());
+    
     if( !aircraft->getVisibility() || !arg->getVisibility())
         return;
     
@@ -44,7 +46,6 @@ void Sprite::touchHandler::operator()(Sprite* aircraft,Sprite* arg) const{
         arg->destroySprite();
     }
 
-    
     AnimatorHolder::createExplosion( aircraft->getDstRect() );
     
 }

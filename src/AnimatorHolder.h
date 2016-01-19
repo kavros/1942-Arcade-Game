@@ -37,11 +37,7 @@ public:
     void cancel(Animator* a);
 	
     //get
-    static AnimatorHolder* getAnimatorHolder(){
-        if (!_holder)
-            _holder = new AnimatorHolder();
-        return _holder;
-    }
+    static AnimatorHolder* getAnimatorHolder();
     
     static void cleanup(){
         _holder->~AnimatorHolder();

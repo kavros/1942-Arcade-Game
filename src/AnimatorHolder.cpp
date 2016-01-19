@@ -10,6 +10,12 @@ void AnimatorHolder::cancel(Animator* a) {
     _holder->_suspended.remove(a);
 }
 
+AnimatorHolder* AnimatorHolder::getAnimatorHolder(){
+    if (!_holder)
+        _holder = new AnimatorHolder();
+    return _holder;
+}
+
 //marking state
 void AnimatorHolder::markAsRunning(Animator* a)	{
 

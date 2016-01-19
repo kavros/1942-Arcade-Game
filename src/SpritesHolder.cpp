@@ -52,6 +52,13 @@ void SpritesHolder::printSprites(SpriteType type){
     cout<<endl<<endl;
 }
 
+SpritesHolder* SpritesHolder::getSpritesHolder(){
+    if (!SpritesHolder::_holder){
+        SpritesHolder::_holder = new SpritesHolder();
+    }
+    return SpritesHolder::_holder;
+}
+
 SpriteList * SpritesHolder::getSprites(SpriteType type){
     assert(type>=0 && type<=SPRITE_TYPE_SIZE);
 
