@@ -52,4 +52,7 @@ animid_t Animator::getId(){
     return _id;
 }
 
+void Animator::setState(enum animatorstate_t state){
+	_state = state;
+}
 

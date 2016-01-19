@@ -152,3 +152,53 @@ void AnimatorHolder::createExplosion(SDL_Rect dstRect){
     
 }
 
+void AnimatorHolder::wakeUpAnimators(timestamp_t currTime){
+	AnimatorHolder* h = AnimatorHolder::getAnimatorHolder();
+	AnimatorList::iterator it = h->_suspended.begin();
+	AnimatorList::iterator it2;
+
+	
+	it = h->_suspended.begin();
+	while (it != h->_suspended.end()){
+		it2 = it;
+		it2++;
+		if ((*it)->getState() == ANIMATOR_STOPPED){
+			timestamp_t offset = (currTime - (*it)->getLastTime());
+			(*it)->timeShift(offset);
+
+			//if Animator is for SuperAce dont put it in Running list
+			//because it will never move again!!(BUG ?)
+			if ((*it)->getId().find("SuperAce") != string::npos ){
+
+			}else{
+
+				(*it)->setState(ANIMATOR_RUNNING);
+			}
+			AnimatorHolder::markAsRunning(*it);
+		}
+		it = it2;
+	}
+}
+
+void AnimatorHolder::pauseAnimators(){
+	AnimatorHolder* h = AnimatorHolder::getAnimatorHolder();
+	AnimatorList::iterator it = h->_running.begin();
+	AnimatorList::iterator it2;
+
+	//set all running animators as stoped
+	it = h->_running.begin();
+	while (it != h->_running.end()){
+		it2 = it;
+		it2++;
+		(*it)->setState(ANIMATOR_STOPPED);		
+		AnimatorHolder::markAsSuspended(*it);
+		it = it2;
+	}
+
+	
+
+	/*
+	if (AnimatorHolder::getAnimator("SuperAceStartingAnimator")->getState() == ANIMATOR_STOPPED){
+
+	}*/
+}

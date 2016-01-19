@@ -107,7 +107,7 @@ void SuperAce::fire(void){
     Animation* fireAnimation = AnimationHolder::getAnimationHolder()->getAnimation("superAceFire");
     assert(fireAnimation);
     
-    MovingAnimator* fireAnimator = new MovingAnimator("animatorSuperAceFire", bullet, (MovingAnimation*)fireAnimation);
+    MovingAnimator* fireAnimator = new MovingAnimator("animatorFire", bullet, (MovingAnimation*)fireAnimation);
     
     AnimatorHolder::getAnimatorHolder()->Register(fireAnimator);
 

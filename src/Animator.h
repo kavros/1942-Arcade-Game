@@ -41,6 +41,7 @@ public:
 	virtual void progress(timestamp_t currTime) = 0;
     
     void setOnFinished(FinishCallback f, void* c = (void*) 0);
+
 	/////////////////////////////////////////////////
     animid_t getId();
 	//////////funcs  apo ekfwnisi ////////////////////
@@ -48,9 +49,13 @@ public:
     void* getProgressClosure(void)const;
     void setOnProgress(ProgressCallback f, void* c = (void*) 0);
 	/////////////////////////////////////////////////
+
+
 	enum animatorstate_t getState(){
 		return _state;
 	}
+	void setState(enum animatorstate_t);
+	timestamp_t getLastTime(){ return _lastTime; }
 
 	Animator();
 	virtual ~Animator(){ };

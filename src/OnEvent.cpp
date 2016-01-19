@@ -47,7 +47,6 @@ void Game::OnEvent(SDL_Event* event) {
 				for (int i = 0; i < 5; ++i){
 					_startingReadyLogo->getSpriteAlphaNum(i)->setVisibility(false);
 					//_startingReadyLogo->getSpriteAlphaNum(i)->Destroy();
-
 				}
 				for (int i = 0; i < 6; ++i){
 					_startingPlayerLogo->getSpriteAlphaNum(i)->setVisibility(false);
@@ -82,11 +81,8 @@ void Game::OnEvent(SDL_Event* event) {
 
 				if (event->key.keysym.sym == SDLK_ESCAPE
 					|| event->cbutton.button == SDL_CONTROLLER_BUTTON_START) {
-					
+					setState(PAUSE_MENU);
 
-					for (int i = 0; i < 5; ++i){
-						_pause->getSpriteAlphaNum(i)->setVisibility(true);
-					}
 					//pause
 				}
 				else if (event->key.keysym.sym == SDLK_q
@@ -151,6 +147,24 @@ void Game::OnEvent(SDL_Event* event) {
 		}
         case MULTIPLAYER_GAME:
             break;
+		case PAUSE_MENU:
+
+			if ((event->type == SDL_KEYDOWN || event->type == SDL_CONTROLLERBUTTONDOWN)
+				&& (event->key.keysym.sym == SDLK_ESCAPE || event->cbutton.button == SDL_CONTROLLER_BUTTON_START)){
+				
+				AnimatorHolder::wakeUpAnimators(getGameTime());
+				for (int i = 0; i < 5; ++i){
+					_pause->getSpriteAlphaNum(i)->setVisibility(false);
+				}
+				setState(SINGLEPLAYER_GAME);
+			}
+			else{
+				AnimatorHolder::pauseAnimators();
+				for (int i = 0; i < 5; ++i){
+					_pause->getSpriteAlphaNum(i)->setVisibility(true);
+				}
+			}
+			break;
         case EXIT:
             _gameState=EXIT;
             break;
