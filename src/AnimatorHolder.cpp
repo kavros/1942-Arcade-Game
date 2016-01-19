@@ -149,12 +149,3 @@ void AnimatorHolder::createExplosion(SDL_Rect dstRect){
     
 }
 
-void AnimatorHolder::triggerBullets(){
-    static int i=0;
-    if(i == 100){
-        i=0;
-        //choose someone to fire
-        
-    }
-    i++;
-}
