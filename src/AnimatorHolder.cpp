@@ -95,8 +95,12 @@ void AnimatorHolder::triggerAnimators(){
         dstRect.y=10 + (i/100)*5;
         dstRect.w=32;
         dstRect.h=31;*/
+        AnimationFilm* animationFilm;
+        if(i%200 == 0)
+            animationFilm = AnimationFilmHolder::Get()->GetFilm("green_jet");
+        else
+            animationFilm = AnimationFilmHolder::Get()->GetFilm("green_double_engine");
         
-        AnimationFilm* animationFilm = AnimationFilmHolder::Get()->GetFilm("green_jet");
         assert(animationFilm);
         
         Sprite* sprite = SpritesHolder::getSpritesHolder()->getSprite(SpriteType::ALIEN_SHIP, "GreenJet" + std::to_string(i)); //new Sprite("spriteStraightEnemyAttack", 0, dstRect, {0,0}, true, ALIEN_SHIP, fireAnimationFilm);
@@ -114,6 +118,16 @@ void AnimatorHolder::triggerAnimators(){
     }
     i++;
 
+}
+
+void AnimatorHolder::triggerBullets(){
+    static int i=0;
+    if(i == 100){
+        i=0;
+        //choose someone to fire
+        
+    }
+    i++;
 }
 
 void AnimatorHolder::createExplosion(SDL_Rect dstRect){
@@ -144,17 +158,3 @@ void AnimatorHolder::triggerBullets(){
     }
     i++;
 }
-
-void AnimatorHolder::timeShiftAnimators(timestamp_t offset){
-	AnimatorHolder* h = AnimatorHolder::getAnimatorHolder();
-	AnimatorList::iterator it = h->_running.begin();
-	AnimatorList::iterator it2;
-
-	while (it != h->_running.end()){
-		it2 = it;
-		it2++;
-		(*it)->timeShift(offset);
-		it = it2;
-	}
-}
-
