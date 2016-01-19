@@ -35,68 +35,44 @@
                                             "continuous":false,
                                             "paths": [{
                                                       "dx": 0,
-                                                      "dy": -2,
-                                                      "frameNo": 0,
-                                                      "visibility": true,
-                                                      "delay": 20
-                                                      }, {
-                                                      "dx": 0,
-                                                      "dy": -2,
+                                                      "dy": -4,
                                                       "frameNo": 7,
                                                       "visibility": true,
-                                                      "delay": 20
+                                                      "delay": 30
                                                       }, {
                                                       "dx": 0,
-                                                      "dy": -2,
+                                                      "dy": -4,
                                                       "frameNo": 7,
                                                       "visibility": true,
-                                                      "delay": 20
+                                                      "delay": 30
                                                       }, {
                                                       "dx": 0,
-                                                      "dy": -2,
+                                                      "dy": -4,
                                                       "frameNo": 7,
                                                       "visibility": true,
-                                                      "delay": 20
-                                                      }, {
-                                                      "dx": 0,
-                                                      "dy": -2,
-                                                      "frameNo": 0,
-                                                      "visibility": true,
-                                                      "delay": 20
+                                                      "delay": 30
                                                       }]
                                             }, {
                                             "id": "superAceAnimationDown",
                                             "continuous":false,
                                             "paths": [{
                                                       "dx": 0,
-                                                      "dy": 2,
+                                                      "dy": 4,
                                                       "visibility": true,
                                                       "frameNo": 0,
-                                                      "delay": 20
+                                                      "delay": 30
                                                       }, {
                                                       "dx": 0,
-                                                      "dy": 2,
+                                                      "dy": 4,
                                                       "frameNo": 0,
                                                       "visibility": true,
-                                                      "delay": 20
+                                                      "delay": 30
                                                       }, {
                                                       "dx": 0,
-                                                      "dy": 2,
+                                                      "dy": 4,
                                                       "frameNo": 0,
                                                       "visibility": true,
-                                                      "delay": 20
-                                                      }, {
-                                                      "dx": 0,
-                                                      "dy": 2,
-                                                      "frameNo": 0,
-                                                      "visibility": true,
-                                                      "delay": 20
-                                                      }, {
-                                                      "dx": 0,
-                                                      "dy": 2,
-                                                      "frameNo": 0,
-                                                      "visibility": true,
-                                                      "delay": 20
+                                                      "delay": 30
                                                       }]
                                             }, {
                                             "id": "superAceAnimationLeft",
