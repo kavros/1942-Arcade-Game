@@ -95,12 +95,16 @@ void SuperAce::setSuperAceLives(unsigned int superAceLives){
 }
 
 void SuperAce::fire(void){
-
+    static string str = "spriteSuperAceFire";
+    static int number = 0;
+    string spriteSuperAceFireId = str + std::to_string (number);
+    number++;
+    
     /*bullet test*/
     AnimationFilm* fireAnimationFilm = AnimationFilmHolder::Get()->GetFilm("bullets");
     assert(fireAnimationFilm);
     
-    Sprite* bullet = new Sprite("spriteSuperAceFire", 2, getBulletDstRect(), {0,0}, true, SUPER_ACE, fireAnimationFilm);
+    Sprite* bullet = new Sprite(spriteSuperAceFireId, 2, getBulletDstRect(), {0,0}, true, SUPER_ACE, fireAnimationFilm);
     assert(bullet);
         
     //fireAnimation
