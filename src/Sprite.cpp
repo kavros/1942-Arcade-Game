@@ -255,7 +255,7 @@ void Sprite::setState(SpriteState state){
 }
 
 void Sprite::destroySprite(void){
-    
+    assert(this->isAlive());
     //collisions
     CollisionChecker::CancelAll(this);
     clearHandlers();
