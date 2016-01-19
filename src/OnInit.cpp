@@ -1,5 +1,7 @@
 #include "Game.hpp"
-
+#include "../rapidjson/document.h"
+#include "../rapidjson/writer.h"
+#include "../rapidjson/stringbuffer.h"
 bool Game::OnInit(){
 	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER | SDL_INIT_GAMECONTROLLER) != 0){
 		std::cout << "SDL_Init Error: " << SDL_GetError() << std::endl;
@@ -20,6 +22,7 @@ bool Game::OnInit(){
     InitRenderer();
 
     InitData();
+    LoadGameInfo("config.json");
     
     InitMainMenuSinglePlayer();
     InitMainMenuMultiPlayer();
@@ -84,19 +87,32 @@ void Game::InitSuperAceAnimator(){
 		"SuperAceAnimatorRight", superAce, superAceAnimationRight
 		);
 
+    MovingPathAnimation* superAceAnimationRightRight =
+    (MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("superAceAnimationRightRight");
+    MovingPathAnimator* superAceAnimatorRightRight = new MovingPathAnimator(
+                                                                       "SuperAceAnimatorRightRight", superAce, superAceAnimationRightRight
+                                                                       );
 
 	MovingPathAnimation* superAceAnimationLeft	= 
 		(MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("superAceAnimationLeft");
 	MovingPathAnimator* superAceAnimatorLeft	= new MovingPathAnimator(
 		"SuperAceAnimatorLeft", superAce, superAceAnimationLeft
 		);
+    
+    MovingPathAnimation* superAceAnimationLeftLeft	=
+    (MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("superAceAnimationLeftLeft");
+    MovingPathAnimator* superAceAnimatorLeftLeft	= new MovingPathAnimator(
+                                                                         "SuperAceAnimatorLeftLeft", superAce, superAceAnimationLeftLeft
+                                                                         );
 
 
 	AnimatorHolder::getAnimatorHolder()->Register(superAceMovingAnimator);
 	AnimatorHolder::getAnimatorHolder()->Register(superAceAnimatorUp);
 	AnimatorHolder::getAnimatorHolder()->Register(superAceAnimatorRight);
+	AnimatorHolder::getAnimatorHolder()->Register(superAceAnimatorRightRight);
 	AnimatorHolder::getAnimatorHolder()->Register(superAceAnimatorDown);
 	AnimatorHolder::getAnimatorHolder()->Register(superAceAnimatorLeft);
+	AnimatorHolder::getAnimatorHolder()->Register(superAceAnimatorLeftLeft);
 	AnimatorHolder::getAnimatorHolder()->Register(superAceAnimatorManeuever);
 	AnimatorHolder::getAnimatorHolder()->Register(superAceStartingAnimator);
 
@@ -228,6 +244,27 @@ bool Game::InitSuperAce(){
     return true;
 }
 
+using namespace rapidjson;
+void    Game::LoadGameInfo (const std::string& cataloge){
+    std::string line, text;
+    
+    static  std::string  dataFilePath = SRC_PATH + string(cataloge);
+    
+    std::ifstream file(dataFilePath);
+    
+    while(std::getline(file, line))
+    {
+        text += line + "\n";
+    }
+    const char* data = text.c_str();
+    
+    
+    Document document;
+    document.Parse(data);
+    assert(document.IsObject());
+    _remaining_loops_num =document["superAceLoops"].GetInt();
+}
+
 bool Game::InitGameInfo(){
     static int unique = 0;
     if(unique >1){
@@ -244,7 +281,11 @@ bool Game::InitGameInfo(){
     new SpriteString("FPS",450,10);
 
     _fps_sprite				 = new SpriteString("0000",450,24);
-	_remaining_loops		 = new SpriteString("RRR", WIN_WIDTH - 36, WIN_HEIGHT - 12);
+    std::string str = "";
+    for(int i = 0; i<  _remaining_loops_num; i++){
+       str += "R";
+    }
+	_remaining_loops		 = new SpriteString(str, WIN_WIDTH - _remaining_loops_num*12, WIN_HEIGHT - 12);
 	_startingReadyLogo		 = new SpriteString("READY", (WIN_WIDTH / 2)-40, WIN_HEIGHT / 2);
 	_startingPlayerLogo		 = new SpriteString("PLAYER", (WIN_WIDTH / 2)-40, (WIN_HEIGHT / 2)+20);
 	_numberOne				 = new SpriteString("1", (WIN_WIDTH / 2)+30, (WIN_HEIGHT / 2)+20);

@@ -82,7 +82,7 @@ public:
     bool OnInit();
     
     void OnEvent(SDL_Event* e);
-    
+    void    LoadGameInfo (const std::string& cataloge);
     void OnLoop();
     
     void OnRender();
