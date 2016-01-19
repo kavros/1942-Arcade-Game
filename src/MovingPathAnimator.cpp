@@ -102,7 +102,6 @@ void MovingPathAnimator::checkAnimatorForDelete(void){
         
         //delete MovingAnimator
         this->destroyAnimator();
-        //this->~MovingPathAnimator();
     }
     
 }
