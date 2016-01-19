@@ -60,7 +60,7 @@ void Game::OnEvent(SDL_Event* event) {
             if (event->type == SDL_KEYDOWN || event->type == SDL_CONTROLLERBUTTONDOWN){
                 
                 assert(superAce);
-                MovingPathAnimator* superAceAnimatorMoving = (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorMoving");
+                //MovingPathAnimator* superAceAnimatorMoving = (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorMoving");
                 //superAceAnimatorMoving->start(getGameTime());
                 
                 MovingPathAnimator* superAceAnimatorLeft =
@@ -147,15 +147,24 @@ void Game::OnEvent(SDL_Event* event) {
                         superAce->setState(MANEUVER);
                         superAceAnimatorManeuever->start(getGameTime());
                         _remaining_loops_num--;
-                        if (_remaining_loops_num == 2){
-                            _remaining_loops->changeString("RR", WIN_WIDTH - 24, WIN_HEIGHT - 12);
+                        std::string str = "";
+                        for(int i = 0; i <  _remaining_loops_num ; i++){
+                            str += "R";
+                        }
+                        if(_remaining_loops_num != 0){
+                            _remaining_loops->changeString(str,WIN_WIDTH - (_remaining_loops_num*12), WIN_HEIGHT - 12);
+                        }else{
+                            _remaining_loops->getSpriteAlphaNum(0)->setVisibility(false);
+                        }
+                        /*if (_remaining_loops_num == 2){
+                            _remaining_loops->changeString(str,WIN_WIDTH - (_remaining_loops_num*12), WIN_HEIGHT - 12);
                         }
                         else if (_remaining_loops_num == 1){
                             _remaining_loops->changeString("R", WIN_WIDTH - 12, WIN_HEIGHT - 12);
                         }
                         else if (_remaining_loops_num == 0){
                             _remaining_loops->getSpriteAlphaNum(0)->setVisibility(false);
-                        }
+                        }*/
                     }
                     else if (_remaining_loops_num == 0){
                         
