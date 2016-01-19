@@ -33,17 +33,18 @@ void CollisionChecker::Cancel(Sprite* s1, Sprite* s2){
     PairList::const_iterator it = holder->pairs->begin();
     PairList::const_iterator it2;
 
-    if(!holder->pairs->empty())
-        while (it != holder->pairs->end()){
-            it2=it;
-            it2++;
-            if( (*it)->first == s1 && (*it)->second == s2){
-                holder->pairs->erase(it);
-               // (*it)->first = nullptr;
-               // (*it)->second = nullptr;
-            }
-            it=it2;
-        }
+	if (!holder->pairs->empty()){
+		while (it != holder->pairs->end()){
+			it2 = it;
+			it2++;
+			if (((*it)->first->getId() == s1->getId()) && ((*it)->second->getId() == s2->getId())){
+				holder->pairs->erase(it);
+				// (*it)->first = nullptr;
+				// (*it)->second = nullptr;
+			}
+			it = it2;
+		}
+	}
 }
 
 void CollisionChecker::Check (void){
