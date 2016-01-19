@@ -13,9 +13,9 @@
                         ]
               }, {
               "id": "A",
-              "path": "numbers_and_scores/A.png",
+              "path": "numbers_and_scores/Alphabet.png",
               "rects": [
-                        [0, 0, 9, 13]
+                        [0, 0, 11, 13]
                         ]
               }, {
               "id": "B",
@@ -133,9 +133,9 @@
                         ]
               }, {
               "id": "U",
-              "path": "numbers_and_scores/U.png",
+              "path": "numbers_and_scores/Alphabet.png",
               "rects": [
-                        [0, 0, 9, 13]
+                        [225, 0, 12, 13]
                         ]
               }, {
               "id": "V",
@@ -157,15 +157,21 @@
                         ]
               }, {
               "id": "Y",
-              "path": "numbers_and_scores/Y.png",
+              "path": "numbers_and_scores/Alphabet.png",
               "rects": [
-                        [0, 0, 9, 13]
+                        [273, 0, 12 , 13]
                         ]
               }, {
               "id": "Z",
               "path": "numbers_and_scores/Z.png",
               "rects": [
                         [0, 0, 9, 13]
+                        ]
+              }, {
+              "id": " ",
+              "path": "numbers_and_scores/Alphabet.png",
+              "rects": [
+                        [294, 0, 6, 8]
                         ]
               }, {
               "id": "0",

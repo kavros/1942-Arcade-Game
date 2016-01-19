@@ -290,11 +290,11 @@ bool Game::InitGameInfo(){
     std::string highScore = std::to_string(_highScore);
     _scoreSprite             = new SpriteString(score, 20 ,30);
     _highScoreSprite         = new SpriteString(highScore, WIN_WIDTH/2 - (int) (highScore.size()*6), 30);
-	_remaining_loops		 = new SpriteString(str, WIN_WIDTH - _remaining_loops_num*12, WIN_HEIGHT - 12);
+	_remaining_loops		 = new SpriteString(str, WIN_WIDTH - _remaining_loops_num*12 -5, WIN_HEIGHT - 12);
 	_startingReadyLogo		 = new SpriteString("READY", (WIN_WIDTH / 2)-40, WIN_HEIGHT / 2);
 	_startingPlayerLogo		 = new SpriteString("PLAYER", (WIN_WIDTH / 2)-40, (WIN_HEIGHT / 2)+20);
-	_numberOne				 = new SpriteString("1", (WIN_WIDTH / 2)+30, (WIN_HEIGHT / 2)+20);
-	_pause					 = new SpriteString("PAUSE", (WIN_WIDTH / 2), (WIN_HEIGHT / 2));
+	_numberOne				 = new SpriteString("1", (WIN_WIDTH / 2)+32, (WIN_HEIGHT / 2)+20);
+	_pause					 = new SpriteString("PAUSE", (WIN_WIDTH / 2 -(5*6)), (WIN_HEIGHT / 2));
 	
 	for (int i = 0; i < 5; ++i){
 		_pause->getSpriteAlphaNum(i)->setVisibility(false);
