@@ -84,19 +84,32 @@ void Game::InitSuperAceAnimator(){
 		"SuperAceAnimatorRight", superAce, superAceAnimationRight
 		);
 
+    MovingPathAnimation* superAceAnimationRightRight =
+    (MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("superAceAnimationRightRight");
+    MovingPathAnimator* superAceAnimatorRightRight = new MovingPathAnimator(
+                                                                       "SuperAceAnimatorRightRight", superAce, superAceAnimationRightRight
+                                                                       );
 
 	MovingPathAnimation* superAceAnimationLeft	= 
 		(MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("superAceAnimationLeft");
 	MovingPathAnimator* superAceAnimatorLeft	= new MovingPathAnimator(
 		"SuperAceAnimatorLeft", superAce, superAceAnimationLeft
 		);
+    
+    MovingPathAnimation* superAceAnimationLeftLeft	=
+    (MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("superAceAnimationLeftLeft");
+    MovingPathAnimator* superAceAnimatorLeftLeft	= new MovingPathAnimator(
+                                                                         "SuperAceAnimatorLeftLeft", superAce, superAceAnimationLeftLeft
+                                                                         );
 
 
 	AnimatorHolder::getAnimatorHolder()->Register(superAceMovingAnimator);
 	AnimatorHolder::getAnimatorHolder()->Register(superAceAnimatorUp);
 	AnimatorHolder::getAnimatorHolder()->Register(superAceAnimatorRight);
+	AnimatorHolder::getAnimatorHolder()->Register(superAceAnimatorRightRight);
 	AnimatorHolder::getAnimatorHolder()->Register(superAceAnimatorDown);
 	AnimatorHolder::getAnimatorHolder()->Register(superAceAnimatorLeft);
+	AnimatorHolder::getAnimatorHolder()->Register(superAceAnimatorLeftLeft);
 	AnimatorHolder::getAnimatorHolder()->Register(superAceAnimatorManeuever);
 	AnimatorHolder::getAnimatorHolder()->Register(superAceStartingAnimator);
 
