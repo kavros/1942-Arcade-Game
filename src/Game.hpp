@@ -69,10 +69,20 @@ private:
     static int _score;
     static SpriteString* _highScoreSprite;
     static SpriteString* _scoreSprite;
+	//spriteStrings for Start
 	SpriteString* _startingReadyLogo;
 	SpriteString* _startingPlayerLogo;
 	SpriteString* _numberOne;
 	
+	//spriteStrings for End
+	SpriteString* _ShootingDownText;
+	SpriteString* _ShootingDownPercent;
+	SpriteString* _endingBonusText;
+	SpriteString* _endingBonusPoints;
+
+
+
+
 	SpriteString* _pause;
 
 	
