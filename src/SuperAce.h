@@ -49,7 +49,7 @@ public:
 	//get
     unsigned getSuperAceWidth();
     unsigned getSuperAceHeigth();
-    SDL_Rect getBulletDstRect();
+    SDL_Rect getBulletDstRect(int frame);
     unsigned int getSuperAceLives();
     
     //set
