@@ -1,7 +1,7 @@
 #include "CollisionChecker.hpp"
 #include "Sprite.hpp"
 
-CollisionChecker* CollisionChecker::holder = 0;
+CollisionChecker* CollisionChecker::_holder = 0;
 
 CollisionChecker::CollisionChecker(){
   //  pairs = new PairList();
@@ -12,10 +12,10 @@ CollisionChecker::~CollisionChecker(){
 }
 
 CollisionChecker* CollisionChecker::getCollsionCheckerHolder(){
-    if(!holder){
-        holder = new CollisionChecker();
+    if(!_holder){
+        _holder = new CollisionChecker();
     }
-    return holder;
+    return _holder;
 }
 
 void CollisionChecker::Register(Sprite* s1, Sprite* s2){
