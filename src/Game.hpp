@@ -63,14 +63,20 @@ private:
 	static SpriteString* _startingPlayerLogo;
 	static SpriteString* _numberOne;
 	//spriteStrings for End
-	static SpriteString* _ShootingDownText;
-	static SpriteString* _ShootingDownPercent;
+	static SpriteString* _shootingText;
+	static SpriteString* _shootingDownText;
+	static SpriteString* _shootingDownPercent;
 	static SpriteString* _endingBonusText;
-	static SpriteString* _endingBonusPoints;
-	static SpriteString* _pause;
-
+	static SpriteString* _pointsText;
+	static SpriteString* _pointsNumber;
+	static SpriteString* _letterR;
+	static SpriteString* _equals;
+    
     //controller
 	static SDL_GameController *_controller;
+
+    static SpriteString* _pause;
+
 
 public:
 

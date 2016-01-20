@@ -69,7 +69,7 @@ unsigned long SpriteString::getSizeOfSpriteString(void) const{
     return spriteString.size();
 }
 
-unsigned SpriteString::getSize(){
+unsigned long SpriteString::getSize(){
 	return spriteString.size();
 	
 }

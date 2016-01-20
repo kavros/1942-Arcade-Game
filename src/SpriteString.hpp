@@ -16,5 +16,5 @@ public:
     unsigned long getSizeOfSpriteString(void) const;
     void changeString(string str,int x, int y);
 
-	unsigned getSize();
+	unsigned long getSize();
 };

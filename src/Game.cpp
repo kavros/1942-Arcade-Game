@@ -35,14 +35,19 @@ SpriteString* Game::_startingReadyLogo = nullptr;
 SpriteString* Game::_startingPlayerLogo = nullptr;
 SpriteString* Game::_numberOne = nullptr;
 //spriteStrings for End
-SpriteString* Game::_ShootingDownText = nullptr;
-SpriteString* Game::_ShootingDownPercent = nullptr;
+SpriteString* Game::_shootingText = nullptr;
+SpriteString* Game::_shootingDownText = nullptr;
+SpriteString* Game::_shootingDownPercent = nullptr;
 SpriteString* Game::_endingBonusText = nullptr;
-SpriteString* Game::_endingBonusPoints = nullptr;
-SpriteString* Game::_pause = nullptr;
+SpriteString* Game::_pointsText = nullptr;
+SpriteString* Game::_pointsNumber = nullptr;
+SpriteString* Game::_letterR = nullptr;
+SpriteString* Game::_equals = nullptr;
 
 //controller
 SDL_GameController* Game::_controller = nullptr;
+
+SpriteString* Game::_pause = nullptr;
 
 int Game::OnExecute(){
 
