@@ -22,7 +22,6 @@
 #include "MovingAnimator.h"
 #include "AnimatorHolder.h"
 #include "MovingPathAnimator.h"
-#include <SDL_mixer.h>
 
 enum GameState {
 	SINGLEPLAYER_MENU,
@@ -47,7 +46,6 @@ private:
     
     static GameState _gameState;
 
-
     //Game Variables
     static unsigned long _currTime ;
     static unsigned _remaining_loops_num ;
@@ -57,6 +55,9 @@ private:
     
     //controller
 	static SDL_GameController *_controller;
+
+	//music we need holder
+	static Mix_Chunk	*_gunShot;
 
 public:
     
