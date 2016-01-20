@@ -13,6 +13,7 @@ void Sprite::fireHandler::operator()(Sprite* bullet,Sprite* arg) const{
     bullet->setVisibility(false);
     arg->setVisibility(false);
     
+    Game::setScore(Game::getScore()+ 30);
     bullet->setState(IN_COLUSION);
     arg->setState(IN_COLUSION);
     //bullet->destroySprite();
