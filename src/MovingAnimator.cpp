@@ -21,8 +21,6 @@ MovingAnimator::MovingAnimator(std::string id, Sprite* sprite, MovingAnimation* 
 };
 
 void MovingAnimator::progress(timestamp_t currTime){
-	//cout << "progress" << endl;
-	
     /*
     _sprite->move(_anim->getDx(), _anim->getDy());
     _state = ANIMATOR_FINISHED;

@@ -176,7 +176,6 @@ void    SpritesHolder::Load (const std::string& cataloge/*,SDL_Renderer* _render
         }
         
         AnimationFilm* animationFilm = AnimationFilmHolder::Get()->GetFilm(sprite["animFilmId"].GetString()) ;
-        //std::cout<<"ID: "<<id<<std::endl<<"frameNo: "<<frameNo<<std::endl;
         
         assert(sprite.IsObject());
         assert(sprite["id"].IsString());

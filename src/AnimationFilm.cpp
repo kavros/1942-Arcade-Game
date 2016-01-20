@@ -2,10 +2,6 @@
 
 //TODO Change Masked Blit to SLD Blit
 void AnimationFilm::displayFrame(SDL_Renderer* renderer, const SDL_Point point, unsigned frameNo, SDL_Rect dstRect) const{
-    //MaskedBlit(_bitmap, GetFramBox(_frameNo), dest, at);
-    
-    //SDL_RenderCopyEx(renderer,_texture, &_boxes[frameNo],&dstRect, 0, &point, SDL_FLIP_NONE);
-	//cout << destRect.x << endl;
 
 	SDL_RenderCopyEx(renderer, _texture, &(_boxes[frameNo]), &dstRect, 0, &point, SDL_FLIP_NONE);
 }

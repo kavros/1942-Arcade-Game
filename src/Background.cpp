@@ -71,7 +71,6 @@ void Background::moveTerrainObjects(int dx, int dy){
     
     for (std::list<Sprite*>::iterator it=_terrainObjects->begin(); it != _terrainObjects->end(); ++it){
         if((*it)->getVisibility() == true){
-            //cout<<(*it)->getId()<<endl;
             (*it)->changeDstRectX(dx);
             (*it)->changeDstRectY(dy);
         }
