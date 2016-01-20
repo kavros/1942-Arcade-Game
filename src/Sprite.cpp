@@ -29,6 +29,8 @@ Sprite::Sprite(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point poin
     _dstRect = dstRect;
     _dstRect.h = currFilm->getFrameBox(frameNo).h;
     _dstRect.w = currFilm->getFrameBox(frameNo).w;
+    _dstRect=dstRect;
+    setVisibility(isVisible);
     _point=point;
     _type=type;
     _currFilm=currFilm;
