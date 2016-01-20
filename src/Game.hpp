@@ -75,10 +75,14 @@ private:
 	SpriteString* _numberOne;
 	
 	//spriteStrings for End
-	SpriteString* _ShootingDownText;
-	SpriteString* _ShootingDownPercent;
+	SpriteString* _shootingText;
+	SpriteString* _downText;
+	SpriteString* _shootingDownPercent;
 	SpriteString* _endingBonusText;
-	SpriteString* _endingBonusPoints;
+	SpriteString* _pointsText;
+	SpriteString* _pointsNumber;
+	SpriteString* _letterR;
+	
 
 
 

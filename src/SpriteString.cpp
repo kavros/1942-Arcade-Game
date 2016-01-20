@@ -68,3 +68,8 @@ void SpriteString::addSpriteAlphaNum(SpriteAlphaNum* san) {
 unsigned long SpriteString::getSizeOfSpriteString(void) const{
     return spriteString.size();
 }
+
+unsigned SpriteString::getSize(){
+	return spriteString.size();
+	
+}
