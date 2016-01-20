@@ -51,6 +51,8 @@ SpriteString* Game::_pause = nullptr;
 
 //sound effects
 Mix_Chunk	*Game::_gunShot = nullptr;
+Mix_Music	*Game::_music = nullptr;
+
 
 
 int Game::OnExecute(){

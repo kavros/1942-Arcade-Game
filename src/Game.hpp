@@ -80,6 +80,7 @@ private:
 
 	//music
 	static Mix_Chunk	*_gunShot;
+	static Mix_Music	*_music;
 
 public:
     
