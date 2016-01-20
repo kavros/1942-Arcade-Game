@@ -224,6 +224,7 @@ void    Game::LoadGameInfo (const std::string& cataloge){
     assert(document.IsObject());
     _remaining_loops_num =document["superAceLoops"].GetInt();
     _highScore = document["highScore"].GetInt();
+    _spriteSize = document["spriteSize"].GetDouble();
 }
 
 bool Game::InitGameInfo(){
