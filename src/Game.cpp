@@ -8,19 +8,41 @@
 
 #include "Game.hpp"
 
+Uint32 Game::_fps_lasttime = SDL_GetTicks(); //the last recorded time.
+Uint32 Game::_fps_current = 0; //the last recorded time.
+Uint32 Game::_fps_frames = 0; //frames passed since the last recorded fps.
+
+SDL_Window * Game::_window = 0;
+SDL_Renderer * Game::_renderer = 0;
+SDL_Event Game::e;
+
+GameState Game::_gameState = GameState::SINGLEPLAYER_MENU;
+
+//animation variables
 unsigned long Game::_currTime = 0;
-int Game::_score = 0;
-int Game::_highScore = 0;
+SpriteString* Game::_fps_sprite = 0;
+
+//SpriteStrings
+SpriteString* Game::_remaining_loops = nullptr;
+unsigned Game::_remaining_loops_num = 3;
 float Game::_spriteSize = 1;
-SpriteString* Game::_scoreSprite =nullptr;
+int Game::_highScore = 0;
+int Game::_score = 0;
 SpriteString* Game::_highScoreSprite = nullptr;
-Game::Game(){
-    
-    //FPS init
-    _fps_lasttime = SDL_GetTicks(); //the last recorded time.
-    _fps_frames = 0; //frames passed since the last recorded fps.
-    _fps_current = 0;
-}
+SpriteString* Game::_scoreSprite = nullptr;
+//spriteStrings for Start
+SpriteString* Game::_startingReadyLogo = nullptr;
+SpriteString* Game::_startingPlayerLogo = nullptr;
+SpriteString* Game::_numberOne = nullptr;
+//spriteStrings for End
+SpriteString* Game::_ShootingDownText = nullptr;
+SpriteString* Game::_ShootingDownPercent = nullptr;
+SpriteString* Game::_endingBonusText = nullptr;
+SpriteString* Game::_endingBonusPoints = nullptr;
+SpriteString* Game::_pause = nullptr;
+
+//controller
+SDL_GameController* Game::_controller = nullptr;
 
 int Game::OnExecute(){
 
@@ -44,7 +66,9 @@ int Game::OnExecute(){
     return 0;
 }
 
-
+void Game::setGameTime(){
+    _currTime = SDL_GetTicks();
+}
 
 SDL_Window * Game::getWindow(){
     return _window;
@@ -124,7 +148,7 @@ bool Game::isMainMenu(){
 }
 
 void Game::fpsLoop(){
-    _fps_frames++;
+    Game::_fps_frames++;
 	
     if (_fps_lasttime < SDL_GetTicks() - FPS_INTERVAL*1000)
     {
@@ -140,7 +164,3 @@ void Game::fpsLoop(){
 unsigned long Game::getGameTime(){
     return _currTime;
 }
-
-SDL_Window * Game::_window;
-SDL_Renderer * Game::_renderer;
-GameState Game::_gameState =SINGLEPLAYER_MENU;
