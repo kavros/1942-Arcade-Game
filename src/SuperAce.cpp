@@ -19,8 +19,8 @@ SuperAce::SuperAce(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point 
     
     _bulletDstRect.x=this->getDstRect().x + (this->getSuperAceWidth()/4);
     _bulletDstRect.y=this->getDstRect().y - this->getSuperAceHeigth();
-    _bulletDstRect.w=animationBulletFilm->getFrameBox(2).w;
-    _bulletDstRect.h=animationBulletFilm->getFrameBox(2).h;
+    _bulletDstRect.w=animationBulletFilm->getFrameBox(2).w * Game::getSpriteSize();
+    _bulletDstRect.h=animationBulletFilm->getFrameBox(2).h * Game::getSpriteSize();
     
     this->addCollisionHandler(Sprite::touchHandler());
 
@@ -71,11 +71,12 @@ unsigned SuperAce::getSuperAceHeigth(){
     return _superAceHeight;
 }
 
-SDL_Rect SuperAce::getBulletDstRect(){
-    
-    _bulletDstRect.x=(this->getDstRect().x + this->getDstRect().w/3 + 2);
+SDL_Rect SuperAce::getBulletDstRect(int frame){
+    AnimationFilm* animationBulletFilm = AnimationFilmHolder::Get()->GetFilm("bullets");
+    _bulletDstRect.x=(this->getDstRect().x + this->getDstRect().w/2 - _bulletDstRect.w/2);
     _bulletDstRect.y=this->getDstRect().y - this->getSuperAceHeigth()/3;
-
+    _bulletDstRect.w=animationBulletFilm->getFrameBox(frame).w * Game::getSpriteSize();
+    _bulletDstRect.h=animationBulletFilm->getFrameBox(frame).h * Game::getSpriteSize();
     return _bulletDstRect;
 }
 
@@ -106,7 +107,7 @@ void SuperAce::fire(void){
     AnimationFilm* fireAnimationFilm = AnimationFilmHolder::Get()->GetFilm("bullets");
     assert(fireAnimationFilm);
     
-    Sprite* bullet = new Sprite(spriteSuperAceFireId, 2, getBulletDstRect(), {0,0}, true, SUPER_ACE, fireAnimationFilm);
+    Sprite* bullet = new Sprite(spriteSuperAceFireId, 2, getBulletDstRect(2), {0,0}, true, SUPER_ACE, fireAnimationFilm);
     assert(bullet);
         
     //fireAnimation
@@ -132,8 +133,8 @@ void SuperAce::fire(void){
 void SuperAce::filterMotion(int* dx, int* dy) const {
     int old_x = _dstRect.x;
     int old_y = _dstRect.y;
-    int new_x = _dstRect.x + *dx;
-    int new_y = _dstRect.y + *dy;
+    int new_x = _dstRect.x + * dx;
+    int new_y = _dstRect.y + * dy;
         
     //adjust new_y if out of screen bounds
     int max_y = 0;
