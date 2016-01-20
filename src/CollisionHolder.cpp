@@ -12,8 +12,11 @@ void Sprite::fireHandler::operator()(Sprite* bullet,Sprite* arg) const{
     
     bullet->setVisibility(false);
     arg->setVisibility(false);
-    bullet->destroySprite();
-    arg->destroySprite();
+    
+    bullet->setState(IN_COLUSION);
+    arg->setState(IN_COLUSION);
+    //bullet->destroySprite();
+    //arg->destroySprite();
     
     AnimatorHolder::createExplosion( arg->getDstRect() );
 }
@@ -41,8 +44,11 @@ void Sprite::touchHandler::operator()(Sprite* aircraft,Sprite* arg) const{
 
         aircraft->setVisibility(false);
         arg->setVisibility(false);
-        aircraft->destroySprite();
-        arg->destroySprite();
+        aircraft->setState(IN_COLUSION);
+        arg->setState(IN_COLUSION);
+
+        //aircraft->destroySprite();
+        //arg->destroySprite();
     }
     else{
         //game over
