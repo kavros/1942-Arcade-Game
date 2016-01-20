@@ -74,7 +74,7 @@ void CollisionChecker::checkFunctor::operator()(const Pair& p) const {
     
     if(s1 && s2)
         if(s1->isAlive() && s2->isAlive()){
-            
+        
             assert(s1->isAlive());
             assert(s2->isAlive());
             

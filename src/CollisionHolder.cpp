@@ -33,13 +33,12 @@ void Sprite::touchHandler::operator()(Sprite* aircraft,Sprite* arg) const{
         return;
     
     SuperAce* superAce = (SuperAce*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce");
-    if( superAce == aircraft  &&  superAce->getSuperAceLives()>0 ){
-        superAce->setSuperAceLives( superAce->getSuperAceLives() - 1 );
+    if( superAce == aircraft/*  &&  superAce->getSuperAceLives()>0 */){
+        //superAce->setSuperAceLives( superAce->getSuperAceLives() - 1 );
         //assert(0);
         //end of life
         //Game::setState(SINGLEPLAYER_MENU);
-    }
-    else{
+
         aircraft->setVisibility(false);
         arg->setVisibility(false);
         aircraft->destroySprite();

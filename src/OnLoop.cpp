@@ -27,9 +27,9 @@ void Game::OnLoop() {
             //collision checker
             CollisionChecker::Check();
 
-            //check animators and sprites
-            AnimatorHolder::checkAnimatorsForDelete();
-            SpritesHolder::checkSpritesForDelete();
+            //check animators and sprites  for delete if is out of window
+            //AnimatorHolder::checkAnimatorsForDelete();
+            //SpritesHolder::checkSpritesForDelete();
 
             //trigger animators and bullets
             AnimatorHolder::triggerAnimators();
