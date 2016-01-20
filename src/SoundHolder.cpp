@@ -50,8 +50,8 @@ void SoundHolder::cleanUp(){
     SoundMap::const_iterator it2;
 
     while(it!=SoundHolder::getSoundHolder()->soundMap.end()){
-      //  (*it)delete;
-       // it++;
+        (*it).second->~Mix_Chunk();
+        it++;
     }
     Mix_Quit();
 }
