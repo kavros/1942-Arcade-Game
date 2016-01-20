@@ -10,7 +10,7 @@ bool Game::OnInit(){
 
     SoundHolder::initSounds();
     
-    InitGamePad();
+	InitGamePad();
 	
 	//std::cout << SDL_GameControllerAddMapping("0,X360 Controller, a:b6,b:b10");
     InitWindow();
@@ -29,6 +29,29 @@ bool Game::OnInit(){
 
 	
     return true;
+}
+
+
+
+	string temp = (string(SOUNDS_PATH) + string("gunShot.wav"));
+	const char* gunShotPath = temp.c_str();
+	_gunShot = Mix_LoadWAV(gunShotPath);
+
+	if (_gunShot == nullptr){
+		printf("Could not load gunshot.wav : %s \n", Mix_GetError());
+	}
+
+	
+	 temp = (string(SOUNDS_PATH) + string("Soundtrack.ogg"));
+	const char* SoundTrackPath = temp.c_str();
+	_music = Mix_LoadMUS(SoundTrackPath);
+
+	if (_music == nullptr){
+		printf("Could not load SoundTrack.wav : %s \n", Mix_GetError());
+		assert(0);
+	}
+
+
 }
 
 void Game::InitGamePad(){
@@ -106,7 +129,7 @@ void Game::InitSuperAceAnimator(){
     (MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("superAceAnimationLeftLeft");
     MovingPathAnimator* superAceAnimatorLeftLeft	= new MovingPathAnimator(
                                                                          "SuperAceAnimatorLeftLeft", superAce, superAceAnimationLeftLeft
-                                                                             );
+                                                                         );
 
 	AnimatorHolder::Register(superAceMovingAnimator);
 	AnimatorHolder::Register(superAceAnimatorUp);
@@ -225,18 +248,18 @@ bool Game::InitGameInfo(){
     std::string remainingLoopsString = "";
     for(int i = 0; i<  _remaining_loops_num; i++){
        remainingLoopsString += "R";
-    }
-    
+	}
+	
     string score = std::to_string(_score);
     string highScore = std::to_string(_highScore);
-    
+
     SpriteStringHolder::addSpriteString("score", new SpriteString( score , 20 ,30) );
     SpriteStringHolder::addSpriteString("highScore", new SpriteString( highScore , WIN_WIDTH/2 - (int) (highScore.size()*6), 30) );
     SpriteStringHolder::addSpriteString("remainingLoops", new SpriteString(remainingLoopsString, WIN_WIDTH - _remaining_loops_num*12 -5, WIN_HEIGHT - 12) );
     SpriteStringHolder::addSpriteString("startingReadyLogo", new SpriteString("READY", (WIN_WIDTH / 2)-40, WIN_HEIGHT / 2) );
     SpriteStringHolder::addSpriteString("startingPlayerLogo", new SpriteString("PLAYER", (WIN_WIDTH / 2)-40, (WIN_HEIGHT / 2)+20) );
     SpriteStringHolder::addSpriteString("numberOne", new SpriteString("1", (WIN_WIDTH / 2)+32, (WIN_HEIGHT / 2)+20) );
-    
+
     SpriteStringHolder::addSpriteString("pause", new SpriteString("PAUSE", (WIN_WIDTH / 2 -(5*6)), (WIN_HEIGHT / 2) ) );
     SpriteStringHolder::getSpriteString("pause")->setVisibility(false);
     SpriteStringHolder::addSpriteString("shootingString", new SpriteString("SHOOTING", (WIN_WIDTH / 2) - 150, (WIN_HEIGHT / 2)) );

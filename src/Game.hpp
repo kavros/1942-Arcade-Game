@@ -49,14 +49,20 @@ private:
     static GameState _gameState;
 
     //Game Variables
-    static unsigned long _currTime ;
-    static unsigned _remaining_loops_num ;
+	static unsigned long _currTime ;
+	static unsigned _remaining_loops_num ;
     static float _spriteSize;
     static int _highScore;
     static int _score;
-    
+
     //controller
 	static SDL_GameController *_controller;
+
+    
+
+	//music
+	static Mix_Chunk	*_gunShot;
+	static Mix_Music	*_music;
 
 public:
     

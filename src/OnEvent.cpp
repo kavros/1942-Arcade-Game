@@ -11,6 +11,18 @@ void Game::OnEvent(SDL_Event* event) {
     switch (getState()) {
         case SINGLEPLAYER_MENU:
             if (event->type == SDL_MOUSEBUTTONDOWN){
+				/*
+				if (Mix_PlayingMusic() == 0){
+					Mix_PlayMusic(_music, -1);
+				}
+				else{
+					if (Mix_PausedMusic() == 1){
+						Mix_ResumeMusic();
+					}
+					else{
+						Mix_PausedMusic();
+					}
+				}*/
                 setState(SINGLEPLAYER_GAME);
             }
             else if (event->key.keysym.sym == SDLK_DOWN){
