@@ -74,6 +74,8 @@ AnimationFilm* Sprite::getCurrFilm(void) const{
 void Sprite::setFrame(unsigned i){
 	assert(0 < i < _currFilm->getTotalFrames());
 	_frameNo = i;
+    _dstRect.h = _currFilm->getFrameBox(_frameNo).h;
+    _dstRect.w = _currFilm->getFrameBox(_frameNo).w;
 }
 
 unsigned Sprite::getFrame(void) const {
