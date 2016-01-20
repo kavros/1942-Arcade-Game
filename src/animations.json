@@ -510,36 +510,42 @@
                                             "paths": [{
                                                       "dx": 0,
                                                       "dy": -5,
-                                                      "frameNo": 6,
+                                                      "frameNo": 21,
                                                       "visibility": true,
                                                       "delay": 200
                                                       }, {
                                                       "dx": 0,
                                                       "dy": -5,
-                                                      "frameNo": 6,
+                                                      "frameNo": 20,
                                                       "visibility": true,
                                                       "delay": 200
                                                       },{
                                                       "dx": 0,
                                                       "dy": -5,
-                                                      "frameNo": 6,
+                                                      "frameNo": 21,
                                                       "visibility": true,
                                                       "delay": 200
                                                       },{
                                                       "dx": 0,
                                                       "dy": -5,
-                                                      "frameNo": 6,
+                                                      "frameNo": 20,
                                                       "visibility": true,
                                                       "delay": 200
                                                       },{
                                                       "dx": 0,
                                                       "dy": -5,
                                                       "visibility": true,
-                                                      "frameNo": 6,
+                                                      "frameNo": 21,
                                                       "delay": 200
                                                       },{
                                                       "dx": 0,
                                                       "dy": -5,
+                                                      "visibility": true,
+                                                      "frameNo": 20,
+                                                      "delay": 200
+                                                      },{
+                                                      "dx": 0,
+                                                      "dy": 1,
                                                       "visibility": true,
                                                       "frameNo": 6,
                                                       "delay": 200
@@ -547,43 +553,37 @@
                                                       "dx": 0,
                                                       "dy": 1,
                                                       "visibility": true,
-                                                      "frameNo": 0,
-                                                      "delay": 200
-                                                      },{
-                                                      "dx": 0,
-                                                      "dy": 1,
-                                                      "visibility": true,
-                                                      "frameNo": 0,
+                                                      "frameNo": 7,
                                                       "delay": 200
                                                       },{
                                                       "dx": 0,
                                                       "dy": 5,
                                                       "visibility": true,
-                                                      "frameNo": 8,
+                                                      "frameNo": 22,
                                                       "delay": 200
                                                       },{
                                                       "dx": 0,
                                                       "dy": 5,
                                                       "visibility": true,
-                                                      "frameNo": 9,
+                                                      "frameNo": 23,
                                                       "delay": 200
                                                       },{
                                                       "dx": 0,
                                                       "dy": 5,
                                                       "visibility": true,
-                                                      "frameNo": 10,
+                                                      "frameNo": 24,
                                                       "delay": 200
                                                       },{
                                                       "dx": 0,
                                                       "dy": -5,
                                                       "visibility": true,
-                                                      "frameNo": 11,
+                                                      "frameNo": 15,
                                                       "delay": 200
                                                       },{
                                                       "dx": 0,
                                                       "dy": -15,
                                                       "visibility": true,
-                                                      "frameNo": 15,
+                                                      "frameNo": 14,
                                                       "delay": 200
                                                       },{
                                                       "dx": 0,
