@@ -62,7 +62,7 @@ private:
 
 	//music
 	static Mix_Chunk	*_gunShot;
-	static Mix_Chunk	*_music;
+	static Mix_Music	*_music;
 
 public:
     

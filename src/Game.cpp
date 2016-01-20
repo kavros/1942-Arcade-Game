@@ -28,7 +28,7 @@ unsigned long Game::_currTime = 0;
 //controller
 SDL_GameController* Game::_controller = nullptr;
 
-SpriteString* Game::_pause = nullptr;
+
 
 //sound effects
 Mix_Chunk	*Game::_gunShot = nullptr;
