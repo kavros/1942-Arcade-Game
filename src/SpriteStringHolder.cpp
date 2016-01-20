@@ -1,0 +1,1 @@
+#include "SpriteStringHolder.hpp"

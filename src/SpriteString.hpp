@@ -1,3 +1,5 @@
+#ifndef SpriteString_hpp
+#define SpriteString_hpp
 
 #include "includes.h"
 #include "SpriteAlphaNum.hpp"
@@ -5,16 +7,29 @@
 #include "AnimationFilmHolder.hpp"
 
 class SpriteString {
-    std::vector <SpriteAlphaNum *> spriteString;
-public:
-    SpriteString(string str,int point_x, int point_y);
-    ~SpriteString();
-    SpriteAlphaNum* getSpriteAlphaNum(unsigned i) const;
     
+private:
+    std::vector <SpriteAlphaNum *> spriteString;
+    
+public:
+    
+    //constructor
+    SpriteString(string str,int point_x, int point_y);
+    
+    //destructor
+    ~SpriteString();
+    
+    //get
+    SpriteAlphaNum* getSpriteAlphaNum(unsigned i) const;
+    unsigned long getSizeOfSpriteString(void) const;
+    unsigned long getSize();
+
+    //set
     void addSpriteAlphaNum(SpriteAlphaNum* san) ;
     
-    unsigned long getSizeOfSpriteString(void) const;
+    //accessor
     void changeString(string str,int x, int y);
 
-	unsigned long getSize();
 };
+
+#endif
