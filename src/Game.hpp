@@ -3,7 +3,7 @@
 #ifndef Game_hpp
 #define Game_hpp
 #define FRAME_VALUES 10
-
+#define FPS_INTERVAL 1.0 //seconds.
 
 #include "includes.h"
 //holders
@@ -23,9 +23,6 @@
 #include "AnimatorHolder.h"
 #include "MovingPathAnimator.h"
 
-#include <SDL_mixer.h>
-
-
 enum GameState {
 	SINGLEPLAYER_MENU,
 	MULTIPLAYER_MENU,
@@ -38,126 +35,106 @@ enum GameState {
 class Game{
     
 private:
-	/*************************************************************/
-				//FRAME RATE VARIABLES//
-	// How many frames time values to keep
-	// The higher the value the smoother the result is...
-	// Don't make it 0 or less :)
     
-    #define FPS_INTERVAL 1.0 //seconds.
+    static Uint32 _fps_lasttime; //the last recorded time.
+    static Uint32 _fps_current; //the current FPS.
+    static Uint32 _fps_frames; //frames passed since the last recorded fps.
     
-    Uint32 _fps_lasttime = SDL_GetTicks(); //the last recorded time.
-    Uint32 _fps_current; //the current FPS.
-    Uint32 _fps_frames = 0; //frames passed since the last recorded fps.
-	
-	/**************************************************************/
-
     static SDL_Window * _window;
     static SDL_Renderer * _renderer;
+	static SDL_Event e;
     
-	SDL_Event e;
-
     static GameState _gameState;
 
-	//usefull for animation 
+	//animation variables
 	static unsigned long _currTime ;
-	void setGameTime(){ _currTime = SDL_GetTicks(); }
-    SpriteString* _fps_sprite;
+    static SpriteString* _fps_sprite;
 	
-	SpriteString* _remaining_loops;
-	unsigned _remaining_loops_num = 3;
+    //SpriteStrings
+	static SpriteString* _remaining_loops;
+	static unsigned _remaining_loops_num ;
     static float _spriteSize;
     static int _highScore;
     static int _score;
     static SpriteString* _highScoreSprite;
     static SpriteString* _scoreSprite;
 	//spriteStrings for Start
-	SpriteString* _startingReadyLogo;
-	SpriteString* _startingPlayerLogo;
-	SpriteString* _numberOne;
-	
-	/*
+	static SpriteString* _startingReadyLogo;
+	static SpriteString* _startingPlayerLogo;
+	static SpriteString* _numberOne;
 	//spriteStrings for End
-	SpriteString* _shootingText;
-	SpriteString* _downText;
-	SpriteString* _shootingDownPercent;
-	SpriteString* _endingBonusText;
-	SpriteString* _pointsText;
-	SpriteString* _pointsNumber;
-	SpriteString* _letterR;
-	SpriteString* _equals;
-	*/
+	static SpriteString* _shootingText;
+	static SpriteString* _shootingDownText;
+	static SpriteString* _shootingDownPercent;
+	static SpriteString* _endingBonusText;
+	static SpriteString* _pointsText;
+	static SpriteString* _pointsNumber;
+	static SpriteString* _letterR;
+	static SpriteString* _equals;
 
+    //controller
+	static SDL_GameController *_controller;
 
+    static SpriteString* _pause;
 
-
-
-
-	SpriteString* _pause;
-
-	
-	SDL_GameController *_controller =nullptr;
 
 public:
-    Game();
     
-    //fps
-    void fpsLoop();
+    //basic functions
+    static int OnExecute();
     
-    //<akatsarakis>
-    int OnExecute();
+    static bool OnInit();
     
-    bool OnInit();
-    
-    void OnEvent(SDL_Event* e);
-    void LoadGameInfo (const std::string& cataloge);
-    void OnLoop();
-    
-    void OnRender();
-    
-    void OnCleanup();
+    static void OnEvent(SDL_Event* e);
+    static void LoadGameInfo (const std::string& cataloge);
+    static void OnLoop();
 
+    static void OnRender();
     
-    bool InitWindow();
-    bool InitRenderer();
-    bool InitData();
+    static void OnCleanup();
 
-    bool InitMainMenuSinglePlayer();
-    bool InitMainMenuMultiPlayer();
-    bool InitBackground();
-    bool InitSuperAce();
-    bool InitGameInfo();
-	void InitSuperAceAnimator();
 
-    //</akatsarakis>
+    static bool InitWindow();
+    static bool InitRenderer();
+    static bool InitData();
+    static bool InitBackground();
+    static bool InitGameInfo();
+	static void InitSuperAceAnimator();
     
     //get
     static SDL_Window * getWindow();
     static SDL_Renderer * getRenderer();
-    SDL_Surface * getSurface();
-    SDL_Texture * getTexture();
+    static SDL_Surface * getSurface();
+    static SDL_Texture * getTexture();
     static GameState getState();
     static unsigned long getGameTime();
     static int getHighScore(void)  ;
-    static void setHighScore(int s);
     static float getSpriteSize(void)  ;
-    static void setSpriteSize(float s);
     static int getScore(void)  ;
-    static void setScore(int s);
-    SpriteString* getHighScoreSprite(void) ;
-    SpriteString* getScoreSprite(void) ;
+    static SpriteString* getHighScoreSprite(void) ;
+    static SpriteString* getScoreSprite(void) ;
+    
+    //updates
     static void updateHighScoreSprite();
     static void updateScoreSprite();
+    
     //set
     static void setState(GameState gameState);
+    static void setScore(int s);
+    static void setSpriteSize(float s);
+    static void setHighScore(int s);
 
     //boolean
-    bool isExit();
-    bool isMainMenu();
+    static bool isExit();
+    static bool isMainMenu();
 
 	//fps functions
-	void fpsThink();
-	void fpsInit();
+    static void fpsLoop();
+	static void fpsThink();
+	static void fpsInit();
+
+    //animation functions
+    static void setGameTime();
 
 };
 
