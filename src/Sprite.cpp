@@ -26,7 +26,9 @@ Sprite::Sprite(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point poin
     //cout<<"TYPE "<<type;
     _spriteId = id;
     _frameNo=frameNo;
-    _dstRect=dstRect;
+    _dstRect = dstRect;
+    _dstRect.h = currFilm->getFrameBox(frameNo).h;
+    _dstRect.w = currFilm->getFrameBox(frameNo).w;
     _point=point;
     _isVisible=isVisible;
     _type=type;
@@ -231,10 +233,11 @@ void Sprite::addCollisionHandler(const CollisionHandler& h){
     if( _type == ALIEN_SHIP || _type == BIG_ALIEN_SHIP){
         SpriteList* superAce;
         
-        superAce = SpritesHolder::getSpritesHolder()->getSprites(ALIEN_SHIP);
+        superAce = SpritesHolder::getSpritesHolder()->getSprites(SUPER_ACE);
         
         if (superAce)
             for (SpriteList::iterator it=superAce->begin(); it != superAce->end(); ++it){
+                cout<<"AAAA"<<std::endl;
                 CollisionChecker::Register(this,*it);
             }
     }

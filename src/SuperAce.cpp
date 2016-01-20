@@ -4,6 +4,8 @@ SuperAce::SuperAce(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point 
 
     _spriteId = id;
     _dstRect = dstRect;
+    _dstRect.h = currFilm->getFrameBox(frameNo).h;
+    _dstRect.w = currFilm->getFrameBox(frameNo).w;
     _point = point;
     _isVisible = isVisible;
     _type = type;
