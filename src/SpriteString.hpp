@@ -26,6 +26,7 @@ public:
 
     //set
     void addSpriteAlphaNum(SpriteAlphaNum* san) ;
+    void setVisibility(bool visibility);
     
     //accessor
     void changeString(string str,int x, int y);

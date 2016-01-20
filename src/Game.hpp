@@ -11,10 +11,10 @@
 #include "AnimationHolder.h"
 #include "SpritesHolder.hpp"
 #include "CollisionChecker.hpp"
+#include "SpriteStringHolder.hpp"
 
 //sprites
 #include "SpriteAlphaNum.hpp"
-#include "SpriteString.hpp"
 #include "SuperAce.h"
 #include "Background.hpp"
 
@@ -46,37 +46,16 @@ private:
 
     static GameState _gameState;
 
-	//animation variables
-	static unsigned long _currTime ;
-    static SpriteString* _fps_sprite;
-	
-    //SpriteStrings
-	static SpriteString* _remaining_loops;
-	static unsigned _remaining_loops_num ;
+
+    //Game Variables
+    static unsigned long _currTime ;
+    static unsigned _remaining_loops_num ;
     static float _spriteSize;
     static int _highScore;
     static int _score;
-    static SpriteString* _highScoreSprite;
-    static SpriteString* _scoreSprite;
-	//spriteStrings for Start
-	static SpriteString* _startingReadyLogo;
-	static SpriteString* _startingPlayerLogo;
-	static SpriteString* _numberOne;
-	//spriteStrings for End
-	static SpriteString* _shootingText;
-	static SpriteString* _shootingDownText;
-	static SpriteString* _shootingDownPercent;
-	static SpriteString* _endingBonusText;
-	static SpriteString* _pointsText;
-	static SpriteString* _pointsNumber;
-	static SpriteString* _letterR;
-	static SpriteString* _equals;
     
     //controller
 	static SDL_GameController *_controller;
-
-    static SpriteString* _pause;
-
 
 public:
 
@@ -111,8 +90,6 @@ public:
     static int getHighScore(void)  ;
     static float getSpriteSize(void)  ;
     static int getScore(void)  ;
-    static SpriteString* getHighScoreSprite(void) ;
-    static SpriteString* getScoreSprite(void) ;
     
     //updates
     static void updateHighScoreSprite();

@@ -8,7 +8,7 @@ SpriteString::SpriteString(string str,int x, int y){
         nx += san->getCurrFilm()->getFrameBox(0).w;
         nx += 2;
         ny += san->getCurrFilm()->getFrameBox(0).y;
-        // cout<< "nx: " << nx << " ny: "<< ny <<" Char: "<< str[n]<<std::endl;
+
         spriteString.push_back(san);
         SpritesHolder::getSpritesHolder()->add(san);
     }
@@ -16,12 +16,16 @@ SpriteString::SpriteString(string str,int x, int y){
 }
 
 
-/*SpriteString::~SpriteString(){
+SpriteString::~SpriteString(){
  
- for(int i=0; i < getSizeOfSpriteString();i++){
- delete getSpriteAlphaNum(i);
- }
- }*/
+    std::vector<SpriteAlphaNum *>::const_iterator it = spriteString.begin();
+    
+    while(it!=spriteString.end()){
+        (*it)->destroySprite();
+        it++;
+    }
+ 
+}
 
 void SpriteString::changeString(string str,int x, int y){
     int nx = x, ny = y;
@@ -51,9 +55,6 @@ void SpriteString::changeString(string str,int x, int y){
         nx += san->getCurrFilm()->getFrameBox(0).w;
         nx += 2;
         ny += san->getCurrFilm()->getFrameBox(0).y;
-        //cout<< "nx: " << nx << " ny: "<< ny <<" Char: "<< str[n]<<std::endl;
-        //spriteString.push_back(san);
-        //SpritesHolder::getSpritesHolder()->add(san);
     }
 }
 
@@ -64,6 +65,16 @@ SpriteAlphaNum* SpriteString::getSpriteAlphaNum(unsigned i) const{
 void SpriteString::addSpriteAlphaNum(SpriteAlphaNum* san) {
     spriteString.push_back(san);
 }
+
+void SpriteString::setVisibility(bool visibility){
+    std::vector<SpriteAlphaNum *>::const_iterator it = spriteString.begin();
+
+    while(it!=spriteString.end()){
+        (*it)->setVisibility(visibility);
+        it++;
+    }
+}
+
 
 unsigned long SpriteString::getSizeOfSpriteString(void) const{
     return spriteString.size();
