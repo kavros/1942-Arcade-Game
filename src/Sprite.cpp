@@ -216,7 +216,7 @@ void Sprite::notifyCollision(Sprite* arg){
 
 void Sprite::addCollisionHandler(const CollisionHandler& h){
     _handlers.push_back(h.Clone());
-    
+    assert(this->getVisibility());
     if( _type == SUPER_ACE){
         SpriteList* aliens;
         SpriteList* bigAliens;
@@ -226,11 +226,13 @@ void Sprite::addCollisionHandler(const CollisionHandler& h){
         
         if (aliens)
             for (SpriteList::iterator it=aliens->begin(); it != aliens->end(); ++it){
-                CollisionChecker::Register(this,*it);
+                if( ((Sprite*)*it)->isAlive() )
+                    CollisionChecker::Register(this,*it);
             }
         if (bigAliens)
             for (SpriteList::iterator it=bigAliens->begin(); it != bigAliens->end(); ++it){
-                CollisionChecker::Register(this,*it);
+                if( ((Sprite*)*it)->isAlive() )
+                    CollisionChecker::Register(this,*it);
             }
     }
     if( _type == ALIEN_SHIP || _type == BIG_ALIEN_SHIP){
@@ -241,7 +243,8 @@ void Sprite::addCollisionHandler(const CollisionHandler& h){
         if (superAce)
             for (SpriteList::iterator it=superAce->begin(); it != superAce->end(); ++it){
                 cout<<"AAAA"<<std::endl;
-                CollisionChecker::Register(this,*it);
+                if( ((Sprite*)*it)->isAlive() )
+                    CollisionChecker::Register(this,*it);
             }
     }
 }
