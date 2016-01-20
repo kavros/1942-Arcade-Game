@@ -4,6 +4,7 @@
 #ifdef  _WIN32
 #define SRC_PATH  string("C:\\Users\\Alexis\\Source\\Repos\\1942\\src\\")
 #define IMG_PATH  string("C:\\Users\\Alexis\\Source\\Repos\\1942\\images\\")
+#define  SOUNDS_PATH string("C:\\Users\\Alexis\\Source\\Repos\\1942\\sounds\\")
 #define SLASH "\\" 
 #include <SDL_image.h>
 #include <SDL.h>
@@ -11,6 +12,7 @@
 #else
 #define IMG_PATH string(getenv("HOME")) + string("/1942/1942/images/")
 #define SRC_PATH string(getenv("HOME")) + string("/1942/1942/src/")
+#define SOUNDS_PATH string(getenv("HOME")) + string("/1942/1942/sounds/")
 #define SLASH "/"
 #include <SDL2_image/SDL_image.h>
 #include <SDL2/SDL.h>

@@ -97,6 +97,8 @@ void SuperAce::fire(void){
         static_cast<SideFighter*>(left)->Fire();
     if (auto* right = getAttached(RIGHT_FIGHTER))
         static_cast<SideFighter*>(right)->Fire();
+	
+	
 }
 
 void SuperAce::filterMotion(int* dx, int* dy) const {

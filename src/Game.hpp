@@ -22,6 +22,7 @@
 #include "MovingAnimator.h"
 #include "AnimatorHolder.h"
 #include "MovingPathAnimator.h"
+#include <SDL_mixer.h>
 
 enum GameState {
 	SINGLEPLAYER_MENU,
@@ -35,15 +36,15 @@ enum GameState {
 class Game{
     
 private:
-
+    
     static Uint32 _fps_lasttime; //the last recorded time.
     static Uint32 _fps_current; //the current FPS.
     static Uint32 _fps_frames; //frames passed since the last recorded fps.
-	
+    
     static SDL_Window * _window;
     static SDL_Renderer * _renderer;
 	static SDL_Event e;
-
+    
     static GameState _gameState;
 
 
@@ -58,7 +59,7 @@ private:
 	static SDL_GameController *_controller;
 
 public:
-
+    
     //basic functions
     static int OnExecute();
     
@@ -67,19 +68,20 @@ public:
     static void OnEvent(SDL_Event* e);
     static void LoadGameInfo (const std::string& cataloge);
     static void OnLoop();
-    
+
     static void OnRender();
     
     static void OnCleanup();
 
-    
+
     static bool InitWindow();
     static bool InitRenderer();
     static bool InitData();
     static bool InitBackground();
     static bool InitGameInfo();
 	static void InitSuperAceAnimator();
-    
+	static void InitGamePad();
+	static void InitSounds();
     //get
     static SDL_Window * getWindow();
     static SDL_Renderer * getRenderer();
