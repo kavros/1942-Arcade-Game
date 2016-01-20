@@ -28,14 +28,6 @@ unsigned long Game::_currTime = 0;
 //controller
 SDL_GameController* Game::_controller = nullptr;
 
-
-
-//sound effects
-Mix_Chunk	*Game::_gunShot = nullptr;
-Mix_Music	*Game::_music = nullptr;
-
-
-
 int Game::OnExecute(){
 
     if(OnInit() == false) {

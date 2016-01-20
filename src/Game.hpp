@@ -58,12 +58,6 @@ private:
     //controller
 	static SDL_GameController *_controller;
 
-    
-
-	//music
-	static Mix_Chunk	*_gunShot;
-	static Mix_Music	*_music;
-
 public:
     
     //basic functions

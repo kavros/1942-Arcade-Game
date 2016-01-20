@@ -25,9 +25,12 @@ void SoundHolder::initSounds(){
         printf("SDL MIXER Error: %s \n", SDL_GetError());
     }
 
+    
+    
     SoundHolder::addSound("gunshot", Mix_LoadWAV(  (string(SOUNDS_PATH) + string("gunshot.wav")).c_str()  ));
+    SoundHolder::addSound("soundTrack", Mix_LoadWAV(  (string(SOUNDS_PATH) + string("Soundtrack.ogg")).c_str()  ));
 
-    if (! SoundHolder::getSound("gunshot") ){
+    if (! SoundHolder::getSound("gunshot") || ! SoundHolder::getSound("soundTrack")){
         printf("Could not load gunshot.wav : %s \n", Mix_GetError());
     }
 
@@ -41,3 +44,15 @@ void SoundHolder::addSound(string id, Mix_Chunk* sound){
 Mix_Chunk* SoundHolder::getSound(string id){
     return SoundHolder::getSoundHolder()->soundMap[ id ];
 }
+
+void SoundHolder::cleanUp(){
+    SoundMap::const_iterator it = SoundHolder::getSoundHolder()->soundMap.begin();
+    SoundMap::const_iterator it2;
+
+    while(it!=SoundHolder::getSoundHolder()->soundMap.end()){
+      //  (*it)delete;
+       // it++;
+    }
+    Mix_Quit();
+}
+

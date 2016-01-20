@@ -21,7 +21,8 @@ public:
     static void initSounds();
     static void addSound(string id, Mix_Chunk* sound);
     static Mix_Chunk* getSound(string id);
-    
+    static void cleanUp();
+
 };
 
 #endif

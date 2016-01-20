@@ -29,28 +29,6 @@ bool Game::OnInit(){
 
 	
     return true;
-}
-
-
-
-	string temp = (string(SOUNDS_PATH) + string("gunShot.wav"));
-	const char* gunShotPath = temp.c_str();
-	_gunShot = Mix_LoadWAV(gunShotPath);
-
-	if (_gunShot == nullptr){
-		printf("Could not load gunshot.wav : %s \n", Mix_GetError());
-	}
-
-	
-	 temp = (string(SOUNDS_PATH) + string("Soundtrack.ogg"));
-	const char* SoundTrackPath = temp.c_str();
-	_music = Mix_LoadMUS(SoundTrackPath);
-
-	if (_music == nullptr){
-		printf("Could not load SoundTrack.wav : %s \n", Mix_GetError());
-		assert(0);
-	}
-
 
 }
 

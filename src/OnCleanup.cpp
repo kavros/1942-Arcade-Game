@@ -5,10 +5,9 @@ void Game::OnCleanup(){
 		SDL_GameControllerClose(_controller);
 		_controller = nullptr;
 	}
-	Mix_FreeChunk(_gunShot);
-	Mix_FreeMusic(_music);
-	Mix_Quit();
 
+    SoundHolder::cleanUp();
+    
     SDL_DestroyRenderer(_renderer);
     SDL_DestroyWindow(_window);
     SDL_Quit();
