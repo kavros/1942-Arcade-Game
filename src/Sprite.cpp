@@ -27,8 +27,8 @@ Sprite::Sprite(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point poin
     _spriteId = id;
     _frameNo=frameNo;
     _dstRect = dstRect;
-    _dstRect.h = currFilm->getFrameBox(frameNo).h;
-    _dstRect.w = currFilm->getFrameBox(frameNo).w;
+    _dstRect.h = currFilm->getFrameBox(frameNo).h * Game::getSpriteSize();
+    _dstRect.w = currFilm->getFrameBox(frameNo).w * Game::getSpriteSize();
     _dstRect=dstRect;
     setVisibility(isVisible);
     _point=point;
@@ -74,8 +74,8 @@ AnimationFilm* Sprite::getCurrFilm(void) const{
 void Sprite::setFrame(unsigned i){
 	assert(0 < i < _currFilm->getTotalFrames());
 	_frameNo = i;
-    _dstRect.h = _currFilm->getFrameBox(_frameNo).h;
-    _dstRect.w = _currFilm->getFrameBox(_frameNo).w;
+    _dstRect.h = _currFilm->getFrameBox(_frameNo).h * Game::getSpriteSize();
+    _dstRect.w = _currFilm->getFrameBox(_frameNo).w * Game::getSpriteSize();
 }
 
 unsigned Sprite::getFrame(void) const {
