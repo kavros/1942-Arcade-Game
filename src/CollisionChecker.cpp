@@ -22,9 +22,9 @@ void CollisionChecker::Register(Sprite* s1, Sprite* s2){
     assert(s1->isAlive());
     assert(s2->isAlive());
     
-    CollisionChecker* holder = CollisionChecker::getCollsionCheckerHolder();
+    CollisionChecker* h = CollisionChecker::getCollsionCheckerHolder();
 
-    holder->pairs.push_back(Pair(s1,s2));
+    h->pairs.push_back(Pair(s1,s2));
     
 }
 
@@ -72,10 +72,10 @@ void CollisionChecker::CancelAll(Sprite* s){
 void CollisionChecker::checkFunctor::operator()(const Pair& p) const {
     Sprite* s1=p.first;
     Sprite* s2=p.second;
-
+    
     if(s1 && s2)
         if(s1->isAlive() && s2->isAlive()){
-            
+        
             assert(s1->isAlive());
             assert(s2->isAlive());
             

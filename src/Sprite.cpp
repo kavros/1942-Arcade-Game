@@ -11,7 +11,7 @@ Sprite::Sprite(){
     _frameNo=0;
     _dstRect={0,0,0,0};
     _point={0,0};
-    _isVisible=false;
+    setVisibility(true);
     _type=UNDEFINED;
     _state=FLYING;
     _currFilm=nullptr;
@@ -30,7 +30,6 @@ Sprite::Sprite(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point poin
     _dstRect.h = currFilm->getFrameBox(frameNo).h;
     _dstRect.w = currFilm->getFrameBox(frameNo).w;
     _point=point;
-    _isVisible=isVisible;
     _type=type;
     _currFilm=currFilm;
     _state=FLYING;
@@ -47,7 +46,7 @@ Sprite::Sprite(std::string id, SDL_Rect dstRect,bool isVisible,SpriteType type,A
     _frameNo=0;
     _dstRect=dstRect;
     _point={0,0};
-    _isVisible=isVisible;
+    setVisibility(isVisible);
     _type=type;
     _currFilm=currFilm;
     _state=FLYING;

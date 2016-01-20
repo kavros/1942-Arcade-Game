@@ -3,11 +3,22 @@
 AnimatorHolder* AnimatorHolder::_holder = 0;
 
 void AnimatorHolder::Register(Animator* a) {
-    _holder->_map[a->getId()] = a;
-    _holder->_suspended.push_back(a);
+    AnimatorHolder::getAnimatorHolder()->_map[a->getId()] = a;
+    AnimatorHolder::getAnimatorHolder()->_suspended.push_back(a);
 }
 void AnimatorHolder::cancel(Animator* a) {
-    _holder->_suspended.remove(a);
+    AnimatorHolder::getAnimatorHolder()->_suspended.remove(a);
+}
+
+AnimatorHolder* AnimatorHolder::getAnimatorHolder(){
+    if (!_holder)
+        _holder = new AnimatorHolder();
+    return _holder;
+}
+
+void AnimatorHolder::cleanup(){
+    _holder->~AnimatorHolder();
+    _holder = NULL;
 }
 
 //marking state
@@ -114,7 +125,7 @@ void AnimatorHolder::triggerAnimators(){
         assert(animation);
         
         MovingPathAnimator* animator = new MovingPathAnimator(string("animatorStraightEnemyAttack") + std::to_string(i), sprite, (MovingPathAnimation*)animation);
-        AnimatorHolder::getAnimatorHolder()->Register(animator);
+        AnimatorHolder::Register(animator);
         
         //Game::get
         animator->start(Game::getGameTime());
@@ -147,7 +158,7 @@ void AnimatorHolder::createExplosion(SDL_Rect dstRect){
     
     MovingPathAnimator* explosionAnimator = new MovingPathAnimator("animatorExplosion", explosion, (MovingPathAnimation*)explosionAnimation);
     
-    AnimatorHolder::getAnimatorHolder()->Register(explosionAnimator);
+    AnimatorHolder::Register(explosionAnimator);
     
     explosionAnimator->start(Game::getGameTime());
     

@@ -106,15 +106,15 @@ void Game::InitSuperAceAnimator(){
                                                                          );
 
 
-	AnimatorHolder::getAnimatorHolder()->Register(superAceMovingAnimator);
-	AnimatorHolder::getAnimatorHolder()->Register(superAceAnimatorUp);
-	AnimatorHolder::getAnimatorHolder()->Register(superAceAnimatorRight);
-	AnimatorHolder::getAnimatorHolder()->Register(superAceAnimatorRightRight);
-	AnimatorHolder::getAnimatorHolder()->Register(superAceAnimatorDown);
-	AnimatorHolder::getAnimatorHolder()->Register(superAceAnimatorLeft);
-	AnimatorHolder::getAnimatorHolder()->Register(superAceAnimatorLeftLeft);
-	AnimatorHolder::getAnimatorHolder()->Register(superAceAnimatorManeuever);
-	AnimatorHolder::getAnimatorHolder()->Register(superAceStartingAnimator);
+	AnimatorHolder::Register(superAceMovingAnimator);
+	AnimatorHolder::Register(superAceAnimatorUp);
+	AnimatorHolder::Register(superAceAnimatorRight);
+	AnimatorHolder::Register(superAceAnimatorRightRight);
+	AnimatorHolder::Register(superAceAnimatorDown);
+	AnimatorHolder::Register(superAceAnimatorLeft);
+	AnimatorHolder::Register(superAceAnimatorLeftLeft);
+	AnimatorHolder::Register(superAceAnimatorManeuever);
+	AnimatorHolder::Register(superAceStartingAnimator);
 
 
 
@@ -176,51 +176,11 @@ bool Game::InitData(){
 }
 
 bool Game::InitMainMenuSinglePlayer(){
-    /*static int unique = 0;
-    if(unique >1){
-        assert(0);
-    }
-    unique++;
-    
-    SDL_Rect dstRect;
-    dstRect.x=0;
-    dstRect.y=0;
-    dstRect.w=WIN_WIDTH;
-    dstRect.h=WIN_HEIGHT;
-    
-    bool _isVisible=true;
-    SpriteType _type=MAIN_MENU_SINGLEPLAYER;
-    
-    AnimationFilm* animationFilm = AnimationFilmHolder::Get()->GetFilm("mainMenuSingleplayer") ;
- 
-    Sprite *sprite=new Sprite(dstRect,_isVisible,_type,animationFilm);
-    
-    SpritesHolder::getSpritesHolder()->add(sprite);*/
     
     return true;
 }
 
 bool Game::InitMainMenuMultiPlayer(){
-    /*static int unique = 0;
-    if(unique >1){
-        assert(0);
-    }
-    unique++;
-    
-    SDL_Rect dstRect;
-    dstRect.x=0;
-    dstRect.y=0;
-    dstRect.w=WIN_WIDTH;
-    dstRect.h=WIN_HEIGHT;
-    
-    bool _isVisible=true;
-    SpriteType _type=MAIN_MENU_MULTIPLAYER;
-    
-    AnimationFilm* animationFilm = AnimationFilmHolder::Get()->GetFilm("mainMenuMultiplayer") ;
-    
-    Sprite *sprite=new Sprite(dstRect,_isVisible,_type,animationFilm);
-    
-    SpritesHolder::getSpritesHolder()->add(sprite);*/
     
     return true;
 }

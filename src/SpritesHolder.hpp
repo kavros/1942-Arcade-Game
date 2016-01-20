@@ -33,12 +33,8 @@ public:
     
     void printSprites(SpriteType type);
     
-	static  SpritesHolder* getSpritesHolder(){
-		if (!SpritesHolder::_holder){
-			SpritesHolder::_holder = new SpritesHolder();
-		}
-		return SpritesHolder::_holder;
-	}
+    static  SpritesHolder* getSpritesHolder();
+    
     void displaySprites(SDL_Renderer* renderer, SpriteType type);
         
     void CleanUp(void);

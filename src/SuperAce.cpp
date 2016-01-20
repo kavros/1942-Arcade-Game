@@ -7,7 +7,7 @@ SuperAce::SuperAce(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point 
     _dstRect.h = currFilm->getFrameBox(frameNo).h;
     _dstRect.w = currFilm->getFrameBox(frameNo).w;
     _point = point;
-    _isVisible = isVisible;
+    setVisibility(isVisible);
     _type = type;
     _currFilm = currFilm;
     setFrame(frameNo);
@@ -33,7 +33,7 @@ SuperAce::SuperAce(){
 	AnimationFilmHolder *animation = AnimationFilmHolder::Get();
     
 	_currFilm = animation->GetFilm("Super.Ace.1942");
-	_isVisible = true;
+    setVisibility(true);
 
 	//set sprite size and positions on the screen
 	setFrame(0);
@@ -97,12 +97,16 @@ void SuperAce::setSuperAceLives(unsigned int superAceLives){
 }
 
 void SuperAce::fire(void){
-
+    static string str = "spriteSuperAceFire";
+    static int number = 0;
+    string spriteSuperAceFireId = str + std::to_string (number);
+    number++;
+    
     /*bullet test*/
     AnimationFilm* fireAnimationFilm = AnimationFilmHolder::Get()->GetFilm("bullets");
     assert(fireAnimationFilm);
     
-    Sprite* bullet = new Sprite("spriteSuperAceFire", 2, getBulletDstRect(), {0,0}, true, SUPER_ACE, fireAnimationFilm);
+    Sprite* bullet = new Sprite(spriteSuperAceFireId, 2, getBulletDstRect(), {0,0}, true, SUPER_ACE, fireAnimationFilm);
     assert(bullet);
         
     //fireAnimation
@@ -111,7 +115,7 @@ void SuperAce::fire(void){
     
     MovingAnimator* fireAnimator = new MovingAnimator("animatorFire", bullet, (MovingAnimation*)fireAnimation);
     
-    AnimatorHolder::getAnimatorHolder()->Register(fireAnimator);
+    AnimatorHolder::Register(fireAnimator);
 
     fireAnimator->start(Game::getGameTime());
     

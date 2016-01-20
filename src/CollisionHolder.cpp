@@ -4,11 +4,11 @@
 
 void Sprite::fireHandler::operator()(Sprite* bullet,Sprite* arg) const{
     
-    if( !bullet->getVisibility() || !arg->getVisibility() )
-        return;
-    
     assert(bullet && arg);
     assert(bullet->isAlive() && arg->isAlive());
+    
+    if( !bullet->getVisibility() || !arg->getVisibility() )
+        return;
     
     bullet->setVisibility(false);
     arg->setVisibility(false);
@@ -25,26 +25,26 @@ Sprite::fireHandler* Sprite::fireHandler::Clone(void) const{
 Sprite::fireHandler::~fireHandler(){};
 
 void Sprite::touchHandler::operator()(Sprite* aircraft,Sprite* arg) const{
-    if(!aircraft || !arg)
-        return;
+    
+    assert(aircraft && arg);
+    assert(aircraft->isAlive() && arg->isAlive());
+    
     if( !aircraft->getVisibility() || !arg->getVisibility())
         return;
     
     SuperAce* superAce = (SuperAce*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce");
-    if( superAce == aircraft  &&  superAce->getSuperAceLives()>0 ){
-        superAce->setSuperAceLives( superAce->getSuperAceLives() - 1 );
+    if( superAce == aircraft/*  &&  superAce->getSuperAceLives()>0 */){
+        //superAce->setSuperAceLives( superAce->getSuperAceLives() - 1 );
         //assert(0);
         //end of life
         //Game::setState(SINGLEPLAYER_MENU);
-    }
-    else{
+
         aircraft->setVisibility(false);
         arg->setVisibility(false);
         aircraft->destroySprite();
         arg->destroySprite();
     }
 
-    
     AnimatorHolder::createExplosion( aircraft->getDstRect() );
     
 }
