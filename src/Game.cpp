@@ -11,6 +11,7 @@
 unsigned long Game::_currTime = 0;
 int Game::_score = 0;
 int Game::_highScore = 0;
+float Game::_spriteSize = 1;
 SpriteString* Game::_scoreSprite =nullptr;
 SpriteString* Game::_highScoreSprite = nullptr;
 Game::Game(){
@@ -66,6 +67,14 @@ bool Game::isExit(){
         return true;
     }
     return false;
+}
+
+float Game::getSpriteSize() {
+    return _spriteSize;
+}
+
+void Game::setSpriteSize(float s){
+    _spriteSize= s;
 }
 
 int Game::getHighScore() {

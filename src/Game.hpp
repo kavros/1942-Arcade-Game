@@ -64,7 +64,7 @@ private:
 	
 	SpriteString* _remaining_loops;
 	unsigned _remaining_loops_num = 3;
-
+    static float _spriteSize;
     static int _highScore;
     static int _score;
     static SpriteString* _highScoreSprite;
@@ -120,6 +120,8 @@ public:
     static unsigned long getGameTime();
     static int getHighScore(void)  ;
     static void setHighScore(int s);
+    static float getSpriteSize(void)  ;
+    static void setSpriteSize(float s);
     static int getScore(void)  ;
     static void setScore(int s);
     SpriteString* getHighScoreSprite(void) ;
