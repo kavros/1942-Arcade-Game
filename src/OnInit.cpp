@@ -7,8 +7,10 @@ bool Game::OnInit(){
 		std::cout << "SDL_Init Error: " << SDL_GetError() << std::endl;
 		return false;
 	}
-	InitSounds();
-	InitGamePad();
+
+    SoundHolder::initSounds();
+    
+    InitGamePad();
 	
 	//std::cout << SDL_GameControllerAddMapping("0,X360 Controller, a:b6,b:b10");
     InitWindow();
@@ -27,22 +29,6 @@ bool Game::OnInit(){
 
 	
     return true;
-}
-void Game::InitSounds(){
-	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0){
-		printf("SDL MIXER Error: %s \n", SDL_GetError());
-	}
-
-
-
-	string temp = (string(SOUNDS_PATH) + string("gunshot.wav"));
-	const char* gunShotPath = temp.c_str();
-	_gunShot = Mix_LoadWAV(gunShotPath);
-
-	if (_gunShot == nullptr){
-		printf("Could not load gunshot.wav : %s \n", Mix_GetError());
-	}
-
 }
 
 void Game::InitGamePad(){

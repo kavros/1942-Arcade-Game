@@ -6,12 +6,14 @@
 #define FPS_INTERVAL 1.0 //seconds.
 
 #include "includes.h"
+
 //holders
 #include "AnimationFilmHolder.hpp"
 #include "AnimationHolder.h"
 #include "SpritesHolder.hpp"
 #include "CollisionChecker.hpp"
 #include "SpriteStringHolder.hpp"
+#include "SoundHolder.hpp"
 
 //sprites
 #include "SpriteAlphaNum.hpp"
@@ -56,9 +58,6 @@ private:
     //controller
 	static SDL_GameController *_controller;
 
-	//music we need holder
-	static Mix_Chunk	*_gunShot;
-
 public:
     
     //basic functions
@@ -82,7 +81,7 @@ public:
     static bool InitGameInfo();
 	static void InitSuperAceAnimator();
 	static void InitGamePad();
-	static void InitSounds();
+
     //get
     static SDL_Window * getWindow();
     static SDL_Renderer * getRenderer();

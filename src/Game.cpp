@@ -28,9 +28,6 @@ unsigned long Game::_currTime = 0;
 //controller
 SDL_GameController* Game::_controller = nullptr;
 
-//sound effects
-Mix_Chunk	*Game::_gunShot = nullptr;
-
 int Game::OnExecute(){
 
     if(OnInit() == false) {
@@ -144,3 +141,4 @@ void Game::fpsLoop(){
 unsigned long Game::getGameTime(){
     return _currTime;
 }
+

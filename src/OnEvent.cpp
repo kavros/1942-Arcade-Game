@@ -130,7 +130,8 @@ void Game::OnEvent(SDL_Event* event) {
 
 					((SuperAce*)superAce)->fire();
 					//play sound for fire
-					Mix_PlayChannel(-1, _gunShot, 0);
+					Mix_PlayChannel(-1, SoundHolder::getSound("gunshot") , 0);
+
                     prevEvent = *event;
 					break;
 				}
