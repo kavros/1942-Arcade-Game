@@ -49,6 +49,10 @@ SDL_GameController* Game::_controller = nullptr;
 
 SpriteString* Game::_pause = nullptr;
 
+//sound effects
+Mix_Chunk	*Game::_gunShot = nullptr;
+
+
 int Game::OnExecute(){
 
     if(OnInit() == false) {

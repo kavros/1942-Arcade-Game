@@ -22,6 +22,7 @@
 #include "MovingAnimator.h"
 #include "AnimatorHolder.h"
 #include "MovingPathAnimator.h"
+#include <SDL_mixer.h>
 
 enum GameState {
 	SINGLEPLAYER_MENU,
@@ -77,6 +78,8 @@ private:
 
     static SpriteString* _pause;
 
+	//music
+	static Mix_Chunk	*_gunShot;
 
 public:
     
@@ -100,7 +103,8 @@ public:
     static bool InitBackground();
     static bool InitGameInfo();
 	static void InitSuperAceAnimator();
-    
+	static void InitGamePad();
+	static void InitSounds();
     //get
     static SDL_Window * getWindow();
     static SDL_Renderer * getRenderer();
