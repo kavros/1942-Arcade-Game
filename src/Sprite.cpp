@@ -13,7 +13,7 @@ Sprite::Sprite(){
     _point={0,0};
     setVisibility(true);
     _type=UNDEFINED;
-    _state=FLYING;
+    setState(FLYING);
     _currFilm=nullptr;
     _parent=nullptr;
     
@@ -34,7 +34,7 @@ Sprite::Sprite(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point poin
     _point=point;
     _type=type;
     _currFilm=currFilm;
-    _state=FLYING;
+    setState(FLYING);
     _parent=nullptr;
 
     SpritesHolder::getSpritesHolder()->add(this);
@@ -51,7 +51,7 @@ Sprite::Sprite(std::string id, SDL_Rect dstRect,bool isVisible,SpriteType type,A
     setVisibility(isVisible);
     _type=type;
     _currFilm=currFilm;
-    _state=FLYING;
+    setState(FLYING);
     _parent=nullptr;
 
     SpritesHolder::getSpritesHolder()->add(this);
@@ -259,7 +259,7 @@ void Sprite::clearHandlers(void){
 }
 
 void Sprite::setState(SpriteState state){
-	assert(FLYING <= state && state <= MANEUVER);
+	assert(FLYING <= state && state <= IN_COLUSION);
 	_state = state;
 }
 
