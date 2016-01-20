@@ -41,23 +41,6 @@ Sprite::Sprite(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point poin
 
 }
 
-Sprite::Sprite(std::string id, SDL_Rect dstRect,bool isVisible,SpriteType type,AnimationFilm* currFilm){
-    assert(currFilm!=NULL && type>=0 && type<SPRITE_TYPE_SIZE);
-    _spriteId = id;
-    cout<<"TYPE "<<type;
-    _frameNo=0;
-    _dstRect=dstRect;
-    _point={0,0};
-    setVisibility(isVisible);
-    _type=type;
-    _currFilm=currFilm;
-    setState(FLYING);
-    _parent=nullptr;
-
-    SpritesHolder::getSpritesHolder()->add(this);
-
-}
-
 Sprite::~Sprite(){
 }
 
@@ -132,6 +115,10 @@ void Sprite::move (int dx, int dy){
     _dstRect.y+=dy;
     //moveAttached(dx, dy);
 }
+
+void Sprite::filterMotion(int* dx, int* dy) const {
+    /* default is unfiltered motion */
+};
 
 void Sprite::attach (Sprite* s, const std::string& name){
     _attached[name] = s;

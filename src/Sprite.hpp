@@ -93,7 +93,6 @@ public:
     void setDstRectX(int x);
     void setDstRectY(int y);
     void setCurrFilm(AnimationFilm* currFilm);
-    AnimationFilm* getCurrFilm(void) const;
 
     //getters
     std::string getId(void) const;
@@ -105,19 +104,16 @@ public:
 	SpriteState getState();
     void changeDstRectX(int dx);
     void changeDstRectY(int dy);
+    AnimationFilm* getCurrFilm(void) const;
 
 	//constructors
     Sprite();
-    Sprite(std::string id, SDL_Rect dstRect,bool isVisible,SpriteType type,AnimationFilm* currFilm);
     Sprite(std::string id, unsigned  _frameNo, SDL_Rect _dstRect,SDL_Point  _point,bool _isVisible,SpriteType _type,AnimationFilm* _currFilm);
-
     
     //basic functionallity
     virtual void move (int dx, int dy);
     
-	virtual void filterMotion(int* dx, int* dy) const {
-        /* default is unfiltered motion */
-    };
+    virtual void filterMotion(int* dx, int* dy) const;
     
     void attach(Sprite* s, const std::string& name);
     
@@ -126,6 +122,7 @@ public:
     Sprite* getAttached(const std::string& name) const;
     
     virtual void destroySprite(void);
+    
     void display (SDL_Renderer* renderer);
     
     bool isOutOfWindow();

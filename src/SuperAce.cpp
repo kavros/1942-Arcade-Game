@@ -28,37 +28,6 @@ SuperAce::SuperAce(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point 
     
 }
 
-SuperAce::SuperAce(){
-
-	AnimationFilmHolder *animation = AnimationFilmHolder::Get();
-    
-	_currFilm = animation->GetFilm("Super.Ace.1942");
-    setVisibility(true);
-
-	//set sprite size and positions on the screen
-	setFrame(0);
-
-    _superAceWidth=_currFilm->getFrameBox(0).w;
-    _superAceHeight=_currFilm->getFrameBox(0).h;
-    
-	_dstRect.x = WIN_WIDTH / 2-_superAceWidth/2;
-	_dstRect.y = WIN_HEIGHT - _superAceHeight;
-	_dstRect.w = _superAceWidth;
-	_dstRect.h = _superAceHeight;
-
-	_type = SUPER_ACE;
-    
-	//set center of the picture up left 
-	_point.x = 0;
-	_point.y = 0;
-
-    _superAceLives = 3;
-
-    SpritesHolder::getSpritesHolder()->add(this);
-
-    assert(0);
-}
-
 void SuperAce::render(SDL_Renderer * renderer){
 	display(renderer);
 };
