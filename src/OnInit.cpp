@@ -176,51 +176,11 @@ bool Game::InitData(){
 }
 
 bool Game::InitMainMenuSinglePlayer(){
-    /*static int unique = 0;
-    if(unique >1){
-        assert(0);
-    }
-    unique++;
-    
-    SDL_Rect dstRect;
-    dstRect.x=0;
-    dstRect.y=0;
-    dstRect.w=WIN_WIDTH;
-    dstRect.h=WIN_HEIGHT;
-    
-    bool _isVisible=true;
-    SpriteType _type=MAIN_MENU_SINGLEPLAYER;
-    
-    AnimationFilm* animationFilm = AnimationFilmHolder::Get()->GetFilm("mainMenuSingleplayer") ;
- 
-    Sprite *sprite=new Sprite(dstRect,_isVisible,_type,animationFilm);
-    
-    SpritesHolder::getSpritesHolder()->add(sprite);*/
     
     return true;
 }
 
 bool Game::InitMainMenuMultiPlayer(){
-    /*static int unique = 0;
-    if(unique >1){
-        assert(0);
-    }
-    unique++;
-    
-    SDL_Rect dstRect;
-    dstRect.x=0;
-    dstRect.y=0;
-    dstRect.w=WIN_WIDTH;
-    dstRect.h=WIN_HEIGHT;
-    
-    bool _isVisible=true;
-    SpriteType _type=MAIN_MENU_MULTIPLAYER;
-    
-    AnimationFilm* animationFilm = AnimationFilmHolder::Get()->GetFilm("mainMenuMultiplayer") ;
-    
-    Sprite *sprite=new Sprite(dstRect,_isVisible,_type,animationFilm);
-    
-    SpritesHolder::getSpritesHolder()->add(sprite);*/
     
     return true;
 }

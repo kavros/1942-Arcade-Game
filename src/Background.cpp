@@ -14,8 +14,6 @@ Background::Background(){
     _terrainWidth = _currFilm->getFrameBox(0).w;
     _terrainHeight = _currFilm->getFrameBox(0).h;
     
-    _isVisible = true;
-
     _dstRect.x = 0;
 	_dstRect.y = -_terrainHeight+WIN_HEIGHT;
     _dstRect.w = WIN_WIDTH;

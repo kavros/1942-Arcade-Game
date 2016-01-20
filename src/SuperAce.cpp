@@ -5,7 +5,7 @@ SuperAce::SuperAce(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point 
     _spriteId = id;
     _dstRect = dstRect;
     _point = point;
-    _isVisible = isVisible;
+    setVisibility(isVisible);
     _type = type;
     _currFilm = currFilm;
     setFrame(frameNo);
@@ -31,7 +31,7 @@ SuperAce::SuperAce(){
 	AnimationFilmHolder *animation = AnimationFilmHolder::Get();
     
 	_currFilm = animation->GetFilm("Super.Ace.1942");
-	_isVisible = true;
+    setVisibility(true);
 
 	//set sprite size and positions on the screen
 	setFrame(0);
