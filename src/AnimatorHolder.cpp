@@ -99,7 +99,7 @@ Animator* AnimatorHolder::getAnimator(animid_t id){
 
 void AnimatorHolder::triggerAnimators(){
     static int i=0;
-    if(i%100 == 0 && i < /*1000*/ 200 && i > 10){
+    if(i%100 == 0 && i < 1000 && i > 10){
         if(i == 100){
             MovingPathAnimator* movingSuperAce = (MovingPathAnimator*) AnimatorHolder::getAnimator("SuperAceMovingAnimator");
             movingSuperAce->start(Game::getGameTime());
@@ -129,7 +129,6 @@ void AnimatorHolder::triggerAnimators(){
         
         //Game::get
         animator->start(Game::getGameTime());
-        Game::setScore(Game::getScore()+ 30);
     }
     i++;
 

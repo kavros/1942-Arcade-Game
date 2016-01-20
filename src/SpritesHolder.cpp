@@ -210,7 +210,7 @@ void SpritesHolder::checkSpritesForDelete(){
         while(it!=sl->end()){
             it2 = it;
             it2++;
-            if( (*it)->isOutOfWindow() ){
+            if( (*it)->isOutOfWindow() || (*it)->getState() == SpriteState::IN_COLUSION ){
                 (*it)->destroySprite();
             }
             it = it2;

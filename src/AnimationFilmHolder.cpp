@@ -6,11 +6,7 @@ AnimationFilmHolder *AnimationFilmHolder::_holder = 0;
 
 AnimationFilmHolder::AnimationFilmHolder (void){}
 
-
-
 AnimationFilmHolder::~AnimationFilmHolder(){ CleanUp(); }
-
-//const AnimationFilmHolder& AnimationFilmHolder::Get(void){ return _holder; }
 
 using namespace rapidjson;
 

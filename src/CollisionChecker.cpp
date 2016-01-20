@@ -28,25 +28,10 @@ void CollisionChecker::Register(Sprite* s1, Sprite* s2){
     
 }
 
-void CollisionChecker::Cancel(Sprite* s1, Sprite* s2){
-    CollisionChecker* holder = CollisionChecker::getCollsionCheckerHolder();
-    PairList::const_iterator it = holder->pairs.begin();
-    PairList::const_iterator it2;
-    if(!holder->pairs.empty())
-        while (it != holder->pairs.end()){
-            it2=it;
-            it2++;
-            if( (*it).first == s1 && (*it).second == s2){
-                holder->pairs.erase(it);
-            }
-            it=it2;
-        }
-}
-
 void CollisionChecker::Check (void){
     CollisionChecker* holder = CollisionChecker::getCollsionCheckerHolder();
     //std::for_each(  holder->pairs.begin(), holder->pairs.end(), checkFunctor()  );
-    
+        
     PairList::const_iterator it = holder->pairs.begin();
     PairList::const_iterator it2;
     
@@ -85,15 +70,15 @@ void CollisionChecker::CancelAll(Sprite* s){
         while (it != holder->pairs.end()){
             it2=it;
             it2++;
-            if( (*it).first == s){
-                //assert((*it).second->isAlive());
-                CollisionChecker::Cancel(s, (*it).second);
+            if( (*it).first == s || (*it).second == s){
+                assert((*it).second->isAlive());
+                holder->pairs.erase(it);
+
             }
-            if( (*it).second == s){
-                //assert((*it).first->isAlive());
-                CollisionChecker::Cancel(s, (*it).second);
-            }
+
             it=it2;
+        
+        
         }
 }
 

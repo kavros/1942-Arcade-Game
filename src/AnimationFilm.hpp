@@ -20,13 +20,10 @@ public:
     const std::string getId (void) const;
     const SDL_Rect getFrameBox (unsigned frameNo) const;
 
-	
-
     //renderer
-	void  displayFrame(SDL_Renderer* renderer, const SDL_Point point, unsigned frameNo, 
-		SDL_Rect dstRect) const;
+	void  displayFrame(SDL_Renderer* renderer, const SDL_Point point, unsigned frameNo, SDL_Rect dstRect) const;
 
-	//ctor
+	//constuctor
 	AnimationFilm(SDL_Texture* _texture ,vector<SDL_Rect> _boxes ,string _id);
 }; 
 

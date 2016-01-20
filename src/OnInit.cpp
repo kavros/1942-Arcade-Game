@@ -24,12 +24,7 @@ bool Game::OnInit(){
     InitData();
     LoadGameInfo("config.json");
     
-    InitMainMenuSinglePlayer();
-    InitMainMenuMultiPlayer();
-
     InitBackground();
-
-    InitSuperAce();
 
     InitGameInfo();
     
@@ -175,16 +170,6 @@ bool Game::InitData(){
     return true;
 }
 
-bool Game::InitMainMenuSinglePlayer(){
-    
-    return true;
-}
-
-bool Game::InitMainMenuMultiPlayer(){
-    
-    return true;
-}
-
 bool Game::InitBackground(){
     static int unique = 0;
     if(unique >1){
@@ -194,13 +179,6 @@ bool Game::InitBackground(){
     
     SpritesHolder::getSpritesHolder()->add((Sprite*)Background::Get());
 
-    return true;
-}
-
-bool Game::InitSuperAce(){
-    
-    //SpritesHolder::getSpritesHolder()->add(new SuperAce());
-    
     return true;
 }
 
