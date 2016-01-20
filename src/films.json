@@ -234,6 +234,24 @@
                         [0, 0, 10, 13]
                         ]
               }, {
+              "id": "%",
+              "path": "numbers_and_scores/%.png",
+              "rects": [
+                        [0, 0, 15, 17]
+                        ]
+              },{
+              "id": "=",
+              "path": "numbers_and_scores/equals.png",
+              "rects": [
+                        [0, 0, 7, 3]
+                        ]
+              },{
+              "id": "*",
+              "path": "numbers_and_scores/multi.png",
+              "rects": [
+                        [0, 0, 12, 13]
+                        ]
+              }, {
               "id": "aircraft_carrier",
               "path": "terrain/aircraft_carrier.png",
               "rects": [
