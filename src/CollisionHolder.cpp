@@ -44,6 +44,9 @@ void Sprite::touchHandler::operator()(Sprite* aircraft,Sprite* arg) const{
         aircraft->destroySprite();
         arg->destroySprite();
     }
+    else{
+        //game over
+    }
 
     AnimatorHolder::createExplosion( aircraft->getDstRect() );
     
