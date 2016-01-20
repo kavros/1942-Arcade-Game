@@ -15,6 +15,7 @@ void Sprite::fireHandler::operator()(Sprite* bullet,Sprite* arg) const{
     bullet->destroySprite();
     arg->destroySprite();
     
+    Game::setScore(Game::getScore()+ 30);
     AnimatorHolder::createExplosion( arg->getDstRect() );
 }
 
