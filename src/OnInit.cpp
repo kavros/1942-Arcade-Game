@@ -238,17 +238,22 @@ bool Game::InitGameInfo(){
 	for (int i = 0; i < 5; ++i){
 		_pause->getSpriteAlphaNum(i)->setVisibility(false);
 	}
+	
 	/*
 	_shootingText			= new SpriteString("SHOOTING", (WIN_WIDTH / 2) - 150, (WIN_HEIGHT / 2));
 	_downText				= new SpriteString("DOWN", (WIN_WIDTH / 2)-40, (WIN_HEIGHT / 2));
-	_shootingDownPercent	= new SpriteString("100", (WIN_WIDTH / 2) + 40, (WIN_HEIGHT / 2));
+	_shootingDownPercent	= new SpriteString("100%", (WIN_WIDTH / 2) + 40, (WIN_HEIGHT / 2));
 
 	_endingBonusText		= new SpriteString("BONUS", (WIN_WIDTH / 2) -70, (WIN_HEIGHT / 2)+70);
 
 	_pointsText				= new SpriteString("PTS", (WIN_WIDTH / 2) +5, (WIN_HEIGHT / 2)+95);
 	_pointsNumber			= new SpriteString("100000", (WIN_WIDTH / 2)-90, (WIN_HEIGHT / 2) + 95);
-	_letterR				= new SpriteString("R", (WIN_WIDTH / 2) - 90, (WIN_HEIGHT / 2)+135);
+	_letterR				= new SpriteString("R*", (WIN_WIDTH / 2) - 90, (WIN_HEIGHT / 2)+135);
+	 new SpriteString("1000", (WIN_WIDTH / 2) - 60, (WIN_HEIGHT / 2) + 135);
+	 _equals = new	SpriteString("=", (WIN_WIDTH / 2) + 30, (WIN_HEIGHT / 2) + 135);
 	*/
+
+
     //SpritesHolder::getSpritesHolder()->add(three);
     return true;
 }

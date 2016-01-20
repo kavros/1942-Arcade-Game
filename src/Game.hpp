@@ -74,6 +74,7 @@ private:
 	SpriteString* _startingPlayerLogo;
 	SpriteString* _numberOne;
 	
+	/*
 	//spriteStrings for End
 	SpriteString* _shootingText;
 	SpriteString* _downText;
@@ -82,7 +83,10 @@ private:
 	SpriteString* _pointsText;
 	SpriteString* _pointsNumber;
 	SpriteString* _letterR;
-	
+	SpriteString* _equals;
+	*/
+
+
 
 
 
