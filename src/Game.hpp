@@ -23,6 +23,8 @@
 #include "AnimatorHolder.h"
 #include "MovingPathAnimator.h"
 
+#include <SDL_mixer.h>
+
 
 enum GameState {
 	SINGLEPLAYER_MENU,
