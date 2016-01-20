@@ -19,7 +19,7 @@ private:
     
     PairList pairs;
     
-    static CollisionChecker* holder;
+    static CollisionChecker* _holder;
     
     CollisionChecker();
     ~CollisionChecker();
