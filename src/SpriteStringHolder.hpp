@@ -9,9 +9,20 @@ private:
     typedef std::map<string, SpriteString*> SpriteStringMap;
     
     SpriteStringMap spriteStringMap;
-    SpriteStringHolder* holder;
+    static SpriteStringHolder* holder;
     
+    //constructor
+    SpriteStringHolder();
+    
+    //destructor
+    ~SpriteStringHolder();
 public:
+    
+    static SpriteStringHolder* getSpriteStringHolder();
+    
+    static void addSpriteString(string id, SpriteString* spriteString);
+    static SpriteString* getSpriteString(string id);
+
 };
 
 #endif

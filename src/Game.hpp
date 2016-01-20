@@ -6,15 +6,17 @@
 #define FPS_INTERVAL 1.0 //seconds.
 
 #include "includes.h"
+
 //holders
 #include "AnimationFilmHolder.hpp"
 #include "AnimationHolder.h"
 #include "SpritesHolder.hpp"
 #include "CollisionChecker.hpp"
+#include "SpriteStringHolder.hpp"
+#include "SoundHolder.hpp"
 
 //sprites
 #include "SpriteAlphaNum.hpp"
-#include "SpriteString.hpp"
 #include "SuperAce.h"
 #include "Background.hpp"
 
@@ -22,7 +24,6 @@
 #include "MovingAnimator.h"
 #include "AnimatorHolder.h"
 #include "MovingPathAnimator.h"
-#include <SDL_mixer.h>
 
 enum GameState {
 	SINGLEPLAYER_MENU,
@@ -47,40 +48,21 @@ private:
     
     static GameState _gameState;
 
-	//animation variables
+    //Game Variables
 	static unsigned long _currTime ;
-    static SpriteString* _fps_sprite;
-	
-    //SpriteStrings
-	static SpriteString* _remaining_loops;
 	static unsigned _remaining_loops_num ;
     static float _spriteSize;
     static int _highScore;
     static int _score;
-    static SpriteString* _highScoreSprite;
-    static SpriteString* _scoreSprite;
-	//spriteStrings for Start
-	static SpriteString* _startingReadyLogo;
-	static SpriteString* _startingPlayerLogo;
-	static SpriteString* _numberOne;
-	//spriteStrings for End
-	static SpriteString* _shootingText;
-	static SpriteString* _shootingDownText;
-	static SpriteString* _shootingDownPercent;
-	static SpriteString* _endingBonusText;
-	static SpriteString* _pointsText;
-	static SpriteString* _pointsNumber;
-	static SpriteString* _letterR;
-	static SpriteString* _equals;
 
     //controller
 	static SDL_GameController *_controller;
 
-    static SpriteString* _pause;
+    
 
 	//music
 	static Mix_Chunk	*_gunShot;
-	static Mix_Music	*_music;
+	static Mix_Chunk	*_music;
 
 public:
     
@@ -105,7 +87,7 @@ public:
     static bool InitGameInfo();
 	static void InitSuperAceAnimator();
 	static void InitGamePad();
-	static void InitSounds();
+
     //get
     static SDL_Window * getWindow();
     static SDL_Renderer * getRenderer();
@@ -116,8 +98,6 @@ public:
     static int getHighScore(void)  ;
     static float getSpriteSize(void)  ;
     static int getScore(void)  ;
-    static SpriteString* getHighScoreSprite(void) ;
-    static SpriteString* getScoreSprite(void) ;
     
     //updates
     static void updateHighScoreSprite();

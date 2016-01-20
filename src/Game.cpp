@@ -18,31 +18,12 @@ SDL_Event Game::e;
 
 GameState Game::_gameState = GameState::SINGLEPLAYER_MENU;
 
-//animation variables
-unsigned long Game::_currTime = 0;
-SpriteString* Game::_fps_sprite = 0;
-
-//SpriteStrings
-SpriteString* Game::_remaining_loops = nullptr;
+//Game Variables
 unsigned Game::_remaining_loops_num = 3;
 float Game::_spriteSize = 1;
 int Game::_highScore = 0;
 int Game::_score = 0;
-SpriteString* Game::_highScoreSprite = nullptr;
-SpriteString* Game::_scoreSprite = nullptr;
-//spriteStrings for Start
-SpriteString* Game::_startingReadyLogo = nullptr;
-SpriteString* Game::_startingPlayerLogo = nullptr;
-SpriteString* Game::_numberOne = nullptr;
-//spriteStrings for End
-SpriteString* Game::_shootingText = nullptr;
-SpriteString* Game::_shootingDownText = nullptr;
-SpriteString* Game::_shootingDownPercent = nullptr;
-SpriteString* Game::_endingBonusText = nullptr;
-SpriteString* Game::_pointsText = nullptr;
-SpriteString* Game::_pointsNumber = nullptr;
-SpriteString* Game::_letterR = nullptr;
-SpriteString* Game::_equals = nullptr;
+unsigned long Game::_currTime = 0;
 
 //controller
 SDL_GameController* Game::_controller = nullptr;
@@ -133,21 +114,14 @@ void Game::setScore(int s){
     }
 }
 
-SpriteString* Game::getScoreSprite(void) {
-    return _scoreSprite;
-}
-SpriteString* Game::getHighScoreSprite(void) {
-    return _highScoreSprite;
-}
-
 void Game::updateScoreSprite(){
     std::string score = std::to_string(_score);
-    _scoreSprite->changeString(score,20, 30);
+     SpriteStringHolder::getSpriteString("score")->changeString(score,20, 30);
 }
 
 void Game::updateHighScoreSprite(){
     std::string highScore = std::to_string(_highScore);
-    _highScoreSprite->changeString(highScore,WIN_WIDTH/2 - (int) (highScore.size()*6), 30);
+    SpriteStringHolder::getSpriteString("highScore")->changeString(highScore,WIN_WIDTH/2 - (int) (highScore.size()*6), 30);
 }
 
 
@@ -159,19 +133,20 @@ bool Game::isMainMenu(){
 }
 
 void Game::fpsLoop(){
+    
     Game::_fps_frames++;
 	
     if (_fps_lasttime < SDL_GetTicks() - FPS_INTERVAL*1000)
     {
         _fps_lasttime = SDL_GetTicks();
         _fps_current = _fps_frames;
-       // std::cout<<"FPS: "<<_fps_current<<std::endl;
         _fps_frames = 0;
     }
-    _fps_sprite->changeString(std::to_string(_fps_current),450,30);
+    SpriteStringHolder::getSpriteString("fps")->changeString(std::to_string(_fps_current),450,30);
     
 }
 
 unsigned long Game::getGameTime(){
     return _currTime;
 }
+

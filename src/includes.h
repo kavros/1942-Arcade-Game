@@ -8,6 +8,7 @@
 #define SLASH "\\" 
 #include <SDL_image.h>
 #include <SDL.h>
+#include <SDL_mixer.h>
 
 #else
 #define IMG_PATH string(getenv("HOME")) + string("/1942/1942/images/")
@@ -16,6 +17,8 @@
 #define SLASH "/"
 #include <SDL2_image/SDL_image.h>
 #include <SDL2/SDL.h>
+#include <SDL2_mixer/SDL_mixer.h>
+
 #endif
 
 #define WIN_X 100
