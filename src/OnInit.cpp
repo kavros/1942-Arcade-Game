@@ -35,8 +35,10 @@ void Game::InitSounds(){
 
 
 
-	
-	_gunShot = Mix_LoadWAV("C:\\Users\\Alexis\\Source\\Repos\\1942\\sounds\\gunshot.wav");
+	string temp = (string(SOUNDS_PATH) + string("gunshot.wav"));
+	const char* gunShotPath = temp.c_str();
+	_gunShot = Mix_LoadWAV(gunShotPath);
+
 	if (_gunShot == nullptr){
 		printf("Could not load gunshot.wav : %s \n", Mix_GetError());
 	}
