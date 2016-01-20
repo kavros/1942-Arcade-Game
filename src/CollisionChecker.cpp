@@ -86,11 +86,11 @@ void CollisionChecker::CancelAll(Sprite* s){
             it2=it;
             it2++;
             if( (*it).first == s){
-                assert((*it).second->isAlive());
+                //assert((*it).second->isAlive());
                 CollisionChecker::Cancel(s, (*it).second);
             }
             if( (*it).second == s){
-                assert((*it).first->isAlive());
+                //assert((*it).first->isAlive());
                 CollisionChecker::Cancel(s, (*it).second);
             }
             it=it2;
