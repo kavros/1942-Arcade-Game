@@ -65,6 +65,10 @@ void CollisionChecker::CancelAll(Sprite* s){
                 assert((*it).second->isAlive());
                 CollisionChecker::Cancel(s, (*it).second);
             }
+            if( (*it).second == s){
+                assert((*it).first->isAlive());
+                CollisionChecker::Cancel(s, (*it).second);
+            }
             it=it2;
         }
 }
