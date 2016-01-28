@@ -92,8 +92,8 @@ void SpritesHolder::displayGameSprites(SDL_Renderer* renderer){
         displaySprites(renderer, type);
 }
 
-void SpritesHolder::CleanUp(void){
-    SpritesHolder::~SpritesHolder();
+void SpritesHolder::cleanUp(void){
+    SpritesHolder::getSpritesHolder()->~SpritesHolder();
 }
 
 using namespace rapidjson;

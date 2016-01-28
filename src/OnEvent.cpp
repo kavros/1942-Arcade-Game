@@ -150,10 +150,9 @@ void Game::OnEvent(SDL_Event* event) {
             pauseManager(event);
 			break;
         case EXIT:
-            _gameState=EXIT;
             break;
         default:
-            _gameState=EXIT;
+            setState(EXIT);
             break;
     }
     
@@ -214,7 +213,6 @@ void Game::pauseManager(SDL_Event* event){
             }
             else if( SpriteStringHolder::getSpriteString("currsorUp")->getVisibility() == true ){
                 //kill the animators
-                AnimatorHolder::killAnimators();
                 setState(EXIT);
             }
             

@@ -37,7 +37,7 @@ public:
     
     void displaySprites(SDL_Renderer* renderer, SpriteType type);
         
-    void CleanUp(void);
+    static void cleanUp(void);
 
     void Load (const std::string& cataloge/*,SDL_Renderer* _renderer*/);
     

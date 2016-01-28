@@ -6,9 +6,12 @@ void Game::OnCleanup(){
 		_controller = nullptr;
 	}
 
-    SoundHolder::cleanUp();
+    AnimatorHolder::cleanup();
+    AnimationHolder::cleanUp();
+    SpritesHolder::cleanUp();
     AnimationFilmHolder::CleanUp();
-    
+    SoundHolder::cleanUp();
+
     SDL_DestroyRenderer(_renderer);
     SDL_DestroyWindow(_window);
     SDL_Quit();
