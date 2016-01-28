@@ -20,22 +20,25 @@ SoundHolder* SoundHolder::getSoundHolder(){
 }
 
 void SoundHolder::initSounds(){
+    SoundHolder* sh = SoundHolder::getSoundHolder();
+    SoundMap::const_iterator it = sh->soundMap.begin();
     
     if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0){
         printf("SDL MIXER Error: %s \n", SDL_GetError());
     }
-
-    
     
     SoundHolder::addSound("gunshot", Mix_LoadWAV(  (string(SOUNDS_PATH) + string("gunshot.wav")).c_str()  ));
     SoundHolder::addSound("soundTrack", Mix_LoadWAV(  (string(SOUNDS_PATH) + string("Soundtrack.ogg")).c_str()  ));
-
-    if (! SoundHolder::getSound("gunshot") || ! SoundHolder::getSound("soundTrack")){
-        printf("Could not load gunshot.wav : %s \n", Mix_GetError());
+    SoundHolder::addSound("explosion", Mix_LoadWAV(  (string(SOUNDS_PATH) + string("explosion.wav")).c_str()  ));
+    
+    while(it != sh->soundMap.end()){
+        if( !(*it).second ){
+            printf("Could not load %s : %s \n",(*it).first.c_str() ,Mix_GetError());
+        }
+        it++;
     }
 
 }
-
 
 void SoundHolder::addSound(string id, Mix_Chunk* sound){
     SoundHolder::getSoundHolder()->soundMap[ id ] = sound;
@@ -54,5 +57,9 @@ void SoundHolder::cleanUp(){
         it++;
     }
     Mix_Quit();
+}
+
+void SoundHolder::playSound(string id){
+    Mix_PlayChannel(-1, SoundHolder::getSound(id) , 0);
 }
 

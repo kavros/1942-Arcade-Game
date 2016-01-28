@@ -15,14 +15,17 @@ private:
     
     //destructor
     ~SoundHolder();
-public:
     
     static SoundHolder* getSoundHolder();
-    static void initSounds();
+    
     static void addSound(string id, Mix_Chunk* sound);
+
+public:
+
+    static void initSounds();
     static Mix_Chunk* getSound(string id);
     static void cleanUp();
-
+    static void playSound(string id);
 };
 
 #endif

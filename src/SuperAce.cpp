@@ -78,7 +78,10 @@ void SuperAce::fire(void){
     
     Sprite* bullet = new Sprite(spriteSuperAceFireId, 2, getBulletDstRect(2), {0,0}, true, SUPER_ACE, fireAnimationFilm);
     assert(bullet);
-        
+    
+    //play sound for fire
+    SoundHolder::playSound("gunshot");
+
     //fireAnimation
     Animation* fireAnimation = AnimationHolder::getAnimationHolder()->getAnimation("superAceFire");
     assert(fireAnimation);

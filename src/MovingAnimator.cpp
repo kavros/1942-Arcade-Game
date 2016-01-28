@@ -3,11 +3,11 @@
 void MovingAnimator::start( timestamp_t t){
 
 	this->_lastTime = t;
-	if (_state == ANIMATOR_RUNNING){
+	if (getState() == ANIMATOR_RUNNING){
 		cout << "Error ANIMATOR is Still running" << endl;
         assert(0);
 	}
-	_state = ANIMATOR_RUNNING;
+	setState(ANIMATOR_RUNNING);
     AnimatorHolder::markAsRunning(this);
 }
 /*

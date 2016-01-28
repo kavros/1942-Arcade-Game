@@ -152,6 +152,8 @@ void AnimatorHolder::createExplosion(SDL_Rect dstRect){
     Sprite* explosion = new Sprite("explosionSprite", 0, dstRect, {0,0}, true, POWER_UPS, fireAnimationFilm);
     assert(explosion);
     
+    SoundHolder::playSound("explosion");
+    
     Animation* explosionAnimation = AnimationHolder::getAnimationHolder()->getAnimation("explosion");
     assert(explosionAnimation);
     

@@ -1,0 +1,5 @@
+TO DO LIST:
+
+/*Nikos*/
+	reorder game loop ( see savidis lectures)
+	after game exit create a report with game info (etc FPS(min,max,avg), no. collisions, no. inputs)

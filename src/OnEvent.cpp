@@ -2,6 +2,7 @@
 
 void Game::OnEvent(SDL_Event* event) {
     static SDL_Event prevEvent  = *event;
+    
     if (event->type == SDL_QUIT){
         setState(EXIT);
         prevEvent = *event;
@@ -11,25 +12,12 @@ void Game::OnEvent(SDL_Event* event) {
     switch (getState()) {
         case SINGLEPLAYER_MENU:
             if (event->type == SDL_MOUSEBUTTONDOWN){
-				/*
-				if (Mix_PlayingMusic() == 0){
-					Mix_PlayMusic(_music, -1);
-				}
-				else{
-					if (Mix_PausedMusic() == 1){
-						Mix_ResumeMusic();
-					}
-					else{
-						Mix_PausedMusic();
-					}
-				}*/
                 setState(SINGLEPLAYER_GAME);
             }
             else if (event->key.keysym.sym == SDLK_DOWN){
                 setState(MULTIPLAYER_MENU);
-                printf("DOWN\n");
             }
-            prevEvent = *event;
+            //prevEvent = *event;
             break;
         case MULTIPLAYER_MENU:
             if (event->type == SDL_MOUSEBUTTONDOWN){
@@ -37,9 +25,8 @@ void Game::OnEvent(SDL_Event* event) {
             }
             else if (event->key.keysym.sym == SDLK_UP){
                 setState(SINGLEPLAYER_MENU);
-                printf("UP\n");
             }
-            prevEvent = *event;
+            //prevEvent = *event;
             break;
 		case SINGLEPLAYER_GAME:
 		{
@@ -49,10 +36,11 @@ void Game::OnEvent(SDL_Event* event) {
 			MovingPathAnimator* superAceStartingAnimator = (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceStartingAnimator");
             assert(superAceStartingAnimator);
             
-			if (superAce->getState() == STARTING){
-				superAceStartingAnimator->start(getGameTime());
-			}
-
+            if (superAce->getState() == STARTING){
+                superAceStartingAnimator->start(getGameTime());
+                superAce->setState(MANEUVER);
+            }
+            
 			//if starting animator running then don't start any animator
 			//when starting animator is finished remove all letters
 			if (superAceStartingAnimator->getState() == ANIMATOR_RUNNING){
@@ -137,12 +125,10 @@ void Game::OnEvent(SDL_Event* event) {
 					|| event->cbutton.button == SDL_CONTROLLER_BUTTON_A){
 
 					if (superAceAnimatorManeuever->getState() == ANIMATOR_RUNNING){
-						return;
-					}
-
-					((SuperAce*)superAce)->fire();
-					//play sound for fire
-					Mix_PlayChannel(-1, SoundHolder::getSound("gunshot") , 0);
+                        return;
+                    }
+                    
+                    ((SuperAce*)superAce)->fire();
 
                     prevEvent = *event;
 					break;
@@ -185,10 +171,10 @@ void Game::OnEvent(SDL_Event* event) {
 			break;
 		}
         case MULTIPLAYER_GAME:
-            prevEvent = *event;
+            //dont work
+            assert(0);
             break;
 		case PAUSE_MENU:
-
 			if ((event->type == SDL_KEYDOWN || event->type == SDL_CONTROLLERBUTTONDOWN)
 				&& (event->key.keysym.sym == SDLK_ESCAPE || event->cbutton.button == SDL_CONTROLLER_BUTTON_START)){
 				
@@ -207,11 +193,9 @@ void Game::OnEvent(SDL_Event* event) {
 			}
 			break;
         case EXIT:
-            prevEvent = *event;
             _gameState=EXIT;
             break;
         default:
-            prevEvent = *event;
             _gameState=EXIT;
             break;
     }
