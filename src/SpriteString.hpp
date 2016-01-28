@@ -23,6 +23,7 @@ public:
     SpriteAlphaNum* getSpriteAlphaNum(unsigned i) const;
     unsigned long getSizeOfSpriteString(void) const;
     unsigned long getSize();
+    bool getVisibility();
 
     //set
     void addSpriteAlphaNum(SpriteAlphaNum* san) ;

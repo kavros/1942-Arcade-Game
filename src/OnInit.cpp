@@ -55,6 +55,7 @@ void Game::InitSuperAceAnimator(){
 		"SuperAceStartingAnimator", superAce, superAceStartingAnimation
 		);
     
+    
     MovingPathAnimation* superAceMovingAnimation =
 		(MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("superAceMovingAnimation");
 	MovingPathAnimator* superAceMovingAnimator  =	new MovingPathAnimator(
@@ -233,13 +234,22 @@ bool Game::InitGameInfo(){
 
     SpriteStringHolder::addSpriteString("score", new SpriteString( score , 20 ,30) );
     SpriteStringHolder::addSpriteString("highScore", new SpriteString( highScore , WIN_WIDTH/2 - (int) (highScore.size()*6), 30) );
-    SpriteStringHolder::addSpriteString("remainingLoops", new SpriteString(remainingLoopsString, WIN_WIDTH - _remaining_loops_num*12 -5, WIN_HEIGHT - 12) );
+    SpriteStringHolder::addSpriteString("remainingLoops", new SpriteString(remainingLoopsString, WIN_WIDTH - _remaining_loops_num*12 -5, WIN_HEIGHT + 12) );
     SpriteStringHolder::addSpriteString("startingReadyLogo", new SpriteString("READY", (WIN_WIDTH / 2)-40, WIN_HEIGHT / 2) );
     SpriteStringHolder::addSpriteString("startingPlayerLogo", new SpriteString("PLAYER", (WIN_WIDTH / 2)-40, (WIN_HEIGHT / 2)+20) );
     SpriteStringHolder::addSpriteString("numberOne", new SpriteString("1", (WIN_WIDTH / 2)+32, (WIN_HEIGHT / 2)+20) );
 
     SpriteStringHolder::addSpriteString("pause", new SpriteString("PAUSE", (WIN_WIDTH / 2 -(5*6)), (WIN_HEIGHT / 2) ) );
     SpriteStringHolder::getSpriteString("pause")->setVisibility(false);
+    SpriteStringHolder::addSpriteString("exit", new SpriteString("EXIT", (WIN_WIDTH / 2 -(5*6)), (WIN_HEIGHT / 2 - 20) ) );
+    SpriteStringHolder::getSpriteString("exit")->setVisibility(false);
+    
+    /*change letter M with a pointer*/
+    SpriteStringHolder::addSpriteString("currsorUp", new SpriteString("M", (WIN_WIDTH / 2 -(5*6) - 20), (WIN_HEIGHT / 2 - 20) ) );
+    SpriteStringHolder::getSpriteString("currsorUp")->setVisibility(false);
+    SpriteStringHolder::addSpriteString("currsorDown", new SpriteString("M", (WIN_WIDTH / 2 -(5*6) - 20), (WIN_HEIGHT / 2) ) );
+    SpriteStringHolder::getSpriteString("currsorDown")->setVisibility(false);
+    
     SpriteStringHolder::addSpriteString("shootingString", new SpriteString("SHOOTING", (WIN_WIDTH / 2) - 150, (WIN_HEIGHT / 2)) );
     SpriteStringHolder::getSpriteString("shootingString")->setVisibility(false);
     SpriteStringHolder::addSpriteString("downString", new SpriteString("DOWN", (WIN_WIDTH / 2)-40, (WIN_HEIGHT / 2)) );

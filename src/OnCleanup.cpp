@@ -7,6 +7,7 @@ void Game::OnCleanup(){
 	}
 
     SoundHolder::cleanUp();
+    AnimationFilmHolder::CleanUp();
     
     SDL_DestroyRenderer(_renderer);
     SDL_DestroyWindow(_window);

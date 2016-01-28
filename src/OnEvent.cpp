@@ -9,6 +9,10 @@ void Game::OnEvent(SDL_Event* event) {
         return ;
     }
     
+    if(event->window.event == SDL_WINDOWEVENT_FOCUS_LOST){
+        setState(PAUSE_MENU);
+    }
+    
     switch (getState()) {
         case SINGLEPLAYER_MENU:
             if (event->type == SDL_MOUSEBUTTONDOWN){
@@ -17,7 +21,6 @@ void Game::OnEvent(SDL_Event* event) {
             else if (event->key.keysym.sym == SDLK_DOWN){
                 setState(MULTIPLAYER_MENU);
             }
-            //prevEvent = *event;
             break;
         case MULTIPLAYER_MENU:
             if (event->type == SDL_MOUSEBUTTONDOWN){
@@ -26,10 +29,10 @@ void Game::OnEvent(SDL_Event* event) {
             else if (event->key.keysym.sym == SDLK_UP){
                 setState(SINGLEPLAYER_MENU);
             }
-            //prevEvent = *event;
             break;
 		case SINGLEPLAYER_GAME:
 		{
+            
 			Sprite* superAce = (Sprite*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce");
             assert(superAce);
             
@@ -38,7 +41,6 @@ void Game::OnEvent(SDL_Event* event) {
             
             if (superAce->getState() == STARTING){
                 superAceStartingAnimator->start(getGameTime());
-                superAce->setState(MANEUVER);
             }
             
 			//if starting animator running then don't start any animator
@@ -46,7 +48,7 @@ void Game::OnEvent(SDL_Event* event) {
 			if (superAceStartingAnimator->getState() == ANIMATOR_RUNNING){
 				return;
 			}else{
-
+                
                 SpriteStringHolder::getSpriteString("startingReadyLogo")->setVisibility(false);
                 SpriteStringHolder::getSpriteString("startingPlayerLogo")->setVisibility(false);
                 SpriteStringHolder::getSpriteString("numberOne")->setVisibility(false);
@@ -80,18 +82,14 @@ void Game::OnEvent(SDL_Event* event) {
 
 				assert(superAce->getType() == SUPER_ACE);
 
-
-
 				if (event->key.keysym.sym == SDLK_ESCAPE
-					|| event->cbutton.button == SDL_CONTROLLER_BUTTON_START) {
-					setState(PAUSE_MENU);
-					
+					|| event->cbutton.button == SDL_CONTROLLER_BUTTON_START
+                ) {
 					//pause
+                    setState(PAUSE_MENU);
 				}
-				else if (event->key.keysym.sym == SDLK_q
-					){
+				else if (event->key.keysym.sym == SDLK_q){
 					//quit?
-
 				}
 				else if (event->key.keysym.sym == SDLK_LEFT
 					|| event->cbutton.button == SDL_CONTROLLER_BUTTON_DPAD_LEFT) {
@@ -135,36 +133,10 @@ void Game::OnEvent(SDL_Event* event) {
 				}
 				else if (event->key.keysym.sym == SDLK_a
 					|| event->cbutton.button == SDL_CONTROLLER_BUTTON_X){
-					if (_remaining_loops_num > 0){
-						superAce->setState(MANEUVER);
-						superAceAnimatorManeuever->start(getGameTime());
-						_remaining_loops_num--;
-                        std::string _remainingLoops = "";
-                        for(int i = 0; i <  _remaining_loops_num ; i++){
-                            _remainingLoops += "R";
-                        }
-
-                        if(_remaining_loops_num != 0){
-                            SpriteStringHolder::getSpriteString("remainingLoops")->changeString(_remainingLoops,WIN_WIDTH - (_remaining_loops_num*12), WIN_HEIGHT - 12);
-                        }else{
-                            SpriteStringHolder::getSpriteString("remainingLoops")->getSpriteAlphaNum(0)->setVisibility(false);
-                        }
-                        if (_remaining_loops_num == 2){
-                            SpriteStringHolder::getSpriteString("remainingLoops")->changeString(_remainingLoops,WIN_WIDTH - (_remaining_loops_num*12), WIN_HEIGHT - 12);
-						}
-						else if (_remaining_loops_num == 1){
-							SpriteStringHolder::getSpriteString("remainingLoops")->changeString("R", WIN_WIDTH - 12, WIN_HEIGHT - 12);
-						}
-						else if (_remaining_loops_num == 0){
-							SpriteStringHolder::getSpriteString("remainingLoops")->getSpriteAlphaNum(0)->setVisibility(false);
-                        }
-					}
-					else if (_remaining_loops_num == 0){
-
-						//there are no loops
-					}
-				}
-
+                    
+                    ((SuperAce*)superAce)->doManeuever();
+                    
+                }
 
 			}
             prevEvent = *event;
@@ -175,22 +147,7 @@ void Game::OnEvent(SDL_Event* event) {
             assert(0);
             break;
 		case PAUSE_MENU:
-			if ((event->type == SDL_KEYDOWN || event->type == SDL_CONTROLLERBUTTONDOWN)
-				&& (event->key.keysym.sym == SDLK_ESCAPE || event->cbutton.button == SDL_CONTROLLER_BUTTON_START)){
-				
-				AnimatorHolder::wakeUpAnimators(getGameTime());
-                
-                SpriteStringHolder::getSpriteString("pause")->setVisibility(false);
-
-				setState(SINGLEPLAYER_GAME);
-			}
-			else{
-                
-				AnimatorHolder::pauseAnimators();
-
-                SpriteStringHolder::getSpriteString("pause")->setVisibility(true);
-                
-			}
+            pauseManager(event);
 			break;
         case EXIT:
             _gameState=EXIT;
@@ -200,4 +157,74 @@ void Game::OnEvent(SDL_Event* event) {
             break;
     }
     
+}
+
+void Game::pauseManager(SDL_Event* event){
+    static bool firstTime = true;
+    
+    if( firstTime ){
+        AnimatorHolder::pauseAnimators();
+        
+        SpriteStringHolder::getSpriteString("pause")->setVisibility(true);
+        SpriteStringHolder::getSpriteString("exit")->setVisibility(true);
+        SpriteStringHolder::getSpriteString("currsorUp")->setVisibility(false);
+        SpriteStringHolder::getSpriteString("currsorDown")->setVisibility(true);
+        
+        SpriteStringHolder::getSpriteString("startingReadyLogo")->setVisibility(false);
+        SpriteStringHolder::getSpriteString("startingPlayerLogo")->setVisibility(false);
+        SpriteStringHolder::getSpriteString("numberOne")->setVisibility(false);
+        firstTime = false;
+        
+    }
+    
+    if ((event->type == SDL_KEYDOWN || event->type == SDL_CONTROLLERBUTTONDOWN)){
+        
+        //navigation
+        if (event->key.keysym.sym == SDLK_UP || event->cbutton.button == SDL_CONTROLLER_BUTTON_DPAD_UP){
+            if( SpriteStringHolder::getSpriteString("currsorDown")->getVisibility() == true ){
+                SpriteStringHolder::getSpriteString("currsorUp")->setVisibility(true);
+                SpriteStringHolder::getSpriteString("currsorDown")->setVisibility(false);
+            }
+            return;
+        }
+        if (event->key.keysym.sym == SDLK_DOWN || event->cbutton.button == SDL_CONTROLLER_BUTTON_DPAD_DOWN){
+            if( SpriteStringHolder::getSpriteString("currsorUp")->getVisibility() == true ){
+                SpriteStringHolder::getSpriteString("currsorUp")->setVisibility(false);
+                SpriteStringHolder::getSpriteString("currsorDown")->setVisibility(true);
+            }
+            return;
+        }
+        
+        //selection
+        if(event->key.keysym.sym == SDLK_ESCAPE || event->cbutton.button == SDL_CONTROLLER_BUTTON_START){
+            AnimatorHolder::wakeUpAnimators(getGameTime());
+            setState(SINGLEPLAYER_GAME);
+            
+            SpriteStringHolder::getSpriteString("pause")->setVisibility(false);
+            SpriteStringHolder::getSpriteString("exit")->setVisibility(false);
+            SpriteStringHolder::getSpriteString("currsorUp")->setVisibility(false);
+            SpriteStringHolder::getSpriteString("currsorDown")->setVisibility(false);
+            
+            firstTime = true;
+        }
+        else if (event->key.keysym.sym == SDLK_SPACE){
+            if( SpriteStringHolder::getSpriteString("currsorDown")->getVisibility() == true ){
+                AnimatorHolder::wakeUpAnimators(getGameTime());
+                setState(SINGLEPLAYER_GAME);
+            }
+            else if( SpriteStringHolder::getSpriteString("currsorUp")->getVisibility() == true ){
+                //kill the animators
+                AnimatorHolder::killAnimators();
+                setState(EXIT);
+            }
+            
+            SpriteStringHolder::getSpriteString("pause")->setVisibility(false);
+            SpriteStringHolder::getSpriteString("exit")->setVisibility(false);
+            SpriteStringHolder::getSpriteString("currsorUp")->setVisibility(false);
+            SpriteStringHolder::getSpriteString("currsorDown")->setVisibility(false);
+            
+            firstTime = true;
+        }
+        
+    }
 }

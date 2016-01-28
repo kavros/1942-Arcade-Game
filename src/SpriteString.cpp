@@ -62,6 +62,18 @@ SpriteAlphaNum* SpriteString::getSpriteAlphaNum(unsigned i) const{
     return spriteString[i];
 }
 
+bool SpriteString::getVisibility(){
+    std::vector<SpriteAlphaNum *>::const_iterator it = spriteString.begin();
+    
+    while(it!=spriteString.end()){
+        if( (*it)->getVisibility() == true ){
+            return true;
+        }
+        it++;
+    }
+    return false;
+}
+
 void SpriteString::addSpriteAlphaNum(SpriteAlphaNum* san) {
     spriteString.push_back(san);
 }

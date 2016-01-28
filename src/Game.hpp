@@ -66,6 +66,7 @@ public:
     static bool OnInit();
     
     static void OnEvent(SDL_Event* e);
+    static void pauseManager(SDL_Event* event);
     static void LoadGameInfo (const std::string& cataloge);
     static void OnLoop();
 
@@ -92,6 +93,7 @@ public:
     static int getHighScore(void)  ;
     static float getSpriteSize(void)  ;
     static int getScore(void)  ;
+    static int getRemainingLoops(void);
     
     //updates
     static void updateHighScoreSprite();
@@ -102,6 +104,7 @@ public:
     static void setScore(int s);
     static void setSpriteSize(float s);
     static void setHighScore(int s);
+    static void setRemainingLoops(int loops);
 
     //boolean
     static bool isExit();

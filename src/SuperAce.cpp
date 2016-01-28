@@ -104,6 +104,38 @@ void SuperAce::fire(void){
 	
 }
 
+void SuperAce::doManeuever(void){
+    if(getState() == MANEUVER){
+        assert(0);
+        return;
+    }
+    
+    MovingPathAnimator* superAceAnimatorManeuever = (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorManeuver");
+    int loops = Game::getRemainingLoops();
+
+    if (loops > 0){
+        setState(MANEUVER);
+        superAceAnimatorManeuever->start(Game::getGameTime());
+        
+        loops-=1;
+        Game::setRemainingLoops(loops);
+        std::string _remainingLoops = "";
+        for(int i = 0; i <  loops ; i++){
+            _remainingLoops += "R";
+        }
+        cout<<_remainingLoops<<endl;
+        
+        SpriteStringHolder::getSpriteString("remainingLoops")->changeString(_remainingLoops,WIN_WIDTH - (loops*12), WIN_HEIGHT - 12);
+ 
+    }
+    else if (loops == 0){
+        
+        //there are no loops
+    }
+
+}
+
+
 void SuperAce::filterMotion(int* dx, int* dy) const {
     int old_x = _dstRect.x;
     int old_y = _dstRect.y;

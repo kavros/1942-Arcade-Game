@@ -207,9 +207,6 @@ void AnimatorHolder::pauseAnimators(){
 		AnimatorHolder::markAsSuspended(*it);
 		it = it2;
 	}
-
-	
-
 	/*
 	if (AnimatorHolder::getAnimator("SuperAceStartingAnimator")->getState() == ANIMATOR_STOPPED){
 

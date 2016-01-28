@@ -27,7 +27,7 @@ public:
     }
     
     void    Load (const std::string& cataloge, SDL_Renderer* _renderer);
-    void    CleanUp(void);
+    static void    CleanUp(void);
     AnimationFilm* GetFilm(const std::string id) ;
 };
 #endif

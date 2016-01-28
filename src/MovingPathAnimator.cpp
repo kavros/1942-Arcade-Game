@@ -45,11 +45,15 @@ void MovingPathAnimator::progress(timestamp_t currTime){
             _currPath = _anim->getPath().begin();
         }
         
-    }
-
-    if (_sprite->getState() == MANEUVER){
-        _sprite->setState(FLYING);
-    }
+	}
+    
+     if (_sprite->getState() == MANEUVER){
+         _sprite->setState(FLYING);
+     }
+     if (_sprite->getState() == STARTING){
+         _sprite->setState(FLYING);
+     }
+	
 }
 
 
@@ -61,6 +65,11 @@ Sprite* MovingPathAnimator::getSprite(){
 }
 MovingPathAnimation* MovingPathAnimator::getMovingAnimationPath(){
 	return _anim;
+}
+
+//setters
+void MovingPathAnimator::setContinuous(bool b){
+    _continuous = b;
 }
 
 //start

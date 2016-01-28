@@ -66,6 +66,14 @@ GameState Game::getState(){
     return Game::_gameState;
 }
 
+int Game::getRemainingLoops(void){
+    return Game::_remaining_loops_num;
+}
+
+void Game::setRemainingLoops(int loops){
+    Game::_remaining_loops_num = loops;
+}
+
 void Game::setState(GameState gameState){
     Game::_gameState = gameState;
 }

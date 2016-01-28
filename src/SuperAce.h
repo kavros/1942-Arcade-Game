@@ -57,7 +57,8 @@ public:
     void setSuperAceLives(unsigned int superAceLives);
     
     void fire(void);
-        
+    void doManeuever(void);
+
 };
 
 #endif

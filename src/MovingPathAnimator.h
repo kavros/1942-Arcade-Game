@@ -22,6 +22,9 @@ public:
 	Sprite*					getSprite();
 	MovingPathAnimation*	getMovingAnimationPath();
 
+    //setters
+    void setContinuous(bool b);
+
 	void start(timestamp_t t);
 	static void finishCallB(Animator* a,void*);
 	

@@ -96,9 +96,11 @@ void AnimationFilmHolder::AddAnimationFilm(SDL_Texture* texture ,vector<SDL_Rect
 }
 
 void AnimationFilmHolder::CleanUp(void){
-    for(Films::iterator i =_films.begin(); i!= _films.end(); ++i)
+    AnimationFilmHolder* h = Get();
+
+    for(Films::iterator i =h->_films.begin(); i!= h->_films.end(); ++i)
         delete(i->second);
-    _films.clear();
+    h->_films.clear();
 }
 
 AnimationFilm* AnimationFilmHolder::GetFilm(const std::string id) {
