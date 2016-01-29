@@ -16,8 +16,6 @@
 
 class SideFighter : public Sprite {
 private:
-    unsigned sideFighterWidth;
-    unsigned sideFighterHeight;
     SDL_Rect sideFightertBulletDstRect;
 public:
     
@@ -26,13 +24,9 @@ public:
     ~SideFighter();
     
     //get
-    unsigned getSideFighterWidth();
-    unsigned getSideFighterHeight();
     SDL_Rect getSideFightertBulletDstRect();
     
     //set
-    void setSideFighterWidth(unsigned width);
-    void setSideFighterHeight(unsigned height);
     
     //functionality
     void fire (void);
@@ -42,8 +36,6 @@ public:
 class SuperAce:public Sprite{
     
 private:
-    unsigned _superAceWidth;
-    unsigned _superAceHeight;
     SDL_Rect _bulletDstRect;
     unsigned int _superAceLives;
     unsigned int _superAceLoops;
@@ -59,15 +51,11 @@ public:
 	void render(SDL_Renderer * renderer);
 
 	//get
-    unsigned getSuperAceWidth();
-    unsigned getSuperAceHeigth();
     SDL_Rect getBulletDstRect(int frame);
     unsigned int getSuperAceLives();
     unsigned int getSuperAceLoops();
     
     //set
-    void setSuperAceWidth(unsigned width);
-    void setSuperAceHeigth(unsigned height);
     void setSuperAceLives(unsigned int superAceLives);
     void setSuperAceLoops(unsigned int superAceLoops);
     

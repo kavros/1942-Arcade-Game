@@ -4,59 +4,33 @@ SuperAce::SuperAce(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point 
 
     _spriteId = id;
     _dstRect = dstRect;
-    _dstRect.h = currFilm->getFrameBox(frameNo).h;
-    _dstRect.w = currFilm->getFrameBox(frameNo).w;
     _point = point;
     setVisibility(isVisible);
     _type = type;
     _currFilm = currFilm;
     setFrame(frameNo);
-    _superAceWidth= dstRect.w ;//_currFilm->getFrameBox(0).w;
-    _superAceHeight= dstRect.h; //_currFilm->getFrameBox(0).h;
 	_state = STARTING;
     _superAceLives = 1;
     AnimationFilm* animationBulletFilm = AnimationFilmHolder::Get()->GetFilm("bullets");
     
-    _bulletDstRect.x=this->getDstRect().x + (this->getSuperAceWidth()/4);
-    _bulletDstRect.y=this->getDstRect().y - this->getSuperAceHeigth();
+    _bulletDstRect.x=this->getDstRect().x + (this->getDstRect().w/4);
+    _bulletDstRect.y=this->getDstRect().y - this->getDstRect().h;
     _bulletDstRect.w=animationBulletFilm->getFrameBox(2).w * Game::getSpriteSize();
     _bulletDstRect.h=animationBulletFilm->getFrameBox(2).h * Game::getSpriteSize();
     
     this->addCollisionHandler(Sprite::touchHandler());
 
     SpritesHolder::getSpritesHolder()->add(this);
-    
-    /*right side fighter*/
-    /*unsigned rightSideFighterFrameNo = 0;
-    SDL_Rect rightSideFighterDstRect = { static_cast<int>(_dstRect.x+_superAceWidth+8) , _dstRect.y , _dstRect.w , _dstRect.h};
-    new SideFighter(this, RIGHT_FIGHTER, rightSideFighterFrameNo, rightSideFighterDstRect, point, isVisible, type, currFilm);
-    assert(getAttached(RIGHT_FIGHTER));*/
-    
-    /*left side fighter*/
-    /*unsigned leftSideFighterFrameNo = 0;
-    SDL_Rect leftSideFighterDstRect = { _dstRect.x-_dstRect.w , _dstRect.y , _dstRect.w , _dstRect.h};
-    new SideFighter(this, LEFT_FIGHTER, leftSideFighterFrameNo, leftSideFighterDstRect, point, isVisible, type, currFilm);
-    assert(getAttached(LEFT_FIGHTER));*/
 
-
-    
 }
 
 void SuperAce::render(SDL_Renderer * renderer){
 	display(renderer);
 };
 
-unsigned SuperAce::getSuperAceWidth(){
-    return _superAceWidth;
-}
-
-unsigned SuperAce::getSuperAceHeigth(){
-    return _superAceHeight;
-}
-
 SDL_Rect SuperAce::getBulletDstRect(int frame){
     _bulletDstRect.x=(this->getDstRect().x + this->getDstRect().w/2 - _bulletDstRect.w/2);
-    _bulletDstRect.y=this->getDstRect().y - this->getSuperAceHeigth()/3;
+    _bulletDstRect.y=this->getDstRect().y - this->getDstRect().h/3;
     return _bulletDstRect;
 }
 
@@ -69,14 +43,6 @@ unsigned int SuperAce::getSuperAceLoops(){
 }
 
 //set
-void SuperAce::setSuperAceWidth(unsigned width){
-    _superAceWidth = width;
-}
-
-void SuperAce::setSuperAceHeigth(unsigned height){
-    _superAceHeight = height;
-}
-
 void SuperAce::setSuperAceLives(unsigned int superAceLives){
     _superAceLives = superAceLives;
 }
@@ -163,7 +129,7 @@ void SuperAce::filterMotion(int* dx, int* dy) const {
     if (new_y < max_y)
         new_y = max_y;
     
-    int min_y =WIN_HEIGHT - _superAceHeight;// +100 - this->getDstRect().y;
+    int min_y =WIN_HEIGHT - getDstRect().h;// +100 - this->getDstRect().y;
     if (new_y > min_y)
         new_y = min_y;
     
@@ -172,7 +138,7 @@ void SuperAce::filterMotion(int* dx, int* dy) const {
     if (new_x < min_x)
         new_x = min_x;
     
-    int max_x =WIN_WIDTH - _superAceWidth;// +100 - this->getDstRect().y;
+    int max_x =WIN_WIDTH - getDstRect().w;// +100 - this->getDstRect().y;
     if (new_x > max_x)
         new_x = max_x;
     
@@ -188,8 +154,8 @@ void SuperAce::filterMotion(int* dx, int* dy) const {
         }
     }
     if(right){
-        if(new_x > WIN_WIDTH - _superAceWidth - right->getDstRect().w){
-            new_x = WIN_WIDTH - _superAceWidth - right->getDstRect().w;
+        if(new_x > WIN_WIDTH - getDstRect().w - right->getDstRect().w){
+            new_x = WIN_WIDTH - getDstRect().w - right->getDstRect().w;
         }
     }
 
@@ -203,10 +169,6 @@ SideFighter::SideFighter(Sprite* ace, const std::string id, unsigned  frameNo,SD
     
     _spriteId = id;
     _dstRect = dstRect;
-    _dstRect.h = currFilm->getFrameBox(frameNo).h;
-    _dstRect.w = currFilm->getFrameBox(frameNo).w;
-    sideFighterWidth= dstRect.w ;//_currFilm->getFrameBox(0).w;
-    sideFighterHeight= dstRect.h;
     _point = point;
     setVisibility(isVisible);
     _type = type;
@@ -216,8 +178,8 @@ SideFighter::SideFighter(Sprite* ace, const std::string id, unsigned  frameNo,SD
     
     AnimationFilm* animationBulletFilm = AnimationFilmHolder::Get()->GetFilm("bullets");
     
-    sideFightertBulletDstRect.x=this->getDstRect().x + (this->getSideFighterWidth()/4);
-    sideFightertBulletDstRect.y=this->getDstRect().y - this->getSideFighterHeight();
+    sideFightertBulletDstRect.x=this->getDstRect().x + (_dstRect.w/4);
+    sideFightertBulletDstRect.y=this->getDstRect().y - _dstRect.h;
     sideFightertBulletDstRect.w=animationBulletFilm->getFrameBox(2).w * Game::getSpriteSize();
     sideFightertBulletDstRect.h=animationBulletFilm->getFrameBox(2).h * Game::getSpriteSize();
     
@@ -230,26 +192,10 @@ SideFighter::~SideFighter(){
     detach(this->getId(),false);
 }
 
-unsigned SideFighter::getSideFighterWidth(){
-    return sideFighterWidth;
-}
-
-unsigned SideFighter::getSideFighterHeight(){
-    return sideFighterHeight;
-}
-
 SDL_Rect SideFighter::getSideFightertBulletDstRect(){
     sideFightertBulletDstRect.x=(this->getDstRect().x + this->getDstRect().w/2 - sideFightertBulletDstRect.w/2);
-    sideFightertBulletDstRect.y=this->getDstRect().y - this->getSideFighterHeight()/3;
+    sideFightertBulletDstRect.y=this->getDstRect().y - _dstRect.h/3;
     return sideFightertBulletDstRect;
-}
-
-void SideFighter::setSideFighterWidth(unsigned width){
-    sideFighterWidth = width;
-}
-
-void SideFighter::setSideFighterHeight(unsigned height){
-    sideFighterHeight = height;
 }
 
 void SideFighter::fire (void) {
@@ -284,15 +230,23 @@ void SideFighter::fire (void) {
 }
 
 void SuperAce::addSideFighters(){
+    
+    AnimationFilm* anim = AnimationFilmHolder::Get()->GetFilm("sideFighters");
+    unsigned sideFighterFrameNo = 1;
+    SDL_Rect sideFighterDstRect = {0,0,0,0};
+    SideFighter* sideFighter;
+    
     /*right side fighter*/
-    unsigned rightSideFighterFrameNo = 0;
-    SDL_Rect rightSideFighterDstRect = { static_cast<int>(_dstRect.x+_superAceWidth) , _dstRect.y , _dstRect.w , _dstRect.h};
-    new SideFighter(this, RIGHT_FIGHTER, rightSideFighterFrameNo, rightSideFighterDstRect, _point, _isVisible, _type, _currFilm);
-    assert(getAttached(RIGHT_FIGHTER));
+    sideFighter = new SideFighter(this, RIGHT_FIGHTER, sideFighterFrameNo, sideFighterDstRect, _point, _isVisible, _type, anim);
+    sideFighterDstRect = { getDstRect().x+getDstRect().w , getDstRect().y , sideFighter->getDstRect().w*2 , getDstRect().h };
+    sideFighter->setDstRect(sideFighterDstRect);
+    
     
     /*left side fighter*/
-    unsigned leftSideFighterFrameNo = 0;
-    SDL_Rect leftSideFighterDstRect = { _dstRect.x-_dstRect.w , _dstRect.y , _dstRect.w , _dstRect.h};
-    new SideFighter(this, LEFT_FIGHTER, leftSideFighterFrameNo, leftSideFighterDstRect, _point, _isVisible, _type, _currFilm);
+    sideFighter = new SideFighter(this, LEFT_FIGHTER, sideFighterFrameNo, sideFighterDstRect, _point, _isVisible, _type, anim);
+    sideFighterDstRect = { getDstRect().x-sideFighter->getDstRect().w*2 , getDstRect().y , sideFighter->getDstRect().w*2 , getDstRect().h };
+    sideFighter->setDstRect(sideFighterDstRect);
+    
+    assert(getAttached(RIGHT_FIGHTER));
     assert(getAttached(LEFT_FIGHTER));
 }
