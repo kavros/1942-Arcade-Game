@@ -18,6 +18,12 @@
                                         "dy": 2,
                                         "delay": 10,
                                         "continuous": true
+                                        },{
+                                        "id": "powerUp",
+                                        "dx": 0,
+                                        "dy": 1,
+                                        "delay": 10,
+                                        "continuous": true
                                         }]
                    }, {
                    "MovingPathAnimations": [{

@@ -116,3 +116,39 @@ void EnemyFighter::fire(void){
     
     /*bullet test end*/
 }
+
+void EnemyFighter::createPowerUp(){
+    AnimationFilm* powerUpAnimationFilm = AnimationFilmHolder::Get()->GetFilm("powerUps");
+    assert(powerUpAnimationFilm);
+    Sprite* powerUp;
+    
+    int i =0;
+    srand (time(NULL));
+    i = rand() % POWER_UP_TYPE_SIZE-1 + 0;
+
+    
+    PowerUpType powerUpType= PowerUpType(i);
+    
+    powerUpType = PowerUpType(i);
+    
+    powerUp = new PowerUp("explosionSprite",powerUpType, i, { getDstRect().x , getDstRect().y , getDstRect().w , getDstRect().h }, {0,0}, true, POWER_UPS, powerUpAnimationFilm);
+
+    assert(powerUp);
+    
+    powerUp->addCollisionHandler(Sprite::touchPowerUpHandler());
+    
+    //play sound for fire
+    //SoundHolder::playSound("gunshot");
+    
+    //powerUpAnimation
+    Animation* powerUpAnimation = AnimationHolder::getAnimationHolder()->getAnimation("powerUp");
+    assert(powerUpAnimation);
+
+    //powerUpAnimator
+    MovingAnimator* powerUpAnimator = new MovingAnimator("powerUpAnimator", powerUp, (MovingAnimation*)powerUpAnimation);
+    assert(powerUpAnimator);
+    
+    AnimatorHolder::Register(powerUpAnimator);
+    powerUpAnimator->start(Game::getGameTime());
+    
+}

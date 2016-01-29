@@ -29,6 +29,11 @@ void Sprite::fireHandler::operator()(Sprite* bullet,Sprite* arg) const{
         }
     }else{
         arg->setState(IN_COLUSION);
+        if(arg->getType() == ALIEN_SHIP){
+            if( ((EnemyFighter*)arg)->getEnemyFighterType() == RED_PLANE ){
+                ((EnemyFighter*)arg)->createPowerUp();
+            }
+        }
     }
     
     AnimatorHolder::createExplosion( arg->getDstRect() );
@@ -78,12 +83,6 @@ void Sprite::touchHandler::operator()(Sprite* aircraft,Sprite* arg) const{
             }
         }
 
-        //aircraft->destroySprite();
-        //arg->destroySprite();
-    //}
-    //else{
-        //game over
-    //}
     AnimatorHolder::createExplosion( aircraft->getDstRect() );
     
 }

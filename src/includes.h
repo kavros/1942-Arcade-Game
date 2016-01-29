@@ -40,6 +40,7 @@
 #include <vector>
 #include <algorithm>    // std::for_each
 #include <fstream>
+#include <time.h>       /* time */
 
 using namespace std;
 
