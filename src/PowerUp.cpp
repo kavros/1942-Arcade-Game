@@ -20,9 +20,20 @@ void PowerUp::activatePowerUp(Sprite* arg){
             break;
         }
         case ENEMY_CRASH:
-            //not ready
-            assert(0);
+        {
+            
+            //notifyCollision(s);
+            SpriteList* sl = SpritesHolder::getSpritesHolder()->getSprites(ALIEN_SHIP);
+            for (std::list<Sprite*>::iterator it=sl->begin(); it != sl->end(); ++it){
+                
+                if((*it)->getVisibility() && !(*it)->isOutOfWindow()){
+                     (*it)->setVisibility(false);
+                     (*it)->setState(IN_COLUSION);
+                     AnimatorHolder::createExplosion( (*it)->getDstRect() );
+                }
+            }
             break;
+        }
         case SIDE_FIGHTERS:{
             superAce->addSideFighters();
             break;
@@ -41,7 +52,10 @@ void PowerUp::activatePowerUp(Sprite* arg){
             SpriteList* sl = SpritesHolder::getSpritesHolder()->getSprites(ALIEN_SHIP);
             SpriteList::const_iterator it = sl->begin();
             while ( it != sl->end() ){
-                ((EnemyFighter*)(*it))->setEnemyFireEnable(false);
+                if(((EnemyFighter*)(*it))->getEnemyFighterType() != EnemyFighterType(BIG_GREEN) ||
+                        ((EnemyFighter*)(*it))->getEnemyFighterType() != EnemyFighterType(BIG_GREY))
+                    
+                            ((EnemyFighter*)(*it))->setEnemyFireEnable(false);
                 ++it;
             }
             break;
