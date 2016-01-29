@@ -69,8 +69,6 @@ void Game::InitGame(){
 
     testPowerUps();
     
-    return true;
-
 }
 
 
