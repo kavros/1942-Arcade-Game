@@ -28,6 +28,7 @@ void Game::OnRender() {
 			SpritesHolder::getSpritesHolder()->displayGameSprites(_renderer);
 			break;
         case GAME_OVER:
+            SpritesHolder::getSpritesHolder()->displayGameSprites(_renderer);
             cout<<"GAME OVER!"<<std::endl;
             break;
         default:

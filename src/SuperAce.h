@@ -30,7 +30,7 @@ public:
     //get
     unsigned getSideFighterWidth();
     unsigned getSideFighterHeight();
-    SDL_Rect getSideFightertBulletDstRect(int frame);
+    SDL_Rect getSideFightertBulletDstRect();
     
     //set
     void setSideFighterWidth(unsigned width);

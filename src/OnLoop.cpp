@@ -64,3 +64,29 @@ void Game::OnLoop() {
     }
     
 }
+
+void Game::gameOver(){
+    static bool firstTime = true;
+    //assert(0);
+    if( firstTime ){
+        updateHighScoreJson("config.json");
+        AnimatorHolder::pauseAnimators();
+        
+        SpriteStringHolder::getSpriteString("game")->setVisibility(true);
+        SpriteStringHolder::getSpriteString("over")->setVisibility(true);
+        
+        SpriteStringHolder::getSpriteString("press")->setVisibility(true);
+        SpriteStringHolder::getSpriteString("space")->setVisibility(true);
+        SpriteStringHolder::getSpriteString("for")->setVisibility(true);
+        SpriteStringHolder::getSpriteString("exit2")->setVisibility(true);
+        
+        SpriteStringHolder::getSpriteString("startingReadyLogo")->setVisibility(false);
+        SpriteStringHolder::getSpriteString("startingPlayerLogo")->setVisibility(false);
+        SpriteStringHolder::getSpriteString("numberOne")->setVisibility(false);
+        firstTime = false;
+        
+    }else{
+        //exit();
+        //   assert(0);
+    }
+}
