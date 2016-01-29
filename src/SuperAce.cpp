@@ -26,6 +26,20 @@ SuperAce::SuperAce(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point 
 
     SpritesHolder::getSpritesHolder()->add(this);
     
+    /*right side fighter*/
+    unsigned rightSideFighterFrameNo = 0;
+    SDL_Rect rightSideFighterDstRect = { static_cast<int>(_dstRect.x+_superAceWidth) , _dstRect.y , _dstRect.w , _dstRect.h};
+    new SideFighter(this, RIGHT_FIGHTER, rightSideFighterFrameNo, rightSideFighterDstRect, point, isVisible, type, currFilm);
+    assert(getAttached(RIGHT_FIGHTER));
+    
+    /*left side fighter*/
+    unsigned leftSideFighterFrameNo = 0;
+    SDL_Rect leftSideFighterDstRect = { _dstRect.x-_dstRect.w , _dstRect.y , _dstRect.w , _dstRect.h};
+    new SideFighter(this, LEFT_FIGHTER, leftSideFighterFrameNo, leftSideFighterDstRect, point, isVisible, type, currFilm);
+    assert(getAttached(LEFT_FIGHTER));
+
+
+    
 }
 
 void SuperAce::render(SDL_Renderer * renderer){
@@ -77,7 +91,6 @@ void SuperAce::fire(void){
     string spriteSuperAceFireId = str + std::to_string (number);
     number++;
     
-    /*bullet test*/
     AnimationFilm* fireAnimationFilm = AnimationFilmHolder::Get()->GetFilm("bullets");
     assert(fireAnimationFilm);
     
@@ -99,13 +112,10 @@ void SuperAce::fire(void){
     
     bullet->addCollisionHandler(Sprite::fireHandler());
 
-    /*bullet test end*/
-
     if (auto* left = getAttached(LEFT_FIGHTER))
-        static_cast<SideFighter*>(left)->Fire();
+        static_cast<SideFighter*>(left)->fire();
     if (auto* right = getAttached(RIGHT_FIGHTER))
-        static_cast<SideFighter*>(right)->Fire();
-	
+        static_cast<SideFighter*>(right)->fire();
 	
 }
 
@@ -187,3 +197,87 @@ void SuperAce::filterMotion(int* dx, int* dy) const {
     *dx = new_x - old_x;
     *dy = new_y - old_y;
 }
+
+SideFighter::SideFighter(Sprite* ace, const std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point point,bool isVisible,SpriteType type,AnimationFilm* currFilm){
+    ace->attach(this, id);
+    
+    _spriteId = id;
+    _dstRect = dstRect;
+    _dstRect.h = currFilm->getFrameBox(frameNo).h;
+    _dstRect.w = currFilm->getFrameBox(frameNo).w;
+    _point = point;
+    setVisibility(isVisible);
+    _type = type;
+    _currFilm = currFilm;
+    setFrame(frameNo);
+    _state = STARTING;
+    
+    AnimationFilm* animationBulletFilm = AnimationFilmHolder::Get()->GetFilm("bullets");
+    
+    sideFightertBulletDstRect.x=this->getDstRect().x + (this->getSideFighterWidth()/4);
+    sideFightertBulletDstRect.y=this->getDstRect().y - this->getSideFighterHeight();
+    sideFightertBulletDstRect.w=animationBulletFilm->getFrameBox(2).w * Game::getSpriteSize();
+    sideFightertBulletDstRect.h=animationBulletFilm->getFrameBox(2).h * Game::getSpriteSize();
+    
+    this->addCollisionHandler(Sprite::touchHandler());
+    
+    SpritesHolder::getSpritesHolder()->add(this);
+}
+
+SideFighter::~SideFighter(){
+    detach(this->getId(),false);
+}
+
+unsigned SideFighter::getSideFighterWidth(){
+    return sideFighterWidth;
+}
+
+unsigned SideFighter::getSideFighterHeight(){
+    return sideFighterHeight;
+}
+
+SDL_Rect SideFighter::getSideFightertBulletDstRect(int frame){
+    sideFightertBulletDstRect.x=(this->getDstRect().x + this->getDstRect().w/2 - sideFightertBulletDstRect.w/2);
+    sideFightertBulletDstRect.y=this->getDstRect().y - this->getSideFighterHeight()/3;
+    
+    return sideFightertBulletDstRect;
+}
+
+void SideFighter::setSideFighterWidth(unsigned width){
+    sideFighterWidth = width;
+}
+
+void SideFighter::setSideFighterHeight(unsigned height){
+    sideFighterHeight = height;
+}
+
+void SideFighter::fire (void) {
+    /* spawn bullet */
+    static string str = "spriteSideSuperAceFire";
+    static int number = 0;
+    string spriteSideFighterFireId = str + std::to_string (number);
+    number++;
+    
+    /*bullet test*/
+    AnimationFilm* fireAnimationFilm = AnimationFilmHolder::Get()->GetFilm("bullets");
+    assert(fireAnimationFilm);
+    
+    Sprite* bullet = new Sprite(spriteSideFighterFireId, 2, getSideFightertBulletDstRect(2), {0,0}, true, SUPER_ACE, fireAnimationFilm);
+    assert(bullet);
+    
+    //play sound for fire
+    SoundHolder::playSound("gunshot");
+    
+    //fireAnimation
+    Animation* fireAnimation = AnimationHolder::getAnimationHolder()->getAnimation("superAceFire");
+    assert(fireAnimation);
+    
+    MovingAnimator* fireAnimator = new MovingAnimator("animatorFire", bullet, (MovingAnimation*)fireAnimation);
+    
+    AnimatorHolder::Register(fireAnimator);
+    
+    fireAnimator->start(Game::getGameTime());
+    
+    bullet->addCollisionHandler(Sprite::fireHandler());
+}
+

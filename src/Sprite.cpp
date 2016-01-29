@@ -2,11 +2,6 @@
 #include "SpritesHolder.hpp"
 #include "AnimatorHolder.h"
 
-void Sprite::moveAttached (int dx, int dy) {
-    for (auto& i : _attached)
-        i.second->move(dx,dy);
-}
-
 Sprite::Sprite(){
     _frameNo=0;
     _dstRect={0,0,0,0};
@@ -113,12 +108,17 @@ void Sprite::move (int dx, int dy){
     //basic move logic
     _dstRect.x+=dx;
     _dstRect.y+=dy;
-    //moveAttached(dx, dy);
+    moveAttached(dx, dy);
 }
 
 void Sprite::filterMotion(int* dx, int* dy) const {
     /* default is unfiltered motion */
 };
+
+void Sprite::moveAttached (int dx, int dy) {
+    for (auto& i : _attached)
+        i.second->move(dx,dy);
+}
 
 void Sprite::attach (Sprite* s, const std::string& name){
     _attached[name] = s;
