@@ -41,7 +41,7 @@ int Game::OnExecute(){
         }
         
         OnLoop();
-        OnRender();
+        OnRender(); 
         fpsLoop();
 		
 

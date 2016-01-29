@@ -17,6 +17,7 @@ void Game::OnEvent(SDL_Event* event) {
     //cout << superAce->getState()<<endl;
     if(superAce->getState() == IN_COLUSION ){
         setState(GAME_OVER);
+        return;
     }
     
     switch (getState()) {
@@ -148,8 +149,8 @@ void Game::OnEvent(SDL_Event* event) {
 			break;
 		}
         case GAME_OVER:
-            assert(0);
-            //gameOver(event);
+            //assert(0);
+            
         case MULTIPLAYER_GAME:
             //dont work
             assert(0);
@@ -166,9 +167,13 @@ void Game::OnEvent(SDL_Event* event) {
     
 }
 
-void Game::gameOver(SDL_Event* event){
+
+
+
+void Game::gameOver(){
     static bool firstTime = true;
-    
+    updateHighScoreJson("config.json");
+    assert(0);
     if( firstTime ){
         AnimatorHolder::pauseAnimators();
         
