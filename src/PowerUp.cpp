@@ -31,10 +31,15 @@ void PowerUp::activatePowerUp(Sprite* arg){
             //not ready
             assert(0);
             break;
-        case NO_ENEMY_BULLETS:
-            //not ready
-            assert(0);
+        case NO_ENEMY_BULLETS:{
+            SpriteList* sl = SpritesHolder::getSpritesHolder()->getSprites(ALIEN_SHIP);
+            SpriteList::const_iterator it = sl->begin();
+            while ( it != sl->end() ){
+                ((EnemyFighter*)(*it))->setEnemyFireEnable(false);
+                ++it;
+            }
             break;
+        }
         case EXTRA_LOOP:
             //not ready
             assert(0);

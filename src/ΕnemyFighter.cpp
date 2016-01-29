@@ -5,6 +5,7 @@ unsigned _enemyFighterHeight;
 
 
 EnemyFighter::EnemyFighter(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point point,bool isVisible,SpriteType type,AnimationFilm* currFilm, enum EnemyFighterType e){
+    assert( type == ALIEN_SHIP );
     
     _spriteId = id;
     _dstRect = dstRect;
@@ -18,8 +19,9 @@ EnemyFighter::EnemyFighter(std::string id, unsigned  frameNo,SDL_Rect dstRect,SD
     _enemyFighterWidth= dstRect.w ;//_currFilm->getFrameBox(0).w;
     _enemyFighterHeight= dstRect.h; //_currFilm->getFrameBox(0).h;
     _state = STARTING;
-    AnimationFilm* animationEnemyBulletFilm = AnimationFilmHolder::Get()->GetFilm("bullets");
+    setEnemyFireEnable(true);
     
+    AnimationFilm* animationEnemyBulletFilm = AnimationFilmHolder::Get()->GetFilm("bullets");
 
     _enemyBulletDstRect.x=this->getDstRect().x + (this->_enemyFighterWidth/4);
     _enemyBulletDstRect.y=this->getDstRect().y + this->_enemyFighterHeight;
@@ -53,6 +55,10 @@ void EnemyFighter::setFrame(unsigned i) {
     }
 }
 
+void EnemyFighter::setEnemyFireEnable(bool fire){
+    enemyFireEnable = fire;
+}
+
 SDL_Rect EnemyFighter::getEnemyBulletDstRect(int frame){
 
     _enemyBulletDstRect.x=(this->getDstRect().x + this->getDstRect().w/2 - _enemyBulletDstRect.w/2);
@@ -61,7 +67,26 @@ SDL_Rect EnemyFighter::getEnemyBulletDstRect(int frame){
     return _enemyBulletDstRect;
 }
 
+bool EnemyFighter::getEnemyFireEnable(){
+    return enemyFireEnable;
+}
+
 void EnemyFighter::fire(void){
+    if(getEnemyFireEnable() == false){
+        static int timeToEnableFire = 0;
+        timeToEnableFire ++;
+        if(timeToEnableFire == 10){
+            SpriteList* sl = SpritesHolder::getSpritesHolder()->getSprites(ALIEN_SHIP);
+            SpriteList::const_iterator it = sl->begin();
+            while ( it != sl->end() ){
+                ((EnemyFighter*)(*it))->setEnemyFireEnable(true);
+                ++it;
+            }
+        }
+        return;
+
+    }
+    
     static string str = "enemyFire";
     static int number = 0;
     string spriteEnemyFireId = str + std::to_string (number);
