@@ -103,7 +103,7 @@ void SuperAce::doManeuever(void){
         
         return;
     }
-	cout << "doManeuever" << endl;
+
     MovingPathAnimator* superAceAnimatorManeuever = (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorManeuver");
     SuperAce* superAce = (SuperAce*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce");
     int loops = superAce->getSuperAceLoops();
