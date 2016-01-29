@@ -24,6 +24,9 @@ public:
     EnemyFighter(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point point,bool isVisible,SpriteType type,AnimationFilm* currFilm);
     
     //get
+    unsigned getEnemyFighterWidth();
+    unsigned getEnemyFighterHeight();
+    SDL_Rect getEnemyBulletDstRect(int frame);
 
     //set
 

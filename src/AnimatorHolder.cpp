@@ -135,13 +135,28 @@ void AnimatorHolder::triggerAnimators(){
 }
 
 void AnimatorHolder::triggerBullets(){
+    
+    
     static int i=0;
     if(i == 100){
         i=0;
         //choose someone to fire
+        SpritesHolder* h = SpritesHolder::getSpritesHolder();
+        SpriteList * sl = h->getSprites(ALIEN_SHIP);
         
+        SpriteList::iterator it = sl->begin();
+        
+        while (it != sl->end()){
+            if( (*it)->getVisibility() && (*it)->isAlive() && (*it)->getState()!=IN_COLUSION ){
+                
+                ((EnemyFighter*)(*it))->fire();
+                break;
+            }
+            it++;
+        }
     }
     i++;
+    
 }
 
 void AnimatorHolder::createExplosion(SDL_Rect dstRect){

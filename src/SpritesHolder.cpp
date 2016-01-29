@@ -1,6 +1,8 @@
 
 #include "SuperAce.h"
+#include "EnemyFighter.hpp"
 #include "SpritesHolder.hpp"
+
  SpritesHolder* SpritesHolder::_holder;
 
 SpritesHolder::SpritesHolder(){
@@ -156,6 +158,8 @@ void    SpritesHolder::Load (const std::string& cataloge/*,SDL_Renderer* _render
         //add Sprite 2 Sprite Holder
         if(spriteType == SpriteType::SUPER_ACE)
             new SuperAce(id, frameNo, destRect, point, isVisible, spriteType,animationFilm);
+        else if(spriteType == SpriteType::ALIEN_SHIP)
+            new EnemyFighter(id, frameNo, destRect, point, isVisible, spriteType,animationFilm);
         else
             new Sprite(id, frameNo, destRect, point, isVisible, spriteType,animationFilm);
     }
