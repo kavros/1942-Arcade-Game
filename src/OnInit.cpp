@@ -32,7 +32,6 @@ void Game::InitGame(){
     
     InitGameInfo();
     
-    InitSuperAceAnimator();
 }
 
 void Game::InitGamePad(){
