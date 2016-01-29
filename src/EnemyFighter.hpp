@@ -56,7 +56,8 @@ public:
 
     //functionallity
     void fire(void);
-    
+    void createPowerUp();
+
 };
 
 #endif
