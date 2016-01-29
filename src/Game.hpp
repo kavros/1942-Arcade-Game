@@ -31,7 +31,8 @@ enum GameState {
     SINGLEPLAYER_GAME,
     MULTIPLAYER_GAME,
 	PAUSE_MENU,
-	EXIT
+	EXIT,
+    GAME_OVER
 };
 
 class Game{
@@ -50,7 +51,7 @@ private:
 
     //Game Variables
 	static unsigned long _currTime ;
-	static unsigned _remaining_loops_num ;
+	//static unsigned _remaining_loops_num ;
     static float _spriteSize;
     static int _highScore;
     static int _score;
@@ -67,6 +68,7 @@ public:
     
     static void OnEvent(SDL_Event* e);
     static void pauseManager(SDL_Event* event);
+    static void gameOver(SDL_Event* event);
     static void LoadGameInfo (const std::string& cataloge);
     static void OnLoop();
 
@@ -93,7 +95,7 @@ public:
     static int getHighScore(void)  ;
     static float getSpriteSize(void)  ;
     static int getScore(void)  ;
-    static int getRemainingLoops(void);
+    //static int getRemainingLoops(void);
     
     //updates
     static void updateHighScoreSprite();
@@ -104,7 +106,7 @@ public:
     static void setScore(int s);
     static void setSpriteSize(float s);
     static void setHighScore(int s);
-    static void setRemainingLoops(int loops);
+    //static void setRemainingLoops(int loops);
 
     //boolean
     static bool isExit();

@@ -27,6 +27,9 @@ void Game::OnRender() {
 		case PAUSE_MENU:
 			SpritesHolder::getSpritesHolder()->displayGameSprites(_renderer);
 			break;
+        case GAME_OVER:
+            cout<<"GAME OVER!"<<std::endl;
+            break;
         default:
             assert(0);
             break;

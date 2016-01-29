@@ -14,7 +14,7 @@ SuperAce::SuperAce(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point 
     _superAceWidth= dstRect.w ;//_currFilm->getFrameBox(0).w;
     _superAceHeight= dstRect.h; //_currFilm->getFrameBox(0).h;
 	_state = STARTING;
-    _superAceLives = 3;
+    _superAceLives = 1;
     AnimationFilm* animationBulletFilm = AnimationFilmHolder::Get()->GetFilm("bullets");
     
     _bulletDstRect.x=this->getDstRect().x + (this->getSuperAceWidth()/4);
@@ -53,6 +53,10 @@ unsigned int SuperAce::getSuperAceLives(){
     return _superAceLives;
 }
 
+unsigned int SuperAce::getSuperAceLoops(){
+    return _superAceLoops;
+}
+
 //set
 void SuperAce::setSuperAceWidth(unsigned width){
     _superAceWidth = width;
@@ -64,6 +68,10 @@ void SuperAce::setSuperAceHeigth(unsigned height){
 
 void SuperAce::setSuperAceLives(unsigned int superAceLives){
     _superAceLives = superAceLives;
+}
+
+void SuperAce::setSuperAceLoops(unsigned int superAceLoops){
+    _superAceLoops = superAceLoops;
 }
 
 void SuperAce::fire(void){
@@ -111,14 +119,15 @@ void SuperAce::doManeuever(void){
     }
     
     MovingPathAnimator* superAceAnimatorManeuever = (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorManeuver");
-    int loops = Game::getRemainingLoops();
+    SuperAce* superAce = (SuperAce*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce");
+    int loops = superAce->getSuperAceLoops();
 
     if (loops > 0){
         setState(MANEUVER);
         superAceAnimatorManeuever->start(Game::getGameTime());
         
         loops-=1;
-        Game::setRemainingLoops(loops);
+        superAce->setSuperAceLoops(loops); 
         std::string _remainingLoops = "";
         for(int i = 0; i <  loops ; i++){
             _remainingLoops += "R";

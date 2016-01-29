@@ -98,7 +98,7 @@ void MovingPathAnimator::checkAnimatorForDelete(void){
     
     assert(_sprite && _anim );
     
-    if( _sprite->isOutOfWindow() || _sprite->getState() == SpriteState::IN_COLUSION ){
+    if( (_sprite->isOutOfWindow() || _sprite->getState() == SpriteState::IN_COLUSION) && _sprite->getId().compare("SuperAce") != 0){
         
         //stop the animator
         _state = ANIMATOR_FINISHED;

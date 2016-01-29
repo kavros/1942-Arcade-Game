@@ -19,7 +19,7 @@ SDL_Event Game::e;
 GameState Game::_gameState = GameState::SINGLEPLAYER_MENU;
 
 //Game Variables
-unsigned Game::_remaining_loops_num = 3;
+//unsigned Game::_remaining_loops_num = 3;
 float Game::_spriteSize = 1;
 int Game::_highScore = 0;
 int Game::_score = 0;
@@ -66,13 +66,13 @@ GameState Game::getState(){
     return Game::_gameState;
 }
 
-int Game::getRemainingLoops(void){
+/*int Game::getRemainingLoops(void){
     return Game::_remaining_loops_num;
-}
+}*/
 
-void Game::setRemainingLoops(int loops){
+/*void Game::setRemainingLoops(int loops){
     Game::_remaining_loops_num = loops;
-}
+}*/
 
 void Game::setState(GameState gameState){
     Game::_gameState = gameState;

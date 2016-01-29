@@ -45,8 +45,36 @@ void Sprite::touchHandler::operator()(Sprite* aircraft,Sprite* arg) const{
 
         aircraft->setVisibility(false);
         arg->setVisibility(false);
-        aircraft->setState(IN_COLUSION);
-        arg->setState(IN_COLUSION);
+        
+        if(arg->getId().compare("SuperAce") != 0){
+           arg->setState(IN_COLUSION);
+            cout<<"In collision 1"<<std::endl;
+        }
+        
+        if (aircraft->getId().compare("SuperAce") != 0){
+            aircraft->setState(IN_COLUSION);
+            cout<<"In collision 2"<<std::endl;
+        }
+        if ((arg->getId().compare("SuperAce") == 0) || (aircraft->getId().compare("SuperAce") == 0)){
+            SuperAce* sa = (SuperAce*) aircraft;
+            if (arg->getId().compare("SuperAce") == 0){
+                sa = (SuperAce*) arg;
+            }
+                cout<<"C Lives: "<<sa->getSuperAceLives()<<endl;
+            if(sa->getSuperAceLives() > 1){
+                cout<<"B Lives: "<<sa->getSuperAceLives()<<endl;
+                sa->setSuperAceLives(sa->getSuperAceLives() - 1);
+                std::string _remainingLives = "";
+                for(int i = 0; i < sa->getSuperAceLives() ; i++){
+                    _remainingLives += "L";
+                }
+                cout<<"A Lives: "<<sa->getSuperAceLives()<<endl;
+                
+                SpriteStringHolder::getSpriteString("remainingLives")->changeString(_remainingLives, +5/*WIN_WIDTH - loops*12 -5*/, WIN_HEIGHT -15);
+            }else{
+                sa->setState(IN_COLUSION);
+            }
+        }
 
         //aircraft->destroySprite();
         //arg->destroySprite();

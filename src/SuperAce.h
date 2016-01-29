@@ -34,6 +34,7 @@ private:
     unsigned _superAceHeight;
     SDL_Rect _bulletDstRect;
     unsigned int _superAceLives;
+    unsigned int _superAceLoops;
 public:
 
 	//constructor
@@ -50,11 +51,13 @@ public:
     unsigned getSuperAceHeigth();
     SDL_Rect getBulletDstRect(int frame);
     unsigned int getSuperAceLives();
+    unsigned int getSuperAceLoops();
     
     //set
     void setSuperAceWidth(unsigned width);
     void setSuperAceHeigth(unsigned height);
     void setSuperAceLives(unsigned int superAceLives);
+    void setSuperAceLoops(unsigned int superAceLoops);
     
     void fire(void);
     void doManeuever(void);

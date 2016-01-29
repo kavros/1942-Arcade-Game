@@ -13,6 +13,12 @@ void Game::OnEvent(SDL_Event* event) {
         setState(PAUSE_MENU);
     }
     
+    Sprite* superAce = (Sprite*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce");
+    //cout << superAce->getState()<<endl;
+    if(superAce->getState() == IN_COLUSION ){
+        setState(GAME_OVER);
+    }
+    
     switch (getState()) {
         case SINGLEPLAYER_MENU:
             if (event->key.keysym.sym == SDLK_SPACE){
@@ -33,11 +39,7 @@ void Game::OnEvent(SDL_Event* event) {
 		case SINGLEPLAYER_GAME:
 		{
             
-			Sprite* superAce = (Sprite*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce");
-            cout << superAce->getState()<<endl;
-            if(superAce->getState() == IN_COLUSION ){
-                assert(0);
-            }
+			
             
 			MovingPathAnimator* superAceStartingAnimator = (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceStartingAnimator");
             assert(superAceStartingAnimator);
@@ -145,6 +147,8 @@ void Game::OnEvent(SDL_Event* event) {
             prevEvent = *event;
 			break;
 		}
+        case GAME_OVER:
+            gameOver(event);
         case MULTIPLAYER_GAME:
             //dont work
             assert(0);
@@ -159,6 +163,26 @@ void Game::OnEvent(SDL_Event* event) {
             break;
     }
     
+}
+
+void Game::gameOver(SDL_Event* event){
+    static bool firstTime = true;
+    
+    if( firstTime ){
+        AnimatorHolder::pauseAnimators();
+        
+        SpriteStringHolder::getSpriteString("game")->setVisibility(true);
+        SpriteStringHolder::getSpriteString("over")->setVisibility(true);
+        SpriteStringHolder::getSpriteString("exit")->setVisibility(true);
+        
+        SpriteStringHolder::getSpriteString("startingReadyLogo")->setVisibility(false);
+        SpriteStringHolder::getSpriteString("startingPlayerLogo")->setVisibility(false);
+        SpriteStringHolder::getSpriteString("numberOne")->setVisibility(false);
+        firstTime = false;
+        
+    }else{
+        assert(0);
+    }
 }
 
 void Game::pauseManager(SDL_Event* event){

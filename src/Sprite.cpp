@@ -188,8 +188,11 @@ void Sprite::notifyCollision(Sprite* arg){
     Handlers::iterator i = _handlers.begin();
     Handlers::iterator i2;
     
-    if( _type==SUPER_ACE && _state==MANEUVER)
-        return;
+    if( _spriteId.compare("SuperAce") == 0 ){
+        if(_state==MANEUVER)
+            return;
+        
+    }
     
     while(i!=_handlers.end()){
         i2=i;

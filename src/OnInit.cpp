@@ -18,6 +18,7 @@ bool Game::OnInit(){
     InitRenderer();
 
     InitData();
+	InitSuperAceAnimator();
     LoadGameInfo("config.json");
     
     InitBackground();
@@ -202,10 +203,13 @@ void    Game::LoadGameInfo (const std::string& cataloge){
     const char* data = text.c_str();
     
     
+    SuperAce* superAce = (SuperAce*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce");
     Document document;
     document.Parse(data);
     assert(document.IsObject());
-    _remaining_loops_num =document["superAceLoops"].GetInt();
+    superAce->setSuperAceLives(document["superAceLives"].GetInt());
+    superAce->setSuperAceLoops(document["superAceLoops"].GetInt());
+    //_remaining_loops_num =document["superAceLoops"].GetInt();
     _highScore = document["highScore"].GetInt();
     _spriteSize = document["spriteSize"].GetDouble();
 }
@@ -224,17 +228,28 @@ bool Game::InitGameInfo(){
     SpriteStringHolder::addSpriteString("fpsString", new SpriteString("FPS",450,10));
     SpriteStringHolder::addSpriteString("fps", new SpriteString("0000",450,30));
 
+    SuperAce* superAce = (SuperAce*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce");
     std::string remainingLoopsString = "";
-    for(int i = 0; i<  _remaining_loops_num; i++){
+    for(int i = 0; i < superAce->getSuperAceLoops(); i++){
        remainingLoopsString += "R";
 	}
+    
+    std::string remainingLivesString = "";
+    for(int i = 0; i < superAce->getSuperAceLives(); i++){
+        remainingLivesString += "L";
+    }
 	
     string score = std::to_string(_score);
     string highScore = std::to_string(_highScore);
 
+    SpriteStringHolder::addSpriteString("game", new SpriteString( "GAME", 196 ,110) );
+    SpriteStringHolder::getSpriteString("game")->setVisibility(false);
+    SpriteStringHolder::addSpriteString("over", new SpriteString( "OVER", 256 ,110) );
+    SpriteStringHolder::getSpriteString("over")->setVisibility(false);
     SpriteStringHolder::addSpriteString("score", new SpriteString( score , 20 ,30) );
     SpriteStringHolder::addSpriteString("highScore", new SpriteString( highScore , WIN_WIDTH/2 - (int) (highScore.size()*6), 30) );
-    SpriteStringHolder::addSpriteString("remainingLoops", new SpriteString(remainingLoopsString, WIN_WIDTH - _remaining_loops_num*12 -5, WIN_HEIGHT + 12) );
+    SpriteStringHolder::addSpriteString("remainingLoops", new SpriteString(remainingLoopsString, WIN_WIDTH - superAce->getSuperAceLoops()*12 -5, WIN_HEIGHT + 12) );
+    SpriteStringHolder::addSpriteString("remainingLives", new SpriteString(remainingLivesString, /*WIN_WIDTH - superAce->getSuperAceLives()*12*/ 5, WIN_HEIGHT - 15) );
     SpriteStringHolder::getSpriteString("remainingLoops")->setVisibility(true);
     SpriteStringHolder::addSpriteString("startingReadyLogo", new SpriteString("READY", (WIN_WIDTH / 2)-40, WIN_HEIGHT / 2) );
     SpriteStringHolder::addSpriteString("startingPlayerLogo", new SpriteString("PLAYER", (WIN_WIDTH / 2)-40, (WIN_HEIGHT / 2)+20) );

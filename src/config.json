@@ -1,6 +1,7 @@
 {
     "superAceLifes": 2,
     "superAceLoops": 5,
-    "spriteSize": 1.4 ,
+    "superAceLives": 2,
+    "spriteSize": 1.8 ,
     "highScore": 140
 }
