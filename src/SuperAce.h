@@ -17,13 +17,27 @@ using namespace std;
 #define RIGHT_FIGHTER "right.fighter"
 
 class SideFighter : public Sprite {
+private:
+    unsigned sideFighterWidth;
+    unsigned sideFighterHeight;
+    SDL_Rect sideFightertBulletDstRect;
 public:
-    SideFighter(Sprite* ace, const std::string& name){
-        ace->attach(this, name);
-    }
-    void Fire (void) {
-        /* spawn bullet */
-    }
+    
+    //constructor
+    SideFighter(Sprite* ace, const std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point point,bool isVisible,SpriteType type,AnimationFilm* currFilm);
+    ~SideFighter();
+    
+    //get
+    unsigned getSideFighterWidth();
+    unsigned getSideFighterHeight();
+    SDL_Rect getSideFightertBulletDstRect(int frame);
+    
+    //set
+    void setSideFighterWidth(unsigned width);
+    void setSideFighterHeight(unsigned height);
+    
+    //functionality
+    void fire (void);
 };
 
 
@@ -59,6 +73,7 @@ public:
     void setSuperAceLives(unsigned int superAceLives);
     void setSuperAceLoops(unsigned int superAceLoops);
     
+    //functionality
     void fire(void);
     void doManeuever(void);
 
