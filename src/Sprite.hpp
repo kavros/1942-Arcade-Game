@@ -47,9 +47,15 @@ public:
     };
     
     struct touchHandler : public Sprite::CollisionHandler{
-        void operator()(Sprite* bullet,Sprite* arg) const;
+        void operator()(Sprite* aircraft,Sprite* arg) const;
         touchHandler* Clone(void) const;
         ~touchHandler();
+    };
+    
+    struct touchPowerUpHandler : public Sprite::CollisionHandler{
+        void operator()(Sprite* powerUp,Sprite* arg) const;
+        touchPowerUpHandler* Clone(void) const;
+        ~touchPowerUpHandler();
     };
     
 protected:

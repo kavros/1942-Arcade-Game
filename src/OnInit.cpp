@@ -7,31 +7,30 @@ void testPowerUps(){
     AnimationFilm* powerUpAnimationFilm = AnimationFilmHolder::Get()->GetFilm("powerUps");
     assert(powerUpAnimationFilm);
     Sprite* powerUp;
-    
+    PowerUpType powerUpType= PowerUpType(0);
+
     for(int i=0; i<7; ++i){
-        cout<<i;
-        powerUp = new Sprite("explosionSprite", i, { 100 , i*60, powerUpAnimationFilm->getFrameBox(i).w , powerUpAnimationFilm->getFrameBox(i).h}, {0,0}, true, POWER_UPS, powerUpAnimationFilm);
+        powerUpType = PowerUpType(i);
+        powerUp = new PowerUp("explosionSprite",powerUpType, i, { 100 , i*60, powerUpAnimationFilm->getFrameBox(i).w ,
+            powerUpAnimationFilm->getFrameBox(i).h}, {0,0}, true, POWER_UPS, powerUpAnimationFilm);
         assert(powerUp);
         
-        powerUp->addCollisionHandler(Sprite::touchHandler());
+        powerUp->addCollisionHandler(Sprite::touchPowerUpHandler());
         
+        SoundHolder::playSound("explosion");
+        
+        /*
+         Animation* explosionAnimation = AnimationHolder::getAnimationHolder()->getAnimation("explosion");
+         assert(explosionAnimation);
+         
+         MovingPathAnimator* explosionAnimator = new MovingPathAnimator("animatorExplosion", explosion, (MovingPathAnimation*)explosionAnimation);
+         
+         AnimatorHolder::Register(explosionAnimator);
+         
+         explosionAnimator->start(Game::getGameTime());
+         */
     }
-    
-    SoundHolder::playSound("explosion");
-    
-    
-    /*
-     Animation* explosionAnimation = AnimationHolder::getAnimationHolder()->getAnimation("explosion");
-     assert(explosionAnimation);
-     
-     MovingPathAnimator* explosionAnimator = new MovingPathAnimator("animatorExplosion", explosion, (MovingPathAnimation*)explosionAnimation);
-     
-     AnimatorHolder::Register(explosionAnimator);
-     
-     explosionAnimator->start(Game::getGameTime());
-     */
-    
-    
+
 }
 
 bool Game::OnInit(){

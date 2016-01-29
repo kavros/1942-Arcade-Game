@@ -150,7 +150,7 @@ void Game::OnEvent(SDL_Event* event) {
 		}
         case GAME_OVER:
             //assert(0);
-            
+            break;
         case MULTIPLAYER_GAME:
             //dont work
             assert(0);
