@@ -21,10 +21,11 @@ void PowerUp::activatePowerUp(Sprite* arg){
             //not ready
             assert(0);
             break;
-        case SIDE_FIGHTERS:
-            //not ready
-            assert(0);
+        case SIDE_FIGHTERS:{
+            SuperAce* superAce = (SuperAce*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce");
+            superAce->addSideFighters();
             break;
+        }
         case EXTRA_LIFE:
             //not ready
             assert(0);

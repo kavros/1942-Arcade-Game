@@ -74,7 +74,7 @@ public:
     //functionality
     void fire(void);
     void doManeuever(void);
-
+    void addSideFighters();
 };
 
 #endif
