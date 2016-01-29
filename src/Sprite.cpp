@@ -22,7 +22,7 @@ Sprite::Sprite(){
 }
 
 Sprite::Sprite(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point point,bool isVisible,SpriteType type,AnimationFilm* currFilm){
-    assert(frameNo>=0 && currFilm!=NULL && type>=0 && type<=SPRITE_TYPE_SIZE);
+    assert(frameNo>=0 && currFilm!=NULL && type>=0 && type<=SpriteType(SPRITE_TYPE_SIZE) );
 
     _spriteId = id;
     _frameNo=frameNo;
@@ -206,26 +206,20 @@ void Sprite::notifyCollision(Sprite* arg){
 
 void Sprite::addCollisionHandler(const CollisionHandler& h){
     _handlers.push_back(h.Clone());
-    assert(this->getVisibility());
     if( _type == SUPER_ACE){
+        assert(this->getVisibility());
+
         SpriteList* aliens;
-        SpriteList* bigAliens;
         
         aliens = SpritesHolder::getSpritesHolder()->getSprites(ALIEN_SHIP);
-        bigAliens = SpritesHolder::getSpritesHolder()->getSprites(BIG_ALIEN_SHIP);
         
         if (aliens)
             for (SpriteList::iterator it=aliens->begin(); it != aliens->end(); ++it){
                 if( ((Sprite*)*it)->isAlive() )
                     CollisionChecker::Register(this,*it);
             }
-        if (bigAliens)
-            for (SpriteList::iterator it=bigAliens->begin(); it != bigAliens->end(); ++it){
-                if( ((Sprite*)*it)->isAlive() )
-                    CollisionChecker::Register(this,*it);
-            }
     }
-    if( _type == ALIEN_SHIP || _type == BIG_ALIEN_SHIP){
+    if( _type == ALIEN_SHIP){
         SpriteList* superAce;
         
         superAce = SpritesHolder::getSpritesHolder()->getSprites(SUPER_ACE);

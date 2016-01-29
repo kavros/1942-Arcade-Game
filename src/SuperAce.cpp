@@ -41,11 +41,8 @@ unsigned SuperAce::getSuperAceHeigth(){
 }
 
 SDL_Rect SuperAce::getBulletDstRect(int frame){
-    AnimationFilm* animationBulletFilm = AnimationFilmHolder::Get()->GetFilm("bullets");
     _bulletDstRect.x=(this->getDstRect().x + this->getDstRect().w/2 - _bulletDstRect.w/2);
     _bulletDstRect.y=this->getDstRect().y - this->getSuperAceHeigth()/3;
-    _bulletDstRect.w=animationBulletFilm->getFrameBox(frame).w * Game::getSpriteSize();
-    _bulletDstRect.h=animationBulletFilm->getFrameBox(frame).h * Game::getSpriteSize();
     return _bulletDstRect;
 }
 

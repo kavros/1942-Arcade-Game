@@ -6,6 +6,12 @@
                                         "dy": -4,
                                         "delay": 10,
                                         "continuous": true
+                                        },{
+                                        "id": "enemyFire",
+                                        "dx": 0,
+                                        "dy": 4,
+                                        "delay": 10,
+                                        "continuous": true
                                         }, {
                                         "id": "straightEnemyAttack",
                                         "dx": 0,

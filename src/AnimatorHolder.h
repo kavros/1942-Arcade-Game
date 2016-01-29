@@ -8,6 +8,7 @@
 #include "AnimationHolder.h"
 #include "MovingAnimator.h"
 #include "Game.hpp"
+#include "EnemyFighter.hpp"
 
 class Animator;
 
