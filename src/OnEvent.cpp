@@ -13,12 +13,12 @@ void Game::OnEvent(SDL_Event* event) {
         setState(PAUSE_MENU);
     }
     
-    Sprite* superAce = (Sprite*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce");
+    SuperAce* superAce = (SuperAce*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce");
     //cout << superAce->getState()<<endl;
     if(superAce->getState() == IN_COLUSION ){
-        setState(GAME_OVER);
-        return;
+            setState(GAME_OVER);
     }
+    
     
     switch (getState()) {
         case SINGLEPLAYER_MENU:

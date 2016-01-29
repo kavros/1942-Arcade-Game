@@ -8,7 +8,7 @@ bool Game::OnInit(){
 		return false;
 	}
 
-    SoundHolder::initSounds();
+    
     
 	InitGamePad();
 	
@@ -16,21 +16,23 @@ bool Game::OnInit(){
     InitWindow();
 	
     InitRenderer();
+    
+    InitGame();
+    
+    return true;
+}
 
+void Game::InitGame(){
     InitData();
-	InitSuperAceAnimator();
+    SoundHolder::initSounds();
+    InitSuperAceAnimator();
     LoadGameInfo("config.json");
     
     InitBackground();
-
+    
     InitGameInfo();
     
-	InitSuperAceAnimator();
-
-
-	
-    return true;
-
+    InitSuperAceAnimator();
 }
 
 void Game::InitGamePad(){

@@ -72,6 +72,7 @@ public:
     static void LoadGameInfo (const std::string& cataloge);
     static void OnLoop();
 
+    static void InitGame();
     static void OnRender();
     
     static void OnCleanup();

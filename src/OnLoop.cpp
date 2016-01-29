@@ -11,12 +11,14 @@ void Game::OnLoop() {
             break;
         case SINGLEPLAYER_GAME:{
             
-            Sprite* superAce = (Sprite*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce");
+            SuperAce* superAce = (SuperAce*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce");
             //cout << superAce->getState()<<endl;
+            
             if(superAce->getState() == IN_COLUSION ){
                 setState(GAME_OVER);
                 return;
             }
+            
             //commit destruction
             //proxeiri ilipoiisi ala nikola
             //DestructionManager::printDestructionManager();

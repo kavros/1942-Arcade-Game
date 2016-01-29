@@ -26,3 +26,8 @@ void SpriteStringHolder::addSpriteString(string id, SpriteString* spriteString){
 SpriteString* SpriteStringHolder::getSpriteString(string id){
     return SpriteStringHolder::getSpriteStringHolder()->spriteStringMap[ id ];
 }
+
+void SpriteStringHolder::cleanup(){
+    holder->~SpriteStringHolder();
+    holder = NULL;
+}
