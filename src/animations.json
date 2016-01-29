@@ -410,7 +410,203 @@
                                                       "visibility": true,
                                                       "delay": 150
                                                       }]
-                                            }, {
+                                            },  {
+                                            "id": "red_plane_circle_250_250_30",
+                                            "continuous":false,
+                                            "paths": [{
+                                                      "dx": 10,
+                                                      "dy": 10,
+                                                      "frameNo": 0,
+                                                      "visibility": true,
+                                                      "delay": 150
+                                                      },{
+                                                      "dx": 10,
+                                                      "dy": 10,
+                                                      "frameNo": 0,
+                                                      "visibility": true,
+                                                      "delay": 150
+                                                      },{
+                                                      "dx": 10,
+                                                      "dy": 10,
+                                                      "frameNo": 0,
+                                                      "visibility": true,
+                                                      "delay": 150
+                                                      },{
+                                                      "dx": 10,
+                                                      "dy": 10,
+                                                      "frameNo": 0,
+                                                      "visibility": true,
+                                                      "delay": 150
+                                                      },{
+                                                      "dx": 10,
+                                                      "dy": 10,
+                                                      "frameNo": 0,
+                                                      "visibility": true,
+                                                      "delay": 150
+                                                      },{
+                                                      "dx": 10,
+                                                      "dy": 10,
+                                                      "frameNo": 0,
+                                                      "visibility": true,
+                                                      "delay": 150
+                                                      },{
+                                                      "dx": 10,
+                                                      "dy": 10,
+                                                      "frameNo": 0,
+                                                      "visibility": true,
+                                                      "delay": 150
+                                                      },{
+                                                      "dx": 10,
+                                                      "dy": 10,
+                                                      "frameNo": 0,
+                                                      "visibility": true,
+                                                      "delay": 150
+                                                      },{
+                                                      "dx": 10,
+                                                      "dy": 10,
+                                                      "frameNo": 0,
+                                                      "visibility": true,
+                                                      "delay": 150
+                                                      },{
+                                                      "dx": 10,
+                                                      "dy": 10,
+                                                      "frameNo": 0,
+                                                      "visibility": true,
+                                                      "delay": 150
+                                                      },{
+                                                      "dx": 10,
+                                                      "dy": 10,
+                                                      "frameNo": 0,
+                                                      "visibility": true,
+                                                      "delay": 150
+                                                      },{
+                                                      "dx": 10,
+                                                      "dy": 10,
+                                                      "frameNo": 0,
+                                                      "visibility": true,
+                                                      "delay": 150
+                                                      },{
+                                                      "dx": 10,
+                                                      "dy": 10,
+                                                      "frameNo": 0,
+                                                      "visibility": true,
+                                                      "delay": 150
+                                                      },{
+                                                      "dx": 10,
+                                                      "dy": 10,
+                                                      "frameNo": 0,
+                                                      "visibility": true,
+                                                      "delay": 150
+                                                      },{
+                                                      "dx": 10,
+                                                      "dy": 10,
+                                                      "frameNo": 0,
+                                                      "visibility": true,
+                                                      "delay": 150
+                                                      },{
+                                                      "dx": -3,
+                                                      "dy": 12,
+                                                      "frameNo": 0,
+                                                      "visibility": true,
+                                                      "delay": 150
+                                                      }, {
+                                                      "dx": -7,
+                                                      "dy": 10,
+                                                      "frameNo": 0,
+                                                      "visibility": true,
+                                                      "delay": 150
+                                                      },{
+                                                      "dx": -11,
+                                                      "dy": 6,
+                                                      "frameNo": 0,
+                                                      "visibility": true,
+                                                      "delay": 150
+                                                      }, {
+                                                      "dx": -12,
+                                                      "dy": 1,
+                                                      "frameNo": 0,
+                                                      "visibility": true,
+                                                      "delay": 150
+                                                      },{
+                                                      "dx": -12,
+                                                      "dy": -4,
+                                                      "frameNo": 0,
+                                                      "visibility": true,
+                                                      "delay": 150
+                                                      }, {
+                                                      "dx": -9,
+                                                      "dy": -8,
+                                                      "frameNo": 0,
+                                                      "visibility": true,
+                                                      "delay": 150
+                                                      },{
+                                                      "dx": -5,
+                                                      "dy": -11,
+                                                      "frameNo": 0,
+                                                      "visibility": true,
+                                                      "delay": 150
+                                                      }, {
+                                                      "dx": 0,
+                                                      "dy": -12,
+                                                      "frameNo": 0,
+                                                      "visibility": true,
+                                                      "delay": 150
+                                                      },{
+                                                      "dx": 5,
+                                                      "dy": -11,
+                                                      "frameNo": 0,
+                                                      "visibility": true,
+                                                      "delay": 150
+                                                      }, {
+                                                      "dx": 9,
+                                                      "dy": -8,
+                                                      "frameNo": 0,
+                                                      "visibility": true,
+                                                      "delay": 150
+                                                      },{
+                                                      "dx": 12,
+                                                      "dy": -4,
+                                                      "frameNo": 0,
+                                                      "visibility": true,
+                                                      "delay": 150
+                                                      }, {
+                                                      "dx": 12,
+                                                      "dy": 1,
+                                                      "frameNo": 0,
+                                                      "visibility": true,
+                                                      "delay": 150
+                                                      },{
+                                                      "dx": 11,
+                                                      "dy": 6,
+                                                      "frameNo": 0,
+                                                      "visibility": true,
+                                                      "delay": 150
+                                                      }, {
+                                                      "dx": 7,
+                                                      "dy": 10,
+                                                      "frameNo": 0,
+                                                      "visibility": true,
+                                                      "delay": 150
+                                                      },{
+                                                      "dx": 20,
+                                                      "dy": 5,
+                                                      "visibility": true,
+                                                      "frameNo": 0,
+                                                      "delay": 150
+                                                      }, {
+                                                      "dx": 20,
+                                                      "dy": 5,
+                                                      "frameNo": 0,
+                                                      "visibility": true,
+                                                      "delay": 150
+                                                      }, {
+                                                      "dx": 20,
+                                                      "dy": 5,
+                                                      "frameNo": 0,
+                                                      "visibility": true,
+                                                      "delay": 150
+                                                      }]
+                                            },{
                                             "id": "superAceAnimationManeuver",
                                             "continuous":false,
                                             "paths": [{

@@ -3,7 +3,8 @@
 unsigned _enemyFighterWidth;
 unsigned _enemyFighterHeight;
 
-EnemyFighter::EnemyFighter(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point point,bool isVisible,SpriteType type,AnimationFilm* currFilm){
+
+EnemyFighter::EnemyFighter(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point point,bool isVisible,SpriteType type,AnimationFilm* currFilm, enum EnemyFighterType e){
     
     _spriteId = id;
     _dstRect = dstRect;
@@ -24,11 +25,15 @@ EnemyFighter::EnemyFighter(std::string id, unsigned  frameNo,SDL_Rect dstRect,SD
     _enemyBulletDstRect.y=this->getDstRect().y + this->_enemyFighterHeight;
     _enemyBulletDstRect.w=animationEnemyBulletFilm->getFrameBox(0).w * Game::getSpriteSize() *2;
     _enemyBulletDstRect.h=animationEnemyBulletFilm->getFrameBox(0).h * Game::getSpriteSize()*2;
-    
+    _enemyType = e;
     this->addCollisionHandler(Sprite::touchHandler());
     
     SpritesHolder::getSpritesHolder()->add(this);
     
+}
+
+enum EnemyFighterType EnemyFighter::getEnemyFighterType(){
+    return _enemyType;
 }
 
 unsigned EnemyFighter::getEnemyFighterWidth(){
@@ -37,6 +42,15 @@ unsigned EnemyFighter::getEnemyFighterWidth(){
 
 unsigned EnemyFighter::getEnemyFighterHeight(){
     return _enemyFighterHeight;
+}
+
+void EnemyFighter::setFrame(unsigned i) {
+    assert(0 < i < _currFilm->getTotalFrames());
+    _frameNo = i;
+    if(_enemyType != EnemyFighterType(RED_PLANE)){
+        _dstRect.h = _currFilm->getFrameBox(_frameNo).h * Game::getSpriteSize();
+        _dstRect.w = _currFilm->getFrameBox(_frameNo).w * Game::getSpriteSize();
+    }
 }
 
 SDL_Rect EnemyFighter::getEnemyBulletDstRect(int frame){

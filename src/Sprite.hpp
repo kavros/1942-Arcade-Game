@@ -94,7 +94,7 @@ public:
 	//setters
 	void setState(SpriteState);
     void setId(std::string);
-    void setFrame(unsigned  i);
+    virtual void setFrame(unsigned  i) ;
     void setVisibility (bool v);
     void setDstRect(SDL_Rect dstRect);
     void setDstRectX(int x);
