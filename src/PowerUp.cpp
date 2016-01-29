@@ -27,9 +27,16 @@ void PowerUp::activatePowerUp(Sprite* arg){
             superAce->addSideFighters();
             break;
         }
-        case EXTRA_LIFE:
+        case EXTRA_LIFE:{
             //not ready
-            assert(0);
+            SuperAce* sa = superAce;
+            sa->setSuperAceLives(sa->getSuperAceLives() + 1);
+            std::string _remainingLives = "";
+            for(int i = 0; i < sa->getSuperAceLives() ; i++){
+                _remainingLives += "L";
+            }
+        SpriteStringHolder::getSpriteString("remainingLives")->changeString(_remainingLives, +5/*WIN_WIDTH - loops*12 -5*/, WIN_HEIGHT -15);}
+            //assert(0);
             break;
         case NO_ENEMY_BULLETS:{
             SpriteList* sl = SpritesHolder::getSpritesHolder()->getSprites(ALIEN_SHIP);
@@ -44,9 +51,9 @@ void PowerUp::activatePowerUp(Sprite* arg){
             //not ready
             assert(0);
             break;
+        }
         case THOUSAND_POINTS:
-            //not ready
-            assert(0);
+            Game::setScore(Game::getScore()+ 1000);
             break;
     }
 }
