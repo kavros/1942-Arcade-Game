@@ -5,17 +5,19 @@
 
 void Sprite::fireHandler::operator()(Sprite* bullet,Sprite* arg) const{
     
-    assert(bullet && arg);
-    assert(bullet->isAlive() && arg->isAlive());
-    
-    if( !bullet->getVisibility() || !arg->getVisibility() )
-        return;
-    
-    bullet->setVisibility(false);
+    //if(bullet!=nullptr){
+        assert(bullet && arg);
+        assert(bullet->isAlive() && arg->isAlive());
+        
+        if( !bullet->getVisibility() || !arg->getVisibility() )
+            return;
+        
+        bullet->setVisibility(false);
+        bullet->setState(IN_COLUSION);
+   // }
     arg->setVisibility(false);
     
     Game::setScore(Game::getScore()+ 30);
-    bullet->setState(IN_COLUSION);
     if (arg->getId().compare("SuperAce") == 0){
         SuperAce* sa = (SuperAce*) arg;
         if(sa->getSuperAceLives() > 1){
