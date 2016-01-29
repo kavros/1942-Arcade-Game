@@ -52,7 +52,10 @@ void PowerUp::activatePowerUp(Sprite* arg){
             SpriteList* sl = SpritesHolder::getSpritesHolder()->getSprites(ALIEN_SHIP);
             SpriteList::const_iterator it = sl->begin();
             while ( it != sl->end() ){
-                ((EnemyFighter*)(*it))->setEnemyFireEnable(false);
+                if(((EnemyFighter*)(*it))->getEnemyFighterType() != EnemyFighterType(BIG_GREEN) ||
+                        ((EnemyFighter*)(*it))->getEnemyFighterType() != EnemyFighterType(BIG_GREY))
+                    
+                            ((EnemyFighter*)(*it))->setEnemyFireEnable(false);
                 ++it;
             }
             break;

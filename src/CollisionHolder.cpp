@@ -5,18 +5,15 @@
 
 void Sprite::fireHandler::operator()(Sprite* bullet,Sprite* arg) const{
     
-    //if(bullet!=nullptr){
-        assert(bullet && arg);
-        assert(bullet->isAlive() && arg->isAlive());
-        
-        if( !bullet->getVisibility() || !arg->getVisibility() )
-            return;
-        
-        bullet->setVisibility(false);
-        bullet->setState(IN_COLUSION);
-   // }
-    arg->setVisibility(false);
+    assert(bullet && arg);
+    assert(bullet->isAlive() && arg->isAlive());
     
+    if( !bullet->getVisibility() || !arg->getVisibility() )
+        return;
+    
+    bullet->setState(IN_COLUSION);
+    arg->setVisibility(false);
+    bullet->setVisibility(false);
     Game::setScore(Game::getScore()+ 30);
     if (arg->getId().compare("SuperAce") == 0){
         SuperAce* sa = (SuperAce*) arg;
@@ -33,8 +30,6 @@ void Sprite::fireHandler::operator()(Sprite* bullet,Sprite* arg) const{
     }else{
         arg->setState(IN_COLUSION);
     }
-    //bullet->destroySprite();
-    //arg->destroySprite();
     
     AnimatorHolder::createExplosion( arg->getDstRect() );
 }
