@@ -18,7 +18,7 @@ SpritesHolder::~SpritesHolder(){
 }
 
 void SpritesHolder::add(Sprite *s){
-    assert(s && s->getType()>=0 && s->getType()<= SPRITE_TYPE_SIZE);
+    assert(s && s->getType()>=0 && s->getType()<= SpriteType(SPRITE_TYPE_SIZE) );
    /*
     if (_sprites[s->getType()] == nullptr) {
         _sprites[s->getType()] = new SpriteList();
@@ -60,7 +60,7 @@ SpritesHolder* SpritesHolder::getSpritesHolder(){
 }
 
 SpriteList * SpritesHolder::getSprites(SpriteType type){
-    assert(type>=0 && type<=SPRITE_TYPE_SIZE);
+    assert(type>=0 && type<=SpriteType(SPRITE_TYPE_SIZE) );
 
     SpriteByType::const_iterator i = _sprites.find(type);
     
@@ -69,7 +69,7 @@ SpriteList * SpritesHolder::getSprites(SpriteType type){
 }
 
 void SpritesHolder::displaySprites(SDL_Renderer* renderer, SpriteType type){
-    assert(type>=0 && type<=SPRITE_TYPE_SIZE);
+    assert(type>=0 && type<=SpriteType(SPRITE_TYPE_SIZE) );
     
     SpriteList* sl = SpritesHolder::getSprites(type);
     if(!sl){
@@ -143,38 +143,10 @@ void    SpritesHolder::Load (const std::string& cataloge/*,SDL_Renderer* _render
         bool isVisible = sprite["visible"].GetBool();
         SpriteType spriteType;
         int st = sprite["spriteType"].GetInt();
-        switch(st){
-            case 0:
-                spriteType = SpriteType::MAIN_MENU_SINGLEPLAYER;
-                break;
-            case 1:
-                spriteType = SpriteType::MAIN_MENU_MULTIPLAYER;
-                break;
-            case 2:
-                spriteType = SpriteType::TERRAIN;
-                break;
-            case 3:
-                spriteType = SpriteType::SUPER_ACE;
-                break;
-            case 4:
-                spriteType = SpriteType::ALIEN_SHIP;
-                break;
-            case 5:
-                spriteType = SpriteType::BIG_ALIEN_SHIP;
-                break;
-            case 6:
-                spriteType = SpriteType::POWER_UPS;
-                break;
-            case 7:
-                spriteType = SpriteType::GAME_INFO;
-                break;
-            case 8:
-                spriteType = SpriteType::UNDEFINED;
-                break;
-            default:
-                assert(0);
-        }
         
+        spriteType = SpriteType(st);
+        assert( st < SPRITE_TYPE_SIZE );
+
         AnimationFilm* animationFilm = AnimationFilmHolder::Get()->GetFilm(sprite["animFilmId"].GetString()) ;
         
         assert(sprite.IsObject());

@@ -16,7 +16,6 @@ typedef enum SpriteType {
     TERRAIN,
     SUPER_ACE,
     ALIEN_SHIP,
-    BIG_ALIEN_SHIP,
     POWER_UPS,
     GAME_INFO,
     UNDEFINED
