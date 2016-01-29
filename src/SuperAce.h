@@ -24,7 +24,7 @@ public:
     ~SideFighter();
     
     //get
-    SDL_Rect getSideFightertBulletDstRect();
+    SDL_Rect getSideFightertBulletDstRect(unsigned int bulletFrame);
     
     //set
     
@@ -36,6 +36,7 @@ public:
 class SuperAce:public Sprite{
     
 private:
+    unsigned int bulletFrame;
     SDL_Rect _bulletDstRect;
     unsigned int _superAceLives;
     unsigned int _superAceLoops;
@@ -54,10 +55,12 @@ public:
     SDL_Rect getBulletDstRect(int frame);
     unsigned int getSuperAceLives();
     unsigned int getSuperAceLoops();
+    unsigned int getBulletFrame();
     
     //set
     void setSuperAceLives(unsigned int superAceLives);
     void setSuperAceLoops(unsigned int superAceLoops);
+    void setBulletFrame(unsigned int bulletFrame);
     
     //functionality
     void fire(void);

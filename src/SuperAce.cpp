@@ -13,6 +13,7 @@ SuperAce::SuperAce(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point 
     _superAceLives = 1;
     AnimationFilm* animationBulletFilm = AnimationFilmHolder::Get()->GetFilm("bullets");
     
+    bulletFrame = 2;
     _bulletDstRect.x=this->getDstRect().x + (this->getDstRect().w/4);
     _bulletDstRect.y=this->getDstRect().y - this->getDstRect().h;
     _bulletDstRect.w=animationBulletFilm->getFrameBox(2).w * Game::getSpriteSize();
@@ -42,6 +43,10 @@ unsigned int SuperAce::getSuperAceLoops(){
     return _superAceLoops;
 }
 
+unsigned int SuperAce::getBulletFrame(){
+    return bulletFrame;
+}
+
 //set
 void SuperAce::setSuperAceLives(unsigned int superAceLives){
     _superAceLives = superAceLives;
@@ -49,6 +54,10 @@ void SuperAce::setSuperAceLives(unsigned int superAceLives){
 
 void SuperAce::setSuperAceLoops(unsigned int superAceLoops){
     _superAceLoops = superAceLoops;
+}
+
+void SuperAce::setBulletFrame(unsigned int _bulletFrame){
+    bulletFrame = _bulletFrame;
 }
 
 void SuperAce::fire(void){
@@ -60,7 +69,7 @@ void SuperAce::fire(void){
     AnimationFilm* fireAnimationFilm = AnimationFilmHolder::Get()->GetFilm("bullets");
     assert(fireAnimationFilm);
     
-    Sprite* bullet = new Sprite(spriteSuperAceFireId, 2, getBulletDstRect(2), {0,0}, true, SUPER_ACE, fireAnimationFilm);
+    Sprite* bullet = new Sprite(spriteSuperAceFireId, bulletFrame, getBulletDstRect(bulletFrame), {0,0}, true, SUPER_ACE, fireAnimationFilm);
     assert(bullet);
     
     //play sound for fire
@@ -192,7 +201,7 @@ SideFighter::~SideFighter(){
     detach(this->getId(),false);
 }
 
-SDL_Rect SideFighter::getSideFightertBulletDstRect(){
+SDL_Rect SideFighter::getSideFightertBulletDstRect(unsigned int bulletFrame){
     sideFightertBulletDstRect.x=(this->getDstRect().x + this->getDstRect().w/2 - sideFightertBulletDstRect.w/2);
     sideFightertBulletDstRect.y=this->getDstRect().y - _dstRect.h/3;
     return sideFightertBulletDstRect;
@@ -206,11 +215,13 @@ void SideFighter::fire (void) {
     string spriteSideFighterFireId = str + std::to_string (number);
     number++;
     
+    unsigned int bulletFrame = ((SuperAce* )getParent())->getBulletFrame();
+    
     /*bullet test*/
     AnimationFilm* fireAnimationFilm = AnimationFilmHolder::Get()->GetFilm("bullets");
     assert(fireAnimationFilm);
     
-    Sprite* bullet = new Sprite(spriteSideFighterFireId, 2, getSideFightertBulletDstRect(), {0,0}, true, SUPER_ACE, fireAnimationFilm);
+    Sprite* bullet = new Sprite(spriteSideFighterFireId, bulletFrame , getSideFightertBulletDstRect(bulletFrame), {0,0}, true, SUPER_ACE, fireAnimationFilm);
     assert(bullet);
     
     //play sound for fire

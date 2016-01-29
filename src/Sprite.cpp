@@ -261,3 +261,7 @@ void Sprite::destroySprite(void){
     if (_parent)	// is attached
         _parent->detach(_name, false);
 }
+
+Sprite* Sprite::getParent(){
+    return _parent;
+}

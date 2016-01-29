@@ -12,17 +12,18 @@ PowerUpType PowerUp::getPowerUpType(){
 }
 
 void PowerUp::activatePowerUp(Sprite* arg){
+    SuperAce* superAce = (SuperAce*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce");
+
     switch ( getPowerUpType() ){
-        case QUAD_GUN:
-            //not ready
-            assert(0);
+        case QUAD_GUN:{
+            superAce->setBulletFrame(3);
             break;
+        }
         case ENEMY_CRASH:
             //not ready
             assert(0);
             break;
         case SIDE_FIGHTERS:{
-            SuperAce* superAce = (SuperAce*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce");
             superAce->addSideFighters();
             break;
         }
