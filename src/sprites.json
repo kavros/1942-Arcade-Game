@@ -19,6 +19,7 @@
                 "point": [0, 0],
                 "visible": false,
                 "spriteType": 4,
+                "enemyType" : 0,
                 "animFilmId": "red_plane"
                 },{
                 "id": "GreenJet200",
@@ -27,6 +28,7 @@
                 "point": [0, 0],
                 "visible": false,
                 "spriteType": 4,
+                "enemyType" : 5,
                 "animFilmId": "green_double_engine"
                 },{
                 "id": "GreenJet300",
@@ -35,6 +37,7 @@
                 "point": [0, 0],
                 "visible": false,
                 "spriteType": 4,
+                "enemyType" : 1,
                 "animFilmId": "green_jet"
                 },{
                 "id": "GreenJet400",
@@ -43,6 +46,7 @@
                 "point": [0, 0],
                 "visible": false,
                 "spriteType": 4,
+                "enemyType" : 5,
                 "animFilmId": "green_double_engine"
                 },{
                 "id": "GreenJet500",
@@ -51,6 +55,7 @@
                 "point": [0, 0],
                 "visible": false,
                 "spriteType": 4,
+                "enemyType" : 1,
                 "animFilmId": "green_jet"
                 },{
                 "id": "GreenJet600",
@@ -58,6 +63,7 @@
                 "destRect": [0, 150, 25, 25],
                 "point": [0, 0],
                 "visible": false,
+                "enemyType" : 5,
                 "spriteType": 4,
                 "animFilmId": "green_double_engine"
                 },{
@@ -66,6 +72,7 @@
                 "destRect": [0, 160, 25, 25],
                 "point": [0, 0],
                 "visible": false,
+                "enemyType" : 1,
                 "spriteType": 4,
                 "animFilmId": "green_jet"
                 },{
@@ -74,6 +81,7 @@
                 "destRect": [0, 200, 25, 25],
                 "point": [0, 0],
                 "visible": false,
+                "enemyType" : 5,
                 "spriteType": 4,
                 "animFilmId": "green_double_engine"
                 },{
@@ -82,6 +90,7 @@
                 "destRect": [0, 220, 25, 25],
                 "point": [0, 0],
                 "visible": false,
+                "enemyType" : 1,
                 "spriteType": 4,
                 "animFilmId": "green_jet"
                 },{

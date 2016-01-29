@@ -158,9 +158,12 @@ void    SpritesHolder::Load (const std::string& cataloge/*,SDL_Renderer* _render
         //add Sprite 2 Sprite Holder
         if(spriteType == SpriteType::SUPER_ACE)
             new SuperAce(id, frameNo, destRect, point, isVisible, spriteType,animationFilm);
-        else if(spriteType == SpriteType::ALIEN_SHIP)
-            new EnemyFighter(id, frameNo, destRect, point, isVisible, spriteType,animationFilm);
-        else
+        else if(spriteType == SpriteType::ALIEN_SHIP){
+            assert(sprite["enemyType"].IsInt());
+            enum EnemyFighterType e = EnemyFighterType(sprite["enemyType"].GetInt());
+            new EnemyFighter(id, frameNo, destRect, point, isVisible, spriteType,animationFilm,e);
+            
+        }else
             new Sprite(id, frameNo, destRect, point, isVisible, spriteType,animationFilm);
     }
 
