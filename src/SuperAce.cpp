@@ -100,10 +100,10 @@ void SuperAce::fire(void){
 
 void SuperAce::doManeuever(void){
     if(getState() == MANEUVER){
-        assert(0);
+        
         return;
     }
-    
+
     MovingPathAnimator* superAceAnimatorManeuever = (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorManeuver");
     SuperAce* superAce = (SuperAce*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce");
     int loops = superAce->getSuperAceLoops();
@@ -193,8 +193,8 @@ SideFighter::SideFighter(Sprite* ace, const std::string id, unsigned  frameNo,SD
     
     sideFightertBulletDstRect.x=this->getDstRect().x + (_dstRect.w/4);
     sideFightertBulletDstRect.y=this->getDstRect().y - _dstRect.h;
-    sideFightertBulletDstRect.w=animationBulletFilm->getFrameBox(2).w * Game::getSpriteSize();
-    sideFightertBulletDstRect.h=animationBulletFilm->getFrameBox(2).h * Game::getSpriteSize();
+    sideFightertBulletDstRect.w=animationBulletFilm->getFrameBox(1).w * Game::getSpriteSize();
+    sideFightertBulletDstRect.h=animationBulletFilm->getFrameBox(1).h * Game::getSpriteSize();
     
     this->addCollisionHandler(Sprite::touchHandler());
     
@@ -219,7 +219,7 @@ void SideFighter::fire (void) {
     string spriteSideFighterFireId = str + std::to_string (number);
     number++;
     
-    unsigned int bulletFrame = ((SuperAce* )getParent())->getBulletFrame();
+    unsigned int bulletFrame = 1;
     
     /*bullet test*/
     AnimationFilm* fireAnimationFilm = AnimationFilmHolder::Get()->GetFilm("bullets");
@@ -253,15 +253,16 @@ void SuperAce::addSideFighters(){
     
     /*right side fighter*/
     sideFighter = new SideFighter(this, RIGHT_FIGHTER, sideFighterFrameNo, sideFighterDstRect, _point, _isVisible, _type, anim);
-    sideFighterDstRect = { getDstRect().x+getDstRect().w , getDstRect().y , sideFighter->getDstRect().w*2 , getDstRect().h };
+    sideFighterDstRect = { getDstRect().x+getDstRect().w , getDstRect().y , sideFighter->getDstRect().w , getDstRect().h };
     sideFighter->setDstRect(sideFighterDstRect);
     
     
     /*left side fighter*/
     sideFighter = new SideFighter(this, LEFT_FIGHTER, sideFighterFrameNo, sideFighterDstRect, _point, _isVisible, _type, anim);
-    sideFighterDstRect = { getDstRect().x-sideFighter->getDstRect().w*2 , getDstRect().y , sideFighter->getDstRect().w*2 , getDstRect().h };
+    sideFighterDstRect = { getDstRect().x-sideFighter->getDstRect().w , getDstRect().y , sideFighter->getDstRect().w , getDstRect().h };
     sideFighter->setDstRect(sideFighterDstRect);
     
     assert(getAttached(RIGHT_FIGHTER));
     assert(getAttached(LEFT_FIGHTER));
 }
+
