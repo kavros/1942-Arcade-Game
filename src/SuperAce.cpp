@@ -27,16 +27,16 @@ SuperAce::SuperAce(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point 
     SpritesHolder::getSpritesHolder()->add(this);
     
     /*right side fighter*/
-    unsigned rightSideFighterFrameNo = 0;
+    /*unsigned rightSideFighterFrameNo = 0;
     SDL_Rect rightSideFighterDstRect = { static_cast<int>(_dstRect.x+_superAceWidth+8) , _dstRect.y , _dstRect.w , _dstRect.h};
     new SideFighter(this, RIGHT_FIGHTER, rightSideFighterFrameNo, rightSideFighterDstRect, point, isVisible, type, currFilm);
-    assert(getAttached(RIGHT_FIGHTER));
+    assert(getAttached(RIGHT_FIGHTER));*/
     
     /*left side fighter*/
-    unsigned leftSideFighterFrameNo = 0;
+    /*unsigned leftSideFighterFrameNo = 0;
     SDL_Rect leftSideFighterDstRect = { _dstRect.x-_dstRect.w , _dstRect.y , _dstRect.w , _dstRect.h};
     new SideFighter(this, LEFT_FIGHTER, leftSideFighterFrameNo, leftSideFighterDstRect, point, isVisible, type, currFilm);
-    assert(getAttached(LEFT_FIGHTER));
+    assert(getAttached(LEFT_FIGHTER));*/
 
 
     

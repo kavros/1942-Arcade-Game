@@ -110,7 +110,9 @@ void AnimatorHolder::triggerAnimators(){
         dstRect.w=32;
         dstRect.h=31;*/
         AnimationFilm* animationFilm;
-        if(i%200 == 0)
+        if(i == 100)
+            animationFilm = AnimationFilmHolder::Get()->GetFilm("red_plane");
+        else if(i%200 == 0)
             animationFilm = AnimationFilmHolder::Get()->GetFilm("green_jet");
         else
             animationFilm = AnimationFilmHolder::Get()->GetFilm("green_double_engine");
@@ -120,8 +122,12 @@ void AnimatorHolder::triggerAnimators(){
         Sprite* sprite = SpritesHolder::getSpritesHolder()->getSprite(SpriteType::ALIEN_SHIP, "GreenJet" + std::to_string(i)); //new Sprite("spriteStraightEnemyAttack", 0, dstRect, {0,0}, true, ALIEN_SHIP, fireAnimationFilm);
         
         assert(sprite);
+        Animation* animation;
         
-        Animation* animation = AnimationHolder::getAnimationHolder()->getAnimation("circle_250_250_30");
+        if(i == 100 )
+            animation = AnimationHolder::getAnimationHolder()->getAnimation("red_plane_circle_250_250_30");
+        else
+            animation = AnimationHolder::getAnimationHolder()->getAnimation("circle_250_250_30");
         assert(animation);
         
         MovingPathAnimator* animator = new MovingPathAnimator(string("animatorStraightEnemyAttack") + std::to_string(i), sprite, (MovingPathAnimation*)animation);

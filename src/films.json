@@ -257,7 +257,13 @@
               "rects": [
                         [0, 0, 150, 333]
                         ]
-              }, {
+              },  {
+              "id": "red_plane",
+              "path": "red_plane.png",
+              "rects": [
+                        [0, 0, 101, 115]
+                        ]
+              },{
               "id": "Super.Ace.1942",
               "path": "super_ace/SuperAceAll.png",
               "rects": [

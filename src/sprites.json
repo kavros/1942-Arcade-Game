@@ -19,7 +19,7 @@
                 "point": [0, 0],
                 "visible": false,
                 "spriteType": 4,
-                "animFilmId": "green_jet"
+                "animFilmId": "red_plane"
                 },{
                 "id": "GreenJet200",
                 "frameNo": 0,
