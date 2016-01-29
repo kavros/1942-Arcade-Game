@@ -15,7 +15,7 @@ void Game::OnEvent(SDL_Event* event) {
     
     switch (getState()) {
         case SINGLEPLAYER_MENU:
-            if (event->type == SDL_MOUSEBUTTONDOWN){
+            if (event->key.keysym.sym == SDLK_SPACE){
                 setState(SINGLEPLAYER_GAME);
             }
             else if (event->key.keysym.sym == SDLK_DOWN){
@@ -23,7 +23,7 @@ void Game::OnEvent(SDL_Event* event) {
             }
             break;
         case MULTIPLAYER_MENU:
-            if (event->type == SDL_MOUSEBUTTONDOWN){
+            if (event->key.keysym.sym == SDLK_SPACE){
                 setState(MULTIPLAYER_GAME);
             }
             else if (event->key.keysym.sym == SDLK_UP){
@@ -95,7 +95,7 @@ void Game::OnEvent(SDL_Event* event) {
 					|| event->cbutton.button == SDL_CONTROLLER_BUTTON_DPAD_LEFT) {
 
                     if(event->key.keysym.sym != prevEvent.key.keysym.sym)
-					superAceAnimatorLeft->start(getGameTime());
+                        superAceAnimatorLeft->start(getGameTime());
                     else
                         superAceAnimatorLeftLeft->start(getGameTime());
 				}
@@ -103,7 +103,7 @@ void Game::OnEvent(SDL_Event* event) {
 					|| event->cbutton.button == SDL_CONTROLLER_BUTTON_DPAD_RIGHT){
                     
                     if(event->key.keysym.sym != prevEvent.key.keysym.sym)
-					superAceAnimatorRight->start(getGameTime());
+                        superAceAnimatorRight->start(getGameTime());
                     else
                         superAceAnimatorRightRight->start(getGameTime());
 
