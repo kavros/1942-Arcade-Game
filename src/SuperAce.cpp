@@ -125,7 +125,7 @@ void SuperAce::doManeuever(void){
         }
         cout<<_remainingLoops<<endl;
         
-        SpriteStringHolder::getSpriteString("remainingLoops")->changeString(_remainingLoops,WIN_WIDTH - (loops*12), WIN_HEIGHT - 12);
+        SpriteStringHolder::getSpriteString("remainingLoops")->changeString(_remainingLoops, 125/*WIN_WIDTH - loops*12 -5*/, 125/*WIN_HEIGHT + 12*/);
  
     }
     else if (loops == 0){
