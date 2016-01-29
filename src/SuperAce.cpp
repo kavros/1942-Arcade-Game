@@ -16,8 +16,8 @@ SuperAce::SuperAce(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point 
     bulletFrame = 2;
     _bulletDstRect.x=this->getDstRect().x + (this->getDstRect().w/4);
     _bulletDstRect.y=this->getDstRect().y - this->getDstRect().h;
-    _bulletDstRect.w=animationBulletFilm->getFrameBox(2).w * Game::getSpriteSize();
-    _bulletDstRect.h=animationBulletFilm->getFrameBox(2).h * Game::getSpriteSize();
+    _bulletDstRect.w=animationBulletFilm->getFrameBox(bulletFrame).w * Game::getSpriteSize();
+    _bulletDstRect.h=animationBulletFilm->getFrameBox(bulletFrame).h * Game::getSpriteSize();
     
     this->addCollisionHandler(Sprite::touchHandler());
 
@@ -57,7 +57,11 @@ void SuperAce::setSuperAceLoops(unsigned int superAceLoops){
 }
 
 void SuperAce::setBulletFrame(unsigned int _bulletFrame){
+    AnimationFilm* animationBulletFilm = AnimationFilmHolder::Get()->GetFilm("bullets");
+
     bulletFrame = _bulletFrame;
+    _bulletDstRect.w=animationBulletFilm->getFrameBox(bulletFrame).w * Game::getSpriteSize();
+    _bulletDstRect.h=animationBulletFilm->getFrameBox(bulletFrame).h * Game::getSpriteSize();
 }
 
 void SuperAce::fire(void){
@@ -189,8 +193,8 @@ SideFighter::SideFighter(Sprite* ace, const std::string id, unsigned  frameNo,SD
     
     sideFightertBulletDstRect.x=this->getDstRect().x + (_dstRect.w/4);
     sideFightertBulletDstRect.y=this->getDstRect().y - _dstRect.h;
-    sideFightertBulletDstRect.w=animationBulletFilm->getFrameBox(2).w * Game::getSpriteSize();
-    sideFightertBulletDstRect.h=animationBulletFilm->getFrameBox(2).h * Game::getSpriteSize();
+    sideFightertBulletDstRect.w=animationBulletFilm->getFrameBox(1).w * Game::getSpriteSize();
+    sideFightertBulletDstRect.h=animationBulletFilm->getFrameBox(1).h * Game::getSpriteSize();
     
     this->addCollisionHandler(Sprite::touchHandler());
     
@@ -215,7 +219,7 @@ void SideFighter::fire (void) {
     string spriteSideFighterFireId = str + std::to_string (number);
     number++;
     
-    unsigned int bulletFrame = ((SuperAce* )getParent())->getBulletFrame();
+    unsigned int bulletFrame = 1;
     
     /*bullet test*/
     AnimationFilm* fireAnimationFilm = AnimationFilmHolder::Get()->GetFilm("bullets");
@@ -249,13 +253,13 @@ void SuperAce::addSideFighters(){
     
     /*right side fighter*/
     sideFighter = new SideFighter(this, RIGHT_FIGHTER, sideFighterFrameNo, sideFighterDstRect, _point, _isVisible, _type, anim);
-    sideFighterDstRect = { getDstRect().x+getDstRect().w , getDstRect().y , sideFighter->getDstRect().w*2 , getDstRect().h };
+    sideFighterDstRect = { getDstRect().x+getDstRect().w , getDstRect().y , sideFighter->getDstRect().w , getDstRect().h };
     sideFighter->setDstRect(sideFighterDstRect);
     
     
     /*left side fighter*/
     sideFighter = new SideFighter(this, LEFT_FIGHTER, sideFighterFrameNo, sideFighterDstRect, _point, _isVisible, _type, anim);
-    sideFighterDstRect = { getDstRect().x-sideFighter->getDstRect().w*2 , getDstRect().y , sideFighter->getDstRect().w*2 , getDstRect().h };
+    sideFighterDstRect = { getDstRect().x-sideFighter->getDstRect().w , getDstRect().y , sideFighter->getDstRect().w , getDstRect().h };
     sideFighter->setDstRect(sideFighterDstRect);
     
     assert(getAttached(RIGHT_FIGHTER));
