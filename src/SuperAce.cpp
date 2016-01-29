@@ -100,10 +100,10 @@ void SuperAce::fire(void){
 
 void SuperAce::doManeuever(void){
     if(getState() == MANEUVER){
-        assert(0);
+        
         return;
     }
-    
+
     MovingPathAnimator* superAceAnimatorManeuever = (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorManeuver");
     SuperAce* superAce = (SuperAce*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce");
     int loops = superAce->getSuperAceLoops();
@@ -265,3 +265,4 @@ void SuperAce::addSideFighters(){
     assert(getAttached(RIGHT_FIGHTER));
     assert(getAttached(LEFT_FIGHTER));
 }
+

@@ -40,6 +40,11 @@ void MovingPathAnimator::progress(timestamp_t currTime){
             _state = ANIMATOR_FINISHED;
             setOnFinished(finishCallB);
             stop();
+
+			if (_sprite->getState() == MANEUVER){
+				//cout << "State changed from MANEUVER to FLYING" << endl;
+				_sprite->setState(FLYING);
+			}
             break ;
         }else if(_anim->getContinuous() && _currPath == _anim->getPath().end() ){
             _currPath = _anim->getPath().begin();
@@ -47,9 +52,7 @@ void MovingPathAnimator::progress(timestamp_t currTime){
         
 	}
     
-     if (_sprite->getState() == MANEUVER){
-         _sprite->setState(FLYING);
-     }
+     
      if (_sprite->getState() == STARTING){
          _sprite->setState(FLYING);
      }
