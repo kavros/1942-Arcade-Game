@@ -31,7 +31,7 @@ typedef enum SpriteState {
 
 class Sprite : public LatelyDestroyable{
     
-protected:
+public:
     
     class CollisionHandler{
     public:
@@ -51,6 +51,8 @@ protected:
         touchHandler* Clone(void) const;
         ~touchHandler();
     };
+    
+protected:
     
     //collision detection variables
     typedef std::list<CollisionHandler*> Handlers;

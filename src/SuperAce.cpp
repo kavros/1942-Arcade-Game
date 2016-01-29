@@ -252,6 +252,7 @@ void SideFighter::setSideFighterHeight(unsigned height){
 }
 
 void SideFighter::fire (void) {
+    
     /* spawn bullet */
     static string str = "spriteSideSuperAceFire";
     static int number = 0;

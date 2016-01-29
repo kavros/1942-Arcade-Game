@@ -11,8 +11,6 @@
 #include "AnimationHolder.h"
 #include "Game.hpp"
 
-using namespace std;
-
 #define LEFT_FIGHTER  "left.fighter"
 #define RIGHT_FIGHTER "right.fighter"
 

@@ -37,6 +37,7 @@
 #include <map>
 #include <vector>
 #include <algorithm>    // std::for_each
+#include <fstream>
 
 using namespace std;
 
