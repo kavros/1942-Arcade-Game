@@ -26,6 +26,20 @@ SuperAce::SuperAce(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point 
 
     SpritesHolder::getSpritesHolder()->add(this);
     
+    /*right side fighter*/
+    unsigned rightSideFighterFrameNo = 0;
+    SDL_Rect rightSideFighterDstRect = { static_cast<int>(_dstRect.x+_superAceWidth+8) , _dstRect.y , _dstRect.w , _dstRect.h};
+    new SideFighter(this, RIGHT_FIGHTER, rightSideFighterFrameNo, rightSideFighterDstRect, point, isVisible, type, currFilm);
+    assert(getAttached(RIGHT_FIGHTER));
+    
+    /*left side fighter*/
+    unsigned leftSideFighterFrameNo = 0;
+    SDL_Rect leftSideFighterDstRect = { _dstRect.x-_dstRect.w , _dstRect.y , _dstRect.w , _dstRect.h};
+    new SideFighter(this, LEFT_FIGHTER, leftSideFighterFrameNo, leftSideFighterDstRect, point, isVisible, type, currFilm);
+    assert(getAttached(LEFT_FIGHTER));
+
+
+    
 }
 
 void SuperAce::render(SDL_Renderer * renderer){
@@ -127,7 +141,7 @@ void SuperAce::doManeuever(void){
         }
         cout<<_remainingLoops<<endl;
         
-        SpriteStringHolder::getSpriteString("remainingLoops")->changeString(_remainingLoops, 125/*WIN_WIDTH - loops*12 -5*/, 125/*WIN_HEIGHT + 12*/);
+        SpriteStringHolder::getSpriteString("remainingLoops")->changeString(_remainingLoops, WIN_WIDTH - loops*12, WIN_HEIGHT - 15);
  
     }
     else if (loops == 0){
@@ -191,6 +205,8 @@ SideFighter::SideFighter(Sprite* ace, const std::string id, unsigned  frameNo,SD
     _dstRect = dstRect;
     _dstRect.h = currFilm->getFrameBox(frameNo).h;
     _dstRect.w = currFilm->getFrameBox(frameNo).w;
+    sideFighterWidth= dstRect.w ;//_currFilm->getFrameBox(0).w;
+    sideFighterHeight= dstRect.h;
     _point = point;
     setVisibility(isVisible);
     _type = type;
@@ -222,10 +238,9 @@ unsigned SideFighter::getSideFighterHeight(){
     return sideFighterHeight;
 }
 
-SDL_Rect SideFighter::getSideFightertBulletDstRect(int frame){
+SDL_Rect SideFighter::getSideFightertBulletDstRect(){
     sideFightertBulletDstRect.x=(this->getDstRect().x + this->getDstRect().w/2 - sideFightertBulletDstRect.w/2);
     sideFightertBulletDstRect.y=this->getDstRect().y - this->getSideFighterHeight()/3;
-    
     return sideFightertBulletDstRect;
 }
 
@@ -249,7 +264,7 @@ void SideFighter::fire (void) {
     AnimationFilm* fireAnimationFilm = AnimationFilmHolder::Get()->GetFilm("bullets");
     assert(fireAnimationFilm);
     
-    Sprite* bullet = new Sprite(spriteSideFighterFireId, 2, getSideFightertBulletDstRect(2), {0,0}, true, SUPER_ACE, fireAnimationFilm);
+    Sprite* bullet = new Sprite(spriteSideFighterFireId, 2, getSideFightertBulletDstRect(), {0,0}, true, SUPER_ACE, fireAnimationFilm);
     assert(bullet);
     
     //play sound for fire

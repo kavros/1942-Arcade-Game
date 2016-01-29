@@ -150,6 +150,9 @@ void Game::OnEvent(SDL_Event* event) {
 		}
         case GAME_OVER:
             //assert(0);
+            if (event->key.keysym.sym == SDLK_SPACE){
+                setState(EXIT);
+            }
             break;
         case MULTIPLAYER_GAME:
             //dont work
@@ -170,26 +173,7 @@ void Game::OnEvent(SDL_Event* event) {
 
 
 
-void Game::gameOver(){
-    static bool firstTime = true;
-    updateHighScoreJson("config.json");
-    assert(0);
-    if( firstTime ){
-        AnimatorHolder::pauseAnimators();
-        
-        SpriteStringHolder::getSpriteString("game")->setVisibility(true);
-        SpriteStringHolder::getSpriteString("over")->setVisibility(true);
-        SpriteStringHolder::getSpriteString("exit")->setVisibility(true);
-        
-        SpriteStringHolder::getSpriteString("startingReadyLogo")->setVisibility(false);
-        SpriteStringHolder::getSpriteString("startingPlayerLogo")->setVisibility(false);
-        SpriteStringHolder::getSpriteString("numberOne")->setVisibility(false);
-        firstTime = false;
-        
-    }else{
-        assert(0);
-    }
-}
+
 
 void Game::pauseManager(SDL_Event* event){
     static bool firstTime = true;

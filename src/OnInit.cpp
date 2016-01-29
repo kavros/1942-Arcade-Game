@@ -304,6 +304,15 @@ bool Game::InitGameInfo(){
     string score = std::to_string(_score);
     string highScore = std::to_string(_highScore);
 
+    SpriteStringHolder::addSpriteString("press", new SpriteString( "PRESS", 150 ,410) );
+    SpriteStringHolder::addSpriteString("space", new SpriteString( "SPACE", 220 ,410) );
+    SpriteStringHolder::addSpriteString("for", new SpriteString( "FOR", 285 ,410) );
+    SpriteStringHolder::addSpriteString("exit2", new SpriteString( "EXIT", 325 ,410) );
+    SpriteStringHolder::getSpriteString("press")->setVisibility(false);
+    SpriteStringHolder::getSpriteString("space")->setVisibility(false);
+    SpriteStringHolder::getSpriteString("for")->setVisibility(false);
+    SpriteStringHolder::getSpriteString("exit2")->setVisibility(false);
+    
     SpriteStringHolder::addSpriteString("game", new SpriteString( "GAME", 196 ,110) );
     SpriteStringHolder::getSpriteString("game")->setVisibility(false);
     SpriteStringHolder::addSpriteString("over", new SpriteString( "OVER", 256 ,110) );
