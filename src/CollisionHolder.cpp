@@ -1,6 +1,7 @@
 #include "Sprite.hpp"
 #include "AnimatorHolder.h"
 #include "Game.hpp"
+#include "PowerUp.hpp"
 
 void Sprite::fireHandler::operator()(Sprite* bullet,Sprite* arg) const{
     
@@ -86,9 +87,6 @@ void Sprite::touchHandler::operator()(Sprite* aircraft,Sprite* arg) const{
     //else{
         //game over
     //}
-
-
-
     AnimatorHolder::createExplosion( aircraft->getDstRect() );
     
 }
@@ -98,3 +96,27 @@ Sprite::touchHandler* Sprite::touchHandler::Clone(void) const{
 }
 
 Sprite::touchHandler::~touchHandler(){};
+
+void Sprite::touchPowerUpHandler::operator()(Sprite* powerUp,Sprite* arg) const{
+    
+    assert(powerUp && arg);
+    assert(powerUp->isAlive() && arg->isAlive());
+    
+    if( !powerUp->getVisibility() || !arg->getVisibility())
+        return;
+    
+    SuperAce* superAce = (SuperAce*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce");
+
+    if( superAce == arg ){
+        powerUp->setVisibility(false);
+        ((PowerUp*)powerUp)->activatePowerUp(arg);
+        powerUp->setState(IN_COLUSION);
+    }
+
+}
+
+Sprite::touchPowerUpHandler* Sprite::touchPowerUpHandler::Clone(void) const{
+    return new Sprite::touchPowerUpHandler();
+}
+
+Sprite::touchPowerUpHandler::~touchPowerUpHandler(){}

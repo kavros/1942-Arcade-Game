@@ -253,6 +253,7 @@ void SideFighter::setSideFighterHeight(unsigned height){
 }
 
 void SideFighter::fire (void) {
+    
     /* spawn bullet */
     static string str = "spriteSideSuperAceFire";
     static int number = 0;
@@ -282,3 +283,16 @@ void SideFighter::fire (void) {
     bullet->addCollisionHandler(Sprite::fireHandler());
 }
 
+void SuperAce::addSideFighters(){
+    /*right side fighter*/
+    unsigned rightSideFighterFrameNo = 0;
+    SDL_Rect rightSideFighterDstRect = { static_cast<int>(_dstRect.x+_superAceWidth) , _dstRect.y , _dstRect.w , _dstRect.h};
+    new SideFighter(this, RIGHT_FIGHTER, rightSideFighterFrameNo, rightSideFighterDstRect, _point, _isVisible, _type, _currFilm);
+    assert(getAttached(RIGHT_FIGHTER));
+    
+    /*left side fighter*/
+    unsigned leftSideFighterFrameNo = 0;
+    SDL_Rect leftSideFighterDstRect = { _dstRect.x-_dstRect.w , _dstRect.y , _dstRect.w , _dstRect.h};
+    new SideFighter(this, LEFT_FIGHTER, leftSideFighterFrameNo, leftSideFighterDstRect, _point, _isVisible, _type, _currFilm);
+    assert(getAttached(LEFT_FIGHTER));
+}

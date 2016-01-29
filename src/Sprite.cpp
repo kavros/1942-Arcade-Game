@@ -219,7 +219,7 @@ void Sprite::addCollisionHandler(const CollisionHandler& h){
                     CollisionChecker::Register(this,*it);
             }
     }
-    if( _type == ALIEN_SHIP){
+    if( _type == ALIEN_SHIP || _type == POWER_UPS){
         SpriteList* superAce;
         
         superAce = SpritesHolder::getSpritesHolder()->getSprites(SUPER_ACE);

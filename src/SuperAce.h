@@ -11,8 +11,6 @@
 #include "AnimationHolder.h"
 #include "Game.hpp"
 
-using namespace std;
-
 #define LEFT_FIGHTER  "left.fighter"
 #define RIGHT_FIGHTER "right.fighter"
 
@@ -76,7 +74,7 @@ public:
     //functionality
     void fire(void);
     void doManeuever(void);
-
+    void addSideFighters();
 };
 
 #endif

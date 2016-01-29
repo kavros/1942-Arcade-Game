@@ -19,6 +19,7 @@
 #include "SpriteAlphaNum.hpp"
 #include "SuperAce.h"
 #include "Background.hpp"
+#include "PowerUp.hpp"
 
 //Animators
 #include "MovingAnimator.h"

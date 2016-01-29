@@ -2,6 +2,37 @@
 #include "../rapidjson/document.h"
 #include "../rapidjson/writer.h"
 #include "../rapidjson/stringbuffer.h"
+
+void testPowerUps(){
+    AnimationFilm* powerUpAnimationFilm = AnimationFilmHolder::Get()->GetFilm("powerUps");
+    assert(powerUpAnimationFilm);
+    Sprite* powerUp;
+    PowerUpType powerUpType= PowerUpType(0);
+
+    for(int i=0; i<7; ++i){
+        powerUpType = PowerUpType(i);
+        powerUp = new PowerUp("explosionSprite",powerUpType, i, { 100 , i*60, powerUpAnimationFilm->getFrameBox(i).w ,
+            powerUpAnimationFilm->getFrameBox(i).h}, {0,0}, true, POWER_UPS, powerUpAnimationFilm);
+        assert(powerUp);
+        
+        powerUp->addCollisionHandler(Sprite::touchPowerUpHandler());
+        
+        SoundHolder::playSound("explosion");
+        
+        /*
+         Animation* explosionAnimation = AnimationHolder::getAnimationHolder()->getAnimation("explosion");
+         assert(explosionAnimation);
+         
+         MovingPathAnimator* explosionAnimator = new MovingPathAnimator("animatorExplosion", explosion, (MovingPathAnimation*)explosionAnimation);
+         
+         AnimatorHolder::Register(explosionAnimator);
+         
+         explosionAnimator->start(Game::getGameTime());
+         */
+    }
+
+}
+
 bool Game::OnInit(){
 	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER | SDL_INIT_GAMECONTROLLER) != 0){
 		std::cout << "SDL_Init Error: " << SDL_GetError() << std::endl;
@@ -32,7 +63,13 @@ void Game::InitGame(){
     
     InitGameInfo();
     
+	InitSuperAceAnimator();
+
+
+    testPowerUps();
+    
 }
+
 
 void Game::InitGamePad(){
 	for (int i = 0; i < SDL_NumJoysticks(); ++i){
