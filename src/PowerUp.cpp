@@ -27,21 +27,33 @@ void PowerUp::activatePowerUp(Sprite* arg){
             superAce->addSideFighters();
             break;
         }
-        case EXTRA_LIFE:
+        case EXTRA_LIFE:{
             //not ready
-            assert(0);
+            SuperAce* sa = superAce;
+            sa->setSuperAceLives(sa->getSuperAceLives() + 1);
+            std::string _remainingLives = "";
+            for(int i = 0; i < sa->getSuperAceLives() ; i++){
+                _remainingLives += "L";
+            }
+        SpriteStringHolder::getSpriteString("remainingLives")->changeString(_remainingLives, +5/*WIN_WIDTH - loops*12 -5*/, WIN_HEIGHT -15);}
+            //assert(0);
             break;
         case NO_ENEMY_BULLETS:
             //not ready
             assert(0);
             break;
-        case EXTRA_LOOP:
-            //not ready
-            assert(0);
+        case EXTRA_LOOP:{
+            SuperAce* sa = superAce;
+            sa->setSuperAceLoops(sa->getSuperAceLoops() + 1);
+            std::string _remainingLoops = "";
+            for(int i = 0; i < sa->getSuperAceLoops() ; i++){
+                _remainingLoops += "R";
+            }
+            SpriteStringHolder::getSpriteString("remainingLoops")->changeString(_remainingLoops, WIN_WIDTH - sa->getSuperAceLoops() *13, WIN_HEIGHT - 15);
             break;
+        }
         case THOUSAND_POINTS:
-            //not ready
-            assert(0);
+            Game::setScore(Game::getScore()+ 1000);
             break;
     }
 }
