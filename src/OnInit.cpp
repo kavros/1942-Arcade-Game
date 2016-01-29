@@ -232,7 +232,7 @@ void Game::updateHighScoreJson(const std::string& cataloge){
     //_highScore = document["highScore"].GetInt();
     if(_highScore > document["highScore"].GetInt()){
         document["highScore"].SetInt(_highScore);
-       // document.AddMember("position", document["highscore"], document);
+        //document.AddMember("position", document["highscore"], document);
         //document["highScore"].SetObject();
         cout<<"NEW HIGHSCORE: "<<_highScore<<endl;
     }
