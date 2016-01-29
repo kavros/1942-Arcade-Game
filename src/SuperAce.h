@@ -11,9 +11,6 @@
 #include "AnimationHolder.h"
 #include "Game.hpp"
 
-#define LEFT_FIGHTER  "left.fighter"
-#define RIGHT_FIGHTER "right.fighter"
-
 class SideFighter : public Sprite {
 private:
     SDL_Rect sideFightertBulletDstRect;

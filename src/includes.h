@@ -30,6 +30,8 @@
 #define BACKGROUNG_WIDTH 223
 #define BACKGROUNG_HEIGHT 7680
 
+#define LEFT_FIGHTER  "left.fighter"
+#define RIGHT_FIGHTER "right.fighter"
 
 #include <iostream>
 #include <assert.h>
