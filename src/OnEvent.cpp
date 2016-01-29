@@ -34,7 +34,10 @@ void Game::OnEvent(SDL_Event* event) {
 		{
             
 			Sprite* superAce = (Sprite*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce");
-            assert(superAce);
+            cout << superAce->getState()<<endl;
+            if(superAce->getState() == IN_COLUSION ){
+                assert(0);
+            }
             
 			MovingPathAnimator* superAceStartingAnimator = (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceStartingAnimator");
             assert(superAceStartingAnimator);
