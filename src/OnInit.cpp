@@ -17,7 +17,7 @@ void testPowerUps(){
         
         powerUp->addCollisionHandler(Sprite::touchPowerUpHandler());
         
-        SoundHolder::playSound("explosion");
+        //SoundHolder::playSound("explosion");
         
         /*
          Animation* explosionAnimation = AnimationHolder::getAnimationHolder()->getAnimation("explosion");
