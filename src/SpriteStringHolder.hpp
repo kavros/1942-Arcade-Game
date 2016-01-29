@@ -19,7 +19,7 @@ private:
 public:
     
     static SpriteStringHolder* getSpriteStringHolder();
-    
+    static void cleanup();
     static void addSpriteString(string id, SpriteString* spriteString);
     static SpriteString* getSpriteString(string id);
 

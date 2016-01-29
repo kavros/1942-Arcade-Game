@@ -68,10 +68,11 @@ public:
     
     static void OnEvent(SDL_Event* e);
     static void pauseManager(SDL_Event* event);
-    static void gameOver(SDL_Event* event);
+    static void gameOver();
     static void LoadGameInfo (const std::string& cataloge);
     static void OnLoop();
 
+    static void InitGame();
     static void OnRender();
     
     static void OnCleanup();
@@ -98,6 +99,7 @@ public:
     //static int getRemainingLoops(void);
     
     //updates
+    static void updateHighScoreJson(const std::string& cataloge);
     static void updateHighScoreSprite();
     static void updateScoreSprite();
     

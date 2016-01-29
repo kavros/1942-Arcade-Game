@@ -40,7 +40,7 @@ bool Game::OnInit(){
 		return false;
 	}
 
-    SoundHolder::initSounds();
+    
     
 	InitGamePad();
 	
@@ -48,13 +48,20 @@ bool Game::OnInit(){
     InitWindow();
 	
     InitRenderer();
+    
+    InitGame();
+    
+    return true;
+}
 
+void Game::InitGame(){
     InitData();
-	InitSuperAceAnimator();
+    SoundHolder::initSounds();
+    InitSuperAceAnimator();
     LoadGameInfo("config.json");
     
     InitBackground();
-
+    
     InitGameInfo();
     
 	InitSuperAceAnimator();
@@ -246,6 +253,30 @@ void    Game::LoadGameInfo (const std::string& cataloge){
     //_remaining_loops_num =document["superAceLoops"].GetInt();
     _highScore = document["highScore"].GetInt();
     _spriteSize = document["spriteSize"].GetDouble();
+}
+
+void Game::updateHighScoreJson(const std::string& cataloge){
+    std::string line, text;
+    
+    static  std::string  dataFilePath = SRC_PATH + string(cataloge);
+    
+    std::ifstream file(dataFilePath);
+    
+    while(std::getline(file, line))
+    {
+        text += line + "\n";
+    }
+    const char* data = text.c_str();
+    Document document;
+    document.Parse(data);
+    assert(document.IsObject());
+    //_highScore = document["highScore"].GetInt();
+    if(_highScore > document["highScore"].GetInt()){
+        document["highScore"].SetInt(_highScore);
+        //document.AddMember("position", document["highscore"], document);
+        //document["highScore"].SetObject();
+        cout<<"NEW HIGHSCORE: "<<_highScore<<endl;
+    }
 }
 
 bool Game::InitGameInfo(){
