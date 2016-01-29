@@ -16,8 +16,8 @@ SuperAce::SuperAce(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point 
     bulletFrame = 2;
     _bulletDstRect.x=this->getDstRect().x + (this->getDstRect().w/4);
     _bulletDstRect.y=this->getDstRect().y - this->getDstRect().h;
-    _bulletDstRect.w=animationBulletFilm->getFrameBox(2).w * Game::getSpriteSize();
-    _bulletDstRect.h=animationBulletFilm->getFrameBox(2).h * Game::getSpriteSize();
+    _bulletDstRect.w=animationBulletFilm->getFrameBox(bulletFrame).w * Game::getSpriteSize();
+    _bulletDstRect.h=animationBulletFilm->getFrameBox(bulletFrame).h * Game::getSpriteSize();
     
     this->addCollisionHandler(Sprite::touchHandler());
 
@@ -57,7 +57,11 @@ void SuperAce::setSuperAceLoops(unsigned int superAceLoops){
 }
 
 void SuperAce::setBulletFrame(unsigned int _bulletFrame){
+    AnimationFilm* animationBulletFilm = AnimationFilmHolder::Get()->GetFilm("bullets");
+
     bulletFrame = _bulletFrame;
+    _bulletDstRect.w=animationBulletFilm->getFrameBox(bulletFrame).w * Game::getSpriteSize();
+    _bulletDstRect.h=animationBulletFilm->getFrameBox(bulletFrame).h * Game::getSpriteSize();
 }
 
 void SuperAce::fire(void){

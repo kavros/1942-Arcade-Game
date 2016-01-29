@@ -16,7 +16,7 @@ void PowerUp::activatePowerUp(Sprite* arg){
 
     switch ( getPowerUpType() ){
         case QUAD_GUN:{
-            superAce->setBulletFrame(3);
+            superAce->setBulletFrame(4);
             break;
         }
         case ENEMY_CRASH:
