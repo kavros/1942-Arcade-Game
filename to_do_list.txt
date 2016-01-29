@@ -2,15 +2,9 @@ TO DO LIST:
 
 	primary:
 		super ace lives ( continue lives lives==0 -> must restart the stage )
-		create enemy subclass sprites
 		enemy fire ( create logic )
-		add powerUPS (side planes)
-
 		create stage end
-		use TickerTickAnimator
-		add GameOver Screen (update high score)
-		add trigger points
-
+		use TickerTickAnimator ( gia xronodromologisi )
 		dynamic animators using current player's position
 		chain animators
 		

@@ -1,9 +1,3 @@
-/*
-powerUp = new PowerUp("explosionSprite",QUAD_GUN, i, { 100 , i*60, powerUpAnimationFilm->getFrameBox(i).w , powerUpAnimationFilm->getFrameBox(i).h}, {0,0}, true, POWER_UPS, powerUpAnimationFilm);
-
-((PowerUp*)powerUp)->activatePowerUp(arg);
-*/
-
 #ifndef Power_Up_hpp
 #define Power_Up_hpp
 
