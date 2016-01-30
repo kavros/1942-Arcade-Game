@@ -5,7 +5,7 @@
 #include "SpriteAlphaNum.hpp"
 #include "SpritesHolder.hpp"
 #include "AnimationFilmHolder.hpp"
-
+#include "SoundHolder.hpp"
 class SpriteString {
     
 private:

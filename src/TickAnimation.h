@@ -13,20 +13,36 @@ private:
 	unsigned _repetitions; // 0 => forever
 	OnTick _onTick;
 public:
-	template <typename Tfunc>
-	void SetOnTick(const Tfunc& f)
-	{
-		_onTick = f;
-	}
-	void SetForever(void)
-	{
-		_repetitions = 0;
-	}
-	TickAnimation(animid_t id):
-		Animation(id),
-		_delay(0),
-		_repetitions(1),
-		_onTick(nullptr)
-	{}
+
+    //constructor
+    TickAnimation(animid_t id);
+    
+    TickAnimation(animid_t id ,delay_t _delay ,unsigned _repetitions);
+
+    TickAnimation(animid_t id ,delay_t _delay ,unsigned _repetitions ,OnTick _onTick);
+    
+    //destructor
+    ~TickAnimation();
+    
+    //clone
+    Animation* clone(animid_t newId) const;
+    
+    //getter
+    delay_t getDelay();
+    
+    OnTick getOnTick();
+
+    unsigned getRepetitions();
+    
+    //setter
+    void setDelay(delay_t delay);
+    
+    template <typename Tfunc> void setOnTick(const Tfunc& f){
+        _onTick = f;
+    }
+    
+    void setForever(void);
+    
+    void setRepetitions(unsigned repetitions);
 };
 #endif

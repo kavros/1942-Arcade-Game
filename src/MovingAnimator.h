@@ -21,7 +21,7 @@ public:
 	Sprite*				getSprite();
 	MovingAnimation*	getMovingAnimation();
 
-	void start( timestamp_t t);
+	void start( timestamp_t t) override;
     static void finishCallB(Animator* a,void* b);
 	MovingAnimator(void);
     MovingAnimator(std::string id,Sprite* sprite, MovingAnimation* animation);

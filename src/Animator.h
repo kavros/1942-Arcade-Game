@@ -35,6 +35,8 @@ protected:
 
 public:
 	//functions apo lectures///////////////
+    virtual void start(timestamp_t t);
+    
 	void stop(void);
 
 	bool hasFinished(void) const;

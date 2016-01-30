@@ -1,5 +1,6 @@
 {
-    "Animations": [{
+    "Animations": [
+                   {
                    "MovingAnimations": [{
                                         "id": "superAceFire",
                                         "dx": 0,
@@ -25,6 +26,13 @@
                                         "delay": 10,
                                         "continuous": true
                                         }]
+                   },
+                   {
+                   "TickAnimations": [{
+                                      "id": "enemyBulletsTickAnimation",
+                                      "delay": 1000,
+                                      "repetitions": 0
+                                      }]
                    }, {
                    "MovingPathAnimations": [{
                                             "id": "superAceMovingAnimation",
@@ -765,6 +773,46 @@
                                                       "dx": 0,
                                                       "dy": -1,
                                                       "frameNo": 0,
+                                                      "visibility": true,
+                                                      "delay": 0
+                                                      }]
+                                            },{
+                                            "id": "superAceEndingAnimation",
+                                            "continuous":false,
+                                            "paths": [{
+                                                      "dx": 0,
+                                                      "dy": -5,
+                                                      "frameNo": 21,
+                                                      "visibility": true,
+                                                      "delay": 90
+                                                      },{
+                                                      "dx": 0,
+                                                      "dy": -5,
+                                                      "frameNo": 21,
+                                                      "visibility": true,
+                                                      "delay": 90
+                                                      },{
+                                                      "dx": 0,
+                                                      "dy": -5,
+                                                      "frameNo": 21,
+                                                      "visibility": true,
+                                                      "delay": 90
+                                                      },{
+                                                      "dx": 0,
+                                                      "dy": -5,
+                                                      "frameNo": 21,
+                                                      "visibility": true,
+                                                      "delay": 90
+                                                      },{
+                                                      "dx": 0,
+                                                      "dy": -5,
+                                                      "frameNo": 21,
+                                                      "visibility": true,
+                                                      "delay": 90
+                                                      },{
+                                                      "dx": 0,
+                                                      "dy": -1,
+                                                      "frameNo": 21,
                                                       "visibility": true,
                                                       "delay": 0
                                                       }]

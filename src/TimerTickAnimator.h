@@ -3,11 +3,30 @@
 
 #include "TickAnimation.h"
 #include "Animator.h"
+#include "AnimatorHolder.h"
 
 class TimerTickAnimator : public Animator {
+    
+private:
+    TickAnimation*		tickAnimation;
+
 public:
-	void progress(timestamp_t currTime);
+    
+    //costructor
 	TimerTickAnimator(TickAnimation* tick);
+    
+    //destructor
+    ~TimerTickAnimator(){}
+
+    //functionallity
+    void start( timestamp_t t) override;
+
+    void progress(timestamp_t currTime) override;
+    
+    void checkAnimatorForDelete(void) override;
+    
+    static void finishCallB(Animator* a,void* b);
+    
 };
 
 #endif

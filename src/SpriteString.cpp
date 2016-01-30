@@ -79,6 +79,7 @@ void SpriteString::addSpriteAlphaNum(SpriteAlphaNum* san) {
 }
 
 void SpriteString::setVisibility(bool visibility){
+
     std::vector<SpriteAlphaNum *>::const_iterator it = spriteString.begin();
 
     while(it!=spriteString.end()){

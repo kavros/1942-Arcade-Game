@@ -28,7 +28,6 @@ void Game::OnLoop() {
             }
             loopsRemainingToDelete--;
             
-            
             //Move Background
             Background::Get()->moveBackground(0,+1);
             
@@ -40,7 +39,7 @@ void Game::OnLoop() {
             SpritesHolder::checkSpritesForDelete();
 
             //trigger animators and bullets
-            AnimatorHolder::triggerAnimators();
+            //AnimatorHolder::triggerAnimators();
             AnimatorHolder::triggerBullets();
 
             //progress animators

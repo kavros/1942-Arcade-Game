@@ -3,6 +3,11 @@
 #include "../rapidjson/writer.h"
 #include "../rapidjson/stringbuffer.h"
 
+
+#include "TickAnimation.h"
+#include "TimerTickAnimator.h"
+#include "MovingAnimation.h"
+
 bool Game::OnInit(){
 	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER | SDL_INIT_GAMECONTROLLER) != 0){
 		std::cout << "SDL_Init Error: " << SDL_GetError() << std::endl;
@@ -21,6 +26,52 @@ bool Game::OnInit(){
     return true;
 }
 
+void f(){
+	/*MovingPathAnimator* superAceEndingAnimator =
+		(MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceEndingAnimator");
+	
+	superAceEndingAnimator->start(Game::getGameTime());*/
+
+	MovingPathAnimator* superAceEndingAnimator =
+		(MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceEndingAnimator");
+
+	superAceEndingAnimator->start(Game::getGameTime());
+
+	/*SpriteStringHolder::getSpriteString("shootingString")->setVisibility(true);
+	SpriteStringHolder::getSpriteString("downString")->setVisibility(true);
+	SpriteStringHolder::getSpriteString("shootingDownPercent")->setVisibility(true);
+	SpriteStringHolder::getSpriteString("endingBonusString")->setVisibility(true);
+	SpriteStringHolder::getSpriteString("pointsString")->setVisibility(true);
+	SpriteStringHolder::getSpriteString("points")->setVisibility(true);
+	SpriteStringHolder::getSpriteString("letterR")->setVisibility(true);
+	SpriteStringHolder::getSpriteString("1000Points")->setVisibility(true);
+	SpriteStringHolder::getSpriteString("letterR")->setVisibility(true);
+	*/
+
+	
+	
+	
+}
+
+void createTimeTickAnimator(){
+    
+    animid_t id = "tickAnimation";
+    delay_t _delay = 10000; //10 sec
+    unsigned _repetitions = 1;
+	cout << "AAAAA";
+    TickAnimation* tickAnimation = new TickAnimation(id ,_delay ,_repetitions ,f);
+    
+    tickAnimation = (TickAnimation*)AnimationHolder::getAnimationHolder()->getAnimation(id);
+    assert(tickAnimation);
+    tickAnimation->setOnTick(f);
+    
+    TimerTickAnimator* timerTickAnimator = new TimerTickAnimator(tickAnimation);
+
+    AnimatorHolder::getAnimatorHolder()->Register( timerTickAnimator );
+
+    //timerTickAnimator->start( Game::getGameTime() );
+}
+
 void Game::InitGame(){
     InitData();
     SoundHolder::initSounds();
@@ -32,6 +83,9 @@ void Game::InitGame(){
     InitGameInfo();
     
 	InitSuperAceAnimator();
+    
+	
+    createTimeTickAnimator();
 }
 
 
@@ -51,12 +105,18 @@ void Game::InitSuperAceAnimator(){
     animid_t id = "SuperAceAnimation";
     
     Sprite* superAce = SpritesHolder::getSpritesHolder()->getSprites(SUPER_ACE)->front();
+	
 	MovingPathAnimation* superAceStartingAnimation =
 		(MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("superAceStartingAnimation");
 	MovingPathAnimator* superAceStartingAnimator  =	new MovingPathAnimator(
 		"SuperAceStartingAnimator", superAce, superAceStartingAnimation
 		);
-    
+
+	MovingPathAnimation* superAceEndingAnimation =
+		(MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("superAceEndingAnimation");
+	MovingPathAnimator* superAceEndingAnimator = new MovingPathAnimator(
+		"SuperAceEndingAnimator", superAce, superAceEndingAnimation
+	);
     
     MovingPathAnimation* superAceMovingAnimation =
 		(MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("superAceMovingAnimation");
@@ -123,6 +183,7 @@ void Game::InitSuperAceAnimator(){
 	AnimatorHolder::Register(superAceAnimatorLeftLeft);
 	AnimatorHolder::Register(superAceAnimatorManeuever);
 	AnimatorHolder::Register(superAceStartingAnimator);
+	AnimatorHolder::Register(superAceEndingAnimator);
 
 }
 

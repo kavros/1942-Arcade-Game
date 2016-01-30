@@ -1,6 +1,10 @@
 #include "Animator.h"
 #include "AnimatorHolder.h"
 
+void Animator::start(timestamp_t t){
+    
+}
+
 void Animator::stop(void){
     if (hasFinished()){
         _state = ANIMATOR_STOPPED;
