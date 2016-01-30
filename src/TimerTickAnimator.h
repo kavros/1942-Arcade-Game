@@ -22,11 +22,10 @@ public:
     void start( timestamp_t t) override;
 
     void progress(timestamp_t currTime) override;
-
-    void timeShift(timestamp_t offset) override;
     
-    void checkAnimatorForDelete(void) override{
-    }
+    void checkAnimatorForDelete(void) override;
+    
+    static void finishCallB(Animator* a,void* b);
     
 };
 

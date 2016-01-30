@@ -78,8 +78,21 @@ void    AnimationHolder::Load (const std::string& cataloge){
         bool cont = mAnimation["continuous"].GetBool();
         AnimationHolder::getAnimationHolder()->add(new MovingAnimation(dx, dy, delay, cont, id));
     }
+    
+    //read all Tick Animations
+    const Value& tAnimations = animations[1]["TickAnimations"];
+    assert(tAnimations.IsArray());
+    for (rapidjson::SizeType i = 0; i < tAnimations.Size(); i++){
+        const Value& tAnimation = tAnimations[i];
+        //id
+        std::string id = tAnimation["id"].GetString();
+        int delay = tAnimation["delay"].GetInt();
+        int repetitions = tAnimation["repetitions"].GetInt();
+        AnimationHolder::getAnimationHolder()->add(new TickAnimation(id ,delay ,repetitions) );
+    }
+
     //read all Moving Path Animations
-    const Value& mPathAnimations = animations[1]["MovingPathAnimations"];
+    const Value& mPathAnimations = animations[2]["MovingPathAnimations"];
     assert(mPathAnimations.IsArray());
     for (rapidjson::SizeType i = 0; i < mPathAnimations.Size(); i++)
     {

@@ -16,20 +16,45 @@ TimerTickAnimator::TimerTickAnimator(TickAnimation* tick){
 
 void TimerTickAnimator::progress(timestamp_t currTime){
     
-    if( currTime >= _lastTime && currTime - _lastTime < tickAnimation->getDelay()  ){
+    if(!this->isAlive())
+        return;
+    
+    assert(currTime >= _lastTime);
+    
+    if( currTime - _lastTime >= tickAnimation->getDelay()  ){
         
-        //timeShift ( tickAnimation->getDelay() );
-    }
-    else{
+        if( tickAnimation->getOnTick() )
+            tickAnimation->getOnTick()();
 
-        _state = ANIMATOR_FINISHED;
-        tickAnimation->getOnTick()();
-        stop();
+        _lastTime = currTime;
+ 
+        if( tickAnimation->getRepetitions() != 0){
+            tickAnimation->setRepetitions( tickAnimation->getRepetitions() - 1 );
+            
+            if( tickAnimation->getRepetitions() == 0){
+                setState(ANIMATOR_FINISHED);
+                setOnFinished(finishCallB);
+            }
+        }
     }
-
     
 }
 
-void TimerTickAnimator::timeShift(timestamp_t offset){
-    _lastTime+=offset;
+void TimerTickAnimator::checkAnimatorForDelete(void){
+
+    if(!this->isAlive())
+        return;
+    
+    if( tickAnimation->getRepetitions() == 0 && getState() == ANIMATOR_FINISHED ){
+
+        tickAnimation = nullptr;
+        
+        this->destroyAnimator();
+        
+    }
+    
+}
+
+void TimerTickAnimator::finishCallB(Animator* a,void* b){
+    AnimatorHolder::markAsSuspended(a);
 }

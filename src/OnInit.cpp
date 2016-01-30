@@ -8,7 +8,7 @@
 #include "TimerTickAnimator.h"
 #include "MovingAnimation.h"
 
-bool Game::OnInit(){ 
+bool Game::OnInit(){
 	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER | SDL_INIT_GAMECONTROLLER) != 0){
 		std::cout << "SDL_Init Error: " << SDL_GetError() << std::endl;
 		return false;
@@ -61,7 +61,9 @@ void createTimeTickAnimator(){
 	cout << "AAAAA";
     TickAnimation* tickAnimation = new TickAnimation(id ,_delay ,_repetitions ,f);
     
-    AnimationHolder::getAnimationHolder()->add( tickAnimation );
+    tickAnimation = (TickAnimation*)AnimationHolder::getAnimationHolder()->getAnimation(id);
+    assert(tickAnimation);
+    tickAnimation->setOnTick(f);
     
     TimerTickAnimator* timerTickAnimator = new TimerTickAnimator(tickAnimation);
 
