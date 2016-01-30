@@ -8,7 +8,7 @@
 #include "TimerTickAnimator.h"
 #include "MovingAnimation.h"
 
-bool Game::OnInit(){
+bool Game::OnInit(){ 
 	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER | SDL_INIT_GAMECONTROLLER) != 0){
 		std::cout << "SDL_Init Error: " << SDL_GetError() << std::endl;
 		return false;
@@ -27,14 +27,38 @@ bool Game::OnInit(){
 }
 
 void f(){
+	/*MovingPathAnimator* superAceEndingAnimator =
+		(MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceEndingAnimator");
+	
+	superAceEndingAnimator->start(Game::getGameTime());*/
+
+	MovingPathAnimator* superAceEndingAnimator =
+		(MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceEndingAnimator");
+
+	superAceEndingAnimator->start(Game::getGameTime());
+
+	/*SpriteStringHolder::getSpriteString("shootingString")->setVisibility(true);
+	SpriteStringHolder::getSpriteString("downString")->setVisibility(true);
+	SpriteStringHolder::getSpriteString("shootingDownPercent")->setVisibility(true);
+	SpriteStringHolder::getSpriteString("endingBonusString")->setVisibility(true);
+	SpriteStringHolder::getSpriteString("pointsString")->setVisibility(true);
+	SpriteStringHolder::getSpriteString("points")->setVisibility(true);
+	SpriteStringHolder::getSpriteString("letterR")->setVisibility(true);
+	SpriteStringHolder::getSpriteString("1000Points")->setVisibility(true);
+	SpriteStringHolder::getSpriteString("letterR")->setVisibility(true);
+	*/
+
+	
+	
+	
 }
 
 void createTimeTickAnimator(){
     
     animid_t id = "tickAnimation";
     delay_t _delay = 10000; //10 sec
-    unsigned _repetitions = 10;
-    
+    unsigned _repetitions = 1;
+	cout << "AAAAA";
     TickAnimation* tickAnimation = new TickAnimation(id ,_delay ,_repetitions ,f);
     
     AnimationHolder::getAnimationHolder()->add( tickAnimation );
@@ -43,7 +67,7 @@ void createTimeTickAnimator(){
 
     AnimatorHolder::getAnimatorHolder()->Register( timerTickAnimator );
 
-    timerTickAnimator->start( Game::getGameTime() );
+    //timerTickAnimator->start( Game::getGameTime() );
 }
 
 void Game::InitGame(){
@@ -58,6 +82,7 @@ void Game::InitGame(){
     
 	InitSuperAceAnimator();
     
+	
     createTimeTickAnimator();
 }
 
