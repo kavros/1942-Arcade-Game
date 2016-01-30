@@ -96,50 +96,6 @@ Animator* AnimatorHolder::getAnimator(animid_t id){
     return _holder->_map[id];
 }
 
-
-void AnimatorHolder::triggerAnimators(){
-    static int i=0;
-    if(i%100 == 0 && i < 1000 && i > 10){
-        if(i == 100){
-            MovingPathAnimator* movingSuperAce = (MovingPathAnimator*) AnimatorHolder::getAnimator("SuperAceMovingAnimator");
-            movingSuperAce->start(Game::getGameTime());
-        }
-        /*SDL_Rect dstRect;
-        dstRect.x=WIN_WIDTH/2 + (i/100)*5;
-        dstRect.y=10 + (i/100)*5;
-        dstRect.w=32;
-        dstRect.h=31;*/
-        AnimationFilm* animationFilm;
-        if(i == 100)
-            animationFilm = AnimationFilmHolder::Get()->GetFilm("red_plane");
-        else if(i%200 == 0)
-            animationFilm = AnimationFilmHolder::Get()->GetFilm("green_jet");
-        else
-            animationFilm = AnimationFilmHolder::Get()->GetFilm("green_double_engine");
-        
-        assert(animationFilm);
-        
-        Sprite* sprite = SpritesHolder::getSpritesHolder()->getSprite(SpriteType::ALIEN_SHIP, "GreenJet" + std::to_string(i)); //new Sprite("spriteStraightEnemyAttack", 0, dstRect, {0,0}, true, ALIEN_SHIP, fireAnimationFilm);
-        
-        assert(sprite);
-        Animation* animation;
-        
-        if(i == 100 )
-            animation = AnimationHolder::getAnimationHolder()->getAnimation("red_plane_circle_250_250_30");
-        else
-            animation = AnimationHolder::getAnimationHolder()->getAnimation("circle_250_250_30");
-        assert(animation);
-        
-        MovingPathAnimator* animator = new MovingPathAnimator(string("animatorStraightEnemyAttack") + std::to_string(i), sprite, (MovingPathAnimation*)animation);
-        AnimatorHolder::Register(animator);
-        
-        //Game::get
-        animator->start(Game::getGameTime());
-    }
-    i++;
-
-}
-
 void AnimatorHolder::triggerBullets(){
     
     //choose someone to fire
@@ -228,18 +184,73 @@ void AnimatorHolder::pauseAnimators(){
 	}*/
 }
 
-void AnimatorHolder::startTimeTickAnimators(){
+void AnimatorHolder::triggerAnimators(){
+    static int i=0;
+    if(i%100 == 0 && i < 1000 && i > 10){
+        if(i == 100){
+        }
+        /*SDL_Rect dstRect;
+         dstRect.x=WIN_WIDTH/2 + (i/100)*5;
+         dstRect.y=10 + (i/100)*5;
+         dstRect.w=32;
+         dstRect.h=31;*/
+        AnimationFilm* animationFilm;
+        if(i == 100)
+            animationFilm = AnimationFilmHolder::Get()->GetFilm("red_plane");
+        else if(i%200 == 0)
+            animationFilm = AnimationFilmHolder::Get()->GetFilm("green_jet");
+        else
+            animationFilm = AnimationFilmHolder::Get()->GetFilm("green_double_engine");
+        
+        assert(animationFilm);
+        
+        Sprite* sprite = SpritesHolder::getSpritesHolder()->getSprite(SpriteType::ALIEN_SHIP, "GreenJet" + std::to_string(i)); //new Sprite("spriteStraightEnemyAttack", 0, dstRect, {0,0}, true, ALIEN_SHIP, fireAnimationFilm);
+        
+        assert(sprite);
+        Animation* animation;
+        
+        if(i == 100 )
+            animation = AnimationHolder::getAnimationHolder()->getAnimation("red_plane_circle_250_250_30");
+        else
+            animation = AnimationHolder::getAnimationHolder()->getAnimation("circle_250_250_30");
+        assert(animation);
+        
+        MovingPathAnimator* animator = new MovingPathAnimator(string("animatorStraightEnemyAttack") + std::to_string(i), sprite, (MovingPathAnimation*)animation);
+        AnimatorHolder::Register(animator);
+        
+        //Game::get
+        animator->start(Game::getGameTime());
+    }
+    i++;
     
-    animid_t id = "enemyBulletsTickAnimation";
+}
+
+void triggerSuperAceMovingPathAnimator(){
+    MovingPathAnimator* movingSuperAce = (MovingPathAnimator*) AnimatorHolder::getAnimator("SuperAceMovingAnimator");
+    movingSuperAce->start(Game::getGameTime());
+}
+
+
+void startTimeTickAnimator(animid_t id, std::function<void(void)> f){
     
-    TickAnimation* tickAnimation;
-    
-    tickAnimation = (TickAnimation*)AnimationHolder::getAnimationHolder()->getAnimation(id);
-    assert(tickAnimation);
-    tickAnimation->setOnTick( AnimatorHolder::triggerBullets );
+    TickAnimation* tickAnimation = (TickAnimation*)AnimationHolder::getAnimationHolder()->getAnimation(id);
+    tickAnimation->setOnTick( f );
     
     TimerTickAnimator* timerTickAnimator = new TimerTickAnimator(tickAnimation);
     AnimatorHolder::getAnimatorHolder()->Register( timerTickAnimator );
     
     timerTickAnimator->start( Game::getGameTime() );
 }
+
+void AnimatorHolder::startTimeTickAnimators(){
+    
+    startTimeTickAnimator("superAceMovingPathTickAnimation", triggerSuperAceMovingPathAnimator );
+    startTimeTickAnimator("enemyBulletsTickAnimation", AnimatorHolder::triggerBullets);
+}
+
+
+
+
+
+
+
