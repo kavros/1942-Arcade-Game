@@ -10,7 +10,8 @@ void TimerTickAnimator::start( timestamp_t t){
     AnimatorHolder::markAsRunning(this);
 }
 
-TimerTickAnimator::TimerTickAnimator(TickAnimation* tick){
+TimerTickAnimator::TimerTickAnimator(animid_t id, TickAnimation* tick){
+    _id = id;
     tickAnimation = tick;
 }
 
@@ -64,7 +65,7 @@ void TimerTickAnimator::startTimeTickAnimator(animid_t id, std::function<void(vo
     TickAnimation* tickAnimation = (TickAnimation*)AnimationHolder::getAnimationHolder()->getAnimation(id);
     tickAnimation->setOnTick( f );
     
-    TimerTickAnimator* timerTickAnimator = new TimerTickAnimator(tickAnimation);
+    TimerTickAnimator* timerTickAnimator = new TimerTickAnimator(id, tickAnimation);
     AnimatorHolder::getAnimatorHolder()->Register( timerTickAnimator );
     
     timerTickAnimator->start( Game::getGameTime() );

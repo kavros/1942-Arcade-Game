@@ -42,6 +42,17 @@
                                       "delay": 5000,
                                       "repetitions": 4
                                       }
+                                      ,{
+                                      "id": "greenPlaneTickAnimation",
+                                      "delay": 2000,
+                                      "repetitions": 4
+                                      }
+                                      ,{
+                                      "id": "greenDoubleEnginePlaneTickAnimation",
+                                      "delay": 10000,
+                                      "repetitions": 4
+                                      }
+                                      
                                       
                                       ]
                    }, {

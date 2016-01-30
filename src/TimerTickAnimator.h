@@ -13,7 +13,7 @@ private:
 public:
     
     //costructor
-	TimerTickAnimator(TickAnimation* tick);
+	TimerTickAnimator(animid_t id, TickAnimation* tick);
     
     //destructor
     ~TimerTickAnimator(){}
