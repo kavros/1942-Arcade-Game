@@ -72,21 +72,26 @@ bool EnemyFighter::getEnemyFireEnable(){
 }
 
 void EnemyFighter::fire(void){
-
+    
     if( remainingBullets == 0)
         return;
     
     remainingBullets--;
     
+    assert(this->isAlive() && !this->isOutOfWindow() && this->getVisibility());
+    
     static int number = 0;
-    static string enemyFireId = "enemyFire" + std::to_string (number);
+    string enemyFireId = "enemyFire_" + std::to_string (number);
     number++;
     
+    cout << enemyFireId <<" fire\n";
+
     AnimationFilm* fireAnimationFilm = AnimationFilmHolder::Get()->GetFilm("bullets");
     assert(fireAnimationFilm);
     
     Sprite* enemyBullet = new Sprite(enemyFireId, 0, getEnemyBulletDstRect(0), {0,0}, true, ALIEN_SHIP, fireAnimationFilm);
     assert(enemyBullet);
+    
     
     //play sound for fire
     SoundHolder::playSound("gunshot");
@@ -103,6 +108,7 @@ void EnemyFighter::fire(void){
     fireAnimator->start(Game::getGameTime());
     
     enemyBullet->addCollisionHandler(Sprite::fireHandler());
+    
     
 }
 

@@ -98,16 +98,15 @@ Animator* AnimatorHolder::getAnimator(animid_t id){
 
 void AnimatorHolder::triggerBullets(){
     
-    //choose someone to fire
     SpritesHolder* h = SpritesHolder::getSpritesHolder();
     SpriteList * sl = h->getSprites(ALIEN_SHIP);
-    
-    SpriteList::iterator it = sl->begin();
-    
+
+    SpriteList::const_iterator it = sl->begin();
+
     while (it != sl->end()){
-        if( (*it)->getVisibility() && (*it)->isAlive() && (*it)->getState()!=IN_COLUSION ){
-            
+        if( (*it) && (*it)->getVisibility() && (*it)->isAlive() && !(*it)->isOutOfWindow() && (*it)->getState()!=IN_COLUSION ){
             ((EnemyFighter*)(*it))->fire();
+            break;
         }
         it++;
     }
@@ -238,7 +237,7 @@ void triggerGreenDoubleEnginePlaneAnimator(){
     string name = "GreenDoubleEngineJet" + std::to_string(nameId);
     nameId++;
     
-    AnimationFilm* animationFilm  = AnimationFilmHolder::Get()->GetFilm("green_jet");
+    AnimationFilm* animationFilm  = AnimationFilmHolder::Get()->GetFilm("green_double_engine");
     assert(animationFilm);
     
     Sprite* sprite = SpritesHolder::getSpritesHolder()->getSprite(SpriteType::ALIEN_SHIP, name);
@@ -259,7 +258,7 @@ void triggerGreenDoubleEnginePlaneAnimator(){
 void AnimatorHolder::startTimeTickAnimators(){
     
     TimerTickAnimator::startTimeTickAnimator("superAceMovingPathTickAnimation", triggerSuperAceMovingPathAnimator );
-  //  TimerTickAnimator::startTimeTickAnimator("enemyBulletsTickAnimation", AnimatorHolder::triggerBullets);
+    TimerTickAnimator::startTimeTickAnimator("enemyBulletsTickAnimation", AnimatorHolder::triggerBullets);
     TimerTickAnimator::startTimeTickAnimator("redPlaneTickAnimation", triggerRedPlaneAnimator );
     TimerTickAnimator::startTimeTickAnimator("greenPlaneTickAnimation", triggerGreenPlaneAnimator );
     TimerTickAnimator::startTimeTickAnimator("greenDoubleEnginePlaneTickAnimation", triggerGreenDoubleEnginePlaneAnimator );
