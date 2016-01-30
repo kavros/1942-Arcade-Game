@@ -3,6 +3,11 @@
 #include "../rapidjson/writer.h"
 #include "../rapidjson/stringbuffer.h"
 
+
+#include "TickAnimation.h"
+#include "TimerTickAnimator.h"
+#include "MovingAnimation.h"
+
 bool Game::OnInit(){
 	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER | SDL_INIT_GAMECONTROLLER) != 0){
 		std::cout << "SDL_Init Error: " << SDL_GetError() << std::endl;
@@ -21,6 +26,26 @@ bool Game::OnInit(){
     return true;
 }
 
+void f(){
+}
+
+void createTimeTickAnimator(){
+    
+    animid_t id = "tickAnimation";
+    delay_t _delay = 10000; //10 sec
+    unsigned _repetitions = 10;
+    
+    TickAnimation* tickAnimation = new TickAnimation(id ,_delay ,_repetitions ,f);
+    
+    AnimationHolder::getAnimationHolder()->add( tickAnimation );
+    
+    TimerTickAnimator* timerTickAnimator = new TimerTickAnimator(tickAnimation);
+
+    AnimatorHolder::getAnimatorHolder()->Register( timerTickAnimator );
+
+    timerTickAnimator->start( Game::getGameTime() );
+}
+
 void Game::InitGame(){
     InitData();
     SoundHolder::initSounds();
@@ -32,6 +57,8 @@ void Game::InitGame(){
     InitGameInfo();
     
 	InitSuperAceAnimator();
+    
+    createTimeTickAnimator();
 }
 
 
@@ -220,6 +247,14 @@ void    Game::LoadGameInfo (const std::string& cataloge){
     //_remaining_loops_num =document["superAceLoops"].GetInt();
     _highScore = document["highScore"].GetInt();
     _spriteSize = document["spriteSize"].GetDouble();
+    assert(document["powerUpsOfStage"].IsArray());
+    const Value& powerUps= document["powerUpsOfStage"];
+    for (rapidjson::SizeType i = 0; i < powerUps.Size(); i++)
+    {
+        unsigned u = powerUps[i].GetUint();
+        assert(u < 7 );
+        setNextPowerUpType(powerUps[i].GetUint());
+    }
 }
 
 void Game::updateHighScoreJson(const std::string& cataloge){

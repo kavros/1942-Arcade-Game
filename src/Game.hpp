@@ -26,6 +26,7 @@
 #include "AnimatorHolder.h"
 #include "MovingPathAnimator.h"
 
+
 enum GameState {
 	SINGLEPLAYER_MENU,
 	MULTIPLAYER_MENU,
@@ -49,7 +50,7 @@ private:
 	static SDL_Event e;
     
     static GameState _gameState;
-
+    static std::list<unsigned> _powerUpsOfStage;
     //Game Variables
 	static unsigned long _currTime ;
 	//static unsigned _remaining_loops_num ;
@@ -86,7 +87,7 @@ public:
     static bool InitGameInfo();
 	static void InitSuperAceAnimator();
 	static void InitGamePad();
-
+    
     //get
     static SDL_Window * getWindow();
     static SDL_Renderer * getRenderer();
@@ -97,6 +98,7 @@ public:
     static int getHighScore(void)  ;
     static float getSpriteSize(void)  ;
     static int getScore(void)  ;
+    static unsigned getNextPowerUpType();
     //static int getRemainingLoops(void);
     
     //updates
@@ -109,6 +111,7 @@ public:
     static void setScore(int s);
     static void setSpriteSize(float s);
     static void setHighScore(int s);
+    static void setNextPowerUpType(unsigned);
     //static void setRemainingLoops(int loops);
 
     //boolean
