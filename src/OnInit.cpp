@@ -53,15 +53,13 @@ void f(){
 void Game::InitGame(){
     InitData();
     SoundHolder::initSounds();
-    //InitSuperAceAnimator();
+
     LoadGameInfo("config.json");
     
     InitBackground();
     
     InitGameInfo();
-    
-	InitSuperAceAnimator();
-    
+        
     AnimatorHolder::startTimeTickAnimators();
 }
 
