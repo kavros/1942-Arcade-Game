@@ -124,9 +124,9 @@ void AnimatorHolder::triggerAnimators(){
         assert(sprite);
         Animation* animation;
         
-        if(i == 100 )
-            animation = AnimationHolder::getAnimationHolder()->getAnimation("red_plane_circle_250_250_30");
-        else
+        //if(i == 100 )
+          //  animation = AnimationHolder::getAnimationHolder()->getAnimation("red_plane_circle_250_250_30");
+        //else
             animation = AnimationHolder::getAnimationHolder()->getAnimation("circle_250_250_30");
         assert(animation);
         

@@ -72,8 +72,14 @@ void Game::OnEvent(SDL_Event* event) {
 				}*/
 				assert(superAce);
                 
-				MovingPathAnimator* superAceAnimatorLeft =
-					(MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorLeft");
+				MovingPathAnimator* sideFighterAnimatorLeft =
+					(MovingPathAnimator*)AnimatorHolder::getAnimator("SideFighterAnimatorLeft");
+                
+                MovingPathAnimator* sideFighterAnimatorRight =
+                (MovingPathAnimator*)AnimatorHolder::getAnimator("SideFighterAnimatorRight");
+                
+                MovingPathAnimator* superAceAnimatorLeft =
+                (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorLeft");
 
                 MovingPathAnimator* superAceAnimatorLeftLeft =
                 (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorLeftLeft");
