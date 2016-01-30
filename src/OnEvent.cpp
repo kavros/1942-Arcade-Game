@@ -64,11 +64,13 @@ void Game::OnEvent(SDL_Event* event) {
 
 			if (event->type == SDL_KEYDOWN || event->type == SDL_CONTROLLERBUTTONDOWN){
 				
-				//Sprite* background = SpritesHolder::getSpritesHolder()->add((Sprite*)Background::Get());
-				/*Sprite* background = Background::Get();
-				
+				/*
 				if (_currTime > 13000){
+					MovingPathAnimator* superAceEndingAnimator =
+						(MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceEndingAnimator");
 					cout << "AAA" << endl;
+					superAceEndingAnimator->start(getGameTime());
+					
 				}*/
 				assert(superAce);
                 
