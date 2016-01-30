@@ -122,8 +122,8 @@ void EnemyFighter::createPowerUp(){
     assert(powerUpAnimationFilm);
     Sprite* powerUp;
     
-    unsigned powerUpFrameNo = SIDE_FIGHTERS;
-    PowerUpType powerUpType = SIDE_FIGHTERS;
+    PowerUpType powerUpType = PowerUpType(Game::getNextPowerUpType());
+    unsigned powerUpFrameNo = powerUpType;
 
 	powerUp = new PowerUp("powerUpSprite", powerUpType, powerUpFrameNo, { getDstRect().x, getDstRect().y, getDstRect().w, getDstRect().h }, { 0, 0 }, true, POWER_UPS, powerUpAnimationFilm);
 

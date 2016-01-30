@@ -213,6 +213,14 @@ void    Game::LoadGameInfo (const std::string& cataloge){
     //_remaining_loops_num =document["superAceLoops"].GetInt();
     _highScore = document["highScore"].GetInt();
     _spriteSize = document["spriteSize"].GetDouble();
+    assert(document["powerUpsOfStage"].IsArray());
+    const Value& powerUps= document["powerUpsOfStage"];
+    for (rapidjson::SizeType i = 0; i < powerUps.Size(); i++)
+    {
+        unsigned u = powerUps[i].GetUint();
+        assert(u < 7 );
+        setNextPowerUpType(powerUps[i].GetUint());
+    }
 }
 
 void Game::updateHighScoreJson(const std::string& cataloge){
