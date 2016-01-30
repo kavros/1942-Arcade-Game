@@ -194,8 +194,7 @@ void triggerRedPlaneAnimator(){
     
     Sprite* sprite = SpritesHolder::getSpritesHolder()->getSprite(SpriteType::ALIEN_SHIP, name);
     assert(sprite);
-    
-    Animation* animation = AnimationHolder::getAnimationHolder()->getAnimation("red_plane_circle_250_250_30");
+    Animation* animation = AnimationHolder::getAnimationHolder()->getAnimation("circle_250_250_30");
     assert(animation);
 
     MovingPathAnimator* animator = new MovingPathAnimator(name, sprite, (MovingPathAnimation*)animation);
@@ -265,6 +264,51 @@ void AnimatorHolder::startTimeTickAnimators(){
 
 }
 
+using namespace rapidjson;
+
+void    AnimatorHolder::Load (const std::string& cataloge){
+    std::string line, text;
+    
+    static  std::string  dataFilePath = SRC_PATH + string(cataloge);
+    
+    std::ifstream file(dataFilePath);
+    if (!file.is_open()){
+        cout << dataFilePath << endl;
+        cout << "ERROR:data.json does not opened" << endl;
+        assert(0);
+    }
+    
+    while(std::getline(file, line))
+    {
+        text += line + "\n";
+    }
+    const char* data = text.c_str();
+    
+    
+    Document document;
+    document.Parse(data);
+    assert(document.IsObject());
+    assert(document["MovingPathAnimators"].IsArray());
+    //assert(document["Sprites"][1].IsObject());
+    const Value& mpas= document["MovingPathAnimators"];
+    for (rapidjson::SizeType i = 0; i < mpas.Size(); i++)
+    {
+        const Value& mpa = mpas[i];
+        //id
+        std::string id = mpa["id"].GetString();
+        std::string animationId = mpa["animationId"].GetString();
+        std::string spriteId = mpa["spriteId"].GetString();
+        int st = mpa["spriteType"].GetInt();
+        SpriteType spriteType = SpriteType(st);
+        assert( st < SPRITE_TYPE_SIZE );
+        
+        Sprite* sprite= SpritesHolder::getSpritesHolder()->getSprite(spriteType, spriteId);
+        MovingPathAnimation* animation = (MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation(animationId);
+        MovingPathAnimator* animator  =	new MovingPathAnimator( id, sprite, animation);
+        AnimatorHolder::Register(animator);
+    }
+    
+}
 
 
 

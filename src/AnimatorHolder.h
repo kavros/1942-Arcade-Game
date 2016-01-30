@@ -66,7 +66,7 @@ public:
 
 	static void wakeUpAnimators(timestamp_t offset);
 	static void pauseAnimators();
-    
+    static void Load (const std::string& cataloge);
     static void startTimeTickAnimators();
 
 };

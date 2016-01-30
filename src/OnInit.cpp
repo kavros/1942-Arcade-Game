@@ -53,7 +53,7 @@ void f(){
 void Game::InitGame(){
     InitData();
     SoundHolder::initSounds();
-    InitSuperAceAnimator();
+    //InitSuperAceAnimator();
     LoadGameInfo("config.json");
     
     InitBackground();
@@ -74,93 +74,6 @@ void Game::InitGamePad(){
 			break;
 		}
 	}
-}
-void Game::InitSuperAceAnimator(){
-    
-
-    animid_t id = "SuperAceAnimation";
-    
-    Sprite* superAce = SpritesHolder::getSpritesHolder()->getSprites(SUPER_ACE)->front();
-	
-	MovingPathAnimation* superAceStartingAnimation =
-		(MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("superAceStartingAnimation");
-	MovingPathAnimator* superAceStartingAnimator  =	new MovingPathAnimator(
-		"SuperAceStartingAnimator", superAce, superAceStartingAnimation
-		);
-
-	MovingPathAnimation* superAceEndingAnimation =
-		(MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("superAceEndingAnimation");
-	MovingPathAnimator* superAceEndingAnimator = new MovingPathAnimator(
-		"SuperAceEndingAnimator", superAce, superAceEndingAnimation
-	);
-    
-    MovingPathAnimation* superAceMovingAnimation =
-		(MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("superAceMovingAnimation");
-	MovingPathAnimator* superAceMovingAnimator  =	new MovingPathAnimator(
-		"SuperAceMovingAnimator", superAce, superAceMovingAnimation
-		);
-	
-	MovingPathAnimation* superAceAnimationManeuver	=
-			(MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("superAceAnimationManeuver");	
-	MovingPathAnimator* superAceAnimatorManeuever	= new MovingPathAnimator(
-		"SuperAceAnimatorManeuver", superAce, superAceAnimationManeuver
-		);
-
-
-
-    MovingPathAnimation* superAceAnimationUp = 
-		(MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("superAceAnimationUp");
-	MovingPathAnimator* superAceAnimatorUp	 = new MovingPathAnimator(
-		"SuperAceAnimatorUp", superAce, superAceAnimationUp
-		);
-
-
-
-
-	MovingPathAnimation* superAceAnimationDown = 
-		(MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("superAceAnimationDown");
-	MovingPathAnimator* superAceAnimatorDown = new MovingPathAnimator(
-		"SuperAceAnimatorDown", superAce, superAceAnimationDown
-		);
-
-
-    
-    MovingPathAnimation* superAceAnimationRight =
-    (MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("superAceAnimationRight");
-    MovingPathAnimator* superAceAnimatorRight = new MovingPathAnimator(
-                                                                       "SuperAceAnimatorRight", superAce, superAceAnimationRight
-                                                                       );
-
-    MovingPathAnimation* superAceAnimationRightRight =
-    (MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("superAceAnimationRightRight");
-    MovingPathAnimator* superAceAnimatorRightRight = new MovingPathAnimator(
-                                                                       "SuperAceAnimatorRightRight", superAce, superAceAnimationRightRight
-                                                                       );
-
-	MovingPathAnimation* superAceAnimationLeft	= 
-		(MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("superAceAnimationLeft");
-	MovingPathAnimator* superAceAnimatorLeft	= new MovingPathAnimator(
-		"SuperAceAnimatorLeft", superAce, superAceAnimationLeft
-		);
-    
-    MovingPathAnimation* superAceAnimationLeftLeft	=
-    (MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("superAceAnimationLeftLeft");
-    MovingPathAnimator* superAceAnimatorLeftLeft	= new MovingPathAnimator(
-                                                                         "SuperAceAnimatorLeftLeft", superAce, superAceAnimationLeftLeft
-                                                                         );
-
-	
-	AnimatorHolder::Register(superAceMovingAnimator);
-	AnimatorHolder::Register(superAceAnimatorUp);
-	AnimatorHolder::Register(superAceAnimatorRight);
-	AnimatorHolder::Register(superAceAnimatorRightRight);
-	AnimatorHolder::Register(superAceAnimatorDown);
-	AnimatorHolder::Register(superAceAnimatorLeft);
-	AnimatorHolder::Register(superAceAnimatorLeftLeft);
-	AnimatorHolder::Register(superAceAnimatorManeuever);
-	AnimatorHolder::Register(superAceStartingAnimator);
-	AnimatorHolder::Register(superAceEndingAnimator);
-
 }
 
 
@@ -213,6 +126,7 @@ bool Game::InitData(){
     
     AnimationHolder* anh = AnimationHolder::getAnimationHolder();
     anh->Load("animations.json");
+    AnimatorHolder::getAnimatorHolder()->Load("animators.json");
     return true;
 }
 
