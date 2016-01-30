@@ -51,7 +51,6 @@ void Game::InitSuperAceAnimator(){
     animid_t id = "SuperAceAnimation";
     
     Sprite* superAce = SpritesHolder::getSpritesHolder()->getSprites(SUPER_ACE)->front();
-	
 	MovingPathAnimation* superAceStartingAnimation =
 		(MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("superAceStartingAnimation");
 	MovingPathAnimator* superAceStartingAnimator  =	new MovingPathAnimator(

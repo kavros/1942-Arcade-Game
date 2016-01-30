@@ -106,9 +106,10 @@ void SuperAce::doManeuever(void){
     MovingPathAnimator* superAceAnimatorManeuever = (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorManeuver");
     SuperAce* superAce = (SuperAce*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce");
     int loops = superAce->getSuperAceLoops();
-
+	
     if (loops > 0){
         setState(MANEUVER);
+		cout << "SuperAce state is now Maneuver" << endl;
         superAceAnimatorManeuever->start(Game::getGameTime());
         
         loops-=1;

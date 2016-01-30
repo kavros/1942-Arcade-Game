@@ -164,18 +164,23 @@ bool Sprite::isOutOfWindow(){
 void Sprite::collisionCheck(Sprite* s){
     assert(this->isAlive());
     assert(s->isAlive());
-    
+	
+	
+	if ((_state == MANEUVER) || s->_state == MANEUVER ){
+		return;
+	}
+
+	//if sprites are not visible return
     if( !this->getVisibility() || !s->getVisibility() ){
         return;
     }
     //compare _dstRect with s->getDstRect()
-    if(
-        _dstRect.x < s->getDstRect().x + s->getDstRect().w &&
-        _dstRect.x + _dstRect.w > s->getDstRect().x &&
-        _dstRect.y < s->getDstRect().y + s->getDstRect().h &&
-        _dstRect.h + _dstRect.y > s->getDstRect().y
-       )
-        
+	if (
+		_dstRect.x < s->getDstRect().x + s->getDstRect().w &&
+		_dstRect.x + _dstRect.w > s->getDstRect().x &&
+		_dstRect.y < s->getDstRect().y + s->getDstRect().h &&
+		_dstRect.h + _dstRect.y > s->getDstRect().y
+		)
         notifyCollision(s);
 }
 
