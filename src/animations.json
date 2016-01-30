@@ -37,6 +37,12 @@
                                       "delay": 100,
                                       "repetitions": 0
                                       }
+                                      ,{
+                                      "id": "redPlaneTickAnimation",
+                                      "delay": 5000,
+                                      "repetitions": 4
+                                      }
+                                      
                                       ]
                    }, {
                    "MovingPathAnimations": [{

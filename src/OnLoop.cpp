@@ -38,9 +38,6 @@ void Game::OnLoop() {
             AnimatorHolder::checkAnimatorsForDelete();
             SpritesHolder::checkSpritesForDelete();
 
-            //trigger animators and bullets
-            AnimatorHolder::triggerAnimators();
-
             //progress animators
 			AnimatorHolder::progress(getGameTime());
             

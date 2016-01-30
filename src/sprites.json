@@ -13,9 +13,36 @@
                 "spriteType": 7,
                 "animFilmId": "ReadyLogo"
                 },{
-                "id": "GreenJet100",
+                "id": "RedJet0",
                 "frameNo": 0,
                 "destRect": [0, 10, 25, 25],
+                "point": [0, 0],
+                "visible": false,
+                "spriteType": 4,
+                "enemyType" : 0,
+                "animFilmId": "red_plane"
+                },{
+                "id": "RedJet1",
+                "frameNo": 0,
+                "destRect": [10, 20, 25, 25],
+                "point": [0, 0],
+                "visible": false,
+                "spriteType": 4,
+                "enemyType" : 0,
+                "animFilmId": "red_plane"
+                },{
+                "id": "RedJet2",
+                "frameNo": 0,
+                "destRect": [30, 40, 25, 25],
+                "point": [0, 0],
+                "visible": false,
+                "spriteType": 4,
+                "enemyType" : 0,
+                "animFilmId": "red_plane"
+                },{
+                "id": "RedJet3",
+                "frameNo": 0,
+                "destRect": [40, 50, 25, 25],
                 "point": [0, 0],
                 "visible": false,
                 "spriteType": 4,
