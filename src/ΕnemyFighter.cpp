@@ -117,14 +117,15 @@ void EnemyFighter::fire(void){
     /*bullet test end*/
 }
 
-void EnemyFighter::createPowerUp(PowerUpType powerUpType){
+void EnemyFighter::createPowerUp(){
     AnimationFilm* powerUpAnimationFilm = AnimationFilmHolder::Get()->GetFilm("powerUps");
     assert(powerUpAnimationFilm);
     Sprite* powerUp;
     
-    srand (time(NULL)); 
+    unsigned powerUpFrameNo = SIDE_FIGHTERS;
+    PowerUpType powerUpType = SIDE_FIGHTERS;
 
-	powerUp = new PowerUp("explosionSprite", powerUpType, powerUpType, { getDstRect().x, getDstRect().y, getDstRect().w, getDstRect().h }, { 0, 0 }, true, POWER_UPS, powerUpAnimationFilm);
+	powerUp = new PowerUp("powerUpSprite", powerUpType, powerUpFrameNo, { getDstRect().x, getDstRect().y, getDstRect().w, getDstRect().h }, { 0, 0 }, true, POWER_UPS, powerUpAnimationFilm);
 
     assert(powerUp);
     
