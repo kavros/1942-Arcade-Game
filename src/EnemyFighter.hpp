@@ -38,10 +38,11 @@ private:
     unsigned _enemyFighterHeight;
     SDL_Rect _enemyBulletDstRect;
     bool enemyFireEnable;
+    unsigned remainingBullets;
 public:
     
     //constructor
-    EnemyFighter(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point point,bool isVisible,SpriteType type,AnimationFilm* currFilm,enum EnemyFighterType e);
+    EnemyFighter(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point point,bool isVisible,SpriteType type,AnimationFilm* currFilm,enum EnemyFighterType e,unsigned remainingBullets);
     
     //get
     unsigned getEnemyFighterWidth();

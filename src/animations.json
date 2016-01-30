@@ -35,7 +35,7 @@
                                       },{
                                       "id": "superAceMovingPathTickAnimation",
                                       "delay": 100,
-                                      "repetitions": 0
+                                      "repetitions": 1
                                       }
                                       ,{
                                       "id": "redPlaneTickAnimation",

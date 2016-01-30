@@ -224,22 +224,25 @@ void triggerSuperAceMovingPathAnimator(){
 void triggerRedPlaneAnimator(){
     
     static int nameId=0;
+    string name = "RedJet" + std::to_string(nameId);
+    nameId++;
+
     AnimationFilm* animationFilm  = AnimationFilmHolder::Get()->GetFilm("red_plane");
     assert(animationFilm);
     
-    Sprite* sprite = SpritesHolder::getSpritesHolder()->getSprite(SpriteType::ALIEN_SHIP, "RedJet"+std::to_string(nameId));
+    Sprite* sprite = SpritesHolder::getSpritesHolder()->getSprite(SpriteType::ALIEN_SHIP, name);
     assert(sprite);
+    
     Animation* animation = AnimationHolder::getAnimationHolder()->getAnimation("red_plane_circle_250_250_30");
     assert(animation);
 
-    MovingPathAnimator* animator = new MovingPathAnimator(string("animatorStraightEnemyAttack") + std::to_string(nameId), sprite, (MovingPathAnimation*)animation);
+    MovingPathAnimator* animator = new MovingPathAnimator(name, sprite, (MovingPathAnimation*)animation);
     assert(animator);
     
     AnimatorHolder::Register(animator);
     
     animator->start(Game::getGameTime());
 
-    nameId++;
 }
 
 
