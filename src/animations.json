@@ -30,7 +30,7 @@
                    {
                    "TickAnimations": [{
                                       "id": "enemyBulletsTickAnimation",
-                                      "delay": 1000,
+                                      "delay": 2000,
                                       "repetitions": 0
                                       },{
                                       "id": "superAceMovingPathTickAnimation",

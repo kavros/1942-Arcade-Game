@@ -108,7 +108,6 @@ void AnimatorHolder::triggerBullets(){
         if( (*it)->getVisibility() && (*it)->isAlive() && (*it)->getState()!=IN_COLUSION ){
             
             ((EnemyFighter*)(*it))->fire();
-            break;
         }
         it++;
     }
@@ -260,7 +259,7 @@ void triggerGreenDoubleEnginePlaneAnimator(){
 void AnimatorHolder::startTimeTickAnimators(){
     
     TimerTickAnimator::startTimeTickAnimator("superAceMovingPathTickAnimation", triggerSuperAceMovingPathAnimator );
-    TimerTickAnimator::startTimeTickAnimator("enemyBulletsTickAnimation", AnimatorHolder::triggerBullets);
+  //  TimerTickAnimator::startTimeTickAnimator("enemyBulletsTickAnimation", AnimatorHolder::triggerBullets);
     TimerTickAnimator::startTimeTickAnimator("redPlaneTickAnimation", triggerRedPlaneAnimator );
     TimerTickAnimator::startTimeTickAnimator("greenPlaneTickAnimation", triggerGreenPlaneAnimator );
     TimerTickAnimator::startTimeTickAnimator("greenDoubleEnginePlaneTickAnimation", triggerGreenDoubleEnginePlaneAnimator );

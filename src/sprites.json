@@ -59,7 +59,7 @@
                 "point": [0, 0],
                 "visible": false,
                 "spriteType": 4,
-                "remainingBullets": 10,
+                "remainingBullets": 1,
                 "enemyType" : 1,
                 "animFilmId": "green_jet"
                 },{
@@ -69,7 +69,7 @@
                 "point": [0, 0],
                 "visible": false,
                 "spriteType": 4,
-                "remainingBullets": 10,
+                "remainingBullets": 1,
                 "enemyType" : 1,
                 "animFilmId": "green_jet"
                 },{
@@ -80,7 +80,7 @@
                 "visible": false,
                 "enemyType" : 1,
                 "spriteType": 4,
-                "remainingBullets": 10,
+                "remainingBullets": 1,
                 "animFilmId": "green_jet"
                 },{
                 "id": "GreenJet3",
@@ -90,7 +90,7 @@
                 "visible": false,
                 "enemyType" : 1,
                 "spriteType": 4,
-                "remainingBullets": 10,
+                "remainingBullets": 1,
                 "animFilmId": "green_jet"
                 },{
                 "id": "GreenDoubleEngineJet0",
@@ -99,7 +99,7 @@
                 "point": [0, 0],
                 "visible": false,
                 "spriteType": 4,
-                "remainingBullets": 10,
+                "remainingBullets": 2,
                 "enemyType" : 5,
                 "animFilmId": "green_double_engine"
                 },{
@@ -109,7 +109,7 @@
                 "point": [0, 0],
                 "visible": false,
                 "spriteType": 4,
-                "remainingBullets": 10,
+                "remainingBullets": 2,
                 "enemyType" : 5,
                 "animFilmId": "green_double_engine"
                 },{
@@ -120,7 +120,7 @@
                 "visible": false,
                 "enemyType" : 5,
                 "spriteType": 4,
-                "remainingBullets": 10,
+                "remainingBullets": 2,
                 "animFilmId": "green_double_engine"
                 },{
                 "id": "GreenDoubleEngineJet3",
@@ -130,7 +130,7 @@
                 "visible": false,
                 "enemyType" : 5,
                 "spriteType": 4,
-                "remainingBullets": 10,
+                "remainingBullets": 2,
                 "animFilmId": "green_double_engine"
                 },{
                 "id": "SuperAce",
