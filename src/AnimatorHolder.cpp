@@ -229,7 +229,7 @@ void triggerRedPlaneAnimator(){
     
     Sprite* sprite = SpritesHolder::getSpritesHolder()->getSprite(SpriteType::ALIEN_SHIP, "RedJet"+std::to_string(nameId));
     assert(sprite);
-    Animation* animation = AnimationHolder::getAnimationHolder()->getAnimation("red_plane_circle_250_250_30");
+    Animation* animation = AnimationHolder::getAnimationHolder()->getAnimation("circle_250_250_30");
     assert(animation);
 
     MovingPathAnimator* animator = new MovingPathAnimator(string("animatorStraightEnemyAttack") + std::to_string(nameId), sprite, (MovingPathAnimation*)animation);
@@ -251,6 +251,63 @@ void AnimatorHolder::startTimeTickAnimators(){
 
 }
 
+using namespace rapidjson;
+
+void    AnimatorHolder::Load (const std::string& cataloge){
+    std::string line, text;
+    
+    static  std::string  dataFilePath = SRC_PATH + string(cataloge);
+    
+    std::ifstream file(dataFilePath);
+    if (!file.is_open()){
+        cout << dataFilePath << endl;
+        cout << "ERROR:data.json does not opened" << endl;
+        assert(0);
+    }
+    
+    while(std::getline(file, line))
+    {
+        text += line + "\n";
+    }
+    const char* data = text.c_str();
+    
+    
+    Document document;
+    document.Parse(data);
+    assert(document.IsObject());
+    assert(document["MovingPathAnimators"].IsArray());
+    //assert(document["Sprites"][1].IsObject());
+    const Value& mpas= document["MovingPathAnimators"];
+    for (rapidjson::SizeType i = 0; i < mpas.Size(); i++)
+    {
+        const Value& mpa = mpas[i];
+        //id
+        std::string id = mpa["id"].GetString();
+        std::string animationId = mpa["animationId"].GetString();
+        std::string spriteId = mpa["spriteId"].GetString();
+        int st = sprite["spriteType"].GetInt();
+        spriteType = SpriteType(st);
+        assert( st < SPRITE_TYPE_SIZE );
+        
+        AnimationFilm* animationFilm = AnimationFilmHolder::Get()->GetFilm(sprite["animFilmId"].GetString()) ;
+        
+        assert(sprite.IsObject());
+        assert(sprite["id"].IsString());
+        assert(sprite["destRect"].IsArray());
+        
+        //add Sprite 2 Sprite Holder
+        if(spriteType == SpriteType::SUPER_ACE)
+        new SuperAce(id, frameNo, destRect, point, isVisible, spriteType,animationFilm);
+        else if(spriteType == SpriteType::ALIEN_SHIP){
+            assert(sprite["enemyType"].IsInt());
+            enum EnemyFighterType e = EnemyFighterType(sprite["enemyType"].GetInt());
+            new EnemyFighter(id, frameNo, destRect, point, isVisible, spriteType,animationFilm,e);
+            
+        }else
+        new Sprite(id, frameNo, destRect, point, isVisible, spriteType,animationFilm);
+    }
+    
+}
 
 
 

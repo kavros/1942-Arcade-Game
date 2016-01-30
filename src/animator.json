@@ -1,0 +1,9 @@
+{
+    "MovingPathAnimators": [{
+                "id": "SuperAceStartingAnimator",
+                "animationId": "superAceStartingAnimation",
+                "spriteType": 3,
+                "spriteId": "SuperAce"
+                }
+                ]
+}
