@@ -13,7 +13,7 @@
 
 #define POWER_UP_TYPE_SIZE 7
 
-typedef enum PowerUpType {
+enum PowerUpType {
     QUAD_GUN = 0,
     ENEMY_CRASH,
     SIDE_FIGHTERS,
@@ -21,7 +21,7 @@ typedef enum PowerUpType {
     NO_ENEMY_BULLETS,
     EXTRA_LOOP,
     THOUSAND_POINTS
-}PowerUpType;
+};
 
 class PowerUp:public Sprite{
     

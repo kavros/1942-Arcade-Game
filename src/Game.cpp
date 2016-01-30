@@ -12,6 +12,7 @@ Uint32 Game::_fps_lasttime = SDL_GetTicks(); //the last recorded time.
 Uint32 Game::_fps_current = 0; //the last recorded time.
 Uint32 Game::_fps_frames = 0; //frames passed since the last recorded fps.
 
+std::list<unsigned> Game::_powerUpsOfStage;
 SDL_Window * Game::_window = 0;
 SDL_Renderer * Game::_renderer = 0;
 SDL_Event Game::e;
@@ -148,5 +149,17 @@ void Game::fpsLoop(){
 
 unsigned long Game::getGameTime(){
     return _currTime;
+}
+
+void Game::setNextPowerUpType(unsigned p){
+    assert( p < 7);
+    _powerUpsOfStage.push_back(p);
+}
+
+unsigned Game::getNextPowerUpType(){
+    assert(!_powerUpsOfStage.empty());
+    unsigned p = _powerUpsOfStage.front();
+    _powerUpsOfStage.pop_front();
+    return p;
 }
 
