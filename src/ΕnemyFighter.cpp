@@ -72,21 +72,7 @@ bool EnemyFighter::getEnemyFireEnable(){
 }
 
 void EnemyFighter::fire(void){
-    if(getEnemyFireEnable() == false){
-        static int timeToEnableFire = 0;
-        timeToEnableFire ++;
-        if(timeToEnableFire == 10){
-            SpriteList* sl = SpritesHolder::getSpritesHolder()->getSprites(ALIEN_SHIP);
-            SpriteList::const_iterator it = sl->begin();
-            while ( it != sl->end() ){
-                ((EnemyFighter*)(*it))->setEnemyFireEnable(true);
-                ++it;
-            }
-        }
-        return;
 
-    }
-    
     static string str = "enemyFire";
     static int number = 0;
     string spriteEnemyFireId = str + std::to_string (number);

@@ -10,6 +10,9 @@
 #include "Game.hpp"
 #include "EnemyFighter.hpp"
 
+#include "TickAnimation.h"
+#include "TimerTickAnimator.h"
+
 class Animator;
 
 typedef unsigned long timestamp_t;
@@ -64,6 +67,8 @@ public:
 
 	static void wakeUpAnimators(timestamp_t offset);
 	static void pauseAnimators();
+    
+    static void startTimeTickAnimators();
 
 };
 

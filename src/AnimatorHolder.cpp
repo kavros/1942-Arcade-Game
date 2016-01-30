@@ -227,3 +227,19 @@ void AnimatorHolder::pauseAnimators(){
 
 	}*/
 }
+
+void AnimatorHolder::startTimeTickAnimators(){
+    
+    animid_t id = "enemyBulletsTickAnimation";
+    
+    TickAnimation* tickAnimation;
+    
+    tickAnimation = (TickAnimation*)AnimationHolder::getAnimationHolder()->getAnimation(id);
+    assert(tickAnimation);
+    tickAnimation->setOnTick( AnimatorHolder::triggerBullets );
+    
+    TimerTickAnimator* timerTickAnimator = new TimerTickAnimator(tickAnimation);
+    AnimatorHolder::getAnimatorHolder()->Register( timerTickAnimator );
+    
+    timerTickAnimator->start( Game::getGameTime() );
+}

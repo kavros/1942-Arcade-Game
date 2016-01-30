@@ -3,9 +3,6 @@
 #include "../rapidjson/writer.h"
 #include "../rapidjson/stringbuffer.h"
 
-
-#include "TickAnimation.h"
-#include "TimerTickAnimator.h"
 #include "MovingAnimation.h"
 
 bool Game::OnInit(){
@@ -26,28 +23,6 @@ bool Game::OnInit(){
     return true;
 }
 
-void f(){
-    cout<<"f\n";
-    AnimatorHolder::triggerBullets();
-}
-
-void createTimeTickAnimator(){
-    
-    animid_t id = "enemyBulletsTickAnimation";
-
-    TickAnimation* tickAnimation;
-    
-    tickAnimation = (TickAnimation*)AnimationHolder::getAnimationHolder()->getAnimation(id);
-    assert(tickAnimation);
-    tickAnimation->setOnTick(f);
-    
-    TimerTickAnimator* timerTickAnimator = new TimerTickAnimator(tickAnimation);
-
-    AnimatorHolder::getAnimatorHolder()->Register( timerTickAnimator );
-
-    timerTickAnimator->start( Game::getGameTime() );
-}
-
 void Game::InitGame(){
     InitData();
     SoundHolder::initSounds();
@@ -60,9 +35,8 @@ void Game::InitGame(){
     
 	InitSuperAceAnimator();
     
-    createTimeTickAnimator();
+    AnimatorHolder::startTimeTickAnimators();
 }
-
 
 void Game::InitGamePad(){
 	for (int i = 0; i < SDL_NumJoysticks(); ++i){
