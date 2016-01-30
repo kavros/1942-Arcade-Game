@@ -3,6 +3,11 @@
 #include "../rapidjson/writer.h"
 #include "../rapidjson/stringbuffer.h"
 
+
+#include "TickAnimation.h"
+#include "TimerTickAnimator.h"
+#include "MovingAnimation.h"
+
 bool Game::OnInit(){
 	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER | SDL_INIT_GAMECONTROLLER) != 0){
 		std::cout << "SDL_Init Error: " << SDL_GetError() << std::endl;
@@ -21,6 +26,28 @@ bool Game::OnInit(){
     return true;
 }
 
+void f(){
+    assert(0);
+}
+
+void createTimeTickAnimator(){
+    
+    animid_t id = "tickAnimation";
+    delay_t _delay = 3;
+    unsigned _repetitions = 10;
+    
+    TickAnimation* tickAnimation = new TickAnimation(id ,_delay ,_repetitions ,f);
+    
+    AnimationHolder::getAnimationHolder()->add( tickAnimation );
+
+    
+    TimerTickAnimator* timerTickAnimator = new TimerTickAnimator(tickAnimation);
+
+    AnimatorHolder::getAnimatorHolder()->Register( timerTickAnimator );
+
+
+}
+
 void Game::InitGame(){
     InitData();
     SoundHolder::initSounds();
@@ -32,6 +59,8 @@ void Game::InitGame(){
     InitGameInfo();
     
 	InitSuperAceAnimator();
+    
+ //   createTimeTickAnimator();
 }
 
 

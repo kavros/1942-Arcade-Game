@@ -6,8 +6,22 @@
 
 class TimerTickAnimator : public Animator {
 public:
-	void progress(timestamp_t currTime);
+    
+    //costructor
 	TimerTickAnimator(TickAnimation* tick);
+    
+    //destructor
+    ~TimerTickAnimator(){}
+
+    //functionallity
+    void progress(timestamp_t currTime);
+
+    void timeShift(timestamp_t offset){
+        _lastTime+=offset;
+    }
+    
+    void checkAnimatorForDelete(void){}
+    
 };
 
 #endif
