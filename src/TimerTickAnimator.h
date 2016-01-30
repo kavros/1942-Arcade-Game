@@ -3,8 +3,13 @@
 
 #include "TickAnimation.h"
 #include "Animator.h"
+#include "AnimatorHolder.h"
 
 class TimerTickAnimator : public Animator {
+    
+private:
+    TickAnimation*		tickAnimation;
+
 public:
     
     //costructor
@@ -14,13 +19,14 @@ public:
     ~TimerTickAnimator(){}
 
     //functionallity
-    void progress(timestamp_t currTime);
+    void start( timestamp_t t) override;
 
-    void timeShift(timestamp_t offset){
-        _lastTime+=offset;
-    }
+    void progress(timestamp_t currTime) override;
+
+    void timeShift(timestamp_t offset) override;
     
-    void checkAnimatorForDelete(void){}
+    void checkAnimatorForDelete(void) override{
+    }
     
 };
 

@@ -27,25 +27,23 @@ bool Game::OnInit(){
 }
 
 void f(){
-    assert(0);
 }
 
 void createTimeTickAnimator(){
     
     animid_t id = "tickAnimation";
-    delay_t _delay = 3;
+    delay_t _delay = 10000; //10 sec
     unsigned _repetitions = 10;
     
     TickAnimation* tickAnimation = new TickAnimation(id ,_delay ,_repetitions ,f);
     
     AnimationHolder::getAnimationHolder()->add( tickAnimation );
-
     
     TimerTickAnimator* timerTickAnimator = new TimerTickAnimator(tickAnimation);
 
     AnimatorHolder::getAnimatorHolder()->Register( timerTickAnimator );
 
-
+    timerTickAnimator->start( Game::getGameTime() );
 }
 
 void Game::InitGame(){
@@ -60,7 +58,7 @@ void Game::InitGame(){
     
 	InitSuperAceAnimator();
     
- //   createTimeTickAnimator();
+    createTimeTickAnimator();
 }
 
 

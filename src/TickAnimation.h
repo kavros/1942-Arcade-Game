@@ -37,6 +37,15 @@ public:
     }
     
     ~TickAnimation(){}
+    
+    //getter
+    delay_t getDelay(){
+        return _delay;
+    }
+    
+    OnTick getOnTick(){
+        return _onTick;
+    }
 
 };
 #endif

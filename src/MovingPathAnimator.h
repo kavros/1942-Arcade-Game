@@ -25,7 +25,7 @@ public:
     //setters
     void setContinuous(bool b);
 
-	void start(timestamp_t t);
+	void start(timestamp_t t) override;
 	static void finishCallB(Animator* a,void*);
 	
 	//constructor
