@@ -38,7 +38,7 @@ void Sprite::fireHandler::operator()(Sprite* bullet,Sprite* arg) const{
         arg->setState(IN_COLUSION);
         if(arg->getType() == ALIEN_SHIP){
             if( ((EnemyFighter*)arg)->getEnemyFighterType() == RED_PLANE ){
-                ((EnemyFighter*)arg)->createPowerUp();
+				((EnemyFighter*)arg)->createPowerUp(SIDE_FIGHTERS);
             }
         }
     }
