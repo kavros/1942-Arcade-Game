@@ -27,7 +27,7 @@ void Game::OnLoop() {
                 loopsRemainingToDelete = 10000;
             }
             loopsRemainingToDelete--;
-                        
+            
             //Move Background
             Background::Get()->moveBackground(0,+1);
             

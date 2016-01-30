@@ -97,11 +97,12 @@ void Game::InitSuperAceAnimator(){
 		);
 
 
-	MovingPathAnimation* superAceAnimationRight =
-		(MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("superAceAnimationRight");
-	MovingPathAnimator* superAceAnimatorRight = new MovingPathAnimator(
-		"SuperAceAnimatorRight", superAce, superAceAnimationRight
-		);
+    
+    MovingPathAnimation* superAceAnimationRight =
+    (MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("superAceAnimationRight");
+    MovingPathAnimator* superAceAnimatorRight = new MovingPathAnimator(
+                                                                       "SuperAceAnimatorRight", superAce, superAceAnimationRight
+                                                                       );
 
     MovingPathAnimation* superAceAnimationRightRight =
     (MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("superAceAnimationRightRight");
@@ -121,6 +122,7 @@ void Game::InitSuperAceAnimator(){
                                                                          "SuperAceAnimatorLeftLeft", superAce, superAceAnimationLeftLeft
                                                                          );
 
+	
 	AnimatorHolder::Register(superAceMovingAnimator);
 	AnimatorHolder::Register(superAceAnimatorUp);
 	AnimatorHolder::Register(superAceAnimatorRight);

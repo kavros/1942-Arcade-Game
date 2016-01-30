@@ -64,18 +64,14 @@ void Game::OnEvent(SDL_Event* event) {
 
 			if (event->type == SDL_KEYDOWN || event->type == SDL_CONTROLLERBUTTONDOWN){
 				
-				/*
-				if (_currTime > 13000){
-					MovingPathAnimator* superAceEndingAnimator =
-						(MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceEndingAnimator");
-					cout << "AAA" << endl;
-					superAceEndingAnimator->start(getGameTime());
-					
-				}*/
+				
+				
+		
 				assert(superAce);
                 
-				MovingPathAnimator* superAceAnimatorLeft =
-					(MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorLeft");
+                
+                MovingPathAnimator* superAceAnimatorLeft =
+                (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorLeft");
 
                 MovingPathAnimator* superAceAnimatorLeftLeft =
                 (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorLeftLeft");
@@ -103,27 +99,46 @@ void Game::OnEvent(SDL_Event* event) {
 					//pause
                     setState(PAUSE_MENU);
 				}
-				else if (event->key.keysym.sym == SDLK_q){
-					//quit?
-				}
-				else if (event->key.keysym.sym == SDLK_LEFT
-					|| event->cbutton.button == SDL_CONTROLLER_BUTTON_DPAD_LEFT) {
-
-                    if(event->key.keysym.sym != prevEvent.key.keysym.sym)
-                        superAceAnimatorLeft->start(getGameTime());
-                    else
-                        superAceAnimatorLeftLeft->start(getGameTime());
-				}
-				else if (event->key.keysym.sym == SDLK_RIGHT
-					|| event->cbutton.button == SDL_CONTROLLER_BUTTON_DPAD_RIGHT){
+                else if (event->key.keysym.sym == SDLK_q){
+                    //quit?
+                }
+                else if (event->key.keysym.sym == SDLK_LEFT
+                         || event->cbutton.button == SDL_CONTROLLER_BUTTON_DPAD_LEFT) {
                     
                     if(event->key.keysym.sym != prevEvent.key.keysym.sym)
-                        superAceAnimatorRight->start(getGameTime());
+                    superAceAnimatorLeft->start(getGameTime());
                     else
-                        superAceAnimatorRightRight->start(getGameTime());
-
-				}
-				else if (event->key.keysym.sym == SDLK_UP
+                    superAceAnimatorLeftLeft->start(getGameTime());
+                    if(superAce->getAttached(RIGHT_FIGHTER)){
+                        MovingPathAnimator* rightSideFighterAnimatorLeft =
+                        (MovingPathAnimator*)AnimatorHolder::getAnimator("RightSideFighterAnimatorLeft");
+                        rightSideFighterAnimatorLeft->start(getGameTime());
+                    }
+                    if(superAce->getAttached(LEFT_FIGHTER)){
+                        MovingPathAnimator* leftSideFighterAnimatorLeft =
+                        (MovingPathAnimator*)AnimatorHolder::getAnimator("LeftSideFighterAnimatorLeft");
+                        leftSideFighterAnimatorLeft->start(getGameTime());
+                    }
+                }
+                else if (event->key.keysym.sym == SDLK_RIGHT
+                         || event->cbutton.button == SDL_CONTROLLER_BUTTON_DPAD_RIGHT){
+                    
+                    if(event->key.keysym.sym != prevEvent.key.keysym.sym)
+                    superAceAnimatorRight->start(getGameTime());
+                    else
+                    superAceAnimatorRightRight->start(getGameTime());
+                    if(superAce->getAttached(RIGHT_FIGHTER)){
+                        MovingPathAnimator* rightSideFighterAnimatorRight =
+                        (MovingPathAnimator*)AnimatorHolder::getAnimator("RightSideFighterAnimatorRight");
+                        rightSideFighterAnimatorRight->start(getGameTime());
+                    }
+                    if(superAce->getAttached(LEFT_FIGHTER)){
+                        MovingPathAnimator* leftSideFighterAnimatorRight =
+                        (MovingPathAnimator*)AnimatorHolder::getAnimator("LeftSideFighterAnimatorRight");
+                        leftSideFighterAnimatorRight->start(getGameTime());
+                    }
+                }
+                else if (event->key.keysym.sym == SDLK_UP
 					|| event->cbutton.button == SDL_CONTROLLER_BUTTON_DPAD_UP){
                     
 					superAceAnimatorUp->start(getGameTime());
