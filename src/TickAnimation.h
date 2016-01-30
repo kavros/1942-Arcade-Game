@@ -17,6 +17,8 @@ public:
     //constructor
     TickAnimation(animid_t id);
     
+    TickAnimation(animid_t id ,delay_t _delay ,unsigned _repetitions);
+
     TickAnimation(animid_t id ,delay_t _delay ,unsigned _repetitions ,OnTick _onTick);
     
     //destructor
@@ -35,7 +37,9 @@ public:
     //setter
     void setDelay(delay_t delay);
     
-    template <typename Tfunc> void setOnTick(const Tfunc& f);
+    template <typename Tfunc> void setOnTick(const Tfunc& f){
+        _onTick = f;
+    }
     
     void setForever(void);
     

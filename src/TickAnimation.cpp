@@ -5,6 +5,11 @@ TickAnimation::TickAnimation(animid_t id): Animation(id), _delay(0), _repetition
     
 }
 
+TickAnimation::TickAnimation(animid_t id ,delay_t _delay ,unsigned _repetitions):
+Animation(id), _delay(_delay), _repetitions(_repetitions), _onTick(nullptr){
+    
+}
+
 TickAnimation::TickAnimation(animid_t id ,delay_t _delay ,unsigned _repetitions ,OnTick _onTick):
 Animation(id), _delay(_delay), _repetitions(_repetitions), _onTick(_onTick){
     
@@ -33,10 +38,6 @@ unsigned TickAnimation::getRepetitions(){
 //setter
 void TickAnimation::setDelay(delay_t delay){
     _delay = delay;
-}
-
-template <typename Tfunc> void TickAnimation::setOnTick(const Tfunc& f){
-    _onTick = f;
 }
 
 void TickAnimation::setForever(void){

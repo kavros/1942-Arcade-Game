@@ -1,12 +1,6 @@
 {
     "Animations": [
                    {
-                   "TickAnimations": [{
-                                        "id": "enemyBulletsTickAnimation",
-                                        "delay": 1000,
-                                        "repetitions": 0
-                                        }]
-                   },{
                    "MovingAnimations": [{
                                         "id": "superAceFire",
                                         "dx": 0,
@@ -32,6 +26,13 @@
                                         "delay": 10,
                                         "continuous": true
                                         }]
+                   },
+                   {
+                   "TickAnimations": [{
+                                      "id": "enemyBulletsTickAnimation",
+                                      "delay": 1000,
+                                      "repetitions": 0
+                                      }]
                    }, {
                    "MovingPathAnimations": [{
                                             "id": "superAceMovingAnimation",

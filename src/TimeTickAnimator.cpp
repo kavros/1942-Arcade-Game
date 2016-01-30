@@ -23,7 +23,8 @@ void TimerTickAnimator::progress(timestamp_t currTime){
     
     if( currTime - _lastTime >= tickAnimation->getDelay()  ){
         
-        tickAnimation->getOnTick()();
+        if( tickAnimation->getOnTick() )
+            tickAnimation->getOnTick()();
 
         _lastTime = currTime;
  

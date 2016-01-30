@@ -33,13 +33,13 @@ void f(){
 
 void createTimeTickAnimator(){
     
-    animid_t id = "tickAnimation";
-    delay_t _delay = 1000; //5 sec
-    unsigned _repetitions = 0;
+    animid_t id = "enemyBulletsTickAnimation";
+
+    TickAnimation* tickAnimation;
     
-    TickAnimation* tickAnimation = new TickAnimation(id ,_delay ,_repetitions ,f);
-    
-    AnimationHolder::getAnimationHolder()->add( tickAnimation );
+    tickAnimation = (TickAnimation*)AnimationHolder::getAnimationHolder()->getAnimation(id);
+    assert(tickAnimation);
+    tickAnimation->setOnTick(f);
     
     TimerTickAnimator* timerTickAnimator = new TimerTickAnimator(tickAnimation);
 

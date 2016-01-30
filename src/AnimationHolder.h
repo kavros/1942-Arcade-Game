@@ -9,6 +9,7 @@
 #include <fstream>
 #include "MovingPathAnimation.h"
 #include "MovingAnimation.h"
+#include "TickAnimation.h"
 
 class AnimationHolder{
     
