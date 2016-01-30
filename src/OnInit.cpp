@@ -88,18 +88,6 @@ void Game::InitSuperAceAnimator(){
 		);
 
 
-	MovingPathAnimation* sideFighterAnimationRight =
-		(MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("sideFighterAnimationRight");
-	MovingPathAnimator* sideFighterAnimatorRight = new MovingPathAnimator(
-		"SideFighterAnimatorRight", superAce, sideFighterAnimationRight
-		);
-    
-    
-    MovingPathAnimation* sideFighterAnimationLeft	=
-    (MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("sideFighterAnimationLeft");
-    MovingPathAnimator* sideFighterAnimatorLeft	= new MovingPathAnimator(
-                                                                         "SideFighterAnimatorLeft", superAce, sideFighterAnimationLeft
-                                                                         );
     
     MovingPathAnimation* superAceAnimationRight =
     (MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("superAceAnimationRight");
@@ -125,8 +113,7 @@ void Game::InitSuperAceAnimator(){
                                                                          "SuperAceAnimatorLeftLeft", superAce, superAceAnimationLeftLeft
                                                                          );
 
-	AnimatorHolder::Register(sideFighterAnimatorRight);
-	AnimatorHolder::Register(sideFighterAnimatorLeft);
+	
 	AnimatorHolder::Register(superAceMovingAnimator);
 	AnimatorHolder::Register(superAceAnimatorUp);
 	AnimatorHolder::Register(superAceAnimatorRight);
