@@ -300,26 +300,14 @@ void    AnimatorHolder::Load (const std::string& cataloge){
         std::string id = mpa["id"].GetString();
         std::string animationId = mpa["animationId"].GetString();
         std::string spriteId = mpa["spriteId"].GetString();
-        int st = sprite["spriteType"].GetInt();
-        spriteType = SpriteType(st);
+        int st = mpa["spriteType"].GetInt();
+        SpriteType spriteType = SpriteType(st);
         assert( st < SPRITE_TYPE_SIZE );
         
-        AnimationFilm* animationFilm = AnimationFilmHolder::Get()->GetFilm(sprite["animFilmId"].GetString()) ;
-        
-        assert(sprite.IsObject());
-        assert(sprite["id"].IsString());
-        assert(sprite["destRect"].IsArray());
-        
-        //add Sprite 2 Sprite Holder
-        if(spriteType == SpriteType::SUPER_ACE)
-        new SuperAce(id, frameNo, destRect, point, isVisible, spriteType,animationFilm);
-        else if(spriteType == SpriteType::ALIEN_SHIP){
-            assert(sprite["enemyType"].IsInt());
-            enum EnemyFighterType e = EnemyFighterType(sprite["enemyType"].GetInt());
-            new EnemyFighter(id, frameNo, destRect, point, isVisible, spriteType,animationFilm,e);
-            
-        }else
-        new Sprite(id, frameNo, destRect, point, isVisible, spriteType,animationFilm);
+        Sprite* sprite= SpritesHolder::getSpritesHolder()->getSprite(spriteType, spriteId);
+        MovingPathAnimation* animation = (MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation(animationId);
+        MovingPathAnimator* animator  =	new MovingPathAnimator( id, sprite, animation);
+        AnimatorHolder::Register(animator);
     }
     
 }
