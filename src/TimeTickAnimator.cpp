@@ -16,6 +16,9 @@ TimerTickAnimator::TimerTickAnimator(TickAnimation* tick){
 
 void TimerTickAnimator::progress(timestamp_t currTime){
     
+    if(!this->isAlive())
+        return;
+    
     assert(currTime >= _lastTime);
     
     if( currTime - _lastTime >= tickAnimation->getDelay()  ){
@@ -38,7 +41,8 @@ void TimerTickAnimator::progress(timestamp_t currTime){
 
 void TimerTickAnimator::checkAnimatorForDelete(void){
 
-    assert(tickAnimation);
+    if(!this->isAlive())
+        return;
     
     if( tickAnimation->getRepetitions() == 0 && getState() == ANIMATOR_FINISHED ){
 

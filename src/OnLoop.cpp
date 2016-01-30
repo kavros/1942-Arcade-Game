@@ -27,8 +27,7 @@ void Game::OnLoop() {
                 loopsRemainingToDelete = 10000;
             }
             loopsRemainingToDelete--;
-            
-            
+                        
             //Move Background
             Background::Get()->moveBackground(0,+1);
             
@@ -41,7 +40,6 @@ void Game::OnLoop() {
 
             //trigger animators and bullets
             AnimatorHolder::triggerAnimators();
-            AnimatorHolder::triggerBullets();
 
             //progress animators
 			AnimatorHolder::progress(getGameTime());

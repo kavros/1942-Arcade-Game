@@ -28,13 +28,14 @@ bool Game::OnInit(){
 
 void f(){
     cout<<"f\n";
+    AnimatorHolder::triggerBullets();
 }
 
 void createTimeTickAnimator(){
     
     animid_t id = "tickAnimation";
-    delay_t _delay = 5000; //5 sec
-    unsigned _repetitions = 1;
+    delay_t _delay = 1000; //5 sec
+    unsigned _repetitions = 0;
     
     TickAnimation* tickAnimation = new TickAnimation(id ,_delay ,_repetitions ,f);
     
