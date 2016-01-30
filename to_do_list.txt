@@ -1,6 +1,7 @@
 TO DO LIST:
 
 	primary:
+		no life loss during manouvre
 		super ace lives ( continue lives lives==0 -> must restart the stage )
 		enemy fire ( create logic )
 		create stage end
