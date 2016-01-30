@@ -19,6 +19,7 @@
                 "point": [0, 0],
                 "visible": false,
                 "spriteType": 4,
+                "remainingBullets": 10,
                 "enemyType" : 0,
                 "animFilmId": "red_plane"
                 },{
@@ -28,6 +29,7 @@
                 "point": [0, 0],
                 "visible": false,
                 "spriteType": 4,
+                "remainingBullets": 10,
                 "enemyType" : 0,
                 "animFilmId": "red_plane"
                 },{
@@ -37,6 +39,7 @@
                 "point": [0, 0],
                 "visible": false,
                 "spriteType": 4,
+                "remainingBullets": 10,
                 "enemyType" : 0,
                 "animFilmId": "red_plane"
                 },{
@@ -46,80 +49,89 @@
                 "point": [0, 0],
                 "visible": false,
                 "spriteType": 4,
+                "remainingBullets": 10,
                 "enemyType" : 0,
                 "animFilmId": "red_plane"
                 },{
-                "id": "GreenJet200",
-                "frameNo": 0,
-                "destRect": [0, 40, 25, 25],
-                "point": [0, 0],
-                "visible": false,
-                "spriteType": 4,
-                "enemyType" : 5,
-                "animFilmId": "green_double_engine"
-                },{
-                "id": "GreenJet300",
+                "id": "GreenJet0",
                 "frameNo": 0,
                 "destRect": [0, 60, 25, 25],
                 "point": [0, 0],
                 "visible": false,
                 "spriteType": 4,
+                "remainingBullets": 10,
                 "enemyType" : 1,
                 "animFilmId": "green_jet"
                 },{
-                "id": "GreenJet400",
-                "frameNo": 0,
-                "destRect": [0, 100, 25, 25],
-                "point": [0, 0],
-                "visible": false,
-                "spriteType": 4,
-                "enemyType" : 5,
-                "animFilmId": "green_double_engine"
-                },{
-                "id": "GreenJet500",
+                "id": "GreenJet1",
                 "frameNo": 0,
                 "destRect": [0, 120, 25, 25],
                 "point": [0, 0],
                 "visible": false,
                 "spriteType": 4,
+                "remainingBullets": 10,
                 "enemyType" : 1,
                 "animFilmId": "green_jet"
                 },{
-                "id": "GreenJet600",
-                "frameNo": 0,
-                "destRect": [0, 150, 25, 25],
-                "point": [0, 0],
-                "visible": false,
-                "enemyType" : 5,
-                "spriteType": 4,
-                "animFilmId": "green_double_engine"
-                },{
-                "id": "GreenJet700",
+                "id": "GreenJet2",
                 "frameNo": 0,
                 "destRect": [0, 160, 25, 25],
                 "point": [0, 0],
                 "visible": false,
                 "enemyType" : 1,
                 "spriteType": 4,
+                "remainingBullets": 10,
                 "animFilmId": "green_jet"
                 },{
-                "id": "GreenJet800",
-                "frameNo": 0,
-                "destRect": [0, 200, 25, 25],
-                "point": [0, 0],
-                "visible": false,
-                "enemyType" : 5,
-                "spriteType": 4,
-                "animFilmId": "green_double_engine"
-                },{
-                "id": "GreenJet900",
+                "id": "GreenJet3",
                 "frameNo": 0,
                 "destRect": [0, 220, 25, 25],
                 "point": [0, 0],
                 "visible": false,
                 "enemyType" : 1,
                 "spriteType": 4,
+                "remainingBullets": 10,
                 "animFilmId": "green_jet"
+                },{
+                "id": "GreenDoubleEngineJet0",
+                "frameNo": 0,
+                "destRect": [0, 40, 25, 25],
+                "point": [0, 0],
+                "visible": false,
+                "spriteType": 4,
+                "remainingBullets": 10,
+                "enemyType" : 5,
+                "animFilmId": "green_double_engine"
+                },{
+                "id": "GreenDoubleEngineJet1",
+                "frameNo": 0,
+                "destRect": [0, 100, 25, 25],
+                "point": [0, 0],
+                "visible": false,
+                "spriteType": 4,
+                "remainingBullets": 10,
+                "enemyType" : 5,
+                "animFilmId": "green_double_engine"
+                },{
+                "id": "GreenDoubleEngineJet2",
+                "frameNo": 0,
+                "destRect": [0, 150, 25, 25],
+                "point": [0, 0],
+                "visible": false,
+                "enemyType" : 5,
+                "spriteType": 4,
+                "remainingBullets": 10,
+                "animFilmId": "green_double_engine"
+                },{
+                "id": "GreenDoubleEngineJet3",
+                "frameNo": 0,
+                "destRect": [0, 200, 25, 25],
+                "point": [0, 0],
+                "visible": false,
+                "enemyType" : 5,
+                "spriteType": 4,
+                "remainingBullets": 10,
+                "animFilmId": "green_double_engine"
                 },{
                 "id": "SuperAce",
                 "frameNo": 0,

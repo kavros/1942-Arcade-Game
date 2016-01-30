@@ -4,7 +4,7 @@ unsigned _enemyFighterWidth;
 unsigned _enemyFighterHeight;
 
 
-EnemyFighter::EnemyFighter(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point point,bool isVisible,SpriteType type,AnimationFilm* currFilm, enum EnemyFighterType e){
+EnemyFighter::EnemyFighter(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point point,bool isVisible,SpriteType type,AnimationFilm* currFilm, enum EnemyFighterType e,unsigned remainingBullets){
     assert( type == ALIEN_SHIP );
     
     _spriteId = id;
@@ -20,6 +20,7 @@ EnemyFighter::EnemyFighter(std::string id, unsigned  frameNo,SDL_Rect dstRect,SD
     _enemyFighterHeight= dstRect.h; //_currFilm->getFrameBox(0).h;
     _state = STARTING;
     setEnemyFireEnable(true);
+    this->remainingBullets = remainingBullets;
     
     AnimationFilm* animationEnemyBulletFilm = AnimationFilmHolder::Get()->GetFilm("bullets");
 
@@ -73,6 +74,11 @@ bool EnemyFighter::getEnemyFireEnable(){
 
 void EnemyFighter::fire(void){
 
+    if( remainingBullets == 0)
+        return;
+    
+    remainingBullets--;
+    
     static string str = "enemyFire";
     static int number = 0;
     string spriteEnemyFireId = str + std::to_string (number);
