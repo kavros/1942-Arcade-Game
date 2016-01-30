@@ -37,14 +37,17 @@ void MovingPathAnimator::progress(timestamp_t currTime){
         //cout << "Curr time = " << currTime << "\tlast time = " << _lastTime << "\n";
         _currPath++;
         if(_currPath == _anim->getPath().end() && !_anim->getContinuous()){
-            _state = ANIMATOR_FINISHED;
+			
+			//!!! only Maneuver Animation can change state from maneuever to Flying 
+			if (_sprite->getState() == MANEUVER && getId() == "SuperAceAnimatorManeuver"){
+				cout << "Super Ace state is now FLYING" << endl;
+				_sprite->setState(FLYING);
+			}
+			_state = ANIMATOR_FINISHED;
             setOnFinished(finishCallB);
             stop();
 
-			if (_sprite->getState() == MANEUVER){
-				//cout << "State changed from MANEUVER to FLYING" << endl;
-				_sprite->setState(FLYING);
-			}
+			
             break ;
         }else if(_anim->getContinuous() && _currPath == _anim->getPath().end() ){
             _currPath = _anim->getPath().begin();

@@ -20,7 +20,7 @@ void Game::OnLoop() {
             }
             
             //commit destruction
-            //proxeiri ilipoiisi ala nikola
+            //proxeiri ilipoiisi ala nikola'
             //DestructionManager::printDestructionManager();
             if(loopsRemainingToDelete == 0){
                 DestructionManager::commit();

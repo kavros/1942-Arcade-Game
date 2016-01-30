@@ -8,7 +8,14 @@ void Sprite::fireHandler::operator()(Sprite* bullet,Sprite* arg) const{
     assert(bullet && arg);
     assert(bullet->isAlive() && arg->isAlive());
     
-    if( !bullet->getVisibility() || !arg->getVisibility() )
+	if (arg->getId() == "SuperAce"){
+		//cout << "FIRE HANDLER DEALING WITH SUPERACE" << endl;
+		if (arg->_state == MANEUVER){
+			//cout << " AND Super Ace state is MANEUVER" << endl;
+			return;
+		}
+	}
+	if( !bullet->getVisibility() || !arg->getVisibility() )
         return;
     
     bullet->setState(IN_COLUSION);
@@ -50,6 +57,7 @@ void Sprite::touchHandler::operator()(Sprite* aircraft,Sprite* arg) const{
     assert(aircraft && arg);
     assert(aircraft->isAlive() && arg->isAlive());
     
+
     if( !aircraft->getVisibility() || !arg->getVisibility())
         return;
     
@@ -97,7 +105,7 @@ void Sprite::touchPowerUpHandler::operator()(Sprite* powerUp,Sprite* arg) const{
     
     assert(powerUp && arg);
     assert(powerUp->isAlive() && arg->isAlive());
-    
+
     if( !powerUp->getVisibility() || !arg->getVisibility())
         return;
     
