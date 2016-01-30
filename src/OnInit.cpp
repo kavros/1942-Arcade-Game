@@ -27,13 +27,14 @@ bool Game::OnInit(){
 }
 
 void f(){
+    cout<<"f\n";
 }
 
 void createTimeTickAnimator(){
     
     animid_t id = "tickAnimation";
-    delay_t _delay = 10000; //10 sec
-    unsigned _repetitions = 10;
+    delay_t _delay = 5000; //5 sec
+    unsigned _repetitions = 1;
     
     TickAnimation* tickAnimation = new TickAnimation(id ,_delay ,_repetitions ,f);
     
