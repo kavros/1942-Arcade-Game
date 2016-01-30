@@ -58,3 +58,14 @@ void TimerTickAnimator::checkAnimatorForDelete(void){
 void TimerTickAnimator::finishCallB(Animator* a,void* b){
     AnimatorHolder::markAsSuspended(a);
 }
+
+void TimerTickAnimator::startTimeTickAnimator(animid_t id, std::function<void(void)> f){
+    
+    TickAnimation* tickAnimation = (TickAnimation*)AnimationHolder::getAnimationHolder()->getAnimation(id);
+    tickAnimation->setOnTick( f );
+    
+    TimerTickAnimator* timerTickAnimator = new TimerTickAnimator(tickAnimation);
+    AnimatorHolder::getAnimatorHolder()->Register( timerTickAnimator );
+    
+    timerTickAnimator->start( Game::getGameTime() );
+}

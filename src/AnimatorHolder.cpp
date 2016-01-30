@@ -231,21 +231,12 @@ void triggerSuperAceMovingPathAnimator(){
 }
 
 
-void startTimeTickAnimator(animid_t id, std::function<void(void)> f){
-    
-    TickAnimation* tickAnimation = (TickAnimation*)AnimationHolder::getAnimationHolder()->getAnimation(id);
-    tickAnimation->setOnTick( f );
-    
-    TimerTickAnimator* timerTickAnimator = new TimerTickAnimator(tickAnimation);
-    AnimatorHolder::getAnimatorHolder()->Register( timerTickAnimator );
-    
-    timerTickAnimator->start( Game::getGameTime() );
-}
+
 
 void AnimatorHolder::startTimeTickAnimators(){
     
-    startTimeTickAnimator("superAceMovingPathTickAnimation", triggerSuperAceMovingPathAnimator );
-    startTimeTickAnimator("enemyBulletsTickAnimation", AnimatorHolder::triggerBullets);
+    TimerTickAnimator::startTimeTickAnimator("superAceMovingPathTickAnimation", triggerSuperAceMovingPathAnimator );
+    TimerTickAnimator::startTimeTickAnimator("enemyBulletsTickAnimation", AnimatorHolder::triggerBullets);
 }
 
 
