@@ -32,7 +32,6 @@ EnemyFighter::EnemyFighter(std::string id, unsigned  frameNo,SDL_Rect dstRect,SD
     this->addCollisionHandler(Sprite::touchHandler());
     
     SpritesHolder::getSpritesHolder()->add(this);
-    
 }
 
 enum EnemyFighterType EnemyFighter::getEnemyFighterType(){
@@ -79,16 +78,14 @@ void EnemyFighter::fire(void){
     
     remainingBullets--;
     
-    static string str = "enemyFire";
     static int number = 0;
-    string spriteEnemyFireId = str + std::to_string (number);
+    static string enemyFireId = "enemyFire" + std::to_string (number);
     number++;
     
-    /*bullet test*/
     AnimationFilm* fireAnimationFilm = AnimationFilmHolder::Get()->GetFilm("bullets");
     assert(fireAnimationFilm);
     
-    Sprite* enemyBullet = new Sprite(spriteEnemyFireId, 0, getEnemyBulletDstRect(0), {0,0}, true, ALIEN_SHIP, fireAnimationFilm);
+    Sprite* enemyBullet = new Sprite(enemyFireId, 0, getEnemyBulletDstRect(0), {0,0}, true, ALIEN_SHIP, fireAnimationFilm);
     assert(enemyBullet);
     
     //play sound for fire
@@ -98,7 +95,8 @@ void EnemyFighter::fire(void){
     Animation* fireAnimation = AnimationHolder::getAnimationHolder()->getAnimation("enemyFire");
     assert(fireAnimation);
     
-    MovingAnimator* fireAnimator = new MovingAnimator("animatorFire", enemyBullet, (MovingAnimation*)fireAnimation);
+    MovingAnimator* fireAnimator = new MovingAnimator(enemyFireId, enemyBullet, (MovingAnimation*)fireAnimation);
+    assert(fireAnimator);
     
     AnimatorHolder::Register(fireAnimator);
     
@@ -106,7 +104,6 @@ void EnemyFighter::fire(void){
     
     enemyBullet->addCollisionHandler(Sprite::fireHandler());
     
-    /*bullet test end*/
 }
 
 void EnemyFighter::createPowerUp(){

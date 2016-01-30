@@ -56,7 +56,7 @@ public:
     void setEnemyFireEnable(bool fire);
 
     //functionallity
-    void fire(void);
+    void fire();
 	void createPowerUp();
 
 };
