@@ -47,6 +47,7 @@ void Game::OnEvent(SDL_Event* event) {
             
             if (superAce->getState() == STARTING){
                 superAceStartingAnimator->start(getGameTime());
+				
             }
             
 			//if starting animator running then don't start any animator

@@ -10,7 +10,7 @@
 #include "MovingAnimator.h"
 #include "AnimationHolder.h"
 #include "Game.hpp"
-
+#include "PowerUp.hpp"
 
 enum EnemyFighterType{
     RED_PLANE = 0,
@@ -56,7 +56,7 @@ public:
 
     //functionallity
     void fire(void);
-	void createPowerUp(PowerUpType );
+	void createPowerUp(enum PowerUpType );
 
 };
 
