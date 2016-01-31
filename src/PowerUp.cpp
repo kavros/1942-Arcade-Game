@@ -1,7 +1,7 @@
 #include "PowerUp.hpp"
 
-PowerUp::PowerUp(std::string id, PowerUpType _powerUpType, unsigned  _frameNo, SDL_Rect _dstRect,
-                 SDL_Point  _point,bool _isVisible,SpriteType _type,AnimationFilm* _currFilm)
+PowerUp::PowerUp(std::string id, PowerUpType _powerUpType, unsigned  _frameNo, SDL_Rect _dstRect,SDL_Point  _point,
+                 bool _isVisible,SpriteType _type,AnimationFilm* _currFilm)
 :Sprite(id, _frameNo, _dstRect, _point, _isVisible, _type, _currFilm){
     powerUpType = _powerUpType;
 }
@@ -12,7 +12,7 @@ PowerUpType PowerUp::getPowerUpType(){
 }
 
 void PowerUp::activatePowerUp(Sprite* arg){
-    SuperAce* superAce = (SuperAce*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce");
+    SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce");
 
     switch ( getPowerUpType() ){
         case QUAD_GUN:{
@@ -21,9 +21,7 @@ void PowerUp::activatePowerUp(Sprite* arg){
         }
         case ENEMY_CRASH:
         {
-            
-            //notifyCollision(s);
-            SpriteList* sl = SpritesHolder::getSpritesHolder()->getSprites(ALIEN_SHIP);
+            SpriteList* sl = SpritesHolder::getSprites(ALIEN_SHIP);
             for (std::list<Sprite*>::iterator it=sl->begin(); it != sl->end(); ++it){
                 
                 if((*it)->getVisibility() && !(*it)->isOutOfWindow()){
@@ -49,13 +47,29 @@ void PowerUp::activatePowerUp(Sprite* arg){
         SpriteStringHolder::getSpriteString("remainingLives")->changeString(_remainingLives, +5/*WIN_WIDTH - loops*12 -5*/, WIN_HEIGHT -15);}
             break;
         case NO_ENEMY_BULLETS:{
-            SpriteList* sl = SpritesHolder::getSpritesHolder()->getSprites(ALIEN_SHIP);
+            SpriteList* sl = SpritesHolder::getSprites(ALIEN_SHIP);
             SpriteList::const_iterator it = sl->begin();
+            EnemyFighter* enemyFighter;
+
             while ( it != sl->end() ){
-                if(((EnemyFighter*)(*it))->getEnemyFighterType() != EnemyFighterType(BIG_GREEN) ||
-                        ((EnemyFighter*)(*it))->getEnemyFighterType() != EnemyFighterType(BIG_GREY))
+                enemyFighter = (EnemyFighter*)(*it);
+                if( enemyFighter->getEnemyFighterType() != EnemyFighterType(BIG_GREEN) ||
+                   enemyFighter->getEnemyFighterType() != EnemyFighterType(BIG_GREY)){
                     
-                            ((EnemyFighter*)(*it))->setEnemyFireEnable(false);
+                    enemyFighter->setEnemyFireEnable(false);
+                    //start short timing without bullets
+                    TickAnimation* tickAnimation = (TickAnimation* )AnimationHolder::getAnimationHolder()->getAnimation("shortTickAnimation");
+                    assert(tickAnimation);
+                    
+                    tickAnimation->setOnTick( SpritesHolder::smallAndBigEnemyFireEnable );
+                    
+                    TimerTickAnimator* timerTickAnimator = new TimerTickAnimator( "shortTimeTickAnimator" , tickAnimation );
+                    
+                    assert(timerTickAnimator);
+                    
+                    timerTickAnimator->start(Game::getGameTime());
+                    
+                }
                 ++it;
             }
             break;
@@ -75,3 +89,5 @@ void PowerUp::activatePowerUp(Sprite* arg){
             break;
     }
 }
+
+

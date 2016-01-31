@@ -25,23 +25,27 @@ private:
     ~SpritesHolder();
 
 public:
-    void add(Sprite *s);
-    void remove(Sprite *s);
-    void displayGameSprites(SDL_Renderer* renderer);
-    SpriteList * getSprites(SpriteType type);
-    Sprite* getSprite(SpriteType type, std::string id);
+    static void add(Sprite *s);
+    static void remove(Sprite *s);
+    static void displayGameSprites(SDL_Renderer* renderer);
+    static SpriteList * getSprites(SpriteType type);
+    static Sprite* getSprite(SpriteType type, std::string id);
     
-    void printSprites(SpriteType type);
+    static void printSprites(SpriteType type);
     
     static  SpritesHolder* getSpritesHolder();
     
-    void displaySprites(SDL_Renderer* renderer, SpriteType type);
+    static void displaySprites(SDL_Renderer* renderer, SpriteType type);
         
     static void cleanUp(void);
 
-    void Load (const std::string& cataloge/*,SDL_Renderer* _renderer*/);
+    static void Load (const std::string& cataloge/*,SDL_Renderer* _renderer*/);
     
     static void checkSpritesForDelete();
+
+    static bool uniqueAliveFromTeam(Sprite* sprite);
+
+    static void smallAndBigEnemyFireEnable();
 
 };
 

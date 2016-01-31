@@ -11,7 +11,7 @@ void Game::OnLoop() {
             break;
         case SINGLEPLAYER_GAME:{
             
-            SuperAce* superAce = (SuperAce*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce");
+            SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce");
             //cout << superAce->getState()<<endl;
             
             if(superAce->getState() == IN_COLUSION ){
@@ -22,6 +22,7 @@ void Game::OnLoop() {
             //commit destruction
             //proxeiri ilipoiisi ala nikola'
             //DestructionManager::printDestructionManager();
+            
             if(loopsRemainingToDelete == 0){
                 DestructionManager::commit();
                 loopsRemainingToDelete = 10000;

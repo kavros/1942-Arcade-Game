@@ -7,10 +7,13 @@ Background *Background::_holder = 0;
 void Background::filterMotion(int* dx, int* dy) const{
 
 }
-Background::Background(){
+Background::Background():
+Sprite("spriteEmpty_sea_background",0,{0,0,0,0},{0,0},true,TERRAIN,AnimationFilmHolder::Get()->GetFilm("empty_sea_background"))
+{
     
-    _currFilm = AnimationFilmHolder::Get()->GetFilm("empty_sea_background");
-    _spriteId = "spriteEmpty_sea_background";
+    //_currFilm = AnimationFilmHolder::Get()->GetFilm("empty_sea_background");
+    //_spriteId = "spriteEmpty_sea_background";
+    
     _terrainWidth = _currFilm->getFrameBox(0).w;
     _terrainHeight = _currFilm->getFrameBox(0).h;
     
@@ -19,7 +22,7 @@ Background::Background(){
     _dstRect.w = WIN_WIDTH;
     _dstRect.h = _terrainHeight;
 
-    _type = TERRAIN;
+    //_type = TERRAIN;
     
     _terrainObjects = new SpriteList;
 
@@ -44,7 +47,7 @@ void Background::initBackgroundObjects(){
 
 void Background::addBackgroundObject(string id){
     Sprite* s;
-    s= SpritesHolder::getSpritesHolder()->getSprite(TERRAIN, id);
+    s= SpritesHolder::getSprite(TERRAIN, id);
     assert(s);
     _terrainObjects->push_back(s);
 }
@@ -78,7 +81,7 @@ void Background::moveTerrainObjects(int dx, int dy){
 }
 
 void Background::displayTerrain(SDL_Renderer* renderer){
-    SpritesHolder::getSpritesHolder()->displaySprites(renderer, TERRAIN);
+    SpritesHolder::displaySprites(renderer, TERRAIN);
     
     if(_terrainObjects->empty()){
         return;

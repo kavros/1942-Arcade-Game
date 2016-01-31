@@ -1,7 +1,7 @@
 #include "SoundHolder.hpp"
 
 SoundHolder* SoundHolder::holder = nullptr;
-
+bool SoundHolder::_mute = false;
 //constructor
 SoundHolder::SoundHolder(){
     
@@ -60,6 +60,14 @@ void SoundHolder::cleanUp(){
 }
 
 void SoundHolder::playSound(string id){
-    Mix_PlayChannel(-1, SoundHolder::getSound(id) , 0);
+    if(!getMute())
+        Mix_PlayChannel(-1, SoundHolder::getSound(id) , 0);
+}
+
+void SoundHolder::setMute(bool m ){
+    _mute = m;
+}
+bool SoundHolder::getMute(){
+    return _mute;
 }
 

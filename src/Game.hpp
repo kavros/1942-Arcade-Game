@@ -58,7 +58,7 @@ private:
     static float _spriteSize;
     static int _highScore;
     static int _score;
-
+    static bool _mute;
     //controller
 	static SDL_GameController *_controller;
 

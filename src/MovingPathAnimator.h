@@ -24,9 +24,13 @@ public:
 
     //setters
     void setContinuous(bool b);
+    
+    
+    void chooseCallBack(string id);
 
 	void start(timestamp_t t) override;
 	static void finishCallB(Animator* a,void*);
+    static void nextAnimator(Animator* anim,void* b);
 	
 	//constructor
 	MovingPathAnimator(std::string id,Sprite* sprite,MovingPathAnimation* anim);

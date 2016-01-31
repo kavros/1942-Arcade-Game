@@ -10,7 +10,6 @@ SpriteString::SpriteString(string str,int x, int y){
         ny += san->getCurrFilm()->getFrameBox(0).y;
 
         spriteString.push_back(san);
-        SpritesHolder::getSpritesHolder()->add(san);
     }
     
 }
@@ -43,7 +42,7 @@ void SpriteString::changeString(string str,int x, int y){
         if(n >= spriteString.size()){
             san = new SpriteAlphaNum(str[n],nx,ny);
             spriteString.push_back(san);
-            SpritesHolder::getSpritesHolder()->add(san);
+
         }else{
             san = getSpriteAlphaNum(n);
             AnimationFilm * currFilm = animationHolder->GetFilm(string(1, str[n]));

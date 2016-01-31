@@ -8,7 +8,9 @@ void Sprite::fireHandler::operator()(Sprite* bullet,Sprite* arg) const{
     assert(bullet && arg);
     assert(bullet->isAlive() && arg->isAlive());
     
-	if (arg->getId() == "SuperAce"){
+    SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce");
+
+	if (arg == superAce){
 		//cout << "FIRE HANDLER DEALING WITH SUPERACE" << endl;
 		if (arg->_state == MANEUVER){
 			//cout << " AND Super Ace state is MANEUVER" << endl;
@@ -22,7 +24,7 @@ void Sprite::fireHandler::operator()(Sprite* bullet,Sprite* arg) const{
     arg->setVisibility(false);
     bullet->setVisibility(false);
     Game::setScore(Game::getScore()+ 30);
-    if (arg->getId().compare("SuperAce") == 0){
+    if (arg == superAce){
         SuperAce* sa = (SuperAce*) arg;
         if(sa->getSuperAceLives() > 1){
             sa->setSuperAceLives(sa->getSuperAceLives() - 1);
@@ -37,8 +39,10 @@ void Sprite::fireHandler::operator()(Sprite* bullet,Sprite* arg) const{
     }else{
         arg->setState(IN_COLUSION);
         if(arg->getType() == ALIEN_SHIP){
-            if( ((EnemyFighter*)arg)->getEnemyFighterType() == RED_PLANE ){
-				((EnemyFighter*)arg)->createPowerUp();
+            EnemyFighter* enemyFighter = (EnemyFighter*)arg;
+            
+            if( enemyFighter->getEnemyFighterType() == RED_PLANE && SpritesHolder::uniqueAliveFromTeam(enemyFighter) ){
+				enemyFighter->createPowerUp();
             }
         }
     }
@@ -57,6 +61,7 @@ void Sprite::touchHandler::operator()(Sprite* aircraft,Sprite* arg) const{
     assert(aircraft && arg);
     assert(aircraft->isAlive() && arg->isAlive());
     
+    SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce");
 
     if( !aircraft->getVisibility() || !arg->getVisibility())
         return;
@@ -67,16 +72,16 @@ void Sprite::touchHandler::operator()(Sprite* aircraft,Sprite* arg) const{
         aircraft->setVisibility(false);
         arg->setVisibility(false);
         
-        if(arg->getId().compare("SuperAce") != 0){
+        if(arg != superAce){
            arg->setState(IN_COLUSION);
         }
         
-        if (aircraft->getId().compare("SuperAce") != 0){
+        if (aircraft != superAce){
             aircraft->setState(IN_COLUSION);
         }
-        if ((arg->getId().compare("SuperAce") == 0) || (aircraft->getId().compare("SuperAce") == 0)){
+        if ( arg == superAce || aircraft != superAce ){
             SuperAce* sa = (SuperAce*) aircraft;
-            if (arg->getId().compare("SuperAce") == 0){
+            if ( arg == superAce ){
                 sa = (SuperAce*) arg;
             }
             if(sa->getSuperAceLives() > 1){
@@ -109,9 +114,11 @@ void Sprite::touchPowerUpHandler::operator()(Sprite* powerUp,Sprite* arg) const{
     if( !powerUp->getVisibility() || !arg->getVisibility())
         return;
     
-    SuperAce* superAce = (SuperAce*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce");
+    SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce");
+    Sprite* rightFighter = superAce->getAttached(RIGHT_FIGHTER);
+    Sprite* leftFighter = superAce->getAttached(LEFT_FIGHTER);
 
-    if( superAce == arg ){
+    if( superAce == arg || rightFighter == arg || leftFighter == arg ){
         powerUp->setVisibility(false);
         ((PowerUp*)powerUp)->activatePowerUp(arg);
         powerUp->setState(IN_COLUSION);
