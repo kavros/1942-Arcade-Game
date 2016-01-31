@@ -196,14 +196,6 @@ void Game::OnEvent(SDL_Event* event) {
     
 }
 
-
-
-/*
- SpriteStringHolder::addSpriteString("exit", new SpriteString("EXIT", (WIN_WIDTH / 2 -(5*6)), (WIN_HEIGHT / 2 - 20) ) );
- SpriteStringHolder::getSpriteString("exit")->setVisibility(false);
- SpriteStringHolder::addSpriteString("pause", new SpriteString("PAUSE", (WIN_WIDTH / 2 -(5*6)), (WIN_HEIGHT / 2) ) );
- SpriteStringHolder::getSpriteString("pause")->setVisibility(false);
- */
 void Game::pauseManager(SDL_Event* event){
     static bool firstTime = true;
     Sprite* s = SpritesHolder::getSprite(GAME_INFO , "spriteInfoPlane");
