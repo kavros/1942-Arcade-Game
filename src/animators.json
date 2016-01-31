@@ -1,0 +1,69 @@
+{
+    "MovingPathAnimators": [{
+                            "id": "SuperAceStartingAnimator",
+                            "animationId": "superAceStartingAnimation",
+                            "spriteType": 3,
+                            "spriteId": "SuperAce"
+                            },
+                            {
+                            "id": "SuperAceEndingAnimator",
+                            "animationId": "superAceEndingAnimation",
+                            "spriteType": 3,
+                            "spriteId": "SuperAce"
+                            },
+                            {
+                            "id": "SuperAceStartingAnimator",
+                            "animationId": "superAceStartingAnimation",
+                            "spriteType": 3,
+                            "spriteId": "SuperAce"
+                            },
+                            {
+                            "id": "SuperAceMovingAnimator",
+                            "animationId": "superAceMovingAnimation",
+                            "spriteType": 3,
+                            "spriteId": "SuperAce"
+                            },
+                            {
+                            "id": "SuperAceAnimatorManeuver",
+                            "animationId": "superAceAnimationManeuver",
+                            "spriteType": 3,
+                            "spriteId": "SuperAce"
+                            },
+                            {
+                            "id": "SuperAceAnimatorUp",
+                            "animationId": "superAceAnimationUp",
+                            "spriteType": 3,
+                            "spriteId": "SuperAce"
+                            },
+                            {
+                            "id": "SuperAceAnimatorDown",
+                            "animationId": "superAceAnimationDown",
+                            "spriteType": 3,
+                            "spriteId": "SuperAce"
+                            },
+                            {
+                            "id": "SuperAceAnimatorRight",
+                            "animationId": "superAceAnimationRight",
+                            "spriteType": 3,
+                            "spriteId": "SuperAce"
+                            },
+                            {
+                            "id": "SuperAceAnimatorRightRight",
+                            "animationId": "superAceAnimationRightRight",
+                            "spriteType": 3,
+                            "spriteId": "SuperAce"
+                            },
+                            {
+                            "id": "SuperAceAnimatorLeft",
+                            "animationId": "superAceAnimationLeft",
+                            "spriteType": 3,
+                            "spriteId": "SuperAce"
+                            },
+                            {
+                            "id": "SuperAceAnimatorLeftLeft",
+                            "animationId": "superAceAnimationLeftLeft",
+                            "spriteType": 3,
+                            "spriteId": "SuperAce"
+                            }
+                            ]
+}

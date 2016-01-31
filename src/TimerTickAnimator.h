@@ -13,7 +13,7 @@ private:
 public:
     
     //costructor
-	TimerTickAnimator(TickAnimation* tick);
+	TimerTickAnimator(animid_t id, TickAnimation* tick);
     
     //destructor
     ~TimerTickAnimator(){}
@@ -27,6 +27,8 @@ public:
     
     static void finishCallB(Animator* a,void* b);
     
+    static void startTimeTickAnimator(animid_t id, std::function<void(void)> f);
+
 };
 
 #endif

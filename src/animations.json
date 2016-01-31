@@ -30,9 +30,31 @@
                    {
                    "TickAnimations": [{
                                       "id": "enemyBulletsTickAnimation",
-                                      "delay": 1000,
+                                      "delay": 2000,
                                       "repetitions": 0
-                                      }]
+                                      },{
+                                      "id": "superAceMovingPathTickAnimation",
+                                      "delay": 100,
+                                      "repetitions": 1
+                                      }
+                                      ,{
+                                      "id": "redPlaneTickAnimation",
+                                      "delay": 5000,
+                                      "repetitions": 4
+                                      }
+                                      ,{
+                                      "id": "greenPlaneTickAnimation",
+                                      "delay": 2000,
+                                      "repetitions": 4
+                                      }
+                                      ,{
+                                      "id": "greenDoubleEnginePlaneTickAnimation",
+                                      "delay": 10000,
+                                      "repetitions": 4
+                                      }
+                                      
+                                      
+                                      ]
                    }, {
                    "MovingPathAnimations": [{
                                             "id": "superAceMovingAnimation",
@@ -155,6 +177,62 @@
                                                       "delay": 30
                                                       }, {
                                                       "dx": 3,
+                                                      "dy": 0,
+                                                      "frameNo": 1,
+                                                      "visibility": true,
+                                                      "delay": 30
+                                                      }]
+                                            }, {
+                                            "id": "sideFighterAnimationRight",
+                                            "continuous":false,
+                                            "paths": [{
+                                                      "dx": 0,
+                                                      "dy": 0,
+                                                      "frameNo": 2,
+                                                      "visibility": true,
+                                                      "delay": 30
+                                                      }, {
+                                                      "dx": 0,
+                                                      "dy": 0,
+                                                      "frameNo": 2,
+                                                      "visibility": true,
+                                                      "delay": 30
+                                                      }, {
+                                                      "dx": 0,
+                                                      "dy": 0,
+                                                      "frameNo": 2,
+                                                      "visibility": true,
+                                                      "delay": 30
+                                                      }, {
+                                                      "dx": 0,
+                                                      "dy": 0,
+                                                      "frameNo": 1,
+                                                      "visibility": true,
+                                                      "delay": 30
+                                                      }]
+                                            }, {
+                                            "id": "sideFighterAnimationLeft",
+                                            "continuous":false,
+                                            "paths": [{
+                                                      "dx": 0,
+                                                      "dy": 0,
+                                                      "frameNo": 0,
+                                                      "visibility": true,
+                                                      "delay": 30
+                                                      }, {
+                                                      "dx": 0,
+                                                      "dy": 0,
+                                                      "frameNo": 0,
+                                                      "visibility": true,
+                                                      "delay": 30
+                                                      }, {
+                                                      "dx": 0,
+                                                      "dy": 0,
+                                                      "frameNo": 0,
+                                                      "visibility": true,
+                                                      "delay": 30
+                                                      }, {
+                                                      "dx": 0,
                                                       "dy": 0,
                                                       "frameNo": 1,
                                                       "visibility": true,

@@ -10,6 +10,9 @@
 #include "Game.hpp"
 #include "EnemyFighter.hpp"
 
+#include "TickAnimation.h"
+#include "TimerTickAnimator.h"
+
 class Animator;
 
 typedef unsigned long timestamp_t;
@@ -57,13 +60,14 @@ public:
 
 	static Animator* getAnimator(animid_t );
     
-    static void triggerAnimators();
     static void triggerBullets();
 
     static void createExplosion(SDL_Rect dstRect);
 
 	static void wakeUpAnimators(timestamp_t offset);
 	static void pauseAnimators();
+    static void Load (const std::string& cataloge);
+    static void startTimeTickAnimators();
 
 };
 

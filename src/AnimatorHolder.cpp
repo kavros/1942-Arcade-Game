@@ -96,61 +96,15 @@ Animator* AnimatorHolder::getAnimator(animid_t id){
     return _holder->_map[id];
 }
 
-
-void AnimatorHolder::triggerAnimators(){
-    static int i=0;
-    if(i%100 == 0 && i < 1000 && i > 10){
-        if(i == 100){
-            MovingPathAnimator* movingSuperAce = (MovingPathAnimator*) AnimatorHolder::getAnimator("SuperAceMovingAnimator");
-            movingSuperAce->start(Game::getGameTime());
-        }
-        /*SDL_Rect dstRect;
-        dstRect.x=WIN_WIDTH/2 + (i/100)*5;
-        dstRect.y=10 + (i/100)*5;
-        dstRect.w=32;
-        dstRect.h=31;*/
-        AnimationFilm* animationFilm;
-        if(i == 100)
-            animationFilm = AnimationFilmHolder::Get()->GetFilm("red_plane");
-        else if(i%200 == 0)
-            animationFilm = AnimationFilmHolder::Get()->GetFilm("green_jet");
-        else
-            animationFilm = AnimationFilmHolder::Get()->GetFilm("green_double_engine");
-        
-        assert(animationFilm);
-        
-        Sprite* sprite = SpritesHolder::getSpritesHolder()->getSprite(SpriteType::ALIEN_SHIP, "GreenJet" + std::to_string(i)); //new Sprite("spriteStraightEnemyAttack", 0, dstRect, {0,0}, true, ALIEN_SHIP, fireAnimationFilm);
-        
-        assert(sprite);
-        Animation* animation;
-        
-        if(i == 100 )
-            animation = AnimationHolder::getAnimationHolder()->getAnimation("red_plane_circle_250_250_30");
-        else
-            animation = AnimationHolder::getAnimationHolder()->getAnimation("circle_250_250_30");
-        assert(animation);
-        
-        MovingPathAnimator* animator = new MovingPathAnimator(string("animatorStraightEnemyAttack") + std::to_string(i), sprite, (MovingPathAnimation*)animation);
-        AnimatorHolder::Register(animator);
-        
-        //Game::get
-        animator->start(Game::getGameTime());
-    }
-    i++;
-
-}
-
 void AnimatorHolder::triggerBullets(){
     
-    //choose someone to fire
     SpritesHolder* h = SpritesHolder::getSpritesHolder();
     SpriteList * sl = h->getSprites(ALIEN_SHIP);
-    
-    SpriteList::iterator it = sl->begin();
-    
+
+    SpriteList::const_iterator it = sl->begin();
+
     while (it != sl->end()){
-        if( (*it)->getVisibility() && (*it)->isAlive() && (*it)->getState()!=IN_COLUSION ){
-            
+        if( (*it) && (*it)->getVisibility() && (*it)->isAlive() && !(*it)->isOutOfWindow() && (*it)->getState()!=IN_COLUSION ){
             ((EnemyFighter*)(*it))->fire();
             break;
         }
@@ -222,8 +176,142 @@ void AnimatorHolder::pauseAnimators(){
 		AnimatorHolder::markAsSuspended(*it);
 		it = it2;
 	}
-	/*
-	if (AnimatorHolder::getAnimator("SuperAceStartingAnimator")->getState() == ANIMATOR_STOPPED){
-
-	}*/
 }
+
+void triggerSuperAceMovingPathAnimator(){
+    MovingPathAnimator* movingSuperAce = (MovingPathAnimator*) AnimatorHolder::getAnimator("SuperAceMovingAnimator");
+    movingSuperAce->start(Game::getGameTime());
+}
+
+void triggerRedPlaneAnimator(){
+    
+    static int nameId=0;
+    string name = "RedJet" + std::to_string(nameId);
+    nameId++;
+
+    AnimationFilm* animationFilm  = AnimationFilmHolder::Get()->GetFilm("red_plane");
+    assert(animationFilm);
+    
+    Sprite* sprite = SpritesHolder::getSpritesHolder()->getSprite(SpriteType::ALIEN_SHIP, name);
+    assert(sprite);
+    Animation* animation = AnimationHolder::getAnimationHolder()->getAnimation("circle_250_250_30");
+    assert(animation);
+
+    MovingPathAnimator* animator = new MovingPathAnimator(name, sprite, (MovingPathAnimation*)animation);
+    assert(animator);
+    
+    AnimatorHolder::Register(animator);
+    
+    animator->start(Game::getGameTime());
+
+}
+
+void triggerGreenPlaneAnimator(){
+    
+    static int nameId=0;
+    string name = "GreenJet" + std::to_string(nameId);
+    nameId++;
+    
+    AnimationFilm* animationFilm  = AnimationFilmHolder::Get()->GetFilm("green_jet");
+    assert(animationFilm);
+    
+    Sprite* sprite = SpritesHolder::getSpritesHolder()->getSprite(SpriteType::ALIEN_SHIP, name);
+    assert(sprite);
+    
+    Animation* animation = AnimationHolder::getAnimationHolder()->getAnimation("circle_250_250_30");
+    assert(animation);
+    
+    MovingPathAnimator* animator = new MovingPathAnimator(name, sprite, (MovingPathAnimation*)animation);
+    assert(animator);
+    
+    AnimatorHolder::Register(animator);
+    
+    animator->start(Game::getGameTime());
+    
+}
+
+void triggerGreenDoubleEnginePlaneAnimator(){
+    
+    static int nameId=0;
+    string name = "GreenDoubleEngineJet" + std::to_string(nameId);
+    nameId++;
+    
+    AnimationFilm* animationFilm  = AnimationFilmHolder::Get()->GetFilm("green_double_engine");
+    assert(animationFilm);
+    
+    Sprite* sprite = SpritesHolder::getSpritesHolder()->getSprite(SpriteType::ALIEN_SHIP, name);
+    assert(sprite);
+    
+    Animation* animation = AnimationHolder::getAnimationHolder()->getAnimation("circle_250_250_30");
+    assert(animation);
+    
+    MovingPathAnimator* animator = new MovingPathAnimator(name, sprite, (MovingPathAnimation*)animation);
+    assert(animator);
+    
+    AnimatorHolder::Register(animator);
+    
+    animator->start(Game::getGameTime());
+    
+}
+
+void AnimatorHolder::startTimeTickAnimators(){
+    
+    TimerTickAnimator::startTimeTickAnimator("superAceMovingPathTickAnimation", triggerSuperAceMovingPathAnimator );
+    TimerTickAnimator::startTimeTickAnimator("enemyBulletsTickAnimation", AnimatorHolder::triggerBullets);
+    TimerTickAnimator::startTimeTickAnimator("redPlaneTickAnimation", triggerRedPlaneAnimator );
+    TimerTickAnimator::startTimeTickAnimator("greenPlaneTickAnimation", triggerGreenPlaneAnimator );
+    TimerTickAnimator::startTimeTickAnimator("greenDoubleEnginePlaneTickAnimation", triggerGreenDoubleEnginePlaneAnimator );
+
+}
+
+using namespace rapidjson;
+
+void    AnimatorHolder::Load (const std::string& cataloge){
+    std::string line, text;
+    
+    static  std::string  dataFilePath = SRC_PATH + string(cataloge);
+    
+    std::ifstream file(dataFilePath);
+    if (!file.is_open()){
+        cout << dataFilePath << endl;
+        cout << "ERROR:data.json does not opened" << endl;
+        assert(0);
+    }
+    
+    while(std::getline(file, line))
+    {
+        text += line + "\n";
+    }
+    const char* data = text.c_str();
+    
+    
+    Document document;
+    document.Parse(data);
+    assert(document.IsObject());
+    assert(document["MovingPathAnimators"].IsArray());
+    //assert(document["Sprites"][1].IsObject());
+    const Value& mpas= document["MovingPathAnimators"];
+    for (rapidjson::SizeType i = 0; i < mpas.Size(); i++)
+    {
+        const Value& mpa = mpas[i];
+        //id
+        std::string id = mpa["id"].GetString();
+        std::string animationId = mpa["animationId"].GetString();
+        std::string spriteId = mpa["spriteId"].GetString();
+        int st = mpa["spriteType"].GetInt();
+        SpriteType spriteType = SpriteType(st);
+        assert( st < SPRITE_TYPE_SIZE );
+        
+        Sprite* sprite= SpritesHolder::getSpritesHolder()->getSprite(spriteType, spriteId);
+        MovingPathAnimation* animation = (MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation(animationId);
+        MovingPathAnimator* animator  =	new MovingPathAnimator( id, sprite, animation);
+        AnimatorHolder::Register(animator);
+    }
+    
+}
+
+
+
+
+
+

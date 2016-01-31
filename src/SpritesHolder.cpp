@@ -145,7 +145,7 @@ void    SpritesHolder::Load (const std::string& cataloge/*,SDL_Renderer* _render
         bool isVisible = sprite["visible"].GetBool();
         SpriteType spriteType;
         int st = sprite["spriteType"].GetInt();
-        
+
         spriteType = SpriteType(st);
         assert( st < SPRITE_TYPE_SIZE );
 
@@ -159,9 +159,10 @@ void    SpritesHolder::Load (const std::string& cataloge/*,SDL_Renderer* _render
         if(spriteType == SpriteType::SUPER_ACE)
             new SuperAce(id, frameNo, destRect, point, isVisible, spriteType,animationFilm);
         else if(spriteType == SpriteType::ALIEN_SHIP){
+            int remainingBullets = sprite["remainingBullets"].GetInt();
             assert(sprite["enemyType"].IsInt());
             enum EnemyFighterType e = EnemyFighterType(sprite["enemyType"].GetInt());
-            new EnemyFighter(id, frameNo, destRect, point, isVisible, spriteType,animationFilm,e);
+            new EnemyFighter(id, frameNo, destRect, point, isVisible, spriteType,animationFilm,e,remainingBullets);
             
         }else
             new Sprite(id, frameNo, destRect, point, isVisible, spriteType,animationFilm);

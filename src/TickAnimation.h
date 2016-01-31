@@ -37,9 +37,9 @@ public:
     //setter
     void setDelay(delay_t delay);
     
-	template <typename Tfunc> void setOnTick(const Tfunc& f) {
-		_onTick = f;
-	}
+    void setOnTick(std::function<void(void)> f){
+        _onTick = f;
+    }
     
     void setForever(void);
     

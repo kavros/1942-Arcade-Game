@@ -3,9 +3,6 @@
 #include "../rapidjson/writer.h"
 #include "../rapidjson/stringbuffer.h"
 
-
-#include "TickAnimation.h"
-#include "TimerTickAnimator.h"
 #include "MovingAnimation.h"
 
 bool Game::OnInit(){
@@ -35,7 +32,7 @@ void f(){
 	MovingPathAnimator* superAceEndingAnimator =
 		(MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceEndingAnimator");
 
-	//superAceEndingAnimator->start(Game::getGameTime());
+	superAceEndingAnimator->start(Game::getGameTime());
 
 	/*SpriteStringHolder::getSpriteString("shootingString")->setVisibility(true);
 	SpriteStringHolder::getSpriteString("downString")->setVisibility(true);
@@ -53,41 +50,18 @@ void f(){
 	
 }
 
-void createTimeTickAnimator(){
-    
-    animid_t id = "tickAnimation";
-    delay_t _delay = 10000; //10 sec
-    unsigned _repetitions = 1;
-
-    TickAnimation* tickAnimation = new TickAnimation(id ,_delay ,_repetitions ,f);
-    
-    //tickAnimation = (TickAnimation*)AnimationHolder::getAnimationHolder()->getAnimation(id);
-    assert(tickAnimation);
-    tickAnimation->setOnTick(f);
-    
-    TimerTickAnimator* timerTickAnimator = new TimerTickAnimator(tickAnimation);
-
-    AnimatorHolder::getAnimatorHolder()->Register( timerTickAnimator );
-
-    //timerTickAnimator->start( Game::getGameTime() );
-}
-
 void Game::InitGame(){
     InitData();
     SoundHolder::initSounds();
-    InitSuperAceAnimator();
+
     LoadGameInfo("config.json");
     
     InitBackground();
     
     InitGameInfo();
-    
-	InitSuperAceAnimator();
-    
-	
-    createTimeTickAnimator();
+        
+    AnimatorHolder::startTimeTickAnimators();
 }
-
 
 void Game::InitGamePad(){
 	for (int i = 0; i < SDL_NumJoysticks(); ++i){
@@ -98,91 +72,6 @@ void Game::InitGamePad(){
 			break;
 		}
 	}
-}
-void Game::InitSuperAceAnimator(){
-    
-
-    animid_t id = "SuperAceAnimation";
-    
-    Sprite* superAce = SpritesHolder::getSpritesHolder()->getSprites(SUPER_ACE)->front();
-	
-	MovingPathAnimation* superAceStartingAnimation =
-		(MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("superAceStartingAnimation");
-	MovingPathAnimator* superAceStartingAnimator  =	new MovingPathAnimator(
-		"SuperAceStartingAnimator", superAce, superAceStartingAnimation
-		);
-
-	MovingPathAnimation* superAceEndingAnimation =
-		(MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("superAceEndingAnimation");
-	MovingPathAnimator* superAceEndingAnimator = new MovingPathAnimator(
-		"SuperAceEndingAnimator", superAce, superAceEndingAnimation
-	);
-    
-    MovingPathAnimation* superAceMovingAnimation =
-		(MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("superAceMovingAnimation");
-	MovingPathAnimator* superAceMovingAnimator  =	new MovingPathAnimator(
-		"SuperAceMovingAnimator", superAce, superAceMovingAnimation
-		);
-	
-	MovingPathAnimation* superAceAnimationManeuver	=
-			(MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("superAceAnimationManeuver");	
-	MovingPathAnimator* superAceAnimatorManeuever	= new MovingPathAnimator(
-		"SuperAceAnimatorManeuver", superAce, superAceAnimationManeuver
-		);
-
-
-
-    MovingPathAnimation* superAceAnimationUp = 
-		(MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("superAceAnimationUp");
-	MovingPathAnimator* superAceAnimatorUp	 = new MovingPathAnimator(
-		"SuperAceAnimatorUp", superAce, superAceAnimationUp
-		);
-
-
-
-
-	MovingPathAnimation* superAceAnimationDown = 
-		(MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("superAceAnimationDown");
-	MovingPathAnimator* superAceAnimatorDown = new MovingPathAnimator(
-		"SuperAceAnimatorDown", superAce, superAceAnimationDown
-		);
-
-
-	MovingPathAnimation* superAceAnimationRight =
-		(MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("superAceAnimationRight");
-	MovingPathAnimator* superAceAnimatorRight = new MovingPathAnimator(
-		"SuperAceAnimatorRight", superAce, superAceAnimationRight
-		);
-
-    MovingPathAnimation* superAceAnimationRightRight =
-    (MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("superAceAnimationRightRight");
-    MovingPathAnimator* superAceAnimatorRightRight = new MovingPathAnimator(
-                                                                       "SuperAceAnimatorRightRight", superAce, superAceAnimationRightRight
-                                                                       );
-
-	MovingPathAnimation* superAceAnimationLeft	= 
-		(MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("superAceAnimationLeft");
-	MovingPathAnimator* superAceAnimatorLeft	= new MovingPathAnimator(
-		"SuperAceAnimatorLeft", superAce, superAceAnimationLeft
-		);
-    
-    MovingPathAnimation* superAceAnimationLeftLeft	=
-    (MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("superAceAnimationLeftLeft");
-    MovingPathAnimator* superAceAnimatorLeftLeft	= new MovingPathAnimator(
-                                                                         "SuperAceAnimatorLeftLeft", superAce, superAceAnimationLeftLeft
-                                                                         );
-
-	AnimatorHolder::Register(superAceMovingAnimator);
-	AnimatorHolder::Register(superAceAnimatorUp);
-	AnimatorHolder::Register(superAceAnimatorRight);
-	AnimatorHolder::Register(superAceAnimatorRightRight);
-	AnimatorHolder::Register(superAceAnimatorDown);
-	AnimatorHolder::Register(superAceAnimatorLeft);
-	AnimatorHolder::Register(superAceAnimatorLeftLeft);
-	AnimatorHolder::Register(superAceAnimatorManeuever);
-	AnimatorHolder::Register(superAceStartingAnimator);
-	AnimatorHolder::Register(superAceEndingAnimator);
-
 }
 
 
@@ -235,6 +124,7 @@ bool Game::InitData(){
     
     AnimationHolder* anh = AnimationHolder::getAnimationHolder();
     anh->Load("animations.json");
+    AnimatorHolder::getAnimatorHolder()->Load("animators.json");
     return true;
 }
 
