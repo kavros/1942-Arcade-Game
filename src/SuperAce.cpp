@@ -50,7 +50,7 @@ unsigned int SuperAce::getBulletFrame(){
 
 //set
 void SuperAce::setSuperAceLives(unsigned int superAceLives){
-    _superAceLives = superAceLives;
+    this->_superAceLives = superAceLives;
 }
 
 void SuperAce::setSuperAceLoops(unsigned int superAceLoops){
