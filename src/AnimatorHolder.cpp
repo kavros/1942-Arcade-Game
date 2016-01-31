@@ -3,6 +3,7 @@
 AnimatorHolder* AnimatorHolder::_holder = 0;
 
 void AnimatorHolder::Register(Animator* a) {
+    assert(AnimatorHolder::getAnimatorHolder()->_map[a->getId()] == nullptr);
     AnimatorHolder::getAnimatorHolder()->_map[a->getId()] = a;
     AnimatorHolder::getAnimatorHolder()->_suspended.push_back(a);
 }
@@ -128,8 +129,6 @@ void AnimatorHolder::createExplosion(SDL_Rect dstRect){
     
     MovingPathAnimator* explosionAnimator = new MovingPathAnimator("animatorExplosion", explosion, (MovingPathAnimation*)explosionAnimation);
     assert(explosionAnimator);
-    
-    AnimatorHolder::Register(explosionAnimator);
     
     explosionAnimator->start(Game::getGameTime());
     
@@ -293,7 +292,6 @@ void    AnimatorHolder::Load (const std::string& cataloge){
         assert(animation);
         MovingPathAnimator* animator  =	new MovingPathAnimator( id, sprite, animation);
         assert(animator);
-        AnimatorHolder::Register(animator);
     }
     
 }

@@ -122,8 +122,6 @@ void EnemyFighter::fire(void){
     MovingAnimator* fireAnimator = new MovingAnimator(animatorEnemyFireId, enemyBullet, (MovingAnimation*)fireAnimation);
     assert(fireAnimator);
     
-    AnimatorHolder::Register(fireAnimator);
-    
     fireAnimator->start(Game::getGameTime());
     
    // enemyBullet->addCollisionHandler(Sprite::fireHandler());
@@ -156,7 +154,6 @@ void EnemyFighter::createPowerUp(){
     MovingAnimator* powerUpAnimator = new MovingAnimator("powerUpAnimator", powerUp, (MovingAnimation*)powerUpAnimation);
     assert(powerUpAnimator);
     
-    AnimatorHolder::Register(powerUpAnimator);
     powerUpAnimator->start(Game::getGameTime());
     
 }

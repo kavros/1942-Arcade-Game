@@ -31,6 +31,8 @@ protected:
 	void notifyStopped(void);
     void notifyProgressed(void);
     
+    Animator();
+    Animator(animid_t id);
     virtual ~Animator();
 
 public:
@@ -61,8 +63,6 @@ public:
 	}
 	void setState(enum animatorstate_t);
 	timestamp_t getLastTime(){ return _lastTime; }
-
-	Animator();
 
     virtual void checkAnimatorForDelete(void) = 0;
     

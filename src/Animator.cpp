@@ -35,7 +35,12 @@ void Animator::timeShift(timestamp_t offset)
     _lastTime += offset;
 }
 
-Animator::Animator(void) : _lastTime(0), _state(ANIMATOR_FINISHED), _onFinish((FinishCallback)0), _finishClosure((void*)0){
+Animator::Animator(){
+    assert(0);
+}
+
+Animator::Animator(animid_t id) :_id(id), _lastTime(0), _state(ANIMATOR_FINISHED), _onFinish((FinishCallback)0), _finishClosure((void*)0){
+    AnimatorHolder::getAnimatorHolder()->Register(this);
 }
 
 Animator::~Animator(){

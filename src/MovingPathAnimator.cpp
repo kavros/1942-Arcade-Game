@@ -1,8 +1,8 @@
 #include "MovingPathAnimator.h"
 
 //ctor
-MovingPathAnimator::MovingPathAnimator(std::string id, Sprite* sprite,MovingPathAnimation* anim){
-	_id = id;
+MovingPathAnimator::MovingPathAnimator(std::string id, Sprite* sprite,MovingPathAnimation* anim):
+Animator(id){
 	_sprite = sprite;
 	_anim = anim;
     _currPath = _anim->getPath().begin();

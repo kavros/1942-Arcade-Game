@@ -88,8 +88,6 @@ void SuperAce::fire(void){
     MovingAnimator* fireAnimator = new MovingAnimator("animatorFire", bullet, (MovingAnimation*)fireAnimation);
     assert(fireAnimator);
     
-    AnimatorHolder::Register(fireAnimator);
-
     fireAnimator->start(Game::getGameTime());
     
     bullet->addCollisionHandler(Sprite::fireHandler());
@@ -244,8 +242,6 @@ void SideFighter::fire (void) {
     MovingAnimator* fireAnimator = new MovingAnimator("animatorFire", bullet, (MovingAnimation*)fireAnimation);
     assert(fireAnimator);
     
-    AnimatorHolder::Register(fireAnimator);
-    
     fireAnimator->start(Game::getGameTime());
     
     bullet->addCollisionHandler(Sprite::fireHandler());
@@ -269,10 +265,7 @@ void SuperAce::addSideFighters(){
     
     MovingPathAnimation* sideFighterAnimationLeft	=(MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("sideFighterAnimationLeft");
     MovingPathAnimator* sideFighterAnimatorLeft	= new MovingPathAnimator("RightSideFighterAnimatorLeft", sideFighter, sideFighterAnimationLeft);
-    
-    AnimatorHolder::Register(sideFighterAnimatorRight);
-    AnimatorHolder::Register(sideFighterAnimatorLeft);
-    
+
     /*left side fighter*/
     sideFighter = new SideFighter(this, LEFT_FIGHTER, sideFighterFrameNo, sideFighterDstRect, _point, _isVisible, _type, anim);
     sideFighterDstRect = { getDstRect().x-sideFighter->getDstRect().w , getDstRect().y , sideFighter->getDstRect().w , getDstRect().h };
@@ -284,9 +277,6 @@ void SuperAce::addSideFighters(){
     
     sideFighterAnimationLeft = (MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("sideFighterAnimationLeft");
     sideFighterAnimatorLeft	= new MovingPathAnimator("LeftSideFighterAnimatorLeft", sideFighter, sideFighterAnimationLeft);
-    
-    AnimatorHolder::Register(sideFighterAnimatorRight);
-    AnimatorHolder::Register(sideFighterAnimatorLeft);
     
     assert(getAttached(RIGHT_FIGHTER));
     assert(getAttached(LEFT_FIGHTER));

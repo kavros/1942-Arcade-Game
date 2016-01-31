@@ -1,7 +1,7 @@
 #include "SpriteAlphaNum.hpp"
 
 SpriteAlphaNum::SpriteAlphaNum(char c,int point_x, int point_y):
-Sprite("",0,{point_x,point_y,9,13},{point_x,point_y},true,GAME_INFO,AnimationFilmHolder::Get()->GetFilm(string(1, c)))
+Sprite(string(1,c),0,{point_x,point_y,9,13},{point_x,point_y},true,GAME_INFO,AnimationFilmHolder::Get()->GetFilm(string(1, c)))
 {
     setId(string(1,c));
     _c = c;
