@@ -35,7 +35,7 @@ void f(){
 	MovingPathAnimator* superAceEndingAnimator =
 		(MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceEndingAnimator");
 
-	superAceEndingAnimator->start(Game::getGameTime());
+	//superAceEndingAnimator->start(Game::getGameTime());
 
 	/*SpriteStringHolder::getSpriteString("shootingString")->setVisibility(true);
 	SpriteStringHolder::getSpriteString("downString")->setVisibility(true);
@@ -58,10 +58,10 @@ void createTimeTickAnimator(){
     animid_t id = "tickAnimation";
     delay_t _delay = 10000; //10 sec
     unsigned _repetitions = 1;
-	cout << "AAAAA";
+
     TickAnimation* tickAnimation = new TickAnimation(id ,_delay ,_repetitions ,f);
     
-    tickAnimation = (TickAnimation*)AnimationHolder::getAnimationHolder()->getAnimation(id);
+    //tickAnimation = (TickAnimation*)AnimationHolder::getAnimationHolder()->getAnimation(id);
     assert(tickAnimation);
     tickAnimation->setOnTick(f);
     
