@@ -63,6 +63,7 @@ void TimerTickAnimator::finishCallB(Animator* a,void* b){
 void TimerTickAnimator::startTimeTickAnimator(animid_t id, std::function<void(void)> f){
     
     TickAnimation* tickAnimation = (TickAnimation*)AnimationHolder::getAnimationHolder()->getAnimation(id);
+    assert(tickAnimation);
     tickAnimation->setOnTick( f );
     
     TimerTickAnimator* timerTickAnimator = new TimerTickAnimator(id, tickAnimation);
