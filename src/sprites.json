@@ -223,6 +223,146 @@
                 "enemyType" : 0,
                 "animFilmId": "red_plane"
                 },{
+                "id": "RedJet21",
+                "frameNo": 0,
+                "destRect": [0, 200, 25, 25],
+                "point": [0, 0],
+                "visible": false,
+                "spriteType": 4,
+                "remainingBullets": 0,
+                "enemyType" : 0,
+                "animFilmId": "red_plane"
+                },{
+                "id": "RedJet22",
+                "frameNo": 0,
+                "destRect": [0, 200, 25, 25],
+                "point": [0, 0],
+                "visible": false,
+                "spriteType": 4,
+                "remainingBullets": 0,
+                "enemyType" : 0,
+                "animFilmId": "red_plane"
+                },{
+                "id": "RedJet23",
+                "frameNo": 0,
+                "destRect": [0, 200, 25, 25],
+                "point": [0, 0],
+                "visible": false,
+                "spriteType": 4,
+                "remainingBullets": 0,
+                "enemyType" : 0,
+                "animFilmId": "red_plane"
+                },{
+                "id": "RedJet24",
+                "frameNo": 0,
+                "destRect": [0, 200, 25, 25],
+                "point": [0, 0],
+                "visible": false,
+                "spriteType": 4,
+                "remainingBullets": 0,
+                "enemyType" : 0,
+                "animFilmId": "red_plane"
+                },{
+                "id": "RedJet25",
+                "frameNo": 0,
+                "destRect": [0, 200, 25, 25],
+                "point": [0, 0],
+                "visible": false,
+                "spriteType": 4,
+                "remainingBullets": 0,
+                "enemyType" : 0,
+                "animFilmId": "red_plane"
+                },{
+                "id": "RedJet26",
+                "frameNo": 0,
+                "destRect": [0, 200, 25, 25],
+                "point": [0, 0],
+                "visible": false,
+                "spriteType": 4,
+                "remainingBullets": 0,
+                "enemyType" : 0,
+                "animFilmId": "red_plane"
+                },{
+                "id": "RedJet27",
+                "frameNo": 0,
+                "destRect": [0, 200, 25, 25],
+                "point": [0, 0],
+                "visible": false,
+                "spriteType": 4,
+                "remainingBullets": 0,
+                "enemyType" : 0,
+                "animFilmId": "red_plane"
+                },{
+                "id": "RedJet28",
+                "frameNo": 0,
+                "destRect": [0, 200, 25, 25],
+                "point": [0, 0],
+                "visible": false,
+                "spriteType": 4,
+                "remainingBullets": 0,
+                "enemyType" : 0,
+                "animFilmId": "red_plane"
+                },{
+                "id": "RedJet29",
+                "frameNo": 0,
+                "destRect": [0, 200, 25, 25],
+                "point": [0, 0],
+                "visible": false,
+                "spriteType": 4,
+                "remainingBullets": 0,
+                "enemyType" : 0,
+                "animFilmId": "red_plane"
+                },{
+                "id": "RedJet30",
+                "frameNo": 0,
+                "destRect": [0, 200, 25, 25],
+                "point": [0, 0],
+                "visible": false,
+                "spriteType": 4,
+                "remainingBullets": 0,
+                "enemyType" : 0,
+                "animFilmId": "red_plane"
+                },{
+                "id": "RedJet31",
+                "frameNo": 0,
+                "destRect": [0, 200, 25, 25],
+                "point": [0, 0],
+                "visible": false,
+                "spriteType": 4,
+                "remainingBullets": 0,
+                "enemyType" : 0,
+                "animFilmId": "red_plane"
+                },{
+                "id": "RedJet32",
+                "frameNo": 0,
+                "destRect": [0, 200, 25, 25],
+                "point": [0, 0],
+                "visible": false,
+                "spriteType": 4,
+                "remainingBullets": 0,
+                "enemyType" : 0,
+                "animFilmId": "red_plane"
+                },{
+                "id": "RedJet33",
+                "frameNo": 0,
+                "destRect": [0, 200, 25, 25],
+                "point": [0, 0],
+                "visible": false,
+                "spriteType": 4,
+                "remainingBullets": 0,
+                "enemyType" : 0,
+                "animFilmId": "red_plane"
+                },{
+                "id": "RedJet34",
+                "frameNo": 0,
+                "destRect": [0, 200, 25, 25],
+                "point": [0, 0],
+                "visible": false,
+                "spriteType": 4,
+                "remainingBullets": 0,
+                "enemyType" : 0,
+                "animFilmId": "red_plane"
+                },{
                 "id": "GreenJet0",
                 "frameNo": 0,
                 "destRect": [0, 60, 25, 25],

@@ -44,24 +44,35 @@
                                       ,{
                                       "id": "redPlaneTickAnimation0",
                                       "delay": 500,
-                                      "repetitions": 4
+                                      "repetitions": 5
                                       },{
                                       "id": "redPlaneTickAnimation1",
                                       "delay": 500,
-                                      "repetitions": 4
+                                      "repetitions": 5
                                       },{
                                       "id": "redPlaneTickAnimation2",
                                       "delay": 500,
-                                      "repetitions": 4
+                                      "repetitions": 5
                                       },{
                                       "id": "redPlaneTickAnimation3",
                                       "delay": 500,
-                                      "repetitions": 4
-                                      }
-                                      ,{
+                                      "repetitions": 5
+                                      },{
+                                      "id": "redPlaneTickAnimation4",
+                                      "delay": 500,
+                                      "repetitions": 5
+                                      },{
+                                      "id": "redPlaneTickAnimation5",
+                                      "delay": 500,
+                                      "repetitions": 5
+                                      },{
+                                      "id": "redPlaneTickAnimation6",
+                                      "delay": 500,
+                                      "repetitions": 5
+                                      },{
                                       "id": "redPlaneTickAnimations",
                                       "delay": 10000,
-                                      "repetitions": 4
+                                      "repetitions": 7
                                       }
                                       ,{
                                       "id": "greenPlaneTickAnimation",
