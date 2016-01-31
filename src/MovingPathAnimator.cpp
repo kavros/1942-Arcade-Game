@@ -111,7 +111,8 @@ void MovingPathAnimator::start(timestamp_t t){
 
 void MovingPathAnimator::nextAnimator(Animator* anim,void* b){
     AnimatorHolder::markAsSuspended(anim);
-    if(b != nullptr && ((MovingPathAnimator*)anim)->getSprite()->getState() != IN_COLUSION){
+    Sprite* sp = ((MovingPathAnimator*)anim)->getSprite();
+    if(b != nullptr && sp->getState() != IN_COLUSION && !sp->isOutOfWindow() && sp->isAlive()){
         string* id = (string*)b;
         MovingPathAnimator* mpar = (MovingPathAnimator*) AnimatorHolder::getAnimatorHolder()->getAnimator(*  id);
         assert(mpar);

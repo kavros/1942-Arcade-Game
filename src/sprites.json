@@ -19,7 +19,7 @@
                 "point": [0, 0],
                 "visible": false,
                 "spriteType": 4,
-                "remainingBullets": 10,
+                "remainingBullets": 0,
                 "enemyType" : 0,
                 "animFilmId": "red_plane"
                 },{
@@ -29,7 +29,7 @@
                 "point": [0, 0],
                 "visible": false,
                 "spriteType": 4,
-                "remainingBullets": 10,
+                "remainingBullets": 0,
                 "enemyType" : 0,
                 "animFilmId": "red_plane"
                 },{
@@ -39,7 +39,7 @@
                 "point": [0, 0],
                 "visible": false,
                 "spriteType": 4,
-                "remainingBullets": 10,
+                "remainingBullets": 0,
                 "enemyType" : 0,
                 "animFilmId": "red_plane"
                 },{
@@ -49,7 +49,7 @@
                 "point": [0, 0],
                 "visible": false,
                 "spriteType": 4,
-                "remainingBullets": 10,
+                "remainingBullets": 0,
                 "enemyType" : 0,
                 "animFilmId": "red_plane"
                 },{

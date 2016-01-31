@@ -1,6 +1,12 @@
 {
     "MovingPathAnimators": [
                             {
+                            "id": "SuperAceStartingAnimator",
+                            "animationId": "superAceStartingAnimation",
+                            "spriteType": 3,
+                            "spriteId": "SuperAce"
+                            },
+                            {
                             "id": "SuperAceEndingAnimator",
                             "animationId": "superAceEndingAnimation",
                             "spriteType": 3,
@@ -128,25 +134,25 @@
                             },
                             {
                             "id": "CircleRedJetAnimator0",
-                            "animationId": "only_circle_250_250_40_34",
+                            "animationId": "only_circle_250_250_50_34",
                             "spriteType": 4,
                             "spriteId": "RedJet0"
                             },
                             {
                             "id": "CircleRedJetAnimator1",
-                            "animationId": "only_circle_250_250_40_34",
+                            "animationId": "only_circle_250_250_50_34",
                             "spriteType": 4,
                             "spriteId": "RedJet1"
                             },
                             {
                             "id": "CircleRedJetAnimator2",
-                            "animationId": "only_circle_250_250_40_34",
+                            "animationId": "only_circle_250_250_50_34",
                             "spriteType": 4,
                             "spriteId": "RedJet2"
                             },
                             {
                             "id": "CircleRedJetAnimator3",
-                            "animationId": "only_circle_250_250_40_34",
+                            "animationId": "only_circle_250_250_50_34",
                             "spriteType": 4,
                             "spriteId": "RedJet3"
                             },
@@ -176,25 +182,25 @@
                             },
                             {
                             "id": "CircleStraightCircleRedJetAnimator0",
-                            "animationId": "only_circle_250_250_40_34",
+                            "animationId": "only_circle_250_250_50_34",
                             "spriteType": 4,
                             "spriteId": "RedJet0"
                             },
                             {
                             "id": "CircleStraightCircleRedJetAnimator1",
-                            "animationId": "only_circle_250_250_40_34",
+                            "animationId": "only_circle_250_250_50_34",
                             "spriteType": 4,
                             "spriteId": "RedJet1"
                             },
                             {
                             "id": "CircleStraightCircleRedJetAnimator2",
-                            "animationId": "only_circle_250_250_40_34",
+                            "animationId": "only_circle_250_250_50_34",
                             "spriteType": 4,
                             "spriteId": "RedJet2"
                             },
                             {
                             "id": "CircleStraightCircleRedJetAnimator3",
-                            "animationId": "only_circle_250_250_40_34",
+                            "animationId": "only_circle_250_250_50_34",
                             "spriteType": 4,
                             "spriteId": "RedJet3"
                             },
