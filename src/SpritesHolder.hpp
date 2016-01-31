@@ -43,6 +43,8 @@ public:
     
     static void checkSpritesForDelete();
 
+    static bool uniqueAliveFromTeam(Sprite* sprite);
+
 };
 
 #endif /* SpritesHolder_hpp */
