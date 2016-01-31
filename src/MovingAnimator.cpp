@@ -10,10 +10,7 @@ void MovingAnimator::start( timestamp_t t){
 	setState(ANIMATOR_RUNNING);
     AnimatorHolder::markAsRunning(this);
 }
-/*
-MovingAnimator::MovingAnimator(void) :
-_sprite((Sprite*)0), _anim((MovingAnimation*)0){}
-*/
+
 MovingAnimator::MovingAnimator(std::string id, Sprite* sprite, MovingAnimation* animation){
     _id = id;
     _sprite = sprite;

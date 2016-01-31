@@ -127,6 +127,7 @@ void AnimatorHolder::createExplosion(SDL_Rect dstRect){
     assert(explosionAnimation);
     
     MovingPathAnimator* explosionAnimator = new MovingPathAnimator("animatorExplosion", explosion, (MovingPathAnimation*)explosionAnimation);
+    assert(explosionAnimator);
     
     AnimatorHolder::Register(explosionAnimator);
     

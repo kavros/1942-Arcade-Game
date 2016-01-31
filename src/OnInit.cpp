@@ -110,7 +110,7 @@ bool Game::InitBackground(){
     }
     unique++;
     
-    SpritesHolder::getSpritesHolder()->add((Sprite*)Background::Get());
+    Background::Get();
 
     return true;
 }

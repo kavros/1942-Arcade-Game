@@ -39,7 +39,6 @@ Sprite(id,frameNo,dstRect,point,isVisible,type,currFilm)
     
     //this->addCollisionHandler(Sprite::touchHandler());
     
-    //SpritesHolder::getSpritesHolder()->add(this);
 }
 
 enum EnemyFighterType EnemyFighter::getEnemyFighterType(){
@@ -93,25 +92,25 @@ void EnemyFighter::fire(void){
     
     remainingBullets--;
     */
-    return;
+    //return;
     
     assert(this->isAlive() && !this->isOutOfWindow() && this->getVisibility());
     
     static int number = 0;
-    string enemyFireId = "enemyFire_" + std::to_string (number);
+    string spriteEnemyFireId = "spriteEnemyFire_" + std::to_string (number);
+    string animatorEnemyFireId = "animatorEnemyFire_" + std::to_string (number);
     number++;
     
-    cout << enemyFireId <<" fire\n";
+    cout << spriteEnemyFireId <<" fire\n";
 
     AnimationFilm* fireAnimationFilm = AnimationFilmHolder::Get()->GetFilm("bullets");
     assert(fireAnimationFilm);
     
     unsigned bulletFrameNo = 0;
     
-    Sprite* enemyBullet = new Sprite(enemyFireId, bulletFrameNo, getEnemyBulletDstRect(bulletFrameNo), {0,0}, true, ALIEN_SHIP, fireAnimationFilm);
+    Sprite* enemyBullet = new Sprite(spriteEnemyFireId, bulletFrameNo, getEnemyBulletDstRect(bulletFrameNo), {0,0}, true, ALIEN_SHIP, fireAnimationFilm);
     assert(enemyBullet);
     assert(!enemyBullet->isOutOfWindow());
-    //SpritesHolder::getSpritesHolder()->add(enemyBullet);
     
     //play sound for fire
     SoundHolder::playSound("gunshot");
@@ -120,7 +119,7 @@ void EnemyFighter::fire(void){
     Animation* fireAnimation = AnimationHolder::getAnimationHolder()->getAnimation("enemyFire");
     assert(fireAnimation);
     
-    MovingAnimator* fireAnimator = new MovingAnimator(enemyFireId, enemyBullet, (MovingAnimation*)fireAnimation);
+    MovingAnimator* fireAnimator = new MovingAnimator(animatorEnemyFireId, enemyBullet, (MovingAnimation*)fireAnimation);
     assert(fireAnimator);
     
     AnimatorHolder::Register(fireAnimator);

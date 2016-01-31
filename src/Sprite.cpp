@@ -4,7 +4,7 @@
 
 Sprite::Sprite(){
     assert(0);
-    
+    /*
     _frameNo=0;
     _dstRect={0,0,0,0};
     _point={0,0};
@@ -14,8 +14,7 @@ Sprite::Sprite(){
     _currFilm=nullptr;
     _parent=nullptr;
     
-    SpritesHolder::getSpritesHolder()->add(this);
-
+     */
 }
 
 Sprite::Sprite(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point point,bool isVisible,SpriteType type,AnimationFilm* currFilm){
