@@ -245,7 +245,11 @@ void triggerEndOfTheStageAnimator(){
 }
 
 void triggerRedPlaneTickAnimations(){
-    TimerTickAnimator::startTimeTickAnimator("redPlaneTickAnimation", triggerRedPlaneAnimator );
+    static int id = 0;
+    string redPlaneTickAnimationId = "redPlaneTickAnimation" +  std::to_string(id);
+    id++;
+    
+    TimerTickAnimator::startTimeTickAnimator(redPlaneTickAnimationId, triggerRedPlaneAnimator );
 }
 
 void AnimatorHolder::startTimeTickAnimators(){
