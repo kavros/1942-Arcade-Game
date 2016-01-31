@@ -156,8 +156,9 @@ void    SpritesHolder::Load (const std::string& cataloge/*,SDL_Renderer* _render
         assert(sprite["destRect"].IsArray());
         
         //add Sprite 2 Sprite Holder
-        if(spriteType == SpriteType::SUPER_ACE)
+        if(spriteType == SpriteType::SUPER_ACE){
             new SuperAce(id, frameNo, destRect, point, isVisible, spriteType,animationFilm);
+        }
         else if(spriteType == SpriteType::ALIEN_SHIP){
             int remainingBullets = sprite["remainingBullets"].GetInt();
             assert(sprite["enemyType"].IsInt());

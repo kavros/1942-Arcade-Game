@@ -3,6 +3,8 @@
 #include "AnimatorHolder.h"
 
 Sprite::Sprite(){
+    assert(0);
+    
     _frameNo=0;
     _dstRect={0,0,0,0};
     _point={0,0};
@@ -12,7 +14,7 @@ Sprite::Sprite(){
     _currFilm=nullptr;
     _parent=nullptr;
     
-    //SpritesHolder::getSpritesHolder()->add(this);
+    SpritesHolder::getSpritesHolder()->add(this);
 
 }
 

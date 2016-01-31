@@ -34,26 +34,26 @@ class EnemyFighter:public Sprite{
     
 private:
     enum EnemyFighterType _enemyType;
-    unsigned _enemyFighterWidth;
-    unsigned _enemyFighterHeight;
     SDL_Rect _enemyBulletDstRect;
     bool enemyFireEnable;
     unsigned remainingBullets;
+    AnimationFilm* animationEnemyBulletFilm;
+    
 public:
     
     //constructor
     EnemyFighter(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point point,bool isVisible,SpriteType type,AnimationFilm* currFilm,enum EnemyFighterType e,unsigned remainingBullets);
     
     //get
-    unsigned getEnemyFighterWidth();
-    unsigned getEnemyFighterHeight();
     SDL_Rect getEnemyBulletDstRect(int frame);
     enum EnemyFighterType getEnemyFighterType();
     bool getEnemyFireEnable();
-
+    AnimationFilm* getAnimationEnemyBulletFilm();
+    
     //set
     void setFrame(unsigned i) override;
     void setEnemyFireEnable(bool fire);
+    void setAnimationEnemyBulletFilm(AnimationFilm* film);
 
     //functionallity
     void fire();

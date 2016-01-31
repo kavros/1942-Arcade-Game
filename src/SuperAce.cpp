@@ -1,6 +1,8 @@
 #include "SuperAce.h"
 
-SuperAce::SuperAce(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point point,bool isVisible,SpriteType type,AnimationFilm* currFilm){
+SuperAce::SuperAce(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point point,bool isVisible,SpriteType type,AnimationFilm* currFilm):
+Sprite(id,frameNo,dstRect,point,isVisible,type,currFilm)
+{
 
     _spriteId = id;
     _dstRect = dstRect;
@@ -12,6 +14,7 @@ SuperAce::SuperAce(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point 
 	_state = STARTING;
     _superAceLives = 1;
     AnimationFilm* animationBulletFilm = AnimationFilmHolder::Get()->GetFilm("bullets");
+    assert(animationBulletFilm);
     
     bulletFrame = 2;
     _bulletDstRect.x=this->getDstRect().x + (this->getDstRect().w/4);
@@ -21,7 +24,7 @@ SuperAce::SuperAce(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point 
     
     this->addCollisionHandler(Sprite::touchHandler());
 
-    SpritesHolder::getSpritesHolder()->add(this);
+    //SpritesHolder::getSpritesHolder()->add(this);
 
 }
 
@@ -58,7 +61,8 @@ void SuperAce::setSuperAceLoops(unsigned int superAceLoops){
 
 void SuperAce::setBulletFrame(unsigned int _bulletFrame){
     AnimationFilm* animationBulletFilm = AnimationFilmHolder::Get()->GetFilm("bullets");
-
+    assert(animationBulletFilm);
+    
     bulletFrame = _bulletFrame;
     _bulletDstRect.w=animationBulletFilm->getFrameBox(bulletFrame).w * Game::getSpriteSize();
     _bulletDstRect.h=animationBulletFilm->getFrameBox(bulletFrame).h * Game::getSpriteSize();
@@ -177,7 +181,10 @@ void SuperAce::filterMotion(int* dx, int* dy) const {
     *dy = new_y - old_y;
 }
 
-SideFighter::SideFighter(Sprite* ace, const std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point point,bool isVisible,SpriteType type,AnimationFilm* currFilm){
+SideFighter::SideFighter(Sprite* ace, const std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point point,bool isVisible,SpriteType type,AnimationFilm* currFilm):
+Sprite(id,frameNo,dstRect,point,isVisible,type,currFilm)
+{
+        
     ace->attach(this, id);
     
     _spriteId = id;
@@ -190,6 +197,7 @@ SideFighter::SideFighter(Sprite* ace, const std::string id, unsigned  frameNo,SD
     _state = STARTING;
     
     AnimationFilm* animationBulletFilm = AnimationFilmHolder::Get()->GetFilm("bullets");
+    assert(animationBulletFilm);
     
     sideFightertBulletDstRect.x=this->getDstRect().x + (_dstRect.w/4);
     sideFightertBulletDstRect.y=this->getDstRect().y - _dstRect.h;

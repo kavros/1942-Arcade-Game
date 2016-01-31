@@ -79,7 +79,7 @@ protected:
     using Attached = std::map<std::string, Sprite*>;
     Attached _attached;
     Sprite* _parent;
-    std::string _name;
+    std::string _name; //inspect this
     
     void moveAttached(int dx, int dy);
     
