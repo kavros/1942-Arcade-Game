@@ -317,7 +317,7 @@ void updateGrayJetAnimation(MovingPathAnimator* grayJetAnimator, MovingPathAnima
     
     if (grayJetPositionOnY > SuperAcePositionOnY - 100){
         
-        
+        //stop
         if (grayJetAnimation->getPath().front()._dy > 0){
             path._dy = -5;
             path._dx = -5;
