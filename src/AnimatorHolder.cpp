@@ -243,13 +243,25 @@ void triggerEndOfTheStageAnimator(){
 	SpriteStringHolder::getSpriteString("letterR")->setVisibility(true);
 	*/
 }
+
+void triggerRedPlaneTickAnimations(){
+    static int id = 0;
+    string redPlaneTickAnimationId = "redPlaneTickAnimation" +  std::to_string(id);
+    id++;
+    
+    TimerTickAnimator::startTimeTickAnimator(redPlaneTickAnimationId, triggerRedPlaneAnimator );
+}
+
 void AnimatorHolder::startTimeTickAnimators(){
     
     TimerTickAnimator::startTimeTickAnimator("superAceMovingPathTickAnimation", triggerSuperAceMovingPathAnimator );
     TimerTickAnimator::startTimeTickAnimator("enemyBulletsTickAnimation", AnimatorHolder::triggerBullets);
-    TimerTickAnimator::startTimeTickAnimator("redPlaneTickAnimation", triggerRedPlaneAnimator );
     //TimerTickAnimator::startTimeTickAnimator("greenPlaneTickAnimation", triggerGreenJetPlaneAnimator );
     //TimerTickAnimator::startTimeTickAnimator("greenDoubleEnginePlaneTickAnimation", triggerGreenDoubleEnginePlaneAnimator );
+
+    TimerTickAnimator::startTimeTickAnimator("redPlaneTickAnimations", triggerRedPlaneTickAnimations );
+    
+    TimerTickAnimator::startTimeTickAnimator("destructionManager", DestructionManager::commit );
 
 }
 
