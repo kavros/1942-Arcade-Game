@@ -261,6 +261,8 @@ void AnimatorHolder::startTimeTickAnimators(){
 
     TimerTickAnimator::startTimeTickAnimator("redPlaneTickAnimations", triggerRedPlaneTickAnimations );
     
+    TimerTickAnimator::startTimeTickAnimator("destructionManager", DestructionManager::commit );
+
 }
 
 using namespace rapidjson;
