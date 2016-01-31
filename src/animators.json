@@ -12,12 +12,6 @@
                             "spriteId": "SuperAce"
                             },
                             {
-                            "id": "SuperAceStartingAnimator",
-                            "animationId": "superAceStartingAnimation",
-                            "spriteType": 3,
-                            "spriteId": "SuperAce"
-                            },
-                            {
                             "id": "SuperAceMovingAnimator",
                             "animationId": "superAceMovingAnimation",
                             "spriteType": 3,
@@ -136,11 +130,6 @@
                             "animationId": "circle_250_250_30",
                             "spriteType": 4,
                             "spriteId": "RedJet3"
-                            },{
-                            "id": "SuperAceEndingAnimator",
-                            "animationId": "superAceEndingAnimation",
-                            "spriteType": 3,
-                            "spriteId": "SuperAce"
                             }
                             ]
 }

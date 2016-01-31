@@ -4,6 +4,7 @@ AnimatorHolder* AnimatorHolder::_holder = 0;
 
 void AnimatorHolder::Register(Animator* a) {
     assert(AnimatorHolder::getAnimatorHolder()->_map[a->getId()] == nullptr);
+    
     AnimatorHolder::getAnimatorHolder()->_map[a->getId()] = a;
     AnimatorHolder::getAnimatorHolder()->_suspended.push_back(a);
 }
