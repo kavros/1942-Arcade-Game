@@ -44,30 +44,53 @@
                                       ,{
                                       "id": "redPlaneTickAnimation0",
                                       "delay": 500,
-                                      "repetitions": 4
+                                      "repetitions": 5
                                       },{
                                       "id": "redPlaneTickAnimation1",
                                       "delay": 500,
-                                      "repetitions": 4
-                                      }
-                                      ,{
+                                      "repetitions": 5
+                                      },{
+                                      "id": "redPlaneTickAnimation2",
+                                      "delay": 500,
+                                      "repetitions": 5
+                                      },{
+                                      "id": "redPlaneTickAnimation3",
+                                      "delay": 500,
+                                      "repetitions": 5
+                                      },{
+                                      "id": "redPlaneTickAnimation4",
+                                      "delay": 500,
+                                      "repetitions": 5
+                                      },{
+                                      "id": "redPlaneTickAnimation5",
+                                      "delay": 500,
+                                      "repetitions": 5
+                                      },{
+                                      "id": "redPlaneTickAnimation6",
+                                      "delay": 500,
+                                      "repetitions": 5
+                                      },{
                                       "id": "redPlaneTickAnimations",
                                       "delay": 10000,
-                                      "repetitions": 2
+                                      "repetitions": 7
                                       }
                                       ,{
                                       "id": "greenPlaneTickAnimation",
                                       "delay": 2000,
-                                      "repetitions": 4
+                                      "repetitions": 2
                                       }
                                       ,{
                                       "id": "greenDoubleEnginePlaneTickAnimation",
-                                      "delay": 10000,
+                                      "delay": 5000,
                                       "repetitions": 4
                                       },{
                                       "id": "endOfTheStageTickAnimation",
                                       "delay": 10000,
                                       "repetitions": 1
+                                      },{
+                                      "id": "grayPlaneTickAnimation",
+                                      "delay": 1000,
+                                      "repetitions": 4
                                       },{
                                       "id": "shortTickAnimation",
                                       "delay": 10000,
@@ -325,7 +348,48 @@
                                                       "visibility": false,
                                                       "delay": 90
                                                       }]
-                                            }, {
+                                            },{
+                                            "id": "minGrayJetAnimation0",
+                                            "continuous":true,
+                                            "paths": [{
+                                                      "dx": 0,
+                                                      "dy": 1,
+                                                      "visibility": true,
+                                                      "frameNo": 0,
+                                                      "delay": 90
+                                                      }]
+                                            },{
+                                            "id": "minGrayJetAnimation1",
+                                            "continuous":true,
+                                            "paths": [{
+                                                      "dx": 0,
+                                                      "dy": 1,
+                                                      "visibility": true,
+                                                      "frameNo": 0,
+                                                      "delay": 90
+                                                      }]
+                                            },{
+                                            "id": "minGrayJetAnimation2",
+                                            "continuous":true,
+                                            "paths": [{
+                                                      "dx": 0,
+                                                      "dy": 1,
+                                                      "visibility": true,
+                                                      "frameNo": 0,
+                                                      "delay": 90
+                                                      }]
+                                            },{
+                                            "id": "minGrayJetAnimation3",
+                                            "continuous":true,
+                                            "paths": [{
+                                                      "dx": 0,
+                                                      "dy": 1,
+                                                      "visibility": true,
+                                                      "frameNo": 0,
+                                                      "delay": 90
+                                                      }]
+                                            }
+											,{
                                             "id": "circle_250_250_30",
                                             "continuous":false,
                                             "paths": [{
@@ -1088,6 +1152,36 @@
                                                       "frameNo": 21,
                                                       "visibility": true,
                                                       "delay": 90
+                                                      },{
+                                                      "dx": 0,
+                                                      "dy": -1,
+                                                      "frameNo": 21,
+                                                      "visibility": true,
+                                                      "delay": 0
+                                                      },{
+                                                      "dx": 0,
+                                                      "dy": -1,
+                                                      "frameNo": 21,
+                                                      "visibility": true,
+                                                      "delay": 0
+                                                      },{
+                                                      "dx": 0,
+                                                      "dy": -1,
+                                                      "frameNo": 21,
+                                                      "visibility": true,
+                                                      "delay": 0
+                                                      },{
+                                                      "dx": 0,
+                                                      "dy": -1,
+                                                      "frameNo": 21,
+                                                      "visibility": true,
+                                                      "delay": 0
+                                                      },{
+                                                      "dx": 0,
+                                                      "dy": -1,
+                                                      "frameNo": 21,
+                                                      "visibility": true,
+                                                      "delay": 0
                                                       },{
                                                       "dx": 0,
                                                       "dy": -1,

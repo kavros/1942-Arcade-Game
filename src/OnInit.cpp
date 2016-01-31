@@ -19,9 +19,10 @@ bool Game::OnInit(){
     InitRenderer();
     
     InitGame();
-    
+
     return true;
 }
+
 
 
 
@@ -139,6 +140,7 @@ void    Game::LoadGameInfo (const std::string& cataloge){
     _highScore = document["highScore"].GetInt();
     _spriteSize = document["spriteSize"].GetDouble();
     assert(document["powerUpsOfStage"].IsArray());
+    SoundHolder::setMute(document["mute"].GetBool());
     const Value& powerUps= document["powerUpsOfStage"];
     for (rapidjson::SizeType i = 0; i < powerUps.Size(); i++)
     {

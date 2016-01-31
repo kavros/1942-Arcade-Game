@@ -49,7 +49,10 @@ void MovingPathAnimator::progress(timestamp_t currTime){
 
         _lastTime += (_currPath->_delay);
         //cout << "Curr time = " << currTime << "\tlast time = " << _lastTime << "\n";
-        _currPath++;
+
+		if (_anim->getPath().size() > 1){
+			_currPath++;
+		}
         if(_currPath == _anim->getPath().end() && !_anim->getContinuous()){
 			
 			//!!! only Maneuver Animation can change state from maneuever to Flying 
@@ -130,7 +133,6 @@ void MovingPathAnimator::checkAnimatorForDelete(void){
     assert(_sprite && _anim );
     
     if( (_sprite->isOutOfWindow() || _sprite->getState() == SpriteState::IN_COLUSION) && _sprite->getId().compare("SuperAce") != 0){
-        
         //stop the animator
         _state = ANIMATOR_FINISHED;
         //setOnFinished(finishCallB);

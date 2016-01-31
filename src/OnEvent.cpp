@@ -1,5 +1,8 @@
 #include "Game.hpp"
 
+#include "MovingPathAnimator.h"
+
+void updateGrayJetAnimation(MovingPathAnimator* grayJetAnimator, MovingPathAnimation* grayJetAnimation);
 void Game::OnEvent(SDL_Event* event) {
     static SDL_Event prevEvent  = *event;
     
@@ -45,6 +48,7 @@ void Game::OnEvent(SDL_Event* event) {
 			MovingPathAnimator* superAceStartingAnimator = (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceStartingAnimator");
             assert(superAceStartingAnimator);
             
+
             if (superAce->getState() == STARTING){
                 superAceStartingAnimator->start(getGameTime());
 
@@ -63,10 +67,15 @@ void Game::OnEvent(SDL_Event* event) {
 			}
 
 			if (event->type == SDL_KEYDOWN || event->type == SDL_CONTROLLERBUTTONDOWN){
+
+
+			
 				
-				
-				
-		
+
+				UpdateAllGrayJetAnimations();
+
+
+				//cout << grayJetAnimator->getSprite()->getDstRect().y;
 				assert(superAce);
                 
                 
@@ -186,6 +195,9 @@ void Game::OnEvent(SDL_Event* event) {
             break;
 		case PAUSE_MENU:
             pauseManager(event);
+			break;
+		case END_OF_STAGE:
+			AnimatorHolder::pauseAnimators();
 			break;
         case EXIT:
             break;

@@ -225,14 +225,14 @@ void triggerEndOfTheStageAnimator(){
 
 	
 
-	/*MovingPathAnimator* superAceEndingAnimator =
+	MovingPathAnimator* superAceEndingAnimator =
 		(MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceEndingAnimator");
-	assert(superAceEndingAnimator);*/
-
-
+	assert(superAceEndingAnimator);
+	superAceEndingAnimator->start(Game::getGameTime());
+	cout << "triggerEndOfTheStageAnimator" << endl;
 	//superAceEndingAnimator->start(Game::getGameTime());
 
-	/*SpriteStringHolder::getSpriteString("shootingString")->setVisibility(true);
+	SpriteStringHolder::getSpriteString("shootingString")->setVisibility(true);
 	SpriteStringHolder::getSpriteString("downString")->setVisibility(true);
 	SpriteStringHolder::getSpriteString("shootingDownPercent")->setVisibility(true);
 	SpriteStringHolder::getSpriteString("endingBonusString")->setVisibility(true);
@@ -241,7 +241,19 @@ void triggerEndOfTheStageAnimator(){
 	SpriteStringHolder::getSpriteString("letterR")->setVisibility(true);
 	SpriteStringHolder::getSpriteString("1000Points")->setVisibility(true);
 	SpriteStringHolder::getSpriteString("letterR")->setVisibility(true);
-	*/
+	
+	//Game::setState(END_OF_STAGE);
+}
+
+void triggerGrayPlaneAnimator(){
+	static int nameId = 0;
+	string name = "GrayJetAnimator" + std::to_string(nameId);
+	nameId++;
+
+	MovingPathAnimator* animator = (MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator(name);
+	assert(animator);
+	animator->start(Game::getGameTime());
+
 }
 
 void triggerRedPlaneTickAnimations(){
@@ -256,6 +268,11 @@ void AnimatorHolder::startTimeTickAnimators(){
     
     TimerTickAnimator::startTimeTickAnimator("superAceMovingPathTickAnimation", triggerSuperAceMovingPathAnimator );
     TimerTickAnimator::startTimeTickAnimator("enemyBulletsTickAnimation", AnimatorHolder::triggerBullets);
+    //TimerTickAnimator::startTimeTickAnimator("redPlaneTickAnimation", triggerRedPlaneAnimator );
+    TimerTickAnimator::startTimeTickAnimator("greenPlaneTickAnimation", triggerGreenJetPlaneAnimator );
+    TimerTickAnimator::startTimeTickAnimator("greenDoubleEnginePlaneTickAnimation", triggerGreenDoubleEnginePlaneAnimator );
+	TimerTickAnimator::startTimeTickAnimator("grayPlaneTickAnimation", triggerGrayPlaneAnimator);
+	//TimerTickAnimator::startTimeTickAnimator("endOfTheStageTickAnimation", triggerEndOfTheStageAnimator);
     //TimerTickAnimator::startTimeTickAnimator("greenPlaneTickAnimation", triggerGreenJetPlaneAnimator );
     //TimerTickAnimator::startTimeTickAnimator("greenDoubleEnginePlaneTickAnimation", triggerGreenDoubleEnginePlaneAnimator );
 

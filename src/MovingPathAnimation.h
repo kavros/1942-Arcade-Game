@@ -26,7 +26,7 @@ public:
 		return _path;
 	}
 	void setPath(const std::list<PathEntry>& p){
-		_path.clear();
+		//_path = _path.clear();
 		_path = p;
 	}
     bool getContinuous(void) const { return _continuous; }
@@ -36,7 +36,7 @@ public:
 	}
 	MovingPathAnimation(const std::list<PathEntry>& path, animid_t id,bool continuous) :
 		_path(path), Animation(id), _continuous(continuous){}
-
+	
 private:
 	typedef std::list<PathEntry> PathsList;
 	std::list<PathEntry> _path;
