@@ -256,3 +256,22 @@ bool SpritesHolder::uniqueAliveFromTeam(Sprite* sprite){
 }
 
 
+void SpritesHolder::smallAndBigEnemyFireEnable(){
+    
+    SpriteList* sl = SpritesHolder::getSprites(ALIEN_SHIP);
+    SpriteList::const_iterator it = sl->begin();
+    EnemyFighter* enemyFighter;
+    
+    while ( it != sl->end() ){
+        enemyFighter = (EnemyFighter*)(*it);
+        if( enemyFighter->getEnemyFighterType() != EnemyFighterType(BIG_GREEN) ||
+           enemyFighter->getEnemyFighterType() != EnemyFighterType(BIG_GREY)){
+            
+            enemyFighter->setEnemyFireEnable(true);
+            
+        }
+        ++it;
+    }
+    
+    
+}

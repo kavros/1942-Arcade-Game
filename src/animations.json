@@ -87,9 +87,11 @@
                                       "id": "endOfTheStageTickAnimation",
                                       "delay": 10000,
                                       "repetitions": 1
+                                      },{
+                                      "id": "shortTickAnimation",
+                                      "delay": 10000,
+                                      "repetitions": 1
                                       }
-                                      
-                                      
                                       ]
                    }, {
                    "MovingPathAnimations": [{

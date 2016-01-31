@@ -39,6 +39,7 @@ public:
     
     //functionallity
     void activatePowerUp(Sprite* arg);
+    static void enableEnemyFire();
 
 };
 

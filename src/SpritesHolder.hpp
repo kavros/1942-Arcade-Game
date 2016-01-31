@@ -45,6 +45,8 @@ public:
 
     static bool uniqueAliveFromTeam(Sprite* sprite);
 
+    static void smallAndBigEnemyFireEnable();
+
 };
 
 #endif /* SpritesHolder_hpp */

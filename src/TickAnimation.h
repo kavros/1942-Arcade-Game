@@ -40,7 +40,7 @@ public:
     void setOnTick(std::function<void(void)> f){
         _onTick = f;
     }
-    
+
     void setForever(void);
     
     void setRepetitions(unsigned repetitions);
