@@ -7,12 +7,6 @@
                             "spriteId": "SuperAce"
                             },
                             {
-                            "id": "SuperAceStartingAnimator",
-                            "animationId": "superAceStartingAnimation",
-                            "spriteType": 3,
-                            "spriteId": "SuperAce"
-                            },
-                            {
                             "id": "SuperAceMovingAnimator",
                             "animationId": "superAceMovingAnimation",
                             "spriteType": 3,

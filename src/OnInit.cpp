@@ -23,32 +23,7 @@ bool Game::OnInit(){
     return true;
 }
 
-void f(){
-	/*MovingPathAnimator* superAceEndingAnimator =
-		(MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceEndingAnimator");
-	
-	superAceEndingAnimator->start(Game::getGameTime());*/
 
-	MovingPathAnimator* superAceEndingAnimator =
-		(MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceEndingAnimator");
-
-	superAceEndingAnimator->start(Game::getGameTime());
-
-	/*SpriteStringHolder::getSpriteString("shootingString")->setVisibility(true);
-	SpriteStringHolder::getSpriteString("downString")->setVisibility(true);
-	SpriteStringHolder::getSpriteString("shootingDownPercent")->setVisibility(true);
-	SpriteStringHolder::getSpriteString("endingBonusString")->setVisibility(true);
-	SpriteStringHolder::getSpriteString("pointsString")->setVisibility(true);
-	SpriteStringHolder::getSpriteString("points")->setVisibility(true);
-	SpriteStringHolder::getSpriteString("letterR")->setVisibility(true);
-	SpriteStringHolder::getSpriteString("1000Points")->setVisibility(true);
-	SpriteStringHolder::getSpriteString("letterR")->setVisibility(true);
-	*/
-
-	
-	
-	
-}
 
 void Game::InitGame(){
     InitData();
@@ -119,8 +94,7 @@ bool Game::InitData(){
     AnimationFilmHolder* anFh = AnimationFilmHolder::Get();
 	anFh->Load("films.json", _renderer);
     
-    SpritesHolder* sh = SpritesHolder::getSpritesHolder();
-    sh->Load("sprites.json");
+    SpritesHolder::Load("sprites.json");
     
     AnimationHolder* anh = AnimationHolder::getAnimationHolder();
     anh->Load("animations.json");
@@ -135,7 +109,7 @@ bool Game::InitBackground(){
     }
     unique++;
     
-    SpritesHolder::getSpritesHolder()->add((Sprite*)Background::Get());
+    Background::Get();
 
     return true;
 }
@@ -155,7 +129,7 @@ void    Game::LoadGameInfo (const std::string& cataloge){
     const char* data = text.c_str();
     
     
-    SuperAce* superAce = (SuperAce*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce");
+    SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce");
     Document document;
     document.Parse(data);
     assert(document.IsObject());
@@ -212,7 +186,7 @@ bool Game::InitGameInfo(){
     SpriteStringHolder::addSpriteString("fpsString", new SpriteString("FPS",450,10));
     SpriteStringHolder::addSpriteString("fps", new SpriteString("0000",450,30));
 
-    SuperAce* superAce = (SuperAce*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce");
+    SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce");
     std::string remainingLoopsString = "";
     for(int i = 0; i < superAce->getSuperAceLoops(); i++){
        remainingLoopsString += "R";

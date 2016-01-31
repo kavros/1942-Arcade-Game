@@ -8,14 +8,14 @@ void Game::OnRender() {
     //Draw the texture
     switch (_gameState) {
         case SINGLEPLAYER_MENU:
-            SpritesHolder::getSpritesHolder()->displaySprites(_renderer,MAIN_MENU_SINGLEPLAYER);
+            SpritesHolder::displaySprites(_renderer,MAIN_MENU_SINGLEPLAYER);
             break;
         case MULTIPLAYER_MENU:
-            SpritesHolder::getSpritesHolder()->displaySprites(_renderer,MAIN_MENU_MULTIPLAYER);
+            SpritesHolder::displaySprites(_renderer,MAIN_MENU_MULTIPLAYER);
             break;
         case SINGLEPLAYER_GAME:
 
-            SpritesHolder::getSpritesHolder()->displayGameSprites(_renderer);
+            SpritesHolder::displayGameSprites(_renderer);
             break;
         case MULTIPLAYER_GAME:
             cout<<"under construction\n";
@@ -25,10 +25,10 @@ void Game::OnRender() {
             cout<<"Exit\n";
             break;
 		case PAUSE_MENU:
-			SpritesHolder::getSpritesHolder()->displayGameSprites(_renderer);
+			SpritesHolder::displayGameSprites(_renderer);
 			break;
         case GAME_OVER:
-            SpritesHolder::getSpritesHolder()->displayGameSprites(_renderer);
+            SpritesHolder::displayGameSprites(_renderer);
 
             break;
         default:

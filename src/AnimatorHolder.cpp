@@ -3,6 +3,8 @@
 AnimatorHolder* AnimatorHolder::_holder = 0;
 
 void AnimatorHolder::Register(Animator* a) {
+    assert(AnimatorHolder::getAnimatorHolder()->_map[a->getId()] == nullptr);
+    
     AnimatorHolder::getAnimatorHolder()->_map[a->getId()] = a;
     AnimatorHolder::getAnimatorHolder()->_suspended.push_back(a);
 }
@@ -98,15 +100,14 @@ Animator* AnimatorHolder::getAnimator(animid_t id){
 
 void AnimatorHolder::triggerBullets(){
     
-    SpritesHolder* h = SpritesHolder::getSpritesHolder();
-    SpriteList * sl = h->getSprites(ALIEN_SHIP);
+    SpriteList * sl = SpritesHolder::getSprites(ALIEN_SHIP);
 
     SpriteList::const_iterator it = sl->begin();
 
     while (it != sl->end()){
-        if( (*it) && (*it)->getVisibility() && (*it)->isAlive() && !(*it)->isOutOfWindow() && (*it)->getState()!=IN_COLUSION ){
+        if( (*it) && (*it)->getVisibility() && (*it)->isAlive() && !(*it)->isOutOfWindow() && (*it)->getState()!=IN_COLUSION
+           && ((EnemyFighter*)(*it))->getEnemyFighterType() != BULLET){
             ((EnemyFighter*)(*it))->fire();
-            break;
         }
         it++;
     }
@@ -115,10 +116,15 @@ void AnimatorHolder::triggerBullets(){
 
 void AnimatorHolder::createExplosion(SDL_Rect dstRect){
     
+    static int nameId=0;
+    string spriteExplosionId = "spriteExplosionId" + std::to_string(nameId);
+    string animatorExplosionId = "animatorExplosionId" + std::to_string(nameId);
+    nameId++;
+    
     AnimationFilm* fireAnimationFilm = AnimationFilmHolder::Get()->GetFilm("explosion");
     assert(fireAnimationFilm);
     
-    Sprite* explosion = new Sprite("explosionSprite", 0, dstRect, {0,0}, true, POWER_UPS, fireAnimationFilm);
+    Sprite* explosion = new Sprite(spriteExplosionId, 0, dstRect, {0,0}, true, POWER_UPS, fireAnimationFilm);
     assert(explosion);
     
     SoundHolder::playSound("explosion");
@@ -126,9 +132,8 @@ void AnimatorHolder::createExplosion(SDL_Rect dstRect){
     Animation* explosionAnimation = AnimationHolder::getAnimationHolder()->getAnimation("explosion");
     assert(explosionAnimation);
     
-    MovingPathAnimator* explosionAnimator = new MovingPathAnimator("animatorExplosion", explosion, (MovingPathAnimation*)explosionAnimation);
-    
-    AnimatorHolder::Register(explosionAnimator);
+    MovingPathAnimator* explosionAnimator = new MovingPathAnimator(animatorExplosionId, explosion, (MovingPathAnimation*)explosionAnimation);
+    assert(explosionAnimator);
     
     explosionAnimator->start(Game::getGameTime());
     
@@ -180,6 +185,7 @@ void AnimatorHolder::pauseAnimators(){
 
 void triggerSuperAceMovingPathAnimator(){
     MovingPathAnimator* movingSuperAce = (MovingPathAnimator*) AnimatorHolder::getAnimator("SuperAceMovingAnimator");
+    assert(movingSuperAce);
     movingSuperAce->start(Game::getGameTime());
 }
 
@@ -215,6 +221,28 @@ void triggerGreenDoubleEnginePlaneAnimator(){
     animator->start(Game::getGameTime());
 }
 
+void triggerEndOfTheStageAnimator(){
+
+	
+
+	/*MovingPathAnimator* superAceEndingAnimator =
+		(MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceEndingAnimator");
+	assert(superAceEndingAnimator);*/
+
+
+	//superAceEndingAnimator->start(Game::getGameTime());
+
+	/*SpriteStringHolder::getSpriteString("shootingString")->setVisibility(true);
+	SpriteStringHolder::getSpriteString("downString")->setVisibility(true);
+	SpriteStringHolder::getSpriteString("shootingDownPercent")->setVisibility(true);
+	SpriteStringHolder::getSpriteString("endingBonusString")->setVisibility(true);
+	SpriteStringHolder::getSpriteString("pointsString")->setVisibility(true);
+	SpriteStringHolder::getSpriteString("points")->setVisibility(true);
+	SpriteStringHolder::getSpriteString("letterR")->setVisibility(true);
+	SpriteStringHolder::getSpriteString("1000Points")->setVisibility(true);
+	SpriteStringHolder::getSpriteString("letterR")->setVisibility(true);
+	*/
+}
 void AnimatorHolder::startTimeTickAnimators(){
     
     TimerTickAnimator::startTimeTickAnimator("superAceMovingPathTickAnimation", triggerSuperAceMovingPathAnimator );
@@ -263,10 +291,12 @@ void    AnimatorHolder::Load (const std::string& cataloge){
         SpriteType spriteType = SpriteType(st);
         assert( st < SPRITE_TYPE_SIZE );
         
-        Sprite* sprite= SpritesHolder::getSpritesHolder()->getSprite(spriteType, spriteId);
+        Sprite* sprite= SpritesHolder::getSprite(spriteType, spriteId);
+        assert(sprite);
         MovingPathAnimation* animation = (MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation(animationId);
+        assert(animation);
         MovingPathAnimator* animator  =	new MovingPathAnimator( id, sprite, animation);
-        AnimatorHolder::Register(animator);
+        assert(animator);
     }
     
 }

@@ -13,7 +13,7 @@ void Game::OnEvent(SDL_Event* event) {
         setState(PAUSE_MENU);
     }
     
-    SuperAce* superAce = (SuperAce*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce");
+    SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce");
     //cout << superAce->getState()<<endl;
     if(superAce->getState() == IN_COLUSION ){
             setState(GAME_OVER);
@@ -112,11 +112,13 @@ void Game::OnEvent(SDL_Event* event) {
                     if(superAce->getAttached(RIGHT_FIGHTER)){
                         MovingPathAnimator* rightSideFighterAnimatorLeft =
                         (MovingPathAnimator*)AnimatorHolder::getAnimator("RightSideFighterAnimatorLeft");
+                        assert(rightSideFighterAnimatorLeft);
                         rightSideFighterAnimatorLeft->start(getGameTime());
                     }
                     if(superAce->getAttached(LEFT_FIGHTER)){
                         MovingPathAnimator* leftSideFighterAnimatorLeft =
                         (MovingPathAnimator*)AnimatorHolder::getAnimator("LeftSideFighterAnimatorLeft");
+                        assert(leftSideFighterAnimatorLeft);
                         leftSideFighterAnimatorLeft->start(getGameTime());
                     }
                 }

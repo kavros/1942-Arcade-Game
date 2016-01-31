@@ -3,6 +3,8 @@
 #include "AnimatorHolder.h"
 
 Sprite::Sprite(){
+    assert(0);
+    /*
     _frameNo=0;
     _dstRect={0,0,0,0};
     _point={0,0};
@@ -12,12 +14,11 @@ Sprite::Sprite(){
     _currFilm=nullptr;
     _parent=nullptr;
     
-    //SpritesHolder::getSpritesHolder()->add(this);
-
+     */
 }
 
 Sprite::Sprite(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point point,bool isVisible,SpriteType type,AnimationFilm* currFilm){
-    assert(frameNo>=0 && currFilm!=NULL && type>=0 && type<=SpriteType(SPRITE_TYPE_SIZE) );
+    assert( frameNo>=0 && currFilm!=NULL && type>=0 && type<SpriteType(SPRITE_TYPE_SIZE) && currFilm);
 
     _spriteId = id;
     _frameNo=frameNo;
@@ -32,7 +33,7 @@ Sprite::Sprite(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point poin
     setState(FLYING);
     _parent=nullptr;
 
-    SpritesHolder::getSpritesHolder()->add(this);
+    SpritesHolder::add(this);
 
 }
 
@@ -216,7 +217,7 @@ void Sprite::addCollisionHandler(const CollisionHandler& h){
 
         SpriteList* aliens;
         
-        aliens = SpritesHolder::getSpritesHolder()->getSprites(ALIEN_SHIP);
+        aliens = SpritesHolder::getSprites(ALIEN_SHIP);
         
         if (aliens)
             for (SpriteList::iterator it=aliens->begin(); it != aliens->end(); ++it){
