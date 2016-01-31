@@ -84,18 +84,6 @@ SDL_Rect EnemyFighter::getEnemyBulletDstRect(int frame){
 }
 
 bool EnemyFighter::getEnemyFireEnable(){
-    
-    setEnemyFireEnable(false);
-    
-    if( getRemainingBullets() != 0){
-        unsigned r = rand() % 3; // r in the range 0 to 2
-
-        if( r == 1 ){
-            setRemainingBullets( getRemainingBullets() - 1);
-            setEnemyFireEnable(true);
-        }
-    }
-    
     return enemyFireEnable;
 }
 
@@ -110,8 +98,17 @@ void EnemyFighter::setAnimationEnemyBulletFilm(AnimationFilm* film){
 
 void EnemyFighter::fire(void){
     
-    if(! getEnemyFireEnable() )
+    if( !getEnemyFireEnable() || getRemainingBullets() == 0 )
         return;
+    
+    unsigned r = rand() % 3; // r in the range 0 to 2
+        
+    if( r == 1 ){
+        setRemainingBullets( getRemainingBullets() - 1);
+    }
+    else{
+        return;
+    }
     
     assert(this->isAlive() && !this->isOutOfWindow() && this->getVisibility());
     
@@ -178,3 +175,5 @@ void EnemyFighter::createPowerUp(){
     powerUpAnimator->start(Game::getGameTime());
     
 }
+
+

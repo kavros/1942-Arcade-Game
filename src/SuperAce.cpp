@@ -185,7 +185,7 @@ Sprite(id,frameNo,dstRect,point,isVisible,type,currFilm)
 {
         
     ace->attach(this, id);
-    
+
     _spriteId = id;
     _dstRect = dstRect;
     _point = point;
@@ -195,6 +195,8 @@ Sprite(id,frameNo,dstRect,point,isVisible,type,currFilm)
     setFrame(frameNo);
     _state = STARTING;
     
+    bulletFrame = 1;
+
     AnimationFilm* animationBulletFilm = AnimationFilmHolder::Get()->GetFilm("bullets");
     assert(animationBulletFilm);
     
@@ -224,10 +226,7 @@ void SideFighter::fire (void) {
     string animatorSideFighterFireId = "animatorSideSuperAceFire" + std::to_string (number);
     
     number++;
-    
-    unsigned int bulletFrame = 1;
-    
-    /*bullet test*/
+        
     AnimationFilm* fireAnimationFilm = AnimationFilmHolder::Get()->GetFilm("bullets");
     assert(fireAnimationFilm);
     

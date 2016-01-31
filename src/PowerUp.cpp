@@ -49,11 +49,27 @@ void PowerUp::activatePowerUp(Sprite* arg){
         case NO_ENEMY_BULLETS:{
             SpriteList* sl = SpritesHolder::getSprites(ALIEN_SHIP);
             SpriteList::const_iterator it = sl->begin();
+            EnemyFighter* enemyFighter;
+
             while ( it != sl->end() ){
-                if(((EnemyFighter*)(*it))->getEnemyFighterType() != EnemyFighterType(BIG_GREEN) ||
-                        ((EnemyFighter*)(*it))->getEnemyFighterType() != EnemyFighterType(BIG_GREY))
+                enemyFighter = (EnemyFighter*)(*it);
+                if( enemyFighter->getEnemyFighterType() != EnemyFighterType(BIG_GREEN) ||
+                   enemyFighter->getEnemyFighterType() != EnemyFighterType(BIG_GREY)){
                     
-                            ((EnemyFighter*)(*it))->setEnemyFireEnable(false);
+                    enemyFighter->setEnemyFireEnable(false);
+                    //start short timing without bullets
+                    TickAnimation* tickAnimation = (TickAnimation* )AnimationHolder::getAnimationHolder()->getAnimation("shortTickAnimation");
+                    assert(tickAnimation);
+                    
+                    tickAnimation->setOnTick( SpritesHolder::smallAndBigEnemyFireEnable );
+                    
+                    TimerTickAnimator* timerTickAnimator = new TimerTickAnimator( "shortTimeTickAnimator" , tickAnimation );
+                    
+                    assert(timerTickAnimator);
+                    
+                    timerTickAnimator->start(Game::getGameTime());
+                    
+                }
                 ++it;
             }
             break;
@@ -73,3 +89,5 @@ void PowerUp::activatePowerUp(Sprite* arg){
             break;
     }
 }
+
+
