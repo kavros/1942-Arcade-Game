@@ -136,6 +136,11 @@
                             "animationId": "circle_250_250_30",
                             "spriteType": 4,
                             "spriteId": "RedJet3"
+                            },{
+                            "id": "SuperAceEndingAnimator",
+                            "animationId": "superAceEndingAnimation",
+                            "spriteType": 3,
+                            "spriteId": "SuperAce"
                             }
                             ]
 }

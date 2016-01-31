@@ -216,6 +216,28 @@ void triggerGreenDoubleEnginePlaneAnimator(){
     animator->start(Game::getGameTime());
 }
 
+void triggerEndOfTheStageAnimator(){
+
+	
+
+	/*MovingPathAnimator* superAceEndingAnimator =
+		(MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceEndingAnimator");
+	assert(superAceEndingAnimator);*/
+
+
+	//superAceEndingAnimator->start(Game::getGameTime());
+
+	/*SpriteStringHolder::getSpriteString("shootingString")->setVisibility(true);
+	SpriteStringHolder::getSpriteString("downString")->setVisibility(true);
+	SpriteStringHolder::getSpriteString("shootingDownPercent")->setVisibility(true);
+	SpriteStringHolder::getSpriteString("endingBonusString")->setVisibility(true);
+	SpriteStringHolder::getSpriteString("pointsString")->setVisibility(true);
+	SpriteStringHolder::getSpriteString("points")->setVisibility(true);
+	SpriteStringHolder::getSpriteString("letterR")->setVisibility(true);
+	SpriteStringHolder::getSpriteString("1000Points")->setVisibility(true);
+	SpriteStringHolder::getSpriteString("letterR")->setVisibility(true);
+	*/
+}
 void AnimatorHolder::startTimeTickAnimators(){
     
     TimerTickAnimator::startTimeTickAnimator("superAceMovingPathTickAnimation", triggerSuperAceMovingPathAnimator );
@@ -223,7 +245,7 @@ void AnimatorHolder::startTimeTickAnimators(){
     TimerTickAnimator::startTimeTickAnimator("redPlaneTickAnimation", triggerRedPlaneAnimator );
     TimerTickAnimator::startTimeTickAnimator("greenPlaneTickAnimation", triggerGreenJetPlaneAnimator );
     TimerTickAnimator::startTimeTickAnimator("greenDoubleEnginePlaneTickAnimation", triggerGreenDoubleEnginePlaneAnimator );
-
+	//TimerTickAnimator::startTimeTickAnimator("endOfTheStageTickAnimation", triggerEndOfTheStageAnimator);
 }
 
 using namespace rapidjson;

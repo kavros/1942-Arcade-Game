@@ -51,6 +51,10 @@
                                       "id": "greenDoubleEnginePlaneTickAnimation",
                                       "delay": 10000,
                                       "repetitions": 4
+                                      },{
+                                      "id": "endOfTheStageTickAnimation",
+                                      "delay": 10000,
+                                      "repetitions": 1
                                       }
                                       
                                       
