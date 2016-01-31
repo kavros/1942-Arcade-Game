@@ -26,6 +26,8 @@ Sprite(id,frameNo,dstRect,point,isVisible,type,currFilm)
     
     setAnimationEnemyBulletFilm( AnimationFilmHolder::Get()->GetFilm("bullets") );
     
+    _enemyBulletDstRect.w = 20;
+    _enemyBulletDstRect.h = 20;
     _enemyBulletDstRect.x=(this->getDstRect().x + this->getDstRect().w/2 - _enemyBulletDstRect.w/2);
     _enemyBulletDstRect.y=this->getDstRect().y + this->getDstRect().h/3;
     
