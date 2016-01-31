@@ -64,6 +64,11 @@
                             "animationId": "superAceAnimationLeftLeft",
                             "spriteType": 3,
                             "spriteId": "SuperAce"
+                            },{
+                            "id": "SuperAceEndingAnimator",
+                            "animationId": "superAceEndingAnimation",
+                            "spriteType": 3,
+                            "spriteId": "SuperAce"
                             }
                             ]
 }
