@@ -204,7 +204,6 @@ Sprite(id,frameNo,dstRect,point,isVisible,type,currFilm)
     sideFightertBulletDstRect.h=animationBulletFilm->getFrameBox(1).h * Game::getSpriteSize();
     
     this->addCollisionHandler(Sprite::touchHandler());
-    
 }
 
 SideFighter::~SideFighter(){
@@ -261,7 +260,6 @@ void SuperAce::addSideFighters(){
     sideFighter = new SideFighter(this, RIGHT_FIGHTER, sideFighterFrameNo, sideFighterDstRect, _point, _isVisible, _type, anim);
     sideFighterDstRect = { getDstRect().x+getDstRect().w , getDstRect().y , sideFighter->getDstRect().w , getDstRect().h };
     sideFighter->setDstRect(sideFighterDstRect);
-    
     
     MovingPathAnimation* sideFighterAnimationRight = (MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("sideFighterAnimationRight");
     MovingPathAnimator* sideFighterAnimatorRight = new MovingPathAnimator( "RightSideFighterAnimatorRight", sideFighter, sideFighterAnimationRight);

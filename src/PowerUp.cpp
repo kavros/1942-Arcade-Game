@@ -1,7 +1,7 @@
 #include "PowerUp.hpp"
 
-PowerUp::PowerUp(std::string id, PowerUpType _powerUpType, unsigned  _frameNo, SDL_Rect _dstRect,
-                 SDL_Point  _point,bool _isVisible,SpriteType _type,AnimationFilm* _currFilm)
+PowerUp::PowerUp(std::string id, PowerUpType _powerUpType, unsigned  _frameNo, SDL_Rect _dstRect,SDL_Point  _point,
+                 bool _isVisible,SpriteType _type,AnimationFilm* _currFilm)
 :Sprite(id, _frameNo, _dstRect, _point, _isVisible, _type, _currFilm){
     powerUpType = _powerUpType;
 }
@@ -21,8 +21,6 @@ void PowerUp::activatePowerUp(Sprite* arg){
         }
         case ENEMY_CRASH:
         {
-            
-            //notifyCollision(s);
             SpriteList* sl = SpritesHolder::getSprites(ALIEN_SHIP);
             for (std::list<Sprite*>::iterator it=sl->begin(); it != sl->end(); ++it){
                 
