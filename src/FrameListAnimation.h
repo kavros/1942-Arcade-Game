@@ -1,3 +1,5 @@
+#ifndef FrameListAnimation_hpp
+#define FrameListAnimation_hpp
 #include "MovingAnimation.h"
 #include <list>
 
@@ -24,3 +26,4 @@ public:
 		);
 
 };
+#endif
