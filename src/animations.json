@@ -49,20 +49,28 @@
                                       "id": "redPlaneTickAnimation1",
                                       "delay": 500,
                                       "repetitions": 4
+                                      },{
+                                      "id": "redPlaneTickAnimation2",
+                                      "delay": 500,
+                                      "repetitions": 4
+                                      },{
+                                      "id": "redPlaneTickAnimation3",
+                                      "delay": 500,
+                                      "repetitions": 4
                                       }
                                       ,{
                                       "id": "redPlaneTickAnimations",
                                       "delay": 10000,
-                                      "repetitions": 2
+                                      "repetitions": 4
                                       }
                                       ,{
                                       "id": "greenPlaneTickAnimation",
                                       "delay": 2000,
-                                      "repetitions": 4
+                                      "repetitions": 2
                                       }
                                       ,{
                                       "id": "greenDoubleEnginePlaneTickAnimation",
-                                      "delay": 10000,
+                                      "delay": 5000,
                                       "repetitions": 4
                                       },{
                                       "id": "endOfTheStageTickAnimation",
