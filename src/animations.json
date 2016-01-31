@@ -41,10 +41,9 @@
                                       "id": "redPlaneTickAnimation",
                                       "delay": 500,
                                       "repetitions": 4
-                                      }
-                                      ,{
+                                      },{
                                       "id": "redPlaneTickAnimations",
-                                      "delay": 1000,
+                                      "delay": 10000,
                                       "repetitions": 2
                                       }
                                       ,{
