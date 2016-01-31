@@ -18,27 +18,37 @@ Sprite(id,frameNo,dstRect,point,isVisible,type,currFilm)
     setFrame(frameNo);
     setState(STARTING);
     setEnemyFireEnable(true);
-    _enemyType = e;
-
-    this->remainingBullets = remainingBullets;
+    setEnemyFighterType(e);
+    
+    setRemainingBullets(remainingBullets);
+    
+    setBulletFrame(0);
     
     setAnimationEnemyBulletFilm( AnimationFilmHolder::Get()->GetFilm("bullets") );
-    
-    //hardcoded
     
     _enemyBulletDstRect.x=this->getDstRect().x + (this->_enemyBulletDstRect.w/4);
     _enemyBulletDstRect.y=this->getDstRect().y + this->_enemyBulletDstRect.h;
     _enemyBulletDstRect.w= dstRect.w ;//_currFilm->getFrameBox(0).w;
     _enemyBulletDstRect.h= dstRect.h; //_currFilm->getFrameBox(0).h;
-    //_enemyBulletDstRect.w=animationEnemyBulletFilm->getFrameBox(0).w * Game::getSpriteSize() *2;
-   //_enemyBulletDstRect.h=animationEnemyBulletFilm->getFrameBox(0).h * Game::getSpriteSize()*2;
-    _enemyBulletDstRect.x=10;
-    _enemyBulletDstRect.y=10;
-    _enemyBulletDstRect.w=10;
-    _enemyBulletDstRect.h=10;
     
-    //this->addCollisionHandler(Sprite::touchHandler());
+    this->addCollisionHandler(Sprite::touchHandler());
     
+}
+
+unsigned EnemyFighter::getBulletFrame(){
+    return this->bulletFrame;
+}
+
+void EnemyFighter::setBulletFrame(unsigned frame){
+    this->bulletFrame = frame;
+}
+
+unsigned EnemyFighter::getRemainingBullets(){
+    return this->remainingBullets;
+}
+
+void EnemyFighter::setRemainingBullets(unsigned bullets){
+    this->remainingBullets = bullets;
 }
 
 enum EnemyFighterType EnemyFighter::getEnemyFighterType(){
@@ -58,21 +68,34 @@ void EnemyFighter::setEnemyFireEnable(bool fire){
     enemyFireEnable = fire;
 }
 
+void EnemyFighter::setEnemyFighterType(enum EnemyFighterType type){
+    this->_enemyType = type;
+}
+
+
 SDL_Rect EnemyFighter::getEnemyBulletDstRect(int frame){
 
     assert(!this->isOutOfWindow());
     
-    //_enemyBulletDstRect.x=(this->getDstRect().x + this->getDstRect().w/2 - _enemyBulletDstRect.w/2);
-    //_enemyBulletDstRect.y=this->getDstRect().y + this->getEnemyFighterHeight()/3;
+    _enemyBulletDstRect.x=(this->getDstRect().x + this->getDstRect().w/2 - _enemyBulletDstRect.w/2);
+    _enemyBulletDstRect.y=this->getDstRect().y + this->getDstRect().h/3;
 
-    _enemyBulletDstRect.x=10;
-    _enemyBulletDstRect.y=10;
-    _enemyBulletDstRect.w=10;
-    _enemyBulletDstRect.h=10;
     return _enemyBulletDstRect;
 }
 
 bool EnemyFighter::getEnemyFireEnable(){
+    
+    setEnemyFireEnable(false);
+    
+    if( getRemainingBullets() != 0){
+        unsigned r = rand() % 3; // r in the range 0 to 3
+        cout<<r;
+        if( r == 1 ){
+            setRemainingBullets( getRemainingBullets() - 1);
+            setEnemyFireEnable(true);
+        }
+    }
+    
     return enemyFireEnable;
 }
 
@@ -86,13 +109,9 @@ void EnemyFighter::setAnimationEnemyBulletFilm(AnimationFilm* film){
 }
 
 void EnemyFighter::fire(void){
-    /*
-    if( remainingBullets == 0)
-        return;
     
-    remainingBullets--;
-    */
-    return;
+    if(! getEnemyFireEnable() )
+        return;
     
     assert(this->isAlive() && !this->isOutOfWindow() && this->getVisibility());
     
@@ -101,17 +120,14 @@ void EnemyFighter::fire(void){
     string animatorEnemyFireId = "animatorEnemyFire_" + std::to_string (number);
     number++;
     
-    cout << spriteEnemyFireId <<" fire\n";
-
     AnimationFilm* fireAnimationFilm = AnimationFilmHolder::Get()->GetFilm("bullets");
     assert(fireAnimationFilm);
-    
-    unsigned bulletFrameNo = 0;
-    
-    Sprite* enemyBullet = new Sprite(spriteEnemyFireId, bulletFrameNo, getEnemyBulletDstRect(bulletFrameNo), {0,0}, true, ALIEN_SHIP, fireAnimationFilm);
+        
+    Sprite* enemyBullet = new EnemyFighter(spriteEnemyFireId, getBulletFrame(), getEnemyBulletDstRect(getBulletFrame()), {0,0}, true, ALIEN_SHIP, fireAnimationFilm,
+                                           BULLET,0);
     assert(enemyBullet);
     assert(!enemyBullet->isOutOfWindow());
-    /*
+    
     //play sound for fire
     SoundHolder::playSound("gunshot");
     
@@ -123,10 +139,9 @@ void EnemyFighter::fire(void){
     assert(fireAnimator);
     
     fireAnimator->start(Game::getGameTime());
-    */
-   // enemyBullet->addCollisionHandler(Sprite::fireHandler());
     
-    
+    enemyBullet->addCollisionHandler(Sprite::fireHandler());
+
 }
 
 void EnemyFighter::createPowerUp(){

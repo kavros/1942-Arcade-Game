@@ -27,16 +27,18 @@ enum EnemyFighterType{
     MED_GREY_DOUBLE_ENG = 11,
     MED_GREY_TRIPLE_ENG = 12,
     BIG_GREEN = 13,
-    BIG_GREY = 14
+    BIG_GREY = 14,
+    BULLET = 15
     
 };
 class EnemyFighter:public Sprite{
     
 private:
     enum EnemyFighterType _enemyType;
-    SDL_Rect _enemyBulletDstRect;
     bool enemyFireEnable;
     unsigned remainingBullets;
+    unsigned bulletFrame;
+    SDL_Rect _enemyBulletDstRect;
     AnimationFilm* animationEnemyBulletFilm;
     
 public:
@@ -49,11 +51,16 @@ public:
     enum EnemyFighterType getEnemyFighterType();
     bool getEnemyFireEnable();
     AnimationFilm* getAnimationEnemyBulletFilm();
-    
+    unsigned getRemainingBullets();
+    unsigned getBulletFrame();
+
     //set
     void setFrame(unsigned i) override;
     void setEnemyFireEnable(bool fire);
     void setAnimationEnemyBulletFilm(AnimationFilm* film);
+    void setEnemyFighterType(enum EnemyFighterType type);
+    void setRemainingBullets(unsigned bullets);
+    void setBulletFrame(unsigned frame);
 
     //functionallity
     void fire();

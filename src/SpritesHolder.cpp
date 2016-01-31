@@ -129,7 +129,7 @@ using namespace rapidjson;
 
 void    SpritesHolder::Load (const std::string& cataloge/*,SDL_Renderer* _renderer*/){
     std::string line, text;
-    
+
     static  std::string  dataFilePath = SRC_PATH + string(cataloge);
     
     std::ifstream file(dataFilePath);
@@ -152,8 +152,7 @@ void    SpritesHolder::Load (const std::string& cataloge/*,SDL_Renderer* _render
     assert(document["Sprites"].IsArray());
     //assert(document["Sprites"][1].IsObject());
     const Value& sprites = document["Sprites"];
-    for (rapidjson::SizeType i = 0; i < sprites.Size(); i++)
-    {
+    for (rapidjson::SizeType i = 0; i < sprites.Size(); i++){
         const Value& sprite = sprites[i];
         //id
         std::string id = sprite["id"].GetString();
@@ -192,10 +191,11 @@ void    SpritesHolder::Load (const std::string& cataloge/*,SDL_Renderer* _render
             enum EnemyFighterType e = EnemyFighterType(sprite["enemyType"].GetInt());
             new EnemyFighter(id, frameNo, destRect, point, isVisible, spriteType,animationFilm,e,remainingBullets);
             
-        }else
+        }else{
             new Sprite(id, frameNo, destRect, point, isVisible, spriteType,animationFilm);
+        }
     }
-
+    
 }
 
 void SpritesHolder::checkSpritesForDelete(){
