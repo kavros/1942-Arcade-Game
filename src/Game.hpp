@@ -108,7 +108,7 @@ public:
     static void updateHighScoreSprite();
     static void updateScoreSprite();
 	//static void updateGrayJetAnimation(MovingPathAnimator*, MovingPathAnimation*);
-	static void UpdateAllGrayJetAnimations();
+	//static void UpdateAllGrayJetAnimations();
 
     //set
     static void setState(GameState gameState);
