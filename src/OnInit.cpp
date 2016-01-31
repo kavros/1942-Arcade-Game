@@ -59,9 +59,7 @@ void Game::InitGame(){
     InitBackground();
     
     InitGameInfo();
-    
-	//InitSuperAceAnimator();
-    
+        
     AnimatorHolder::startTimeTickAnimators();
 }
 
