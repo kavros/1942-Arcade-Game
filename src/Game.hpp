@@ -107,7 +107,7 @@ public:
     static void updateHighScoreJson(const std::string& cataloge);
     static void updateHighScoreSprite();
     static void updateScoreSprite();
-	static void updateGrayJetAnimation(MovingPathAnimator* a, MovingPathAnimation*b);
+	//static void updateGrayJetAnimation(MovingPathAnimator*, MovingPathAnimation*);
 	static void UpdateAllGrayJetAnimations();
 
     //set

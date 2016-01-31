@@ -966,11 +966,6 @@
                             "spriteId": "RedJet34"
                             
                             },{
-                            "id": "SuperAceEndingAnimator",
-                            "animationId": "superAceEndingAnimation",
-                            "spriteType": 3,
-                            "spriteId": "SuperAce"
-                            },{
                             "id": "GrayJetAnimator0",
                             "animationId": "minGrayJetAnimation0",
                             "spriteType": 4,
