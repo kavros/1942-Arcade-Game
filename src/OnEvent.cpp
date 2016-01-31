@@ -385,7 +385,8 @@ void Game::pauseManager(SDL_Event* event){
             
             SpriteStringHolder::getSpriteString("pause")->setVisibility(false);
             SpriteStringHolder::getSpriteString("exit")->setVisibility(false);
-            
+            s->setVisibility(false);
+  
             firstTime = true;
         }
         else if (event->key.keysym.sym == SDLK_SPACE){
