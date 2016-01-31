@@ -60,6 +60,6 @@ void SoundHolder::cleanUp(){
 }
 
 void SoundHolder::playSound(string id){
-    Mix_PlayChannel(-1, SoundHolder::getSound(id) , 0);
+    //Mix_PlayChannel(-1, SoundHolder::getSound(id) , 0);
 }
 
