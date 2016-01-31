@@ -94,8 +94,7 @@ bool Game::InitData(){
     AnimationFilmHolder* anFh = AnimationFilmHolder::Get();
 	anFh->Load("films.json", _renderer);
     
-    SpritesHolder* sh = SpritesHolder::getSpritesHolder();
-    sh->Load("sprites.json");
+    SpritesHolder::Load("sprites.json");
     
     AnimationHolder* anh = AnimationHolder::getAnimationHolder();
     anh->Load("animations.json");
@@ -130,7 +129,7 @@ void    Game::LoadGameInfo (const std::string& cataloge){
     const char* data = text.c_str();
     
     
-    SuperAce* superAce = (SuperAce*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce");
+    SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce");
     Document document;
     document.Parse(data);
     assert(document.IsObject());
@@ -187,7 +186,7 @@ bool Game::InitGameInfo(){
     SpriteStringHolder::addSpriteString("fpsString", new SpriteString("FPS",450,10));
     SpriteStringHolder::addSpriteString("fps", new SpriteString("0000",450,30));
 
-    SuperAce* superAce = (SuperAce*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce");
+    SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce");
     std::string remainingLoopsString = "";
     for(int i = 0; i < superAce->getSuperAceLoops(); i++){
        remainingLoopsString += "R";

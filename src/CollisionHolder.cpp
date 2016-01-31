@@ -109,7 +109,7 @@ void Sprite::touchPowerUpHandler::operator()(Sprite* powerUp,Sprite* arg) const{
     if( !powerUp->getVisibility() || !arg->getVisibility())
         return;
     
-    SuperAce* superAce = (SuperAce*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce");
+    SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce");
 
     if( superAce == arg ){
         powerUp->setVisibility(false);

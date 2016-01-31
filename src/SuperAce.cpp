@@ -67,9 +67,11 @@ void SuperAce::setBulletFrame(unsigned int _bulletFrame){
 }
 
 void SuperAce::fire(void){
-    static string str = "spriteSuperAceFire";
+
     static int number = 0;
-    string spriteSuperAceFireId = str + std::to_string (number);
+    string spriteSuperAceFireId = "spriteSuperAceFire" + std::to_string (number);
+    string animatorSuperAceFireId = "animatorSuperAceFire" + std::to_string (number);
+
     number++;
     
     AnimationFilm* fireAnimationFilm = AnimationFilmHolder::Get()->GetFilm("bullets");
@@ -85,7 +87,7 @@ void SuperAce::fire(void){
     Animation* fireAnimation = AnimationHolder::getAnimationHolder()->getAnimation("superAceFire");
     assert(fireAnimation);
     
-    MovingAnimator* fireAnimator = new MovingAnimator("animatorFire", bullet, (MovingAnimation*)fireAnimation);
+    MovingAnimator* fireAnimator = new MovingAnimator(animatorSuperAceFireId, bullet, (MovingAnimation*)fireAnimation);
     assert(fireAnimator);
     
     fireAnimator->start(Game::getGameTime());
@@ -105,7 +107,7 @@ void SuperAce::doManeuever(void){
     }
 
     MovingPathAnimator* superAceAnimatorManeuever = (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorManeuver");
-    SuperAce* superAce = (SuperAce*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce");
+    SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce");
     int loops = superAce->getSuperAceLoops();
 	
     if (loops > 0){
@@ -218,9 +220,10 @@ SDL_Rect SideFighter::getSideFightertBulletDstRect(unsigned int bulletFrame){
 void SideFighter::fire (void) {
     
     /* spawn bullet */
-    static string str = "spriteSideSuperAceFire";
     static int number = 0;
-    string spriteSideFighterFireId = str + std::to_string (number);
+    string spriteSideFighterFireId = "spriteSideSuperAceFire" + std::to_string (number);
+    string animatorSideFighterFireId = "animatorSideSuperAceFire" + std::to_string (number);
+    
     number++;
     
     unsigned int bulletFrame = 1;
@@ -239,7 +242,7 @@ void SideFighter::fire (void) {
     Animation* fireAnimation = AnimationHolder::getAnimationHolder()->getAnimation("superAceFire");
     assert(fireAnimation);
     
-    MovingAnimator* fireAnimator = new MovingAnimator("animatorFire", bullet, (MovingAnimation*)fireAnimation);
+    MovingAnimator* fireAnimator = new MovingAnimator(animatorSideFighterFireId, bullet, (MovingAnimation*)fireAnimation);
     assert(fireAnimator);
     
     fireAnimator->start(Game::getGameTime());

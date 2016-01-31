@@ -3,7 +3,7 @@
 #include "EnemyFighter.hpp"
 #include "SpritesHolder.hpp"
 
- SpritesHolder* SpritesHolder::_holder;
+SpritesHolder* SpritesHolder::_holder = 0;
 
 SpritesHolder::SpritesHolder(){
     
@@ -20,22 +20,38 @@ SpritesHolder::~SpritesHolder(){
 }
 
 void SpritesHolder::add(Sprite *s){
-    assert(s && s->getType()>=0 && s->getType()<= SpriteType(SPRITE_TYPE_SIZE) );
-   /*
-    if (_sprites[s->getType()] == nullptr) {
-        _sprites[s->getType()] = new SpriteList();
-    }
-    */
-    _sprites[s->getType()]->push_back(s);
     
+    assert(s && s->getType()>=0 && s->getType()< SpriteType(SPRITE_TYPE_SIZE) );
+
+    SpritesHolder* h = SpritesHolder::getSpritesHolder();
+    SpriteList* sl = h->getSprites(s->getType());
+    
+    assert(h && sl);
+
+    if(s->getType() == ALIEN_SHIP ){
+        ;
+    }
+    
+    sl->push_back(s);
+    ;
 }
 
 void SpritesHolder::remove(Sprite *s){
-    _sprites[s->getType()]->remove(s);
+    SpritesHolder* h = SpritesHolder::getSpritesHolder();
+    SpriteList* sl = h->getSprites(s->getType());
+    
+    assert(h && sl);
+    
+    sl->remove(s);
 }
 
 Sprite* SpritesHolder::getSprite(SpriteType type, std::string id){
-   SpriteList* sl = SpritesHolder::getSprites(type);
+
+    SpritesHolder* h = SpritesHolder::getSpritesHolder();
+    SpriteList* sl = h->getSprites(type);
+    
+    assert(h && sl);
+    
     for (std::list<Sprite*>::iterator it=sl->begin(); it != sl->end(); ++it){
         
         if((*it)->getId().compare(id) == 0)
@@ -46,7 +62,12 @@ Sprite* SpritesHolder::getSprite(SpriteType type, std::string id){
 }
 
 void SpritesHolder::printSprites(SpriteType type){
-    SpriteList* sl = SpritesHolder::getSprites(type);
+
+    SpritesHolder* h = SpritesHolder::getSpritesHolder();
+    SpriteList* sl = h->getSprites(type);
+    
+    assert(h && sl);
+    
     cout<<endl<<endl;
     for (std::list<Sprite*>::iterator it=sl->begin(); it != sl->end(); ++it){
         cout<<(*it)->getId()<<endl;
@@ -55,25 +76,31 @@ void SpritesHolder::printSprites(SpriteType type){
 }
 
 SpritesHolder* SpritesHolder::getSpritesHolder(){
-    if (!SpritesHolder::_holder){
-        SpritesHolder::_holder = new SpritesHolder();
+    if (!_holder){
+        _holder = new SpritesHolder();
     }
-    return SpritesHolder::_holder;
+    return _holder;
 }
 
 SpriteList * SpritesHolder::getSprites(SpriteType type){
     assert(type>=0 && type<=SpriteType(SPRITE_TYPE_SIZE) );
 
-    SpriteByType::const_iterator i = _sprites.find(type);
+    SpritesHolder* h = SpritesHolder::getSpritesHolder();
+
+    SpriteByType::const_iterator i = h->_sprites.find(type);
     
-    return i != _sprites.end() ? i->second : nullptr;
+    return i != h->_sprites.end() ? i->second : nullptr;
     
 }
 
 void SpritesHolder::displaySprites(SDL_Renderer* renderer, SpriteType type){
     assert(type>=0 && type<=SpriteType(SPRITE_TYPE_SIZE) );
     
-    SpriteList* sl = SpritesHolder::getSprites(type);
+    SpritesHolder* h = SpritesHolder::getSpritesHolder();
+    SpriteList* sl = h->getSprites(type);
+    
+    assert(h && sl);
+    
     if(!sl){
         return;
     }

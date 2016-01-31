@@ -11,7 +11,7 @@ void Game::OnLoop() {
             break;
         case SINGLEPLAYER_GAME:{
             
-            SuperAce* superAce = (SuperAce*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce");
+            SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce");
             //cout << superAce->getState()<<endl;
             
             if(superAce->getState() == IN_COLUSION ){

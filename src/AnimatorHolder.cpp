@@ -100,8 +100,7 @@ Animator* AnimatorHolder::getAnimator(animid_t id){
 
 void AnimatorHolder::triggerBullets(){
     
-    SpritesHolder* h = SpritesHolder::getSpritesHolder();
-    SpriteList * sl = h->getSprites(ALIEN_SHIP);
+    SpriteList * sl = SpritesHolder::getSprites(ALIEN_SHIP);
 
     SpriteList::const_iterator it = sl->begin();
 
@@ -117,10 +116,15 @@ void AnimatorHolder::triggerBullets(){
 
 void AnimatorHolder::createExplosion(SDL_Rect dstRect){
     
+    static int nameId=0;
+    string spriteExplosionId = "spriteExplosionId" + std::to_string(nameId);
+    string animatorExplosionId = "animatorExplosionId" + std::to_string(nameId);
+    nameId++;
+    
     AnimationFilm* fireAnimationFilm = AnimationFilmHolder::Get()->GetFilm("explosion");
     assert(fireAnimationFilm);
     
-    Sprite* explosion = new Sprite("explosionSprite", 0, dstRect, {0,0}, true, POWER_UPS, fireAnimationFilm);
+    Sprite* explosion = new Sprite(spriteExplosionId, 0, dstRect, {0,0}, true, POWER_UPS, fireAnimationFilm);
     assert(explosion);
     
     SoundHolder::playSound("explosion");
@@ -128,7 +132,7 @@ void AnimatorHolder::createExplosion(SDL_Rect dstRect){
     Animation* explosionAnimation = AnimationHolder::getAnimationHolder()->getAnimation("explosion");
     assert(explosionAnimation);
     
-    MovingPathAnimator* explosionAnimator = new MovingPathAnimator("animatorExplosion", explosion, (MovingPathAnimation*)explosionAnimation);
+    MovingPathAnimator* explosionAnimator = new MovingPathAnimator(animatorExplosionId, explosion, (MovingPathAnimation*)explosionAnimation);
     assert(explosionAnimator);
     
     explosionAnimator->start(Game::getGameTime());
@@ -287,7 +291,7 @@ void    AnimatorHolder::Load (const std::string& cataloge){
         SpriteType spriteType = SpriteType(st);
         assert( st < SPRITE_TYPE_SIZE );
         
-        Sprite* sprite= SpritesHolder::getSpritesHolder()->getSprite(spriteType, spriteId);
+        Sprite* sprite= SpritesHolder::getSprite(spriteType, spriteId);
         assert(sprite);
         MovingPathAnimation* animation = (MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation(animationId);
         assert(animation);

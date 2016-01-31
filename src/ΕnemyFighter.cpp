@@ -111,7 +111,7 @@ void EnemyFighter::fire(void){
     Sprite* enemyBullet = new Sprite(spriteEnemyFireId, bulletFrameNo, getEnemyBulletDstRect(bulletFrameNo), {0,0}, true, ALIEN_SHIP, fireAnimationFilm);
     assert(enemyBullet);
     assert(!enemyBullet->isOutOfWindow());
-    
+    /*
     //play sound for fire
     SoundHolder::playSound("gunshot");
     
@@ -123,13 +123,19 @@ void EnemyFighter::fire(void){
     assert(fireAnimator);
     
     fireAnimator->start(Game::getGameTime());
-    
+    */
    // enemyBullet->addCollisionHandler(Sprite::fireHandler());
     
     
 }
 
 void EnemyFighter::createPowerUp(){
+    
+    static int nameId=0;
+    string spritePowerUpId = "spritePowerUpId" + std::to_string(nameId);
+    string animatorPowerUpId = "animatorPowerUpId" + std::to_string(nameId);
+    nameId++;
+    
     AnimationFilm* powerUpAnimationFilm = AnimationFilmHolder::Get()->GetFilm("powerUps");
     assert(powerUpAnimationFilm);
     Sprite* powerUp;
@@ -137,7 +143,7 @@ void EnemyFighter::createPowerUp(){
     PowerUpType powerUpType = PowerUpType(Game::getNextPowerUpType());
     unsigned powerUpFrameNo = powerUpType;
 
-	powerUp = new PowerUp("powerUpSprite", powerUpType, powerUpFrameNo, { getDstRect().x, getDstRect().y, getDstRect().w, getDstRect().h }, { 0, 0 }, true, POWER_UPS, powerUpAnimationFilm);
+	powerUp = new PowerUp(spritePowerUpId, powerUpType, powerUpFrameNo, { getDstRect().x, getDstRect().y, getDstRect().w, getDstRect().h }, { 0, 0 }, true, POWER_UPS, powerUpAnimationFilm);
 
     assert(powerUp);
     
@@ -151,7 +157,7 @@ void EnemyFighter::createPowerUp(){
     assert(powerUpAnimation);
 
     //powerUpAnimator
-    MovingAnimator* powerUpAnimator = new MovingAnimator("powerUpAnimator", powerUp, (MovingAnimation*)powerUpAnimation);
+    MovingAnimator* powerUpAnimator = new MovingAnimator(animatorPowerUpId, powerUp, (MovingAnimation*)powerUpAnimation);
     assert(powerUpAnimator);
     
     powerUpAnimator->start(Game::getGameTime());

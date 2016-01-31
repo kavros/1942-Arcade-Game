@@ -12,7 +12,7 @@ PowerUpType PowerUp::getPowerUpType(){
 }
 
 void PowerUp::activatePowerUp(Sprite* arg){
-    SuperAce* superAce = (SuperAce*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce");
+    SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce");
 
     switch ( getPowerUpType() ){
         case QUAD_GUN:{
@@ -23,7 +23,7 @@ void PowerUp::activatePowerUp(Sprite* arg){
         {
             
             //notifyCollision(s);
-            SpriteList* sl = SpritesHolder::getSpritesHolder()->getSprites(ALIEN_SHIP);
+            SpriteList* sl = SpritesHolder::getSprites(ALIEN_SHIP);
             for (std::list<Sprite*>::iterator it=sl->begin(); it != sl->end(); ++it){
                 
                 if((*it)->getVisibility() && !(*it)->isOutOfWindow()){
@@ -49,7 +49,7 @@ void PowerUp::activatePowerUp(Sprite* arg){
         SpriteStringHolder::getSpriteString("remainingLives")->changeString(_remainingLives, +5/*WIN_WIDTH - loops*12 -5*/, WIN_HEIGHT -15);}
             break;
         case NO_ENEMY_BULLETS:{
-            SpriteList* sl = SpritesHolder::getSpritesHolder()->getSprites(ALIEN_SHIP);
+            SpriteList* sl = SpritesHolder::getSprites(ALIEN_SHIP);
             SpriteList::const_iterator it = sl->begin();
             while ( it != sl->end() ){
                 if(((EnemyFighter*)(*it))->getEnemyFighterType() != EnemyFighterType(BIG_GREEN) ||

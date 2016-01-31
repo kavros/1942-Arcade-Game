@@ -47,7 +47,7 @@ void Background::initBackgroundObjects(){
 
 void Background::addBackgroundObject(string id){
     Sprite* s;
-    s= SpritesHolder::getSpritesHolder()->getSprite(TERRAIN, id);
+    s= SpritesHolder::getSprite(TERRAIN, id);
     assert(s);
     _terrainObjects->push_back(s);
 }
@@ -81,7 +81,7 @@ void Background::moveTerrainObjects(int dx, int dy){
 }
 
 void Background::displayTerrain(SDL_Renderer* renderer){
-    SpritesHolder::getSpritesHolder()->displaySprites(renderer, TERRAIN);
+    SpritesHolder::displaySprites(renderer, TERRAIN);
     
     if(_terrainObjects->empty()){
         return;
