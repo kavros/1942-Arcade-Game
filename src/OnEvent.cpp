@@ -198,19 +198,32 @@ void Game::OnEvent(SDL_Event* event) {
 
 
 
-
-
-
+/*
+ SpriteStringHolder::addSpriteString("exit", new SpriteString("EXIT", (WIN_WIDTH / 2 -(5*6)), (WIN_HEIGHT / 2 - 20) ) );
+ SpriteStringHolder::getSpriteString("exit")->setVisibility(false);
+ SpriteStringHolder::addSpriteString("pause", new SpriteString("PAUSE", (WIN_WIDTH / 2 -(5*6)), (WIN_HEIGHT / 2) ) );
+ SpriteStringHolder::getSpriteString("pause")->setVisibility(false);
+ */
 void Game::pauseManager(SDL_Event* event){
     static bool firstTime = true;
+    Sprite* s = SpritesHolder::getSprite(GAME_INFO , "spriteInfoPlane");
+    assert(s);
+    
+    unsigned x = WIN_WIDTH / 2 -(5*6) - 20;
+    s->setDstRectX( x );
+
+    unsigned down_y = WIN_HEIGHT / 2 - 3;
+    unsigned up_y = WIN_HEIGHT / 2 - 20;
     
     if( firstTime ){
         AnimatorHolder::pauseAnimators();
         
-        SpriteStringHolder::getSpriteString("pause")->setVisibility(true);
         SpriteStringHolder::getSpriteString("exit")->setVisibility(true);
-        SpriteStringHolder::getSpriteString("currsorUp")->setVisibility(false);
-        SpriteStringHolder::getSpriteString("currsorDown")->setVisibility(true);
+        SpriteStringHolder::getSpriteString("pause")->setVisibility(true);
+        
+        /*down*/
+        s->setDstRectY( down_y );
+        s->setVisibility(true);
         
         SpriteStringHolder::getSpriteString("startingReadyLogo")->setVisibility(false);
         SpriteStringHolder::getSpriteString("startingPlayerLogo")->setVisibility(false);
@@ -223,16 +236,14 @@ void Game::pauseManager(SDL_Event* event){
         
         //navigation
         if (event->key.keysym.sym == SDLK_UP || event->cbutton.button == SDL_CONTROLLER_BUTTON_DPAD_UP){
-            if( SpriteStringHolder::getSpriteString("currsorDown")->getVisibility() == true ){
-                SpriteStringHolder::getSpriteString("currsorUp")->setVisibility(true);
-                SpriteStringHolder::getSpriteString("currsorDown")->setVisibility(false);
+            if( s->getDstRect().y == down_y ){
+                s->setDstRectY( up_y );
             }
             return;
         }
         if (event->key.keysym.sym == SDLK_DOWN || event->cbutton.button == SDL_CONTROLLER_BUTTON_DPAD_DOWN){
-            if( SpriteStringHolder::getSpriteString("currsorUp")->getVisibility() == true ){
-                SpriteStringHolder::getSpriteString("currsorUp")->setVisibility(false);
-                SpriteStringHolder::getSpriteString("currsorDown")->setVisibility(true);
+            if( s->getDstRect().y == up_y ){
+                s->setDstRectY( down_y );
             }
             return;
         }
@@ -244,25 +255,22 @@ void Game::pauseManager(SDL_Event* event){
             
             SpriteStringHolder::getSpriteString("pause")->setVisibility(false);
             SpriteStringHolder::getSpriteString("exit")->setVisibility(false);
-            SpriteStringHolder::getSpriteString("currsorUp")->setVisibility(false);
-            SpriteStringHolder::getSpriteString("currsorDown")->setVisibility(false);
             
             firstTime = true;
         }
         else if (event->key.keysym.sym == SDLK_SPACE){
-            if( SpriteStringHolder::getSpriteString("currsorDown")->getVisibility() == true ){
+            if( s->getDstRect().y == down_y ){
                 AnimatorHolder::wakeUpAnimators(getGameTime());
                 setState(SINGLEPLAYER_GAME);
             }
-            else if( SpriteStringHolder::getSpriteString("currsorUp")->getVisibility() == true ){
+            else if(  s->getDstRect().y == up_y ){
                 //kill the animators
                 setState(EXIT);
             }
             
             SpriteStringHolder::getSpriteString("pause")->setVisibility(false);
             SpriteStringHolder::getSpriteString("exit")->setVisibility(false);
-            SpriteStringHolder::getSpriteString("currsorUp")->setVisibility(false);
-            SpriteStringHolder::getSpriteString("currsorDown")->setVisibility(false);
+            s->setVisibility(false);
             
             firstTime = true;
         }
