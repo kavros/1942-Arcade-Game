@@ -208,142 +208,26 @@ void Game::OnEvent(SDL_Event* event) {
     
 }
 
-void Game::UpdateAllGrayJetAnimations(){
-	MovingPathAnimator* grayJetAnimator_0 =
-		(MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator("GrayJetAnimator0");
-	MovingPathAnimation* grayJetAnimation_0 =
-		(MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("minGrayJetAnimation0");
-	
-	
-	updateGrayJetAnimation(grayJetAnimator_0, grayJetAnimation_0);
-
-
-	MovingPathAnimator* grayJetAnimator_1 =
-		(MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator("GrayJetAnimator1");
-	MovingPathAnimation* grayJetAnimation_1 =
-		(MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("minGrayJetAnimation1");
-
-
-	updateGrayJetAnimation(grayJetAnimator_1, grayJetAnimation_1);
-
-	MovingPathAnimator* grayJetAnimator_2 =
-		(MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator("GrayJetAnimator2");
-	MovingPathAnimation* grayJetAnimation_2 =
-		(MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("minGrayJetAnimation2");
-
-
-	updateGrayJetAnimation(grayJetAnimator_2, grayJetAnimation_2);
-
-	MovingPathAnimator* grayJetAnimator_3 =
-		(MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator("GrayJetAnimator3");
-	MovingPathAnimation* grayJetAnimation_3 =
-		(MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("minGrayJetAnimation3");
-
-
-    updateGrayJetAnimation(grayJetAnimator_3, grayJetAnimation_3);
-
-
-
-}
-void updateGrayJetAnimation(MovingPathAnimator* grayJetAnimator, MovingPathAnimation* grayJetAnimation){
-
-
-	SuperAce* superAce = (SuperAce*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce");
-
-	
-	assert(grayJetAnimator);
-	if (!grayJetAnimator->isAlive()){
-		return;
-	}
-
-	
-	
-	if (grayJetAnimation->getPath().front()._dy < 0){
-		return;
-	}
-
-	PathEntry path;
-	//path._dx = 1;
-	//path._dy = 0;
-	path._frame = grayJetAnimation->getPath().front()._frame;
-	path._delay = grayJetAnimation->getPath().front()._delay;
-	path._visibility = true;
-
-	
-
-	int superAcePositionOnX = superAce->getDstRect().x;
-	int grayJetPositionOnX = grayJetAnimator->getSprite()->getDstRect().x;
-
-
-	int grayJetPositionOnY = grayJetAnimator->getSprite()->getDstRect().y;
-	int SuperAcePositionOnY = superAce->getDstRect().y;
-
-
-
-
-	if (grayJetPositionOnX > superAcePositionOnX){
-		//an o superace einai pio aristera apo to gray kai
-		//to gray kinite deksia h den kinitai tote vale to na pigenei aristera
-		if (grayJetAnimation->getPath().front()._dx >= 0){
-			path._dx = -5;
-			path._dy = 5;
-			std::list<PathEntry> p;
-			p.push_front(path);
-			grayJetAnimation->setPath(p);
-		}
-	}
-	else if (grayJetPositionOnX < superAcePositionOnX){
-		if (grayJetAnimation->getPath().front()._dx <= 0){
-			path._dx = 5;
-			path._dy = 5;
-			std::list<PathEntry> p;
-			p.push_front(path);
-			grayJetAnimation->setPath(p);
-		}
-
-	}
-	else {
-		//do not move on x axis
-		if (grayJetAnimation->getPath().front()._dx != 0){
-
-			path._dx = 0;
-			path._dy = 5;
-			std::list<PathEntry> p;
-			p.push_front(path);
-			grayJetAnimation->setPath(p);
-		}
-	}
-
-
-	if (grayJetPositionOnY > SuperAcePositionOnY - 100){
-
-
-		if (grayJetAnimation->getPath().front()._dy > 0){
-			path._dy = -5;
-			path._dx = -5;
-			path._frame = 1;
-
-
-			std::list<PathEntry> p;
-			p.push_front(path);
-			grayJetAnimation->setPath(p);
-
-		}
-	}
-}
-
-
-
 void Game::pauseManager(SDL_Event* event){
     static bool firstTime = true;
+    Sprite* s = SpritesHolder::getSprite(GAME_INFO , "spriteInfoPlane");
+    assert(s);
+    
+    unsigned x = WIN_WIDTH / 2 -(5*6) - 20;
+    s->setDstRectX( x );
+
+    unsigned down_y = WIN_HEIGHT / 2 - 3;
+    unsigned up_y = WIN_HEIGHT / 2 - 20;
     
     if( firstTime ){
         AnimatorHolder::pauseAnimators();
         
-        SpriteStringHolder::getSpriteString("pause")->setVisibility(true);
         SpriteStringHolder::getSpriteString("exit")->setVisibility(true);
-        SpriteStringHolder::getSpriteString("currsorUp")->setVisibility(false);
-        SpriteStringHolder::getSpriteString("currsorDown")->setVisibility(true);
+        SpriteStringHolder::getSpriteString("pause")->setVisibility(true);
+        
+        /*down*/
+        s->setDstRectY( down_y );
+        s->setVisibility(true);
         
         SpriteStringHolder::getSpriteString("startingReadyLogo")->setVisibility(false);
         SpriteStringHolder::getSpriteString("startingPlayerLogo")->setVisibility(false);
@@ -356,16 +240,14 @@ void Game::pauseManager(SDL_Event* event){
         
         //navigation
         if (event->key.keysym.sym == SDLK_UP || event->cbutton.button == SDL_CONTROLLER_BUTTON_DPAD_UP){
-            if( SpriteStringHolder::getSpriteString("currsorDown")->getVisibility() == true ){
-                SpriteStringHolder::getSpriteString("currsorUp")->setVisibility(true);
-                SpriteStringHolder::getSpriteString("currsorDown")->setVisibility(false);
+            if( s->getDstRect().y == down_y ){
+                s->setDstRectY( up_y );
             }
             return;
         }
         if (event->key.keysym.sym == SDLK_DOWN || event->cbutton.button == SDL_CONTROLLER_BUTTON_DPAD_DOWN){
-            if( SpriteStringHolder::getSpriteString("currsorUp")->getVisibility() == true ){
-                SpriteStringHolder::getSpriteString("currsorUp")->setVisibility(false);
-                SpriteStringHolder::getSpriteString("currsorDown")->setVisibility(true);
+            if( s->getDstRect().y == up_y ){
+                s->setDstRectY( down_y );
             }
             return;
         }
@@ -377,25 +259,22 @@ void Game::pauseManager(SDL_Event* event){
             
             SpriteStringHolder::getSpriteString("pause")->setVisibility(false);
             SpriteStringHolder::getSpriteString("exit")->setVisibility(false);
-            SpriteStringHolder::getSpriteString("currsorUp")->setVisibility(false);
-            SpriteStringHolder::getSpriteString("currsorDown")->setVisibility(false);
             
             firstTime = true;
         }
         else if (event->key.keysym.sym == SDLK_SPACE){
-            if( SpriteStringHolder::getSpriteString("currsorDown")->getVisibility() == true ){
+            if( s->getDstRect().y == down_y ){
                 AnimatorHolder::wakeUpAnimators(getGameTime());
                 setState(SINGLEPLAYER_GAME);
             }
-            else if( SpriteStringHolder::getSpriteString("currsorUp")->getVisibility() == true ){
+            else if(  s->getDstRect().y == up_y ){
                 //kill the animators
                 setState(EXIT);
             }
             
             SpriteStringHolder::getSpriteString("pause")->setVisibility(false);
             SpriteStringHolder::getSpriteString("exit")->setVisibility(false);
-            SpriteStringHolder::getSpriteString("currsorUp")->setVisibility(false);
-            SpriteStringHolder::getSpriteString("currsorDown")->setVisibility(false);
+            s->setVisibility(false);
             
             firstTime = true;
         }

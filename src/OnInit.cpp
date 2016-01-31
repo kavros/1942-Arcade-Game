@@ -224,16 +224,10 @@ bool Game::InitGameInfo(){
     SpriteStringHolder::addSpriteString("startingPlayerLogo", new SpriteString("PLAYER", (WIN_WIDTH / 2)-40, (WIN_HEIGHT / 2)+20) );
     SpriteStringHolder::addSpriteString("numberOne", new SpriteString("1", (WIN_WIDTH / 2)+32, (WIN_HEIGHT / 2)+20) );
 
-    SpriteStringHolder::addSpriteString("pause", new SpriteString("PAUSE", (WIN_WIDTH / 2 -(5*6)), (WIN_HEIGHT / 2) ) );
-    SpriteStringHolder::getSpriteString("pause")->setVisibility(false);
     SpriteStringHolder::addSpriteString("exit", new SpriteString("EXIT", (WIN_WIDTH / 2 -(5*6)), (WIN_HEIGHT / 2 - 20) ) );
     SpriteStringHolder::getSpriteString("exit")->setVisibility(false);
-    
-    /*change letter M with a pointer*/
-    SpriteStringHolder::addSpriteString("currsorUp", new SpriteString("M", (WIN_WIDTH / 2 -(5*6) - 20), (WIN_HEIGHT / 2 - 20) ) );
-    SpriteStringHolder::getSpriteString("currsorUp")->setVisibility(false);
-    SpriteStringHolder::addSpriteString("currsorDown", new SpriteString("M", (WIN_WIDTH / 2 -(5*6) - 20), (WIN_HEIGHT / 2) ) );
-    SpriteStringHolder::getSpriteString("currsorDown")->setVisibility(false);
+    SpriteStringHolder::addSpriteString("pause", new SpriteString("PAUSE", (WIN_WIDTH / 2 -(5*6)), (WIN_HEIGHT / 2) ) );
+    SpriteStringHolder::getSpriteString("pause")->setVisibility(false);
     
     SpriteStringHolder::addSpriteString("shootingString", new SpriteString("SHOOTING", (WIN_WIDTH / 2) - 150, (WIN_HEIGHT / 2)) );
     SpriteStringHolder::getSpriteString("shootingString")->setVisibility(false);
