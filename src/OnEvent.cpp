@@ -63,7 +63,7 @@ void Game::OnEvent(SDL_Event* event) {
                 SpriteStringHolder::getSpriteString("startingReadyLogo")->setVisibility(false);
                 SpriteStringHolder::getSpriteString("startingPlayerLogo")->setVisibility(false);
                 SpriteStringHolder::getSpriteString("numberOne")->setVisibility(false);
-                
+                 
             }
             
             if (event->type == SDL_KEYDOWN || event->type == SDL_CONTROLLERBUTTONDOWN){
