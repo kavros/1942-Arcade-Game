@@ -2,7 +2,6 @@ TO DO LIST:
 
 	primary:
 		super ace lives ( continue lives lives==0 -> must restart the stage )
-		enemy fire ( create logic with timeTick )
 		create stage end ( after all of the animator's destructions )
 		dynamic animators using current player's position
 		chain animators ( automate examples )

@@ -88,8 +88,8 @@ bool EnemyFighter::getEnemyFireEnable(){
     setEnemyFireEnable(false);
     
     if( getRemainingBullets() != 0){
-        unsigned r = rand() % 3; // r in the range 0 to 3
-        cout<<r;
+        unsigned r = rand() % 3; // r in the range 0 to 2
+
         if( r == 1 ){
             setRemainingBullets( getRemainingBullets() - 1);
             setEnemyFireEnable(true);
