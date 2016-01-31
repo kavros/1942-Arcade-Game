@@ -98,16 +98,15 @@ Animator* AnimatorHolder::getAnimator(animid_t id){
 
 void AnimatorHolder::triggerBullets(){
     
-    //choose someone to fire
     SpritesHolder* h = SpritesHolder::getSpritesHolder();
     SpriteList * sl = h->getSprites(ALIEN_SHIP);
-    
-    SpriteList::iterator it = sl->begin();
-    
+
+    SpriteList::const_iterator it = sl->begin();
+
     while (it != sl->end()){
-        if( (*it)->getVisibility() && (*it)->isAlive() && (*it)->getState()!=IN_COLUSION ){
-            
+        if( (*it) && (*it)->getVisibility() && (*it)->isAlive() && !(*it)->isOutOfWindow() && (*it)->getState()!=IN_COLUSION ){
             ((EnemyFighter*)(*it))->fire();
+            break;
         }
         it++;
     }
