@@ -289,6 +289,15 @@
                         [295, 0, 20, 21 ],
                         [316, 0, 20, 21 ]
                         ]
+              },  {
+              "id": "min_gray_plane",
+              "path": "mini.png",
+              "rects": [
+                       
+						[208,0,17,14],
+						 [76, 0, 17	, 15 ]
+						
+                        ]
               },{
               "id": "Super.Ace.1942",
               "path": "super_ace/SuperAceAll.png",

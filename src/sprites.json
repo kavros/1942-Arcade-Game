@@ -23,6 +23,46 @@
                 "enemyType" : 0,
                 "animFilmId": "red_plane"
                 },{
+                "id": "MinGrayJet0",
+                "frameNo": 0,
+                "destRect": [0, 10, 17, 11],
+                "point": [0, 0],
+                "visible": false,
+                "spriteType": 4,
+                "remainingBullets": 10,
+                "enemyType" : 2,
+                "animFilmId": "min_gray_plane"
+                },{
+                "id": "MinGrayJet1",
+                "frameNo": 0,
+                "destRect": [50, 10, 17, 11],
+                "point": [0, 0],
+                "visible": false,
+                "spriteType": 4,
+                "remainingBullets": 10,
+                "enemyType" : 2,
+                "animFilmId": "min_gray_plane"
+                },{
+                "id": "MinGrayJet2",
+                "frameNo": 0,
+                "destRect": [100, 10, 17, 11],
+                "point": [0, 0],
+                "visible": false,
+                "spriteType": 4,
+                "remainingBullets": 10,
+                "enemyType" : 2,
+                "animFilmId": "min_gray_plane"
+                },{
+                "id": "MinGrayJet3",
+                "frameNo": 0,
+                "destRect": [400, 10, 17, 11],
+                "point": [0, 0],
+                "visible": false,
+                "spriteType": 4,
+                "remainingBullets": 10,
+                "enemyType" : 2,
+                "animFilmId": "min_gray_plane"
+                },{
                 "id": "RedJet1",
                 "frameNo": 0,
                 "destRect": [10, 20, 25, 25],

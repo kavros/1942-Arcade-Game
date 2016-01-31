@@ -34,7 +34,8 @@ enum GameState {
     MULTIPLAYER_GAME,
 	PAUSE_MENU,
 	EXIT,
-    GAME_OVER
+    GAME_OVER,
+	END_OF_STAGE
 };
 
 class Game{
@@ -106,7 +107,9 @@ public:
     static void updateHighScoreJson(const std::string& cataloge);
     static void updateHighScoreSprite();
     static void updateScoreSprite();
-    
+	static void updateGrayJetAnimation(MovingPathAnimator*, MovingPathAnimation*);
+	static void UpdateAllGrayJetAnimations();
+
     //set
     static void setState(GameState gameState);
     static void setScore(int s);

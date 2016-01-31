@@ -55,6 +55,10 @@
                                       "id": "endOfTheStageTickAnimation",
                                       "delay": 10000,
                                       "repetitions": 1
+                                      },{
+                                      "id": "grayPlaneTickAnimation",
+                                      "delay": 1000,
+                                      "repetitions": 4
                                       }
                                       
                                       
@@ -310,7 +314,48 @@
                                                       "visibility": false,
                                                       "delay": 90
                                                       }]
-                                            }, {
+                                            },{
+                                            "id": "minGrayJetAnimation0",
+                                            "continuous":true,
+                                            "paths": [{
+                                                      "dx": 0,
+                                                      "dy": 1,
+                                                      "visibility": true,
+                                                      "frameNo": 0,
+                                                      "delay": 90
+                                                      }]
+                                            },{
+                                            "id": "minGrayJetAnimation1",
+                                            "continuous":true,
+                                            "paths": [{
+                                                      "dx": 0,
+                                                      "dy": 1,
+                                                      "visibility": true,
+                                                      "frameNo": 0,
+                                                      "delay": 90
+                                                      }]
+                                            },{
+                                            "id": "minGrayJetAnimation2",
+                                            "continuous":true,
+                                            "paths": [{
+                                                      "dx": 0,
+                                                      "dy": 1,
+                                                      "visibility": true,
+                                                      "frameNo": 0,
+                                                      "delay": 90
+                                                      }]
+                                            },{
+                                            "id": "minGrayJetAnimation3",
+                                            "continuous":true,
+                                            "paths": [{
+                                                      "dx": 0,
+                                                      "dy": 1,
+                                                      "visibility": true,
+                                                      "frameNo": 0,
+                                                      "delay": 90
+                                                      }]
+                                            }
+											,{
                                             "id": "circle_250_250_30",
                                             "continuous":false,
                                             "paths": [{
@@ -745,6 +790,36 @@
                                                       "frameNo": 21,
                                                       "visibility": true,
                                                       "delay": 90
+                                                      },{
+                                                      "dx": 0,
+                                                      "dy": -1,
+                                                      "frameNo": 21,
+                                                      "visibility": true,
+                                                      "delay": 0
+                                                      },{
+                                                      "dx": 0,
+                                                      "dy": -1,
+                                                      "frameNo": 21,
+                                                      "visibility": true,
+                                                      "delay": 0
+                                                      },{
+                                                      "dx": 0,
+                                                      "dy": -1,
+                                                      "frameNo": 21,
+                                                      "visibility": true,
+                                                      "delay": 0
+                                                      },{
+                                                      "dx": 0,
+                                                      "dy": -1,
+                                                      "frameNo": 21,
+                                                      "visibility": true,
+                                                      "delay": 0
+                                                      },{
+                                                      "dx": 0,
+                                                      "dy": -1,
+                                                      "frameNo": 21,
+                                                      "visibility": true,
+                                                      "delay": 0
                                                       },{
                                                       "dx": 0,
                                                       "dy": -1,

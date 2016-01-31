@@ -1,5 +1,7 @@
 #include "Game.hpp"
 
+
+
 void Game::OnEvent(SDL_Event* event) {
     static SDL_Event prevEvent  = *event;
     
@@ -45,6 +47,7 @@ void Game::OnEvent(SDL_Event* event) {
 			MovingPathAnimator* superAceStartingAnimator = (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceStartingAnimator");
             assert(superAceStartingAnimator);
             
+
             if (superAce->getState() == STARTING){
                 superAceStartingAnimator->start(getGameTime());
 
@@ -63,10 +66,15 @@ void Game::OnEvent(SDL_Event* event) {
 			}
 
 			if (event->type == SDL_KEYDOWN || event->type == SDL_CONTROLLERBUTTONDOWN){
+
+
+			
 				
-				
-				
-		
+
+				UpdateAllGrayJetAnimations();
+
+
+				//cout << grayJetAnimator->getSprite()->getDstRect().y;
 				assert(superAce);
                 
                 
@@ -185,6 +193,9 @@ void Game::OnEvent(SDL_Event* event) {
 		case PAUSE_MENU:
             pauseManager(event);
 			break;
+		case END_OF_STAGE:
+			AnimatorHolder::pauseAnimators();
+			break;
         case EXIT:
             break;
         default:
@@ -194,8 +205,129 @@ void Game::OnEvent(SDL_Event* event) {
     
 }
 
+void Game::UpdateAllGrayJetAnimations(){
+	MovingPathAnimator* grayJetAnimator_0 =
+		(MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator("GrayJetAnimator0");
+	MovingPathAnimation* grayJetAnimation_0 =
+		(MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("minGrayJetAnimation0");
+	
+	
+	updateGrayJetAnimation(grayJetAnimator_0, grayJetAnimation_0);
 
 
+	MovingPathAnimator* grayJetAnimator_1 =
+		(MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator("GrayJetAnimator1");
+	MovingPathAnimation* grayJetAnimation_1 =
+		(MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("minGrayJetAnimation1");
+
+
+	updateGrayJetAnimation(grayJetAnimator_1, grayJetAnimation_1);
+
+	MovingPathAnimator* grayJetAnimator_2 =
+		(MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator("GrayJetAnimator2");
+	MovingPathAnimation* grayJetAnimation_2 =
+		(MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("minGrayJetAnimation2");
+
+
+	updateGrayJetAnimation(grayJetAnimator_2, grayJetAnimation_2);
+
+	MovingPathAnimator* grayJetAnimator_3 =
+		(MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator("GrayJetAnimator3");
+	MovingPathAnimation* grayJetAnimation_3 =
+		(MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("minGrayJetAnimation3");
+
+
+	updateGrayJetAnimation(grayJetAnimator_3, grayJetAnimation_3);
+
+
+
+}
+void Game::updateGrayJetAnimation(MovingPathAnimator* grayJetAnimator, MovingPathAnimation* grayJetAnimation){
+
+
+	SuperAce* superAce = (SuperAce*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce");
+
+	
+	assert(grayJetAnimator);
+	if (!grayJetAnimator->isAlive()){
+		return;
+	}
+
+	
+	
+	if (grayJetAnimation->getPath().front()._dy < 0){
+		return;
+	}
+
+	PathEntry path;
+	//path._dx = 1;
+	//path._dy = 0;
+	path._frame = grayJetAnimation->getPath().front()._frame;
+	path._delay = grayJetAnimation->getPath().front()._delay;
+	path._visibility = true;
+
+	
+
+	int superAcePositionOnX = superAce->getDstRect().x;
+	int grayJetPositionOnX = grayJetAnimator->getSprite()->getDstRect().x;
+
+
+	int grayJetPositionOnY = grayJetAnimator->getSprite()->getDstRect().y;
+	int SuperAcePositionOnY = superAce->getDstRect().y;
+
+
+
+
+	if (grayJetPositionOnX > superAcePositionOnX){
+		//an o superace einai pio aristera apo to gray kai
+		//to gray kinite deksia h den kinitai tote vale to na pigenei aristera
+		if (grayJetAnimation->getPath().front()._dx >= 0){
+			path._dx = -5;
+			path._dy = 5;
+			std::list<PathEntry> p;
+			p.push_front(path);
+			grayJetAnimation->setPath(p);
+		}
+	}
+	else if (grayJetPositionOnX < superAcePositionOnX){
+		if (grayJetAnimation->getPath().front()._dx <= 0){
+			path._dx = 5;
+			path._dy = 5;
+			std::list<PathEntry> p;
+			p.push_front(path);
+			grayJetAnimation->setPath(p);
+		}
+
+	}
+	else {
+		//do not move on x axis
+		if (grayJetAnimation->getPath().front()._dx != 0){
+
+			path._dx = 0;
+			path._dy = 5;
+			std::list<PathEntry> p;
+			p.push_front(path);
+			grayJetAnimation->setPath(p);
+		}
+	}
+
+
+	if (grayJetPositionOnY > SuperAcePositionOnY - 100){
+
+
+		if (grayJetAnimation->getPath().front()._dy > 0){
+			path._dy = -5;
+			path._dx = -5;
+			path._frame = 1;
+
+
+			std::list<PathEntry> p;
+			p.push_front(path);
+			grayJetAnimation->setPath(p);
+
+		}
+	}
+}
 
 
 

@@ -12,13 +12,13 @@ class Sprite;
 
 typedef enum SpriteType {
     MAIN_MENU_SINGLEPLAYER = 0,
-    MAIN_MENU_MULTIPLAYER,
-    TERRAIN,
-    SUPER_ACE,
-    ALIEN_SHIP,
-    POWER_UPS,
-    GAME_INFO,
-    UNDEFINED
+    MAIN_MENU_MULTIPLAYER = 1,
+    TERRAIN = 2,
+    SUPER_ACE = 3,
+    ALIEN_SHIP = 4,
+    POWER_UPS = 5,
+    GAME_INFO = 6,
+    UNDEFINED = 7 
 }SpriteType;
 
 typedef enum SpriteState {
