@@ -112,11 +112,13 @@ void Game::OnEvent(SDL_Event* event) {
                     if(superAce->getAttached(RIGHT_FIGHTER)){
                         MovingPathAnimator* rightSideFighterAnimatorLeft =
                         (MovingPathAnimator*)AnimatorHolder::getAnimator("RightSideFighterAnimatorLeft");
+                        assert(rightSideFighterAnimatorLeft);
                         rightSideFighterAnimatorLeft->start(getGameTime());
                     }
                     if(superAce->getAttached(LEFT_FIGHTER)){
                         MovingPathAnimator* leftSideFighterAnimatorLeft =
                         (MovingPathAnimator*)AnimatorHolder::getAnimator("LeftSideFighterAnimatorLeft");
+                        assert(leftSideFighterAnimatorLeft);
                         leftSideFighterAnimatorLeft->start(getGameTime());
                     }
                 }

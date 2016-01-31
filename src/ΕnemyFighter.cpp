@@ -92,7 +92,7 @@ void EnemyFighter::fire(void){
     
     remainingBullets--;
     */
-    //return;
+    return;
     
     assert(this->isAlive() && !this->isOutOfWindow() && this->getVisibility());
     
