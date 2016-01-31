@@ -43,6 +43,11 @@
                                       "repetitions": 4
                                       }
                                       ,{
+                                      "id": "redPlaneTickAnimations",
+                                      "delay": 1000,
+                                      "repetitions": 2
+                                      }
+                                      ,{
                                       "id": "greenPlaneTickAnimation",
                                       "delay": 2000,
                                       "repetitions": 4
