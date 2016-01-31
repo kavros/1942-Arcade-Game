@@ -64,6 +64,78 @@
                             "animationId": "superAceAnimationLeftLeft",
                             "spriteType": 3,
                             "spriteId": "SuperAce"
+                            },
+                            {
+                            "id": "GreenDoubleEngineJetAnimator0",
+                            "animationId": "circle_250_250_30",
+                            "spriteType": 4,
+                            "spriteId": "GreenDoubleEngineJet0"
+                            },
+                            {
+                            "id": "GreenDoubleEngineJetAnimator1",
+                            "animationId": "circle_250_250_30",
+                            "spriteType": 4,
+                            "spriteId": "GreenDoubleEngineJet1"
+                            },
+                            {
+                            "id": "GreenDoubleEngineJetAnimator2",
+                            "animationId": "circle_250_250_30",
+                            "spriteType": 4,
+                            "spriteId": "GreenDoubleEngineJet2"
+                            },
+                            {
+                            "id": "GreenDoubleEngineJetAnimator3",
+                            "animationId": "circle_250_250_30",
+                            "spriteType": 4,
+                            "spriteId": "GreenDoubleEngineJet3"
+                            },
+                            {
+                            "id": "GreenJetAnimator0",
+                            "animationId": "circle_250_250_30",
+                            "spriteType": 4,
+                            "spriteId": "GreenJet0"
+                            },
+                            {
+                            "id": "GreenJetAnimator1",
+                            "animationId": "circle_250_250_30",
+                            "spriteType": 4,
+                            "spriteId": "GreenJet1"
+                            },
+                            {
+                            "id": "GreenJetAnimator2",
+                            "animationId": "circle_250_250_30",
+                            "spriteType": 4,
+                            "spriteId": "GreenJet2"
+                            },
+                            {
+                            "id": "GreenJetAnimator3",
+                            "animationId": "circle_250_250_30",
+                            "spriteType": 4,
+                            "spriteId": "GreenJet3"
+                            },
+                            {
+                            "id": "RedJetAnimator0",
+                            "animationId": "circle_250_250_30",
+                            "spriteType": 4,
+                            "spriteId": "RedJet0"
+                            },
+                            {
+                            "id": "RedJetAnimator1",
+                            "animationId": "circle_250_250_30",
+                            "spriteType": 4,
+                            "spriteId": "RedJet1"
+                            },
+                            {
+                            "id": "RedJetAnimator2",
+                            "animationId": "circle_250_250_30",
+                            "spriteType": 4,
+                            "spriteId": "RedJet2"
+                            },
+                            {
+                            "id": "RedJetAnimator3",
+                            "animationId": "circle_250_250_30",
+                            "spriteType": 4,
+                            "spriteId": "RedJet3"
                             },{
                             "id": "SuperAceEndingAnimator",
                             "animationId": "superAceEndingAnimation",

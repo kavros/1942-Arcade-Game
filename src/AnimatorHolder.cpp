@@ -186,72 +186,33 @@ void triggerSuperAceMovingPathAnimator(){
 void triggerRedPlaneAnimator(){
     
     static int nameId=0;
-    string name = "RedJet" + std::to_string(nameId);
+    string name = "RedJetAnimator" + std::to_string(nameId);
     nameId++;
 
-    AnimationFilm* animationFilm  = AnimationFilmHolder::Get()->GetFilm("red_plane");
-    assert(animationFilm);
-    
-    Sprite* sprite = SpritesHolder::getSpritesHolder()->getSprite(SpriteType::ALIEN_SHIP, name);
-    assert(sprite);
-    Animation* animation = AnimationHolder::getAnimationHolder()->getAnimation("circle_250_250_30");
-    assert(animation);
-
-    MovingPathAnimator* animator = new MovingPathAnimator(name, sprite, (MovingPathAnimation*)animation);
+    MovingPathAnimator* animator = (MovingPathAnimator*) AnimatorHolder::getAnimatorHolder()->getAnimator(name);
     assert(animator);
-    
-    AnimatorHolder::Register(animator);
-    
     animator->start(Game::getGameTime());
 
 }
 
-void triggerGreenPlaneAnimator(){
-    
+void triggerGreenJetPlaneAnimator(){
     static int nameId=0;
-    string name = "GreenJet" + std::to_string(nameId);
+    string name = "GreenJetAnimator" + std::to_string(nameId);
     nameId++;
     
-    AnimationFilm* animationFilm  = AnimationFilmHolder::Get()->GetFilm("green_jet");
-    assert(animationFilm);
-    
-    Sprite* sprite = SpritesHolder::getSpritesHolder()->getSprite(SpriteType::ALIEN_SHIP, name);
-    assert(sprite);
-    
-    Animation* animation = AnimationHolder::getAnimationHolder()->getAnimation("circle_250_250_30");
-    assert(animation);
-    
-    MovingPathAnimator* animator = new MovingPathAnimator(name, sprite, (MovingPathAnimation*)animation);
+    MovingPathAnimator* animator = (MovingPathAnimator*) AnimatorHolder::getAnimatorHolder()->getAnimator(name);
     assert(animator);
-    
-    AnimatorHolder::Register(animator);
-    
     animator->start(Game::getGameTime());
-    
 }
 
 void triggerGreenDoubleEnginePlaneAnimator(){
-    
     static int nameId=0;
-    string name = "GreenDoubleEngineJet" + std::to_string(nameId);
+    string name = "GreenDoubleEngineJetAnimator" + std::to_string(nameId);
     nameId++;
     
-    AnimationFilm* animationFilm  = AnimationFilmHolder::Get()->GetFilm("green_double_engine");
-    assert(animationFilm);
-    
-    Sprite* sprite = SpritesHolder::getSpritesHolder()->getSprite(SpriteType::ALIEN_SHIP, name);
-    assert(sprite);
-    
-    Animation* animation = AnimationHolder::getAnimationHolder()->getAnimation("circle_250_250_30");
-    assert(animation);
-    
-    MovingPathAnimator* animator = new MovingPathAnimator(name, sprite, (MovingPathAnimation*)animation);
+    MovingPathAnimator* animator = (MovingPathAnimator*) AnimatorHolder::getAnimatorHolder()->getAnimator(name);
     assert(animator);
-    
-    AnimatorHolder::Register(animator);
-    
     animator->start(Game::getGameTime());
-    
 }
 
 void triggerEndOfTheStageAnimator(){
@@ -281,7 +242,7 @@ void AnimatorHolder::startTimeTickAnimators(){
     TimerTickAnimator::startTimeTickAnimator("superAceMovingPathTickAnimation", triggerSuperAceMovingPathAnimator );
     TimerTickAnimator::startTimeTickAnimator("enemyBulletsTickAnimation", AnimatorHolder::triggerBullets);
     TimerTickAnimator::startTimeTickAnimator("redPlaneTickAnimation", triggerRedPlaneAnimator );
-    TimerTickAnimator::startTimeTickAnimator("greenPlaneTickAnimation", triggerGreenPlaneAnimator );
+    TimerTickAnimator::startTimeTickAnimator("greenPlaneTickAnimation", triggerGreenJetPlaneAnimator );
     TimerTickAnimator::startTimeTickAnimator("greenDoubleEnginePlaneTickAnimation", triggerGreenDoubleEnginePlaneAnimator );
 	//TimerTickAnimator::startTimeTickAnimator("endOfTheStageTickAnimation", triggerEndOfTheStageAnimator);
 }
