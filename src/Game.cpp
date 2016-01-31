@@ -163,8 +163,4 @@ unsigned Game::getNextPowerUpType(){
     return p;
 }
 
-void Game::UpdateAllGrayJetAnimations(){
-    
-}
-
 
