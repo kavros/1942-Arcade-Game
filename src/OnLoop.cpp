@@ -1,7 +1,9 @@
 #include "Game.hpp"
 
 void Game::OnLoop() {
-        
+    
+    static int loopsRemainingToDelete = 10000 ;
+    
     switch (_gameState) {
         case SINGLEPLAYER_MENU:
             break;
@@ -16,6 +18,16 @@ void Game::OnLoop() {
                 setState(GAME_OVER);
                 return;
             }
+            
+            //commit destruction
+            //proxeiri ilipoiisi ala nikola'
+            //DestructionManager::printDestructionManager();
+            
+            if(loopsRemainingToDelete == 0){
+                DestructionManager::commit();
+                loopsRemainingToDelete = 10000;
+            }
+            loopsRemainingToDelete--;
             
             //Move Background
             Background::Get()->moveBackground(0,+1);

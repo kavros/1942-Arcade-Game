@@ -260,9 +260,6 @@ void AnimatorHolder::startTimeTickAnimators(){
     //TimerTickAnimator::startTimeTickAnimator("greenDoubleEnginePlaneTickAnimation", triggerGreenDoubleEnginePlaneAnimator );
 
     TimerTickAnimator::startTimeTickAnimator("redPlaneTickAnimations", triggerRedPlaneTickAnimations );
-    
-    TimerTickAnimator::startTimeTickAnimator("destructionManager", DestructionManager::commit );
-
 }
 
 using namespace rapidjson;
@@ -312,8 +309,6 @@ void    AnimatorHolder::Load (const std::string& cataloge){
     }
     
 }
-
-
 
 
 

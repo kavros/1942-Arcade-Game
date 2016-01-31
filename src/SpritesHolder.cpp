@@ -224,3 +224,35 @@ void SpritesHolder::checkSpritesForDelete(){
         }
     }
 }
+
+bool SpritesHolder::uniqueAliveFromTeam(Sprite* sprite){
+    
+    SpritesHolder* h = SpritesHolder::getSpritesHolder();
+    SpriteList* st = h->getSprites(sprite->getType(  ));
+    
+    if( sprite->getType() == ALIEN_SHIP ){
+        
+        SpriteList::const_iterator it = st->begin();
+        EnemyFighter* enemyFighter = (EnemyFighter*)sprite;
+        
+        if( enemyFighter->getEnemyFighterType() == RED_PLANE ){
+            
+            while(it != st->end()){
+                enemyFighter = (EnemyFighter*)(*it);
+                
+                if( enemyFighter->getEnemyFighterType() == RED_PLANE &&  enemyFighter!=sprite ){
+                    if( enemyFighter->isAlive() && enemyFighter->getVisibility() ){
+                        return false;
+                    }
+                }
+                
+                ++it;
+            }
+            
+        }
+        
+    }
+    return true;
+}
+
+
