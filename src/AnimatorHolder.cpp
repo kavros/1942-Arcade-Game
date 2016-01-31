@@ -180,6 +180,7 @@ void AnimatorHolder::pauseAnimators(){
 
 void triggerSuperAceMovingPathAnimator(){
     MovingPathAnimator* movingSuperAce = (MovingPathAnimator*) AnimatorHolder::getAnimator("SuperAceMovingAnimator");
+    assert(movingSuperAce);
     movingSuperAce->start(Game::getGameTime());
 }
 
@@ -264,8 +265,11 @@ void    AnimatorHolder::Load (const std::string& cataloge){
         assert( st < SPRITE_TYPE_SIZE );
         
         Sprite* sprite= SpritesHolder::getSpritesHolder()->getSprite(spriteType, spriteId);
+        assert(sprite);
         MovingPathAnimation* animation = (MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation(animationId);
+        assert(animation);
         MovingPathAnimator* animator  =	new MovingPathAnimator( id, sprite, animation);
+        assert(animator);
         AnimatorHolder::Register(animator);
     }
     
