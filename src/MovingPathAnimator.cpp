@@ -6,17 +6,31 @@ Animator(id){
 	_sprite = sprite;
 	_anim = anim;
     _currPath = _anim->getPath().begin();
-	/*
-	//!!!prepei na pernw to dx dy apo ton SuperAce
-	PathEntry upsidePath;
-	upsidePath._dx = 0;
-	upsidePath._dy = 6;
-	
-	PathEntry upsidePath;
-	upsidePath._dx = 0;
-	upsidePath._dy = 6;
-	*/
+    setOnFinished(finishCallB);
+    chooseCallBack(id);
+    
 
+}
+
+void MovingPathAnimator::chooseCallBack(string id){
+    std::size_t found;
+    string* str = nullptr;
+    
+    found = id.find("RedJetAnimator");
+    if (found == 0)
+        str = new string("Circle"+ id);
+    found = id.find("CircleRedJetAnimator");
+    if (found == 0)
+        str = new string("Straight"+ id);
+    found = id.find("StraightCircleRedJetAnimator");
+    if (found == 0)
+        str = new string("Circle"+ id);
+    found = id.find("CircleStraightCircleRedJetAnimator");
+    if (found == 0)
+        str = new string("Straight"+ id);
+    
+    if(str!=nullptr)
+        setOnFinished(nextAnimator,(void*)str);
 }
 
 void MovingPathAnimator::progress(timestamp_t currTime){
@@ -44,7 +58,7 @@ void MovingPathAnimator::progress(timestamp_t currTime){
 				_sprite->setState(FLYING);
 			}
 			_state = ANIMATOR_FINISHED;
-            setOnFinished(finishCallB);
+            //setOnFinished(finishCallB);
             stop();
 
 			
@@ -81,7 +95,7 @@ void MovingPathAnimator::setContinuous(bool b){
 //start
 void MovingPathAnimator::start(timestamp_t t){	
 	 _currPath = _anim->getPath().begin();
-	_lastTime = t;
+	 _lastTime = t;
 
 	if (getState() == ANIMATOR_RUNNING){
 		//cout << "Error ANIMATOR is Still running" << endl;
@@ -94,6 +108,17 @@ void MovingPathAnimator::start(timestamp_t t){
 	
 }
 
+
+void MovingPathAnimator::nextAnimator(Animator* anim,void* b){
+    AnimatorHolder::markAsSuspended(anim);
+    Sprite* sp = ((MovingPathAnimator*)anim)->getSprite();
+    if(b != nullptr && sp->getState() != IN_COLUSION && !sp->isOutOfWindow() && sp->isAlive()){
+        string* id = (string*)b;
+        MovingPathAnimator* mpar = (MovingPathAnimator*) AnimatorHolder::getAnimatorHolder()->getAnimator(*  id);
+        assert(mpar);
+        mpar->start(Game::getGameTime());
+    }
+}
 
 //callback
 void MovingPathAnimator::finishCallB(Animator* anim,void* b){
@@ -108,7 +133,7 @@ void MovingPathAnimator::checkAnimatorForDelete(void){
         
         //stop the animator
         _state = ANIMATOR_FINISHED;
-        setOnFinished(finishCallB);
+        //setOnFinished(finishCallB);
         stop();
         
         AnimatorHolder::getAnimatorHolder()->cancel(this);

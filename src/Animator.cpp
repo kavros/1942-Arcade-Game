@@ -48,6 +48,7 @@ Animator::~Animator(){
 
 void Animator::setOnFinished(FinishCallback f,  void* c ){
     _onFinish =f;
+    _finishClosure = c;
 }
 
 Animator::ProgressCallback Animator::getProgressCallback(void) const{
@@ -64,6 +65,7 @@ void Animator::setOnProgress(ProgressCallback f, void* c ){
 animid_t Animator::getId(){
     return _id;
 }
+
 
 void Animator::setState(enum animatorstate_t state){
 	_state = state;
