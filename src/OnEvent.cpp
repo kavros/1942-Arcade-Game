@@ -1,7 +1,8 @@
 #include "Game.hpp"
 
+#include "MovingPathAnimator.h"
 
-
+void updateGrayJetAnimation(MovingPathAnimator* grayJetAnimator, MovingPathAnimation* grayJetAnimation);
 void Game::OnEvent(SDL_Event* event) {
     static SDL_Event prevEvent  = *event;
     
@@ -214,7 +215,7 @@ void Game::UpdateAllGrayJetAnimations(){
 		(MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("minGrayJetAnimation0");
 	
 	
-//	updateGrayJetAnimation(grayJetAnimator_0, grayJetAnimation_0);
+	updateGrayJetAnimation(grayJetAnimator_0, grayJetAnimation_0);
 
 
 	MovingPathAnimator* grayJetAnimator_1 =
@@ -223,7 +224,7 @@ void Game::UpdateAllGrayJetAnimations(){
 		(MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("minGrayJetAnimation1");
 
 
-//	updateGrayJetAnimation(grayJetAnimator_1, grayJetAnimation_1);
+	updateGrayJetAnimation(grayJetAnimator_1, grayJetAnimation_1);
 
 	MovingPathAnimator* grayJetAnimator_2 =
 		(MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator("GrayJetAnimator2");
@@ -231,7 +232,7 @@ void Game::UpdateAllGrayJetAnimations(){
 		(MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("minGrayJetAnimation2");
 
 
-//	updateGrayJetAnimation(grayJetAnimator_2, grayJetAnimation_2);
+	updateGrayJetAnimation(grayJetAnimator_2, grayJetAnimation_2);
 
 	MovingPathAnimator* grayJetAnimator_3 =
 		(MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator("GrayJetAnimator3");
@@ -239,12 +240,12 @@ void Game::UpdateAllGrayJetAnimations(){
 		(MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("minGrayJetAnimation3");
 
 
-//	updateGrayJetAnimation(grayJetAnimator_3, grayJetAnimation_3);
+    updateGrayJetAnimation(grayJetAnimator_3, grayJetAnimation_3);
 
 
 
 }
-/*void Game::updateGrayJetAnimation(MovingPathAnimator* grayJetAnimator, MovingPathAnimation* grayJetAnimation){
+void updateGrayJetAnimation(MovingPathAnimator* grayJetAnimator, MovingPathAnimation* grayJetAnimation){
 
 
 	SuperAce* superAce = (SuperAce*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce");
@@ -329,7 +330,7 @@ void Game::UpdateAllGrayJetAnimations(){
 
 		}
 	}
-}*/
+}
 
 
 
