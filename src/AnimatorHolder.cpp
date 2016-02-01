@@ -111,6 +111,7 @@ void AnimatorHolder::triggerBullets(){
     while (it != sl->end()){
         if( (*it) && (*it)->getVisibility() && (*it)->isAlive() && !(*it)->isOutOfWindow() && (*it)->getState()!=IN_COLUSION
            && ((EnemyFighter*)(*it))->getEnemyFighterType() != BULLET){
+
             ((EnemyFighter*)(*it))->fire();
         }
         it++;

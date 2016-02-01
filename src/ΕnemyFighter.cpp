@@ -18,7 +18,6 @@ Sprite(id,frameNo,dstRect,point,isVisible,type,currFilm)
     setBulletFrame(0);
     
     setAnimationEnemyBulletFilm( AnimationFilmHolder::Get()->GetFilm("bullets") );
-    
 
     if( e == MED_GREEN_DOUBLE_ENG || e==MED_GREEN_ONE_ENG || e==MED_GREEN_TRIPLE_ENG){
         enemyFighterLifes = 3;
@@ -123,7 +122,6 @@ void EnemyFighter::fire(void){
     }
     
     unsigned r = rand() % 10; // r in the range 0 to 2
-    
 
     if( r<5 ){
         if( this->getEnemyFighterType() == BIG_GREEN || this->getEnemyFighterType() == BIG_GREY ){
