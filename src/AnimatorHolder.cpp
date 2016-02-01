@@ -100,7 +100,7 @@ Animator* AnimatorHolder::getAnimator(animid_t id){
 }
 
 void AnimatorHolder::triggerBullets(){
-    
+
     SpriteList * sl = SpritesHolder::getSprites(ALIEN_SHIP);
 
     SpriteList::const_iterator it = sl->begin();
@@ -333,7 +333,7 @@ void    AnimatorHolder::Load (const std::string& cataloge){
     }
     
 }
-
+    
 void AnimatorHolder::UpdateAllGrayPlaneAnimations(){
     
     MovingPathAnimator* grayPlaneAnimator;

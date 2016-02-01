@@ -21,7 +21,7 @@ void SuperAce::render(SDL_Renderer * renderer){
 	display(renderer);
 };
 
-SDL_Rect SuperAce::getBulletDstRect(int frame){
+SDL_Rect SuperAce::getBulletDstRect(){
     _bulletDstRect.x=this->getDstRect().x + this->getDstRect().w/2 - _bulletDstRect.w/2;
     _bulletDstRect.y=this->getDstRect().y ;
     
@@ -55,7 +55,11 @@ void SuperAce::setBulletFrame(unsigned int _bulletFrame){
     
     bulletFrame = _bulletFrame;
     
-    getBulletDstRect(_bulletFrame);
+    getBulletDstRect();
+}
+
+void SuperAce::setBulletDstRect(SDL_Rect bulletDstRect){
+    this->_bulletDstRect = bulletDstRect;
 }
 
 void SuperAce::setBulletAnimationFilm(AnimationFilm* anim){
@@ -74,7 +78,7 @@ void SuperAce::fire(void){
     AnimationFilm* fireAnimationFilm = AnimationFilmHolder::Get()->GetFilm("bullets");
     assert(fireAnimationFilm);
     
-    Sprite* bullet = new Sprite(spriteSuperAceFireId, bulletFrame, getBulletDstRect(bulletFrame), {0,0}, true, SUPER_ACE, fireAnimationFilm);
+    Sprite* bullet = new Sprite(spriteSuperAceFireId, bulletFrame, getBulletDstRect(), {0,0}, true, SUPER_ACE, fireAnimationFilm);
     assert(bullet);
     
     //play sound for fire
@@ -189,8 +193,8 @@ Sprite(id,frameNo,dstRect,point,isVisible,type,currFilm){
     bulletAnimationFilm = AnimationFilmHolder::Get()->GetFilm("bullets");
     assert(bulletAnimationFilm);
     
-    sideFightertBulletDstRect.w=bulletAnimationFilm->getFrameBox(bulletFrame).w * Game::getSpriteSize();
-    sideFightertBulletDstRect.h=bulletAnimationFilm->getFrameBox(bulletFrame).h * Game::getSpriteSize();
+    sideFightertBulletDstRect.w=bulletAnimationFilm->getFrameBox(bulletFrame).w * Game::getSpriteSize() * 1.2;
+    sideFightertBulletDstRect.h=bulletAnimationFilm->getFrameBox(bulletFrame).h * Game::getSpriteSize() * 1.2;
     sideFightertBulletDstRect.x=this->getDstRect().x + getDstRect().w/2 - sideFightertBulletDstRect.w/2;
     sideFightertBulletDstRect.y=this->getDstRect().y;
 

@@ -208,8 +208,8 @@ void Game::OnEvent(SDL_Event* event) {
         break;
     }
     
-}
-
+    }
+    
 void Game::pauseManager(SDL_Event* event){
     static bool firstTime = true;
     Sprite* s = SpritesHolder::getSprite(GAME_INFO , "spriteInfoPlane");

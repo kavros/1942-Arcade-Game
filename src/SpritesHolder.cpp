@@ -264,7 +264,7 @@ void SpritesHolder::smallAndBigEnemyFireEnable(){
     
     while ( it != sl->end() ){
         enemyFighter = (EnemyFighter*)(*it);
-        if( enemyFighter->getEnemyFighterType() != EnemyFighterType(BIG_GREEN) ||
+        if( enemyFighter->getEnemyFighterType() != EnemyFighterType(BIG_GREEN) &&
            enemyFighter->getEnemyFighterType() != EnemyFighterType(BIG_GREY)){
             
             enemyFighter->setEnemyFireEnable(true);
@@ -272,6 +272,5 @@ void SpritesHolder::smallAndBigEnemyFireEnable(){
         }
         ++it;
     }
-    
-    
+
 }
