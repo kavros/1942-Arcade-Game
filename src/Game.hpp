@@ -69,15 +69,22 @@ public:
     
     static bool OnInit();
     
+    static void singleplayerGameOnEvent(SDL_Event* event,SDL_Event prevEvent);
+    static void multiplayerGameOnEvent(SDL_Event* event,SDL_Event prevEvent);
     static void OnEvent(SDL_Event* e);
     static void pauseManager(SDL_Event* event);
     static void gameOver();
     static void LoadGameInfo (const std::string& cataloge);
+    
+    static void destructionManagerOnLoop();
+    static void singleplayerGameOnLoop();
+    static void multiplayerGameOnLoop();
     static void OnLoop();
 
     static void InitGame();
     static void OnRender();
     
+    static void cleanUpHolders();
     static void OnCleanup();
 
 

@@ -1,72 +1,89 @@
 #include "Game.hpp"
 
-void Game::OnLoop() {
-    static int i = 0;
+void Game::destructionManagerOnLoop(){
     static int loopsRemainingToDelete = 10000 ;
+
+    //proxeiri ilipoiisi ala nikola'
+    //DestructionManager::printDestructionManager();
     
-    switch (_gameState) {
-        case SINGLEPLAYER_MENU:
-            break;
-        case MULTIPLAYER_MENU:
-            break;
-        case SINGLEPLAYER_GAME:{
-            
-            SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce");
-            //cout << superAce->getState()<<endl;
-            
-            if(superAce->getState() == IN_COLUSION ){
-                setState(GAME_OVER);
-                return;
-            }
-            if(i % 50000 ==0){
-                AnimatorHolder::getAnimatorHolder()->updateAllGrayPlaneAnimations();
-				
+    if(loopsRemainingToDelete == 0){
+        DestructionManager::commit();
+        loopsRemainingToDelete = 10000;
+    }
+    loopsRemainingToDelete--;
+}
 
-            }
-			if (i % 500 == 0){
-				AnimatorHolder::getAnimatorHolder()->updateAllGrayJetsAnimations();
-			}
-            
-            //commit destruction
-            //proxeiri ilipoiisi ala nikola'
-            //DestructionManager::printDestructionManager();
-            
-            if(loopsRemainingToDelete == 0){
-                DestructionManager::commit();
-                loopsRemainingToDelete = 10000;
-            }
-            loopsRemainingToDelete--;
-            
-            //Move Background
-            Background::Get()->moveBackground(0,+1);
-            
-            //collision checker
-            CollisionChecker::Check();
-
-            //check animators and sprites  for delete if is out of window
-            AnimatorHolder::checkAnimatorsForDelete();
-            SpritesHolder::checkSpritesForDelete();
-
-            //progress animators
-			AnimatorHolder::progress(getGameTime());
-            
-            break;
-        }
-        case MULTIPLAYER_GAME:
-            cout<<"under construction\n";
-            assert(0);
-            break;
-        case EXIT:
-            break;
-		case PAUSE_MENU:
-			break;
-        case GAME_OVER:
-            gameOver();
-            break;
-        default:
-            break;
+void Game::singleplayerGameOnLoop(){
+    static int i = 0;
+    
+    SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce");
+    assert(superAce);
+    
+    if(superAce->getState() == IN_COLUSION ){
+        setState(GAME_OVER);
+        return;
+    }
+    if(i % 50000 ==0){
+        AnimatorHolder::getAnimatorHolder()->updateAllGrayPlaneAnimations();
+    }
+    if (i % 500 == 0){
+        AnimatorHolder::getAnimatorHolder()->updateAllGrayJetsAnimations();
     }
     
+    //commit destruction
+    destructionManagerOnLoop();
+    
+    //Move Background
+    Background::Get()->moveBackground(0,+1);
+    
+    //collision checker
+    CollisionChecker::Check();
+    
+    //check animators and sprites  for delete if is out of window
+    AnimatorHolder::checkAnimatorsForDelete();
+    SpritesHolder::checkSpritesForDelete();
+    
+    //progress animators
+    AnimatorHolder::progress(getGameTime());
+}
+
+void Game::multiplayerGameOnLoop(){
+
+    static int i = 0;
+    
+    SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce");
+    assert(superAce);
+    
+    SuperAce* superAce2 = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce2");
+    assert(superAce2);
+    
+    if(superAce->getState() == IN_COLUSION || superAce2->getState() == IN_COLUSION ){
+        setState(GAME_OVER);
+        return;
+    }
+
+    if(i % 50000 ==0){
+        AnimatorHolder::getAnimatorHolder()->updateAllGrayPlaneAnimations();
+    }
+    if (i % 500 == 0){
+        AnimatorHolder::getAnimatorHolder()->updateAllGrayJetsAnimations();
+    }
+    
+    //commit destruction
+    destructionManagerOnLoop();
+    
+    //Move Background
+    Background::Get()->moveBackground(0,+1);
+    
+    //collision checker
+    CollisionChecker::Check();
+    
+    //check animators and sprites  for delete if is out of window
+    AnimatorHolder::checkAnimatorsForDelete();
+    SpritesHolder::checkSpritesForDelete();
+    
+    //progress animators
+    AnimatorHolder::progress(getGameTime());
 }
 
 void Game::gameOver(){
@@ -93,4 +110,33 @@ void Game::gameOver(){
         //exit();
         //   assert(0);
     }
+}
+
+void Game::OnLoop() {
+    
+    switch (_gameState) {
+        case SINGLEPLAYER_MENU:
+            break;
+        case MULTIPLAYER_MENU:
+            break;
+        case SINGLEPLAYER_GAME:{
+            singleplayerGameOnLoop();
+            break;
+        }
+        case MULTIPLAYER_GAME:{
+            multiplayerGameOnLoop();
+            break;
+        }
+        case EXIT:
+            break;
+		case PAUSE_MENU:
+			break;
+        case GAME_OVER:{
+            gameOver();
+            break;
+        }
+        default:
+            break;
+    }
+    
 }

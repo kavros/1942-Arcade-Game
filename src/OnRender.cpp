@@ -14,12 +14,10 @@ void Game::OnRender() {
             SpritesHolder::displaySprites(_renderer,MAIN_MENU_MULTIPLAYER);
             break;
         case SINGLEPLAYER_GAME:
-
             SpritesHolder::displayGameSprites(_renderer);
             break;
         case MULTIPLAYER_GAME:
-            cout<<"under construction\n";
-            assert(0);
+            SpritesHolder::displayGameSprites(_renderer);
             break;
         case EXIT:
             cout<<"Exit\n";
