@@ -329,7 +329,7 @@ void Game::OnEvent(SDL_Event* event) {
             break;
         }
         case GAME_OVER:{
-            if (event->key.keysym.sym == SDLK_SPACE){
+            if (event->key.keysym.sym == SDLK_RETURN){
                 setState(EXIT);
             }
             break;
