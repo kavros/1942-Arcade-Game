@@ -25,6 +25,9 @@ bool Game::OnInit(){
 
 void Game::InitGrayJet(){
 
+	//MovingPathAnimator* grayJetAnimator = new MovingPathAnimator()
+
+
 }
 
 

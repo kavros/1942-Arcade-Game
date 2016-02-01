@@ -265,7 +265,13 @@ void triggerRedPlaneTickAnimations(){
     TimerTickAnimator::startTimeTickAnimator(redPlaneTickAnimationId, triggerRedPlaneAnimator );
 }
 void triggerGrayJetTickAnimator(){
+	static int nameId = 0;
+	string name = "GrayJetAnimator" + std::to_string(nameId);
+	nameId++;
 
+	MovingPathAnimator* animator = (MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator(name);
+	assert(animator);
+	animator->start(Game::getGameTime());
 }
 void AnimatorHolder::startTimeTickAnimators(){
     

@@ -1,22 +1,15 @@
 #include "EnemyFighter.hpp"
 
+EnemyFighter::EnemyFighter(){
+    //illegal use
+    assert(0);
+}
+
 EnemyFighter::EnemyFighter(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point point,bool isVisible,SpriteType type,AnimationFilm* currFilm, enum EnemyFighterType e,unsigned remainingBullets):
 Sprite(id,frameNo,dstRect,point,isVisible,type,currFilm)
 {
     assert( type == ALIEN_SHIP );
-    
-    _currFilm = currFilm;
 
-    _dstRect = dstRect;
-    _dstRect.h = currFilm->getFrameBox(frameNo).h;
-    _dstRect.w = currFilm->getFrameBox(frameNo).w;
-    
-    _spriteId = id;
-    _point = point;
-    setVisibility(isVisible);
-    _type = type;
-    setFrame(frameNo);
-    setState(STARTING);
     setEnemyFireEnable(true);
     setEnemyFighterType(e);
     
@@ -26,10 +19,10 @@ Sprite(id,frameNo,dstRect,point,isVisible,type,currFilm)
     
     setAnimationEnemyBulletFilm( AnimationFilmHolder::Get()->GetFilm("bullets") );
     
-    _enemyBulletDstRect.w = 20;
-    _enemyBulletDstRect.h = 20;
+    _enemyBulletDstRect.w = 8;
+    _enemyBulletDstRect.h = 8;
     _enemyBulletDstRect.x=(this->getDstRect().x + this->getDstRect().w/2 - _enemyBulletDstRect.w/2);
-    _enemyBulletDstRect.y=this->getDstRect().y + this->getDstRect().h/3;
+    _enemyBulletDstRect.y=this->getDstRect().y + this->getDstRect().h;
     
     this->addCollisionHandler(Sprite::touchHandler());
     
@@ -56,13 +49,15 @@ enum EnemyFighterType EnemyFighter::getEnemyFighterType(){
 }
 
 void EnemyFighter::setFrame(unsigned i) {
-
+    
     assert(0 < i < _currFilm->getTotalFrames());
     _frameNo = i;
+    /*
     if(_enemyType != EnemyFighterType(RED_PLANE)){
         _dstRect.h = _currFilm->getFrameBox(_frameNo).h * Game::getSpriteSize();
         _dstRect.w = _currFilm->getFrameBox(_frameNo).w * Game::getSpriteSize();
     }
+     */
 }
 
 void EnemyFighter::setEnemyFireEnable(bool fire){
@@ -74,16 +69,13 @@ void EnemyFighter::setEnemyFighterType(enum EnemyFighterType type){
 }
 
 
-SDL_Rect EnemyFighter::getEnemyBulletDstRect(int frame){
+SDL_Rect EnemyFighter::getEnemyBulletDstRect(){
 
     assert(!this->isOutOfWindow());
-    
-    _enemyBulletDstRect.w = 20;
-    _enemyBulletDstRect.h = 20;
+
     _enemyBulletDstRect.x=(this->getDstRect().x + this->getDstRect().w/2 - _enemyBulletDstRect.w/2);
-    _enemyBulletDstRect.y=this->getDstRect().y + this->getDstRect().h/3;
-
-
+    _enemyBulletDstRect.y=this->getDstRect().y + this->getDstRect().h;
+    
     return _enemyBulletDstRect;
 }
 
@@ -124,7 +116,7 @@ void EnemyFighter::fire(void){
     AnimationFilm* fireAnimationFilm = AnimationFilmHolder::Get()->GetFilm("bullets");
     assert(fireAnimationFilm);
 
-    Sprite* enemyBullet = new EnemyFighter(spriteEnemyFireId, getBulletFrame(),getEnemyBulletDstRect(getBulletFrame()) , {0,0}, true, ALIEN_SHIP, fireAnimationFilm,BULLET,0);
+    Sprite* enemyBullet = new EnemyFighter(spriteEnemyFireId, getBulletFrame(),getEnemyBulletDstRect() , {0,0}, true, ALIEN_SHIP, fireAnimationFilm,BULLET,0);
     
     assert(enemyBullet);
     assert(!enemyBullet->isOutOfWindow());
@@ -165,7 +157,7 @@ void EnemyFighter::createPowerUp(){
     
     powerUp->addCollisionHandler(Sprite::touchPowerUpHandler());
     
-    //play sound for fire
+    //play sound for power up
     //SoundHolder::playSound("gunshot");
     
     //powerUpAnimation

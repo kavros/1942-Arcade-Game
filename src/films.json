@@ -299,6 +299,14 @@
 						
                         ]
               },{
+              "id": "gray_jet",
+              "path": "mini.png",
+              "rects": [
+                       
+						[211,143,16,15],
+						[58,143,19,16]
+                        ]
+              },{
               "id": "Super.Ace.1942",
               "path": "super_ace/SuperAceAll.png",
               "rects": [
