@@ -253,6 +253,7 @@ void triggerGrayPlaneAnimator(){
 
 	MovingPathAnimator* animator = (MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator(name);
 	assert(animator);
+    updateGrayPlaneAnimation(animator);
 	animator->start(Game::getGameTime());
 
 }
