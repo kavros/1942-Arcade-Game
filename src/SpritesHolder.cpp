@@ -17,6 +17,7 @@ SpritesHolder::SpritesHolder(){
 
 SpritesHolder::~SpritesHolder(){
     _holder->_sprites.clear();
+    _holder = nullptr;
 }
 
 void SpritesHolder::add(Sprite *s){
