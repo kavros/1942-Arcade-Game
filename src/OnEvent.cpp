@@ -72,7 +72,7 @@ void Game::OnEvent(SDL_Event* event) {
                 
                 
                 
-                UpdateAllGrayJetAnimations();
+                UpdateAllGrayPlaneAnimations();
                 
                 
                 //cout << grayJetAnimator->getSprite()->getDstRect().y;
