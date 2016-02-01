@@ -3,6 +3,9 @@
 SuperAce::SuperAce(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point point,bool isVisible,SpriteType type,AnimationFilm* currFilm):
 Sprite(id,frameNo,dstRect,point,isVisible,type,currFilm){
 
+    setDstRectX(WIN_WIDTH/2-getDstRect().w/2);
+    setDstRectY(WIN_HEIGHT-getDstRect().h);
+    
     _superAceLives = 1;
 
     setBulletAnimationFilm(AnimationFilmHolder::Get()->GetFilm("bullets"));
