@@ -43,13 +43,27 @@ void AnimatorHolder::markAsSuspended(Animator* a){
 
 void AnimatorHolder::progress(timestamp_t currTime) {
     AnimatorHolder* h = AnimatorHolder::getAnimatorHolder();
+	SuperAce* superAce = 
+		(SuperAce*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce");
+
+	MovingPathAnimator* startingAnimator = (MovingPathAnimator*) AnimatorHolder::getAnimator("SuperAceStartingAnimator");
 
 	AnimatorList::iterator it = h->_running.begin();
     AnimatorList::iterator it2;
 	while (it != h->_running.end()){
+		
 		it2 = it;
 		it2++;
-		(*it)->progress(currTime);
+		if (startingAnimator->getState() == ANIMATOR_RUNNING){
+
+			if ((*it)->getId() == "SuperAceStartingAnimator"){
+				(*it)->progress(currTime);
+			}
+			
+		}else{
+			(*it)->progress(currTime);
+
+		}
 		it = it2;
 	}
 

@@ -13,7 +13,8 @@ void Game::OnLoop() {
             
             SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce");
             //cout << superAce->getState()<<endl;
-            
+
+
             if(superAce->getState() == IN_COLUSION ){
                 setState(GAME_OVER);
                 return;
