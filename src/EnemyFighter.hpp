@@ -40,7 +40,7 @@ private:
     unsigned bulletFrame;
     SDL_Rect _enemyBulletDstRect;
     AnimationFilm* animationEnemyBulletFilm;
-    
+    unsigned enemyFighterLifes;
 public:
     
     //constructor

@@ -293,6 +293,9 @@ void triggerBigPlaneIntroTickAnimators(){
     string bigPlaneIntroAnimatorString = "bigPlaneIntroAnimator" + std::to_string(nameId);
     nameId++;
     
+    if(! SpritesHolder::getSprite( ALIEN_SHIP , "bigGreenPlaneSprite0" ) )
+        return;
+    
     MovingPathAnimator* animator = (MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator(bigPlaneIntroAnimatorString);
     assert(animator);
     animator->start(Game::getGameTime());
@@ -304,6 +307,9 @@ void triggerBigPlaneStayStillTickAnimators(){
     string bigPlaneIntroAnimatorString = "bigPlaneIntroAnimator" + std::to_string(nameId);
     string bigPlaneStayStillAnimatorString = "bigPlaneStayStillAnimator" + std::to_string(nameId);
     nameId++;
+    
+    if(! SpritesHolder::getSprite( ALIEN_SHIP , "bigGreenPlaneSprite0" ) )
+        return;
     
     MovingPathAnimator* animator = (MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator(bigPlaneStayStillAnimatorString);
     assert(animator);
@@ -320,6 +326,9 @@ void triggerBigPlaneOutroTickAnimators(){
     string bigPlaneStayStillAnimatorString = "bigPlaneStayStillAnimator" + std::to_string(nameId);
     string bigPlaneOutroAnimatorString = "bigPlaneOutroAnimator" + std::to_string(nameId);
     nameId++;
+    
+    if(! SpritesHolder::getSprite( ALIEN_SHIP , "bigGreenPlaneSprite0" ) )
+        return;
     
     MovingPathAnimator* animator = (MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator(bigPlaneOutroAnimatorString);
     assert(animator);

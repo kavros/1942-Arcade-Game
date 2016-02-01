@@ -100,11 +100,11 @@
                                       "repetitions": 1
                                       }, {
                                       "id": "bigPlaneStayStillTickAnimation",
-                                      "delay": 8000,
+                                      "delay": 11000,
                                       "repetitions": 1
                                       }, {
                                       "id": "bigPlaneOutroTickAnimation",
-                                      "delay": 12000,
+                                      "delay": 16000,
                                       "repetitions": 1
                                       }
                                       ]
