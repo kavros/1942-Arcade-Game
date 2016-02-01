@@ -44,10 +44,11 @@ private:
 public:
     
     //constructor
+    EnemyFighter();
     EnemyFighter(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point point,bool isVisible,SpriteType type,AnimationFilm* currFilm,enum EnemyFighterType e,unsigned remainingBullets);
     
     //get
-    SDL_Rect getEnemyBulletDstRect(int frame);
+    SDL_Rect getEnemyBulletDstRect();
     enum EnemyFighterType getEnemyFighterType();
     bool getEnemyFireEnable();
     AnimationFilm* getAnimationEnemyBulletFilm();

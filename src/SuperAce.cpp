@@ -1,26 +1,17 @@
 #include "SuperAce.h"
 
 SuperAce::SuperAce(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point point,bool isVisible,SpriteType type,AnimationFilm* currFilm):
-Sprite(id,frameNo,dstRect,point,isVisible,type,currFilm)
-{
+Sprite(id,frameNo,dstRect,point,isVisible,type,currFilm){
 
-    _spriteId = id;
-    _dstRect = dstRect;
-    _point = point;
-    setVisibility(isVisible);
-    _type = type;
-    _currFilm = currFilm;
-    setFrame(frameNo);
-	_state = STARTING;
     _superAceLives = 1;
-    AnimationFilm* animationBulletFilm = AnimationFilmHolder::Get()->GetFilm("bullets");
-    assert(animationBulletFilm);
+
+    setBulletAnimationFilm(AnimationFilmHolder::Get()->GetFilm("bullets"));
     
     bulletFrame = 2;
     _bulletDstRect.x=this->getDstRect().x + (this->getDstRect().w/4);
     _bulletDstRect.y=this->getDstRect().y - this->getDstRect().h;
-    _bulletDstRect.w=animationBulletFilm->getFrameBox(bulletFrame).w * Game::getSpriteSize();
-    _bulletDstRect.h=animationBulletFilm->getFrameBox(bulletFrame).h * Game::getSpriteSize();
+    _bulletDstRect.w=bulletAnimationFilm->getFrameBox(bulletFrame).w * Game::getSpriteSize();
+    _bulletDstRect.h=bulletAnimationFilm->getFrameBox(bulletFrame).h * Game::getSpriteSize();
     
     this->addCollisionHandler(Sprite::touchHandler());
 
@@ -32,7 +23,10 @@ void SuperAce::render(SDL_Renderer * renderer){
 
 SDL_Rect SuperAce::getBulletDstRect(int frame){
     _bulletDstRect.x=(this->getDstRect().x + this->getDstRect().w/2 - _bulletDstRect.w/2);
-    _bulletDstRect.y=this->getDstRect().y - this->getDstRect().h/3;
+    _bulletDstRect.y=this->getDstRect().y - this->getDstRect().h;
+    _bulletDstRect.w=bulletAnimationFilm->getFrameBox(bulletFrame).w * Game::getSpriteSize();
+    _bulletDstRect.h=bulletAnimationFilm->getFrameBox(bulletFrame).h * Game::getSpriteSize();
+    
     return _bulletDstRect;
 }
 
@@ -62,8 +56,13 @@ void SuperAce::setBulletFrame(unsigned int _bulletFrame){
     assert(animationBulletFilm);
     
     bulletFrame = _bulletFrame;
-    _bulletDstRect.w=animationBulletFilm->getFrameBox(bulletFrame).w * Game::getSpriteSize();
-    _bulletDstRect.h=animationBulletFilm->getFrameBox(bulletFrame).h * Game::getSpriteSize();
+    
+    getBulletDstRect(_bulletFrame);
+}
+
+void SuperAce::setBulletAnimationFilm(AnimationFilm* anim){
+    bulletAnimationFilm = anim;
+    assert(bulletAnimationFilm);
 }
 
 void SuperAce::fire(void){
@@ -200,8 +199,8 @@ Sprite(id,frameNo,dstRect,point,isVisible,type,currFilm)
     AnimationFilm* animationBulletFilm = AnimationFilmHolder::Get()->GetFilm("bullets");
     assert(animationBulletFilm);
     
-    sideFightertBulletDstRect.x=this->getDstRect().x + (_dstRect.w/4);
-    sideFightertBulletDstRect.y=this->getDstRect().y - _dstRect.h;
+    sideFightertBulletDstRect.x=this->getDstRect().x + (getDstRect().w/4);
+    sideFightertBulletDstRect.y=this->getDstRect().y - getDstRect().h;
     sideFightertBulletDstRect.w=animationBulletFilm->getFrameBox(1).w * Game::getSpriteSize();
     sideFightertBulletDstRect.h=animationBulletFilm->getFrameBox(1).h * Game::getSpriteSize();
     
@@ -214,7 +213,7 @@ SideFighter::~SideFighter(){
 
 SDL_Rect SideFighter::getSideFightertBulletDstRect(unsigned int bulletFrame){
     sideFightertBulletDstRect.x=(this->getDstRect().x + this->getDstRect().w/2 - sideFightertBulletDstRect.w/2);
-    sideFightertBulletDstRect.y=this->getDstRect().y - _dstRect.h/3;
+    sideFightertBulletDstRect.y=this->getDstRect().y - getDstRect().h/3;
     return sideFightertBulletDstRect;
 }
 

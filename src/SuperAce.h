@@ -38,6 +38,8 @@ private:
     SDL_Rect _bulletDstRect;
     unsigned int _superAceLives;
     unsigned int _superAceLoops;
+    AnimationFilm* bulletAnimationFilm;
+
 public:
 
 	//constructor
@@ -59,6 +61,7 @@ public:
     void setSuperAceLives(unsigned int superAceLives);
     void setSuperAceLoops(unsigned int superAceLoops);
     void setBulletFrame(unsigned int bulletFrame);
+    void setBulletAnimationFilm(AnimationFilm* anim);
     
     //functionality
     void fire(void);
