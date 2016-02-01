@@ -26,6 +26,9 @@ Background::~Background(){
 void Background::initBackgroundObjects(){
    
     addBackgroundObject("spriteAircraftCarrier0");
+    Sprite* initialAircraft = SpritesHolder::getSprite(TERRAIN, "spriteAircraftCarrier0");
+    initialAircraft->setDstRectX(WIN_WIDTH/2-initialAircraft->getDstRect().w/2 + 13);
+    initialAircraft->setDstRectY(WIN_HEIGHT-initialAircraft->getDstRect().h);
 
     addBackgroundObject("spriteAircraftCarrier1");
 

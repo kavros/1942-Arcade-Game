@@ -493,9 +493,19 @@
                 "remainingBullets": 2,
                 "animFilmId": "green_double_engine"
                 },{
+                "id": "bigGreenPlaneSprite",
+                "frameNo": 0,
+                "destRect": [100, 100, 25, 25],
+                "point": [0, 0],
+                "visible": false,
+                "spriteType": 4,
+                "remainingBullets": 10,
+                "enemyType" : 13,
+                "animFilmId": "bigPlanes"
+                },{
                 "id": "SuperAce",
                 "frameNo": 0,
-                "destRect": [244, 485, 36, 27],
+                "destRect": [0, 0, 36, 27],
                 "point": [0, 0],
                 "visible": true,
                 "spriteType": 3,

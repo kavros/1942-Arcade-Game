@@ -23,6 +23,12 @@ bool Game::OnInit(){
     return true;
 }
 
+void nikosTestInitBigPlane(){
+    //bigGreenPlaneSprite
+    Sprite* bigGreenPlaneSprite = SpritesHolder::getSprite(ALIEN_SHIP, "bigGreenPlaneSprite");
+    assert(bigGreenPlaneSprite);
+    bigGreenPlaneSprite->setVisibility(true);
+}
 void Game::InitGame(){
     InitData();
     SoundHolder::initSounds();
@@ -35,6 +41,7 @@ void Game::InitGame(){
         
     AnimatorHolder::startTimeTickAnimators();
     
+    //nikosTestInitBigPlane();
 }
 
 void Game::InitGamePad(){
