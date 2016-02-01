@@ -509,7 +509,7 @@
                 "point": [0, 0],
                 "visible": false,
                 "spriteType": 4,
-                "remainingBullets": 10,
+                "remainingBullets": 100,
                 "enemyType" : 13,
                 "animFilmId": "bigPlanes"
                 },{

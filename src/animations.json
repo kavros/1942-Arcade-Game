@@ -109,7 +109,19 @@
                                       }
                                       ]
                    }, {
-                   "MovingPathAnimations": [{
+                   "MovingPathAnimations": [
+                                            {                                            
+                                            "id": "enemySideRightFire",
+                                            "continuous": true,
+                                            "paths": [{
+                                                      "dx": 2,
+                                                      "dy": 2,
+                                                      "frameNo": 0,
+                                                      "visibility": true,
+                                                      "delay": 10
+                                                      }]
+                                            },
+                                            {
                                             "id": "superAceMovingAnimation",
                                             "continuous": true,
                                             "paths": [{

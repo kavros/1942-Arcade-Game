@@ -19,9 +19,21 @@ Sprite(id,frameNo,dstRect,point,isVisible,type,currFilm)
     
     setAnimationEnemyBulletFilm( AnimationFilmHolder::Get()->GetFilm("bullets") );
     
-    enemyFighterLifes = 1;
-    if( e == BIG_GREEN || e == BIG_GREY ){
+
+    if( e == MED_GREEN_DOUBLE_ENG || e==MED_GREEN_ONE_ENG || e==MED_GREEN_TRIPLE_ENG){
+        enemyFighterLifes = 3;
+    }
+    else if( e == MED_GREY_DOUBLE_ENG || e==MED_GREY_ONE_ENG || e==MED_GREY_TRIPLE_ENG){
         enemyFighterLifes = 4;
+    }
+    else if( e == BIG_GREEN ){
+        enemyFighterLifes = 5;
+    }
+    else if(e == BIG_GREY){
+        enemyFighterLifes = 6;
+    }
+    else{
+        enemyFighterLifes = 1;
     }
     
     _enemyBulletDstRect.w = 8;
@@ -31,6 +43,14 @@ Sprite(id,frameNo,dstRect,point,isVisible,type,currFilm)
     
     this->addCollisionHandler(Sprite::touchHandler());
     
+}
+
+unsigned EnemyFighter::getEnemyFighterLifes(){
+    return this->enemyFighterLifes;
+}
+
+void EnemyFighter::setEnemyFighterLifes(unsigned lifes){
+    this->enemyFighterLifes = lifes;
 }
 
 unsigned EnemyFighter::getBulletFrame(){
@@ -73,7 +93,6 @@ void EnemyFighter::setEnemyFighterType(enum EnemyFighterType type){
     this->_enemyType = type;
 }
 
-
 SDL_Rect EnemyFighter::getEnemyBulletDstRect(){
 
     assert(!this->isOutOfWindow());
@@ -104,9 +123,21 @@ void EnemyFighter::fire(void){
     }
     
     unsigned r = rand() % 3; // r in the range 0 to 2
-        
+    
+
     if( r == 1 ){
-        setRemainingBullets( getRemainingBullets() - 1);
+        if( this->getEnemyFighterType() == BIG_GREEN || this->getEnemyFighterType() == BIG_GREY ){
+            if( getRemainingBullets() >= 3 ){
+                setRemainingBullets( getRemainingBullets() - 3);
+                fireSideBullets();
+            }
+            else{
+                return;
+            }
+        }
+        else{
+            setRemainingBullets( getRemainingBullets() - 1);
+        }
     }
     else{
         return;
@@ -115,8 +146,8 @@ void EnemyFighter::fire(void){
     assert(this->isAlive() && !this->isOutOfWindow() && this->getVisibility());
     
     static int number = 0;
-    string spriteEnemyFireId = "spriteEnemyFire_" + std::to_string (number);
-    string animatorEnemyFireId = "animatorEnemyFire_" + std::to_string (number);
+    string spriteEnemyFireId = "spriteEnemyFire" + std::to_string (number);
+    string animatorEnemyFireId = "animatorEnemyFire" + std::to_string (number);
     number++;
     
     AnimationFilm* fireAnimationFilm = AnimationFilmHolder::Get()->GetFilm("bullets");
@@ -140,6 +171,36 @@ void EnemyFighter::fire(void){
     
     enemyBullet->addCollisionHandler(Sprite::fireHandler());
 
+}
+
+void EnemyFighter::fireSideBullets(){
+    assert(this->isAlive() && !this->isOutOfWindow() && this->getVisibility());
+    
+    static int number = 0;
+    string spriteEnemyFireId = "spriteEnemySideRightFire" + std::to_string (number);
+    string animatorEnemyFireId = "animatorEnemySideFire" + std::to_string (number);
+    number++;
+    
+    AnimationFilm* fireAnimationFilm = AnimationFilmHolder::Get()->GetFilm("bullets");
+    assert(fireAnimationFilm);
+    
+    Sprite* enemyBullet = new EnemyFighter(spriteEnemyFireId, getBulletFrame(),getEnemyBulletDstRect() , {0,0}, true, ALIEN_SHIP, fireAnimationFilm,BULLET,0);
+    
+    assert(enemyBullet);
+    
+    //play sound for fire
+    SoundHolder::playSound("gunshot");
+    
+    //fireAnimation
+    MovingPathAnimation* fireAnimation = (MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("enemySideRightFire");
+    assert(fireAnimation);
+    
+    MovingPathAnimator* fireAnimator = new MovingPathAnimator(animatorEnemyFireId, enemyBullet, (MovingPathAnimation*)fireAnimation);
+    assert(fireAnimator);
+
+    fireAnimator->start(Game::getGameTime());
+    
+    enemyBullet->addCollisionHandler(Sprite::fireHandler());
 }
 
 void EnemyFighter::createPowerUp(){

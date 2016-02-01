@@ -54,7 +54,8 @@ public:
     AnimationFilm* getAnimationEnemyBulletFilm();
     unsigned getRemainingBullets();
     unsigned getBulletFrame();
-
+    unsigned getEnemyFighterLifes();
+    
     //set
     void setFrame(unsigned i) override;
     void setEnemyFireEnable(bool fire);
@@ -62,9 +63,11 @@ public:
     void setEnemyFighterType(enum EnemyFighterType type);
     void setRemainingBullets(unsigned bullets);
     void setBulletFrame(unsigned frame);
-
+    void setEnemyFighterLifes(unsigned lifes);
+    
     //functionallity
     void fire();
+    void fireSideBullets();
 	void createPowerUp();
 
 };
