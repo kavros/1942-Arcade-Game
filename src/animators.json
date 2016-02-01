@@ -1035,8 +1035,17 @@
                             "animationId": "GreenMediumPlaneAnimation0",
                             "spriteType": 4,
                             "spriteId": "GreenMediumPlane1"
-                            },
-                            {
+                            },{
+                            "id": "GreenMediumPlaneAnimator1",
+                            "animationId": "GreenMediumPlaneAnimation0",
+                            "spriteType": 4,
+                            "spriteId": "GreenMediumPlane2"
+                            },{
+                            "id": "GreenMediumPlaneAnimator2",
+                            "animationId": "GreenMediumPlaneAnimation0",
+                            "spriteType": 4,
+                            "spriteId": "GreenMediumPlane3"
+                            },{
                             "id": "bigPlaneIntroAnimator0",
                             "animationId": "bigPlaneIntroAnimation0",
                             "spriteType": 4,
@@ -1051,6 +1060,11 @@
                             "animationId": "bigPlaneOutroAnimation0",
                             "spriteType": 4,
                             "spriteId": "bigGreenPlaneSprite0"
+                            },{
+                            "id": "miniGreenOneEngAnimator0",
+                            "animationId": "only_circle_250_250_200_130",
+                            "spriteType": 4,
+                            "spriteId": "MinGreenOneEng0"
                             }
                             ]
 }

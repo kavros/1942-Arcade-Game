@@ -2,6 +2,8 @@
 
 void updateGrayPlaneAnimation(MovingPathAnimator* grayJetAnimator);
 void updateGrayJetAnimation(MovingPathAnimator* grayJetAnimator);
+void triggerMediumGreenPlaneAnimator();
+
 AnimatorHolder* AnimatorHolder::_holder = 0;
 
 void AnimatorHolder::Register(Animator* a) {
@@ -268,6 +270,14 @@ void triggerRedPlaneTickAnimations(){
     
     TimerTickAnimator::startTimeTickAnimator(redPlaneTickAnimationId, triggerRedPlaneAnimator );
 }
+/*
+void triggerGreenMediumPlaneTickAnimations(){
+	static int id = 0;
+	string greenMediumPlaneTickAnimationId = "greenMediumPlaneTickAnimation" + std::to_string(id);
+	id++;
+
+	TimerTickAnimator::startTimeTickAnimator(greenMediumPlaneTickAnimationId, triggerMediumGreenPlaneAnimator);
+}*/
 void triggerGrayJetTickAnimator(){
 	static int nameId = 0;
 	string name = "GrayJetAnimator" + std::to_string(nameId);
@@ -281,6 +291,17 @@ void triggerGrayJetTickAnimator(){
 void triggerMediumGreenPlaneAnimator(){
     static int nameId = 0;
     string name = "GreenMediumPlaneAnimator" + std::to_string(nameId);
+    nameId++;
+    
+    MovingPathAnimator* animator = (MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator(name);
+    assert(animator);
+    animator->start(Game::getGameTime());
+    
+}
+
+void triggerMiniGreenOneEngAnimator(){
+    static int nameId = 0;
+    string name = "miniGreenOneEngAnimator" + std::to_string(nameId);
     nameId++;
     
     MovingPathAnimator* animator = (MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator(name);
@@ -355,6 +376,7 @@ void AnimatorHolder::startTimeTickAnimators(){
 
 	//medium plane
 	TimerTickAnimator::startTimeTickAnimator("greenMediumPlaneTickAnimation", triggerMediumGreenPlaneAnimator);
+
 
     //big plane
     TimerTickAnimator::startTimeTickAnimator("bigPlaneIntroTickAnimation", triggerBigPlaneIntroTickAnimators );
