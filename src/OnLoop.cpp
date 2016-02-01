@@ -20,9 +20,12 @@ void Game::OnLoop() {
             }
             if(i % 50000 ==0){
                 AnimatorHolder::getAnimatorHolder()->updateAllGrayPlaneAnimations();
-				AnimatorHolder::getAnimatorHolder()->updateAllGrayJetsAnimations();
+				
 
             }
+			if (i % 500 == 0){
+				AnimatorHolder::getAnimatorHolder()->updateAllGrayJetsAnimations();
+			}
             
             //commit destruction
             //proxeiri ilipoiisi ala nikola'

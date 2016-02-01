@@ -73,6 +73,16 @@
                 "enemyType" : 0,
                 "animFilmId": "gray_jet"
                 },{
+                "id": "GreenMediumPlane1",
+                "frameNo": 0,
+                "destRect": [350, 10, 33, 29],
+                "point": [0, 0],
+                "visible": false,
+                "spriteType": 4,
+                "remainingBullets": 0,
+                "enemyType" : 0,
+                "animFilmId": "green_medium_plane"
+                },{
                 "id": "RedJet1",
                 "frameNo": 0,
                 "destRect": [0, 200, 25, 25],
