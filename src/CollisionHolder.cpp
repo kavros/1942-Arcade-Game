@@ -37,11 +37,12 @@ void Sprite::fireHandler::operator()(Sprite* bullet,Sprite* arg) const{
             sa->setState(IN_COLUSION);
         }
     }else{
+        assert(arg->getType() == ALIEN_SHIP);
         arg->setState(IN_COLUSION);
-        if(arg->getType() == ALIEN_SHIP){
-            EnemyFighter* enemyFighter = (EnemyFighter*)arg;
-            
-            if( enemyFighter->getEnemyFighterType() == RED_PLANE && SpritesHolder::uniqueAliveFromTeam(enemyFighter) ){
+        EnemyFighter* enemyFighter = (EnemyFighter*)arg;
+
+        if( enemyFighter->getEnemyFighterType() == RED_PLANE ){
+            if( SpritesHolder::uniqueAliveFromTeam(enemyFighter) ){
 				enemyFighter->createPowerUp();
             }
         }

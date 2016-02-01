@@ -20,7 +20,7 @@ bool Game::OnInit(){
     
     InitGame();
 	InitGrayJet();
-	SoundHolder::setMute(false);
+
     return true;
 }
 
@@ -28,6 +28,40 @@ void Game::InitGrayJet(){
 
 }
 
+void createPowerUp(){
+    cout<<"Nikos Test in Init\n";
+    static int nameId=0;
+    string spritePowerUpId = "spritePowerUpId..." + std::to_string(nameId);
+    string animatorPowerUpId = "animatorPowerUpId..." + std::to_string(nameId);
+    nameId++;
+    
+    AnimationFilm* powerUpAnimationFilm = AnimationFilmHolder::Get()->GetFilm("powerUps");
+    assert(powerUpAnimationFilm);
+    Sprite* powerUp;
+    
+    PowerUpType powerUpType = PowerUpType(SIDE_FIGHTERS);
+    unsigned powerUpFrameNo = powerUpType;
+    
+    powerUp = new PowerUp(spritePowerUpId, powerUpType, powerUpFrameNo, { 250, 0, 20, 20 }, { 0, 0 }, true, POWER_UPS, powerUpAnimationFilm);
+    
+    assert(powerUp);
+    
+    powerUp->addCollisionHandler(Sprite::touchPowerUpHandler());
+    
+    //play sound for power up
+    //SoundHolder::playSound("gunshot");
+    
+    //powerUpAnimation
+    Animation* powerUpAnimation = AnimationHolder::getAnimationHolder()->getAnimation("powerUp");
+    assert(powerUpAnimation);
+    
+    //powerUpAnimator
+    MovingAnimator* powerUpAnimator = new MovingAnimator(animatorPowerUpId, powerUp, (MovingAnimation*)powerUpAnimation);
+    assert(powerUpAnimator);
+    
+    powerUpAnimator->start(Game::getGameTime());
+    
+}
 
 void Game::InitGame(){
     InitData();
@@ -40,6 +74,8 @@ void Game::InitGame(){
     InitGameInfo();
         
     AnimatorHolder::startTimeTickAnimators();
+    
+    //createPowerUp();
 }
 
 void Game::InitGamePad(){

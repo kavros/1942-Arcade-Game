@@ -15,6 +15,8 @@ class SideFighter : public Sprite {
 private:
     SDL_Rect sideFightertBulletDstRect;
     unsigned bulletFrame;
+    AnimationFilm* bulletAnimationFilm;
+    
 public:
     
     //constructor

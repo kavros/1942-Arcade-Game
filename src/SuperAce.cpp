@@ -180,30 +180,22 @@ void SuperAce::filterMotion(int* dx, int* dy) const {
 }
 
 SideFighter::SideFighter(Sprite* ace, const std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point point,bool isVisible,SpriteType type,AnimationFilm* currFilm):
-Sprite(id,frameNo,dstRect,point,isVisible,type,currFilm)
-{
-        
+Sprite(id,frameNo,dstRect,point,isVisible,type,currFilm){
+    
+    assert(!isOutOfWindow());
+    
     ace->attach(this, id);
 
-    _spriteId = id;
-    _dstRect = dstRect;
-    _point = point;
-    setVisibility(isVisible);
-    _type = type;
-    _currFilm = currFilm;
-    setFrame(frameNo);
-    _state = STARTING;
-    
     bulletFrame = 1;
 
-    AnimationFilm* animationBulletFilm = AnimationFilmHolder::Get()->GetFilm("bullets");
-    assert(animationBulletFilm);
+    bulletAnimationFilm = AnimationFilmHolder::Get()->GetFilm("bullets");
+    assert(bulletAnimationFilm);
     
-    sideFightertBulletDstRect.x=this->getDstRect().x + (getDstRect().w/4);
-    sideFightertBulletDstRect.y=this->getDstRect().y - getDstRect().h;
-    sideFightertBulletDstRect.w=animationBulletFilm->getFrameBox(1).w * Game::getSpriteSize();
-    sideFightertBulletDstRect.h=animationBulletFilm->getFrameBox(1).h * Game::getSpriteSize();
-    
+    //sideFightertBulletDstRect.w=bulletAnimationFilm->getFrameBox(bulletFrame).w * Game::getSpriteSize();
+    //sideFightertBulletDstRect.h=bulletAnimationFilm->getFrameBox(bulletFrame).h * Game::getSpriteSize();
+    //sideFightertBulletDstRect.x=this->getDstRect().x + getDstRect().w/2 - sideFightertBulletDstRect.w;
+    //sideFightertBulletDstRect.y=this->getDstRect().y - getDstRect().h;
+
     this->addCollisionHandler(Sprite::touchHandler());
 }
 
@@ -212,8 +204,8 @@ SideFighter::~SideFighter(){
 }
 
 SDL_Rect SideFighter::getSideFightertBulletDstRect(unsigned int bulletFrame){
-    sideFightertBulletDstRect.x=(this->getDstRect().x + this->getDstRect().w/2 - sideFightertBulletDstRect.w/2);
-    sideFightertBulletDstRect.y=this->getDstRect().y - getDstRect().h/3;
+    //sideFightertBulletDstRect.x=this->getDstRect().x + getDstRect().w/2 - sideFightertBulletDstRect.w;
+    //sideFightertBulletDstRect.y=this->getDstRect().y - getDstRect().h;
     return sideFightertBulletDstRect;
 }
 
@@ -251,13 +243,12 @@ void SuperAce::addSideFighters(){
     
     AnimationFilm* anim = AnimationFilmHolder::Get()->GetFilm("sideFighters");
     unsigned sideFighterFrameNo = 1;
-    SDL_Rect sideFighterDstRect = {0,0,0,0};
+    SDL_Rect sideFighterDstRect = { 0 , getDstRect().y , 3*(getDstRect().w/4) , getDstRect().h };
     SideFighter* sideFighter;
     
     /*right side fighter*/
+    sideFighterDstRect.x = getDstRect().x+getDstRect().w;
     sideFighter = new SideFighter(this, RIGHT_FIGHTER, sideFighterFrameNo, sideFighterDstRect, _point, _isVisible, _type, anim);
-    sideFighterDstRect = { getDstRect().x+getDstRect().w , getDstRect().y , sideFighter->getDstRect().w , getDstRect().h };
-    sideFighter->setDstRect(sideFighterDstRect);
     
     MovingPathAnimation* sideFighterAnimationRight = (MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("sideFighterAnimationRight");
     MovingPathAnimator* sideFighterAnimatorRight = new MovingPathAnimator( "RightSideFighterAnimatorRight", sideFighter, sideFighterAnimationRight);
@@ -266,10 +257,8 @@ void SuperAce::addSideFighters(){
     MovingPathAnimator* sideFighterAnimatorLeft	= new MovingPathAnimator("RightSideFighterAnimatorLeft", sideFighter, sideFighterAnimationLeft);
 
     /*left side fighter*/
+    sideFighterDstRect.x = getDstRect().x-sideFighterDstRect.w;
     sideFighter = new SideFighter(this, LEFT_FIGHTER, sideFighterFrameNo, sideFighterDstRect, _point, _isVisible, _type, anim);
-    sideFighterDstRect = { getDstRect().x-sideFighter->getDstRect().w , getDstRect().y , sideFighter->getDstRect().w , getDstRect().h };
-    sideFighter->setDstRect(sideFighterDstRect);
-    
     
     sideFighterAnimationRight = (MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("sideFighterAnimationRight");
     sideFighterAnimatorRight = new MovingPathAnimator("LeftSideFighterAnimatorRight", sideFighter, sideFighterAnimationRight);
@@ -279,5 +268,9 @@ void SuperAce::addSideFighters(){
     
     assert(getAttached(RIGHT_FIGHTER));
     assert(getAttached(LEFT_FIGHTER));
+    
+    assert(!getAttached(RIGHT_FIGHTER)->isOutOfWindow());
+    assert(!getAttached(LEFT_FIGHTER)->isOutOfWindow());
+
 }
 
