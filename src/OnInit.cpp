@@ -19,17 +19,11 @@ bool Game::OnInit(){
     InitRenderer();
     
     InitGame();
-	InitGrayJet();
 
     return true;
 }
 
-void Game::InitGrayJet(){
 
-	//MovingPathAnimator* grayJetAnimator = new MovingPathAnimator()
-
-
-}
 
 void createPowerUp(){
     cout<<"Nikos Test in Init\n";
@@ -57,7 +51,7 @@ void createPowerUp(){
     //powerUpAnimation
     Animation* powerUpAnimation = AnimationHolder::getAnimationHolder()->getAnimation("powerUp");
     assert(powerUpAnimation);
-    
+
     //powerUpAnimator
     MovingAnimator* powerUpAnimator = new MovingAnimator(animatorPowerUpId, powerUp, (MovingAnimation*)powerUpAnimation);
     assert(powerUpAnimator);

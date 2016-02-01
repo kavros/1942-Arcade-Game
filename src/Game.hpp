@@ -86,7 +86,7 @@ public:
     static bool InitData();
     static bool InitBackground();
     static bool InitGameInfo();
-	static void InitGrayJet();
+
 	//static void InitSuperAceAnimator();
 
 	static void InitGamePad();

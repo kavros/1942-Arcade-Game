@@ -969,22 +969,27 @@
                             "id": "GrayPlaneAnimator0",
                             "animationId": "minGrayPlaneAnimation0",
                             "spriteType": 4,
-                            "spriteId": "MinGrayJet0"
+                            "spriteId": "MinGrayPlane0"
                             },{
                             "id": "GrayPlaneAnimator1",
                             "animationId": "minGrayPlaneAnimation1",
                             "spriteType": 4,
-                            "spriteId": "MinGrayJet1"
+                            "spriteId": "MinGrayPlane1"
                             },{
                             "id": "GrayPlaneAnimator2",
                             "animationId": "minGrayPlaneAnimation2",
                             "spriteType": 4,
-                            "spriteId": "MinGrayJet2"
+                            "spriteId": "MinGrayPlane2"
                             },{
                             "id": "GrayPlaneAnimator3",
                             "animationId": "minGrayPlaneAnimation3",
                             "spriteType": 4,
-                            "spriteId": "MinGrayJet3"
+                            "spriteId": "MinGrayPlane3"
+                            },{
+                            "id": "GrayJetAnimator0",
+                            "animationId": "GrayJetAnimation0",
+                            "spriteType": 4,
+                            "spriteId": "GrayJet1"
                             }
                             ]
 }

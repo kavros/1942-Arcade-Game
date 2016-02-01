@@ -253,6 +253,7 @@ void triggerGrayPlaneAnimator(){
 
 	MovingPathAnimator* animator = (MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator(name);
 	assert(animator);
+    updateGrayPlaneAnimation(animator);
 	animator->start(Game::getGameTime());
 
 }
@@ -281,8 +282,8 @@ void AnimatorHolder::startTimeTickAnimators(){
     //TimerTickAnimator::startTimeTickAnimator("greenDoubleEnginePlaneTickAnimation", triggerGreenDoubleEnginePlaneAnimator );
 	TimerTickAnimator::startTimeTickAnimator("grayPlaneTickAnimation", triggerGrayPlaneAnimator);
 
-    //TimerTickAnimator::startTimeTickAnimator("redPlaneTickAnimations", triggerRedPlaneTickAnimations );
-	//TimerTickAnimator::startTimeTickAnimator("grayJetTickAnimation", triggerGrayJetTickAnimator);
+    TimerTickAnimator::startTimeTickAnimator("redPlaneTickAnimations", triggerRedPlaneTickAnimations );
+	TimerTickAnimator::startTimeTickAnimator("grayJetTickAnimation", triggerGrayJetTickAnimator);
 }	
 
 using namespace rapidjson;
@@ -332,7 +333,7 @@ void    AnimatorHolder::Load (const std::string& cataloge){
     }
     
 }
-
+    
 void AnimatorHolder::UpdateAllGrayPlaneAnimations(){
     
     MovingPathAnimator* grayPlaneAnimator;
