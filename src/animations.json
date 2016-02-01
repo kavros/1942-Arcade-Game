@@ -731,6 +731,17 @@
                                                       "delay": 100
                                                       }]
                                             },{
+                                            "id": "GreenMediumPlaneAnimation0",
+                                            "continuous":true,
+                                            "paths": [{
+                                                      "dx": 0,
+                                                      "dy": 10,
+                                                      "visibility": true,
+                                                      "frameNo": 8,
+                                                      "delay": 100
+                                                      }]
+                                            },{
+                                            
                                             "id": "bigPlaneIntroAnimation0",
                                             "continuous":true,
                                             "paths": [{

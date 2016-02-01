@@ -276,6 +276,17 @@ void triggerGrayJetTickAnimator(){
 	animator->start(Game::getGameTime());
 }
 
+void triggerMediumGreenPlaneAnimator(){
+    static int nameId = 0;
+    string name = "GreenMediumPlaneAnimator" + std::to_string(nameId);
+    nameId++;
+    
+    MovingPathAnimator* animator = (MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator(name);
+    assert(animator);
+    animator->start(Game::getGameTime());
+    
+}
+
 void triggerBigPlaneTickAnimators(){
     
     static int nameId = 0;
