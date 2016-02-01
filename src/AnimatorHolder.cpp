@@ -247,7 +247,7 @@ void triggerEndOfTheStageAnimator(){
 
 void triggerGrayPlaneAnimator(){
 	static int nameId = 0;
-	string name = "GrayJetAnimator" + std::to_string(nameId);
+	string name = "GrayPlaneAnimator" + std::to_string(nameId);
 	nameId++;
 
 	MovingPathAnimator* animator = (MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator(name);
@@ -263,7 +263,9 @@ void triggerRedPlaneTickAnimations(){
     
     TimerTickAnimator::startTimeTickAnimator(redPlaneTickAnimationId, triggerRedPlaneAnimator );
 }
+void triggerGrayJetTickAnimator(){
 
+}
 void AnimatorHolder::startTimeTickAnimators(){
     
     TimerTickAnimator::startTimeTickAnimator("superAceMovingPathTickAnimation", triggerSuperAceMovingPathAnimator );
@@ -277,7 +279,8 @@ void AnimatorHolder::startTimeTickAnimators(){
     //TimerTickAnimator::startTimeTickAnimator("greenDoubleEnginePlaneTickAnimation", triggerGreenDoubleEnginePlaneAnimator );
 
     TimerTickAnimator::startTimeTickAnimator("redPlaneTickAnimations", triggerRedPlaneTickAnimations );
-}
+	//TimerTickAnimator::startTimeTickAnimator("grayJetTickAnimation", triggerGrayJetTickAnimator);
+}	
 
 using namespace rapidjson;
 
@@ -329,3 +332,21 @@ void    AnimatorHolder::Load (const std::string& cataloge){
 
 
 
+unsigned int AnimatorHolder::getNumberOfGraySingleEnginePlanes(){
+	AnimatorHolder* h = AnimatorHolder::getAnimatorHolder();
+	AnimatorList::iterator it = h->_running.begin();
+	int number = 0;
+
+	it = h->_running.begin();
+	while (it != h->_running.end()){
+		if ((*it)->getId().find("GrayPlaneAnimator") != std::string::npos){
+			number++;
+		}
+		++it;
+	}
+
+	return number;
+}
+unsigned int AnimatorHolder::getNumberOfGrayJets(){
+	return 0;
+}

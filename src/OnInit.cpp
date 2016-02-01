@@ -19,11 +19,14 @@ bool Game::OnInit(){
     InitRenderer();
     
     InitGame();
-
+	InitGrayJet();
+	SoundHolder::setMute(false);
     return true;
 }
 
+void Game::InitGrayJet(){
 
+}
 
 
 void Game::InitGame(){
@@ -226,7 +229,7 @@ bool Game::InitGameInfo(){
 
     SpriteStringHolder::addSpriteString("exit", new SpriteString("EXIT", (WIN_WIDTH / 2 -(5*6)), (WIN_HEIGHT / 2 - 20) ) );
     SpriteStringHolder::getSpriteString("exit")->setVisibility(false);
-    SpriteStringHolder::addSpriteString("pause", new SpriteString("PAUSE", (WIN_WIDTH / 2 -(5*6)), (WIN_HEIGHT / 2) ) );
+    SpriteStringHolder::addSpriteString("pause", new SpriteString("RESUME", (WIN_WIDTH / 2 -(5*6)), (WIN_HEIGHT / 2) ) );
     SpriteStringHolder::getSpriteString("pause")->setVisibility(false);
     
     SpriteStringHolder::addSpriteString("shootingString", new SpriteString("SHOOTING", (WIN_WIDTH / 2) - 150, (WIN_HEIGHT / 2)) );

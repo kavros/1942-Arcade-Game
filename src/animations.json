@@ -88,6 +88,10 @@
                                       "delay": 1000,
                                       "repetitions": 4
                                       },{
+                                      "id": "grayJetTickAnimation",
+                                      "delay": 1000,
+                                      "repetitions": 1
+                                      },{
                                       "id": "shortTickAnimation",
                                       "delay": 10000,
                                       "repetitions": 1
@@ -345,7 +349,7 @@
                                                       "delay": 90
                                                       }]
                                             },{
-                                            "id": "minGrayJetAnimation0",
+                                            "id": "minGrayPlaneAnimation0",
                                             "continuous":true,
                                             "paths": [{
                                                       "dx": 0,
@@ -355,7 +359,7 @@
                                                       "delay": 90
                                                       }]
                                             },{
-                                            "id": "minGrayJetAnimation1",
+                                            "id": "minGrayPlaneAnimation1",
                                             "continuous":true,
                                             "paths": [{
                                                       "dx": 0,
@@ -365,7 +369,7 @@
                                                       "delay": 90
                                                       }]
                                             },{
-                                            "id": "minGrayJetAnimation2",
+                                            "id": "minGrayPlaneAnimation2",
                                             "continuous":true,
                                             "paths": [{
                                                       "dx": 0,
@@ -375,7 +379,7 @@
                                                       "delay": 90
                                                       }]
                                             },{
-                                            "id": "minGrayJetAnimation3",
+                                            "id": "minGrayPlaneAnimation3",
                                             "continuous":true,
                                             "paths": [{
                                                       "dx": 0,
