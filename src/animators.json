@@ -966,6 +966,11 @@
                             "spriteId": "RedJet34"
                             
                             },{
+                            "id": "flipGrayPlaneAnimator0",
+                            "animationId": "flipminGrayPlaneAnimation",
+                            "spriteType": 4,
+                            "spriteId": "MinGrayPlane0"
+                            },{
                             "id": "GrayPlaneAnimator0",
                             "animationId": "minGrayPlaneAnimation0",
                             "spriteType": 4,
