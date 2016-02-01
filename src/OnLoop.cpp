@@ -19,7 +19,9 @@ void Game::OnLoop() {
                 return;
             }
             if(i % 50000 ==0){
-                AnimatorHolder::getAnimatorHolder()->UpdateAllGrayPlaneAnimations();
+                AnimatorHolder::getAnimatorHolder()->updateAllGrayPlaneAnimations();
+				AnimatorHolder::getAnimatorHolder()->updateAllGrayJetsAnimations();
+
             }
             
             //commit destruction

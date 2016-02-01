@@ -36,7 +36,12 @@ public:
 	}
 	MovingPathAnimation(const std::list<PathEntry>& path, animid_t id,bool continuous) :
 		_path(path), Animation(id), _continuous(continuous){}
-	
+	void changeDxDy(int dx, int dy){
+		for (std::list<PathEntry>::iterator it = _path.begin(); it != _path.end(); ++it){
+			it->_dx = dx;
+			it->_dy = dy;
+		}
+	}
 private:
 	typedef std::list<PathEntry> PathsList;
 	std::list<PathEntry> _path;

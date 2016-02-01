@@ -393,22 +393,10 @@
                                             "continuous":true,
                                             "paths": [{
                                                       "dx": 0,
-                                                      "dy": 10,
+                                                      "dy": 17,
                                                       "visibility": true,
                                                       "frameNo": 0,
-                                                      "delay": 200
-                                                      },{
-                                                      "dx": 0,
-                                                      "dy": 10,
-                                                      "visibility": true,
-                                                      "frameNo": 1,
-                                                      "delay": 200
-                                                      },{
-                                                      "dx": 0,
-                                                      "dy": 10,
-                                                      "visibility": true,
-                                                      "frameNo": 2,
-                                                      "delay": 200
+                                                      "delay": 100
                                                       }]
                                             }
 											,{
