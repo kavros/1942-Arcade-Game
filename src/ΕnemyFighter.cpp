@@ -19,6 +19,11 @@ Sprite(id,frameNo,dstRect,point,isVisible,type,currFilm)
     
     setAnimationEnemyBulletFilm( AnimationFilmHolder::Get()->GetFilm("bullets") );
     
+    enemyFighterLifes = 1;
+    if( e == BIG_GREEN || e == BIG_GREY ){
+        enemyFighterLifes = 4;
+    }
+    
     _enemyBulletDstRect.w = 8;
     _enemyBulletDstRect.h = 8;
     _enemyBulletDstRect.x=(this->getDstRect().x + this->getDstRect().w/2 - _enemyBulletDstRect.w/2);

@@ -1000,17 +1000,17 @@
                             "id": "bigPlaneIntroAnimator0",
                             "animationId": "bigPlaneIntroAnimation0",
                             "spriteType": 4,
-                            "spriteId": "bigGreenPlaneSprite"
+                            "spriteId": "bigGreenPlaneSprite0"
                             },{
                             "id": "bigPlaneStayStillAnimator0",
                             "animationId": "bigPlaneStayStillAnimation0",
                             "spriteType": 4,
-                            "spriteId": "bigGreenPlaneSprite"
+                            "spriteId": "bigGreenPlaneSprite0"
                             },{
                             "id": "bigPlaneOutroAnimator0",
                             "animationId": "bigPlaneOutroAnimation0",
                             "spriteType": 4,
-                            "spriteId": "bigGreenPlaneSprite"
+                            "spriteId": "bigGreenPlaneSprite0"
                             }
                             ]
 }
