@@ -10,6 +10,7 @@ Animator(id){
     chooseCallBack(id);
     
 
+    
 }
 
 void MovingPathAnimator::chooseCallBack(string id){
@@ -86,7 +87,7 @@ void MovingPathAnimator::progress(timestamp_t currTime){
 Sprite* MovingPathAnimator::getSprite(){
 	return _sprite;
 }
-MovingPathAnimation* MovingPathAnimator::getMovingAnimationPath(){
+MovingPathAnimation* MovingPathAnimator::getMovingPathAnimation(){
 	return _anim;
 }
 
@@ -108,7 +109,6 @@ void MovingPathAnimator::start(timestamp_t t){
 	_state = ANIMATOR_RUNNING;
 
 	AnimatorHolder::markAsRunning(this);
-	
 }
 
 

@@ -15,6 +15,8 @@ class SideFighter : public Sprite {
 private:
     SDL_Rect sideFightertBulletDstRect;
     unsigned bulletFrame;
+    AnimationFilm* bulletAnimationFilm;
+    
 public:
     
     //constructor
@@ -22,7 +24,7 @@ public:
     ~SideFighter();
     
     //get
-    SDL_Rect getSideFightertBulletDstRect(unsigned int bulletFrame);
+    SDL_Rect getSideFightertBulletDstRect();
     
     //set
     

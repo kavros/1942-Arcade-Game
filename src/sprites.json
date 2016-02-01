@@ -25,7 +25,7 @@
                 },{
                 "id": "MinGrayPlane0",
                 "frameNo": 0,
-                "destRect": [0, 10, 17, 11],
+                "destRect": [0, 10, 25, 25],
                 "point": [0, 0],
                 "visible": false,
                 "spriteType": 4,
@@ -35,7 +35,7 @@
                 },{
                 "id": "MinGrayPlane1",
                 "frameNo": 0,
-                "destRect": [50, 10, 17, 11],
+                "destRect": [50, 10, 25, 25],
                 "point": [0, 0],
                 "visible": false,
                 "spriteType": 4,
@@ -45,7 +45,7 @@
                 },{
                 "id": "MinGrayPlane2",
                 "frameNo": 0,
-                "destRect": [100, 10, 17, 11],
+                "destRect": [100, 10, 25, 25],
                 "point": [0, 0],
                 "visible": false,
                 "spriteType": 4,
@@ -55,7 +55,7 @@
                 },{
                 "id": "MinGrayPlane3",
                 "frameNo": 0,
-                "destRect": [400, 10, 17, 11],
+                "destRect": [400, 10, 25, 25],
                 "point": [0, 0],
                 "visible": false,
                 "spriteType": 4,
