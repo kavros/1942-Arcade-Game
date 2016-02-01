@@ -36,15 +36,15 @@ void Sprite::fireHandler::operator()(Sprite* bullet,Sprite* arg) const{
             sa->setState(IN_COLUSION);
         }
     }else if( arg->getType() == ALIEN_SHIP ){
-
-        arg->setState(IN_COLUSION);
-        EnemyFighter* enemyFighter = (EnemyFighter*)arg;
-
-        if( enemyFighter->getEnemyFighterType() == RED_PLANE ){
-            if( SpritesHolder::uniqueAliveFromTeam(enemyFighter) ){
-				enemyFighter->createPowerUp();
+        
+        EnemyFighter* enemyFighter = ( EnemyFighter* )arg;
+        if( enemyFighter->getEnemyFighterType() == BIG_GREEN || enemyFighter->getEnemyFighterType() == BIG_GREY ){
+            if(enemyFighter->getEnemyFighterLifes() == 1){
+                enemyFighter->setState(IN_COLUSION);
             }
+            enemyFighter->setEnemyFighterLifes( enemyFighter->getEnemyFighterLifes() -1 );
         }
+        
     }
     else if( arg->getType() == SUPER_ACE ){
         Sprite* rightFighter = superAce->getAttached(RIGHT_FIGHTER);
@@ -84,10 +84,32 @@ void Sprite::touchHandler::operator()(Sprite* aircraft,Sprite* arg) const{
     
     if(arg != superAce){
         arg->setState(IN_COLUSION);
+        
+        if(arg->getType() == ALIEN_SHIP){
+            EnemyFighter* enemyFighter = ( EnemyFighter* )arg;
+            if( enemyFighter->getEnemyFighterType() == BIG_GREEN || enemyFighter->getEnemyFighterType() == BIG_GREY ){
+                if(enemyFighter->getEnemyFighterLifes() == 1){
+                    enemyFighter->setState(IN_COLUSION);
+                }
+                enemyFighter->setEnemyFighterLifes( enemyFighter->getEnemyFighterLifes() -1 );
+            }
+        }
+
     }
     
     if (aircraft != superAce){
         aircraft->setState(IN_COLUSION);
+        
+        if(aircraft->getType() == ALIEN_SHIP){
+            EnemyFighter* enemyFighter = ( EnemyFighter* )aircraft;
+            if( enemyFighter->getEnemyFighterType() == BIG_GREEN || enemyFighter->getEnemyFighterType() == BIG_GREY ){
+                if(enemyFighter->getEnemyFighterLifes() == 1){
+                    enemyFighter->setState(IN_COLUSION);
+                }
+                enemyFighter->setEnemyFighterLifes( enemyFighter->getEnemyFighterLifes() -1 );
+            }
+        }
+        
     }
     if ( arg == superAce || aircraft == superAce ){
 

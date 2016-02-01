@@ -21,7 +21,7 @@ Sprite(id,frameNo,dstRect,point,isVisible,type,currFilm)
     
     enemyFighterLifes = 1;
     if( e == BIG_GREEN || e == BIG_GREY ){
-        enemyFighterLifes = 4;
+        enemyFighterLifes = 3;
     }
     
     _enemyBulletDstRect.w = 8;
@@ -31,6 +31,14 @@ Sprite(id,frameNo,dstRect,point,isVisible,type,currFilm)
     
     this->addCollisionHandler(Sprite::touchHandler());
     
+}
+
+unsigned EnemyFighter::getEnemyFighterLifes(){
+    return this->enemyFighterLifes;
+}
+
+void EnemyFighter::setEnemyFighterLifes(unsigned lifes){
+    this->enemyFighterLifes = lifes;
 }
 
 unsigned EnemyFighter::getBulletFrame(){
