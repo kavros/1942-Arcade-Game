@@ -30,7 +30,7 @@
                 "visible": false,
                 "spriteType": 4,
                 "remainingBullets": 10,
-                "enemyType" : 2,
+                "enemyType" : 4,
                 "animFilmId": "min_gray_plane"
                 },{
                 "id": "MinGrayPlane1",
@@ -40,7 +40,7 @@
                 "visible": false,
                 "spriteType": 4,
                 "remainingBullets": 10,
-                "enemyType" : 2,
+                "enemyType" : 4,
                 "animFilmId": "min_gray_plane"
                 },{
                 "id": "MinGrayPlane2",
@@ -50,7 +50,7 @@
                 "visible": false,
                 "spriteType": 4,
                 "remainingBullets": 10,
-                "enemyType" : 2,
+                "enemyType" : 4,
                 "animFilmId": "min_gray_plane"
                 },{
                 "id": "MinGrayPlane3",
@@ -60,12 +60,12 @@
                 "visible": false,
                 "spriteType": 4,
                 "remainingBullets": 10,
-                "enemyType" : 2,
+                "enemyType" :4,
                 "animFilmId": "min_gray_plane"
                 },{
                 "id": "GrayJet1",
                 "frameNo": 0,
-                "destRect": [250, 10, 19, 16],
+                "destRect": [350, 10, 19, 16],
                 "point": [0, 0],
                 "visible": false,
                 "spriteType": 4,
