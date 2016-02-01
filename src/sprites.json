@@ -30,7 +30,7 @@
                 "visible": false,
                 "spriteType": 4,
                 "remainingBullets": 10,
-                "enemyType" : 2,
+                "enemyType" : 4,
                 "animFilmId": "min_gray_plane"
                 },{
                 "id": "MinGrayPlane1",
@@ -40,7 +40,7 @@
                 "visible": false,
                 "spriteType": 4,
                 "remainingBullets": 10,
-                "enemyType" : 2,
+                "enemyType" : 4,
                 "animFilmId": "min_gray_plane"
                 },{
                 "id": "MinGrayPlane2",
@@ -50,7 +50,7 @@
                 "visible": false,
                 "spriteType": 4,
                 "remainingBullets": 10,
-                "enemyType" : 2,
+                "enemyType" : 4,
                 "animFilmId": "min_gray_plane"
                 },{
                 "id": "MinGrayPlane3",
@@ -60,18 +60,28 @@
                 "visible": false,
                 "spriteType": 4,
                 "remainingBullets": 10,
-                "enemyType" : 2,
+                "enemyType" :4,
                 "animFilmId": "min_gray_plane"
                 },{
                 "id": "GrayJet1",
                 "frameNo": 0,
-                "destRect": [250, 10, 19, 16],
+                "destRect": [350, 10, 19, 16],
                 "point": [0, 0],
                 "visible": false,
                 "spriteType": 4,
                 "remainingBullets": 0,
                 "enemyType" : 0,
                 "animFilmId": "gray_jet"
+                },{
+                "id": "GreenMediumPlane1",
+                "frameNo": 0,
+                "destRect": [350, 10, 33, 29],
+                "point": [0, 0],
+                "visible": false,
+                "spriteType": 4,
+                "remainingBullets": 0,
+                "enemyType" : 0,
+                "animFilmId": "green_medium_plane"
                 },{
                 "id": "RedJet1",
                 "frameNo": 0,
@@ -492,6 +502,16 @@
                 "spriteType": 4,
                 "remainingBullets": 2,
                 "animFilmId": "green_double_engine"
+                },{
+                "id": "bigGreenPlaneSprite",
+                "frameNo": 0,
+                "destRect": [100, 768, 120, 100],
+                "point": [0, 0],
+                "visible": false,
+                "spriteType": 4,
+                "remainingBullets": 10,
+                "enemyType" : 13,
+                "animFilmId": "bigPlanes"
                 },{
                 "id": "SuperAce",
                 "frameNo": 0,

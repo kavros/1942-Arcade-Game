@@ -120,7 +120,6 @@ void EnemyFighter::fire(void){
     Sprite* enemyBullet = new EnemyFighter(spriteEnemyFireId, getBulletFrame(),getEnemyBulletDstRect() , {0,0}, true, ALIEN_SHIP, fireAnimationFilm,BULLET,0);
     
     assert(enemyBullet);
-    assert(!enemyBullet->isOutOfWindow());
     
     //play sound for fire
     SoundHolder::playSound("gunshot");

@@ -42,7 +42,13 @@ public:
 	
     //get
     static AnimatorHolder* getAnimatorHolder();
-    static void UpdateAllGrayPlaneAnimations();
+    
+	static void updateAllGrayPlaneAnimations();
+
+	
+	static void updateAllGrayJetsAnimations();
+
+
     static void cleanup();
     
 	//marking state
@@ -69,8 +75,7 @@ public:
     static void Load (const std::string& cataloge);
     static void startTimeTickAnimators();
 
-	static unsigned int getNumberOfGraySingleEnginePlanes();
-	static unsigned int getNumberOfGrayJets();
+
 	
 };
 

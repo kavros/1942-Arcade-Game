@@ -1,6 +1,7 @@
 #include "AnimatorHolder.h"
 
 void updateGrayPlaneAnimation(MovingPathAnimator* grayJetAnimator);
+void updateGrayJetAnimation(MovingPathAnimator* grayJetAnimator);
 AnimatorHolder* AnimatorHolder::_holder = 0;
 
 void AnimatorHolder::Register(Animator* a) {
@@ -274,6 +275,62 @@ void triggerGrayJetTickAnimator(){
 	assert(animator);
 	animator->start(Game::getGameTime());
 }
+
+void triggerMediumGreenPlaneAnimator(){
+    static int nameId = 0;
+    string name = "GreenMediumPlaneAnimator" + std::to_string(nameId);
+    nameId++;
+    
+    MovingPathAnimator* animator = (MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator(name);
+    assert(animator);
+    animator->start(Game::getGameTime());
+    
+}
+
+void triggerBigPlaneIntroTickAnimators(){
+    
+    static int nameId = 0;
+    string bigPlaneIntroAnimatorString = "bigPlaneIntroAnimator" + std::to_string(nameId);
+    nameId++;
+    
+    MovingPathAnimator* animator = (MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator(bigPlaneIntroAnimatorString);
+    assert(animator);
+    animator->start(Game::getGameTime());
+}
+
+void triggerBigPlaneStayStillTickAnimators(){
+    
+    static int nameId = 0;
+    string bigPlaneIntroAnimatorString = "bigPlaneIntroAnimator" + std::to_string(nameId);
+    string bigPlaneStayStillAnimatorString = "bigPlaneStayStillAnimator" + std::to_string(nameId);
+    nameId++;
+    
+    MovingPathAnimator* animator = (MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator(bigPlaneStayStillAnimatorString);
+    assert(animator);
+    MovingPathAnimator* prevAnimator = (MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator(bigPlaneIntroAnimatorString);
+    assert(prevAnimator);
+    prevAnimator->setState(ANIMATOR_FINISHED);
+    prevAnimator->stop();
+    animator->start(Game::getGameTime());
+    
+}
+void triggerBigPlaneOutroTickAnimators(){
+    
+    static int nameId = 0;
+    string bigPlaneStayStillAnimatorString = "bigPlaneStayStillAnimator" + std::to_string(nameId);
+    string bigPlaneOutroAnimatorString = "bigPlaneOutroAnimator" + std::to_string(nameId);
+    nameId++;
+    
+    MovingPathAnimator* animator = (MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator(bigPlaneOutroAnimatorString);
+    assert(animator);
+    MovingPathAnimator* prevAnimator = (MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator(bigPlaneStayStillAnimatorString);
+    assert(prevAnimator);
+    prevAnimator->setState(ANIMATOR_FINISHED);
+    prevAnimator->stop();
+    animator->start(Game::getGameTime());
+
+}
+
 void AnimatorHolder::startTimeTickAnimators(){
     
     TimerTickAnimator::startTimeTickAnimator("superAceMovingPathTickAnimation", triggerSuperAceMovingPathAnimator );
@@ -284,7 +341,13 @@ void AnimatorHolder::startTimeTickAnimators(){
 
     //TimerTickAnimator::startTimeTickAnimator("redPlaneTickAnimations", triggerRedPlaneTickAnimations );
 	//TimerTickAnimator::startTimeTickAnimator("grayJetTickAnimation", triggerGrayJetTickAnimator);
-}	
+    
+    //big plane
+    TimerTickAnimator::startTimeTickAnimator("bigPlaneIntroTickAnimation", triggerBigPlaneIntroTickAnimators );
+    TimerTickAnimator::startTimeTickAnimator("bigPlaneStayStillTickAnimation", triggerBigPlaneStayStillTickAnimators );
+    TimerTickAnimator::startTimeTickAnimator("bigPlaneOutroTickAnimation", triggerBigPlaneOutroTickAnimators );
+
+}
 
 using namespace rapidjson;
 
@@ -334,7 +397,7 @@ void    AnimatorHolder::Load (const std::string& cataloge){
     
 }
     
-void AnimatorHolder::UpdateAllGrayPlaneAnimations(){
+void AnimatorHolder::updateAllGrayPlaneAnimations(){
     
     MovingPathAnimator* grayPlaneAnimator;
     string grayPlaneAnimatorName, grayPlaneAnimationName;
@@ -448,22 +511,59 @@ void updateGrayPlaneAnimation(MovingPathAnimator* grayJetAnimator){
 }
 
 
+void  AnimatorHolder::updateAllGrayJetsAnimations(){
+	updateGrayJetAnimation((MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator("GrayJetAnimator0"));
+}
+void  updateGrayJetAnimation(MovingPathAnimator* grayJetAnimator){
 
-unsigned int AnimatorHolder::getNumberOfGraySingleEnginePlanes(){
-	AnimatorHolder* h = AnimatorHolder::getAnimatorHolder();
-	AnimatorList::iterator it = h->_running.begin();
-	int number = 0;
+	assert(grayJetAnimator);
 
-	it = h->_running.begin();
-	while (it != h->_running.end()){
-		if ((*it)->getId().find("GrayPlaneAnimator") != std::string::npos){
-			number++;
+	if (!grayJetAnimator->isAlive()){
+		return;
+	}
+	SuperAce* superAce = (SuperAce*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce");
+
+	MovingPathAnimation* grayJetAnimation = grayJetAnimator->getMovingPathAnimation();
+	assert(grayJetAnimation);
+	PathEntry path;
+	//path._dx = 1;
+	//path._dy = 0;
+	path._frame = grayJetAnimation->getPath().front()._frame;
+	path._delay = grayJetAnimation->getPath().front()._delay;
+	path._visibility = true;
+
+	int superAcePositionOnX = superAce->getDstRect().x;
+	int grayJetPositionOnX = grayJetAnimator->getSprite()->getDstRect().x;
+
+
+	int grayJetPositionOnY = grayJetAnimator->getSprite()->getDstRect().y;
+	int SuperAcePositionOnY = superAce->getDstRect().y;
+	
+
+
+	if (grayJetPositionOnY > WIN_HEIGHT - 100){
+		if (grayJetAnimation->getPath().front()._dy > 0){
+			grayJetAnimation->changeDxDy(-17, 0);
+			grayJetAnimator->getSprite()->getCurrFilm()->setDegrees(90);
+
 		}
-		++it;
+	}
+	if (grayJetPositionOnX < 100){
+		if (grayJetAnimation->getPath().front()._dx < 0){
+			grayJetAnimation->changeDxDy(0, -17);
+			grayJetAnimator->getSprite()->getCurrFilm()->setDegrees(180);
+
+		}
+	}
+	if (grayJetPositionOnY < 100){
+		if (grayJetAnimation->getPath().front()._dy < 0){
+			grayJetAnimation->changeDxDy(17, 0);
+			grayJetAnimator->getSprite()->getCurrFilm()->setDegrees(270);
+
+		}
 	}
 
-	return number;
-}
-unsigned int AnimatorHolder::getNumberOfGrayJets(){
-	return 0;
-}
+
+	}
+
+

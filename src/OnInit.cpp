@@ -56,7 +56,9 @@ bool Game::InitWindow(){
     }
     unique++;
     
-    _window = SDL_CreateWindow("Main Menu", WIN_X, WIN_Y, WIN_WIDTH, WIN_HEIGHT, SDL_WINDOW_SHOWN);
+    //SDL_DisplayMode* current = new SDL_DisplayMode();
+
+    _window = SDL_CreateWindow("Main Menu", 100 , 100 , WIN_WIDTH, WIN_HEIGHT, SDL_WINDOW_SHOWN);
     if (_window == nullptr){
         std::cout << "SDL_CreateWindow Error: " << SDL_GetError() << std::endl;
         SDL_Quit();
