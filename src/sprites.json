@@ -15,13 +15,23 @@
                 },{
                 "id": "RedJet0",
                 "frameNo": 0,
-                "destRect": [0, 200, 25, 25],
+                "destRect": [0, 200, 35, 35],
                 "point": [0, 0],
                 "visible": false,
                 "spriteType": 4,
                 "remainingBullets": 0,
                 "enemyType" : 0,
                 "animFilmId": "red_plane"
+                },{
+                "id": "MinGreenOneEng0",
+                "frameNo": 0,
+                "destRect": [500, 500, 35, 35],
+                "point": [0, 0],
+                "visible": false,
+                "spriteType": 4,
+                "remainingBullets": 3,
+                "enemyType" : 3,
+                "animFilmId": "mini_green_one_eng"
                 },{
                 "id": "MinGrayPlane0",
                 "frameNo": 0,
@@ -445,7 +455,7 @@
                 },{
                 "id": "GreenJet0",
                 "frameNo": 0,
-                "destRect": [0, 60, 30, 30],
+                "destRect": [0, 60, 35, 35],
                 "point": [0, 0],
                 "visible": false,
                 "spriteType": 4,
@@ -455,7 +465,7 @@
                 },{
                 "id": "GreenJet1",
                 "frameNo": 0,
-                "destRect": [0, 120, 30, 30],
+                "destRect": [0, 120, 35, 35],
                 "point": [0, 0],
                 "visible": false,
                 "spriteType": 4,
@@ -465,7 +475,7 @@
                 },{
                 "id": "GreenJet2",
                 "frameNo": 0,
-                "destRect": [0, 160, 30, 30],
+                "destRect": [0, 160, 35, 35],
                 "point": [0, 0],
                 "visible": false,
                 "enemyType" : 1,
@@ -475,7 +485,7 @@
                 },{
                 "id": "GreenJet3",
                 "frameNo": 0,
-                "destRect": [0, 220, 30, 30],
+                "destRect": [0, 220, 35, 35],
                 "point": [0, 0],
                 "visible": false,
                 "enemyType" : 1,
@@ -535,7 +545,7 @@
                 },{
                 "id": "SuperAce",
                 "frameNo": 0,
-                "destRect": [0, 0, 36, 27],
+                "destRect": [0, 0, 54, 40],
                 "point": [0, 0],
                 "visible": true,
                 "spriteType": 3,
