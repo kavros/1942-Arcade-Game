@@ -275,6 +275,19 @@ void triggerGrayJetTickAnimator(){
 	assert(animator);
 	animator->start(Game::getGameTime());
 }
+
+void triggerBigPlaneTickAnimators(){
+    
+    static int nameId = 0;
+    string name = "bigPlaneIntroAnimator" + std::to_string(nameId);
+    nameId++;
+    
+    MovingAnimator* animator = (MovingAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator(name);
+    assert(animator);
+    animator->start(Game::getGameTime());
+    
+}
+
 void AnimatorHolder::startTimeTickAnimators(){
     
     TimerTickAnimator::startTimeTickAnimator("superAceMovingPathTickAnimation", triggerSuperAceMovingPathAnimator );
@@ -285,6 +298,9 @@ void AnimatorHolder::startTimeTickAnimators(){
 
     TimerTickAnimator::startTimeTickAnimator("redPlaneTickAnimations", triggerRedPlaneTickAnimations );
 	//TimerTickAnimator::startTimeTickAnimator("grayJetTickAnimation", triggerGrayJetTickAnimator);
+    //TimerTickAnimator::startTimeTickAnimator("bigPlaneTickAnimation", triggerBigPlaneTickAnimators );
+
+    
 }	
 
 using namespace rapidjson;

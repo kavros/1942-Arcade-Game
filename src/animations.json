@@ -95,6 +95,10 @@
                                       "id": "shortTickAnimation",
                                       "delay": 5000,
                                       "repetitions": 1
+                                      },{
+                                      "id": "bigPlaneTickAnimation",
+                                      "delay": 5000,
+                                      "repetitions": 1
                                       }
                                       ]
                    }, {
@@ -722,8 +726,19 @@
                                                       "frameNo": 0,
                                                       "delay": 100
                                                       }]
-                                            }
-											,{
+                                            },{
+                                            "id": "bigPlaneIntroAnimation0",
+                                            "continuous":true,
+                                            "paths": [{
+                                                      "dx": 0,
+                                                      "dy": -10,
+                                                      "visibility": true,
+                                                      "frameNo": 0,
+                                                      "delay": 70
+                                                      }
+                                                      ]
+
+                                            },{
                                             "id": "circle_250_250_30",
                                             "continuous":false,
                                             "paths": [{
