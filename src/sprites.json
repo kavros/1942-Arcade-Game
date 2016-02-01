@@ -80,17 +80,17 @@
                 "visible": false,
                 "spriteType": 4,
                 "remainingBullets": 0,
-                "enemyType" : 0,
+                "enemyType" : 2,
                 "animFilmId": "gray_jet"
                 },{
                 "id": "GreenMediumPlane1",
                 "frameNo": 0,
-                "destRect": [350, 10, 33, 29],
+                "destRect": [500, 768 , 33, 29],
                 "point": [0, 0],
                 "visible": false,
                 "spriteType": 4,
                 "remainingBullets": 0,
-                "enemyType" : 0,
+                "enemyType" : 7,
                 "animFilmId": "green_medium_plane"
                 },{
                 "id": "RedJet1",
@@ -519,7 +519,7 @@
                 "point": [0, 0],
                 "visible": false,
                 "spriteType": 4,
-                "remainingBullets": 10,
+                "remainingBullets": 100,
                 "enemyType" : 13,
                 "animFilmId": "bigPlanes"
                 },{
