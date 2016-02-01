@@ -246,6 +246,7 @@ void updateGrayPlaneAnimation(MovingPathAnimator* grayJetAnimator, MovingPathAni
     
     
     if (grayJetAnimation->getPath().front()._dy < 0){
+		
         return;
     }
     

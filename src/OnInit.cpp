@@ -19,17 +19,11 @@ bool Game::OnInit(){
     InitRenderer();
     
     InitGame();
-	InitGrayJet();
-	SoundHolder::setMute(false);
+
     return true;
 }
 
-void Game::InitGrayJet(){
 
-	//MovingPathAnimator* grayJetAnimator = new MovingPathAnimator()
-
-
-}
 
 
 void Game::InitGame(){
