@@ -79,37 +79,37 @@
                 "point": [0, 0],
                 "visible": false,
                 "spriteType": 4,
-                "remainingBullets": 0,
+                "remainingBullets": 6,
                 "enemyType" : 2,
                 "animFilmId": "gray_jet"
                 },{
                 "id": "GreenMediumPlane1",
                 "frameNo": 0,
-                "destRect": [200, 768 , 33, 28],
+                "destRect": [200, 768 , 63, 58],
                 "point": [0, 0],
                 "visible": false,
                 "spriteType": 4,
-                "remainingBullets": 0,
-                "enemyType" : 0,
+                "remainingBullets": 6,
+                "enemyType" : 7,
                 "animFilmId": "green_medium_plane"
                 },{
                 "id": "GreenMediumPlane2",
                 "frameNo": 0,
-                "destRect": [420, 768 , 33, 28],
+                "destRect": [420, 768 , 63, 58],
                 "point": [0, 0],
                 "visible": false,
                 "spriteType": 4,
-                "remainingBullets": 0,
-                "enemyType" : 0,
+                "remainingBullets": 6,
+                "enemyType" : 7,
                 "animFilmId": "green_medium_plane"
                 },{
                 "id": "GreenMediumPlane3",
                 "frameNo": 0,
-                "destRect": [500, 768 , 33, 28],
+                "destRect": [500, 768 , 63, 58],
                 "point": [0, 0],
                 "visible": false,
                 "spriteType": 4,
-                "remainingBullets": 0,
+                "remainingBullets": 6,
                 "enemyType" : 7,
                 "animFilmId": "green_medium_plane"
                 },{

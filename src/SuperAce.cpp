@@ -14,7 +14,7 @@ Sprite(id,frameNo,dstRect,point,isVisible,type,currFilm){
     _bulletDstRect.w=bulletAnimationFilm->getFrameBox(bulletFrame).w * Game::getSpriteSize();
     _bulletDstRect.h=bulletAnimationFilm->getFrameBox(bulletFrame).h * Game::getSpriteSize();
     _bulletDstRect.x=this->getDstRect().x + this->getDstRect().w/2 - _bulletDstRect.w/2;
-    _bulletDstRect.y=this->getDstRect().y;
+    _bulletDstRect.y=this->getDstRect().y - _bulletDstRect.h;
 
     this->addCollisionHandler(Sprite::touchHandler());
 
@@ -26,7 +26,7 @@ void SuperAce::render(SDL_Renderer * renderer){
 
 SDL_Rect SuperAce::getBulletDstRect(){
     _bulletDstRect.x=this->getDstRect().x + this->getDstRect().w/2 - _bulletDstRect.w/2;
-    _bulletDstRect.y=this->getDstRect().y ;
+    _bulletDstRect.y=this->getDstRect().y - _bulletDstRect.h;
     
     return _bulletDstRect;
 }
@@ -196,10 +196,10 @@ Sprite(id,frameNo,dstRect,point,isVisible,type,currFilm){
     bulletAnimationFilm = AnimationFilmHolder::Get()->GetFilm("bullets");
     assert(bulletAnimationFilm);
     
-    sideFightertBulletDstRect.w=bulletAnimationFilm->getFrameBox(bulletFrame).w * Game::getSpriteSize() * 1.2;
-    sideFightertBulletDstRect.h=bulletAnimationFilm->getFrameBox(bulletFrame).h * Game::getSpriteSize() * 1.2;
+    sideFightertBulletDstRect.w=bulletAnimationFilm->getFrameBox(bulletFrame).w * Game::getSpriteSize() /2;
+    sideFightertBulletDstRect.h=bulletAnimationFilm->getFrameBox(bulletFrame).h * Game::getSpriteSize() /2;
     sideFightertBulletDstRect.x=this->getDstRect().x + getDstRect().w/2 - sideFightertBulletDstRect.w/2;
-    sideFightertBulletDstRect.y=this->getDstRect().y;
+    sideFightertBulletDstRect.y=this->getDstRect().y - sideFightertBulletDstRect.h;
 
     this->addCollisionHandler(Sprite::touchHandler());
 }
@@ -210,7 +210,7 @@ SideFighter::~SideFighter(){
 
 SDL_Rect SideFighter::getSideFightertBulletDstRect(){
     sideFightertBulletDstRect.x=this->getDstRect().x + getDstRect().w/2 - sideFightertBulletDstRect.w/2;
-    sideFightertBulletDstRect.y=this->getDstRect().y;
+    sideFightertBulletDstRect.y=this->getDstRect().y - sideFightertBulletDstRect.h;
     return sideFightertBulletDstRect;
 }
 

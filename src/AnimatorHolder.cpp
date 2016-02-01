@@ -111,6 +111,7 @@ void AnimatorHolder::triggerBullets(){
     while (it != sl->end()){
         if( (*it) && (*it)->getVisibility() && (*it)->isAlive() && !(*it)->isOutOfWindow() && (*it)->getState()!=IN_COLUSION
            && ((EnemyFighter*)(*it))->getEnemyFighterType() != BULLET){
+
             ((EnemyFighter*)(*it))->fire();
         }
         it++;
@@ -128,7 +129,7 @@ void AnimatorHolder::createExplosion(SDL_Rect dstRect){
     AnimationFilm* fireAnimationFilm = AnimationFilmHolder::Get()->GetFilm("explosion");
     assert(fireAnimationFilm);
     
-    SDL_Rect rect = { dstRect.x , dstRect.y , 20 , 20 };
+    SDL_Rect rect = { dstRect.x+dstRect.w/2 , dstRect.y+dstRect.h/2 , 20 , 20 };
     
     Sprite* explosion = new Sprite(spriteExplosionId, 0, rect , {0,0}, true, POWER_UPS, fireAnimationFilm);
     assert(explosion);
@@ -270,14 +271,7 @@ void triggerRedPlaneTickAnimations(){
     
     TimerTickAnimator::startTimeTickAnimator(redPlaneTickAnimationId, triggerRedPlaneAnimator );
 }
-/*
-void triggerGreenMediumPlaneTickAnimations(){
-	static int id = 0;
-	string greenMediumPlaneTickAnimationId = "greenMediumPlaneTickAnimation" + std::to_string(id);
-	id++;
 
-	TimerTickAnimator::startTimeTickAnimator(greenMediumPlaneTickAnimationId, triggerMediumGreenPlaneAnimator);
-}*/
 void triggerGrayJetTickAnimator(){
 	static int nameId = 0;
 	string name = "GrayJetAnimator" + std::to_string(nameId);
