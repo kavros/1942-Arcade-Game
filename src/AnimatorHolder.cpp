@@ -270,14 +270,7 @@ void triggerRedPlaneTickAnimations(){
     
     TimerTickAnimator::startTimeTickAnimator(redPlaneTickAnimationId, triggerRedPlaneAnimator );
 }
-/*
-void triggerGreenMediumPlaneTickAnimations(){
-	static int id = 0;
-	string greenMediumPlaneTickAnimationId = "greenMediumPlaneTickAnimation" + std::to_string(id);
-	id++;
 
-	TimerTickAnimator::startTimeTickAnimator(greenMediumPlaneTickAnimationId, triggerMediumGreenPlaneAnimator);
-}*/
 void triggerGrayJetTickAnimator(){
 	static int nameId = 0;
 	string name = "GrayJetAnimator" + std::to_string(nameId);

@@ -75,7 +75,7 @@
                 },{
                 "id": "GreenMediumPlane1",
                 "frameNo": 0,
-                "destRect": [200, 768 , 33, 28],
+                "destRect": [200, 768 , 63, 58],
                 "point": [0, 0],
                 "visible": false,
                 "spriteType": 4,
@@ -85,7 +85,7 @@
                 },{
                 "id": "GreenMediumPlane2",
                 "frameNo": 0,
-                "destRect": [420, 768 , 33, 28],
+                "destRect": [420, 768 , 63, 58],
                 "point": [0, 0],
                 "visible": false,
                 "spriteType": 4,
@@ -95,7 +95,7 @@
                 },{
                 "id": "GreenMediumPlane3",
                 "frameNo": 0,
-                "destRect": [500, 768 , 33, 28],
+                "destRect": [500, 768 , 63, 58],
                 "point": [0, 0],
                 "visible": false,
                 "spriteType": 4,
