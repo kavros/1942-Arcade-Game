@@ -23,43 +23,6 @@ bool Game::OnInit(){
     return true;
 }
 
-
-
-void createPowerUp(){
-    cout<<"Nikos Test in Init\n";
-    static int nameId=0;
-    string spritePowerUpId = "spritePowerUpId..." + std::to_string(nameId);
-    string animatorPowerUpId = "animatorPowerUpId..." + std::to_string(nameId);
-    nameId++;
-    
-    AnimationFilm* powerUpAnimationFilm = AnimationFilmHolder::Get()->GetFilm("powerUps");
-    assert(powerUpAnimationFilm);
-    Sprite* powerUp;
-    
-    PowerUpType powerUpType = PowerUpType(SIDE_FIGHTERS);
-    unsigned powerUpFrameNo = powerUpType;
-    
-    powerUp = new PowerUp(spritePowerUpId, powerUpType, powerUpFrameNo, { 250, 0, 20, 20 }, { 0, 0 }, true, POWER_UPS, powerUpAnimationFilm);
-    
-    assert(powerUp);
-    
-    powerUp->addCollisionHandler(Sprite::touchPowerUpHandler());
-    
-    //play sound for power up
-    //SoundHolder::playSound("gunshot");
-    
-    //powerUpAnimation
-    Animation* powerUpAnimation = AnimationHolder::getAnimationHolder()->getAnimation("powerUp");
-    assert(powerUpAnimation);
-
-    //powerUpAnimator
-    MovingAnimator* powerUpAnimator = new MovingAnimator(animatorPowerUpId, powerUp, (MovingAnimation*)powerUpAnimation);
-    assert(powerUpAnimator);
-    
-    powerUpAnimator->start(Game::getGameTime());
-    
-}
-
 void Game::InitGame(){
     InitData();
     SoundHolder::initSounds();
@@ -72,7 +35,6 @@ void Game::InitGame(){
         
     AnimatorHolder::startTimeTickAnimators();
     
-    //createPowerUp();
 }
 
 void Game::InitGamePad(){
@@ -218,11 +180,11 @@ bool Game::InitGameInfo(){
     unique++;
     
     SpriteStringHolder::addSpriteString("scoreString", new SpriteString("SCORE",20,10));
-    SpriteStringHolder::addSpriteString("highString", new SpriteString("HIGH",200,10));
-    SpriteStringHolder::addSpriteString("highScoreString", new SpriteString("SCORE",250,10));
+    SpriteStringHolder::addSpriteString("highString", new SpriteString("HIGH",(WIN_WIDTH/2)-56,10));
+    SpriteStringHolder::addSpriteString("highScoreString", new SpriteString("SCORE",(WIN_WIDTH/2)-6,10));
     
-    SpriteStringHolder::addSpriteString("fpsString", new SpriteString("FPS",450,10));
-    SpriteStringHolder::addSpriteString("fps", new SpriteString("0000",450,30));
+    SpriteStringHolder::addSpriteString("fpsString", new SpriteString("FPS",WIN_WIDTH-62,10));
+    SpriteStringHolder::addSpriteString("fps", new SpriteString("0000",WIN_WIDTH-62,30));
 
     SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce");
     std::string remainingLoopsString = "";
@@ -238,18 +200,18 @@ bool Game::InitGameInfo(){
     string score = std::to_string(_score);
     string highScore = std::to_string(_highScore);
 
-    SpriteStringHolder::addSpriteString("press", new SpriteString( "PRESS", 150 ,410) );
-    SpriteStringHolder::addSpriteString("space", new SpriteString( "SPACE", 220 ,410) );
-    SpriteStringHolder::addSpriteString("for", new SpriteString( "FOR", 285 ,410) );
-    SpriteStringHolder::addSpriteString("exit2", new SpriteString( "EXIT", 325 ,410) );
+    SpriteStringHolder::addSpriteString("press", new SpriteString( "PRESS", (WIN_WIDTH/2)- 106 ,410) );
+    SpriteStringHolder::addSpriteString("space", new SpriteString( "SPACE", (WIN_WIDTH/2) - 36 ,410) );
+    SpriteStringHolder::addSpriteString("for", new SpriteString( "FOR", (WIN_WIDTH/2)+ 29 ,410) );
+    SpriteStringHolder::addSpriteString("exit2", new SpriteString( "EXIT", (WIN_WIDTH/2)+ 69 ,410) );
     SpriteStringHolder::getSpriteString("press")->setVisibility(false);
     SpriteStringHolder::getSpriteString("space")->setVisibility(false);
     SpriteStringHolder::getSpriteString("for")->setVisibility(false);
     SpriteStringHolder::getSpriteString("exit2")->setVisibility(false);
     
-    SpriteStringHolder::addSpriteString("game", new SpriteString( "GAME", 196 ,110) );
+    SpriteStringHolder::addSpriteString("game", new SpriteString( "GAME", (WIN_WIDTH/2)- 60 ,110) );
     SpriteStringHolder::getSpriteString("game")->setVisibility(false);
-    SpriteStringHolder::addSpriteString("over", new SpriteString( "OVER", 256 ,110) );
+    SpriteStringHolder::addSpriteString("over", new SpriteString( "OVER", (WIN_WIDTH/2) ,110) );
     SpriteStringHolder::getSpriteString("over")->setVisibility(false);
     SpriteStringHolder::addSpriteString("score", new SpriteString( score , 20 ,30) );
     SpriteStringHolder::addSpriteString("highScore", new SpriteString( highScore , WIN_WIDTH/2 - (int) (highScore.size()*6), 30) );

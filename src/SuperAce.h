@@ -54,7 +54,7 @@ public:
 	void render(SDL_Renderer * renderer);
 
 	//get
-    SDL_Rect getBulletDstRect(int frame);
+    SDL_Rect getBulletDstRect();
     unsigned int getSuperAceLives();
     unsigned int getSuperAceLoops();
     unsigned int getBulletFrame();
@@ -63,6 +63,7 @@ public:
     void setSuperAceLives(unsigned int superAceLives);
     void setSuperAceLoops(unsigned int superAceLoops);
     void setBulletFrame(unsigned int bulletFrame);
+    void setBulletDstRect(SDL_Rect bulletDstRect);
     void setBulletAnimationFilm(AnimationFilm* anim);
     
     //functionality

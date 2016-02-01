@@ -503,7 +503,7 @@
                 },{
                 "id": "mainMenuSingleSprite",
                 "frameNo": 0,
-                "destRect": [0, 0, 512, 512],
+                "destRect": [0, 0, 860, 768],
                 "point": [0, 0],
                 "visible": true,
                 "spriteType": 0,
@@ -511,7 +511,7 @@
                 }, {
                 "id": "mainMenuMultiSprite",
                 "frameNo": 0,
-                "destRect": [0, 0, 512, 512],
+                "destRect": [0, 0, 860, 768],
                 "point": [0, 0],
                 "visible": true,
                 "spriteType": 1,
@@ -519,7 +519,7 @@
                 }, {
                 "id": "spriteAircraftCarrier0",
                 "frameNo": 0,
-                "destRect": [195, 118, 150, 333],
+                "destRect": [380, 118, 150, 333],
                 "point": [0, 0],
                 "visible": true,
                 "spriteType": 2,
@@ -527,7 +527,7 @@
                 }, {
                 "id": "spriteAircraftCarrier1",
                 "frameNo": 0,
-                "destRect": [195, -600, 150, 333],
+                "destRect": [380, -2600, 150, 333],
                 "point": [0, 0],
                 "visible": true,
                 "spriteType": 2,
@@ -535,7 +535,7 @@
                 }, {
                 "id": "spriteAircraftCarrier2",
                 "frameNo": 0,
-                "destRect": [195, -3500, 150, 333],
+                "destRect": [380, -3500, 150, 333],
                 "point": [0, 0],
                 "visible": true,
                 "spriteType": 2,
@@ -543,12 +543,20 @@
                 }, {
                 "id": "spriteLand0",
                 "frameNo": 0,
-                "destRect": [0, -3000, 512, 2435],
+                "destRect": [0, -6000, 1024, 2435],
                 "point": [0, 0],
                 "visible": true,
                 "spriteType": 2,
                 "animFilmId":"land"
                 }, {
+                "id": "spriteEurope",
+                "frameNo": 0,
+                "destRect": [-150, -2000, 1500, 2000],
+                "point": [0, 0],
+                "visible": true,
+                "spriteType": 2,
+                "animFilmId":"europe"
+                },{
                 "id": "spriteInfoPlane",
                 "frameNo": 0,
                 "destRect": [0, 0, 15, 17],

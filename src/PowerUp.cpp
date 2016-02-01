@@ -19,6 +19,16 @@ void PowerUp::activatePowerUp(Sprite* arg){
     switch ( getPowerUpType() ){
         case QUAD_GUN:{
             superAce->setBulletFrame(4);
+            
+            superAce->setBulletDstRect(
+                {
+                    superAce->getBulletDstRect().x,
+                    superAce->getBulletDstRect().y,
+                    superAce->getBulletDstRect().w*2,
+                    superAce->getBulletDstRect().h*2
+                }
+            );
+            
             break;
         }
         case ENEMY_CRASH:
@@ -57,24 +67,28 @@ void PowerUp::activatePowerUp(Sprite* arg){
             while ( it != sl->end() ){
                 enemyFighter = (EnemyFighter*)(*it);
                 if( enemyFighter->getEnemyFighterType() != EnemyFighterType(BIG_GREEN) ||
-                   enemyFighter->getEnemyFighterType() != EnemyFighterType(BIG_GREY)){
-                    
+                enemyFighter->getEnemyFighterType() != EnemyFighterType(BIG_GREY)){
                     enemyFighter->setEnemyFireEnable(false);
-                    //start short timing without bullets
-                    TickAnimation* tickAnimation = (TickAnimation* )AnimationHolder::getAnimationHolder()->getAnimation("shortTickAnimation");
-                    assert(tickAnimation);
-                    
-                    tickAnimation->setOnTick( SpritesHolder::smallAndBigEnemyFireEnable );
-                    
-                    TimerTickAnimator* timerTickAnimator = new TimerTickAnimator( "shortTimeTickAnimator" , tickAnimation );
-                    
-                    assert(timerTickAnimator);
-                    
-                    timerTickAnimator->start(Game::getGameTime());
-                    
                 }
                 ++it;
             }
+            
+            //start short timing without bullets
+            static int shortTimeTickAnimatorId = 0;
+            string shortTimeTickAnimatorIdString = "shortTimeTickAnimator" + std::to_string (shortTimeTickAnimatorId);
+            shortTimeTickAnimatorId++;
+            
+            TickAnimation* tickAnimation = (TickAnimation* )AnimationHolder::getAnimationHolder()->getAnimation("shortTickAnimation");
+            assert(tickAnimation);
+            
+            tickAnimation->setOnTick( SpritesHolder::smallAndBigEnemyFireEnable );
+            
+            TimerTickAnimator* timerTickAnimator = new TimerTickAnimator( shortTimeTickAnimatorIdString , tickAnimation );
+            
+            assert(timerTickAnimator);
+            
+            timerTickAnimator->start(Game::getGameTime());
+            
             break;
         }
         case EXTRA_LOOP:{
