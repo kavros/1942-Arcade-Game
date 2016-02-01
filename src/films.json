@@ -354,6 +354,12 @@
               "rects": [
                         [0, 0, 223, 2435]
                         ]
+              },{
+              "id": "europe",
+              "path": "terrain/europe.png",
+              "rects": [
+                        [0, 0, 2971, 2223]
+                        ]
               }, {
               "id": "mainMenuSingleplayer",
               "path": "main_menu/single.png",

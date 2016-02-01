@@ -33,6 +33,8 @@ void Background::initBackgroundObjects(){
     
     addBackgroundObject("spriteLand0");
 
+    addBackgroundObject("spriteEurope");
+
 }
 
 void Background::addBackgroundObject(string id){
