@@ -1,8 +1,10 @@
 #include "PowerUp.hpp"
 
-PowerUp::PowerUp(std::string id, PowerUpType _powerUpType, unsigned  _frameNo, SDL_Rect _dstRect,SDL_Point  _point,
-                 bool _isVisible,SpriteType _type,AnimationFilm* _currFilm)
-:Sprite(id, _frameNo, _dstRect, _point, _isVisible, _type, _currFilm){
+PowerUp::PowerUp(std::string id, PowerUpType _powerUpType, unsigned  _frameNo, SDL_Rect _dstRect,SDL_Point  _point, bool _isVisible,
+                 SpriteType _type,AnimationFilm* _currFilm):
+Sprite(id, _frameNo, _dstRect, _point, _isVisible, _type, _currFilm){
+    assert(this->getType() == POWER_UPS );
+    assert( _powerUpType >= 0 && _powerUpType < POWER_UP_TYPE_SIZE );
     powerUpType = _powerUpType;
 }
 
@@ -41,10 +43,11 @@ void PowerUp::activatePowerUp(Sprite* arg){
             SuperAce* sa = superAce;
             sa->setSuperAceLives(sa->getSuperAceLives() + 1);
             std::string _remainingLives = "";
+
             for(int i = 0; i < sa->getSuperAceLives() ; i++){
                 _remainingLives += "L";
             }
-        SpriteStringHolder::getSpriteString("remainingLives")->changeString(_remainingLives, +5/*WIN_WIDTH - loops*12 -5*/, WIN_HEIGHT -15);}
+            SpriteStringHolder::getSpriteString("remainingLives")->changeString(_remainingLives, +5/*WIN_WIDTH - loops*12 -5*/, WIN_HEIGHT -15);}
             break;
         case NO_ENEMY_BULLETS:{
             SpriteList* sl = SpritesHolder::getSprites(ALIEN_SHIP);
