@@ -990,6 +990,11 @@
                             "animationId": "GrayJetAnimation0",
                             "spriteType": 4,
                             "spriteId": "GrayJet1"
+                            },{
+                            "id": "GreenMediumPlaneAnimator0",
+                            "animationId": "GreenMediumPlaneAnimation0",
+                            "spriteType": 4,
+                            "spriteId": "GreenMediumPlane1"
                             }
                             ]
 }
