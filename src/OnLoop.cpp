@@ -1,7 +1,7 @@
 #include "Game.hpp"
 
 void Game::OnLoop() {
-    
+    static int i = 0;
     static int loopsRemainingToDelete = 10000 ;
     
     switch (_gameState) {
@@ -17,6 +17,9 @@ void Game::OnLoop() {
             if(superAce->getState() == IN_COLUSION ){
                 setState(GAME_OVER);
                 return;
+            }
+            if(i % 50000 ==0){
+                AnimatorHolder::getAnimatorHolder()->UpdateAllGrayPlaneAnimations();
             }
             
             //commit destruction

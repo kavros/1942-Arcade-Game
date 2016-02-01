@@ -114,7 +114,7 @@ void Game::OnEvent(SDL_Event* event) {
                 else if (event->key.keysym.sym == SDLK_LEFT
                          || event->cbutton.button == SDL_CONTROLLER_BUTTON_DPAD_LEFT) {
                     
-                    AnimatorHolder::getAnimatorHolder()->UpdateAllGrayPlaneAnimations();
+                    //AnimatorHolder::getAnimatorHolder()->UpdateAllGrayPlaneAnimations();
                     if(event->key.keysym.sym != prevEvent.key.keysym.sym)
                     superAceAnimatorLeft->start(getGameTime());
                     else
@@ -135,7 +135,7 @@ void Game::OnEvent(SDL_Event* event) {
                 else if (event->key.keysym.sym == SDLK_RIGHT
                          || event->cbutton.button == SDL_CONTROLLER_BUTTON_DPAD_RIGHT){
                     
-                    AnimatorHolder::getAnimatorHolder()->UpdateAllGrayPlaneAnimations();
+                    //AnimatorHolder::getAnimatorHolder()->UpdateAllGrayPlaneAnimations();
                     if(event->key.keysym.sym != prevEvent.key.keysym.sym)
                     superAceAnimatorRight->start(getGameTime());
                     else
@@ -153,12 +153,12 @@ void Game::OnEvent(SDL_Event* event) {
                 }
                 else if (event->key.keysym.sym == SDLK_UP
                          || event->cbutton.button == SDL_CONTROLLER_BUTTON_DPAD_UP){
-                    AnimatorHolder::getAnimatorHolder()->UpdateAllGrayPlaneAnimations();
+                    //AnimatorHolder::getAnimatorHolder()->UpdateAllGrayPlaneAnimations();
                     superAceAnimatorUp->start(getGameTime());
                 }
                 else if (event->key.keysym.sym == SDLK_DOWN
                          || event->cbutton.button == SDL_CONTROLLER_BUTTON_DPAD_DOWN){
-                    AnimatorHolder::getAnimatorHolder()->UpdateAllGrayPlaneAnimations();
+                    //AnimatorHolder::getAnimatorHolder()->UpdateAllGrayPlaneAnimations();
                     superAceAnimatorDown->start(getGameTime());
                     
                 }
