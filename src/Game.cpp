@@ -143,7 +143,7 @@ void Game::fpsLoop(){
         _fps_current = _fps_frames;
         _fps_frames = 0;
     }
-    SpriteStringHolder::getSpriteString("fps")->changeString(std::to_string(_fps_current),450,30);
+    SpriteStringHolder::getSpriteString("fps")->changeString(std::to_string(_fps_current),WIN_WIDTH -62,30);
     
 }
 
