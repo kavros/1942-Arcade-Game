@@ -2,7 +2,7 @@
 
 #include "MovingPathAnimator.h"
 
-void updateGrayPlaneAnimation(MovingPathAnimator* grayJetAnimator, MovingPathAnimation* grayJetAnimation);
+
 void Game::OnEvent(SDL_Event* event) {
     static SDL_Event prevEvent  = *event;
     
@@ -72,7 +72,7 @@ void Game::OnEvent(SDL_Event* event) {
                 
                 
                 
-                UpdateAllGrayPlaneAnimations();
+                
                 
                 
                 //cout << grayJetAnimator->getSprite()->getDstRect().y;
@@ -114,6 +114,7 @@ void Game::OnEvent(SDL_Event* event) {
                 else if (event->key.keysym.sym == SDLK_LEFT
                          || event->cbutton.button == SDL_CONTROLLER_BUTTON_DPAD_LEFT) {
                     
+                    AnimatorHolder::getAnimatorHolder()->UpdateAllGrayPlaneAnimations();
                     if(event->key.keysym.sym != prevEvent.key.keysym.sym)
                     superAceAnimatorLeft->start(getGameTime());
                     else
@@ -134,6 +135,7 @@ void Game::OnEvent(SDL_Event* event) {
                 else if (event->key.keysym.sym == SDLK_RIGHT
                          || event->cbutton.button == SDL_CONTROLLER_BUTTON_DPAD_RIGHT){
                     
+                    AnimatorHolder::getAnimatorHolder()->UpdateAllGrayPlaneAnimations();
                     if(event->key.keysym.sym != prevEvent.key.keysym.sym)
                     superAceAnimatorRight->start(getGameTime());
                     else
@@ -151,12 +153,12 @@ void Game::OnEvent(SDL_Event* event) {
                 }
                 else if (event->key.keysym.sym == SDLK_UP
                          || event->cbutton.button == SDL_CONTROLLER_BUTTON_DPAD_UP){
-                    
+                    AnimatorHolder::getAnimatorHolder()->UpdateAllGrayPlaneAnimations();
                     superAceAnimatorUp->start(getGameTime());
                 }
                 else if (event->key.keysym.sym == SDLK_DOWN
                          || event->cbutton.button == SDL_CONTROLLER_BUTTON_DPAD_DOWN){
-                    
+                    AnimatorHolder::getAnimatorHolder()->UpdateAllGrayPlaneAnimations();
                     superAceAnimatorDown->start(getGameTime());
                     
                 }
@@ -207,119 +209,6 @@ void Game::OnEvent(SDL_Event* event) {
     }
     
 }
-
-void Game::UpdateAllGrayPlaneAnimations(){
-	
-	MovingPathAnimator* grayPlaneAnimator;
-	MovingPathAnimation* grayPlaneAnimation;
-	string grayPlaneAnimatorName, grayPlaneAnimationName;
-
-	unsigned int numberOfGrayPlanes = AnimatorHolder::getAnimatorHolder()->getNumberOfGraySingleEnginePlanes();
-	
-
-	for (unsigned i = 0; i < numberOfGrayPlanes; ++i){
-		
-		grayPlaneAnimatorName = "GrayPlaneAnimator" + to_string(i);
-		grayPlaneAnimationName = "minGrayPlaneAnimation" + to_string(i);
-
-		grayPlaneAnimator =
-			(MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator(grayPlaneAnimatorName);
-		grayPlaneAnimation =
-			(MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation(grayPlaneAnimationName);
-		updateGrayPlaneAnimation(grayPlaneAnimator, grayPlaneAnimation);
-	}
-
-    
-}
-void updateGrayPlaneAnimation(MovingPathAnimator* grayJetAnimator, MovingPathAnimation* grayJetAnimation){
-    
-    
-    SuperAce* superAce = (SuperAce*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce");
-    
-    
-    assert(grayJetAnimator);
-	assert(grayJetAnimation);
-    if (!grayJetAnimator->isAlive()){
-        return;
-    }
-    
-    
-    
-    if (grayJetAnimation->getPath().front()._dy < 0){
-        return;
-    }
-    
-    PathEntry path;
-    //path._dx = 1;
-    //path._dy = 0;
-    path._frame = grayJetAnimation->getPath().front()._frame;
-    path._delay = grayJetAnimation->getPath().front()._delay;
-    path._visibility = true;
-    
-    
-    
-    int superAcePositionOnX = superAce->getDstRect().x;
-    int grayJetPositionOnX = grayJetAnimator->getSprite()->getDstRect().x;
-    
-    
-    int grayJetPositionOnY = grayJetAnimator->getSprite()->getDstRect().y;
-    int SuperAcePositionOnY = superAce->getDstRect().y;
-    
-    
-    
-    
-    if (grayJetPositionOnX > superAcePositionOnX){
-        //an o superace einai pio aristera apo to gray kai
-        //to gray kinite deksia h den kinitai tote vale to na pigenei aristera
-        if (grayJetAnimation->getPath().front()._dx >= 0){
-            path._dx = -5;
-            path._dy = 5;
-            std::list<PathEntry> p;
-            p.push_front(path);
-            grayJetAnimation->setPath(p);
-        }
-    }
-    else if (grayJetPositionOnX < superAcePositionOnX){
-        if (grayJetAnimation->getPath().front()._dx <= 0){
-            path._dx = 5;
-            path._dy = 5;
-            std::list<PathEntry> p;
-            p.push_front(path);
-            grayJetAnimation->setPath(p);
-        }
-        
-    }
-    else {
-        //do not move on x axis
-        if (grayJetAnimation->getPath().front()._dx != 0){
-            
-            path._dx = 0;
-            path._dy = 5;
-            std::list<PathEntry> p;
-            p.push_front(path);
-            grayJetAnimation->setPath(p);
-        }
-    }
-    
-    
-    if (grayJetPositionOnY > SuperAcePositionOnY - 100){
-        
-        
-        if (grayJetAnimation->getPath().front()._dy > 0){
-            path._dy = -5;
-            path._dx = -5;
-            path._frame = 1;
-            
-            
-            std::list<PathEntry> p;
-            p.push_front(path);
-            grayJetAnimation->setPath(p);
-            
-        }
-    }
-}
-
-
 
 void Game::pauseManager(SDL_Event* event){
     static bool firstTime = true;

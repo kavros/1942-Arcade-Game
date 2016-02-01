@@ -20,7 +20,7 @@ public:
 	
 	//getters
 	Sprite*					getSprite();
-	MovingPathAnimation*	getMovingAnimationPath();
+	MovingPathAnimation*	getMovingPathAnimation();
 
     //setters
     void setContinuous(bool b);

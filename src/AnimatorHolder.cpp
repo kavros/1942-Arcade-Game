@@ -1,5 +1,6 @@
 #include "AnimatorHolder.h"
 
+void updateGrayPlaneAnimation(MovingPathAnimator* grayJetAnimator);
 AnimatorHolder* AnimatorHolder::_holder = 0;
 
 void AnimatorHolder::Register(Animator* a) {
@@ -264,21 +265,23 @@ void triggerRedPlaneTickAnimations(){
     TimerTickAnimator::startTimeTickAnimator(redPlaneTickAnimationId, triggerRedPlaneAnimator );
 }
 void triggerGrayJetTickAnimator(){
+	static int nameId = 0;
+	string name = "GrayJetAnimator" + std::to_string(nameId);
+	nameId++;
 
+	MovingPathAnimator* animator = (MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator(name);
+	assert(animator);
+	animator->start(Game::getGameTime());
 }
 void AnimatorHolder::startTimeTickAnimators(){
     
     TimerTickAnimator::startTimeTickAnimator("superAceMovingPathTickAnimation", triggerSuperAceMovingPathAnimator );
-    TimerTickAnimator::startTimeTickAnimator("enemyBulletsTickAnimation", AnimatorHolder::triggerBullets);
-    //TimerTickAnimator::startTimeTickAnimator("redPlaneTickAnimation", triggerRedPlaneAnimator );
-    TimerTickAnimator::startTimeTickAnimator("greenPlaneTickAnimation", triggerGreenJetPlaneAnimator );
-    TimerTickAnimator::startTimeTickAnimator("greenDoubleEnginePlaneTickAnimation", triggerGreenDoubleEnginePlaneAnimator );
-	TimerTickAnimator::startTimeTickAnimator("grayPlaneTickAnimation", triggerGrayPlaneAnimator);
-	//TimerTickAnimator::startTimeTickAnimator("endOfTheStageTickAnimation", triggerEndOfTheStageAnimator);
+    //TimerTickAnimator::startTimeTickAnimator("enemyBulletsTickAnimation", AnimatorHolder::triggerBullets);
     //TimerTickAnimator::startTimeTickAnimator("greenPlaneTickAnimation", triggerGreenJetPlaneAnimator );
     //TimerTickAnimator::startTimeTickAnimator("greenDoubleEnginePlaneTickAnimation", triggerGreenDoubleEnginePlaneAnimator );
+	TimerTickAnimator::startTimeTickAnimator("grayPlaneTickAnimation", triggerGrayPlaneAnimator);
 
-    TimerTickAnimator::startTimeTickAnimator("redPlaneTickAnimations", triggerRedPlaneTickAnimations );
+    //TimerTickAnimator::startTimeTickAnimator("redPlaneTickAnimations", triggerRedPlaneTickAnimations );
 	//TimerTickAnimator::startTimeTickAnimator("grayJetTickAnimation", triggerGrayJetTickAnimator);
 }	
 
@@ -328,6 +331,115 @@ void    AnimatorHolder::Load (const std::string& cataloge){
         assert(animator);
     }
     
+}
+
+void AnimatorHolder::UpdateAllGrayPlaneAnimations(){
+    
+    MovingPathAnimator* grayPlaneAnimator;
+    string grayPlaneAnimatorName, grayPlaneAnimationName;
+    AnimatorHolder::AnimatorList::const_iterator it2 = getAnimatorHolder()->_running.end();
+    AnimatorHolder::AnimatorList::const_iterator  it = getAnimatorHolder()->_running.begin();//_running.begin();
+    
+    while (it != getAnimatorHolder()->_running.end()){
+        it2 = it;
+        it2++;
+        assert((*it));
+        if ((*it)->getId().find("GrayPlaneAnimator") != std::string::npos ){
+            grayPlaneAnimator= (MovingPathAnimator*) (*it);
+            updateGrayPlaneAnimation(grayPlaneAnimator);
+        }
+        it = it2;
+    }
+    
+}
+
+void updateGrayPlaneAnimation(MovingPathAnimator* grayJetAnimator){
+    
+    
+    SuperAce* superAce = (SuperAce*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce");
+    
+    MovingPathAnimation* grayJetAnimation = grayJetAnimator->getMovingPathAnimation();
+    
+    assert(grayJetAnimator);
+    assert(grayJetAnimation);
+    if (!grayJetAnimator->isAlive()){
+        return;
+    }
+    
+    
+    
+    if (grayJetAnimation->getPath().front()._dy < 0){
+        return;
+    }
+    
+    PathEntry path;
+    //path._dx = 1;
+    //path._dy = 0;
+    path._frame = grayJetAnimation->getPath().front()._frame;
+    path._delay = grayJetAnimation->getPath().front()._delay;
+    path._visibility = true;
+    
+    
+    
+    int superAcePositionOnX = superAce->getDstRect().x;
+    int grayJetPositionOnX = grayJetAnimator->getSprite()->getDstRect().x;
+    
+    
+    int grayJetPositionOnY = grayJetAnimator->getSprite()->getDstRect().y;
+    int SuperAcePositionOnY = superAce->getDstRect().y;
+    
+    
+    
+    
+    if (grayJetPositionOnX > superAcePositionOnX){
+        //an o superace einai pio aristera apo to gray kai
+        //to gray kinite deksia h den kinitai tote vale to na pigenei aristera
+        if (grayJetAnimation->getPath().front()._dx >= 0){
+            path._dx = -5;
+            path._dy = 5;
+            std::list<PathEntry> p;
+            p.push_front(path);
+            grayJetAnimation->setPath(p);
+        }
+    }
+    else if (grayJetPositionOnX < superAcePositionOnX){
+        if (grayJetAnimation->getPath().front()._dx <= 0){
+            path._dx = 5;
+            path._dy = 5;
+            std::list<PathEntry> p;
+            p.push_front(path);
+            grayJetAnimation->setPath(p);
+        }
+        
+    }
+    else {
+        //do not move on x axis
+        if (grayJetAnimation->getPath().front()._dx != 0){
+            
+            path._dx = 0;
+            path._dy = 5;
+            std::list<PathEntry> p;
+            p.push_front(path);
+            grayJetAnimation->setPath(p);
+        }
+    }
+    
+    
+    if (grayJetPositionOnY > SuperAcePositionOnY - 100){
+        
+        //stop
+        if (grayJetAnimation->getPath().front()._dy > 0){
+            path._dy = -5;
+            path._dx = -5;
+            path._frame = 1;
+            
+            
+            std::list<PathEntry> p;
+            p.push_front(path);
+            grayJetAnimation->setPath(p);
+            
+        }
+    }
 }
 
 

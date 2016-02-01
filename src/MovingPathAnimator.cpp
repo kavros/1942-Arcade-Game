@@ -86,7 +86,7 @@ void MovingPathAnimator::progress(timestamp_t currTime){
 Sprite* MovingPathAnimator::getSprite(){
 	return _sprite;
 }
-MovingPathAnimation* MovingPathAnimator::getMovingAnimationPath(){
+MovingPathAnimation* MovingPathAnimator::getMovingPathAnimation(){
 	return _anim;
 }
 
