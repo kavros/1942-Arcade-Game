@@ -425,7 +425,7 @@
                 },{
                 "id": "GreenJet0",
                 "frameNo": 0,
-                "destRect": [0, 60, 25, 25],
+                "destRect": [0, 60, 30, 30],
                 "point": [0, 0],
                 "visible": false,
                 "spriteType": 4,
@@ -435,7 +435,7 @@
                 },{
                 "id": "GreenJet1",
                 "frameNo": 0,
-                "destRect": [0, 120, 25, 25],
+                "destRect": [0, 120, 30, 30],
                 "point": [0, 0],
                 "visible": false,
                 "spriteType": 4,
@@ -445,7 +445,7 @@
                 },{
                 "id": "GreenJet2",
                 "frameNo": 0,
-                "destRect": [0, 160, 25, 25],
+                "destRect": [0, 160, 30, 30],
                 "point": [0, 0],
                 "visible": false,
                 "enemyType" : 1,
@@ -455,7 +455,7 @@
                 },{
                 "id": "GreenJet3",
                 "frameNo": 0,
-                "destRect": [0, 220, 25, 25],
+                "destRect": [0, 220, 30, 30],
                 "point": [0, 0],
                 "visible": false,
                 "enemyType" : 1,

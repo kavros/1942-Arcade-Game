@@ -343,12 +343,12 @@ void triggerBigPlaneOutroTickAnimators(){
 void AnimatorHolder::startTimeTickAnimators(){
     
     TimerTickAnimator::startTimeTickAnimator("superAceMovingPathTickAnimation", triggerSuperAceMovingPathAnimator );
-    TimerTickAnimator::startTimeTickAnimator("enemyBulletsTickAnimation", AnimatorHolder::triggerBullets);
+    //TimerTickAnimator::startTimeTickAnimator("enemyBulletsTickAnimation", AnimatorHolder::triggerBullets);
     TimerTickAnimator::startTimeTickAnimator("greenPlaneTickAnimation", triggerGreenJetPlaneAnimator );
-    TimerTickAnimator::startTimeTickAnimator("greenDoubleEnginePlaneTickAnimation", triggerGreenDoubleEnginePlaneAnimator );
-	TimerTickAnimator::startTimeTickAnimator("grayPlaneTickAnimation", triggerGrayPlaneAnimator);
+    //TimerTickAnimator::startTimeTickAnimator("greenDoubleEnginePlaneTickAnimation", triggerGreenDoubleEnginePlaneAnimator );
+	//TimerTickAnimator::startTimeTickAnimator("grayPlaneTickAnimation", triggerGrayPlaneAnimator);
 
-    TimerTickAnimator::startTimeTickAnimator("redPlaneTickAnimations", triggerRedPlaneTickAnimations );
+    //TimerTickAnimator::startTimeTickAnimator("redPlaneTickAnimations", triggerRedPlaneTickAnimations );
 	//TimerTickAnimator::startTimeTickAnimator("grayJetTickAnimation", triggerGrayJetTickAnimator);
     
     //big plane
@@ -417,7 +417,7 @@ void AnimatorHolder::updateAllGrayPlaneAnimations(){
         it2 = it;
         it2++;
         assert((*it));
-        if ((*it)->getId().find("GrayPlaneAnimator") != std::string::npos ){
+        if ((*it)->getId().find("GrayPlaneAnimator") == 0 /*std::string::npos*/ ){
             grayPlaneAnimator= (MovingPathAnimator*) (*it);
             updateGrayPlaneAnimation(grayPlaneAnimator);
         }
@@ -501,7 +501,11 @@ void updateGrayPlaneAnimation(MovingPathAnimator* grayJetAnimator){
     if (grayJetPositionOnY > SuperAcePositionOnY - 100){
         
         //stop
-        if (grayJetAnimation->getPath().front()._dy > 0){
+        ((EnemyFighter*)grayJetAnimator->getSprite())->setEnemyFireEnable(false);
+        grayJetAnimator->setState(ANIMATOR_FINISHED);// _state = ANIMATOR_FINISHED;
+        grayJetAnimator->stop();
+        
+        /*if (grayJetAnimation->getPath().front()._dy > 0){
             path._dy = -5;
             path._dx = -5;
             path._frame = 1;
@@ -511,7 +515,7 @@ void updateGrayPlaneAnimation(MovingPathAnimator* grayJetAnimator){
             p.push_front(path);
             grayJetAnimation->setPath(p);
             
-        }
+        }*/
     }
 }
 

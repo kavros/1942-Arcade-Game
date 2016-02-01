@@ -971,8 +971,28 @@
                             "spriteType": 4,
                             "spriteId": "MinGrayPlane0"
                             },{
+                            "id": "FlipGrayPlaneAnimator0",
+                            "animationId": "flipMinGrayPlaneAnimation",
+                            "spriteType": 4,
+                            "spriteId": "MinGrayPlane0"
+                            },{
+                            "id": "BackFlipGrayPlaneAnimator0",
+                            "animationId": "minGrayPlaneRightBackAnimation",
+                            "spriteType": 4,
+                            "spriteId": "MinGrayPlane0"
+                            },{
                             "id": "GrayPlaneAnimator1",
                             "animationId": "minGrayPlaneAnimation1",
+                            "spriteType": 4,
+                            "spriteId": "MinGrayPlane1"
+                            },{
+                            "id": "FlipGrayPlaneAnimator1",
+                            "animationId": "flipMinGrayPlaneAnimation",
+                            "spriteType": 4,
+                            "spriteId": "MinGrayPlane1"
+                            },{
+                            "id": "BackFlipGrayPlaneAnimator1",
+                            "animationId": "minGrayPlaneRightBackAnimation",
                             "spriteType": 4,
                             "spriteId": "MinGrayPlane1"
                             },{
@@ -981,8 +1001,28 @@
                             "spriteType": 4,
                             "spriteId": "MinGrayPlane2"
                             },{
+                            "id": "FlipGrayPlaneAnimator2",
+                            "animationId": "flipMinGrayPlaneAnimation",
+                            "spriteType": 4,
+                            "spriteId": "MinGrayPlane2"
+                            },{
+                            "id": "BackFlipGrayPlaneAnimator2",
+                            "animationId": "minGrayPlaneRightBackAnimation",
+                            "spriteType": 4,
+                            "spriteId": "MinGrayPlane2"
+                            },{
                             "id": "GrayPlaneAnimator3",
                             "animationId": "minGrayPlaneAnimation3",
+                            "spriteType": 4,
+                            "spriteId": "MinGrayPlane3"
+                            },{
+                            "id": "FlipGrayPlaneAnimator3",
+                            "animationId": "flipMinGrayPlaneAnimation",
+                            "spriteType": 4,
+                            "spriteId": "MinGrayPlane3"
+                            },{
+                            "id": "BackFlipGrayPlaneAnimator3",
+                            "animationId": "minGrayPlaneRightBackAnimation",
                             "spriteType": 4,
                             "spriteId": "MinGrayPlane3"
                             },{
