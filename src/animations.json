@@ -84,8 +84,8 @@
                                       "repetitions": 4
                                       }, {
                                       "id": "greenMediumPlaneTickAnimation",
-                                      "delay": 5000,
-                                      "repetitions": 1
+                                      "delay": 7000,
+                                      "repetitions": 3
                                       }, {
                                       "id": "grayJetTickAnimation",
                                       "delay": 10000,
@@ -789,7 +789,7 @@
                                                       "dy": 5,
                                                       "visibility": true,
                                                       "frameNo": 0,
-                                                      "delay": 90
+                                                      "delay": 40
                                                       }]
                                             }, {
                                             "id": "minGrayPlaneAnimation1",
@@ -799,7 +799,7 @@
                                                       "dy": 5,
                                                       "visibility": true,
                                                       "frameNo": 0,
-                                                      "delay": 90
+                                                      "delay": 40
                                                       }]
                                             }, {
                                             "id": "minGrayPlaneAnimation2",
@@ -809,7 +809,7 @@
                                                       "dy": 5,
                                                       "visibility": true,
                                                       "frameNo": 0,
-                                                      "delay": 90
+                                                      "delay": 40
                                                       }]
                                             }, {
                                             "id": "minGrayPlaneAnimation3",
@@ -819,7 +819,7 @@
                                                       "dy": 5,
                                                       "visibility": true,
                                                       "frameNo": 0,
-                                                      "delay": 90
+                                                      "delay": 40
                                                       }]
                                             }, {
                                             "id": "GrayJetAnimation0",
@@ -836,10 +836,16 @@
                                             "continuous": true,
                                             "paths": [{
                                                       "dx": 0,
-                                                      "dy": -10,
+                                                      "dy": -2,
+                                                      "visibility": true,
+                                                      "frameNo": 8,
+                                                      "delay": 20
+                                                      },{
+                                                      "dx": 0,
+                                                      "dy": -2,
                                                       "visibility": true,
                                                       "frameNo": 0,
-                                                      "delay": 100
+                                                      "delay": 20
                                                       }]
                                             }, {
                                             "id": "bigPlaneIntroAnimation0",
