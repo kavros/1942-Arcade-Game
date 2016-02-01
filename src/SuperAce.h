@@ -24,7 +24,7 @@ public:
     ~SideFighter();
     
     //get
-    SDL_Rect getSideFightertBulletDstRect(unsigned int bulletFrame);
+    SDL_Rect getSideFightertBulletDstRect();
     
     //set
     

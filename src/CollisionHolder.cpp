@@ -9,16 +9,15 @@ void Sprite::fireHandler::operator()(Sprite* bullet,Sprite* arg) const{
     assert(bullet->isAlive() && arg->isAlive());
     
     SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce");
-
-	if (arg == superAce){
-		//cout << "FIRE HANDLER DEALING WITH SUPERACE" << endl;
-		if (arg->_state == MANEUVER){
-			//cout << " AND Super Ace state is MANEUVER" << endl;
-			return;
-		}
-	}
+    assert(superAce);
+    
 	if( !bullet->getVisibility() || !arg->getVisibility() )
         return;
+    
+    if (arg == superAce && arg->_state == MANEUVER){
+        //cout << " AND Super Ace state is MANEUVER" << endl;
+        return;
+    }
     
     bullet->setState(IN_COLUSION);
     arg->setVisibility(false);
@@ -36,8 +35,8 @@ void Sprite::fireHandler::operator()(Sprite* bullet,Sprite* arg) const{
         }else{
             sa->setState(IN_COLUSION);
         }
-    }else{
-        assert(arg->getType() == ALIEN_SHIP);
+    }else if( arg->getType() == ALIEN_SHIP ){
+
         arg->setState(IN_COLUSION);
         EnemyFighter* enemyFighter = (EnemyFighter*)arg;
 
@@ -46,6 +45,19 @@ void Sprite::fireHandler::operator()(Sprite* bullet,Sprite* arg) const{
 				enemyFighter->createPowerUp();
             }
         }
+    }
+    else if( arg->getType() == SUPER_ACE ){
+        Sprite* rightFighter = superAce->getAttached(RIGHT_FIGHTER);
+        Sprite* leftFighter = superAce->getAttached(LEFT_FIGHTER);
+        if( rightFighter == arg || leftFighter == arg ){
+            arg->setState(IN_COLUSION);
+        }
+        else{
+            assert(0);
+        }
+    }
+    else{
+        assert(0);
     }
     
     AnimatorHolder::createExplosion( arg->getDstRect() );
@@ -66,36 +78,31 @@ void Sprite::touchHandler::operator()(Sprite* aircraft,Sprite* arg) const{
 
     if( !aircraft->getVisibility() || !arg->getVisibility())
         return;
-    
-    //SuperAce* superAce = (SuperAce*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce");
-    //if( superAce == aircraft){
 
-        aircraft->setVisibility(false);
-        arg->setVisibility(false);
-        
-        if(arg != superAce){
-           arg->setState(IN_COLUSION);
-        }
-        
-        if (aircraft != superAce){
-            aircraft->setState(IN_COLUSION);
-        }
-        if ( arg == superAce || aircraft != superAce ){
-            SuperAce* sa = (SuperAce*) aircraft;
-            if ( arg == superAce ){
-                sa = (SuperAce*) arg;
+    aircraft->setVisibility(false);
+    arg->setVisibility(false);
+    
+    if(arg != superAce){
+        arg->setState(IN_COLUSION);
+    }
+    
+    if (aircraft != superAce){
+        aircraft->setState(IN_COLUSION);
+    }
+    if ( arg == superAce || aircraft == superAce ){
+
+        if(superAce->getSuperAceLives() > 1){
+            superAce->setSuperAceLives(superAce->getSuperAceLives() - 1);
+            std::string _remainingLives = "";
+            for(int i = 0; i < superAce->getSuperAceLives() ; i++){
+                _remainingLives += "L";
             }
-            if(sa->getSuperAceLives() > 1){
-                sa->setSuperAceLives(sa->getSuperAceLives() - 1);
-                std::string _remainingLives = "";
-                for(int i = 0; i < sa->getSuperAceLives() ; i++){
-                    _remainingLives += "L";
-                }
-                SpriteStringHolder::getSpriteString("remainingLives")->changeString(_remainingLives, +5/*WIN_WIDTH - loops*12 -5*/, WIN_HEIGHT -15);
-            }else{
-                sa->setState(IN_COLUSION);
-            }
+            cout<<_remainingLives<<"\n";
+            SpriteStringHolder::getSpriteString("remainingLives")->changeString(_remainingLives, +5/*WIN_WIDTH - loops*12 -5*/, WIN_HEIGHT -15);
+        }else{
+            superAce->setState(IN_COLUSION);
         }
+    }
 
     AnimatorHolder::createExplosion( aircraft->getDstRect() );
     

@@ -43,10 +43,11 @@ void PowerUp::activatePowerUp(Sprite* arg){
             SuperAce* sa = superAce;
             sa->setSuperAceLives(sa->getSuperAceLives() + 1);
             std::string _remainingLives = "";
+
             for(int i = 0; i < sa->getSuperAceLives() ; i++){
                 _remainingLives += "L";
             }
-        SpriteStringHolder::getSpriteString("remainingLives")->changeString(_remainingLives, +5/*WIN_WIDTH - loops*12 -5*/, WIN_HEIGHT -15);}
+            SpriteStringHolder::getSpriteString("remainingLives")->changeString(_remainingLives, +5/*WIN_WIDTH - loops*12 -5*/, WIN_HEIGHT -15);}
             break;
         case NO_ENEMY_BULLETS:{
             SpriteList* sl = SpritesHolder::getSprites(ALIEN_SHIP);
