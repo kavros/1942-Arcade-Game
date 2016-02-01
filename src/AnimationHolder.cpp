@@ -88,7 +88,10 @@ void    AnimationHolder::Load (const std::string& cataloge){
         std::string id = tAnimation["id"].GetString();
         int delay = tAnimation["delay"].GetInt();
         int repetitions = tAnimation["repetitions"].GetInt();
+
         AnimationHolder::getAnimationHolder()->add(new TickAnimation(id ,delay ,repetitions) );
+
+	
     }
 
     //read all Moving Path Animations

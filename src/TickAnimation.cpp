@@ -5,13 +5,13 @@ TickAnimation::TickAnimation(animid_t id): Animation(id), _delay(0), _repetition
     
 }
 
-TickAnimation::TickAnimation(animid_t id ,delay_t _delay ,unsigned _repetitions):
-Animation(id), _delay(_delay), _repetitions(_repetitions), _onTick(nullptr){
+TickAnimation::TickAnimation(animid_t id ,delay_t delay ,unsigned repetitions):
+Animation(id), _delay(delay), _repetitions(repetitions), _onTick(nullptr){
     
 }
 
-TickAnimation::TickAnimation(animid_t id ,delay_t _delay ,unsigned _repetitions ,OnTick _onTick):
-Animation(id), _delay(_delay), _repetitions(_repetitions), _onTick(_onTick){
+TickAnimation::TickAnimation(animid_t id ,delay_t _delay ,unsigned repetitions ,OnTick _onTick):
+Animation(id), _delay(_delay), _repetitions(repetitions), _onTick(_onTick){
     
 }
 

@@ -966,23 +966,23 @@
                             "spriteId": "RedJet34"
                             
                             },{
-                            "id": "GrayJetAnimator0",
-                            "animationId": "minGrayJetAnimation0",
+                            "id": "GrayPlaneAnimator0",
+                            "animationId": "minGrayPlaneAnimation0",
                             "spriteType": 4,
                             "spriteId": "MinGrayJet0"
                             },{
-                            "id": "GrayJetAnimator1",
-                            "animationId": "minGrayJetAnimation1",
+                            "id": "GrayPlaneAnimator1",
+                            "animationId": "minGrayPlaneAnimation1",
                             "spriteType": 4,
                             "spriteId": "MinGrayJet1"
                             },{
-                            "id": "GrayJetAnimator2",
-                            "animationId": "minGrayJetAnimation2",
+                            "id": "GrayPlaneAnimator2",
+                            "animationId": "minGrayPlaneAnimation2",
                             "spriteType": 4,
                             "spriteId": "MinGrayJet2"
                             },{
-                            "id": "GrayJetAnimator3",
-                            "animationId": "minGrayJetAnimation3",
+                            "id": "GrayPlaneAnimator3",
+                            "animationId": "minGrayPlaneAnimation3",
                             "spriteType": 4,
                             "spriteId": "MinGrayJet3"
                             }

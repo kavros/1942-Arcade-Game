@@ -69,6 +69,9 @@ public:
     static void Load (const std::string& cataloge);
     static void startTimeTickAnimators();
 
+	static unsigned int getNumberOfGraySingleEnginePlanes();
+	static unsigned int getNumberOfGrayJets();
+	
 };
 
 #endif
