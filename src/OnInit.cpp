@@ -205,7 +205,7 @@ bool Game::InitGameInfo(){
     string highScore = std::to_string(_highScore);
 
     SpriteStringHolder::addSpriteString("press", new SpriteString( "PRESS", (WIN_WIDTH/2)- 106 ,410) );
-    SpriteStringHolder::addSpriteString("space", new SpriteString( "SPACE", (WIN_WIDTH/2) - 36 ,410) );
+    SpriteStringHolder::addSpriteString("space", new SpriteString( "ENTER", (WIN_WIDTH/2) - 36 ,410) );
     SpriteStringHolder::addSpriteString("for", new SpriteString( "FOR", (WIN_WIDTH/2)+ 29 ,410) );
     SpriteStringHolder::addSpriteString("exit2", new SpriteString( "EXIT", (WIN_WIDTH/2)+ 69 ,410) );
     SpriteStringHolder::getSpriteString("press")->setVisibility(false);
