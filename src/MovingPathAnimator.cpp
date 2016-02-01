@@ -17,6 +17,7 @@ void MovingPathAnimator::chooseCallBack(string id){
     std::size_t found;
     string* str = nullptr;
     
+    //Red Planes
     found = id.find("RedJetAnimator");
     if (found == 0)
         str = new string("Circle"+ id);

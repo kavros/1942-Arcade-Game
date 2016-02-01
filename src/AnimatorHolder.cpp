@@ -287,16 +287,48 @@ void triggerMediumGreenPlaneAnimator(){
     
 }
 
-void triggerBigPlaneTickAnimators(){
+void triggerBigPlaneIntroTickAnimators(){
     
     static int nameId = 0;
-    string name = "bigPlaneIntroAnimator" + std::to_string(nameId);
+    string bigPlaneIntroAnimatorString = "bigPlaneIntroAnimator" + std::to_string(nameId);
     nameId++;
     
-    MovingAnimator* animator = (MovingAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator(name);
+    MovingPathAnimator* animator = (MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator(bigPlaneIntroAnimatorString);
     assert(animator);
     animator->start(Game::getGameTime());
+}
+
+void triggerBigPlaneStayStillTickAnimators(){
     
+    static int nameId = 0;
+    string bigPlaneIntroAnimatorString = "bigPlaneIntroAnimator" + std::to_string(nameId);
+    string bigPlaneStayStillAnimatorString = "bigPlaneStayStillAnimator" + std::to_string(nameId);
+    nameId++;
+    
+    MovingPathAnimator* animator = (MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator(bigPlaneStayStillAnimatorString);
+    assert(animator);
+    MovingPathAnimator* prevAnimator = (MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator(bigPlaneIntroAnimatorString);
+    assert(prevAnimator);
+    prevAnimator->setState(ANIMATOR_FINISHED);
+    prevAnimator->stop();
+    animator->start(Game::getGameTime());
+    
+}
+void triggerBigPlaneOutroTickAnimators(){
+    
+    static int nameId = 0;
+    string bigPlaneStayStillAnimatorString = "bigPlaneStayStillAnimator" + std::to_string(nameId);
+    string bigPlaneOutroAnimatorString = "bigPlaneOutroAnimator" + std::to_string(nameId);
+    nameId++;
+    
+    MovingPathAnimator* animator = (MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator(bigPlaneOutroAnimatorString);
+    assert(animator);
+    MovingPathAnimator* prevAnimator = (MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator(bigPlaneStayStillAnimatorString);
+    assert(prevAnimator);
+    prevAnimator->setState(ANIMATOR_FINISHED);
+    prevAnimator->stop();
+    animator->start(Game::getGameTime());
+
 }
 
 void AnimatorHolder::startTimeTickAnimators(){
@@ -309,10 +341,13 @@ void AnimatorHolder::startTimeTickAnimators(){
 
     TimerTickAnimator::startTimeTickAnimator("redPlaneTickAnimations", triggerRedPlaneTickAnimations );
 	//TimerTickAnimator::startTimeTickAnimator("grayJetTickAnimation", triggerGrayJetTickAnimator);
-    //TimerTickAnimator::startTimeTickAnimator("bigPlaneTickAnimation", triggerBigPlaneTickAnimators );
-
     
-}	
+    //big plane
+    TimerTickAnimator::startTimeTickAnimator("bigPlaneIntroTickAnimation", triggerBigPlaneIntroTickAnimators );
+    TimerTickAnimator::startTimeTickAnimator("bigPlaneStayStillTickAnimation", triggerBigPlaneStayStillTickAnimators );
+    TimerTickAnimator::startTimeTickAnimator("bigPlaneOutroTickAnimation", triggerBigPlaneOutroTickAnimators );
+
+}
 
 using namespace rapidjson;
 

@@ -995,9 +995,20 @@
                             "animationId": "GreenMediumPlaneAnimation0",
                             "spriteType": 4,
                             "spriteId": "GreenMediumPlane1"
-                            },{
+                            },
+                            {
                             "id": "bigPlaneIntroAnimator0",
                             "animationId": "bigPlaneIntroAnimation0",
+                            "spriteType": 4,
+                            "spriteId": "bigGreenPlaneSprite"
+                            },{
+                            "id": "bigPlaneStayStillAnimator0",
+                            "animationId": "bigPlaneStayStillAnimation0",
+                            "spriteType": 4,
+                            "spriteId": "bigGreenPlaneSprite"
+                            },{
+                            "id": "bigPlaneOutroAnimator0",
+                            "animationId": "bigPlaneOutroAnimation0",
                             "spriteType": 4,
                             "spriteId": "bigGreenPlaneSprite"
                             }
