@@ -75,7 +75,7 @@
                 },{
                 "id": "GreenMediumPlane1",
                 "frameNo": 0,
-                "destRect": [350, 10, 33, 29],
+                "destRect": [500, 768 , 33, 29],
                 "point": [0, 0],
                 "visible": false,
                 "spriteType": 4,

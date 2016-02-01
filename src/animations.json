@@ -832,9 +832,9 @@
                                             "continuous": true,
                                             "paths": [{
                                                       "dx": 0,
-                                                      "dy": 10,
+                                                      "dy": -10,
                                                       "visibility": true,
-                                                      "frameNo": 8,
+                                                      "frameNo": 0,
                                                       "delay": 100
                                                       }]
                                             }, {
