@@ -14,7 +14,7 @@ Sprite(id,frameNo,dstRect,point,isVisible,type,currFilm){
     _bulletDstRect.w=bulletAnimationFilm->getFrameBox(bulletFrame).w * Game::getSpriteSize();
     _bulletDstRect.h=bulletAnimationFilm->getFrameBox(bulletFrame).h * Game::getSpriteSize();
     _bulletDstRect.x=this->getDstRect().x + this->getDstRect().w/2 - _bulletDstRect.w/2;
-    _bulletDstRect.y=this->getDstRect().y;
+    _bulletDstRect.y=this->getDstRect().y - _bulletDstRect.h;
 
     this->addCollisionHandler(Sprite::touchHandler());
 
@@ -26,7 +26,7 @@ void SuperAce::render(SDL_Renderer * renderer){
 
 SDL_Rect SuperAce::getBulletDstRect(){
     _bulletDstRect.x=this->getDstRect().x + this->getDstRect().w/2 - _bulletDstRect.w/2;
-    _bulletDstRect.y=this->getDstRect().y ;
+    _bulletDstRect.y=this->getDstRect().y - _bulletDstRect.h;
     
     return _bulletDstRect;
 }
