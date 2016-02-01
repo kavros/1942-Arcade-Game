@@ -1,37 +1,27 @@
-  #include "Sprite.hpp"
+#include "Sprite.hpp"
 #include "SpritesHolder.hpp"
 #include "AnimatorHolder.h"
 
 Sprite::Sprite(){
+    //illegal use
     assert(0);
-    /*
-    _frameNo=0;
-    _dstRect={0,0,0,0};
-    _point={0,0};
-    setVisibility(true);
-    _type=UNDEFINED;
-    setState(FLYING);
-    _currFilm=nullptr;
-    _parent=nullptr;
-    
-     */
 }
 
 Sprite::Sprite(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point point,bool isVisible,SpriteType type,AnimationFilm* currFilm){
-    assert( frameNo>=0 && currFilm!=NULL && type>=0 && type<SpriteType(SPRITE_TYPE_SIZE) && currFilm);
+   
+    assert( id!="" && frameNo>=0 && currFilm!=NULL && type>=0 && type<SpriteType(SPRITE_TYPE_SIZE) && currFilm);
 
-    _spriteId = id;
-    _frameNo=frameNo;
-    _dstRect = dstRect;
-    _dstRect.h = currFilm->getFrameBox(frameNo).h * Game::getSpriteSize();
-    _dstRect.w = currFilm->getFrameBox(frameNo).w * Game::getSpriteSize();
-    _dstRect=dstRect;
-    setVisibility(isVisible);
+    setId(id);
+    setCurrFilm(currFilm);
+
     _point=point;
+    setVisibility(isVisible);
     _type=type;
-    _currFilm=currFilm;
-    setState(FLYING);
+    setState(STARTING);
     _parent=nullptr;
+    
+    setFrame(frameNo);
+    setDstRect(dstRect);
 
     SpritesHolder::add(this);
 
@@ -51,10 +41,8 @@ AnimationFilm* Sprite::getCurrFilm(void) const{
 }
 
 void Sprite::setFrame(unsigned i){
-	assert(0 < i < _currFilm->getTotalFrames());
+	assert(0 <= i && i < _currFilm->getTotalFrames());
 	_frameNo = i;
-    _dstRect.h = _currFilm->getFrameBox(_frameNo).h * Game::getSpriteSize();
-    _dstRect.w = _currFilm->getFrameBox(_frameNo).w * Game::getSpriteSize();
 }
 
 unsigned Sprite::getFrame(void) const {

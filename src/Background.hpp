@@ -10,7 +10,6 @@
 
 class Background : public Sprite{
 private:
-    int _terrainWidth,_terrainHeight;
     
     typedef std::list<Sprite*> SpriteList;
     SpriteList* _terrainObjects;

@@ -29,10 +29,6 @@
                    },
                    {
                    "TickAnimations": [{
-                                      "id": "destructionManager",
-                                      "delay": 10000,
-                                      "repetitions": 0
-                                      },{
                                       "id": "enemyBulletsTickAnimation",
                                       "delay": 2000,
                                       "repetitions": 0

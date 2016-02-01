@@ -75,7 +75,6 @@ protected:
     bool _isVisible;
 	SpriteType _type;
     AnimationFilm* _currFilm;
-    //TileLayer* _myLayer;
     
     using Attached = std::map<std::string, Sprite*>;
     Attached _attached;

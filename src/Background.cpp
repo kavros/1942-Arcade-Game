@@ -8,21 +8,12 @@ void Background::filterMotion(int* dx, int* dy) const{
 
 }
 Background::Background():
-Sprite("spriteEmpty_sea_background",0,{0,0,0,0},{0,0},true,TERRAIN,AnimationFilmHolder::Get()->GetFilm("empty_sea_background"))
-{
-    
-    //_currFilm = AnimationFilmHolder::Get()->GetFilm("empty_sea_background");
-    //_spriteId = "spriteEmpty_sea_background";
-    
-    _terrainWidth = _currFilm->getFrameBox(0).w;
-    _terrainHeight = _currFilm->getFrameBox(0).h;
+Sprite("spriteEmpty_sea_background",0,{0,0,0,0},{0,0},true,TERRAIN,AnimationFilmHolder::Get()->GetFilm("empty_sea_background")){
     
     _dstRect.x = 0;
-	_dstRect.y = -_terrainHeight+WIN_HEIGHT;
+	_dstRect.y = -_currFilm->getFrameBox(0).h+WIN_HEIGHT;
     _dstRect.w = WIN_WIDTH;
-    _dstRect.h = _terrainHeight;
-
-    //_type = TERRAIN;
+    _dstRect.h =  _currFilm->getFrameBox(0).h;
     
     _terrainObjects = new SpriteList;
 
@@ -41,13 +32,11 @@ void Background::initBackgroundObjects(){
     addBackgroundObject("spriteAircraftCarrier2");
     
     addBackgroundObject("spriteLand0");
-    
-    
+
 }
 
 void Background::addBackgroundObject(string id){
-    Sprite* s;
-    s= SpritesHolder::getSprite(TERRAIN, id);
+    Sprite* s= SpritesHolder::getSprite(TERRAIN, id);
     assert(s);
     _terrainObjects->push_back(s);
 }
@@ -59,7 +48,7 @@ void Background::moveBackground(int dx, int dy){
             this->changeDstRectY(dy);
         }
         else if( this->getDstRect().y >= 0 ){
-            this->setDstRectY(-_terrainHeight+WIN_HEIGHT);
+            this->setDstRectY(-getDstRect().h+WIN_HEIGHT);
         }
             
         this->moveTerrainObjects(dx,dy);
