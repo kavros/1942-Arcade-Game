@@ -287,6 +287,17 @@ void triggerMediumGreenPlaneAnimator(){
     
 }
 
+void triggerMiniGreenOneEngAnimator(){
+    static int nameId = 0;
+    string name = "miniGreenOneEngAnimator" + std::to_string(nameId);
+    nameId++;
+    
+    MovingPathAnimator* animator = (MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator(name);
+    assert(animator);
+    animator->start(Game::getGameTime());
+    
+}
+
 void triggerBigPlaneIntroTickAnimators(){
     
     static int nameId = 0;
@@ -347,8 +358,9 @@ void AnimatorHolder::startTimeTickAnimators(){
     TimerTickAnimator::startTimeTickAnimator("greenPlaneTickAnimation", triggerGreenJetPlaneAnimator );
     //TimerTickAnimator::startTimeTickAnimator("greenDoubleEnginePlaneTickAnimation", triggerGreenDoubleEnginePlaneAnimator );
 	//TimerTickAnimator::startTimeTickAnimator("grayPlaneTickAnimation", triggerGrayPlaneAnimator);
+	TimerTickAnimator::startTimeTickAnimator("miniGreenOneEngTickAnimation", triggerMiniGreenOneEngAnimator);
 
-    //TimerTickAnimator::startTimeTickAnimator("redPlaneTickAnimations", triggerRedPlaneTickAnimations );
+    TimerTickAnimator::startTimeTickAnimator("redPlaneTickAnimations", triggerRedPlaneTickAnimations );
 	//TimerTickAnimator::startTimeTickAnimator("grayJetTickAnimation", triggerGrayJetTickAnimator);
     
     //big plane

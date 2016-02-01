@@ -63,6 +63,12 @@ void Sprite::fireHandler::operator()(Sprite* bullet,Sprite* arg) const{
     AnimatorHolder::createExplosion( arg->getDstRect() );
 }
 
+void updateScore(EnemyFighterType t){
+    int i =0;
+    switch (t)
+    case EnemyFighterType(0):
+    break;
+}
 Sprite::fireHandler* Sprite::fireHandler::Clone(void) const{
     return new Sprite::fireHandler();
 }

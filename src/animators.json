@@ -1051,6 +1051,11 @@
                             "animationId": "bigPlaneOutroAnimation0",
                             "spriteType": 4,
                             "spriteId": "bigGreenPlaneSprite0"
+                            },{
+                            "id": "miniGreenOneEngAnimator0",
+                            "animationId": "only_circle_250_250_200_130",
+                            "spriteType": 4,
+                            "spriteId": "MinGreenOneEng0"
                             }
                             ]
 }
