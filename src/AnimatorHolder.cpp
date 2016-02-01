@@ -128,7 +128,9 @@ void AnimatorHolder::createExplosion(SDL_Rect dstRect){
     AnimationFilm* fireAnimationFilm = AnimationFilmHolder::Get()->GetFilm("explosion");
     assert(fireAnimationFilm);
     
-    Sprite* explosion = new Sprite(spriteExplosionId, 0, dstRect, {0,0}, true, POWER_UPS, fireAnimationFilm);
+    SDL_Rect rect = { dstRect.x , dstRect.y , 20 , 20 };
+    
+    Sprite* explosion = new Sprite(spriteExplosionId, 0, rect , {0,0}, true, POWER_UPS, fireAnimationFilm);
     assert(explosion);
     
     SoundHolder::playSound("explosion");

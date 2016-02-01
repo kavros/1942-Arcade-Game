@@ -38,12 +38,14 @@ void Sprite::fireHandler::operator()(Sprite* bullet,Sprite* arg) const{
     }else if( arg->getType() == ALIEN_SHIP ){
         
         EnemyFighter* enemyFighter = ( EnemyFighter* )arg;
-        if( enemyFighter->getEnemyFighterType() == BIG_GREEN || enemyFighter->getEnemyFighterType() == BIG_GREY ){
-            if(enemyFighter->getEnemyFighterLifes() == 1){
-                enemyFighter->setState(IN_COLUSION);
-            }
-            enemyFighter->setEnemyFighterLifes( enemyFighter->getEnemyFighterLifes() -1 );
+        
+        if(enemyFighter->getEnemyFighterLifes() == 1){
+            enemyFighter->setState(IN_COLUSION);
+            if(enemyFighter->getEnemyFighterType() == RED_PLANE && SpritesHolder::uniqueAliveFromTeam(enemyFighter) )
+                enemyFighter->createPowerUp();
         }
+        enemyFighter->setEnemyFighterLifes( enemyFighter->getEnemyFighterLifes() -1 );
+
         
     }
     else if( arg->getType() == SUPER_ACE ){
@@ -87,12 +89,12 @@ void Sprite::touchHandler::operator()(Sprite* aircraft,Sprite* arg) const{
         
         if(arg->getType() == ALIEN_SHIP){
             EnemyFighter* enemyFighter = ( EnemyFighter* )arg;
-            if( enemyFighter->getEnemyFighterType() == BIG_GREEN || enemyFighter->getEnemyFighterType() == BIG_GREY ){
-                if(enemyFighter->getEnemyFighterLifes() == 1){
-                    enemyFighter->setState(IN_COLUSION);
-                }
-                enemyFighter->setEnemyFighterLifes( enemyFighter->getEnemyFighterLifes() -1 );
+
+            if(enemyFighter->getEnemyFighterLifes() == 1){
+                enemyFighter->setState(IN_COLUSION);
             }
+            enemyFighter->setEnemyFighterLifes( enemyFighter->getEnemyFighterLifes() -1 );
+
         }
 
     }
@@ -102,12 +104,10 @@ void Sprite::touchHandler::operator()(Sprite* aircraft,Sprite* arg) const{
         
         if(aircraft->getType() == ALIEN_SHIP){
             EnemyFighter* enemyFighter = ( EnemyFighter* )aircraft;
-            if( enemyFighter->getEnemyFighterType() == BIG_GREEN || enemyFighter->getEnemyFighterType() == BIG_GREY ){
-                if(enemyFighter->getEnemyFighterLifes() == 1){
-                    enemyFighter->setState(IN_COLUSION);
-                }
-                enemyFighter->setEnemyFighterLifes( enemyFighter->getEnemyFighterLifes() -1 );
+            if(enemyFighter->getEnemyFighterLifes() == 1){
+                enemyFighter->setState(IN_COLUSION);
             }
+            enemyFighter->setEnemyFighterLifes( enemyFighter->getEnemyFighterLifes() -1 );
         }
         
     }
