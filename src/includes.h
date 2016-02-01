@@ -24,8 +24,8 @@
 #define WIN_X 100
 #define WIN_Y 100
 
-#define WIN_WIDTH 512
-#define WIN_HEIGHT 512
+#define WIN_WIDTH 860
+#define WIN_HEIGHT 768
 
 #define BACKGROUNG_WIDTH 223
 #define BACKGROUNG_HEIGHT 7680
