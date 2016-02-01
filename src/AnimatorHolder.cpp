@@ -100,7 +100,7 @@ Animator* AnimatorHolder::getAnimator(animid_t id){
 }
 
 void AnimatorHolder::triggerBullets(){
-    
+
     SpriteList * sl = SpritesHolder::getSprites(ALIEN_SHIP);
 
     SpriteList::const_iterator it = sl->begin();
@@ -276,7 +276,7 @@ void triggerGrayJetTickAnimator(){
 void AnimatorHolder::startTimeTickAnimators(){
     
     TimerTickAnimator::startTimeTickAnimator("superAceMovingPathTickAnimation", triggerSuperAceMovingPathAnimator );
-    //TimerTickAnimator::startTimeTickAnimator("enemyBulletsTickAnimation", AnimatorHolder::triggerBullets);
+    TimerTickAnimator::startTimeTickAnimator("enemyBulletsTickAnimation", AnimatorHolder::triggerBullets);
     //TimerTickAnimator::startTimeTickAnimator("greenPlaneTickAnimation", triggerGreenJetPlaneAnimator );
     //TimerTickAnimator::startTimeTickAnimator("greenDoubleEnginePlaneTickAnimation", triggerGreenDoubleEnginePlaneAnimator );
 	TimerTickAnimator::startTimeTickAnimator("grayPlaneTickAnimation", triggerGrayPlaneAnimator);

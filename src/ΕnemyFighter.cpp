@@ -94,8 +94,9 @@ void EnemyFighter::setAnimationEnemyBulletFilm(AnimationFilm* film){
 
 void EnemyFighter::fire(void){
 
-    if( !getEnemyFireEnable() || getRemainingBullets() == 0 )
+    if( !getEnemyFireEnable() || getRemainingBullets() == 0 ){
         return;
+    }
     
     unsigned r = rand() % 3; // r in the range 0 to 2
         

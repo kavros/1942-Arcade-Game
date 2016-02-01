@@ -42,7 +42,7 @@ void createPowerUp(){
     assert(powerUpAnimationFilm);
     Sprite* powerUp;
     
-    PowerUpType powerUpType = PowerUpType(SIDE_FIGHTERS);
+    PowerUpType powerUpType = PowerUpType(NO_ENEMY_BULLETS);
     unsigned powerUpFrameNo = powerUpType;
     
     powerUp = new PowerUp(spritePowerUpId, powerUpType, powerUpFrameNo, { 250, 0, 20, 20 }, { 0, 0 }, true, POWER_UPS, powerUpAnimationFilm);

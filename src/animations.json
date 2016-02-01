@@ -93,7 +93,7 @@
                                       "repetitions": 1
                                       },{
                                       "id": "shortTickAnimation",
-                                      "delay": 10000,
+                                      "delay": 5000,
                                       "repetitions": 1
                                       }
                                       ]
