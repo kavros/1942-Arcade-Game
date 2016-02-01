@@ -90,7 +90,7 @@
                 "visible": false,
                 "spriteType": 4,
                 "remainingBullets": 0,
-                "enemyType" : 0,
+                "enemyType" : 7,
                 "animFilmId": "green_medium_plane"
                 },{
                 "id": "GreenMediumPlane2",
@@ -100,7 +100,7 @@
                 "visible": false,
                 "spriteType": 4,
                 "remainingBullets": 0,
-                "enemyType" : 0,
+                "enemyType" : 7,
                 "animFilmId": "green_medium_plane"
                 },{
                 "id": "GreenMediumPlane3",
