@@ -2,7 +2,7 @@
 
 #include "MovingPathAnimator.h"
 
-void updateGrayJetAnimation(MovingPathAnimator* grayJetAnimator, MovingPathAnimation* grayJetAnimation);
+void updateGrayPlaneAnimation(MovingPathAnimator* grayJetAnimator, MovingPathAnimation* grayJetAnimation);
 void Game::OnEvent(SDL_Event* event) {
     static SDL_Event prevEvent  = *event;
     
@@ -72,7 +72,7 @@ void Game::OnEvent(SDL_Event* event) {
                 
                 
                 
-                UpdateAllGrayJetAnimations();
+                UpdateAllGrayPlaneAnimations();
                 
                 
                 //cout << grayJetAnimator->getSprite()->getDstRect().y;
@@ -208,50 +208,37 @@ void Game::OnEvent(SDL_Event* event) {
     
 }
 
-void Game::UpdateAllGrayJetAnimations(){
-    MovingPathAnimator* grayJetAnimator_0 =
-    (MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator("GrayJetAnimator0");
-    MovingPathAnimation* grayJetAnimation_0 =
-    (MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("minGrayJetAnimation0");
-    
-    
-    updateGrayJetAnimation(grayJetAnimator_0, grayJetAnimation_0);
-    
-    
-    MovingPathAnimator* grayJetAnimator_1 =
-    (MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator("GrayJetAnimator1");
-    MovingPathAnimation* grayJetAnimation_1 =
-    (MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("minGrayJetAnimation1");
-    
-    
-    updateGrayJetAnimation(grayJetAnimator_1, grayJetAnimation_1);
-    
-    MovingPathAnimator* grayJetAnimator_2 =
-    (MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator("GrayJetAnimator2");
-    MovingPathAnimation* grayJetAnimation_2 =
-    (MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("minGrayJetAnimation2");
-    
-    
-    updateGrayJetAnimation(grayJetAnimator_2, grayJetAnimation_2);
-    
-    MovingPathAnimator* grayJetAnimator_3 =
-    (MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator("GrayJetAnimator3");
-    MovingPathAnimation* grayJetAnimation_3 =
-    (MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("minGrayJetAnimation3");
-    
-    
-    updateGrayJetAnimation(grayJetAnimator_3, grayJetAnimation_3);
-    
-    
+void Game::UpdateAllGrayPlaneAnimations(){
+	
+	MovingPathAnimator* grayPlaneAnimator;
+	MovingPathAnimation* grayPlaneAnimation;
+	string grayPlaneAnimatorName, grayPlaneAnimationName;
+
+	unsigned int numberOfGrayPlanes = AnimatorHolder::getAnimatorHolder()->getNumberOfGraySingleEnginePlanes();
+	
+
+	for (unsigned i = 0; i < numberOfGrayPlanes; ++i){
+		
+		grayPlaneAnimatorName = "GrayPlaneAnimator" + to_string(i);
+		grayPlaneAnimationName = "minGrayPlaneAnimation" + to_string(i);
+
+		grayPlaneAnimator =
+			(MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator(grayPlaneAnimatorName);
+		grayPlaneAnimation =
+			(MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation(grayPlaneAnimationName);
+		updateGrayPlaneAnimation(grayPlaneAnimator, grayPlaneAnimation);
+	}
+
     
 }
-void updateGrayJetAnimation(MovingPathAnimator* grayJetAnimator, MovingPathAnimation* grayJetAnimation){
+void updateGrayPlaneAnimation(MovingPathAnimator* grayJetAnimator, MovingPathAnimation* grayJetAnimation){
     
     
     SuperAce* superAce = (SuperAce*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce");
     
     
     assert(grayJetAnimator);
+	assert(grayJetAnimation);
     if (!grayJetAnimator->isAlive()){
         return;
     }

@@ -86,6 +86,7 @@ public:
     static bool InitData();
     static bool InitBackground();
     static bool InitGameInfo();
+	static void InitGrayJet();
 	//static void InitSuperAceAnimator();
 
 	static void InitGamePad();
@@ -108,7 +109,7 @@ public:
     static void updateHighScoreSprite();
     static void updateScoreSprite();
 
-	static void UpdateAllGrayJetAnimations();
+	static void UpdateAllGrayPlaneAnimations();
 
     //set
     static void setState(GameState gameState);
