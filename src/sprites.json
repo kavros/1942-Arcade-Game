@@ -70,7 +70,7 @@
                 "visible": false,
                 "spriteType": 4,
                 "remainingBullets": 0,
-                "enemyType" : 0,
+                "enemyType" : 2,
                 "animFilmId": "gray_jet"
                 },{
                 "id": "GreenMediumPlane1",
@@ -80,7 +80,7 @@
                 "visible": false,
                 "spriteType": 4,
                 "remainingBullets": 0,
-                "enemyType" : 0,
+                "enemyType" : 7,
                 "animFilmId": "green_medium_plane"
                 },{
                 "id": "RedJet1",

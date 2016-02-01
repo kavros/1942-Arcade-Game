@@ -41,7 +41,8 @@ void Sprite::fireHandler::operator()(Sprite* bullet,Sprite* arg) const{
         
         if(enemyFighter->getEnemyFighterLifes() == 1){
             enemyFighter->setState(IN_COLUSION);
-            enemyFighter->createPowerUp();
+            if(enemyFighter->getEnemyFighterType() == RED_PLANE && SpritesHolder::uniqueAliveFromTeam(enemyFighter) )
+                enemyFighter->createPowerUp();
         }
         enemyFighter->setEnemyFighterLifes( enemyFighter->getEnemyFighterLifes() -1 );
 
