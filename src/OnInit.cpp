@@ -20,7 +20,6 @@ bool Game::OnInit(){
     
     InitGame();
 	InitGrayJet();
-	SoundHolder::setMute(false);
     return true;
 }
 

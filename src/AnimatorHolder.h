@@ -21,7 +21,7 @@ class AnimatorHolder{
 private:
     typedef std::map<std::string, Animator*> AnimatorMap;
     typedef std::list<Animator*> AnimatorList;
-    
+private:
 	class ProgressFunctor : public std::unary_function<Animator*, void> {
 		timestamp_t _t;
 	public:
@@ -42,7 +42,7 @@ public:
 	
     //get
     static AnimatorHolder* getAnimatorHolder();
-    
+    static void UpdateAllGrayPlaneAnimations();
     static void cleanup();
     
 	//marking state

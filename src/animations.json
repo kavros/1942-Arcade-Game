@@ -89,7 +89,7 @@
                                       "repetitions": 1
                                       },{
                                       "id": "grayPlaneTickAnimation",
-                                      "delay": 1000,
+                                      "delay": 5000,
                                       "repetitions": 4
                                       },{
                                       "id": "grayJetTickAnimation",
@@ -357,7 +357,7 @@
                                             "continuous":true,
                                             "paths": [{
                                                       "dx": 0,
-                                                      "dy": 1,
+                                                      "dy": 5,
                                                       "visibility": true,
                                                       "frameNo": 0,
                                                       "delay": 90
@@ -367,7 +367,7 @@
                                             "continuous":true,
                                             "paths": [{
                                                       "dx": 0,
-                                                      "dy": 1,
+                                                      "dy": 5,
                                                       "visibility": true,
                                                       "frameNo": 0,
                                                       "delay": 90
@@ -377,7 +377,7 @@
                                             "continuous":true,
                                             "paths": [{
                                                       "dx": 0,
-                                                      "dy": 1,
+                                                      "dy": 5,
                                                       "visibility": true,
                                                       "frameNo": 0,
                                                       "delay": 90
@@ -387,7 +387,7 @@
                                             "continuous":true,
                                             "paths": [{
                                                       "dx": 0,
-                                                      "dy": 1,
+                                                      "dy": 5,
                                                       "visibility": true,
                                                       "frameNo": 0,
                                                       "delay": 90
