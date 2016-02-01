@@ -21,14 +21,8 @@
 
 #endif
 
-#define WIN_X 100
-#define WIN_Y 100
-
 #define WIN_WIDTH 768
 #define WIN_HEIGHT 768
-
-#define BACKGROUNG_WIDTH 223
-#define BACKGROUNG_HEIGHT 7680
 
 #define LEFT_FIGHTER  "left.fighter"
 #define RIGHT_FIGHTER "right.fighter"
