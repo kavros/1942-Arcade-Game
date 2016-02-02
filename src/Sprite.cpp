@@ -201,7 +201,6 @@ void Sprite::notifyCollision(Sprite* arg){
 void Sprite::addCollisionHandler(const CollisionHandler& h){
     _handlers.push_back(h.Clone());
     if( _type == SUPER_ACE){
-        assert(this->getVisibility());
 
         SpriteList* aliens;
         

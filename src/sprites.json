@@ -555,7 +555,7 @@
                 "frameNo": 0,
                 "destRect": [0, 0, 54, 40],
                 "point": [0, 0],
-                "visible": true,
+                "visible": false,
                 "spriteType": 3,
                 "animFilmId": "Super.Ace.1942"
                 },{
