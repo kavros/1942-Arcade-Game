@@ -50,6 +50,56 @@
                             "spriteType": 3,
                             "spriteId": "SuperAce"
                             }, {
+                            "id": "SuperAce2StartingAnimator",
+                            "animationId": "superAce2StartingAnimation",
+                            "spriteType": 3,
+                            "spriteId": "SuperAce"
+                            }, {
+                            "id": "SuperAce2EndingAnimator",
+                            "animationId": "superAce2EndingAnimation",
+                            "spriteType": 3,
+                            "spriteId": "SuperAce"
+                            }, {
+                            "id": "SuperAce2MovingAnimator",
+                            "animationId": "superAce2MovingAnimation",
+                            "spriteType": 3,
+                            "spriteId": "SuperAce"
+                            }, {
+                            "id": "SuperAce2AnimatorManeuver",
+                            "animationId": "superAce2AnimationManeuver",
+                            "spriteType": 3,
+                            "spriteId": "SuperAce"
+                            }, {
+                            "id": "SuperAce2AnimatorUp",
+                            "animationId": "superAce2AnimationUp",
+                            "spriteType": 3,
+                            "spriteId": "SuperAce"
+                            }, {
+                            "id": "SuperAce2AnimatorDown",
+                            "animationId": "superAce2AnimationDown",
+                            "spriteType": 3,
+                            "spriteId": "SuperAce"
+                            }, {
+                            "id": "SuperAce2AnimatorRight",
+                            "animationId": "superAce2AnimationRight",
+                            "spriteType": 3,
+                            "spriteId": "SuperAce"
+                            }, {
+                            "id": "SuperAce2AnimatorRightRight",
+                            "animationId": "superAce2AnimationRightRight",
+                            "spriteType": 3,
+                            "spriteId": "SuperAce"
+                            }, {
+                            "id": "SuperAce2AnimatorLeft",
+                            "animationId": "superAce2AnimationLeft",
+                            "spriteType": 3,
+                            "spriteId": "SuperAce"
+                            }, {
+                            "id": "SuperAce2AnimatorLeftLeft",
+                            "animationId": "superAce2AnimationLeftLeft",
+                            "spriteType": 3,
+                            "spriteId": "SuperAce"
+                            },{
                             "id": "GreenDoubleEngineJetAnimator0",
                             "animationId": "circle_250_250_30",
                             "spriteType": 4,

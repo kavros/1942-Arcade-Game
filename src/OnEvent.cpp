@@ -145,14 +145,7 @@ void Game::multiplayerGameOnEvent(){
         MovingPathAnimator* superAce2AnimatorDown =
         (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAce2AnimatorDown");
         
-        if (event.key.keysym.sym == SDLK_ESCAPE || event.cbutton.button == SDL_CONTROLLER_BUTTON_START ) {
-            //pause
-            setState(PAUSE_MENU);
-        }
-        else if (Game::event.key.keysym.sym == SDLK_q){
-            //quit?
-        }
-        else if (event.key.keysym.sym == SDLK_LEFT || event.cbutton.button == SDL_CONTROLLER_BUTTON_DPAD_LEFT) {
+        if (event.key.keysym.sym == SDLK_j/* || event.cbutton.button == SDL_CONTROLLER_BUTTON_DPAD_LEFT*/) {
             
             if(event.key.keysym.sym != prevEvent.key.keysym.sym)
                 superAce2AnimatorLeft->start(getGameTime());
@@ -171,7 +164,7 @@ void Game::multiplayerGameOnEvent(){
                 leftSideFighterAnimatorLeft->start(getGameTime());
             }
         }
-        else if (event.key.keysym.sym == SDLK_RIGHT || event.cbutton.button == SDL_CONTROLLER_BUTTON_DPAD_RIGHT){
+        else if (event.key.keysym.sym == SDLK_l/* || event.cbutton.button == SDL_CONTROLLER_BUTTON_DPAD_RIGHT*/){
             
             if(event.key.keysym.sym != prevEvent.key.keysym.sym)
                 superAce2AnimatorRight->start(getGameTime());
@@ -188,20 +181,20 @@ void Game::multiplayerGameOnEvent(){
                 leftSideFighterAnimatorRight->start(getGameTime());
             }
         }
-        else if (event.key.keysym.sym == SDLK_UP || event.cbutton.button == SDL_CONTROLLER_BUTTON_DPAD_UP){
+        else if (event.key.keysym.sym == SDLK_i/* || event.cbutton.button == SDL_CONTROLLER_BUTTON_DPAD_UP*/){
             superAce2AnimatorUp->start(getGameTime());
         }
-        else if (event.key.keysym.sym == SDLK_DOWN || event.cbutton.button == SDL_CONTROLLER_BUTTON_DPAD_DOWN){
+        else if (event.key.keysym.sym == SDLK_k/* || event.cbutton.button == SDL_CONTROLLER_BUTTON_DPAD_DOWN*/){
             superAce2AnimatorDown->start(getGameTime());
             
         }
-        else if (event.key.keysym.sym == SDLK_SPACE || event.cbutton.button == SDL_CONTROLLER_BUTTON_A){
+        else if (event.key.keysym.sym == SDLK_t/* || event.cbutton.button == SDL_CONTROLLER_BUTTON_A*/){
             
             superAce2->fire();
             
             prevEvent = event;
         }
-        else if (event.key.keysym.sym == SDLK_a || event.cbutton.button == SDL_CONTROLLER_BUTTON_X){
+        else if (event.key.keysym.sym == SDLK_y/* || event.cbutton.button == SDL_CONTROLLER_BUTTON_X*/){
             superAce2->doManeuever();
         }
         
