@@ -165,12 +165,7 @@ void Sprite::touchHandler::operator()(Sprite* aircraft,Sprite* arg) const{
     if( !aircraft->getVisibility() || !arg->getVisibility())
         return;
 
-	/*
-	if (arg == superAce || aircraft == superAce || aircraft == superAce->getParent() || arg == superAce->getParent()){
-		if (superAce->getState() == UNDEFEATABLE){
-			return;
-		}
-	}*/
+
 
 	if (arg == superAce || arg == superAce->getAttached(RIGHT_FIGHTER) || arg == superAce->getAttached(LEFT_FIGHTER)){
 		if (superAce->getState() == UNDEFEATABLE){
