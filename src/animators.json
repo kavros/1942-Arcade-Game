@@ -1,11 +1,33 @@
 {
     "MovingPathAnimators": [{
-                            "id": "BackgroundAnimator",
+                            "id": "backgroundAnimator",
                             "animationId": "backgroundAnimation",
                             "repetition": 1,
                             "spriteType": 2,
                             "spriteId": "backgroundSprite"
-                            },{
+                            },
+                            {
+                            "id": "aircraftAnimator",
+                            "animationId": "backgroundObjectsAnimation",
+                            "repetition": 2,
+                            "spriteType": 2,
+                            "spriteId": "spriteAircraftCarrier"
+                            },
+                            {
+                            "id": "spriteLandAnimator",
+                            "animationId": "backgroundObjectsAnimation",
+                            "repetition": 1,
+                            "spriteType": 2,
+                            "spriteId": "spriteLand"
+                            },
+                            {
+                            "id": "spriteEuropeAnimator",
+                            "animationId": "backgroundObjectsAnimation",
+                            "repetition": 1,
+                            "spriteType": 2,
+                            "spriteId": "spriteEurope"
+                            },
+                            {
                             "id": "SuperAceStartingAnimator",
                             "animationId": "superAceStartingAnimation",
                             "repetition": 2,

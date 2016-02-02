@@ -4658,6 +4658,24 @@
                                                       "frameNo": 15,
                                                       "visibility": true,
                                                       "delay": 50
+                                                      }
+                                                      ]
+                                            },
+                                            {
+                                            "id": "backgroundObjectsAnimation",
+                                            "continuous": true,
+                                            "paths": [{
+                                                      "dx": 0,
+                                                      "dy": 2,
+                                                      "frameNo": 0,
+                                                      "visibility": true,
+                                                      "delay": 50
+                                                      },{
+                                                      "dx": 0,
+                                                      "dy": 2,
+                                                      "frameNo": 0,
+                                                      "visibility": true,
+                                                      "delay": 50
                                                       }]
                                             }
                                             ]

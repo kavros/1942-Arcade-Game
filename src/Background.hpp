@@ -33,6 +33,8 @@ public:
 
     void initBackgroundObjects();
     
+    void startBackgroundObjectAnimator(string id);
+
     void addBackgroundObject(string id);
     
     void moveBackground(int dx, int dy);

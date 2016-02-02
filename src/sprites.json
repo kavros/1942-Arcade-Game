@@ -155,7 +155,8 @@
                 "visible": true,
                 "spriteType": 2,
                 "animFilmId":"land"
-                }, {
+                },
+                {
                 "id": "spriteEurope",
                 "frameNo": 0,
                 "destRect": [-150, -2000, 1500, 2000],
