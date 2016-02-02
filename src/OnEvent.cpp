@@ -127,13 +127,12 @@ void Game::singleplayerGameOnEvent(SDL_Event* event , SDL_Event prevEvent){
             
             prevEvent = *event;
             return;
-        }
-        else if (event->key.keysym.sym == SDLK_a
+        }else if (event->key.keysym.sym == SDLK_a
                  || event->cbutton.button == SDL_CONTROLLER_BUTTON_X){
             
             ((SuperAce*)superAce)->doManeuever();
             
-        }
+		}
         
     }
     prevEvent = *event;
@@ -173,7 +172,7 @@ void Game::multiplayerGameOnEvent(SDL_Event* event , SDL_Event prevEvent){
     if (event->type == SDL_KEYDOWN || event->type == SDL_CONTROLLERBUTTONDOWN){
         
         assert(superAce);
-        
+
         
         MovingPathAnimator* superAceAnimatorLeft =
         (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorLeft");
@@ -198,17 +197,13 @@ void Game::multiplayerGameOnEvent(SDL_Event* event , SDL_Event prevEvent){
         
         assert(superAce->getType() == SUPER_ACE);
         
-        if (event->key.keysym.sym == SDLK_ESCAPE
-            || event->cbutton.button == SDL_CONTROLLER_BUTTON_START
+        if (event->key.keysym.sym == SDLK_ESCAPE || event->cbutton.button == SDL_CONTROLLER_BUTTON_START
             ) {
             //pause
             setState(PAUSE_MENU);
-        }
-        else if (event->key.keysym.sym == SDLK_q){
+        }else if (event->key.keysym.sym == SDLK_q){
             //quit?
-        }
-        else if (event->key.keysym.sym == SDLK_LEFT
-                 || event->cbutton.button == SDL_CONTROLLER_BUTTON_DPAD_LEFT) {
+        }else if (event->key.keysym.sym == SDLK_LEFT || event->cbutton.button == SDL_CONTROLLER_BUTTON_DPAD_LEFT) {
             
             //AnimatorHolder::getAnimatorHolder()->UpdateAllGrayPlaneAnimations();
             if(event->key.keysym.sym != prevEvent.key.keysym.sym)
@@ -227,9 +222,7 @@ void Game::multiplayerGameOnEvent(SDL_Event* event , SDL_Event prevEvent){
                 assert(leftSideFighterAnimatorLeft);
                 leftSideFighterAnimatorLeft->start(getGameTime());
             }
-        }
-        else if (event->key.keysym.sym == SDLK_RIGHT
-                 || event->cbutton.button == SDL_CONTROLLER_BUTTON_DPAD_RIGHT){
+        } else if (event->key.keysym.sym == SDLK_RIGHT  || event->cbutton.button == SDL_CONTROLLER_BUTTON_DPAD_RIGHT){
             
             //AnimatorHolder::getAnimatorHolder()->UpdateAllGrayPlaneAnimations();
             if(event->key.keysym.sym != prevEvent.key.keysym.sym)
@@ -246,21 +239,15 @@ void Game::multiplayerGameOnEvent(SDL_Event* event , SDL_Event prevEvent){
                 (MovingPathAnimator*)AnimatorHolder::getAnimator("LeftSideFighterAnimatorRight");
                 leftSideFighterAnimatorRight->start(getGameTime());
             }
-        }
-        else if (event->key.keysym.sym == SDLK_UP
-                 || event->cbutton.button == SDL_CONTROLLER_BUTTON_DPAD_UP){
+        }else if (event->key.keysym.sym == SDLK_UP || event->cbutton.button == SDL_CONTROLLER_BUTTON_DPAD_UP){
             //AnimatorHolder::getAnimatorHolder()->UpdateAllGrayPlaneAnimations();
             superAceAnimatorUp->start(getGameTime());
-        }
-        else if (event->key.keysym.sym == SDLK_DOWN
-                 || event->cbutton.button == SDL_CONTROLLER_BUTTON_DPAD_DOWN){
+        }else if (event->key.keysym.sym == SDLK_DOWN || event->cbutton.button == SDL_CONTROLLER_BUTTON_DPAD_DOWN){
             //AnimatorHolder::getAnimatorHolder()->UpdateAllGrayPlaneAnimations();
             superAceAnimatorDown->start(getGameTime());
             
-        }
-        else if (event->key.keysym.sym == SDLK_SPACE
-                 || event->cbutton.button == SDL_CONTROLLER_BUTTON_A){
-            
+		}else if (event->key.keysym.sym == SDLK_SPACE || event->cbutton.button == SDL_CONTROLLER_BUTTON_A){
+
             if (superAceAnimatorManeuever->getState() == ANIMATOR_RUNNING){
                 return;
             }
@@ -269,13 +256,11 @@ void Game::multiplayerGameOnEvent(SDL_Event* event , SDL_Event prevEvent){
             
             prevEvent = *event;
             return;
-        }
-        else if (event->key.keysym.sym == SDLK_a
-                 || event->cbutton.button == SDL_CONTROLLER_BUTTON_X){
+        }else if (event->key.keysym.sym == SDLK_a    || event->cbutton.button == SDL_CONTROLLER_BUTTON_X){
             
             ((SuperAce*)superAce)->doManeuever();
             
-        }
+		}
         
     }
     prevEvent = *event;

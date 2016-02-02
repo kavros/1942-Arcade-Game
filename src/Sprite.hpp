@@ -7,7 +7,7 @@
 #include "CollisionChecker.hpp"
 
 #define SPRITE_TYPE_SIZE 8
-
+#define SPRITE_STATE_SIZE  
 class Sprite;
 
 typedef enum SpriteType {
@@ -23,11 +23,16 @@ typedef enum SpriteType {
 
 typedef enum SpriteState {
     FLYING = 0,
-    FIRING,
-	MANEUVER,
-	STARTING,
-    IN_COLUSION,
-	ENDING
+    FIRING = 1,
+	MANEUVER = 2,
+	STARTING = 3,
+    IN_COLUSION = 4,
+	ENDING = 5 ,
+	UNDEFEATABLE =6,
+
+
+	First_SpriteState = FLYING,
+	Last_SpriteState = UNDEFEATABLE
 }SpriteState;
 
 class Sprite : public LatelyDestroyable{
