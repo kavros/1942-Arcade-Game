@@ -41,10 +41,6 @@ void MovingPathAnimator::chooseCallBack(string id){
 }
 
 void MovingPathAnimator::progress(timestamp_t currTime){
-	//cout << _anim->getPath().begin()->_delay << endl;
-	/*if (_state == ANIMATOR_RUNNING){
-		return;
-	}*/
 
 	while ( (currTime > _lastTime ) && (currTime - _lastTime >= _currPath->_delay)){
 
@@ -64,7 +60,6 @@ void MovingPathAnimator::progress(timestamp_t currTime){
 			
 			//!!! only Maneuver Animation can change state from maneuever to Flying 
 			if (_sprite->getState() == MANEUVER && getId() == "SuperAceAnimatorManeuver0"){
-				cout << "Super Ace state is now FLYING" << endl;
 				_sprite->setState(FLYING);
 			}
 			_state = ANIMATOR_FINISHED;
@@ -108,7 +103,6 @@ void MovingPathAnimator::start(timestamp_t t){
 	 _lastTime = t;
 
 	if (getState() == ANIMATOR_RUNNING){
-		//cout << "Error ANIMATOR is Still running" << endl;
 		return;
 	}
 	

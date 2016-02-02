@@ -118,7 +118,6 @@ void SuperAce::doManeuever(void){
 	
     if (loops > 0){
         setState(MANEUVER);
-		cout << "SuperAce state is now Maneuver" << endl;
         superAceAnimatorManeuever->start(Game::getGameTime());
         
         loops-=1;
@@ -127,7 +126,6 @@ void SuperAce::doManeuever(void){
         for(int i = 0; i <  loops ; i++){
             _remainingLoops += "R";
         }
-        cout<<_remainingLoops<<endl;
         
         SpriteStringHolder::getSpriteString("remainingLoops")->changeString(_remainingLoops, WIN_WIDTH - loops*12, WIN_HEIGHT - 15);
  
