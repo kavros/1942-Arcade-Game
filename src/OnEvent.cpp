@@ -114,7 +114,9 @@ void Game::singleplayerGameOnEvent(){
 void Game::multiplayerGameOnEvent(){
     
     SuperAce* superAce2 = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce2");
-    assert(superAce2);
+    if(!superAce2 || superAce2->getState() == IN_COLUSION)
+        return;
+    
     superAce2->setVisibility(true);
     
     MovingPathAnimator* superAce2StartingAnimator = (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAce2StartingAnimator");
@@ -151,6 +153,7 @@ void Game::multiplayerGameOnEvent(){
                 superAce2AnimatorLeft->start(getGameTime());
             else
                 superAce2AnimatorLeftLeft->start(getGameTime());
+            
             if(superAce2->getAttached(RIGHT_FIGHTER)){
                 MovingPathAnimator* rightSideFighterAnimatorLeft =
                 (MovingPathAnimator*)AnimatorHolder::getAnimator("RightSideFighterAnimatorLeft");
@@ -163,6 +166,7 @@ void Game::multiplayerGameOnEvent(){
                 assert(leftSideFighterAnimatorLeft);
                 leftSideFighterAnimatorLeft->start(getGameTime());
             }
+            
         }
         else if (event.key.keysym.sym == SDLK_l/* || event.cbutton.button == SDL_CONTROLLER_BUTTON_DPAD_RIGHT*/){
             
@@ -170,6 +174,7 @@ void Game::multiplayerGameOnEvent(){
                 superAce2AnimatorRight->start(getGameTime());
             else
                 superAce2AnimatorRightRight->start(getGameTime());
+            
             if(superAce2->getAttached(RIGHT_FIGHTER)){
                 MovingPathAnimator* rightSideFighterAnimatorRight =
                 (MovingPathAnimator*)AnimatorHolder::getAnimator("RightSideFighterAnimatorRight");
@@ -180,6 +185,7 @@ void Game::multiplayerGameOnEvent(){
                 (MovingPathAnimator*)AnimatorHolder::getAnimator("LeftSideFighterAnimatorRight");
                 leftSideFighterAnimatorRight->start(getGameTime());
             }
+            
         }
         else if (event.key.keysym.sym == SDLK_i/* || event.cbutton.button == SDL_CONTROLLER_BUTTON_DPAD_UP*/){
             superAce2AnimatorUp->start(getGameTime());

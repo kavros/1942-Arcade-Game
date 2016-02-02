@@ -55,9 +55,8 @@ void Game::multiplayerGameOnLoop(){
     assert(superAce);
     
     SuperAce* superAce2 = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce2");
-    assert(superAce2);
     
-    if(superAce->getState() == IN_COLUSION || superAce2->getState() == IN_COLUSION ){
+    if(superAce->getState() == IN_COLUSION ){
         setState(GAME_OVER);
         return;
     }
