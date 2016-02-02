@@ -78,8 +78,7 @@ public:
     static void LoadGameInfo (const std::string& cataloge);
     
     static void destructionManagerOnLoop();
-    static void singleplayerGameOnLoop();
-    static void multiplayerGameOnLoop();
+    static void GameOnLoop();
     static void OnLoop();
 
     static void InitGame();
