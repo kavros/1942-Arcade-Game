@@ -32,6 +32,7 @@ public:
     
     Animation* getAnimation(animid_t id);
     void    Load (const std::string& cataloge);
+    void    LoadMovingPathAnim (const std::string& cataloge,int n);
 };
 
 #endif

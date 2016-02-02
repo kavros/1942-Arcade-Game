@@ -94,9 +94,43 @@ void    AnimationHolder::Load (const std::string& cataloge){
 	
     }
 
+    LoadMovingPathAnim(cataloge,2);
+    
+    
+}
+
+void    AnimationHolder::LoadMovingPathAnim (const std::string& cataloge,int n){
+    
+    std::string line, text;
+    static  std::string  dataFilePath;
+    
+    dataFilePath = SRC_PATH + string(cataloge);
+    
+    std::ifstream file(dataFilePath);
+    
+    if (!file.is_open()){
+        cout << dataFilePath << endl;
+        cout << "ERROR:file does not opened" << endl;
+        assert(0);
+    }
+    
+    while(std::getline(file, line))
+    {
+        text += line + "\n";
+    }
+    const char* data = text.c_str();
+    
+    
+    Document document;
+    document.Parse(data);
+    assert(document.IsObject());
+    assert(document["Animations"].IsArray());
+    //assert(document["Sprites"][1].IsObject());
+    const Value& animations = document["Animations"];
     //read all Moving Path Animations
-    const Value& mPathAnimations = animations[2]["MovingPathAnimations"];
+    const Value& mPathAnimations = animations[n]["MovingPathAnimations"];
     assert(mPathAnimations.IsArray());
+    
     for (rapidjson::SizeType i = 0; i < mPathAnimations.Size(); i++)
     {
         std::list<PathEntry> _paths;

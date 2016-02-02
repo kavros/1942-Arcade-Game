@@ -102,6 +102,7 @@ bool Game::InitData(){
     
     AnimationHolder* anh = AnimationHolder::getAnimationHolder();
     anh->Load("animations.json");
+    anh->LoadMovingPathAnim("cycleAnimations.json",0);
     AnimatorHolder::getAnimatorHolder()->Load("animators.json");
     return true;
 }

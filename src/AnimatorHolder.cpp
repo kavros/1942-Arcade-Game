@@ -713,7 +713,7 @@ void  updateGreyJetAnimation(MovingPathAnimator* grayJetAnimator){
 	int superAcePositionOnX = superAce->getDstRect().x;
     
     int grayJetPositionOnY = grayJetAnimator->getSprite()->getDstRect().y;
-	int superAcePositionOnY = superAce->getDstRect().y;
+	//int superAcePositionOnY = superAce->getDstRect().y;
 
 	int apostashStonX = superAcePositionOnX - grayJetPositionOnY;
 	if (apostashStonX < 0){
