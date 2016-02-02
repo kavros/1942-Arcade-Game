@@ -25,7 +25,7 @@
                 },{
                 "id": "MinGreenOneEng0",
                 "frameNo": 0,
-                "destRect": [500, 500, 35, 35],
+                "destRect": [200, 200, 35, 35],
                 "point": [0, 0],
                 "visible": false,
                 "spriteType": 4,
