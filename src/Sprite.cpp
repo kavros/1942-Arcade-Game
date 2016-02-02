@@ -183,7 +183,7 @@ void Sprite::notifyCollision(Sprite* arg){
     Handlers::iterator i = _handlers.begin();
     Handlers::iterator i2;
     
-    if( _spriteId.compare("SuperAce") == 0 ){
+    if( _spriteId.compare("SuperAce0") == 0 ){
         if(_state==MANEUVER ||_state == UNDEFEATABLE )
             return;
         

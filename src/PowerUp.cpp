@@ -14,7 +14,7 @@ PowerUpType PowerUp::getPowerUpType(){
 }
 
 void PowerUp::activatePowerUp(Sprite* arg){
-    SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce");
+    SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce0");
 
     switch ( getPowerUpType() ){
         case QUAD_GUN:{

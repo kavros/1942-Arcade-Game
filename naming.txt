@@ -1,11 +1,11 @@
 Naming for EnemyFighters :
     
     Size = {Mini,Med,Big,(Nothing for Red)}
-    Color = {Green,Grey,RedPlane}
-    Type = {OneEng,DoubleEng,TripleEng,Jet(Nothing for Big and Red Planes)}
+    Color = {Green,Grey,Red}
+    Type = {OneEng,DoubleEng,TripleEng,Jet,(Nothing for Big )}
 
     SizeColorType
-        ex> MiniGreyDoubleEng,RedPlane,BigGreen
+        ex> MiniGreyDoubleEng,RedJet,BigGreen
 
 Naming for Sprites:
 
@@ -20,6 +20,10 @@ Naming for Animators:
     3rd chain: {Chain2}{String1}SizeColorTypeAnimator{0,1,2..N}
         ex > Chain2Chain1MiniGreyOneEngAnimator2
 
+    In case we have more than one (different chain) Animators for one 
+    plane we are adding the number like this
+        SizeColorType{1,2,...N}Animator{0,1,2..N}
+        ex > MiniGreyOneEng1Animator2
     etc...
 
 Naming for TickAnimators:
