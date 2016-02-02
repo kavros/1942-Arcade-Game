@@ -123,7 +123,7 @@ void EnemyFighter::fire(void){
     
     unsigned r = rand() % 10; // r in the range 0 to 2
 
-    if( r<5 ){
+    if( r<2 ){
         if( this->getEnemyFighterType() == BIG_GREEN || this->getEnemyFighterType() == BIG_GREY ){
             if( getRemainingBullets() >= 3 ){
                 setRemainingBullets( getRemainingBullets() - 3);
