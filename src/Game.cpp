@@ -157,6 +157,7 @@ void Game::setNextPowerUpType(unsigned p){
 }
 
 unsigned Game::getNextPowerUpType(){
+
     assert(!_powerUpsOfStage.empty());
     unsigned p = _powerUpsOfStage.front();
     _powerUpsOfStage.pop_front();

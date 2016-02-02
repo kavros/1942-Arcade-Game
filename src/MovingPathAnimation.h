@@ -33,6 +33,7 @@ public:
     bool getContinuous(void) const { return _continuous; }
     void setContinuous(bool c) { _continuous = c; }
 	Animation* clone(animid_t newId) const {
+        assert(0);
 		return new MovingPathAnimation(_path, newId,_continuous);
 	}
 	MovingPathAnimation(const std::list<PathEntry>& path, animid_t id,bool continuous) :

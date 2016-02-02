@@ -134,18 +134,30 @@ void MovingPathAnimator::finishCallB(Animator* anim,void* b){
 	AnimatorHolder::markAsSuspended(anim);
 }
 
+
 void MovingPathAnimator::checkAnimatorForDelete(void){
     
     assert(_sprite && _anim );
-    
-    if( (_sprite->isOutOfWindow() || _sprite->getState() == SpriteState::IN_COLUSION) && _sprite->getId().compare("SuperAce0") != 0){
+    /*
+    if( (_sprite->isOutOfWindow() || _sprite->getState() == SpriteState::IN_COLUSION || this->getState() == ANIMATOR_STOPPED ) && _sprite->getId().compare("SuperAce0") != 0 &&  _sprite->getId().find("SideFighter") == string::npos ){
+        // doesnt contains SideFighter
+        // it is not SuperAce0
+        */
+    if(   (_sprite->isOutOfWindow() || _sprite->getState() == SpriteState::IN_COLUSION || this->getState() == ANIMATOR_STOPPED ) && _sprite->getId().compare("SuperAce0") != 0){
+        
+        
+        if( _sprite->getParent() ){
+            if(_sprite->getParent()->getId().compare("SuperAce0") == 0){
+                return;
+            }
+        }
+        
         //stop the animator
         _state = ANIMATOR_FINISHED;
-        //setOnFinished(finishCallB);
+        setOnFinished(finishCallB);
         stop();
         
-        AnimatorHolder::getAnimatorHolder()->cancel(this);
-        _anim = nullptr; 
+        _anim = nullptr;
         _sprite = nullptr;
         
         //delete MovingAnimator
