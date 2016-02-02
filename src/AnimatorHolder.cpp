@@ -592,7 +592,7 @@ void  updateGreyJetAnimation(MovingPathAnimator* grayJetAnimator){
     if (!grayJetAnimator->isAlive()){
         return;
     }
-    SuperAce* superAce = (SuperAce*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce0");
+    //SuperAce* superAce = (SuperAce*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce0");
     
     MovingPathAnimation* grayJetAnimation = grayJetAnimator->getMovingPathAnimation();
     assert(grayJetAnimation);

@@ -47,7 +47,7 @@ void Game::GameOnLoop(){
     AnimatorHolder::progress(getGameTime());
 }
 
-void Game::multiplayerGameOnLoop(){
+/*void Game::multiplayerGameOnLoop(){
 
     static int i = 0;
     
@@ -83,7 +83,7 @@ void Game::multiplayerGameOnLoop(){
     
     //progress animators
     AnimatorHolder::progress(getGameTime());
-}
+}*/
 
 void Game::gameOver(){
     static bool firstTime = true;
