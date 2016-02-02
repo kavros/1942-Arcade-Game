@@ -353,6 +353,7 @@ void Game::OnEvent() {
         }
         case END_OF_STAGE:{
             AnimatorHolder::pauseAnimators();
+            setState(GAME_OVER);
             break;
         }
         case EXIT:

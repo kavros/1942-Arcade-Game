@@ -66,7 +66,6 @@ void Background::initBackgroundObjects(){
     startBackgroundObjectAnimator("aircraftAnimator0");
 
     addBackgroundObject("spriteAircraftCarrier1");
-    startBackgroundObjectAnimator("aircraftAnimator1");
 
     addBackgroundObject("spriteLand0");
     startBackgroundObjectAnimator("spriteLandAnimator0");
@@ -81,7 +80,7 @@ void Background::addBackgroundObject(string id){
     
     _terrainObjects->push_back(s);
 }
-
+/*
 void Background::moveBackground(int dx, int dy){
     if(this->getVisibility() == true){
         if( this->getDstRect().y < 0 ){
@@ -96,7 +95,7 @@ void Background::moveBackground(int dx, int dy){
     }
 
 }
-
+*/
 void Background::moveTerrainObjects(int dx, int dy){
     if(!_terrainObjects){
         return;

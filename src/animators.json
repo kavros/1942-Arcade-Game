@@ -34,12 +34,6 @@
                             "spriteType": 3,
                             "spriteId": "SuperAce"
                             }, {
-                            "id": "SuperAceEndingAnimator",
-                            "animationId": "superAceEndingAnimation",
-                            "repetition": 2,
-                            "spriteType": 3,
-                            "spriteId": "SuperAce"
-                            }, {
                             "id": "SuperAceMovingAnimator",
                             "animationId": "superAceMovingAnimation",
                             "repetition": 2,
@@ -184,5 +178,12 @@
                             "repetition": 4,
                             "spriteType": 4,
                             "spriteId": "MinGreenOneEng"
+                            }, {
+                            "id": "endOfStageMoveToCenterAnimator",
+                            "animationId": "endOfStageMoveToCenterAnimation",
+                            "repetition": 1,
+                            "spriteType": 3,
+                            "spriteId": "SuperAce"
                             }]
+    
 }

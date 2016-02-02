@@ -344,18 +344,40 @@ void triggerBigGreenOutroTickAnimators(){
 
 void triggerEndOfStageMoveToCenterAnimator(){
     
+    MovingPathAnimator* animator = (MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator("endOfStageMoveToCenterAnimator0");
+    assert(animator);
+    animator->start(Game::getGameTime());
 }
 
 void triggerEndOfStageCreateAircraftAnimator(){
+    MovingPathAnimator* prevAnimator = (MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator("endOfStageMoveToCenterAnimator0");
+    assert(prevAnimator);
+    prevAnimator->setState(ANIMATOR_FINISHED);
+    prevAnimator->stop();
     
+    Background::startBackgroundObjectAnimator("aircraftAnimator1");
 }
 
 void triggerEndOfStageLandPlaneAnimator(){
     
+    SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce0");
+    assert(superAce);
+    superAce->doManeuever();
 }
 
 void triggerEndOfStageStopBackgroundAnimator(){
     
+    SpriteStringHolder::getSpriteString("shootingString")->setVisibility(true);
+    SpriteStringHolder::getSpriteString("downString")->setVisibility(true);
+    SpriteStringHolder::getSpriteString("shootingDownPercent")->setVisibility(true);
+    SpriteStringHolder::getSpriteString("endingBonusString")->setVisibility(true);
+    SpriteStringHolder::getSpriteString("pointsString")->setVisibility(true);
+    SpriteStringHolder::getSpriteString("points")->setVisibility(true);
+    SpriteStringHolder::getSpriteString("letterR")->setVisibility(true);
+    SpriteStringHolder::getSpriteString("1000Points")->setVisibility(true);
+    SpriteStringHolder::getSpriteString("letterR")->setVisibility(true);
+    
+    Game::setState(END_OF_STAGE);
 }
 
 void triggerEndOfStageAnimators(){
@@ -372,30 +394,10 @@ void triggerEndOfStageAnimators(){
     //stop the background and enable end text
     TimerTickAnimator::startTimeTickAnimator("endOfStageStopBackgroundTickAnimation", triggerEndOfStageStopBackgroundAnimator );
 
-    /*
-    MovingPathAnimator* superAceEndingAnimator = (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceEndingAnimator");
-    assert(superAceEndingAnimator);
-    superAceEndingAnimator->start(Game::getGameTime());
-    cout << "triggerEndOfTheStageAnimator" << endl;
-    //superAceEndingAnimator->start(Game::getGameTime());
-    
-    SpriteStringHolder::getSpriteString("shootingString")->setVisibility(true);
-    SpriteStringHolder::getSpriteString("downString")->setVisibility(true);
-    SpriteStringHolder::getSpriteString("shootingDownPercent")->setVisibility(true);
-    SpriteStringHolder::getSpriteString("endingBonusString")->setVisibility(true);
-    SpriteStringHolder::getSpriteString("pointsString")->setVisibility(true);
-    SpriteStringHolder::getSpriteString("points")->setVisibility(true);
-    SpriteStringHolder::getSpriteString("letterR")->setVisibility(true);
-    SpriteStringHolder::getSpriteString("1000Points")->setVisibility(true);
-    SpriteStringHolder::getSpriteString("letterR")->setVisibility(true);
-    
-    //Game::setState(END_OF_STAGE);
-    
-    */
 }
 
 void AnimatorHolder::startTimeTickAnimators(){
-    
+    /*
     //SuperAce
     TimerTickAnimator::startTimeTickAnimator("superAceMovingPathTickAnimation", triggerSuperAceMovingPathAnimator );
     
@@ -420,9 +422,9 @@ void AnimatorHolder::startTimeTickAnimators(){
     TimerTickAnimator::startTimeTickAnimator("bigGreenIntroTickAnimation", triggerBigGreenIntroTickAnimators );
     TimerTickAnimator::startTimeTickAnimator("bigGreenStayStillTickAnimation", triggerBigGreenStayStillTickAnimators );
     TimerTickAnimator::startTimeTickAnimator("bigGreenOutroTickAnimation", triggerBigGreenOutroTickAnimators );
-     
+     */
     //end of stage
-    //TimerTickAnimator::startTimeTickAnimator("endOfStageTickAnimation", triggerEndOfStageAnimators );
+    TimerTickAnimator::startTimeTickAnimator("endOfStageTickAnimation", triggerEndOfStageAnimators );
     
 }
 

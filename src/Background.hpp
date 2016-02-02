@@ -33,11 +33,11 @@ public:
 
     void initBackgroundObjects();
     
-    void startBackgroundObjectAnimator(string id);
+    static void startBackgroundObjectAnimator(string id);
 
     void addBackgroundObject(string id);
     
-    void moveBackground(int dx, int dy);
+    //void moveBackground(int dx, int dy);
 
     void moveTerrainObjects(int dx, int dy);
 
