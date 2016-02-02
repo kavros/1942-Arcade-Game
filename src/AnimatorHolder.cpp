@@ -82,7 +82,7 @@ void AnimatorHolder::checkAnimatorsForDelete(void){
         (*it)->checkAnimatorForDelete();
         it = it2;
     }
-
+    
     return;
 }
 
