@@ -82,18 +82,6 @@
                             "spriteType": 3,
                             "spriteId": "SuperAce"
                             }, {
-                            "id": "MiniGreenDoubleEngAnimator",
-                            "animationId": "circle_250_250_30",
-                            "repetition": 4,
-                            "spriteType": 4,
-                            "spriteId": "MiniGreenDoubleEng"
-                            }, {
-                            "id": "MiniGreenJetAnimator",
-                            "animationId": "circle_250_250_30",
-                            "repetition": 4,
-                            "spriteType": 4,
-                            "spriteId": "MiniGreenJet"
-                            }, {
                             "id": "RedJetAnimator",
                             "animationId": "straight",
                             "repetition": 35,
@@ -123,6 +111,36 @@
                             "repetition": 35,
                             "spriteType": 4,
                             "spriteId": "RedJet"
+                            }, {
+                            "id": "MiniGreenDoubleEngAnimator",
+                            "animationId": "circle_250_250_30",
+                            "repetition": 4,
+                            "spriteType": 4,
+                            "spriteId": "MiniGreenDoubleEng"
+                            }, {
+                            "id": "MiniGreenJetAnimator",
+                            "animationId": "circle_250_250_30",
+                            "repetition": 4,
+                            "spriteType": 4,
+                            "spriteId": "MiniGreenJet"
+                            }, {
+                            "id": "MiniGreenOneEngAnimator",
+                            "animationId": "MiniGreenOneEngStraight",
+                            "repetition": 4,
+                            "spriteType": 4,
+                            "spriteId": "MiniGreenOneEng"
+                            }, {
+                            "id": "Chain1MiniGreenOneEngAnimator",
+                            "animationId": "only_circle_250_250_200_130",
+                            "repetition": 4,
+                            "spriteType": 4,
+                            "spriteId": "MiniGreenOneEng"
+                            }, {
+                            "id": "Chain2Chain1MiniGreenOneEngAnimator",
+                            "animationId": "MiniGreenOneEngDownRightContinousAnimation",
+                            "repetition": 4,
+                            "spriteType": 4,
+                            "spriteId": "MiniGreenOneEng"
                             }, {
                             "WARNING ATTENTION WATCH OUT ": "IT NEEDS MULTIPLE ANIMATIONS",
                             "id": "MiniGreyOneEngAnimator",
@@ -190,12 +208,6 @@
                             "repetition": 1,
                             "spriteType": 4,
                             "spriteId": "BigGreen"
-                            }, {
-                            "id": "MiniGreenOneEngAnimator",
-                            "animationId": "only_circle_250_250_200_130",
-                            "repetition": 4,
-                            "spriteType": 4,
-                            "spriteId": "MinGreenOneEng"
                             }, {
                             "id": "endOfStageMoveToCenterAnimator",
                             "animationId": "endOfStageMoveToCenterAnimation",
