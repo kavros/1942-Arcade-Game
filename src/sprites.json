@@ -124,7 +124,7 @@
                 },{
                 "id": "mainMenuSingleSprite",
                 "frameNo": 0,
-                "destRect": [0, 0, 860, 768],
+                "destRect": [0, 0, 768, 768],
                 "point": [0, 0],
                 "repetition": 1,
                 "visible": true,
@@ -133,7 +133,7 @@
                 }, {
                 "id": "mainMenuMultiSprite",
                 "frameNo": 0,
-                "destRect": [0, 0, 860, 768],
+                "destRect": [0, 0, 768, 768],
                 "point": [0, 0],
                 "repetition": 1,
                 "visible": true,
