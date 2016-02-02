@@ -1,19 +1,26 @@
 Naming for EnemyFighters :
     
     Size = {Mini,Med,Big,(Nothing for Red)}
-    Color = {Green,Grey}
-    Type = {OneEng,DoubleEng,TripleEng,Jet(Nothing for Big Airplanes)}
+    Color = {Green,Grey,RedPlane}
+    Type = {OneEng,DoubleEng,TripleEng,Jet(Nothing for Big and Red Planes)}
 
     SizeColorType
+        ex> MiniGreyDoubleEng,RedPlane,BigGreen
 
 Naming for Sprites:
 
     SizeColorType{0,1,2..N}
+        ex> MedGreenJet3
 
 Naming for Animators:
     1st chain: SizeColorTypeAnimator{0,1,2..N}
-    2nd chain: {String1}SizeColorTypeAnimator{0,1,2..N}
-    3rd chain: {String2}{String1}SizeColorTypeAnimator{0,1,2..N}
+        ex > MiniGreyOneEngAnimator2
+    2nd chain: {Chain1}SizeColorTypeAnimator{0,1,2..N}
+        ex > Chain1MiniGreyOneEngAnimator2
+    3rd chain: {Chain2}{String1}SizeColorTypeAnimator{0,1,2..N}
+        ex > Chain2Chain1MiniGreyOneEngAnimator2
+
+    etc...
 
 Naming for TickAnimators:
     SizeColorTypeTickAnimator
