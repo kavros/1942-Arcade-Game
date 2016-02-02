@@ -68,11 +68,11 @@
                                       "repetitions": 7
                                       }, {
                                       "id": "miniGreenJetTickAnimation",
-                                      "delay": 2000,
+                                      "delay": 5000,
                                       "repetitions": 2
                                       }, {
                                       "id": "miniGreenDoubleEngTickAnimation",
-                                      "delay": 5000,
+                                      "delay": 7000,
                                       "repetitions": 4
                                       }, {
                                       "id": "endOfStageTickAnimation",
@@ -80,11 +80,11 @@
                                       "repetitions": 1
                                       }, {
                                       "id": "miniGreyOneEngTickAnimation",
-                                      "delay": 3000,
+                                      "delay": 8000,
                                       "repetitions": 4
                                       }, {
                                       "id": "medGreenDoubleEngTickAnimation",
-                                      "delay": 7000,
+                                      "delay": 9000,
                                       "repetitions": 3
                                       }, {
                                       "id": "miniGreyJetTickAnimation",
@@ -96,19 +96,19 @@
                                       "repetitions": 1
                                       }, {
                                       "id": "bigGreenIntroTickAnimation",
-                                      "delay": 6000,
-                                      "repetitions": 1
-                                      }, {
-                                      "id": "bigGreenStayStillTickAnimation",
                                       "delay": 11000,
                                       "repetitions": 1
                                       }, {
-                                      "id": "bigGreenOutroTickAnimation",
+                                      "id": "bigGreenStayStillTickAnimation",
                                       "delay": 16000,
                                       "repetitions": 1
                                       }, {
+                                      "id": "bigGreenOutroTickAnimation",
+                                      "delay": 21000,
+                                      "repetitions": 1
+                                      }, {
                                       "id": "miniGreenOneEngTickAnimation",
-                                      "delay": 8000,
+                                      "delay": 13000,
                                       "repetitions": 1
                                       }
                                       ]

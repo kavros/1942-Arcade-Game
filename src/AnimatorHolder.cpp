@@ -54,17 +54,10 @@ void AnimatorHolder::progress(timestamp_t currTime) {
 		
 		it2 = it;
 		it2++;
-		if (startingAnimator->getState() == ANIMATOR_RUNNING){
+        
+        (*it)->progress(currTime);
 
-			if ((*it)->getId() == "SuperAceStartingAnimator0"){
-				(*it)->progress(currTime);
-			}
-			
-		}else{
-			(*it)->progress(currTime);
-
-		}
-		it = it2;
+        it = it2;
 	}
 
 }
@@ -402,7 +395,7 @@ void triggerEndOfStageAnimators(){
 }
 
 void AnimatorHolder::startTimeTickAnimators(){
-    /*
+    
     //SuperAce
     TimerTickAnimator::startTimeTickAnimator("superAceMovingPathTickAnimation", triggerSuperAceMovingPathAnimator );
     
@@ -424,13 +417,13 @@ void AnimatorHolder::startTimeTickAnimators(){
 	TimerTickAnimator::startTimeTickAnimator("medGreenDoubleEngTickAnimation", triggerMedGreenDoubleEngAnimator);
 
     //big plane
-    //TimerTickAnimator::startTimeTickAnimator("bigGreenIntroTickAnimation", triggerBigGreenIntroTickAnimators );
-   // TimerTickAnimator::startTimeTickAnimator("bigGreenStayStillTickAnimation", triggerBigGreenStayStillTickAnimators );
-   // TimerTickAnimator::startTimeTickAnimator("bigGreenOutroTickAnimation", triggerBigGreenOutroTickAnimators );
+    TimerTickAnimator::startTimeTickAnimator("bigGreenIntroTickAnimation", triggerBigGreenIntroTickAnimators );
+    TimerTickAnimator::startTimeTickAnimator("bigGreenStayStillTickAnimation", triggerBigGreenStayStillTickAnimators );
+    TimerTickAnimator::startTimeTickAnimator("bigGreenOutroTickAnimation", triggerBigGreenOutroTickAnimators );
      
     //end of stage
     //TimerTickAnimator::startTimeTickAnimator("endOfStageTickAnimation", triggerEndOfStageAnimators );
-    */
+    
 }
 
 using namespace rapidjson;

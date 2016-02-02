@@ -140,7 +140,7 @@
                 },{
                 "id": "spriteAircraftCarrier",
                 "frameNo": 0,
-                "destRect": [380, 118, 150, 333],
+                "destRect": [380, 0, 150, 333],
                 "point": [0, 0],
                 "repetition": 2,
                 "visible": true,
