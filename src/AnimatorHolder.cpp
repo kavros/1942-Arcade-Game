@@ -47,7 +47,7 @@ void AnimatorHolder::progress(timestamp_t currTime) {
 	//SuperAce* superAce =
 	//	(SuperAce*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce0");
 
-	MovingPathAnimator* startingAnimator = (MovingPathAnimator*) AnimatorHolder::getAnimator("SuperAceStartingAnimator0");
+	//MovingPathAnimator* startingAnimator = (MovingPathAnimator*) AnimatorHolder::getAnimator("SuperAceStartingAnimator0");
 
 	AnimatorList::iterator it = h->_running.begin();
     AnimatorList::iterator it2;

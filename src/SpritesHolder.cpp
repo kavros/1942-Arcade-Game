@@ -3,6 +3,7 @@
 #include "EnemyFighter.hpp"
 #include "SpritesHolder.hpp"
 
+SDL_Rect getRandomDestRect(EnemyFighterType e,SDL_Rect dst);
 SpritesHolder* SpritesHolder::_holder = 0;
 
 SpritesHolder::SpritesHolder(){
@@ -194,6 +195,8 @@ void    SpritesHolder::Load (const std::string& cataloge/*,SDL_Renderer* _render
                 int remainingBullets = sprite["remainingBullets"].GetInt();
                 assert(sprite["enemyType"].IsInt());
                 enum EnemyFighterType e = EnemyFighterType(sprite["enemyType"].GetInt());
+                
+                destRect = getRandomDestRect(e,destRect);
                 new EnemyFighter(id2, frameNo, destRect, point, isVisible, spriteType,animationFilm,e,remainingBullets);
                 
             }else if(spriteType == SpriteType::TERRAIN && id2.compare("backgroundSprite0")==0 ){
@@ -205,6 +208,19 @@ void    SpritesHolder::Load (const std::string& cataloge/*,SDL_Renderer* _render
         }
     }
     
+}
+
+
+SDL_Rect getRandomDestRect(EnemyFighterType e,SDL_Rect dst){
+    switch (e) {
+        case EnemyFighterType(3):{
+            dst.x = 0;
+            dst.y = rand() % 384 + 92; // random between 92 - 476
+            break;}
+        
+        default:break;
+    }
+    return dst;
 }
 
 void SpritesHolder::checkSpritesForDelete(){

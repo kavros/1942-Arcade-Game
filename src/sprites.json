@@ -1,0 +1,201 @@
+{
+    
+    "tmpSprites":[
+    
+    ],
+    
+    "Sprites": [{
+                "id": "SuperAce",
+                "frameNo": 0,
+                "destRect": [0, 0, 54, 40],
+                "point": [0, 0],
+                "repetition": 2,
+                "visible": false,
+                "spriteType": 3,
+                "animFilmId": "Super.Ace.1942"
+                },{
+                "id": "RedJet",
+                "frameNo": 0,
+                "destRect": [0, 200, 25, 25],
+                "point": [0, 0],
+                "visible": false,
+                "spriteType": 4,
+                "repetition": 35,
+                "remainingBullets": 0,
+                "enemyType" : 0,
+                "animFilmId": "red_plane"
+                },{
+                "id": "MiniGreenJet",
+                "frameNo": 0,
+                "destRect": [0, 60, 35, 35],
+                "point": [0, 0],
+                "repetition": 4,
+                "visible": false,
+                "spriteType": 4,
+                "remainingBullets": 2,
+                "enemyType" : 1,
+                "animFilmId": "green_jet"
+                },{
+                "id": "MiniGreyJet",
+                "frameNo": 0,
+                "destRect": [350, 10, 35, 35],
+                "point": [0, 0],
+                "repetition": 4,
+                "visible": false,
+                "spriteType": 4,
+                "remainingBullets": 2,
+                "enemyType" : 2,
+                "animFilmId": "gray_jet"
+                },{
+                "id": "MiniGreenOneEng",
+                "frameNo": 0,
+                "destRect": [0, 200, 35, 35],
+                "point": [0, 0],
+                "repetition": 4,
+                "visible": false,
+                "spriteType": 4,
+                "remainingBullets": 2,
+                "enemyType" : 3,
+                "animFilmId": "mini_green_one_eng"
+                },{
+                "id": "MiniGreyOneEng",
+                "frameNo": 0,
+                "destRect": [40, 0, 35, 35],
+                "point": [0, 0],
+                "repetition": 4,
+                "visible": false,
+                "spriteType": 4,
+                "remainingBullets": 2,
+                "enemyType" : 4,
+                "animFilmId": "min_gray_plane"
+                },{
+                "id": "MiniGreenDoubleEng",
+                "frameNo": 0,
+                "destRect": [0, 40, 35, 35],
+                "point": [0, 0],
+                "repetition": 4,
+                "visible": false,
+                "spriteType": 4,
+                "remainingBullets": 2,
+                "enemyType" : 5,
+                "animFilmId": "green_double_engine"
+                },{
+                "id": "MedGreenDoubleEng",
+                "frameNo": 0,
+                "destRect": [200, 0, 63, 58],
+                "repetition": 4,
+                "point": [0, 0],
+                "visible": false,
+                "spriteType": 4,
+                "remainingBullets": 4,
+                "enemyType" : 6,
+                "animFilmId": "green_medium_plane"
+                },{
+                "id": "MedGreenSingleEng",
+                "frameNo": 19,
+                "destRect": [200, 768, 63, 58],
+                "repetition": 4,
+                "point": [0, 0],
+                "visible": false,
+                "spriteType": 4,
+                "remainingBullets": 4,
+                "enemyType" : 7,
+                "animFilmId": "green_medium_plane"
+                },{
+                "id": "BigGreen",
+                "frameNo": 0,
+                "destRect": [100, 768, 120, 100],
+                "point": [0, 0],
+                "repetition": 4,
+                "visible": false,
+                "spriteType": 4,
+                "remainingBullets": 50,
+                "enemyType" : 13,
+                "animFilmId": "bigPlanes"
+                },{
+                "id": "ReadyLogo",
+                "frameNo": 0,
+                "destRect": [250, 250, 194, 77],
+                "point": [0, 0],
+                "visible": false,
+                "repetition": 1,
+                "spriteType": 7,
+                "animFilmId": "ReadyLogo"
+                },{
+                "id": "mainMenuSingleSprite",
+                "frameNo": 0,
+                "destRect": [0, 0, 768, 768],
+                "point": [0, 0],
+                "repetition": 1,
+                "visible": true,
+                "spriteType": 0,
+                "animFilmId": "mainMenuSingleplayer"
+                }, {
+                "id": "mainMenuMultiSprite",
+                "frameNo": 0,
+                "destRect": [0, 0, 768, 768],
+                "point": [0, 0],
+                "repetition": 1,
+                "visible": true,
+                "spriteType": 1,
+                "animFilmId": "mainMenuMultiplayer"
+                }, {
+                "id": "backgroundSprite",
+                "frameNo": 0,
+                "destRect": [0, 0, 768, 768],
+                "point": [0, 0], 
+                "repetition": 1,
+                "visible": true,
+                "spriteType": 2,
+                "animFilmId": "empty_sea_background"
+                },{
+                "id": "spriteAircraftCarrier",
+                "frameNo": 0,
+                "destRect": [322, -333, 150, 333],
+                "point": [0, 0],
+                "repetition": 2,
+                "visible": true,
+                "spriteType": 2,
+                "animFilmId": "aircraft_carrier"
+                }, {
+                "id": "spriteLand",
+                "frameNo": 0,
+                "destRect": [0, -6000, 1024, 2435],
+                "point": [0, 0],
+                "repetition": 1,
+                "visible": true,
+                "spriteType": 2,
+                "animFilmId":"land"
+                },
+                {
+                "id": "spriteEurope",
+                "frameNo": 0,
+                "destRect": [-150, -2400, 1500, 2000],
+                "point": [0, 0],
+                "repetition": 1,
+                "visible": true,
+                "spriteType": 2,
+                "animFilmId":"europe"
+                },{
+                "id": "spriteInfoPlane",
+                "frameNo": 0,
+                "destRect": [0, 0, 15, 17],
+                "point": [0, 0],
+                "repetition": 1,
+                "visible": false,
+                "spriteType": 6,
+                "animFilmId":"infoPlane"
+                },{
+                "id": "deathStarSprite",
+                "frameNo": 0,
+                "destRect": [-40, 100, 50, 50],
+                "point": [0, 0],
+                "repetition": 1,
+                "visible": false,
+                "spriteType": 4,
+                "remainingBullets": 50,
+                "enemyType" : 16,
+                "animFilmId": "deathStarFilm"
+                }
+                ]
+}
