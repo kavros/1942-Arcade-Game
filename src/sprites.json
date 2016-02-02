@@ -129,7 +129,7 @@
                 "visible": true,
                 "spriteType": 1,
                 "animFilmId": "mainMenuMultiplayer"
-                },{
+                }, {
                 "id": "backgroundSprite",
                 "frameNo": 0,
                 "destRect": [0, 0, 768, 768],
@@ -138,7 +138,7 @@
                 "spriteType": 2,
                 "animFilmId": "empty_sea_background"
                 },{
-                "id": "spriteAircraftCarrier0",
+                "id": "spriteAircraftCarrier",
                 "frameNo": 0,
                 "destRect": [380, 118, 150, 333],
                 "point": [0, 0],

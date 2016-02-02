@@ -196,16 +196,13 @@ void    SpritesHolder::Load (const std::string& cataloge/*,SDL_Renderer* _render
                 enum EnemyFighterType e = EnemyFighterType(sprite["enemyType"].GetInt());
                 new EnemyFighter(id2, frameNo, destRect, point, isVisible, spriteType,animationFilm,e,remainingBullets);
                 
+            }else if(spriteType == SpriteType::TERRAIN && id.compare("backgroundSprite")==0 ){
+                Background::Get(id, frameNo, destRect, point, isVisible, spriteType,animationFilm);
             }else{
                 new Sprite(id2, frameNo, destRect, point, isVisible, spriteType,animationFilm);
             }
             
-        }else if(spriteType == SpriteType::TERRAIN && id.compare("backgroundSprite")==0 ){
-            Background::Get(id, frameNo, destRect, point, isVisible, spriteType,animationFilm);
-        }else{
-            new Sprite(id, frameNo, destRect, point, isVisible, spriteType,animationFilm);
         }
-        
     }
     
 }

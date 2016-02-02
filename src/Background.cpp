@@ -73,9 +73,9 @@ void Background::initBackgroundObjects(){
     addBackgroundObject("spriteAircraftCarrier2");
     
     addBackgroundObject("spriteLand0");
-     */
-    addBackgroundObject("spriteEurope");
 
+    addBackgroundObject("spriteEurope0");
+     */
 }
 
 void Background::addBackgroundObject(string id){
