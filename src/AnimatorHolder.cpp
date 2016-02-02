@@ -347,19 +347,36 @@ void triggerBigPlaneOutroTickAnimators(){
 
 }
 
+void triggerEndOfStageMoveToCenterAnimator(){
+    
+}
+
+void triggerEndOfStageCreateAircraftAnimator(){
+    
+}
+
+void triggerEndOfStageLandPlaneAnimator(){
+    
+}
+
+void triggerEndOfStageStopBackgroundAnimator(){
+    
+}
+
 void triggerEndOfStageAnimators(){
     
     //move super ace to the center up of the screen
-    //TimerTickAnimator::startTimeTickAnimator("endOfStageMoveToCenterTickAnimation", triggerEndOfStageMoveToCenterAnimator );
+    TimerTickAnimator::startTimeTickAnimator("endOfStageMoveToCenterTickAnimation", triggerEndOfStageMoveToCenterAnimator );
 
     //create the finish aircraft
-    //TimerTickAnimator::startTimeTickAnimator("endOfStageCreateAircraftTickAnimation", triggerEndOfStageCreateAircraftAnimator );
+    TimerTickAnimator::startTimeTickAnimator("endOfStageCreateAircraftTickAnimation", triggerEndOfStageCreateAircraftAnimator );
 
     //land the plane
-    //TimerTickAnimator::startTimeTickAnimator("endOfStageLandPlaneTickAnimation", triggerEndOfStageCreateAircraftAnimator );
+    TimerTickAnimator::startTimeTickAnimator("endOfStageLandPlaneTickAnimation", triggerEndOfStageLandPlaneAnimator );
 
-    //stop the background
-    //enable end text
+    //stop the background and enable end text
+    TimerTickAnimator::startTimeTickAnimator("endOfStageStopBackgroundTickAnimation", triggerEndOfStageStopBackgroundAnimator );
+
     /*
     MovingPathAnimator* superAceEndingAnimator = (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceEndingAnimator");
     assert(superAceEndingAnimator);
