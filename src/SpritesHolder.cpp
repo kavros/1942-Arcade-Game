@@ -182,19 +182,26 @@ void    SpritesHolder::Load (const std::string& cataloge/*,SDL_Renderer* _render
         assert(sprite["id"].IsString());
         assert(sprite["destRect"].IsArray());
         
-        //add Sprite 2 Sprite Holder
-        if(spriteType == SpriteType::SUPER_ACE){
-            new SuperAce(id, frameNo, destRect, point, isVisible, spriteType,animationFilm);
-        }
-        else if(spriteType == SpriteType::ALIEN_SHIP){
-            int remainingBullets = sprite["remainingBullets"].GetInt();
-            assert(sprite["enemyType"].IsInt());
-            enum EnemyFighterType e = EnemyFighterType(sprite["enemyType"].GetInt());
-            new EnemyFighter(id, frameNo, destRect, point, isVisible, spriteType,animationFilm,e,remainingBullets);
+        int repetition = sprite["repetition"].GetInt();
+        std::string id2;
+        for(int k = 0; k < repetition; ++k){
+            id2 = id + std::to_string(k);
+            //add Sprite 2 Sprite Holder
+            if(spriteType == SpriteType::SUPER_ACE){
+                new SuperAce(id2, frameNo, destRect, point, isVisible, spriteType,animationFilm);
+            }
+            else if(spriteType == SpriteType::ALIEN_SHIP){
+                int remainingBullets = sprite["remainingBullets"].GetInt();
+                assert(sprite["enemyType"].IsInt());
+                enum EnemyFighterType e = EnemyFighterType(sprite["enemyType"].GetInt());
+                new EnemyFighter(id2, frameNo, destRect, point, isVisible, spriteType,animationFilm,e,remainingBullets);
+                
+            }else{
+                new Sprite(id2, frameNo, destRect, point, isVisible, spriteType,animationFilm);
+            }
             
-        }else{
-            new Sprite(id, frameNo, destRect, point, isVisible, spriteType,animationFilm);
         }
+        
     }
     
 }

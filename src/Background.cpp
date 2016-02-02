@@ -32,11 +32,11 @@ void Background::initBackgroundObjects(){
 
     addBackgroundObject("spriteAircraftCarrier1");
 
-    addBackgroundObject("spriteAircraftCarrier2");
+    //addBackgroundObject("spriteAircraftCarrier2");
     
     addBackgroundObject("spriteLand0");
 
-    addBackgroundObject("spriteEurope");
+    addBackgroundObject("spriteEurope0");
 
 }
 
