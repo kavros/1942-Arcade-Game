@@ -75,8 +75,8 @@
                                       "delay": 5000,
                                       "repetitions": 4
                                       }, {
-                                      "id": "endOfTheStageTickAnimation",
-                                      "delay": 10000,
+                                      "id": "endOfStageTickAnimation",
+                                      "delay": 2000,
                                       "repetitions": 1
                                       }, {
                                       "id": "miniGreyOneEngTickAnimation",
