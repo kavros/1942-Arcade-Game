@@ -119,7 +119,6 @@ void AnimatorHolder::triggerBullets(){
     while (it != sl->end()){
         if( (*it) && (*it)->getVisibility() && (*it)->isAlive() && !(*it)->isOutOfWindow() && (*it)->getState()!=IN_COLUSION
            && ((EnemyFighter*)(*it))->getEnemyFighterType() != BULLET){
-
             ((EnemyFighter*)(*it))->fire();
         }
         it++;
@@ -463,24 +462,26 @@ void triggerMedGreenSingleEngAnimator(){
 	string name = "MedGreenSingleEngAnimator" + std::to_string(nameId); //Intro animator
 	nameId++;
 
-
-
 	MovingPathAnimator* animator = (MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator(name);
 	assert(animator);
 	animator->start(Game::getGameTime());
 }
 
+void triggerDeathStarAnimator(){
+    MovingPathAnimator* animator = (MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator("deathStarAnimator0");
+    assert(animator);
+    animator->start(Game::getGameTime());
+}
 void AnimatorHolder::startTimeTickAnimators(){
-    
     //SuperAce
     TimerTickAnimator::startTimeTickAnimator("superAceMovingPathTickAnimation", triggerSuperAceMovingPathAnimator );
     
-    //Bonus Planes
-    TimerTickAnimator::startTimeTickAnimator("redPlaneTickAnimations", triggerRedPlaneTickAnimations );
-    
     //Bullets
     TimerTickAnimator::startTimeTickAnimator("enemyBulletsTickAnimation", AnimatorHolder::triggerBullets);
-    
+
+    //Bonus Planes
+    TimerTickAnimator::startTimeTickAnimator("redPlaneTickAnimations", triggerRedPlaneTickAnimations );
+     
     //Mini Planes
     TimerTickAnimator::startTimeTickAnimator("miniGreenOneEngTickAnimation", triggerMiniGreenOneEngAnimator );
 	TimerTickAnimator::startTimeTickAnimator("miniGreyOneEngTickAnimation", triggerMiniGreyOneEngAnimator);
@@ -500,6 +501,11 @@ void AnimatorHolder::startTimeTickAnimators(){
      
     //end of stage
     //TimerTickAnimator::startTimeTickAnimator("endOfStageTickAnimation", triggerEndOfStageAnimators );
+    
+    //death star
+    TimerTickAnimator::startTimeTickAnimator("deathStarTickAnimation", triggerDeathStarAnimator );
+
+    
     
 }
 

@@ -301,11 +301,11 @@ void Game::OnEvent() {
         setState(EXIT);
         return ;
     }
-    
+    /*
     if(Game::event.window.event == SDL_WINDOWEVENT_FOCUS_LOST){
         setState(PAUSE_MENU);
     }
-    
+    */
     SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce0");
     assert(superAce);
     

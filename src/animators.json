@@ -202,6 +202,13 @@
                             "repetition": 1,
                             "spriteType": 3,
                             "spriteId": "SuperAce"
-                            }]
+                            }, {
+                            "id": "deathStarAnimator",
+                            "animationId": "deathStarAnimation",
+                            "repetition": 1,
+                            "spriteType": 4,
+                            "spriteId": "deathStarSprite"
+                            }
+                            ]
     
 }

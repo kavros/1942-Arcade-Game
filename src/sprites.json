@@ -185,7 +185,17 @@
                 "visible": false,
                 "spriteType": 6,
                 "animFilmId":"infoPlane"
+                },{
+                "id": "deathStarSprite",
+                "frameNo": 0,
+                "destRect": [-40, 100, 50, 50],
+                "point": [0, 0],
+                "repetition": 1,
+                "visible": false,
+                "spriteType": 4,
+                "remainingBullets": 50,
+                "enemyType" : 16,
+                "animFilmId": "deathStarFilm"
                 }
-                
                 ]
 }
