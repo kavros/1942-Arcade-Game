@@ -1,24 +1,20 @@
 {
     "Animations": [{
-                   "MovingAnimations": [{
+                   "MovingAnimations": [
+                                        {
                                         "id": "superAceFire",
+                                        "continuous": true,
                                         "dx": 0,
                                         "dy": -4,
-                                        "delay": 10,
-                                        "continuous": true
+                                        "delay": 10
                                         }, {
                                         "id": "enemyFire",
+                                        "continuous": true,
                                         "dx": 0,
                                         "dy": 4,
-                                        "delay": 10,
-                                        "continuous": true
-                                        }, {
-                                        "id": "straightEnemyAttack",
-                                        "dx": 0,
-                                        "dy": 2,
-                                        "delay": 10,
-                                        "continuous": true
-                                        }, {
+                                        "delay": 10
+                                        },
+                                        {
                                         "id": "powerUp",
                                         "dx": 0,
                                         "dy": 1,
@@ -138,7 +134,7 @@
                                       ]
                    }, {
                    "MovingPathAnimations": [
-                                            {                                            
+                                            {
                                             "id": "enemySideRightFire",
                                             "continuous": true,
                                             "paths": [{

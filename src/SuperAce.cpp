@@ -90,10 +90,10 @@ void SuperAce::fire(void){
     SoundHolder::playSound("gunshot");
 
     //fireAnimation
-    Animation* fireAnimation = AnimationHolder::getAnimationHolder()->getAnimation("superAceFire");
+    MovingAnimation* fireAnimation =(MovingAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("superAceFire");
     assert(fireAnimation);
     
-    MovingAnimator* fireAnimator = new MovingAnimator(animatorSuperAceFireId, bullet, (MovingAnimation*)fireAnimation);
+    MovingAnimator* fireAnimator = new MovingAnimator(animatorSuperAceFireId, bullet, fireAnimation);
     assert(fireAnimator);
     
     fireAnimator->start(Game::getGameTime());
@@ -233,10 +233,10 @@ void SideFighter::fire (void) {
     SoundHolder::playSound("gunshot");
     
     //fireAnimation
-    Animation* fireAnimation = AnimationHolder::getAnimationHolder()->getAnimation("superAceFire");
+    MovingAnimation* fireAnimation =(MovingAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("superAceFire");
     assert(fireAnimation);
     
-    MovingAnimator* fireAnimator = new MovingAnimator(animatorSideFighterFireId, bullet, (MovingAnimation*)fireAnimation);
+    MovingAnimator* fireAnimator = new MovingAnimator(animatorSideFighterFireId, bullet, fireAnimation);
     assert(fireAnimator);
     
     fireAnimator->start(Game::getGameTime());
@@ -245,6 +245,9 @@ void SideFighter::fire (void) {
 }
 
 void SuperAce::addSideFighters(){
+    static unsigned times =0;
+    assert(times==0);
+    times++;
     
     AnimationFilm* anim = AnimationFilmHolder::Get()->GetFilm("sideFighters");
     unsigned sideFighterFrameNo = 1;
@@ -256,11 +259,15 @@ void SuperAce::addSideFighters(){
     sideFighter = new SideFighter(this, RIGHT_FIGHTER, sideFighterFrameNo, sideFighterDstRect, _point, _isVisible, _type, anim);
     
     MovingPathAnimation* sideFighterAnimationRight = (MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("sideFighterAnimationRight");
+    assert(sideFighterAnimationRight);
     MovingPathAnimator* sideFighterAnimatorRight = new MovingPathAnimator( "RightSideFighterAnimatorRight", sideFighter, sideFighterAnimationRight);
+    assert(sideFighterAnimatorRight);
     
     MovingPathAnimation* sideFighterAnimationLeft	=(MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("sideFighterAnimationLeft");
+    assert(sideFighterAnimationLeft);
     MovingPathAnimator* sideFighterAnimatorLeft	= new MovingPathAnimator("RightSideFighterAnimatorLeft", sideFighter, sideFighterAnimationLeft);
-
+    assert(sideFighterAnimatorLeft);
+     
     /*left side fighter*/
     sideFighterDstRect.x = getDstRect().x-sideFighterDstRect.w;
     sideFighter = new SideFighter(this, LEFT_FIGHTER, sideFighterFrameNo, sideFighterDstRect, _point, _isVisible, _type, anim);

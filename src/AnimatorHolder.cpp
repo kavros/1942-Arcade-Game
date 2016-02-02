@@ -14,7 +14,24 @@ void AnimatorHolder::Register(Animator* a) {
 }
 void AnimatorHolder::cancel(Animator* a) {
     AnimatorHolder::getAnimatorHolder()->_suspended.remove(a);
-    AnimatorHolder::getAnimatorHolder()->_map[a->getId()] = nullptr;
+    
+    AnimatorMap::const_iterator it = AnimatorHolder::getAnimatorHolder()->_map.begin();
+    AnimatorMap::const_iterator it2;
+    
+    if(!AnimatorHolder::getAnimatorHolder()->_map.empty())
+        while (it != AnimatorHolder::getAnimatorHolder()->_map.end()){
+            it2=it;
+            it2++;
+            if( ((string)(*it).first).compare(a->getId())==0 ){
+                AnimatorHolder::getAnimatorHolder()->_map.erase(it);
+            }
+            
+            it=it2;
+            
+            
+        }
+    
+    //AnimatorHolder::getAnimatorHolder()->_map[a->getId()] = nullptr;
 }
 
 AnimatorHolder* AnimatorHolder::getAnimatorHolder(){
@@ -83,6 +100,23 @@ void AnimatorHolder::checkAnimatorsForDelete(void){
         it = it2;
     }
 
+    /*
+    AnimatorMap::const_iterator itt = h->_map.begin();
+    AnimatorMap::const_iterator itt2;
+    
+    while (itt != h->_map.end()){
+        itt2=itt;
+        itt2++;
+        
+        if(((*itt).second)){
+            ((*itt).second)->checkAnimatorForDelete();
+        }
+        
+       itt=itt2;
+        
+    }
+    */
+    
     return;
 }
 

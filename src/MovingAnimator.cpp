@@ -64,11 +64,10 @@ Sprite* MovingAnimator::getSprite(){
 }
 
 void MovingAnimator::checkAnimatorForDelete(void){
-
+    
     assert(_sprite && _anim);
     
-    if( _sprite->isOutOfWindow() || _sprite->getState() == SpriteState::IN_COLUSION || this->getState() == ANIMATOR_STOPPED ){
-
+    if( (_sprite->isOutOfWindow() || _sprite->getState() == SpriteState::IN_COLUSION || this->getState() == ANIMATOR_STOPPED ) && _sprite->getId().compare("SuperAce0") != 0){
         //stop the animator
         _state = ANIMATOR_FINISHED;
         setOnFinished(finishCallB);
@@ -82,4 +81,3 @@ void MovingAnimator::checkAnimatorForDelete(void){
     }
     
 }
-

@@ -80,34 +80,6 @@ void Background::addBackgroundObject(string id){
     
     _terrainObjects->push_back(s);
 }
-/*
-void Background::moveBackground(int dx, int dy){
-    if(this->getVisibility() == true){
-        if( this->getDstRect().y < 0 ){
-            this->changeDstRectX(dx);
-            this->changeDstRectY(dy);
-        }
-        else if( this->getDstRect().y >= 0 ){
-            this->setDstRectY(-getDstRect().h+WIN_HEIGHT);
-        }
-            
-        this->moveTerrainObjects(dx,dy);
-    }
-
-}
-*/
-void Background::moveTerrainObjects(int dx, int dy){
-    if(!_terrainObjects){
-        return;
-    }
-    
-    for (std::list<Sprite*>::iterator it=_terrainObjects->begin(); it != _terrainObjects->end(); ++it){
-        if((*it)->getVisibility() == true){
-            (*it)->changeDstRectX(dx);
-            (*it)->changeDstRectY(dy);
-        }
-    }
-}
 
 void Background::displayTerrain(SDL_Renderer* renderer){
     SpritesHolder::displaySprites(renderer, TERRAIN);

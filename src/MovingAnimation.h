@@ -1,6 +1,7 @@
 #ifndef MOVINGANIMATION_H
 #define MOVINGANIMATION_H
 
+#include <assert.h> 
 #include "Animation.h"
 class MovingAnimation : public Animation {
 public:
@@ -18,6 +19,7 @@ public:
 	
 	//clone
 	Animation* clone(animid_t newId) const{
+        assert(0);
 		return new MovingAnimation(dx, dy, delay, continuous, newId);
 	}
 

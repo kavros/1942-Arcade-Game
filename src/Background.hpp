@@ -37,10 +37,6 @@ public:
 
     void addBackgroundObject(string id);
     
-    //void moveBackground(int dx, int dy);
-
-    void moveTerrainObjects(int dx, int dy);
-
     virtual void filterMotion(int* dx, int* dy) const override;
     
     void displayTerrain(SDL_Renderer* renderer);

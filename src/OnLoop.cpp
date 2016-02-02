@@ -32,9 +32,6 @@ void Game::GameOnLoop(){
     //commit destruction
     destructionManagerOnLoop();
     
-    //Move Background
-    //Background::Get()->moveBackground(0,+1);
-    
     //collision checker
     CollisionChecker::Check();
     

@@ -132,10 +132,10 @@ void EnemyFighter::fireStraightBullet(){
     SoundHolder::playSound("gunshot");
     
     //fireAnimation
-    Animation* fireAnimation = AnimationHolder::getAnimationHolder()->getAnimation("enemyFire");
+    MovingAnimation* fireAnimation = (MovingAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("enemyFire");
     assert(fireAnimation);
     
-    MovingAnimator* fireAnimator = new MovingAnimator(animatorEnemyFireId, enemyBullet, (MovingAnimation*)fireAnimation);
+    MovingAnimator* fireAnimator = new MovingAnimator(animatorEnemyFireId, enemyBullet, fireAnimation);
     assert(fireAnimator);
     
     fireAnimator->start(Game::getGameTime());
