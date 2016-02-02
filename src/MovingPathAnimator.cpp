@@ -17,6 +17,13 @@ void MovingPathAnimator::chooseCallBack(string id){
     std::size_t found;
     string* str = nullptr;
     
+    
+    found = id.find("MiniGreenOneEngAnimator");
+    if (found == 0)
+    str = new string("Chain1"+ id);
+    found = id.find("Chain1MiniGreenOneEngAnimator");
+    if (found == 0)
+    str = new string("Chain2"+ id);
     found = id.find("MedGreenDoubleEngAnimator");
     if (found == 0)
     str = new string("Chain1"+ id);
