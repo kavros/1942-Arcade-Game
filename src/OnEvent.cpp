@@ -221,7 +221,7 @@ void Game::multiplayerGameOnEvent(){
 
 void Game::pauseManager(){
     static bool firstTime = true;
-    Sprite* s = SpritesHolder::getSprite(GAME_INFO , "spriteInfoPlane");
+    Sprite* s = SpritesHolder::getSprite(GAME_INFO , "spriteInfoPlane0");
     assert(s);
     
     unsigned x = WIN_WIDTH / 2 -(5*6) - 20;

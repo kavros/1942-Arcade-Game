@@ -332,7 +332,7 @@ void triggerBigGreenOutroTickAnimators(){
     
     static int nameId = 0;
     string bigPlaneStayStillAnimatorString = "BigGreen1Animator" + std::to_string(nameId); //stay still animator
-    string bigPlaneOutroAnimatorString = "BigGreen2Animator " + std::to_string(nameId); // outro animator
+    string bigPlaneOutroAnimatorString = "BigGreen2Animator" + std::to_string(nameId); // outro animator
     nameId++;
     
     if(! SpritesHolder::getSprite( ALIEN_SHIP , "BigGreen0" ) )
@@ -424,9 +424,9 @@ void AnimatorHolder::startTimeTickAnimators(){
 	TimerTickAnimator::startTimeTickAnimator("medGreenDoubleEngTickAnimation", triggerMedGreenDoubleEngAnimator);
 
     //big plane
-    TimerTickAnimator::startTimeTickAnimator("bigGreenIntroTickAnimation", triggerBigGreenIntroTickAnimators );
-    TimerTickAnimator::startTimeTickAnimator("bigGreenStayStillTickAnimation", triggerBigGreenStayStillTickAnimators );
-    TimerTickAnimator::startTimeTickAnimator("bigGreenOutroTickAnimation", triggerBigGreenOutroTickAnimators );
+    //TimerTickAnimator::startTimeTickAnimator("bigGreenIntroTickAnimation", triggerBigGreenIntroTickAnimators );
+   // TimerTickAnimator::startTimeTickAnimator("bigGreenStayStillTickAnimation", triggerBigGreenStayStillTickAnimators );
+   // TimerTickAnimator::startTimeTickAnimator("bigGreenOutroTickAnimation", triggerBigGreenOutroTickAnimators );
      
     //end of stage
     //TimerTickAnimator::startTimeTickAnimator("endOfStageTickAnimation", triggerEndOfStageAnimators );
@@ -472,13 +472,17 @@ void    AnimatorHolder::Load (const std::string& cataloge){
         SpriteType spriteType = SpriteType(st);
         assert( st < SPRITE_TYPE_SIZE );
         
-        std::string id2,spriteId2;
+        std::string id2,spriteId2,animationId2;
         for(int i = 0; i < repetition; ++i){
             id2 = id + std::to_string(i);
             spriteId2 = spriteId + std::to_string(i);
+            animationId2 = animationId;
+            if (id.compare("MiniGreyOneEngAnimator") == 0)
+                animationId2 +=  std::to_string(i);
+            
             Sprite* sprite= SpritesHolder::getSprite(spriteType, spriteId2);
             assert(sprite);
-            MovingPathAnimation* animation = (MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation(animationId);
+            MovingPathAnimation* animation = (MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation(animationId2);
             assert(animation);
             MovingPathAnimator* animator  =	new MovingPathAnimator( id2, sprite, animation);
             assert(animator);
@@ -498,7 +502,7 @@ void AnimatorHolder::updateAllGreyPlaneAnimations(){
         it2 = it;
         it2++;
         assert((*it));
-        if ((*it)->getId().find("GreyPlaneAnimator") == 0 /*std::string::npos*/ ){
+        if ((*it)->getId().find("MiniGreyOneEngAnimator") == 0 /*std::string::npos*/ ){
             grayPlaneAnimator= (MovingPathAnimator*) (*it);
             updateGreyPlaneAnimation(grayPlaneAnimator);
         }
@@ -508,7 +512,7 @@ void AnimatorHolder::updateAllGreyPlaneAnimations(){
 }
 
 void updateGreyPlaneAnimation(MovingPathAnimator* grayJetAnimator){
-    
+    //assert(0);
     
     SuperAce* superAce = (SuperAce*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce0");
     
