@@ -576,6 +576,10 @@ void AnimatorHolder::updateAllGreyPlaneAnimations(){
             grayPlaneAnimator= (MovingPathAnimator*) (*it);
             updateGreyPlaneAnimation(grayPlaneAnimator);
         }
+        if((*it)->getId().find("MiniGreyJetAnimator") == 0){
+            grayPlaneAnimator= (MovingPathAnimator*) (*it);
+            updateGreyJetAnimation(grayPlaneAnimator);
+        }
         it = it2;
     }
     
@@ -676,7 +680,7 @@ void updateGreyPlaneAnimation(MovingPathAnimator* grayJetAnimator){
 
 
 void  AnimatorHolder::updateAllGreyJetsAnimations(){
-	updateGreyJetAnimation((MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator("MiniGreyJetAnimator0"));
+    assert(0);
 }
 
 void  updateGreyJetAnimation(MovingPathAnimator* grayJetAnimator){
