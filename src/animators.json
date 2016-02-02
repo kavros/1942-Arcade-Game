@@ -144,7 +144,7 @@
                             "spriteId": "MiniGreyOneEng"
                             }, {
                             "id": "MiniGreyJetAnimator",
-                            "animationId": "GreyJetAnimation",
+                            "animationId": "GreyJetDownAnimation",
                             "repetition": 4,
                             "spriteType": 4,
                             "spriteId": "MiniGreyJet"
