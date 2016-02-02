@@ -350,13 +350,17 @@ void triggerBigPlaneOutroTickAnimators(){
 void triggerEndOfStageAnimators(){
     
     //move super ace to the center up of the screen
-    TimerTickAnimator::startTimeTickAnimator("endOfStageTickAnimation", triggerEndOfStageAnimators );
+    //TimerTickAnimator::startTimeTickAnimator("endOfStageMoveToCenterTickAnimation", triggerEndOfStageMoveToCenterAnimator );
 
     //create the finish aircraft
+    //TimerTickAnimator::startTimeTickAnimator("endOfStageCreateAircraftTickAnimation", triggerEndOfStageCreateAircraftAnimator );
+
     //land the plane
+    //TimerTickAnimator::startTimeTickAnimator("endOfStageLandPlaneTickAnimation", triggerEndOfStageCreateAircraftAnimator );
+
     //stop the background
     //enable end text
-    
+    /*
     MovingPathAnimator* superAceEndingAnimator = (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceEndingAnimator");
     assert(superAceEndingAnimator);
     superAceEndingAnimator->start(Game::getGameTime());
@@ -375,7 +379,7 @@ void triggerEndOfStageAnimators(){
     
     //Game::setState(END_OF_STAGE);
     
-    
+    */
 }
 
 void AnimatorHolder::startTimeTickAnimators(){
