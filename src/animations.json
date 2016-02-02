@@ -1310,13 +1310,13 @@
                                                       "dx": 0,
                                                       "dy": -2,
                                                       "visibility": true,
-                                                      "frameNo": 8,
+                                                      "frameNo": 19,
                                                       "delay": 20
                                                       },{
                                                       "dx": 0,
                                                       "dy": -2,
                                                       "visibility": true,
-                                                      "frameNo": 0,
+                                                      "frameNo": 19,
                                                       "delay": 20
                                                       }]
                                             }, {

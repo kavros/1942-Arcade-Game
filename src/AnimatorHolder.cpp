@@ -403,9 +403,9 @@ void AnimatorHolder::startTimeTickAnimators(){
 	TimerTickAnimator::startTimeTickAnimator("medGreenDoubleEngTickAnimation", triggerMedGreenDoubleEngAnimator);
 
     //big plane
-    TimerTickAnimator::startTimeTickAnimator("bigGreenIntroTickAnimation", triggerBigGreenIntroTickAnimators );
-    TimerTickAnimator::startTimeTickAnimator("bigGreenStayStillTickAnimation", triggerBigGreenStayStillTickAnimators );
-    TimerTickAnimator::startTimeTickAnimator("bigGreenOutroTickAnimation", triggerBigGreenOutroTickAnimators );
+    //TimerTickAnimator::startTimeTickAnimator("bigGreenIntroTickAnimation", triggerBigGreenIntroTickAnimators );
+   // TimerTickAnimator::startTimeTickAnimator("bigGreenStayStillTickAnimation", triggerBigGreenStayStillTickAnimators );
+   // TimerTickAnimator::startTimeTickAnimator("bigGreenOutroTickAnimation", triggerBigGreenOutroTickAnimators );
      
     //end of stage
     //TimerTickAnimator::startTimeTickAnimator("endOfStageTickAnimation", triggerEndOfStageAnimators );
