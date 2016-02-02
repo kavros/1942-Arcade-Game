@@ -108,7 +108,7 @@ void SuperAce::fire(void){
 }
 
 void SuperAce::doManeuever(void){
-    if(getState() == MANEUVER){       
+    if(getState() == MANEUVER || getState() == UNDEFEATABLE){       
         return;
     }
 

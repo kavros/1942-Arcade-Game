@@ -104,8 +104,19 @@ void Game::singleplayerGameOnEvent(){
             prevEvent = event;
         }
         else if (event.key.keysym.sym == SDLK_a || event.cbutton.button == SDL_CONTROLLER_BUTTON_X){
+			
             superAce->doManeuever();
-        }
+		}
+		else if (event.key.keysym.sym == SDLK_c){
+			if (superAce->getState() == FLYING){
+				SoundHolder::playSound("i_will_never_die");
+				superAce->setState(UNDEFEATABLE);
+			} else if(superAce->getState() == UNDEFEATABLE){
+				superAce->setState(FLYING);
+				//sound for this case
+			}
+
+		}
         
     }
     prevEvent = event;
