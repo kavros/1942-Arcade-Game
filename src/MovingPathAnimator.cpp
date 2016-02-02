@@ -17,10 +17,10 @@ void MovingPathAnimator::chooseCallBack(string id){
     std::size_t found;
     string* str = nullptr;
     
-    found = id.find("Chain1MiniGrayOneEngAnimator");
+    found = id.find("Chain1MiniGreyOneEngAnimator");
     if (found == 0)
         str = new string("Chain2"+ id);
-    found = id.find("MiniGrayOneEngAnimator");
+    found = id.find("MiniGreyOneEngAnimator");
     if (found == 0)
         str = new string("Chain1"+ id);
     found = id.find("RedJetAnimator");

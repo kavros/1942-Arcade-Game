@@ -386,26 +386,26 @@ void AnimatorHolder::startTimeTickAnimators(){
     TimerTickAnimator::startTimeTickAnimator("superAceMovingPathTickAnimation", triggerSuperAceMovingPathAnimator );
     
     //Bonus Planes
-    TimerTickAnimator::startTimeTickAnimator("redPlaneTickAnimations", triggerRedPlaneTickAnimations );
+    //TimerTickAnimator::startTimeTickAnimator("redPlaneTickAnimations", triggerRedPlaneTickAnimations );
     
     //Bullets
-    TimerTickAnimator::startTimeTickAnimator("enemyBulletsTickAnimation", AnimatorHolder::triggerBullets);
+    //TimerTickAnimator::startTimeTickAnimator("enemyBulletsTickAnimation", AnimatorHolder::triggerBullets);
     
     //Mini Planes
-    TimerTickAnimator::startTimeTickAnimator("miniGreenOneEngTickAnimation", triggerMiniGreenOneEngAnimator );
+    //TimerTickAnimator::startTimeTickAnimator("miniGreenOneEngTickAnimation", triggerMiniGreenOneEngAnimator );
 	TimerTickAnimator::startTimeTickAnimator("miniGreyOneEngTickAnimation", triggerMiniGreyOneEngAnimator);
-    TimerTickAnimator::startTimeTickAnimator("miniGreenDoubleEngTickAnimation", triggerMiniGreenDoubleEngAnimator );
-    TimerTickAnimator::startTimeTickAnimator("miniGreenJetTickAnimation", triggerMiniGreenJetAnimator );
-	TimerTickAnimator::startTimeTickAnimator("miniGreyJetTickAnimation", triggerMiniGreyJetTickAnimator);
+    //TimerTickAnimator::startTimeTickAnimator("miniGreenDoubleEngTickAnimation", triggerMiniGreenDoubleEngAnimator );
+    //TimerTickAnimator::startTimeTickAnimator("miniGreenJetTickAnimation", triggerMiniGreenJetAnimator );
+	//TimerTickAnimator::startTimeTickAnimator("miniGreyJetTickAnimation", triggerMiniGreyJetTickAnimator);
 
 
 	//medium plane
 	TimerTickAnimator::startTimeTickAnimator("medGreenDoubleEngTickAnimation", triggerMedGreenDoubleEngAnimator);
 
     //big plane
-    TimerTickAnimator::startTimeTickAnimator("bigGreenIntroTickAnimation", triggerBigGreenIntroTickAnimators );
-    TimerTickAnimator::startTimeTickAnimator("bigGreenStayStillTickAnimation", triggerBigGreenStayStillTickAnimators );
-    TimerTickAnimator::startTimeTickAnimator("bigGreenOutroTickAnimation", triggerBigGreenOutroTickAnimators );
+    //TimerTickAnimator::startTimeTickAnimator("bigGreenIntroTickAnimation", triggerBigGreenIntroTickAnimators );
+    //TimerTickAnimator::startTimeTickAnimator("bigGreenStayStillTickAnimation", triggerBigGreenStayStillTickAnimators );
+    //TimerTickAnimator::startTimeTickAnimator("bigGreenOutroTickAnimation", triggerBigGreenOutroTickAnimators );
      
     //end of stage
     //TimerTickAnimator::startTimeTickAnimator("endOfStageTickAnimation", triggerEndOfStageAnimators );
@@ -451,13 +451,17 @@ void    AnimatorHolder::Load (const std::string& cataloge){
         SpriteType spriteType = SpriteType(st);
         assert( st < SPRITE_TYPE_SIZE );
         
-        std::string id2,spriteId2;
+        std::string id2,spriteId2,animationId2;
         for(int i = 0; i < repetition; ++i){
             id2 = id + std::to_string(i);
             spriteId2 = spriteId + std::to_string(i);
+            animationId2 = animationId;
+            if (id.compare("MiniGreyOneEngAnimator") == 0)
+                animationId2 +=  std::to_string(i);
+            
             Sprite* sprite= SpritesHolder::getSprite(spriteType, spriteId2);
             assert(sprite);
-            MovingPathAnimation* animation = (MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation(animationId);
+            MovingPathAnimation* animation = (MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation(animationId2);
             assert(animation);
             MovingPathAnimator* animator  =	new MovingPathAnimator( id2, sprite, animation);
             assert(animator);
@@ -477,7 +481,7 @@ void AnimatorHolder::updateAllGreyPlaneAnimations(){
         it2 = it;
         it2++;
         assert((*it));
-        if ((*it)->getId().find("GreyPlaneAnimator") == 0 /*std::string::npos*/ ){
+        if ((*it)->getId().find("MiniGreyOneEngAnimator") == 0 /*std::string::npos*/ ){
             grayPlaneAnimator= (MovingPathAnimator*) (*it);
             updateGreyPlaneAnimation(grayPlaneAnimator);
         }
@@ -487,7 +491,7 @@ void AnimatorHolder::updateAllGreyPlaneAnimations(){
 }
 
 void updateGreyPlaneAnimation(MovingPathAnimator* grayJetAnimator){
-    
+    //assert(0);
     
     SuperAce* superAce = (SuperAce*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce0");
     

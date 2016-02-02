@@ -104,7 +104,7 @@
                             }, {
                             "WARNING ATTENTION WATCH OUT ": "IT NEEDS MULTIPLE ANIMATIONS",
                             "id": "MiniGreyOneEngAnimator",
-                            "animationId": "minGreyPlaneAnimation0",
+                            "animationId": "minGreyPlaneAnimation",
                             "repetition": 4,
                             "spriteType": 4,
                             "spriteId": "MiniGreyOneEng"
@@ -122,13 +122,13 @@
                             "spriteId": "MiniGreyOneEng"
                             }, {
                             "id": "MiniGreyJetAnimator",
-                            "animationId": "GreyJetAnimation0",
+                            "animationId": "GreyJetAnimation",
                             "repetition": 4,
                             "spriteType": 4,
                             "spriteId": "MiniGreyJet"
                             }, {
                             "id": "MedGreenDoubleEngAnimator",
-                            "animationId": "GreenMediumPlaneAnimation0",
+                            "animationId": "GreenMediumPlaneAnimation",
                             "repetition": 4,
                             "spriteType": 4,
                             "spriteId": "MedGreenDoubleEng"

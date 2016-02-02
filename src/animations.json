@@ -1294,7 +1294,7 @@
                                                       "delay": 40
                                                       }]
                                             }, {
-                                            "id": "GreyJetAnimation0",
+                                            "id": "GreyJetAnimation",
                                             "continuous": true,
                                             "paths": [{
                                                       "dx": 0,
@@ -1304,7 +1304,7 @@
                                                       "delay": 100
                                                       }]
                                             }, {
-                                            "id": "GreenMediumPlaneAnimation0",
+                                            "id": "GreenMediumPlaneAnimation",
                                             "continuous": true,
                                             "paths": [{
                                                       "dx": 0,
