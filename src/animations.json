@@ -64,12 +64,12 @@
                                       "repetitions": 5
                                       }, {
                                       "id": "redPlaneTickAnimations",
-                                      "delay": 18000,
+                                      "delay": 10000,
                                       "repetitions": 7
                                       }, {
                                       "id": "miniGreenJetTickAnimation",
                                       "delay": 5000,
-                                      "repetitions": 2
+                                      "repetitions": 4
                                       }, {
                                       "id": "miniGreenDoubleEngTickAnimation",
                                       "delay": 7000,
@@ -81,7 +81,7 @@
                                       }, {
                                       "id": "medGreenDoubleEngTickAnimation",
                                       "delay": 9000,
-                                      "repetitions": 3
+                                      "repetitions": 4
                                       }, {
                                       "id": "medGreenSingleEngTickAnimation",
                                       "delay": 9000,

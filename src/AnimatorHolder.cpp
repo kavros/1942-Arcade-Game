@@ -14,6 +14,7 @@ void AnimatorHolder::Register(Animator* a) {
 }
 void AnimatorHolder::cancel(Animator* a) {
     AnimatorHolder::getAnimatorHolder()->_suspended.remove(a);
+    AnimatorHolder::getAnimatorHolder()->_map[a->getId()] = nullptr;
 }
 
 AnimatorHolder* AnimatorHolder::getAnimatorHolder(){
@@ -575,6 +576,10 @@ void AnimatorHolder::updateAllGreyPlaneAnimations(){
             grayPlaneAnimator= (MovingPathAnimator*) (*it);
             updateGreyPlaneAnimation(grayPlaneAnimator);
         }
+        if((*it)->getId().find("MiniGreyJetAnimator") == 0){
+            grayPlaneAnimator= (MovingPathAnimator*) (*it);
+            updateGreyJetAnimation(grayPlaneAnimator);
+        }
         it = it2;
     }
     
@@ -734,19 +739,19 @@ void  updateGreyJetAnimation(MovingPathAnimator* grayJetAnimator){
 	}
 
 	if (superAcePositionOnX > grayJetPositionOnX){
-		
+    
 		if (grayJetAnimation->getPath().front()._dx <= 0){
-			
+    
 			grayJetAnimation->setPath(((MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("GreyJetRightDownAnimation"))->getPath());
 		}
 	}
 	else if (superAcePositionOnX < grayJetPositionOnX){
 		if (grayJetAnimation->getPath().front()._dx >= 0){
 			grayJetAnimation->setPath(((MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("GreyJetLeftDownAnimation"))->getPath());
-
+    
 		}
 	}
-
+    
     
 	/*
     if (grayJetPositionOnY > WIN_HEIGHT - 100){

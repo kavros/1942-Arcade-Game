@@ -10,7 +10,8 @@ enum animatorstate_t{
 	ANIMATOR_FINISHED	= 0,
 	ANIMATOR_RUNNING	= 1,
 	ANIMATOR_STOPPED	= 2,
-	ANIMATOR_PAUSED		= 3
+	ANIMATOR_PAUSED		= 3,
+    ANIMATOR_UNDIFINED  = 4
 };
 
 class Animator : public LatelyDestroyable{

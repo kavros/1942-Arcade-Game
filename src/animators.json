@@ -175,19 +175,19 @@
                             }, {
                             "id": "BigGreenAnimator",
                             "animationId": "BigPlaneIntroAnimation",
-                            "repetition": 4,
+                            "repetition": 1,
                             "spriteType": 4,
                             "spriteId": "BigGreen"
                             }, {
                             "id": "BigGreen1Animator",
                             "animationId": "BigPlaneStayStillAnimation",
-                            "repetition": 4,
+                            "repetition": 1,
                             "spriteType": 4,
                             "spriteId": "BigGreen"
                             }, {
                             "id": "BigGreen2Animator",
                             "animationId": "BigPlaneOutroAnimation",
-                            "repetition": 4,
+                            "repetition": 1,
                             "spriteType": 4,
                             "spriteId": "BigGreen"
                             }, {
