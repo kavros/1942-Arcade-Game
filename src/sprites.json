@@ -82,7 +82,7 @@
                 },{
                 "id": "MedGreenDoubleEng",
                 "frameNo": 0,
-                "destRect": [200, 768 , 63, 58],
+                "destRect": [200, 0, 63, 58],
                 "repetition": 4,
                 "point": [0, 0],
                 "visible": false,

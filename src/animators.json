@@ -156,7 +156,19 @@
                             "spriteId": "MiniGreyJet"
                             }, {
                             "id": "MedGreenDoubleEngAnimator",
-                            "animationId": "GreenMediumPlaneAnimation",
+                            "animationId": "GreenMediumPlaneMovingDownAnimation",
+                            "repetition": 4,
+                            "spriteType": 4,
+                            "spriteId": "MedGreenDoubleEng"
+                            }, {
+                            "id": "Chain1MedGreenDoubleEngAnimator",
+                            "animationId": "GreenMediumPlaneCycleAnimation",
+                            "repetition": 4,
+                            "spriteType": 4,
+                            "spriteId": "MedGreenDoubleEng"
+                            }, {
+                            "id": "Chain2Chain1MedGreenDoubleEngAnimator",
+                            "animationId": "GreenMediumPlaneMovingDownContinousAnimation",
                             "repetition": 4,
                             "spriteType": 4,
                             "spriteId": "MedGreenDoubleEng"
