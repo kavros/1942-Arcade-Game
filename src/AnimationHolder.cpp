@@ -106,6 +106,7 @@ void    AnimationHolder::Load (const std::string& cataloge){
         //id
         std::string id = mPathAnimation["id"].GetString();
         bool continuous = mPathAnimation["continuous"].GetBool();
+        //bool doWhile = mPathAnimation["doWhile"].GetBool();
         for(rapidjson::SizeType j = 0; j < paths.Size(); j++){
             
             PathEntry pe;
@@ -116,6 +117,49 @@ void    AnimationHolder::Load (const std::string& cataloge){
             pe._dy = path["dy"].GetInt();
             pe._frame = path["frameNo"].GetInt();
             pe._delay = path["delay"].GetInt();
+            if(mPathAnimation.HasMember("doWhile")){
+                if(mPathAnimation["doWhile"].GetBool()){
+                    int maxX = mPathAnimation["maxX"].GetInt();
+                    int maxY = mPathAnimation["maxY"].GetInt();
+                    int x = pe._dx;
+                    int y = pe._dy;
+                    if(maxX > 0 ){
+                        if (maxY > 0){
+                            assert(x >= 0 && x <= maxX && y >= 0 && y <= maxY);
+                            while (x < maxX || y <maxY){
+                                x +=pe._dx;
+                                y +=pe._dy;
+                                _paths.push_back(pe);
+                            }
+                        }else{
+                            assert(x >= 0 && x <= maxX && y <= 0 && y >= maxY);
+                            while (x < maxX || y > maxY){
+                                x +=pe._dx;
+                                y +=pe._dy;
+                                _paths.push_back(pe);
+                            }
+                        }
+                    }else{
+                        if (maxY > 0){
+                            string id2 = mPathAnimation["id"].GetString();
+                            assert(x <= 0 && x >= maxX && y >= 0 && y <= maxY);
+                            while (x > maxX || y < maxY){
+                                x +=pe._dx;
+                                y +=pe._dy;
+                                _paths.push_back(pe);
+                            }
+                        }else{
+                            assert(x <= 0 && x >= maxX && y <= 0 && y >= maxY);
+                            while (x > maxX || y > maxY){
+                                x +=pe._dx;
+                                y +=pe._dy;
+                                _paths.push_back(pe);
+                            }
+                        }
+                    }
+                }
+                
+            }
             _paths.push_back(pe);
             
         }

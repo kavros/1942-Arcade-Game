@@ -107,7 +107,7 @@
                             "spriteId": "RedJet"
                             }, {
                             "id": "Chain4Chain3Chain2Chain1RedJetAnimator",
-                            "animationId": "straight",
+                            "animationId": "RedPlaneRightContinousAnimation",
                             "repetition": 35,
                             "spriteType": 4,
                             "spriteId": "RedJet"
@@ -131,7 +131,7 @@
                             "spriteId": "MiniGreenOneEng"
                             }, {
                             "id": "Chain1MiniGreenOneEngAnimator",
-                            "animationId": "only_circle_250_250_200_130",
+                            "animationId": "only_circle_250_250_100_68",
                             "repetition": 4,
                             "spriteType": 4,
                             "spriteId": "MiniGreenOneEng"
