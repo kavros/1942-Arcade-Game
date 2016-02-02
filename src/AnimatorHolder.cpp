@@ -473,6 +473,7 @@ void triggerDeathStarAnimator(){
     animator->start(Game::getGameTime());
 }
 void AnimatorHolder::startTimeTickAnimators(){
+    
     //SuperAce
     TimerTickAnimator::startTimeTickAnimator("superAceMovingPathTickAnimation", triggerSuperAceMovingPathAnimator );
     
@@ -489,7 +490,6 @@ void AnimatorHolder::startTimeTickAnimators(){
     TimerTickAnimator::startTimeTickAnimator("miniGreenJetTickAnimation", triggerMiniGreenJetAnimator );
 	TimerTickAnimator::startTimeTickAnimator("miniGreyJetTickAnimation", triggerMiniGreyJetTickAnimator);
 
-
 	//medium plane
 	TimerTickAnimator::startTimeTickAnimator("medGreenDoubleEngTickAnimation", triggerMedGreenDoubleEngAnimator);
 	TimerTickAnimator::startTimeTickAnimator("medGreenSingleEngTickAnimation", triggerMedGreenSingleEngAnimator);
@@ -498,14 +498,12 @@ void AnimatorHolder::startTimeTickAnimators(){
     TimerTickAnimator::startTimeTickAnimator("bigGreenIntroTickAnimation", triggerBigGreenIntroTickAnimators );
     TimerTickAnimator::startTimeTickAnimator("bigGreenStayStillTickAnimation", triggerBigGreenStayStillTickAnimators );
     TimerTickAnimator::startTimeTickAnimator("bigGreenOutroTickAnimation", triggerBigGreenOutroTickAnimators );
-     
-    //end of stage
-    //TimerTickAnimator::startTimeTickAnimator("endOfStageTickAnimation", triggerEndOfStageAnimators );
     
     //death star
     TimerTickAnimator::startTimeTickAnimator("deathStarTickAnimation", triggerDeathStarAnimator );
-
     
+    //end of stage
+    //TimerTickAnimator::startTimeTickAnimator("endOfStageTickAnimation", triggerEndOfStageAnimators );
     
 }
 
