@@ -242,29 +242,6 @@ void triggerMiniGreenDoubleEngAnimator(){
     animator->start(Game::getGameTime());
 }
 
-void triggerEndOfTheStageAnimator(){
-
-	
-
-	MovingPathAnimator* superAceEndingAnimator =
-		(MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceEndingAnimator0");
-	assert(superAceEndingAnimator);
-	superAceEndingAnimator->start(Game::getGameTime());
-	cout << "triggerEndOfTheStageAnimator" << endl;
-	//superAceEndingAnimator->start(Game::getGameTime());
-
-	SpriteStringHolder::getSpriteString("shootingString")->setVisibility(true);
-	SpriteStringHolder::getSpriteString("downString")->setVisibility(true);
-	SpriteStringHolder::getSpriteString("shootingDownPercent")->setVisibility(true);
-	SpriteStringHolder::getSpriteString("endingBonusString")->setVisibility(true);
-	SpriteStringHolder::getSpriteString("pointsString")->setVisibility(true);
-	SpriteStringHolder::getSpriteString("points")->setVisibility(true);
-	SpriteStringHolder::getSpriteString("letterR")->setVisibility(true);
-	SpriteStringHolder::getSpriteString("1000Points")->setVisibility(true);
-	SpriteStringHolder::getSpriteString("letterR")->setVisibility(true);
-	
-	//Game::setState(END_OF_STAGE);
-}
 
 void triggerMiniGreyOneEngAnimator(){
 	static int nameId = 0;
@@ -427,10 +404,13 @@ void AnimatorHolder::startTimeTickAnimators(){
 
 
     //big plane
-    //TimerTickAnimator::startTimeTickAnimator("bigGreenIntroTickAnimation", triggerBigGreenIntroTickAnimators );
-    //TimerTickAnimator::startTimeTickAnimator("bigGreenStayStillTickAnimation", triggerBigGreenStayStillTickAnimators );
-    //TimerTickAnimator::startTimeTickAnimator("bigGreenOutroTickAnimation", triggerBigGreenOutroTickAnimators );
-
+    TimerTickAnimator::startTimeTickAnimator("bigPlaneIntroTickAnimation", triggerBigGreenIntroTickAnimators );
+    TimerTickAnimator::startTimeTickAnimator("bigPlaneStayStillTickAnimation", triggerBigGreenStayStillTickAnimators );
+    TimerTickAnimator::startTimeTickAnimator("bigPlaneOutroTickAnimation", triggerBigGreenOutroTickAnimators );
+     
+    //end of stage
+    //TimerTickAnimator::startTimeTickAnimator("endOfStageTickAnimation", triggerEndOfStageAnimators );
+    
 }
 
 using namespace rapidjson;
