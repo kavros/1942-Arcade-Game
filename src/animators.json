@@ -128,7 +128,7 @@
                             "spriteId": "MiniGreyJet"
                             }, {
                             "id": "MedGreenDoubleEngAnimator",
-                            "animationId": "GreenMediumPlaneAnimation0",
+                            "animationId": "GreenMediumPlaneMovingDownAnimation",
                             "repetition": 4,
                             "spriteType": 4,
                             "spriteId": "MedGreenDoubleEng"

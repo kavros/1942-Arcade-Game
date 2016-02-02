@@ -13,6 +13,7 @@ void Game::singleplayerGameOnEvent(){
     
     if (superAce->getState() == STARTING){
         superAceStartingAnimator->start(getGameTime());
+
     }
     
     //if starting animator running then don't start any animator
