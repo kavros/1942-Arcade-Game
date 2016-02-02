@@ -145,6 +145,13 @@ void updateScore(EnemyFighter* s){
                 i = 100;
             break;
         }
+        case EnemyFighterType(DEATH_STAR): {
+            if(s->getState() == IN_COLUSION)
+                i = 1000;
+            else
+                i = 100;
+            break;
+        }
         default: assert(0);
     }
     Game::setScore(Game::getScore()+ i);

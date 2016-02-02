@@ -162,7 +162,7 @@
                             "spriteId": "MiniGreyOneEng"
                             }, {
                             "id": "MiniGreyJetAnimator",
-                            "animationId": "GreyJetAnimation",
+                            "animationId": "GreyJetDownAnimation",
                             "repetition": 4,
                             "spriteType": 4,
                             "spriteId": "MiniGreyJet"
@@ -214,6 +214,13 @@
                             "repetition": 1,
                             "spriteType": 3,
                             "spriteId": "SuperAce"
-                            }]
+                            }, {
+                            "id": "deathStarAnimator",
+                            "animationId": "deathStarAnimation",
+                            "repetition": 1,
+                            "spriteType": 4,
+                            "spriteId": "deathStarSprite"
+                            }
+                            ]
     
 }

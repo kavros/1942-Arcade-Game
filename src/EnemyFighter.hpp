@@ -28,8 +28,8 @@ enum EnemyFighterType{
     MED_GREY_TRIPLE_ENG = 12,
     BIG_GREEN = 13,
     BIG_GREY = 14,
-    BULLET = 15
-    
+    BULLET = 15,
+    DEATH_STAR = 16
 };
 class EnemyFighter:public Sprite{
     
@@ -67,7 +67,9 @@ public:
     
     //functionallity
     void fire();
-    void fireSideBullets();
+    void fireSideRightBullet();
+    void fireSideLeftBullet();
+    void fireStraightBullet();
 	void createPowerUp();
 
 };
