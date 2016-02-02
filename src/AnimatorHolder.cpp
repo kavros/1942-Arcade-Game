@@ -576,12 +576,17 @@ void AnimatorHolder::updateAllGreyPlaneAnimations(){
         it2 = it;
         it2++;
         assert((*it));
-        if ((*it)->getId().find("MiniGreyOneEngAnimator") == 0 /*std::string::npos*/ ){
-            grayPlaneAnimator= (MovingPathAnimator*) (*it);
+		std::string str = string((*it)->getId());
+		str.resize(str.size() - 1);
+
+		if (str == "MiniGreyOneEngAnimator"){
+			grayPlaneAnimator= (MovingPathAnimator*) (*it);
             updateGreyPlaneAnimation(grayPlaneAnimator);
-        }
-        if((*it)->getId().find("MiniGreyJetAnimator") == 0){
-            grayPlaneAnimator= (MovingPathAnimator*) (*it);
+		}
+
+
+		if (str == "MiniGreyJetAnimator"){
+			grayPlaneAnimator= (MovingPathAnimator*) (*it);
             updateGreyJetAnimation(grayPlaneAnimator);
         }
         it = it2;
