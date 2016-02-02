@@ -105,37 +105,37 @@
                             "spriteType": 4,
                             "spriteId": "GreenDoubleEngineJet0"
                             }, {
-                            "id": "GreenDoubleEngineJetAnimator1",
+                            "id": "MiniGreenDoubleEngAnimator1",
                             "animationId": "circle_250_250_30",
                             "spriteType": 4,
                             "spriteId": "GreenDoubleEngineJet1"
                             }, {
-                            "id": "GreenDoubleEngineJetAnimator2",
+                            "id": "MiniGreenDoubleEngAnimator2",
                             "animationId": "circle_250_250_30",
                             "spriteType": 4,
                             "spriteId": "GreenDoubleEngineJet2"
                             }, {
-                            "id": "GreenDoubleEngineJetAnimator3",
+                            "id": "MiniGreenDoubleEngAnimator3",
                             "animationId": "circle_250_250_30",
                             "spriteType": 4,
                             "spriteId": "GreenDoubleEngineJet3"
                             }, {
-                            "id": "GreenJetAnimator0",
+                            "id": "MiniGreenJetAnimator0",
                             "animationId": "circle_250_250_30",
                             "spriteType": 4,
                             "spriteId": "GreenJet0"
                             }, {
-                            "id": "GreenJetAnimator1",
+                            "id": "MiniGreenJetAnimator1",
                             "animationId": "circle_250_250_30",
                             "spriteType": 4,
                             "spriteId": "GreenJet1"
                             }, {
-                            "id": "GreenJetAnimator2",
+                            "id": "MiniGreenJetAnimator2",
                             "animationId": "circle_250_250_30",
                             "spriteType": 4,
                             "spriteId": "GreenJet2"
                             }, {
-                            "id": "GreenJetAnimator3",
+                            "id": "MiniGreenJetAnimator3",
                             "animationId": "circle_250_250_30",
                             "spriteType": 4,
                             "spriteId": "GreenJet3"
@@ -1016,82 +1016,82 @@
                             "spriteId": "RedJet34"
                             
                             },{
-                            "id": "GrayPlaneAnimator0",
+                            "id": "MiniGrayOneEngAnimator0",
                             "animationId": "minGrayPlaneAnimation0",
                             "spriteType": 4,
                             "spriteId": "MinGrayPlane0"
                             },{
-                            "id": "FlipGrayPlaneAnimator0",
+                            "id": "FlipMiniGrayOneEngAnimator0",
                             "animationId": "flipMinGrayPlaneAnimation",
                             "spriteType": 4,
                             "spriteId": "MinGrayPlane0"
                             },{
-                            "id": "BackFlipGrayPlaneAnimator0",
+                            "id": "BackFlipMiniGrayOneEngAnimator0",
                             "animationId": "minGrayPlaneRightBackAnimation",
                             "spriteType": 4,
                             "spriteId": "MinGrayPlane0"
                             },{
-                            "id": "GrayPlaneAnimator1",
+                            "id": "MiniGrayOneEngAnimator1",
                             "animationId": "minGrayPlaneAnimation1",
                             "spriteType": 4,
                             "spriteId": "MinGrayPlane1"
                             },{
-                            "id": "FlipGrayPlaneAnimator1",
+                            "id": "FlipMiniGrayOneEngAnimator1",
                             "animationId": "flipMinGrayPlaneAnimation",
                             "spriteType": 4,
                             "spriteId": "MinGrayPlane1"
                             },{
-                            "id": "BackFlipGrayPlaneAnimator1",
+                            "id": "BackFlipMiniGrayOneEngAnimator",
                             "animationId": "minGrayPlaneRightBackAnimation",
                             "spriteType": 4,
                             "spriteId": "MinGrayPlane1"
                             },{
-                            "id": "GrayPlaneAnimator2",
+                            "id": "MiniGrayOneEngAnimator2",
                             "animationId": "minGrayPlaneAnimation2",
                             "spriteType": 4,
                             "spriteId": "MinGrayPlane2"
                             },{
-                            "id": "FlipGrayPlaneAnimator2",
+                            "id": "FlipMiniGrayOneEngAnimator2",
                             "animationId": "flipMinGrayPlaneAnimation",
                             "spriteType": 4,
                             "spriteId": "MinGrayPlane2"
                             },{
-                            "id": "BackFlipGrayPlaneAnimator2",
+                            "id": "BackFlipMiniGrayOneEngAnimator2",
                             "animationId": "minGrayPlaneRightBackAnimation",
                             "spriteType": 4,
                             "spriteId": "MinGrayPlane2"
                             },{
-                            "id": "GrayPlaneAnimator3",
+                            "id": "MiniGrayOneEngAnimator3",
                             "animationId": "minGrayPlaneAnimation3",
                             "spriteType": 4,
                             "spriteId": "MinGrayPlane3"
                             },{
-                            "id": "FlipGrayPlaneAnimator3",
+                            "id": "FlipMiniGrayOneEngAnimator3",
                             "animationId": "flipMinGrayPlaneAnimation",
                             "spriteType": 4,
                             "spriteId": "MinGrayPlane3"
                             },{
-                            "id": "BackFlipGrayPlaneAnimator3",
+                            "id": "BackFlipMiniGrayOneEngAnimator3",
                             "animationId": "minGrayPlaneRightBackAnimation",
                             "spriteType": 4,
                             "spriteId": "MinGrayPlane3"
                             },{
-                            "id": "GrayJetAnimator0",
+                            "id": "MiniGrayJetAnimator0",
                             "animationId": "GrayJetAnimation0",
                             "spriteType": 4,
                             "spriteId": "GrayJet1"
                             },{
-                            "id": "GreenMediumPlaneAnimator0",
+                            "id": "MedGreenDoubleEngAnimator0",
                             "animationId": "GreenMediumPlaneAnimation0",
                             "spriteType": 4,
                             "spriteId": "GreenMediumPlane1"
                             },{
-                            "id": "GreenMediumPlaneAnimator1",
+                            "id": "MedGreenDoubleEngAnimator1",
                             "animationId": "GreenMediumPlaneAnimation0",
                             "spriteType": 4,
                             "spriteId": "GreenMediumPlane2"
                             },{
-                            "id": "GreenMediumPlaneAnimator2",
+                            "id": "MedGreenDoubleEngAnimator2",
                             "animationId": "GreenMediumPlaneAnimation0",
                             "spriteType": 4,
                             "spriteId": "GreenMediumPlane3"
@@ -1111,7 +1111,7 @@
                             "spriteType": 4,
                             "spriteId": "bigGreenPlaneSprite0"
                             },{
-                            "id": "miniGreenOneEngAnimator0",
+                            "id": "MiniGreenOneEngAnimator0",
                             "animationId": "only_circle_250_250_200_130",
                             "spriteType": 4,
                             "spriteId": "MinGreenOneEng0"
