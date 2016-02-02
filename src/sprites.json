@@ -32,7 +32,7 @@
                 "repetition": 4,
                 "visible": false,
                 "spriteType": 4,
-                "remainingBullets": 1,
+                "remainingBullets": 2,
                 "enemyType" : 1,
                 "animFilmId": "green_jet"
                 },{
@@ -43,7 +43,7 @@
                 "repetition": 4,
                 "visible": false,
                 "spriteType": 4,
-                "remainingBullets": 6,
+                "remainingBullets": 2,
                 "enemyType" : 2,
                 "animFilmId": "gray_jet"
                 },{
@@ -54,7 +54,7 @@
                 "repetition": 4,
                 "visible": false,
                 "spriteType": 4,
-                "remainingBullets": 3,
+                "remainingBullets": 2,
                 "enemyType" : 3,
                 "animFilmId": "mini_green_one_eng"
                 },{
@@ -65,7 +65,7 @@
                 "repetition": 4,
                 "visible": false,
                 "spriteType": 4,
-                "remainingBullets": 10,
+                "remainingBullets": 2,
                 "enemyType" : 4,
                 "animFilmId": "min_gray_plane"
                 },{
@@ -87,7 +87,7 @@
                 "point": [0, 0],
                 "visible": false,
                 "spriteType": 4,
-                "remainingBullets": 6,
+                "remainingBullets": 4,
                 "enemyType" : 7,
                 "animFilmId": "green_medium_plane"
                 },{
@@ -98,7 +98,7 @@
                 "repetition": 4,
                 "visible": false,
                 "spriteType": 4,
-                "remainingBullets": 100,
+                "remainingBullets": 50,
                 "enemyType" : 13,
                 "animFilmId": "bigPlanes"
                 },{
