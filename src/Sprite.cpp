@@ -156,9 +156,13 @@ void Sprite::collisionCheck(Sprite* s){
 	
 	
 	if ((_state == MANEUVER) || s->_state == MANEUVER ){
+	
 		return;
 	}
+	if ((_state == UNDEFEATABLE) || s->_state == UNDEFEATABLE){
 
+		return;
+	}
 	//if sprites are not visible return
     if( !this->getVisibility() || !s->getVisibility() ){
         return;
@@ -183,7 +187,7 @@ void Sprite::notifyCollision(Sprite* arg){
     Handlers::iterator i2;
     
     if( _spriteId.compare("SuperAce") == 0 ){
-        if(_state==MANEUVER)
+        if(_state==MANEUVER ||_state == UNDEFEATABLE )
             return;
         
     }
@@ -235,7 +239,7 @@ void Sprite::clearHandlers(void){
 }
 
 void Sprite::setState(SpriteState state){
-	assert(FLYING <= state && state <= IN_COLUSION);
+	assert( (First_SpriteState <= state )&& (state <= Last_SpriteState));
 	_state = state;
 }
 

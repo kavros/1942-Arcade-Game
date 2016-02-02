@@ -48,8 +48,9 @@ private:
     
     static SDL_Window * _window;
     static SDL_Renderer * _renderer;
-	static SDL_Event e;
-    
+	static SDL_Event event;
+    static SDL_Event prevEvent;
+
     static GameState _gameState;
     static std::list<unsigned> _powerUpsOfStage;
     //Game Variables
@@ -69,10 +70,10 @@ public:
     
     static bool OnInit();
     
-    static void singleplayerGameOnEvent(SDL_Event* event,SDL_Event prevEvent);
-    static void multiplayerGameOnEvent(SDL_Event* event,SDL_Event prevEvent);
-    static void OnEvent(SDL_Event* e);
-    static void pauseManager(SDL_Event* event);
+    static void singleplayerGameOnEvent();
+    static void multiplayerGameOnEvent();
+    static void OnEvent();
+    static void pauseManager();
     static void gameOver();
     static void LoadGameInfo (const std::string& cataloge);
     
