@@ -87,6 +87,10 @@
                                       "delay": 9000,
                                       "repetitions": 3
                                       }, {
+                                      "id": "medGreenSingleEngTickAnimation",
+                                      "delay": 9000,
+                                      "repetitions": 4
+                                      },{
                                       "id": "miniGreyJetTickAnimation",
                                       "delay": 10000,
                                       "repetitions": 1
@@ -1317,6 +1321,22 @@
                                                       "dy":2,
                                                       "visibility": true,
                                                       "frameNo": 8,
+                                                      "delay": 20
+                                                      }]
+                                            }, {
+                                            "id": "GreenMediumPlaneMovingUpAnimation",
+                                            "continuous": true,
+                                            "paths": [{
+                                                      "dx": 0,
+                                                      "dy": -2,
+                                                      "visibility": true,
+                                                      "frameNo": 17,
+                                                      "delay": 20
+                                                      },{
+                                                      "dx": 0,
+                                                      "dy":-2,
+                                                      "visibility": true,
+                                                      "frameNo": 17,
                                                       "delay": 20
                                                       }]
                                             },{"id":"GreenMediumPlaneCycleAnimation",

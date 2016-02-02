@@ -393,6 +393,17 @@ void triggerEndOfStageAnimators(){
     
     */
 }
+void triggerMedGreenSingleEngAnimator(){
+	static int nameId = 0;
+	string name = "MedGreenSingleEngAnimator" + std::to_string(nameId); //Intro animator
+	nameId++;
+
+
+
+	MovingPathAnimator* animator = (MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator(name);
+	assert(animator);
+	animator->start(Game::getGameTime());
+}
 
 void AnimatorHolder::startTimeTickAnimators(){
     
@@ -415,6 +426,7 @@ void AnimatorHolder::startTimeTickAnimators(){
 
 	//medium plane
 	TimerTickAnimator::startTimeTickAnimator("medGreenDoubleEngTickAnimation", triggerMedGreenDoubleEngAnimator);
+	TimerTickAnimator::startTimeTickAnimator("medGreenSingleEngTickAnimation", triggerMedGreenSingleEngAnimator);
 
     //big plane
     TimerTickAnimator::startTimeTickAnimator("bigGreenIntroTickAnimation", triggerBigGreenIntroTickAnimators );

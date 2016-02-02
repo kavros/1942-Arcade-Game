@@ -160,6 +160,12 @@
                             "repetition": 4,
                             "spriteType": 4,
                             "spriteId": "MedGreenDoubleEng"
+                            },{
+                            "id": "MedGreenSingleEngAnimator",
+                            "animationId": "GreenMediumPlaneMovingUpAnimation",
+                            "repetition": 4,
+                            "spriteType": 4,
+                            "spriteId": "MedGreenSingleEng"
                             }, {
                             "id": "Chain1MedGreenDoubleEngAnimator",
                             "animationId": "GreenMediumPlaneCycleAnimation",
