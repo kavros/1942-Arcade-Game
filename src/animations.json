@@ -112,8 +112,8 @@
                                       "repetitions": 1
                                       }, {
                                       "id": "endOfStageMoveToCenterTickAnimation",
-                                      "delay": 0,
-                                      "repetitions": 1
+                                      "delay": 100,
+                                      "repetitions": 0
                                       }, {
                                       "id": "endOfStageCreateAircraftTickAnimation",
                                       "delay": 6000,

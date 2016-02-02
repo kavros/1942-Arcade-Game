@@ -342,11 +342,72 @@ void triggerBigGreenOutroTickAnimators(){
 
 }
 
-void triggerEndOfStageMoveToCenterAnimator(){
+void updateEndOfStageAnimation(){
+
+    static int times = 0;
+    times++;
+    cout<<times<<"\n";
+    SuperAce* superAce = (SuperAce*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce0");
     
     MovingPathAnimator* animator = (MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator("endOfStageMoveToCenterAnimator0");
     assert(animator);
+    
+    MovingPathAnimation* animation = animator->getMovingPathAnimation();
+    assert(animation);
+
+    if (!animator->isAlive()){
+        return;
+    }
+    
+    int dstX = 384;
+    int dstY = 100;
+
+    int superAceX = superAce->getDstRect().x;
+    int superAceY = superAce->getDstRect().y;
+    
+    
+    if (superAceX > dstX){
+        if (superAceY > dstY){
+            animation->changeDxDy(-4, -4);
+        }
+        else if (superAceY < dstY){
+            animation->changeDxDy(-4, 4);
+        }
+        else{
+            animation->changeDxDy(-4, 0);
+        }
+    }
+    else if (superAceX < dstX){
+        if (superAceY > dstY){
+            animation->changeDxDy(4, -4);
+        }
+        else if (superAceY < dstY){
+            animation->changeDxDy(4, 4);
+        }
+        else{
+            animation->changeDxDy(4, 0);
+        }
+    }
+    else{
+        if (superAceY > dstY){
+            animation->changeDxDy(0, -4);
+        }
+        else if (superAceY < dstY){
+            animation->changeDxDy(0, 4);
+        }
+        else{
+        }
+    }
+    
     animator->start(Game::getGameTime());
+
+}
+
+void triggerEndOfStageMoveToCenterAnimator(){
+    MovingPathAnimator* animator = (MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator("endOfStageMoveToCenterAnimator0");
+    assert(animator);
+    animator->start(Game::getGameTime());
+    
 }
 
 void triggerEndOfStageCreateAircraftAnimator(){
@@ -383,7 +444,8 @@ void triggerEndOfStageStopBackgroundAnimator(){
 void triggerEndOfStageAnimators(){
     
     //move super ace to the center up of the screen
-    TimerTickAnimator::startTimeTickAnimator("endOfStageMoveToCenterTickAnimation", triggerEndOfStageMoveToCenterAnimator );
+    TimerTickAnimator::startTimeTickAnimator("endOfStageMoveToCenterTickAnimation", updateEndOfStageAnimation );
+    //TimerTickAnimator::startTimeTickAnimator("endOfStageMoveToCenterTickAnimation", triggerEndOfStageMoveToCenterAnimator );
 
     //create the finish aircraft
     TimerTickAnimator::startTimeTickAnimator("endOfStageCreateAircraftTickAnimation", triggerEndOfStageCreateAircraftAnimator );
@@ -397,7 +459,7 @@ void triggerEndOfStageAnimators(){
 }
 
 void AnimatorHolder::startTimeTickAnimators(){
-    /*
+    
     //SuperAce
     TimerTickAnimator::startTimeTickAnimator("superAceMovingPathTickAnimation", triggerSuperAceMovingPathAnimator );
     
@@ -422,9 +484,9 @@ void AnimatorHolder::startTimeTickAnimators(){
     TimerTickAnimator::startTimeTickAnimator("bigGreenIntroTickAnimation", triggerBigGreenIntroTickAnimators );
     TimerTickAnimator::startTimeTickAnimator("bigGreenStayStillTickAnimation", triggerBigGreenStayStillTickAnimators );
     TimerTickAnimator::startTimeTickAnimator("bigGreenOutroTickAnimation", triggerBigGreenOutroTickAnimators );
-     */
+     
     //end of stage
-    TimerTickAnimator::startTimeTickAnimator("endOfStageTickAnimation", triggerEndOfStageAnimators );
+    //TimerTickAnimator::startTimeTickAnimator("endOfStageTickAnimation", triggerEndOfStageAnimators );
     
 }
 
