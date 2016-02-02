@@ -130,13 +130,18 @@ void    Game::LoadGameInfo (const std::string& cataloge){
     }
     const char* data = text.c_str();
     
-    
-    SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce");
     Document document;
     document.Parse(data);
     assert(document.IsObject());
+    
+    SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce");
     superAce->setSuperAceLives(document["superAceLives"].GetInt());
     superAce->setSuperAceLoops(document["superAceLoops"].GetInt());
+    
+    SuperAce* superAce2 = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce2");
+    superAce2->setSuperAceLives(document["superAceLives"].GetInt());
+    superAce2->setSuperAceLoops(document["superAceLoops"].GetInt());
+    
     //_remaining_loops_num =document["superAceLoops"].GetInt();
     _highScore = document["highScore"].GetInt();
     _spriteSize = document["spriteSize"].GetDouble();

@@ -13,7 +13,7 @@ void Game::destructionManagerOnLoop(){
     loopsRemainingToDelete--;
 }
 
-void Game::singleplayerGameOnLoop(){
+void Game::GameOnLoop(){
     static int i = 0;
     
     SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce");
@@ -23,45 +23,6 @@ void Game::singleplayerGameOnLoop(){
         setState(GAME_OVER);
         return;
     }
-    if(i % 50000 ==0){
-        AnimatorHolder::getAnimatorHolder()->updateAllGrayPlaneAnimations();
-    }
-    if (i % 500 == 0){
-        AnimatorHolder::getAnimatorHolder()->updateAllGrayJetsAnimations();
-    }
-    
-    //commit destruction
-    destructionManagerOnLoop();
-    
-    //Move Background
-    Background::Get()->moveBackground(0,+1);
-    
-    //collision checker
-    CollisionChecker::Check();
-    
-    //check animators and sprites  for delete if is out of window
-    AnimatorHolder::checkAnimatorsForDelete();
-    SpritesHolder::checkSpritesForDelete();
-    
-    //progress animators
-    AnimatorHolder::progress(getGameTime());
-}
-
-void Game::multiplayerGameOnLoop(){
-
-    static int i = 0;
-    
-    SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce");
-    assert(superAce);
-    
-    SuperAce* superAce2 = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce2");
-    assert(superAce2);
-    
-    if(superAce->getState() == IN_COLUSION || superAce2->getState() == IN_COLUSION ){
-        setState(GAME_OVER);
-        return;
-    }
-
     if(i % 50000 ==0){
         AnimatorHolder::getAnimatorHolder()->updateAllGrayPlaneAnimations();
     }
@@ -120,11 +81,11 @@ void Game::OnLoop() {
         case MULTIPLAYER_MENU:
             break;
         case SINGLEPLAYER_GAME:{
-            singleplayerGameOnLoop();
+            GameOnLoop();
             break;
         }
         case MULTIPLAYER_GAME:{
-            multiplayerGameOnLoop();
+            GameOnLoop();
             break;
         }
         case EXIT:
