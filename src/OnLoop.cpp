@@ -16,7 +16,7 @@ void Game::destructionManagerOnLoop(){
 void Game::singleplayerGameOnLoop(){
     static int i = 0;
     
-    SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce");
+    SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce0");
     assert(superAce);
     
     if(superAce->getState() == IN_COLUSION ){
@@ -24,10 +24,10 @@ void Game::singleplayerGameOnLoop(){
         return;
     }
     if(i % 50000 ==0){
-        AnimatorHolder::getAnimatorHolder()->updateAllGrayPlaneAnimations();
+        AnimatorHolder::getAnimatorHolder()->updateAllGreyPlaneAnimations();
     }
     if (i % 500 == 0){
-        AnimatorHolder::getAnimatorHolder()->updateAllGrayJetsAnimations();
+        AnimatorHolder::getAnimatorHolder()->updateAllGreyJetsAnimations();
     }
     
     //commit destruction
@@ -51,10 +51,10 @@ void Game::multiplayerGameOnLoop(){
 
     static int i = 0;
     
-    SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce");
+    SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce0");
     assert(superAce);
     
-    SuperAce* superAce2 = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce2");
+    //SuperAce* superAce2 = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce1");
     
     if(superAce->getState() == IN_COLUSION ){
         setState(GAME_OVER);
@@ -62,10 +62,10 @@ void Game::multiplayerGameOnLoop(){
     }
 
     if(i % 50000 ==0){
-        AnimatorHolder::getAnimatorHolder()->updateAllGrayPlaneAnimations();
+        AnimatorHolder::getAnimatorHolder()->updateAllGreyPlaneAnimations();
     }
     if (i % 500 == 0){
-        AnimatorHolder::getAnimatorHolder()->updateAllGrayJetsAnimations();
+        AnimatorHolder::getAnimatorHolder()->updateAllGreyJetsAnimations();
     }
     
     //commit destruction

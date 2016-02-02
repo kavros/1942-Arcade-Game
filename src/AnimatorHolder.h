@@ -43,10 +43,10 @@ public:
     //get
     static AnimatorHolder* getAnimatorHolder();
     
-	static void updateAllGrayPlaneAnimations();
+	static void updateAllGreyPlaneAnimations();
 
 	
-	static void updateAllGrayJetsAnimations();
+	static void updateAllGreyJetsAnimations();
 
 
     static void cleanup();

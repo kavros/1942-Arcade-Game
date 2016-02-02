@@ -17,24 +17,24 @@ void MovingPathAnimator::chooseCallBack(string id){
     std::size_t found;
     string* str = nullptr;
     
-    found = id.find("FlipMiniGrayOneEngAnimator");
+    found = id.find("Chain1MiniGrayOneEngAnimator");
     if (found == 0)
-        str = new string("Back"+ id);
+        str = new string("Chain2"+ id);
     found = id.find("MiniGrayOneEngAnimator");
     if (found == 0)
-        str = new string("Flip"+ id);
+        str = new string("Chain1"+ id);
     found = id.find("RedJetAnimator");
     if (found == 0)
-        str = new string("Circle"+ id);
-    found = id.find("CircleRedJetAnimator");
+        str = new string("Chain1"+ id);
+    found = id.find("Chain1RedJetAnimator");
     if (found == 0)
-        str = new string("Straight"+ id);
-    found = id.find("StraightCircleRedJetAnimator");
+        str = new string("Chain2"+ id);
+    found = id.find("Chain2Chain1RedJetAnimator");
     if (found == 0)
-        str = new string("Circle"+ id);
-    found = id.find("CircleStraightCircleRedJetAnimator");
+        str = new string("Chain3"+ id);
+    found = id.find("Chain3Chain2Chain1RedJetAnimator");
     if (found == 0)
-        str = new string("Straight"+ id);
+        str = new string("Chain4"+ id);
     
     if(str!=nullptr)
         setOnFinished(nextAnimator,(void*)str);
@@ -63,7 +63,7 @@ void MovingPathAnimator::progress(timestamp_t currTime){
         if(_currPath == _anim->getPath().end() && !_anim->getContinuous()){
 			
 			//!!! only Maneuver Animation can change state from maneuever to Flying 
-			if (_sprite->getState() == MANEUVER && getId() == "SuperAceAnimatorManeuver"){
+			if (_sprite->getState() == MANEUVER && getId() == "SuperAceAnimatorManeuver0"){
 				cout << "Super Ace state is now FLYING" << endl;
 				_sprite->setState(FLYING);
 			}
@@ -138,7 +138,7 @@ void MovingPathAnimator::checkAnimatorForDelete(void){
     
     assert(_sprite && _anim );
     
-    if( (_sprite->isOutOfWindow() || _sprite->getState() == SpriteState::IN_COLUSION) && _sprite->getId().compare("SuperAce") != 0){
+    if( (_sprite->isOutOfWindow() || _sprite->getState() == SpriteState::IN_COLUSION) && _sprite->getId().compare("SuperAce0") != 0){
         //stop the animator
         _state = ANIMATOR_FINISHED;
         //setOnFinished(finishCallB);

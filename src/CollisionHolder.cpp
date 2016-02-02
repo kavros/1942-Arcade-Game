@@ -9,7 +9,7 @@ void Sprite::fireHandler::operator()(Sprite* bullet,Sprite* arg) const{
     assert(bullet && arg);
     assert(bullet->isAlive() && arg->isAlive());
     
-    SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce");
+    SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce0");
     assert(superAce);
     
 	if( !bullet->getVisibility() || !arg->getVisibility() )
@@ -149,7 +149,7 @@ void Sprite::touchHandler::operator()(Sprite* aircraft,Sprite* arg) const{
     assert(aircraft && arg);
     assert(aircraft->isAlive() && arg->isAlive());
     
-    SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce");
+    SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce0");
 
     if( !aircraft->getVisibility() || !arg->getVisibility())
         return;
@@ -217,7 +217,7 @@ void Sprite::touchPowerUpHandler::operator()(Sprite* powerUp,Sprite* arg) const{
     if( !powerUp->getVisibility() || !arg->getVisibility())
         return;
     
-    SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce");
+    SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce0");
     Sprite* rightFighter = superAce->getAttached(RIGHT_FIGHTER);
     Sprite* leftFighter = superAce->getAttached(LEFT_FIGHTER);
 

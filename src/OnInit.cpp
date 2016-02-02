@@ -19,6 +19,7 @@ bool Game::OnInit(){
     InitRenderer();
     
     InitGame();
+    
 
     return true;
 }
@@ -134,11 +135,11 @@ void    Game::LoadGameInfo (const std::string& cataloge){
     document.Parse(data);
     assert(document.IsObject());
     
-    SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce");
+    SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce0");
     superAce->setSuperAceLives(document["superAceLives"].GetInt());
     superAce->setSuperAceLoops(document["superAceLoops"].GetInt());
     
-    SuperAce* superAce2 = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce2");
+    SuperAce* superAce2 = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce1");
     superAce2->setSuperAceLives(document["superAceLives"].GetInt());
     superAce2->setSuperAceLoops(document["superAceLoops"].GetInt());
     
@@ -194,7 +195,7 @@ bool Game::InitGameInfo(){
     SpriteStringHolder::addSpriteString("fpsString", new SpriteString("FPS",WIN_WIDTH-62,10));
     SpriteStringHolder::addSpriteString("fps", new SpriteString("0000",WIN_WIDTH-62,30));
 
-    SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce");
+    SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce0");
     std::string remainingLoopsString = "";
     for(int i = 0; i < superAce->getSuperAceLoops(); i++){
        remainingLoopsString += "R";

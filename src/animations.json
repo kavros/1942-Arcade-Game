@@ -79,7 +79,7 @@
                                       "delay": 10000,
                                       "repetitions": 1
                                       }, {
-                                      "id": "miniGrayOneEngTickAnimation",
+                                      "id": "miniGreyOneEngTickAnimation",
                                       "delay": 3000,
                                       "repetitions": 4
                                       }, {
@@ -87,7 +87,7 @@
                                       "delay": 7000,
                                       "repetitions": 3
                                       }, {
-                                      "id": "miniGrayJetTickAnimation",
+                                      "id": "miniGreyJetTickAnimation",
                                       "delay": 10000,
                                       "repetitions": 1
                                       }, {
@@ -95,15 +95,15 @@
                                       "delay": 5000,
                                       "repetitions": 1
                                       }, {
-                                      "id": "bigPlaneIntroTickAnimation",
+                                      "id": "bigGreenIntroTickAnimation",
                                       "delay": 6000,
                                       "repetitions": 1
                                       }, {
-                                      "id": "bigPlaneStayStillTickAnimation",
+                                      "id": "bigGreenStayStillTickAnimation",
                                       "delay": 11000,
                                       "repetitions": 1
                                       }, {
-                                      "id": "bigPlaneOutroTickAnimation",
+                                      "id": "bigGreenOutroTickAnimation",
                                       "delay": 16000,
                                       "repetitions": 1
                                       }, {
@@ -1182,7 +1182,7 @@
                                                       "delay": 90
                                                       }]
                                             },{
-                                            "id": "flipMinGrayPlaneAnimation",
+                                            "id": "flipMinGreyPlaneAnimation",
                                             "continuous":false,
                                             "paths": [{
                                                       "dx": 0,
@@ -1234,7 +1234,7 @@
                                                       "delay": 60
                                                       }]
                                             },{
-                                            "id": "minGrayPlaneRightBackAnimation",
+                                            "id": "minGreyPlaneRightBackAnimation",
                                             "continuous":true,
                                             "paths": [{
                                                       "dx": 5,
@@ -1244,7 +1244,7 @@
                                                       "delay": 90
                                                       }]
                                             },{
-                                            "id": "minGrayPlaneLeftBackAnimation",
+                                            "id": "minGreyPlaneLeftBackAnimation",
                                             "continuous":true,
                                             "paths": [{
                                                       "dx": -5,
@@ -1254,7 +1254,7 @@
                                                       "delay": 90
                                                       }]
                                             },{
-                                            "id": "minGrayPlaneAnimation0",
+                                            "id": "minGreyPlaneAnimation0",
                                             "continuous": true,
                                             "paths": [{
                                                       "dx": 0,
@@ -1264,7 +1264,7 @@
                                                       "delay": 40
                                                       }]
                                             }, {
-                                            "id": "minGrayPlaneAnimation1",
+                                            "id": "minGreyPlaneAnimation1",
                                             "continuous": true,
                                             "paths": [{
                                                       "dx": 0,
@@ -1274,7 +1274,7 @@
                                                       "delay": 40
                                                       }]
                                             }, {
-                                            "id": "minGrayPlaneAnimation2",
+                                            "id": "minGreyPlaneAnimation2",
                                             "continuous": true,
                                             "paths": [{
                                                       "dx": 0,
@@ -1284,7 +1284,7 @@
                                                       "delay": 40
                                                       }]
                                             }, {
-                                            "id": "minGrayPlaneAnimation3",
+                                            "id": "minGreyPlaneAnimation3",
                                             "continuous": true,
                                             "paths": [{
                                                       "dx": 0,
@@ -1294,7 +1294,7 @@
                                                       "delay": 40
                                                       }]
                                             }, {
-                                            "id": "GrayJetAnimation0",
+                                            "id": "GreyJetAnimation0",
                                             "continuous": true,
                                             "paths": [{
                                                       "dx": 0,
@@ -1320,7 +1320,7 @@
                                                       "delay": 20
                                                       }]
                                             }, {
-                                            "id": "bigPlaneIntroAnimation0",
+                                            "id": "BigPlaneIntroAnimation",
                                             "continuous": true,
                                             "paths": [{
                                                       "dx": 0,
@@ -1337,7 +1337,7 @@
                                                       }]
                                             
                                             }, {
-                                            "id": "bigPlaneStayStillAnimation0",
+                                            "id": "BigPlaneStayStillAnimation",
                                             "continuous": true,
                                             "paths": [{
                                                       "dx": 0,
@@ -1354,7 +1354,7 @@
                                                       }]
                                             
                                             }, {
-                                            "id": "bigPlaneOutroAnimation0",
+                                            "id": "BigPlaneOutroAnimation",
                                             "continuous": true,
                                             "paths": [{
                                                       "dx": 3,
