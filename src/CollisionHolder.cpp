@@ -20,13 +20,18 @@ void Sprite::fireHandler::operator()(Sprite* bullet,Sprite* arg) const{
         return;
     }
 	
+	/*
 	if (arg->getType() == SUPER_ACE && arg->getState() == UNDEFEATABLE){
 		return;
 	}
 	if (superAce->getState() == UNDEFEATABLE && arg->getParent() != NULL){
 		return;
+	} */ 
+	if (arg == superAce || bullet == superAce || bullet == superAce->getParent() || arg == superAce->getParent()){
+		if (superAce->getState() == UNDEFEATABLE){
+			return;
+		}
 	}
-
     bullet->setState(IN_COLUSION);
     arg->setVisibility(false);
     bullet->setVisibility(false);
@@ -161,13 +166,21 @@ void Sprite::touchHandler::operator()(Sprite* aircraft,Sprite* arg) const{
     if( !aircraft->getVisibility() || !arg->getVisibility())
         return;
 
-	
+	/*
 	if ((superAce->getState() == UNDEFEATABLE) && arg->getType() == SUPER_ACE ){
 		return;
-	}
+	}*/
 
+	//in case that arg or arircraft is superAce
+	//check if superAce is UNDEFEATABLE
+	/*
 	if ((superAce->getState() == UNDEFEATABLE) && aircraft->getParent() != NULL){
 		return;
+	}*/
+	if (arg == superAce || aircraft == superAce || aircraft == superAce->getParent() || arg == superAce->getParent()){
+		if (superAce->getState() == UNDEFEATABLE){
+			return;
+		}
 	}
     aircraft->setVisibility(false);
     arg->setVisibility(false);
