@@ -14,6 +14,7 @@ void AnimatorHolder::Register(Animator* a) {
 }
 void AnimatorHolder::cancel(Animator* a) {
     AnimatorHolder::getAnimatorHolder()->_suspended.remove(a);
+    AnimatorHolder::getAnimatorHolder()->_map[a->getId()] = nullptr;
 }
 
 AnimatorHolder* AnimatorHolder::getAnimatorHolder(){
