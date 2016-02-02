@@ -15,7 +15,8 @@ Uint32 Game::_fps_frames = 0; //frames passed since the last recorded fps.
 std::list<unsigned> Game::_powerUpsOfStage;
 SDL_Window * Game::_window = 0;
 SDL_Renderer * Game::_renderer = 0;
-SDL_Event Game::e;
+SDL_Event Game::event;
+SDL_Event Game::prevEvent;
 
 GameState Game::_gameState = GameState::SINGLEPLAYER_MENU;
 
@@ -38,8 +39,8 @@ int Game::OnExecute(){
     while ( !isExit()    ){
 		setGameTime();
 
-        while (SDL_PollEvent(&e))
-            OnEvent(&e);
+        while (SDL_PollEvent(&event))
+            OnEvent();
 
         OnLoop();
         fpsLoop();

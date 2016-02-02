@@ -23,7 +23,7 @@ void Sprite::fireHandler::operator()(Sprite* bullet,Sprite* arg) const{
     bullet->setState(IN_COLUSION);
     arg->setVisibility(false);
     bullet->setVisibility(false);
-    Game::setScore(Game::getScore()+ 30);
+    //Game::setScore(Game::getScore()+ 30);
     if (arg == superAce){
         SuperAce* sa = (SuperAce*) arg;
         if(sa->getSuperAceLives() > 1){
@@ -136,6 +136,7 @@ void updateScore(EnemyFighter* s){
         }
         default: assert(0);
     }
+    Game::setScore(Game::getScore()+ i);
 }
 Sprite::fireHandler* Sprite::fireHandler::Clone(void) const{
     return new Sprite::fireHandler();
