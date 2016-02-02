@@ -26,9 +26,10 @@ public:
 		return _path;
 	}
 	void setPath(const std::list<PathEntry>& p){
-		//_path = _path.clear();
+		//_path.clear();
 		_path = p;
 	}
+
     bool getContinuous(void) const { return _continuous; }
     void setContinuous(bool c) { _continuous = c; }
 	Animation* clone(animid_t newId) const {
@@ -40,6 +41,7 @@ public:
 		for (std::list<PathEntry>::iterator it = _path.begin(); it != _path.end(); ++it){
 			it->_dx = dx;
 			it->_dy = dy;
+
 		}
 	}
 private:
