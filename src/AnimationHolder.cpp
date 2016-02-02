@@ -119,6 +119,7 @@ void    AnimationHolder::Load (const std::string& cataloge){
             _paths.push_back(pe);
             
         }
+        
         AnimationHolder::getAnimationHolder()->add(new MovingPathAnimation(_paths,id,continuous));
         //add Sprite 2 Sprite Holder
     }

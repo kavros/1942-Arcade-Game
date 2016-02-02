@@ -373,7 +373,8 @@
               "id": "empty_sea_background",
               "path": "terrain/empty_sea_background.bmp",
               "rects": [
-                        [0, 0, 223, 1228]
+                        [0, 0, 768, 768],
+                        [0, 2, 768, 768]
                         ]
               }, {
               "id": "land",

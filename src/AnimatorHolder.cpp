@@ -402,7 +402,7 @@ void triggerEndOfStageAnimators(){
 }
 
 void AnimatorHolder::startTimeTickAnimators(){
-    
+    /*
     //SuperAce
     TimerTickAnimator::startTimeTickAnimator("superAceMovingPathTickAnimation", triggerSuperAceMovingPathAnimator );
     
@@ -430,7 +430,7 @@ void AnimatorHolder::startTimeTickAnimators(){
      
     //end of stage
     //TimerTickAnimator::startTimeTickAnimator("endOfStageTickAnimation", triggerEndOfStageAnimators );
-    
+    */
 }
 
 using namespace rapidjson;

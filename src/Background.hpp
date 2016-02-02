@@ -5,8 +5,11 @@
 #include "includes.h"
 #include "Sprite.hpp"
 #include "AnimationFilm.hpp"
+
 #include "AnimationFilmHolder.hpp"
 #include "SpritesHolder.hpp"
+#include "AnimationHolder.h"
+#include "AnimatorHolder.h"
 
 class Background : public Sprite{
 private:
@@ -18,16 +21,14 @@ private:
     
     //constructor destructor
     Background();
+    Background(std::string id, unsigned  _frameNo, SDL_Rect _dstRect,SDL_Point  _point,bool _isVisible,SpriteType _type,AnimationFilm* _currFilm);
     ~Background();
     
 public:
 
-    static Background* Get(){
-        if (!_holder)
-            _holder = new Background();
-        return _holder;
-    }
-
+    static Background* Get();
+    static Background* Get(std::string id, unsigned  _frameNo, SDL_Rect _dstRect,SDL_Point  _point,bool _isVisible,SpriteType _type,AnimationFilm* _currFilm);
+    
     void initBackgroundObjects();
     
     void addBackgroundObject(string id);

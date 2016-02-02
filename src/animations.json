@@ -114,6 +114,23 @@
                                       ]
                    }, {
                    "MovingPathAnimations": [
+                                            {
+                                            "id": "backgroundAnimation",
+                                            "continuous": true,
+                                            "paths": [{
+                                                      "dx": 0,
+                                                      "dy": -2,
+                                                      "frameNo": 0,
+                                                      "visibility": true,
+                                                      "delay": 500
+                                                      }, {
+                                                      "dx": 0,
+                                                      "dy": 2,
+                                                      "frameNo": 1,
+                                                      "visibility": true,
+                                                      "delay": 500
+                                                      }]
+                                            },
                                             {                                            
                                             "id": "enemySideRightFire",
                                             "continuous": true,

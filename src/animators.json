@@ -1,5 +1,11 @@
 {
     "MovingPathAnimators": [{
+                            "id": "BackgroundAnimator",
+                            "animationId": "backgroundMovingPathAnimation",
+                            "repetition": 1,
+                            "spriteType": 2,
+                            "spriteId": "backgroundSprite"
+                            },{
                             "id": "SuperAceStartingAnimator",
                             "animationId": "superAceStartingAnimation",
                             "repetition": 2,
