@@ -349,16 +349,37 @@ void triggerBigGreenOutroTickAnimators(){
 
 }
 
+void triggerEndOfStageMoveToCenterAnimator(){
+    
+}
+
+void triggerEndOfStageCreateAircraftAnimator(){
+    
+}
+
+void triggerEndOfStageLandPlaneAnimator(){
+    
+}
+
+void triggerEndOfStageStopBackgroundAnimator(){
+    
+}
+
 void triggerEndOfStageAnimators(){
     
     //move super ace to the center up of the screen
-    TimerTickAnimator::startTimeTickAnimator("endOfStageTickAnimation", triggerEndOfStageAnimators );
+    TimerTickAnimator::startTimeTickAnimator("endOfStageMoveToCenterTickAnimation", triggerEndOfStageMoveToCenterAnimator );
 
     //create the finish aircraft
+    TimerTickAnimator::startTimeTickAnimator("endOfStageCreateAircraftTickAnimation", triggerEndOfStageCreateAircraftAnimator );
+
     //land the plane
-    //stop the background
-    //enable end text
-    
+    TimerTickAnimator::startTimeTickAnimator("endOfStageLandPlaneTickAnimation", triggerEndOfStageLandPlaneAnimator );
+
+    //stop the background and enable end text
+    TimerTickAnimator::startTimeTickAnimator("endOfStageStopBackgroundTickAnimation", triggerEndOfStageStopBackgroundAnimator );
+
+    /*
     MovingPathAnimator* superAceEndingAnimator = (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceEndingAnimator");
     assert(superAceEndingAnimator);
     superAceEndingAnimator->start(Game::getGameTime());
@@ -377,11 +398,11 @@ void triggerEndOfStageAnimators(){
     
     //Game::setState(END_OF_STAGE);
     
-    
+    */
 }
 
 void AnimatorHolder::startTimeTickAnimators(){
-    
+    /*
     //SuperAce
     TimerTickAnimator::startTimeTickAnimator("superAceMovingPathTickAnimation", triggerSuperAceMovingPathAnimator );
     
@@ -409,7 +430,7 @@ void AnimatorHolder::startTimeTickAnimators(){
      
     //end of stage
     //TimerTickAnimator::startTimeTickAnimator("endOfStageTickAnimation", triggerEndOfStageAnimators );
-    
+    */
 }
 
 using namespace rapidjson;

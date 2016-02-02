@@ -34,7 +34,7 @@ void Game::GameOnLoop(){
     destructionManagerOnLoop();
     
     //Move Background
-    Background::Get()->moveBackground(0,+1);
+    //Background::Get()->moveBackground(0,+1);
     
     //collision checker
     CollisionChecker::Check();
@@ -46,44 +46,6 @@ void Game::GameOnLoop(){
     //progress animators
     AnimatorHolder::progress(getGameTime());
 }
-
-/*void Game::multiplayerGameOnLoop(){
-
-    static int i = 0;
-    
-    SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce0");
-    assert(superAce);
-    
-    //SuperAce* superAce2 = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce1");
-    
-    if(superAce->getState() == IN_COLUSION ){
-        setState(GAME_OVER);
-        return;
-    }
-
-    if(i % 50000 ==0){
-        AnimatorHolder::getAnimatorHolder()->updateAllGreyPlaneAnimations();
-    }
-    if (i % 500 == 0){
-        AnimatorHolder::getAnimatorHolder()->updateAllGreyJetsAnimations();
-    }
-    
-    //commit destruction
-    destructionManagerOnLoop();
-    
-    //Move Background
-    Background::Get()->moveBackground(0,+1);
-    
-    //collision checker
-    CollisionChecker::Check();
-    
-    //check animators and sprites  for delete if is out of window
-    AnimatorHolder::checkAnimatorsForDelete();
-    SpritesHolder::checkSpritesForDelete();
-    
-    //progress animators
-    AnimatorHolder::progress(getGameTime());
-}*/
 
 void Game::gameOver(){
     static bool firstTime = true;

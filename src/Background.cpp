@@ -7,37 +7,82 @@ Background *Background::_holder = 0;
 void Background::filterMotion(int* dx, int* dy) const{
 
 }
-Background::Background():
-Sprite("spriteEmpty_sea_background",0,{0,0,0,0},{0,0},true,TERRAIN,AnimationFilmHolder::Get()->GetFilm("empty_sea_background")){
-    
-    _dstRect.x = 0;
-	_dstRect.y = -_currFilm->getFrameBox(0).h+WIN_HEIGHT;
-    _dstRect.w = WIN_WIDTH;
-    _dstRect.h =  _currFilm->getFrameBox(0).h;
-    
-    _terrainObjects = new SpriteList;
 
-    initBackgroundObjects();
+Background* Background::Get(){
+    assert(Background::_holder);
+    return Background::_holder;
+}
+
+Background* Background::Get(std::string id, unsigned  _frameNo, SDL_Rect _dstRect,SDL_Point  _point,bool _isVisible,SpriteType _type,AnimationFilm* _currFilm){
+    Background::_holder = new Background(id,_frameNo,_dstRect,_point,_isVisible,_type,_currFilm);
+    assert(Background::_holder);
+    return Background::_holder;
+}
+
+Background::Background(){
+    assert(0);
+}
+
+Background::Background(std::string id, unsigned  _frameNo, SDL_Rect _dstRect,SDL_Point  _point,bool _isVisible,SpriteType _type,AnimationFilm* _currFilm):
+Sprite(id,_frameNo,_dstRect,_point,_isVisible,_type,_currFilm){
+    _terrainObjects = new SpriteList;
 }
 
 Background::~Background(){
 }
 
+void Background::InitBackground(){
+    
+    assert(Background::_holder);
+    
+    MovingPathAnimation* backgroundAnimation = (MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("backgroundAnimation");
+    assert(backgroundAnimation);
+    
+    MovingPathAnimator* backgroundAnimator = new MovingPathAnimator("BackgroundAnimator", _holder, backgroundAnimation);
+    assert(backgroundAnimator);
+    
+    backgroundAnimator->start(Game::getGameTime());
+
+    /*
+     
+     _dstRect.x = 0;
+     _dstRect.y = -_currFilm->getFrameBox(0).h+WIN_HEIGHT;
+     _dstRect.w = WIN_WIDTH;
+     _dstRect.h =  _currFilm->getFrameBox(0).h;
+     
+     
+     
+     
+     
+     
+     explosionAnimator->start(Game::getGameTime());
+     
+     //initBackgroundObjects();
+     
+     */
+    
+
+}
+
 void Background::initBackgroundObjects(){
-   
-    addBackgroundObject("spriteAircraftCarrier0");
+   /*
     Sprite* initialAircraft = SpritesHolder::getSprite(TERRAIN, "spriteAircraftCarrier0");
+    assert(initialAircraft);
+    
     initialAircraft->setDstRectX(WIN_WIDTH/2-initialAircraft->getDstRect().w/2 + 13);
     initialAircraft->setDstRectY(WIN_HEIGHT-initialAircraft->getDstRect().h);
-
+    */
+    addBackgroundObject("spriteAircraftCarrier0");
+    
     addBackgroundObject("spriteAircraftCarrier1");
 
-    //addBackgroundObject("spriteAircraftCarrier2");
+    /*
+    addBackgroundObject("spriteAircraftCarrier2");
     
     addBackgroundObject("spriteLand0");
 
     addBackgroundObject("spriteEurope0");
-
+     */
 }
 
 void Background::addBackgroundObject(string id){

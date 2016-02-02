@@ -30,11 +30,12 @@ void Game::InitGame(){
 
     LoadGameInfo("config.json");
     
-    InitBackground();
-    
     InitGameInfo();
-        
+    
     AnimatorHolder::startTimeTickAnimators();
+    
+    Background::InitBackground();
+
 }
 
 void Game::InitGamePad(){
@@ -102,18 +103,6 @@ bool Game::InitData(){
     AnimationHolder* anh = AnimationHolder::getAnimationHolder();
     anh->Load("animations.json");
     AnimatorHolder::getAnimatorHolder()->Load("animators.json");
-    return true;
-}
-
-bool Game::InitBackground(){
-    static int unique = 0;
-    if(unique >1){
-        assert(0);
-    }
-    unique++;
-    
-    Background::Get();
-
     return true;
 }
 

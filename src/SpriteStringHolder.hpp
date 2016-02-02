@@ -4,6 +4,8 @@
 #include "includes.h"
 #include "SpriteString.hpp"
 
+class SpriteString;
+
 class SpriteStringHolder{
 private:
     typedef std::map<string, SpriteString*> SpriteStringMap;
