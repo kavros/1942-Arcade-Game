@@ -9,7 +9,7 @@ void Sprite::fireHandler::operator()(Sprite* bullet,Sprite* arg) const{
     assert(bullet && arg);
     assert(bullet->isAlive() && arg->isAlive());
     
-    SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce");
+    SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce0");
     assert(superAce);
     
 	if( !bullet->getVisibility() || !arg->getVisibility() )
@@ -21,13 +21,12 @@ void Sprite::fireHandler::operator()(Sprite* bullet,Sprite* arg) const{
     }
 	
 	/*
-	if (arg->getType() == SUPER_ACE && arg->getState() == UNDEFEATABLE){
-		return;
-	}
-	if (superAce->getState() == UNDEFEATABLE && arg->getParent() != NULL){
-		return;
-	} */ 
 	if (arg == superAce || bullet == superAce || bullet == superAce->getParent() || arg == superAce->getParent()){
+		if (superAce->getState() == UNDEFEATABLE){
+			return;
+		}
+	}*/
+	if (arg == superAce || arg == superAce->getAttached(RIGHT_FIGHTER) || arg == superAce->getAttached(LEFT_FIGHTER) ){
 		if (superAce->getState() == UNDEFEATABLE){
 			return;
 		}
@@ -161,27 +160,29 @@ void Sprite::touchHandler::operator()(Sprite* aircraft,Sprite* arg) const{
     assert(aircraft && arg);
     assert(aircraft->isAlive() && arg->isAlive());
     
-    SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce");
+    SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce0");
 
     if( !aircraft->getVisibility() || !arg->getVisibility())
         return;
 
 	/*
-	if ((superAce->getState() == UNDEFEATABLE) && arg->getType() == SUPER_ACE ){
-		return;
-	}*/
-
-	//in case that arg or arircraft is superAce
-	//check if superAce is UNDEFEATABLE
-	/*
-	if ((superAce->getState() == UNDEFEATABLE) && aircraft->getParent() != NULL){
-		return;
-	}*/
 	if (arg == superAce || aircraft == superAce || aircraft == superAce->getParent() || arg == superAce->getParent()){
 		if (superAce->getState() == UNDEFEATABLE){
 			return;
 		}
+	}*/
+
+	if (arg == superAce || arg == superAce->getAttached(RIGHT_FIGHTER) || arg == superAce->getAttached(LEFT_FIGHTER)){
+		if (superAce->getState() == UNDEFEATABLE){
+			return;
+		}
 	}
+	if (aircraft == superAce || aircraft == superAce->getAttached(RIGHT_FIGHTER) || aircraft == superAce->getAttached(LEFT_FIGHTER)){
+		if (superAce->getState() == UNDEFEATABLE){
+			return;
+		}
+	}
+
     aircraft->setVisibility(false);
     arg->setVisibility(false);
     
@@ -245,7 +246,7 @@ void Sprite::touchPowerUpHandler::operator()(Sprite* powerUp,Sprite* arg) const{
     if( !powerUp->getVisibility() || !arg->getVisibility())
         return;
     
-    SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce");
+    SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce0");
     Sprite* rightFighter = superAce->getAttached(RIGHT_FIGHTER);
     Sprite* leftFighter = superAce->getAttached(LEFT_FIGHTER);
 

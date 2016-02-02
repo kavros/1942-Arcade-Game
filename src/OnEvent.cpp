@@ -4,10 +4,10 @@
 
 void Game::singleplayerGameOnEvent(){
 
-    SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce");
+    SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce0");
     assert(superAce);
     
-    MovingPathAnimator* superAceStartingAnimator = (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceStartingAnimator");
+    MovingPathAnimator* superAceStartingAnimator = (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceStartingAnimator0");
     assert(superAceStartingAnimator);
     
     
@@ -30,22 +30,22 @@ void Game::singleplayerGameOnEvent(){
     if (event.type == SDL_KEYDOWN || event.type == SDL_CONTROLLERBUTTONDOWN){
         
         MovingPathAnimator* superAceAnimatorLeft =
-        (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorLeft");
+        (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorLeft0");
         
         MovingPathAnimator* superAceAnimatorLeftLeft =
-        (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorLeftLeft");
+        (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorLeftLeft0");
         
         MovingPathAnimator* superAceAnimatorRight =
-        (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorRight");
+        (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorRight0");
         
         MovingPathAnimator* superAceAnimatorRightRight =
-        (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorRightRight");
+        (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorRightRight0");
         
         MovingPathAnimator* superAceAnimatorUp =
-        (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorUp");
+        (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorUp0");
         
         MovingPathAnimator* superAceAnimatorDown =
-        (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorDown");
+        (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorDown0");
         
         if (event.key.keysym.sym == SDLK_ESCAPE || event.cbutton.button == SDL_CONTROLLER_BUTTON_START ) {
             //pause
@@ -124,13 +124,13 @@ void Game::singleplayerGameOnEvent(){
 
 void Game::multiplayerGameOnEvent(){
     
-    SuperAce* superAce2 = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce2");
+    SuperAce* superAce2 = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce1");
     if(!superAce2 || superAce2->getState() == IN_COLUSION)
         return;
     
     superAce2->setVisibility(true);
     
-    MovingPathAnimator* superAce2StartingAnimator = (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAce2StartingAnimator");
+    MovingPathAnimator* superAce2StartingAnimator = (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceStartingAnimator1");
     assert(superAce2StartingAnimator);
     
     
@@ -141,22 +141,22 @@ void Game::multiplayerGameOnEvent(){
     if (event.type == SDL_KEYDOWN || event.type == SDL_CONTROLLERBUTTONDOWN){
         
         MovingPathAnimator* superAce2AnimatorLeft =
-        (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAce2AnimatorLeft");
+        (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorLeft1");
         
         MovingPathAnimator* superAce2AnimatorLeftLeft =
-        (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAce2AnimatorLeftLeft");
+        (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorLeftLeft1");
         
         MovingPathAnimator* superAce2AnimatorRight =
-        (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAce2AnimatorRight");
+        (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorRight1");
         
         MovingPathAnimator* superAce2AnimatorRightRight =
-        (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAce2AnimatorRightRight");
+        (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorRightRight1");
         
         MovingPathAnimator* superAce2AnimatorUp =
-        (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAce2AnimatorUp");
+        (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorUp1");
         
         MovingPathAnimator* superAce2AnimatorDown =
-        (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAce2AnimatorDown");
+        (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorDown1");
         
         if (event.key.keysym.sym == SDLK_j/* || event.cbutton.button == SDL_CONTROLLER_BUTTON_DPAD_LEFT*/) {
             
@@ -305,7 +305,7 @@ void Game::OnEvent() {
         setState(PAUSE_MENU);
     }
     
-    SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce");
+    SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce0");
     assert(superAce);
     
     if(superAce->getState() == IN_COLUSION ){
