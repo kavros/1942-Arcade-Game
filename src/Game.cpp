@@ -37,14 +37,13 @@ int Game::OnExecute(){
 	//Game Loop
     while ( !isExit()    ){
 		setGameTime();
-        while (SDL_PollEvent(&e)){
+
+        while (SDL_PollEvent(&e))
             OnEvent(&e);
-        }
-        
+
         OnLoop();
-        OnRender(); 
         fpsLoop();
-		
+        OnRender();
 
     }
     OnCleanup();
