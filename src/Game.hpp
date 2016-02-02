@@ -91,7 +91,6 @@ public:
     static bool InitWindow();
     static bool InitRenderer();
     static bool InitData();
-    static bool InitBackground();
     static bool InitGameInfo();
 
 	//static void InitSuperAceAnimator();

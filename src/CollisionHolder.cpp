@@ -247,7 +247,6 @@ void Sprite::touchPowerUpHandler::operator()(Sprite* powerUp,Sprite* arg) const{
 
     if( superAce == arg || rightFighter == arg || leftFighter == arg ){
 		SoundHolder::playSound("PowerUp");
-		cout << "PowerUp" << endl;
         powerUp->setVisibility(false);
         ((PowerUp*)powerUp)->activatePowerUp(arg);
         powerUp->setState(IN_COLUSION);

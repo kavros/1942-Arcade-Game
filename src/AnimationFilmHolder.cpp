@@ -40,9 +40,6 @@ void    AnimationFilmHolder::Load (const std::string& cataloge,SDL_Renderer* _re
         std::string path = film["path"].GetString();
         std::string  image = IMG_PATH + path;
         
-        
-        std::cout<<image<<std::endl;
-        
         SDL_Surface* b = IMG_Load(image.c_str());
         if(!b) {
             printf("IMG_Load: %s\n", IMG_GetError());
@@ -58,9 +55,6 @@ void    AnimationFilmHolder::Load (const std::string& cataloge,SDL_Renderer* _re
       
         //rects
         const Value& rects = film["rects"];
-
-        int rectNo = rects.Size();
-        std::cout<<"ID: "<<id<<std::endl<<"Path: "<<path<<std::endl<<"RectNo: "<<rectNo<<std::endl;
         
         assert(film.IsObject());
         assert(film["id"].IsString());
@@ -78,7 +72,6 @@ void    AnimationFilmHolder::Load (const std::string& cataloge,SDL_Renderer* _re
             sdl_rect.h = rect[3].GetInt();
             boxes.push_back(sdl_rect);
             assert(rect[1].IsInt());
-            printf("Rect [%d,%d,%d,%d] \n",rect[0].GetInt(),rect[1].GetInt(),rect[2].GetInt(),rect[3].GetInt());
 		}
         assert(texture != NULL);
         AddAnimationFilm(texture ,boxes ,id);
