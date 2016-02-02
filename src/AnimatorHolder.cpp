@@ -576,12 +576,17 @@ void AnimatorHolder::updateAllGreyPlaneAnimations(){
         it2 = it;
         it2++;
         assert((*it));
-        if ((*it)->getId().find("MiniGreyOneEngAnimator") == 0 /*std::string::npos*/ ){
-            grayPlaneAnimator= (MovingPathAnimator*) (*it);
+		std::string str = string((*it)->getId());
+		str.resize(str.size() - 1);
+
+		if (str == "MiniGreyOneEngAnimator"){
+			grayPlaneAnimator= (MovingPathAnimator*) (*it);
             updateGreyPlaneAnimation(grayPlaneAnimator);
-        }
-        if((*it)->getId().find("MiniGreyJetAnimator") == 0){
-            grayPlaneAnimator= (MovingPathAnimator*) (*it);
+		}
+
+
+		if (str == "MiniGreyJetAnimator"){
+			grayPlaneAnimator= (MovingPathAnimator*) (*it);
             updateGreyJetAnimation(grayPlaneAnimator);
         }
         it = it2;
@@ -683,24 +688,7 @@ void updateGreyPlaneAnimation(MovingPathAnimator* grayJetAnimator){
 }
 
 
-void  AnimatorHolder::updateAllGreyJetsAnimations(){
-	MovingPathAnimator* grayJetAnimator;
 
-	AnimatorHolder::AnimatorList::const_iterator it2 = getAnimatorHolder()->_running.end();
-	AnimatorHolder::AnimatorList::const_iterator  it = getAnimatorHolder()->_running.begin();//_running.begin();
-
-	while (it != getAnimatorHolder()->_running.end()){
-		it2 = it;
-		it2++;
-		assert((*it));
-		if ((*it)->getId().find("MiniGreyJetAnimator") == 0 /*std::string::npos*/){
-			grayJetAnimator = (MovingPathAnimator*)(*it);
-			updateGreyJetAnimation(grayJetAnimator);
-		}
-		it = it2;
-	}
-	//updateGreyJetAnimation((MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator("MiniGreyJetAnimator0"));
-}
 
 void  updateGreyJetAnimation(MovingPathAnimator* grayJetAnimator){
     
