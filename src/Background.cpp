@@ -9,14 +9,14 @@ void Background::filterMotion(int* dx, int* dy) const{
 }
 
 Background* Background::Get(){
-    assert(_holder);
-    return _holder;
+    assert(Background::_holder);
+    return Background::_holder;
 }
 
 Background* Background::Get(std::string id, unsigned  _frameNo, SDL_Rect _dstRect,SDL_Point  _point,bool _isVisible,SpriteType _type,AnimationFilm* _currFilm){
-    _holder = new Background(id,_frameNo,_dstRect,_point,_isVisible,_type,_currFilm);
-    assert(_holder);
-    return _holder;
+    Background::_holder = new Background(id,_frameNo,_dstRect,_point,_isVisible,_type,_currFilm);
+    assert(Background::_holder);
+    return Background::_holder;
 }
 
 Background::Background(){
@@ -25,36 +25,43 @@ Background::Background(){
 
 Background::Background(std::string id, unsigned  _frameNo, SDL_Rect _dstRect,SDL_Point  _point,bool _isVisible,SpriteType _type,AnimationFilm* _currFilm):
 Sprite(id,_frameNo,_dstRect,_point,_isVisible,_type,_currFilm){
-    
     _terrainObjects = new SpriteList;
+}
+
+Background::~Background(){
+}
+
+void Background::InitBackground(){
+    
+    assert(Background::_holder);
     
     MovingPathAnimation* backgroundAnimation = (MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("backgroundAnimation");
     assert(backgroundAnimation);
     
-    MovingPathAnimator* backgroundAnimator = new MovingPathAnimator("BackgroundAnimator", this, backgroundAnimation);
+    MovingPathAnimator* backgroundAnimator = new MovingPathAnimator("BackgroundAnimator", _holder, backgroundAnimation);
     assert(backgroundAnimator);
     
+    backgroundAnimator->start(Game::getGameTime());
+
     /*
-
-    _dstRect.x = 0;
-	_dstRect.y = -_currFilm->getFrameBox(0).h+WIN_HEIGHT;
-    _dstRect.w = WIN_WIDTH;
-    _dstRect.h =  _currFilm->getFrameBox(0).h;
-    
-
-
-    
-
- 
+     
+     _dstRect.x = 0;
+     _dstRect.y = -_currFilm->getFrameBox(0).h+WIN_HEIGHT;
+     _dstRect.w = WIN_WIDTH;
+     _dstRect.h =  _currFilm->getFrameBox(0).h;
+     
+     
+     
+     
+     
+     
      explosionAnimator->start(Game::getGameTime());
- 
+     
      //initBackgroundObjects();
+     
+     */
+    
 
-    */
-
-}
-
-Background::~Background(){
 }
 
 void Background::initBackgroundObjects(){

@@ -4,9 +4,8 @@
     
     ],
     
-    "Sprites": [
-                {
-                "id": "ReadyLogo",
+    "Sprites": [{
+                "id": "SuperAce",
                 "frameNo": 0,
                 "destRect": [0, 0, 54, 40],
                 "point": [0, 0],
@@ -134,6 +133,7 @@
                 "frameNo": 0,
                 "destRect": [0, 0, 768, 768],
                 "point": [0, 0],
+                "repetition": 1,
                 "visible": true,
                 "spriteType": 2,
                 "animFilmId": "empty_sea_background"

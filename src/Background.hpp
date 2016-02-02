@@ -29,6 +29,8 @@ public:
     static Background* Get();
     static Background* Get(std::string id, unsigned  _frameNo, SDL_Rect _dstRect,SDL_Point  _point,bool _isVisible,SpriteType _type,AnimationFilm* _currFilm);
     
+    static void InitBackground();
+
     void initBackgroundObjects();
     
     void addBackgroundObject(string id);

@@ -1,7 +1,7 @@
 {
     "MovingPathAnimators": [{
                             "id": "BackgroundAnimator",
-                            "animationId": "backgroundMovingPathAnimation",
+                            "animationId": "backgroundAnimation",
                             "repetition": 1,
                             "spriteType": 2,
                             "spriteId": "backgroundSprite"
