@@ -13,7 +13,7 @@ void Game::destructionManagerOnLoop(){
     loopsRemainingToDelete--;
 }
 
-void Game::singleplayerGameOnLoop(){
+void Game::GameOnLoop(){
     static int i = 0;
     
     SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce0");
@@ -119,11 +119,11 @@ void Game::OnLoop() {
         case MULTIPLAYER_MENU:
             break;
         case SINGLEPLAYER_GAME:{
-            singleplayerGameOnLoop();
+            GameOnLoop();
             break;
         }
         case MULTIPLAYER_GAME:{
-            multiplayerGameOnLoop();
+            GameOnLoop();
             break;
         }
         case EXIT:

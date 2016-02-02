@@ -112,7 +112,7 @@ void Sprite::moveAttached (int dx, int dy) {
 void Sprite::attach (Sprite* s, const std::string& name){
     _attached[name] = s;
     s->_parent = this;
-    s->_name = name;
+    s->_name = name; 
 }
 
 void Sprite::detach(const std::string& name, bool forDestroy){
@@ -159,10 +159,7 @@ void Sprite::collisionCheck(Sprite* s){
 	
 		return;
 	}
-	if ((_state == UNDEFEATABLE) || s->_state == UNDEFEATABLE){
 
-		return;
-	}
 	//if sprites are not visible return
     if( !this->getVisibility() || !s->getVisibility() ){
         return;
