@@ -688,24 +688,7 @@ void updateGreyPlaneAnimation(MovingPathAnimator* grayJetAnimator){
 }
 
 
-void  AnimatorHolder::updateAllGreyJetsAnimations(){
-	MovingPathAnimator* grayJetAnimator;
 
-	AnimatorHolder::AnimatorList::const_iterator it2 = getAnimatorHolder()->_running.end();
-	AnimatorHolder::AnimatorList::const_iterator  it = getAnimatorHolder()->_running.begin();//_running.begin();
-
-	while (it != getAnimatorHolder()->_running.end()){
-		it2 = it;
-		it2++;
-		assert((*it));
-		if ((*it)->getId().find("MiniGreyJetAnimator") == 0 /*std::string::npos*/){
-			grayJetAnimator = (MovingPathAnimator*)(*it);
-			updateGreyJetAnimation(grayJetAnimator);
-		}
-		it = it2;
-	}
-	//updateGreyJetAnimation((MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator("MiniGreyJetAnimator0"));
-}
 
 void  updateGreyJetAnimation(MovingPathAnimator* grayJetAnimator){
     
