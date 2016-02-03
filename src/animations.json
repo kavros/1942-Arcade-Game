@@ -72,7 +72,11 @@
                                       "id": "miniGreyOneEngTickAnimation",
                                       "delay": 8000,
                                       "repetitions": 4
-                                      }, {
+                                      },{
+                                      "id": "miniGreyDoubleEngTickAnimation",
+                                      "delay": 8000,
+                                      "repetitions": 4
+                                      },{
                                       "id": "medGreenDoubleEngTickAnimation",
                                       "delay": 4000,
                                       "repetitions": 4
