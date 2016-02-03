@@ -132,7 +132,7 @@
                 "visible": false,
                 "spriteType": 4,
                 "remainingBullets": 4,
-                "enemyType" : 6,
+                "enemyType" : 8,
                 "animFilmId": "green_medium_plane"
                 },{
                 "id": "MedGreenTripleEng",
