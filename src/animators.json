@@ -179,6 +179,12 @@
                             "spriteType": 4,
                             "spriteId": "MedGreenSingleEng"
                             },{
+                            "id": "MedGreySingleEngAnimator",
+                            "animationId": "GreyMediumPlaneMovingUpAnimation",
+                            "repetition": 4,
+                            "spriteType": 4,
+                            "spriteId": "MedGreySingleEng"
+                            },{
                             "id": "MedGreyDoubleEngAnimator",
                             "animationId": "GreyMediumPlaneMovingDownAnimation",
                             "repetition": 4,
@@ -186,7 +192,7 @@
                             "spriteId": "MedGreyDoubleEng"
                             },{
                             "id": "Chain1MedGreyDoubleEngAnimator",
-                            "animationId": "GreenMediumPlaneCycleAnimation",
+                            "animationId": "MediumPlaneCycleAnimation",
                             "repetition": 4,
                             "spriteType": 4,
                             "spriteId": "MedGreyDoubleEng"
@@ -198,7 +204,7 @@
                             "spriteId": "MedGreyDoubleEng"
                             },{
                             "id": "Chain1MedGreenDoubleEngAnimator",
-                            "animationId": "GreenMediumPlaneCycleAnimation",
+                            "animationId": "MediumPlaneCycleAnimation",
                             "repetition": 4,
                             "spriteType": 4,
                             "spriteId": "MedGreenDoubleEng"
