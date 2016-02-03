@@ -1,6 +1,6 @@
 {
     
-    "mute":true,
+    "mute": true,
     "superAceLifes": 2,
     "superAceLoops": 3,
     "powerUpsOfStage": [2,5,0,1,3,6,4],
