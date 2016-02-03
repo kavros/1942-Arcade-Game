@@ -32,7 +32,15 @@
                                       "id": "redJetRightTickAnimation0",
                                       "delay": 400,
                                       "repetitions": 5
-                                      }, {
+                                      },{
+                                      "id": "medGreenTripleEngAnimation0",
+                                      "delay": 400,
+                                      "repetitions": 5
+                                      },{
+                                      "id": "medGreenTripleEngAnimation1",
+                                      "delay": 400,
+                                      "repetitions": 5
+                                      },{
                                       "id": "redJetRightTickAnimation1",
                                       "delay": 400,
                                       "repetitions": 5
@@ -95,7 +103,11 @@
                                       }, {
                                       "id": "medGreenTripleEngTickAnimation",
                                       "delay": 9000,
-                                      "repetitions": 4
+                                      "repetitions": 1
+                                      }, {
+                                      "id": "medGreenTripleEngTickAnimation0",
+                                      "delay": 800,
+                                      "repetitions": 1
                                       }, {
                                       "id": "medGreenSingleEngTickAnimation",
                                       "delay": 9000,

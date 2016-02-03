@@ -304,13 +304,12 @@ void triggerRedPlaneTickAnimations(){
     string redPlaneTickAnimationId ;
     if(id % 2 == 1){
         redPlaneTickAnimationId = "redJetRightTickAnimation" +  std::to_string(id/2);
-        TimerTickAnimator::startTimeTickAnimator(redPlaneTickAnimationId, triggerRedJetRightAnimator );
+		TimerTickAnimator::startTimeTickAnimator(redPlaneTickAnimationId, triggerRedJetLeftAnimator);
     }else{
-        redPlaneTickAnimationId = "redJetLeftTickAnimation" + std::to_string(id/2);
+        redPlaneTickAnimationId = "redJetRightTickAnimation" + std::to_string(id/2);
         TimerTickAnimator::startTimeTickAnimator(redPlaneTickAnimationId, triggerRedJetLeftAnimator );
     }
     id++;
-    
 }
 
 void triggerMiniGreyJetTickAnimator(){
@@ -579,7 +578,8 @@ void triggerMedGreyTripleAnimator(){
 	assert(animator);
 	animator->start(Game::getGameTime());
 }
-void triggerMedGreenTripleEngAnimator(){
+void triggerMedGreenRightAnimator(){
+
 	static int nameId = 0;
 	string name = "MedGreenTripleEngAnimator" + std::to_string(nameId);
 	nameId++;
@@ -587,7 +587,29 @@ void triggerMedGreenTripleEngAnimator(){
 	MovingPathAnimator* animator = (MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator(name);
 	assert(animator);
 	animator->start(Game::getGameTime());
+
 }
+
+void triggerMedGreenTripleEngAnimator(){
+	/*static int nameId = 0;
+	string name = "MedGreenTripleEngAnimator" + std::to_string(nameId);
+	nameId++;
+
+	MovingPathAnimator* animator = (MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator(name);
+	assert(animator);
+	animator->start(Game::getGameTime());
+	*/
+
+	static int id = 0;
+	string medGreenPlaneTickAnimationId;
+	assert(id == 0);
+	medGreenPlaneTickAnimationId = "medGreenTripleEngAnimation" + std::to_string(id);
+	TimerTickAnimator::startTimeTickAnimator(medGreenPlaneTickAnimationId, triggerMedGreenRightAnimator);
+	
+	
+	id++;
+}
+
 void triggerMiniGreyDoubleEngAnimator(){
 	static int nameId = 0;
 	string name = "MiniGreyDoubleEngAnimator" + std::to_string(nameId);
@@ -607,7 +629,7 @@ void AnimatorHolder::startTimeTickAnimators(){
     //TimerTickAnimator::startTimeTickAnimator("enemyBulletsTickAnimation", AnimatorHolder::triggerBullets);
     
     //Bonus Planes
-    //TimerTickAnimator::startTimeTickAnimator("redPlaneTickAnimations", triggerRedPlaneTickAnimations );
+    TimerTickAnimator::startTimeTickAnimator("redPlaneTickAnimations", triggerRedPlaneTickAnimations );
      
     //mini green Planes/jets
     //TimerTickAnimator::startTimeTickAnimator("miniGreenOneEngTickAnimation", triggerMiniGreenOneEngAnimator );
@@ -616,17 +638,17 @@ void AnimatorHolder::startTimeTickAnimators(){
 
 	//mini  grey Planes/jets
 	//TimerTickAnimator::startTimeTickAnimator("miniGreyJetTickAnimation", triggerMiniGreyJetTickAnimator);
-	TimerTickAnimator::startTimeTickAnimator("miniGreyOneEngTickAnimation", triggerMiniGreyOneEngAnimator);
+	//TimerTickAnimator::startTimeTickAnimator("miniGreyOneEngTickAnimation", triggerMiniGreyOneEngAnimator);
 	//TimerTickAnimator::startTimeTickAnimator("miniGreyDoubleEngTickAnimation", triggerMiniGreyDoubleEngAnimator);
 
 
 	//green medium plane
 	//TimerTickAnimator::startTimeTickAnimator("medGreenDoubleEngTickAnimation", triggerMedGreenDoubleEngAnimator);
 	//TimerTickAnimator::startTimeTickAnimator("medGreenSingleEngTickAnimation", triggerMedGreenSingleEngAnimator);
-	//TimerTickAnimator::startTimeTickAnimator("medGreenTripleEngTickAnimation", triggerMedGreenTripleEngAnimator);
+	TimerTickAnimator::startTimeTickAnimator("medGreenTripleEngTickAnimation", triggerMedGreenTripleEngAnimator);
 
 	//grey medium plane
-	TimerTickAnimator::startTimeTickAnimator("medGreyDoubleEngTickAnimation", triggerMedGreyDoubleAnimator);
+	//TimerTickAnimator::startTimeTickAnimator("medGreyDoubleEngTickAnimation", triggerMedGreyDoubleAnimator);
 	//TimerTickAnimator::startTimeTickAnimator("medGreySingleEngTickAnimation", triggerMedGreySingleAnimator);
 	//TimerTickAnimator::startTimeTickAnimator("medGreyTripleEngTickAnimation", triggerMedGreyTripleAnimator);
 
