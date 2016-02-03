@@ -23,6 +23,8 @@ Sprite::Sprite(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point poin
     setFrame(frameNo);
     setDstRect(dstRect);
 
+    this->setUndefeatable(false);
+    
     SpritesHolder::add(this);
 
 }
@@ -59,6 +61,14 @@ void Sprite::setDstRectX(int x){
 void Sprite::setDstRectY(int y){
     _dstRect.y=y;
 
+}
+
+void Sprite::setUndefeatable(bool flag){
+    this->undefeatable = flag;
+}
+
+bool Sprite::getUndefeatable(){
+    return this->undefeatable;
 }
 
 std::string Sprite::getId(void) const{
@@ -183,12 +193,34 @@ void Sprite::notifyCollision(Sprite* arg){
     Handlers::iterator i = _handlers.begin();
     Handlers::iterator i2;
     
-    if( _spriteId.compare("SuperAce0") == 0 ){
-        if(_state==MANEUVER ||_state == UNDEFEATABLE )
-            return;
-        
+    SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce0");
+
+    if( superAce == this || arg == superAce){
+        if(superAce->getState()==MANEUVER || superAce->getUndefeatable()){
+            if( arg->getType()!=POWER_UPS && this->getType()!=POWER_UPS )
+                return;
+        }
     }
+    /*
+    Sprite* right = superAce->getAttached(RIGHT_FIGHTER);
+    Sprite* left = superAce->getAttached(LEFT_FIGHTER);
     
+    if( right && ( right == this || arg == right ) ){
+        if(right->getState()==MANEUVER || right->getUndefeatable()){
+            assert(0);
+            if( arg->getType()!=POWER_UPS && this->getType()!=POWER_UPS )
+                return;
+        }
+    }
+
+    if( left && ( left == this || arg == left ) ){
+        if(left->getState()==MANEUVER || left->getUndefeatable()){
+            assert(0);
+            if( arg->getType()!=POWER_UPS && this->getType()!=POWER_UPS )
+                return;
+        }
+    }
+    */
     while(i!=_handlers.end()){
         i2=i;
         i2++;

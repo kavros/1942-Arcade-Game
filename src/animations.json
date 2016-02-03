@@ -79,6 +79,10 @@
                                       "delay": 9000,
                                       "repetitions": 4
                                       }, {
+                                      "id": "medGreyDoubleEngTickAnimation",
+                                      "delay": 9000,
+                                      "repetitions": 4
+                                      }, {
                                       "id": "medGreenSingleEngTickAnimation",
                                       "delay": 9000,
                                       "repetitions": 4
@@ -449,6 +453,41 @@
                                                       "dy": 2,
                                                       "visibility": true,
                                                       "frameNo": 8,
+                                                      "delay": 20
+                                                      },{
+                                                      "dx": 0,
+                                                      "dy":2,
+                                                      "visibility": true,
+                                                      "frameNo": 8,
+                                                      "delay": 20
+                                                      }]
+                                            },{
+                                            "id": "GreyMediumPlaneMovingDownContinuousAnimation",
+											"continuous": true,
+                                            "paths": [{
+                                                      "dx": 0,
+                                                      "dy": 2,
+                                                      "visibility": true,
+                                                      "frameNo":8,
+                                                      "delay": 20
+                                                      },{
+                                                      "dx": 0,
+                                                      "dy":2,
+                                                      "visibility": true,
+                                                      "frameNo": 8,
+                                                      "delay": 20
+                                                      }]
+                                            },{
+                                            "id": "GreyMediumPlaneMovingDownAnimation",
+											"continuous": false,
+                                            "doWhile":true,
+                                            "maxX":0,
+                                            "maxY":150,
+                                            "paths": [{
+                                                      "dx": 0,
+                                                      "dy": 2,
+                                                      "visibility": true,
+                                                      "frameNo":8,
                                                       "delay": 20
                                                       },{
                                                       "dx": 0,
