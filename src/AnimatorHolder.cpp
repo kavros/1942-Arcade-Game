@@ -616,8 +616,8 @@ void AnimatorHolder::startTimeTickAnimators(){
 
 	//mini  grey Planes/jets
 	//TimerTickAnimator::startTimeTickAnimator("miniGreyJetTickAnimation", triggerMiniGreyJetTickAnimator);
-	//TimerTickAnimator::startTimeTickAnimator("miniGreyOneEngTickAnimation", triggerMiniGreyOneEngAnimator);
-	TimerTickAnimator::startTimeTickAnimator("miniGreyDoubleEngTickAnimation", triggerMiniGreyDoubleEngAnimator);
+	TimerTickAnimator::startTimeTickAnimator("miniGreyOneEngTickAnimation", triggerMiniGreyOneEngAnimator);
+	//TimerTickAnimator::startTimeTickAnimator("miniGreyDoubleEngTickAnimation", triggerMiniGreyDoubleEngAnimator);
 
 
 	//green medium plane
@@ -783,7 +783,7 @@ void updateGreyPlaneAnimation(MovingPathAnimator* grayJetAnimator){
     //path._dx = 1;
     //path._dy = 0;
     path._frame = grayJetAnimation->getPath().front()._frame;
-    path._delay = grayJetAnimation->getPath().front()._delay;
+    path._delay = 40;
     path._visibility = true;
     
     
@@ -798,21 +798,21 @@ void updateGreyPlaneAnimation(MovingPathAnimator* grayJetAnimator){
     
     
     
-    if (grayJetPositionOnX > superAcePositionOnX){
+    if (grayJetPositionOnX > superAcePositionOnX + 10){
         //an o superace einai pio aristera apo to gray kai
         //to gray kinite deksia h den kinitai tote vale to na pigenei aristera
         if (grayJetAnimation->getPath().front()._dx >= 0){
-            path._dx = -5;
-            path._dy = 5;
+            path._dx = -4;
+            path._dy = 4;
             std::list<PathEntry> p;
             p.push_front(path);
             grayJetAnimation->setPath(p);
         }
     }
-    else if (grayJetPositionOnX < superAcePositionOnX){
+    else if (grayJetPositionOnX < superAcePositionOnX - 10){
         if (grayJetAnimation->getPath().front()._dx <= 0){
-            path._dx = 5;
-            path._dy = 5;
+            path._dx = 4;
+            path._dy = 4;
             std::list<PathEntry> p;
             p.push_front(path);
             grayJetAnimation->setPath(p);
@@ -824,7 +824,7 @@ void updateGreyPlaneAnimation(MovingPathAnimator* grayJetAnimator){
         if (grayJetAnimation->getPath().front()._dx != 0){
             
             path._dx = 0;
-            path._dy = 5;
+            path._dy = 4;
             std::list<PathEntry> p;
             p.push_front(path);
             grayJetAnimation->setPath(p);

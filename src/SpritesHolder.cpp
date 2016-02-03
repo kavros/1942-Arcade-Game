@@ -213,6 +213,7 @@ void    SpritesHolder::Load (const std::string& cataloge/*,SDL_Renderer* _render
 
 SDL_Rect getRandomDestRect(EnemyFighterType e,SDL_Rect dst){
     switch (e) {
+            
         case EnemyFighterType(3):{
             //dst.x = 0;
             dst.y = rand() % 384 + 92; // random between 92 - 476
@@ -224,6 +225,10 @@ SDL_Rect getRandomDestRect(EnemyFighterType e,SDL_Rect dst){
         case EnemyFighterType(6):{
             //dst.x = 0;
             dst.x = rand() % 384 + 192; // random between 192 - 576
+            break;}
+        case EnemyFighterType(4):{
+            //dst.x = 0;
+            dst.x = rand() % 690 + 40; // random between  40 - 730
             break;}
         default:break;
     }

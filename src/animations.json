@@ -370,21 +370,21 @@
                                             "id": "minGreyPlaneRightBackAnimation",
                                             "continuous": true,
                                             "paths": [{
-                                                      "dx": 5,
-                                                      "dy": -5,
+                                                      "dx": 4,
+                                                      "dy": -4,
                                                       "visibility": true,
                                                       "frameNo": 1,
-                                                      "delay": 90
+                                                      "delay": 40
                                                       }]
                                             }, {
                                             "id": "minGreyPlaneLeftBackAnimation",
                                             "continuous": true,
                                             "paths": [{
-                                                      "dx": -5,
-                                                      "dy": -5,
+                                                      "dx": -4,
+                                                      "dy": -4,
                                                       "visibility": true,
                                                       "frameNo": 1,
-                                                      "delay": 90
+                                                      "delay": 40
                                                       }]
                                             }, {
                                             "id": "minGreyPlaneAnimation0",
