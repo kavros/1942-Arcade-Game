@@ -652,13 +652,11 @@
               },{
               "id": "grey_medium_planes_2",
               "path": "medium_planes_grey_1942.png",
-              "rects": [
-                        
+              "rects": [              
                         [6,22,113,102],
 						[125,8,99,117],
 						[240,0,92,118]								
-                        
-                        ]
+                       ]
               }
               
               

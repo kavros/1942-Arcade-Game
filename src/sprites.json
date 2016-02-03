@@ -124,6 +124,17 @@
                 "enemyType" : 10,
                 "animFilmId": "grey_medium_planes_2"
                 },{
+                "id": "MedGreyTripleEng",
+                "frameNo": 1,
+                "destRect": [768, 500, 63, 58],
+                "repetition": 4,
+                "point": [0, 0],
+                "visible": false,
+                "spriteType": 4,
+                "remainingBullets": 4,
+                "enemyType" : 10,
+                "animFilmId": "grey_medium_planes_2"
+                },{
                 "id": "BigGreen",
                 "frameNo": 0,
                 "destRect": [100, 768, 120, 100],

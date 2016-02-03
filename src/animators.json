@@ -185,6 +185,12 @@
                             "spriteType": 4,
                             "spriteId": "MedGreySingleEng"
                             },{
+                            "id": "MedGreyTripleEngAnimator",
+                            "animationId": "GreyMediumPlaneMovingLeftAnimation",
+                            "repetition": 4,
+                            "spriteType": 4,
+                            "spriteId": "MedGreyTripleEng"
+                            },{
                             "id": "MedGreyDoubleEngAnimator",
                             "animationId": "GreyMediumPlaneMovingDownAnimation",
                             "repetition": 4,
