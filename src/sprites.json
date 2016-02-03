@@ -99,7 +99,7 @@
                 "visible": false,
                 "spriteType": 4,
                 "remainingBullets": 4,
-                "enemyType" : 12,
+                "enemyType" : 9,
                 "animFilmId": "green_medium_triple"
                 },{
                 "id": "MedGreyDoubleEng",
@@ -143,7 +143,7 @@
                 "visible": false,
                 "spriteType": 4,
                 "remainingBullets": 4,
-                "enemyType" : 10,
+                "enemyType" : 12,
                 "animFilmId": "grey_medium_planes_2"
                 },{
                 "id": "BigGreen",
