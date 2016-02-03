@@ -107,7 +107,8 @@ public:
     void setDstRectY(int y);
     void setCurrFilm(AnimationFilm* currFilm);
     void setUndefeatable(bool flag);
-
+    void setPoint(SDL_Point point);
+    
     //getters
     std::string getId(void) const;
     unsigned  getFrame(void) const;
@@ -121,7 +122,8 @@ public:
     AnimationFilm* getCurrFilm(void) const;
     Sprite* getParent();
     bool getUndefeatable();
-    
+    SDL_Point getPoint();
+
 	//constructors
     Sprite();
     Sprite(std::string id, unsigned  _frameNo, SDL_Rect _dstRect,SDL_Point  _point,bool _isVisible,SpriteType _type,AnimationFilm* _currFilm);

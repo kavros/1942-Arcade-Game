@@ -93,6 +93,14 @@ void Sprite::changeDstRectY(int dy){
     _dstRect.y+=dy;
 }
 
+void Sprite::setPoint(SDL_Point point){
+    this->_point = point;
+}
+
+SDL_Point Sprite::getPoint(){
+    return this->_point;
+}
+
 void Sprite::setVisibility (bool v) {
     _isVisible = v;
 }

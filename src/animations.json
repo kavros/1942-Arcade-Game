@@ -93,10 +93,22 @@
                                       "delay": 9000,
                                       "repetitions": 4
                                       }, {
-                                      "id": "medGreenTripleEngTickAnimation",
-                                      "delay": 9000,
-                                      "repetitions": 4
+                                      "id": "medGreenTripleEngTickAnimations",
+                                      "delay": 8000,
+                                      "repetitions": 3
                                       }, {
+                                      "id": "medGreenTripleEngTickAnimation0",
+                                      "delay": 1000,
+                                      "repetitions": 3
+                                      },{
+                                      "id": "medGreenTripleEngTickAnimation1",
+                                      "delay": 1000,
+                                      "repetitions": 3
+                                      },{
+                                      "id": "medGreenTripleEngTickAnimation2",
+                                      "delay": 1000,
+                                      "repetitions": 3
+                                      },{
                                       "id": "medGreenSingleEngTickAnimation",
                                       "delay": 9000,
                                       "repetitions": 4
@@ -126,7 +138,7 @@
                                       "repetitions": 8
                                       }, {
                                       "id": "endOfStageTickAnimation",
-                                      "delay": 40000,
+                                      "delay": 8000,
                                       "repetitions": 1
                                       }, {
                                       "id": "endOfStageMoveToCenterTickAnimation",
@@ -140,7 +152,12 @@
                                       "id": "endOfStageLandPlaneTickAnimation",
                                       "delay": 10000,
                                       "repetitions": 1
-                                      }, {
+                                      },{
+                                      "id": "endOfStageMinimizePlaneTickAnimation",
+                                      "delay": 10000,
+                                      "repetitions": 10
+                                      },
+                                      {
                                       "id": "endOfStageStopBackgroundTickAnimation",
                                       "delay": 15000,
                                       "repetitions": 1

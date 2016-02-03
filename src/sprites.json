@@ -138,7 +138,7 @@
                 "id": "MedGreenTripleEng",
                 "frameNo": 0,
                 "destRect": [0, 100, 63, 58],
-                "repetition": 4,
+                "repetition": 9,
                 "point": [0, 0],
                 "visible": false,
                 "spriteType": 4,
