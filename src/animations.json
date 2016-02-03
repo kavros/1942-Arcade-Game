@@ -1,7 +1,6 @@
 {
     "Animations": [{
-                   "MovingAnimations": [
-                                        {
+                   "MovingAnimations": [{
                                         "id": "superAceFire",
                                         "continuous": true,
                                         "dx": 0,
@@ -13,8 +12,7 @@
                                         "dx": 0,
                                         "dy": 4,
                                         "delay": 10
-                                        },
-                                        {
+                                        }, {
                                         "id": "powerUp",
                                         "dx": 0,
                                         "dy": 1,
@@ -31,32 +29,32 @@
                                       "delay": 100,
                                       "repetitions": 1
                                       }, {
-                                      "id": "redPlaneTickAnimation0",
-                                      "delay": 600,
+                                      "id": "redJetRightTickAnimation0",
+                                      "delay": 400,
                                       "repetitions": 5
                                       }, {
-                                      "id": "redPlaneTickAnimation1",
-                                      "delay": 600,
+                                      "id": "redJetRightTickAnimation1",
+                                      "delay": 400,
                                       "repetitions": 5
                                       }, {
-                                      "id": "redPlaneTickAnimation2",
-                                      "delay": 600,
+                                      "id": "redJetRightTickAnimation2",
+                                      "delay": 400,
                                       "repetitions": 5
                                       }, {
-                                      "id": "redPlaneTickAnimation3",
-                                      "delay": 600,
+                                      "id": "redJetLeftTickAnimation0",
+                                      "delay": 400,
                                       "repetitions": 5
                                       }, {
-                                      "id": "redPlaneTickAnimation4",
-                                      "delay": 600,
+                                      "id": "redJetLeftTickAnimation1",
+                                      "delay": 400,
                                       "repetitions": 5
                                       }, {
-                                      "id": "redPlaneTickAnimation5",
-                                      "delay": 600,
+                                      "id": "redJetLeftTickAnimation2",
+                                      "delay": 400,
                                       "repetitions": 5
                                       }, {
-                                      "id": "redPlaneTickAnimation6",
-                                      "delay": 600,
+                                      "id": "redJetLeftTickAnimation3",
+                                      "delay": 400,
                                       "repetitions": 5
                                       }, {
                                       "id": "redPlaneTickAnimations",
@@ -68,8 +66,8 @@
                                       "repetitions": 4
                                       }, {
                                       "id": "miniGreenDoubleEngTickAnimation",
-                                      "delay": 7000,
-                                      "repetitions": 4
+                                      "delay": 3500,
+                                      "repetitions": 8
                                       }, {
                                       "id": "miniGreyOneEngTickAnimation",
                                       "delay": 8000,
@@ -86,7 +84,7 @@
                                       "id": "medGreenSingleEngTickAnimation",
                                       "delay": 9000,
                                       "repetitions": 4
-                                      },{
+                                      }, {
                                       "id": "miniGreyJetTickAnimation",
                                       "delay": 9000,
                                       "repetitions": 4
@@ -108,8 +106,8 @@
                                       "repetitions": 1
                                       }, {
                                       "id": "miniGreenOneEngTickAnimation",
-                                      "delay": 7000,
-                                      "repetitions": 4
+                                      "delay": 6000,
+                                      "repetitions": 8
                                       }, {
                                       "id": "endOfStageTickAnimation",
                                       "delay": 40000,
@@ -124,7 +122,7 @@
                                       "repetitions": 1
                                       }, {
                                       "id": "endOfStageLandPlaneTickAnimation",
-                                      "delay":10000,
+                                      "delay": 10000,
                                       "repetitions": 1
                                       }, {
                                       "id": "endOfStageStopBackgroundTickAnimation",
@@ -134,11 +132,9 @@
                                       "id": "deathStarTickAnimation",
                                       "delay": 5000,
                                       "repetitions": 1
-                                      }
-                                      ]
+                                      }]
                    }, {
-                   "MovingPathAnimations": [
-                                            {
+                   "MovingPathAnimations": [{
                                             "id": "enemySideRightFire",
                                             "continuous": true,
                                             "paths": [{
@@ -148,7 +144,7 @@
                                                       "visibility": true,
                                                       "delay": 10
                                                       }]
-                                            },{
+                                            }, {
                                             "id": "enemySideLeftFire",
                                             "continuous": true,
                                             "paths": [{
@@ -158,8 +154,7 @@
                                                       "visibility": true,
                                                       "delay": 10
                                                       }]
-                                            },
-                                            {
+                                            }, {
                                             "id": "superAceMovingAnimation",
                                             "continuous": true,
                                             "paths": [{
@@ -178,9 +173,9 @@
                                             }, {
                                             "id": "superAceAnimationUp",
                                             "continuous": false,
-                                            "doWhile":true,
-                                            "maxY":-48,
-                                            "maxX":0,
+                                            "doWhile": true,
+                                            "maxY": -48,
+                                            "maxX": 0,
                                             "paths": [{
                                                       "dx": 0,
                                                       "dy": -4,
@@ -191,9 +186,9 @@
                                             }, {
                                             "id": "superAceAnimationDown",
                                             "continuous": false,
-                                            "doWhile":true,
-                                            "maxY":48,
-                                            "maxX":0,
+                                            "doWhile": true,
+                                            "maxY": 48,
+                                            "maxX": 0,
                                             "paths": [{
                                                       "dx": 0,
                                                       "dy": 4,
@@ -204,9 +199,9 @@
                                             }, {
                                             "id": "superAceAnimationLeft",
                                             "continuous": false,
-                                            "doWhile":true,
-                                            "maxY":0,
-                                            "maxX":-36,
+                                            "doWhile": true,
+                                            "maxY": 0,
+                                            "maxX": -36,
                                             "paths": [{
                                                       "dx": -3,
                                                       "dy": 0,
@@ -217,9 +212,9 @@
                                             }, {
                                             "id": "superAceAnimationLeftLeft",
                                             "continuous": false,
-                                            "doWhile":true,
-                                            "maxY":0,
-                                            "maxX":-48,
+                                            "doWhile": true,
+                                            "maxY": 0,
+                                            "maxX": -48,
                                             "paths": [{
                                                       "dx": -4,
                                                       "dy": 0,
@@ -230,9 +225,9 @@
                                             }, {
                                             "id": "superAceAnimationRight",
                                             "continuous": false,
-                                            "doWhile":true,
-                                            "maxY":0,
-                                            "maxX":36,
+                                            "doWhile": true,
+                                            "maxY": 0,
+                                            "maxX": 36,
                                             "paths": [{
                                                       "dx": 3,
                                                       "dy": 0,
@@ -243,9 +238,9 @@
                                             }, {
                                             "id": "superAceAnimationRightRight",
                                             "continuous": false,
-                                            "doWhile":true,
-                                            "maxY":0,
-                                            "maxX":48,
+                                            "doWhile": true,
+                                            "maxY": 0,
+                                            "maxX": 48,
                                             "paths": [{
                                                       "dx": 4,
                                                       "dy": 0,
@@ -253,7 +248,7 @@
                                                       "visibility": true,
                                                       "delay": 30
                                                       }]
-                                            },{
+                                            }, {
                                             "id": "sideFighterAnimationRight",
                                             "continuous": false,
                                             "paths": [{
@@ -355,9 +350,9 @@
                                                       "visibility": false,
                                                       "delay": 90
                                                       }]
-                                            },{
+                                            }, {
                                             "id": "minGreyPlaneRightBackAnimation",
-                                            "continuous":true,
+                                            "continuous": true,
                                             "paths": [{
                                                       "dx": 5,
                                                       "dy": -5,
@@ -365,9 +360,9 @@
                                                       "frameNo": 1,
                                                       "delay": 90
                                                       }]
-                                            },{
+                                            }, {
                                             "id": "minGreyPlaneLeftBackAnimation",
-                                            "continuous":true,
+                                            "continuous": true,
                                             "paths": [{
                                                       "dx": -5,
                                                       "dy": -5,
@@ -375,7 +370,7 @@
                                                       "frameNo": 1,
                                                       "delay": 90
                                                       }]
-                                            },{
+                                            }, {
                                             "id": "minGreyPlaneAnimation0",
                                             "continuous": true,
                                             "paths": [{
@@ -425,7 +420,7 @@
                                                       "frameNo": 0,
                                                       "delay": 80
                                                       }]
-                                            },{
+                                            }, {
                                             "id": "GreyJetLeftDownAnimation",
                                             "continuous": true,
                                             "paths": [{
@@ -435,7 +430,7 @@
                                                       "frameNo": 1,
                                                       "delay": 80
                                                       }]
-                                            },{
+                                            }, {
                                             "id": "GreyJetRightDownAnimation",
                                             "continuous": true,
                                             "paths": [{
@@ -454,44 +449,44 @@
                                                       "visibility": true,
                                                       "frameNo": 8,
                                                       "delay": 20
-                                                      },{
+                                                      }, {
                                                       "dx": 0,
-                                                      "dy":2,
+                                                      "dy": 2,
                                                       "visibility": true,
                                                       "frameNo": 8,
                                                       "delay": 20
                                                       }]
-                                            },{
+                                            }, {
                                             "id": "GreyMediumPlaneMovingDownContinuousAnimation",
-											"continuous": true,
+                                            "continuous": true,
                                             "paths": [{
                                                       "dx": 0,
                                                       "dy": 2,
                                                       "visibility": true,
-                                                      "frameNo":8,
+                                                      "frameNo": 8,
                                                       "delay": 20
-                                                      },{
+                                                      }, {
                                                       "dx": 0,
-                                                      "dy":2,
+                                                      "dy": 2,
                                                       "visibility": true,
                                                       "frameNo": 8,
                                                       "delay": 20
                                                       }]
-                                            },{
+                                            }, {
                                             "id": "GreyMediumPlaneMovingDownAnimation",
-											"continuous": false,
-                                            "doWhile":true,
-                                            "maxX":0,
-                                            "maxY":150,
+                                            "continuous": false,
+                                            "doWhile": true,
+                                            "maxX": 0,
+                                            "maxY": 150,
                                             "paths": [{
                                                       "dx": 0,
                                                       "dy": 2,
                                                       "visibility": true,
-                                                      "frameNo":8,
+                                                      "frameNo": 8,
                                                       "delay": 20
-                                                      },{
+                                                      }, {
                                                       "dx": 0,
-                                                      "dy":2,
+                                                      "dy": 2,
                                                       "visibility": true,
                                                       "frameNo": 8,
                                                       "delay": 20
@@ -505,15 +500,14 @@
                                                       "visibility": true,
                                                       "frameNo": 17,
                                                       "delay": 20
-                                                      },{
+                                                      }, {
                                                       "dx": 0,
-                                                      "dy":-2,
+                                                      "dy": -2,
                                                       "visibility": true,
                                                       "frameNo": 17,
                                                       "delay": 20
                                                       }]
-                                            }
-											,{
+                                            }, {
                                             "id": "BigPlaneIntroAnimation",
                                             "continuous": true,
                                             "paths": [{
@@ -522,7 +516,7 @@
                                                       "visibility": true,
                                                       "frameNo": 0,
                                                       "delay": 20
-                                                      },{
+                                                      }, {
                                                       "dx": 0,
                                                       "dy": -3,
                                                       "visibility": true,
@@ -539,7 +533,7 @@
                                                       "visibility": true,
                                                       "frameNo": 0,
                                                       "delay": 70
-                                                      },{
+                                                      }, {
                                                       "dx": 0,
                                                       "dy": 0,
                                                       "visibility": true,
@@ -556,7 +550,7 @@
                                                       "visibility": true,
                                                       "frameNo": 1,
                                                       "delay": 20
-                                                      },{
+                                                      }, {
                                                       "dx": 3,
                                                       "dy": 0,
                                                       "visibility": true,
@@ -567,28 +561,28 @@
                                             }, {
                                             "id": "RedJetLeft",
                                             "continuous": false,
-                                            "doWhile":true,
-                                            "maxY":0,
-                                            "maxX":200,
+                                            "doWhile": true,
+                                            "maxY": 0,
+                                            "maxX": -200,
                                             "paths": [{
-                                                      "dx": 5,
+                                                      "dx": -3,
                                                       "dy": 0,
-                                                      "frameNo": 4,
+                                                      "frameNo": 12,
                                                       "visibility": true,
-                                                      "delay": 90
+                                                      "delay": 40
                                                       }]
                                             }, {
                                             "id": "RedJetRight",
                                             "continuous": false,
-                                            "doWhile":true,
-                                            "maxY":0,
-                                            "maxX":-200,
+                                            "doWhile": true,
+                                            "maxY": 0,
+                                            "maxX": 200,
                                             "paths": [{
-                                                      "dx": -5,
+                                                      "dx": 3,
                                                       "dy": 0,
-                                                      "frameNo": 12,
+                                                      "frameNo": 4,
                                                       "visibility": true,
-                                                      "delay": 90
+                                                      "delay": 40
                                                       }]
                                             }, {
                                             "id": "superAceAnimationManeuver",
@@ -689,7 +683,7 @@
                                                       "frameNo": 0,
                                                       "visibility": true,
                                                       "delay": 0
-                                                      },{
+                                                      }, {
                                                       "dx": 0,
                                                       "dy": -3,
                                                       "frameNo": 0,
@@ -786,8 +780,7 @@
                                                       "visibility": true,
                                                       "delay": 0
                                                       }]
-                                            },
-                                            {
+                                            }, {
                                             "id": "superAceStartingAnimation",
                                             "continuous": false,
                                             "paths": [{
@@ -893,8 +886,7 @@
                                                       "frameNo": 0,
                                                       "delay": 200
                                                       }]
-                                            },
-                                            {
+                                            }, {
                                             "id": "backgroundAnimation",
                                             "continuous": true,
                                             "paths": [{
@@ -903,104 +895,103 @@
                                                       "frameNo": 0,
                                                       "visibility": true,
                                                       "delay": 50
-                                                      },{
+                                                      }, {
                                                       "dx": 0,
                                                       "dy": 0,
                                                       "frameNo": 1,
                                                       "visibility": true,
                                                       "delay": 50
-                                                      },{
+                                                      }, {
                                                       "dx": 0,
                                                       "dy": 0,
                                                       "frameNo": 2,
                                                       "visibility": true,
                                                       "delay": 50
-                                                      },{
+                                                      }, {
                                                       "dx": 0,
                                                       "dy": 0,
                                                       "frameNo": 3,
                                                       "visibility": true,
                                                       "delay": 50
-                                                      },{
+                                                      }, {
                                                       "dx": 0,
                                                       "dy": 0,
                                                       "frameNo": 4,
                                                       "visibility": true,
                                                       "delay": 50
-                                                      },{
+                                                      }, {
                                                       "dx": 0,
                                                       "dy": 0,
                                                       "frameNo": 5,
                                                       "visibility": true,
                                                       "delay": 50
-                                                      },{
+                                                      }, {
                                                       "dx": 0,
                                                       "dy": 0,
                                                       "frameNo": 6,
                                                       "visibility": true,
                                                       "delay": 50
-                                                      },{
+                                                      }, {
                                                       "dx": 0,
                                                       "dy": 0,
                                                       "frameNo": 7,
                                                       "visibility": true,
                                                       "delay": 50
-                                                      },{
+                                                      }, {
                                                       "dx": 0,
                                                       "dy": 0,
                                                       "frameNo": 8,
                                                       "visibility": true,
                                                       "delay": 50
-                                                      },{
+                                                      }, {
                                                       "dx": 0,
                                                       "dy": 0,
                                                       "frameNo": 9,
                                                       "visibility": true,
                                                       "delay": 50
-                                                      },{
+                                                      }, {
                                                       "dx": 0,
                                                       "dy": 0,
                                                       "frameNo": 10,
                                                       "visibility": true,
                                                       "delay": 50
-                                                      },{
+                                                      }, {
                                                       "dx": 0,
                                                       "dy": 0,
                                                       "frameNo": 11,
                                                       "visibility": true,
                                                       "delay": 50
-                                                      },{
+                                                      }, {
                                                       "dx": 0,
                                                       "dy": 0,
                                                       "frameNo": 12,
                                                       "visibility": true,
                                                       "delay": 50
-                                                      },{
+                                                      }, {
                                                       "dx": 0,
                                                       "dy": 0,
                                                       "frameNo": 13,
                                                       "visibility": true,
                                                       "delay": 50
-                                                      },{
+                                                      }, {
                                                       "dx": 0,
                                                       "dy": 0,
                                                       "frameNo": 14,
                                                       "visibility": true,
                                                       "delay": 50
-                                                      },{
+                                                      }, {
                                                       "dx": 0,
                                                       "dy": 0,
                                                       "frameNo": 15,
                                                       "visibility": true,
                                                       "delay": 50
-                                                      }
-                                                      ]
-                                            },{
+                                                      }]
+                                            }, {
                                             "id": "GreenMediumPlaneMovingDownAnimation",
                                             "continuous": false,
-                                            "doWhile":true,
-                                            "maxX":0,
-                                            "maxY":92,
+                                            "doWhile": true,
+                                            "maxX": 0,
+                                            "maxY": 92,
                                             "paths": [{
                                                       "dx": 0,
                                                       "dy": 4,
@@ -1011,20 +1002,78 @@
                                             
                                             
                                             }, {
-                                            "id": "MiniGreenOneEngStraight",
+                                            "id": "MiniGreenOneEngRight",
                                             "continuous": false,
-                                            "doWhile":true,
-                                            "maxX":180,
-                                            "maxY":0,
+                                            "doWhile": true,
+                                            "maxX": 180,
+                                            "maxY": 0,
                                             "paths": [{
-                                                      "dx": 8,
+                                                      "dx": 4,
                                                       "dy": 0,
                                                       "frameNo": 4,
                                                       "visibility": true,
-                                                      "delay": 80
+                                                      "delay": 40
                                                       }]
-                                            },
-                                            {
+                                            }, {
+                                            "id": "MiniGreenOneEngLeft",
+                                            "continuous": false,
+                                            "doWhile": true,
+                                            "maxX": -180,
+                                            "maxY": 0,
+                                            "paths": [{
+                                                      "dx": -4,
+                                                      "dy": 0,
+                                                      "frameNo": 12,
+                                                      "visibility": true,
+                                                      "delay": 40
+                                                      }]
+                                            }, {
+                                            "id": "MiniGreenDoubleEngRight",
+                                            "continuous": false,
+                                            "doWhile": true,
+                                            "maxX": 220,
+                                            "maxY": 0,
+                                            "paths": [{
+                                                      "dx": 4,
+                                                      "dy": 0,
+                                                      "frameNo": 4,
+                                                      "visibility": true,
+                                                      "delay": 40
+                                                      }]
+                                            }, {
+                                            "id": "MiniGreenDoubleEngLeft",
+                                            "continuous": false,
+                                            "doWhile": true,
+                                            "maxX": -220,
+                                            "maxY": 0,
+                                            "paths": [{
+                                                      "dx": -4,
+                                                      "dy": 0,
+                                                      "frameNo": 12,
+                                                      "visibility": true,
+                                                      "delay": 40
+                                                      }]
+                                            }, {
+                                            "id": "MiniGreenDoubleEngRightDown",
+                                            "continuous": true,
+                                            "paths": [{
+                                                      "dx": 4,
+                                                      "dy": 4,
+                                                      "frameNo": 2,
+                                                      "visibility": true,
+                                                      "delay": 40
+                                                      }]
+                                            }, {
+                                            "id": "MiniGreenDoubleEngLeftDown",
+                                            "continuous": true,
+                                            "paths": [{
+                                                      "dx": -4,
+                                                      "dy": 4,
+                                                      "frameNo": 14,
+                                                      "visibility": true,
+                                                      "delay": 40
+                                                      }]
+                                            }, {
                                             "id": "GreenMediumPlaneMovingDownContinousAnimation",
                                             "continuous": true,
                                             "paths": [{
@@ -1042,46 +1091,79 @@
                                                       }]
                                             
                                             
-                                            },
-                                            {
-                                            "id": "RedPlaneRightContinousAnimation",
+                                            }, {
+                                            "id": "RedJetRightContinousAnimation",
                                             "continuous": true,
                                             "paths": [{
-                                                      "dx": 4,
+                                                      "dx": 3,
                                                       "dy": 0,
                                                       "visibility": true,
                                                       "frameNo": 4,
-                                                      "delay": 90
+                                                      "delay": 40
                                                       }, {
-                                                      "dx": 4,
+                                                      "dx": 3,
                                                       "dy": 0,
                                                       "visibility": true,
                                                       "frameNo": 4,
-                                                      "delay": 90
+                                                      "delay": 40
                                                       }]
                                             
                                             
-                                            },
-                                            {
+                                            }, {
+                                            "id": "RedJetLeftContinousAnimation",
+                                            "continuous": true,
+                                            "paths": [{
+                                                      "dx": -3,
+                                                      "dy": 0,
+                                                      "visibility": true,
+                                                      "frameNo": 12,
+                                                      "delay": 40
+                                                      }, {
+                                                      "dx": -3,
+                                                      "dy": 0,
+                                                      "visibility": true,
+                                                      "frameNo": 12,
+                                                      "delay": 40
+                                                      }]
+                                            
+                                            
+                                            }, {
                                             "id": "MiniGreenOneEngDownRightContinousAnimation",
                                             "continuous": true,
                                             "paths": [{
-                                                      "dx": 2,
-                                                      "dy": 2,
+                                                      "dx": 4,
+                                                      "dy": 4,
                                                       "visibility": true,
                                                       "frameNo": 2,
-                                                      "delay": 20
+                                                      "delay": 40
                                                       }, {
-                                                      "dx": 2,
-                                                      "dy": 2,
+                                                      "dx": 4,
+                                                      "dy": 4,
                                                       "visibility": true,
                                                       "frameNo": 2,
-                                                      "delay": 20
+                                                      "delay": 40
                                                       }]
                                             
                                             
-                                            },
-                                            {
+                                            }, {
+                                            "id": "MiniGreenOneEngDownLeftContinousAnimation",
+                                            "continuous": true,
+                                            "paths": [{
+                                                      "dx": -4,
+                                                      "dy": 4,
+                                                      "visibility": true,
+                                                      "frameNo": 14,
+                                                      "delay": 40
+                                                      }, {
+                                                      "dx": -4,
+                                                      "dy": 4,
+                                                      "visibility": true,
+                                                      "frameNo": 14,
+                                                      "delay": 40
+                                                      }]
+                                            
+                                            
+                                            }, {
                                             "id": "backgroundObjectsAnimation",
                                             "continuous": true,
                                             "paths": [{
@@ -1090,15 +1172,14 @@
                                                       "frameNo": 0,
                                                       "visibility": true,
                                                       "delay": 50
-                                                      },{
+                                                      }, {
                                                       "dx": 0,
                                                       "dy": 2,
                                                       "frameNo": 0,
                                                       "visibility": true,
                                                       "delay": 50
                                                       }]
-                                            },
-                                            {
+                                            }, {
                                             "id": "endOfStageMoveToCenterAnimation",
                                             "continuous": true,
                                             "paths": [{
@@ -1108,7 +1189,7 @@
                                                       "visibility": true,
                                                       "delay": 40
                                                       }]
-                                            },{
+                                            }, {
                                             "id": "deathStarAnimation",
                                             "continuous": true,
                                             "paths": [{
@@ -1117,80 +1198,79 @@
                                                       "frameNo": 3,
                                                       "visibility": true,
                                                       "delay": 50
-                                                      },{
+                                                      }, {
                                                       "dx": 2,
                                                       "dy": 0,
                                                       "frameNo": 2,
                                                       "visibility": true,
                                                       "delay": 50
-                                                      },{
+                                                      }, {
                                                       "dx": 2,
                                                       "dy": 0,
                                                       "frameNo": 1,
                                                       "visibility": true,
                                                       "delay": 50
-                                                      },{
+                                                      }, {
                                                       "dx": 2,
                                                       "dy": 0,
                                                       "frameNo": 0,
                                                       "visibility": true,
                                                       "delay": 50
-                                                      },{
+                                                      }, {
                                                       "dx": 2,
                                                       "dy": 0,
                                                       "frameNo": 6,
                                                       "visibility": true,
                                                       "delay": 50
-                                                      },{
+                                                      }, {
                                                       "dx": 2,
                                                       "dy": 0,
                                                       "frameNo": 5,
                                                       "visibility": true,
                                                       "delay": 50
-                                                      },{
+                                                      }, {
                                                       "dx": 2,
                                                       "dy": 0,
                                                       "frameNo": 4,
                                                       "visibility": true,
                                                       "delay": 50
-                                                      },{
+                                                      }, {
                                                       "dx": 2,
                                                       "dy": 0,
                                                       "frameNo": 5,
                                                       "visibility": true,
                                                       "delay": 50
-                                                      },{
+                                                      }, {
                                                       "dx": 2,
                                                       "dy": 0,
                                                       "frameNo": 6,
                                                       "visibility": true,
                                                       "delay": 50
-                                                      },{
+                                                      }, {
                                                       "dx": 2,
                                                       "dy": 0,
                                                       "frameNo": 0,
                                                       "visibility": true,
                                                       "delay": 50
-                                                      },{
+                                                      }, {
                                                       "dx": 2,
                                                       "dy": 0,
                                                       "frameNo": 1,
                                                       "visibility": true,
                                                       "delay": 50
-                                                      },{
+                                                      }, {
                                                       "dx": 2,
                                                       "dy": 0,
                                                       "frameNo": 2,
                                                       "visibility": true,
                                                       "delay": 50
-                                                      },{
+                                                      }, {
                                                       "dx": 2,
                                                       "dy": 0,
                                                       "frameNo": 3,
                                                       "visibility": true,
                                                       "delay": 50
                                                       }]
-                                            }
-                                            ]
+                                            }]
                    }]
 }

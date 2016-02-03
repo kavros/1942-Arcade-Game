@@ -214,10 +214,13 @@ void    SpritesHolder::Load (const std::string& cataloge/*,SDL_Renderer* _render
 SDL_Rect getRandomDestRect(EnemyFighterType e,SDL_Rect dst){
     switch (e) {
         case EnemyFighterType(3):{
-            dst.x = 0;
+            //dst.x = 0;
             dst.y = rand() % 384 + 92; // random between 92 - 476
             break;}
-        
+        case EnemyFighterType(5):{
+            //dst.x = 0;
+            dst.y = rand() % 384 + 92; // random between 92 - 476
+            break;}
         default:break;
     }
     return dst;
@@ -259,18 +262,28 @@ bool SpritesHolder::uniqueAliveFromTeam(Sprite* sprite){
     
     
     
-    
         
     int enemyId,groupId = 0;
     std::size_t found;
     std::string bonusId = sprite->getId();
-    std::string s = "RedJet";
+    std::string s = "RedJetRight";
+    std::string g = "RedJetLeft";
+    std::string* last;
     found = bonusId.find(s);
     if (found == 0){
         bonusId.erase(found, s.length());
         groupId = std::stoi( bonusId )/5;
-    }else{
-        assert(0);
+        last = &s;
+    }else {
+        found = bonusId.find(g);
+        if (found == 0){
+            bonusId.erase(found, g.length());
+            groupId = std::stoi( bonusId )/5;
+            last = &g;
+        }else {
+            
+            assert(0);
+        }
     }
     
     if( sprite->getType() == ALIEN_SHIP ){
@@ -285,16 +298,17 @@ bool SpritesHolder::uniqueAliveFromTeam(Sprite* sprite){
                 
                 if( enemyFighter->getEnemyFighterType() == RED_PLANE &&  enemyFighter!=sprite ){
                     bonusId = enemyFighter->getId();
-                    found = bonusId.find(s);
+                    found = bonusId.find(*last);
                     if (found == 0){
-                        bonusId.erase(found, s.length());
+                        bonusId.erase(found, (*last).length());
                         enemyId = std::stoi( bonusId );
-                    }else{
-                        assert(0);
+                        if( enemyFighter->isAlive() && /*enemyFighter->getVisibility() &&*/ (enemyId >= groupId*5) && (enemyId < (groupId+1)*5) ){
+                            return false;
+                        }
                     }
-                    if( enemyFighter->isAlive() && enemyFighter->getVisibility() && (enemyId >= groupId*5) && (enemyId < (groupId+1)*5) ){
+                    /*if( enemyFighter->isAlive() && enemyFighter->getVisibility() && (enemyId >= groupId*5) && (enemyId < (groupId+1)*5) ){
                         return false;
-                    }
+                    }*/
                 }
                 
                 ++it;

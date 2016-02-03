@@ -166,6 +166,7 @@ void    AnimationHolder::LoadMovingPathAnim (const std::string& cataloge,int n){
                                 _paths.push_back(pe);
                             }
                         }else{
+                            string tmp = mPathAnimation["id"].GetString();
                             assert(x >= 0 && x <= maxX && y <= 0 && y >= maxY);
                             while (x < maxX || y > maxY){
                                 x +=pe._dx;
