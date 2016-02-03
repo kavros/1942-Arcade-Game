@@ -277,7 +277,7 @@ bool SpritesHolder::uniqueAliveFromTeam(Sprite* sprite){
     std::string bonusId = sprite->getId();
     std::string s = "RedJetRight";
     std::string g = "RedJetLeft";
-    std::string* last;
+    std::string* last = nullptr;
     found = bonusId.find(s);
     if (found == 0){
         bonusId.erase(found, s.length());
