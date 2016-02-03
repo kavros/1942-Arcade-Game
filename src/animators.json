@@ -233,7 +233,19 @@
                             "spriteId": "MiniGreyDoubleEng"
                             }, {
                             "id": "MiniGreenJetAnimator",
-                            "animationId": "only_circle_250_250_40_34",
+                            "animationId": "GreenJetRightAnimation",
+                            "repetition": 4,
+                            "spriteType": 4,
+                            "spriteId": "MiniGreenJet"
+                            }, {
+                            "id": "Chain1MiniGreenJetAnimator",
+                            "animationId": "only_circle_250_250_100_68",
+                            "repetition": 4,
+                            "spriteType": 4,
+                            "spriteId": "MiniGreenJet"
+                            }, {
+                            "id": "Chain2Chain1MiniGreenJetAnimator",
+                            "animationId": "GreyJetDownAnimation",
                             "repetition": 4,
                             "spriteType": 4,
                             "spriteId": "MiniGreenJet"
