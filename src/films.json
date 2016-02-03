@@ -539,7 +539,7 @@
                         [227,33,34,26],
                         
                         
-                        [0,60,33,26],
+                        
                         [37,60,35,28],
                         
                         [256,2,33,29],
@@ -624,7 +624,7 @@
                         
                         ]
               },{
-              "id": "grey_medium_plane_2",
+              "id": "grey_medium_plane_1945",
               "path": "medGreyTest.png",
               "rects": [
                         
@@ -649,8 +649,22 @@
 						[0,163,62,53]
                         
                         ]
-              }
-              
+              },{
+              "id": "grey_medium_planes_2",
+              "path": "medium_planes_grey_1942.png",
+              "rects": [              
+                        [6,22,113,102],
+						[125,8,99,117],
+						[240,0,92,118]								
+                       ]
+              },{
+              "id": "green_medium_triple",
+              "path": "med_green_triple_eng.png",
+              "rects": [              
+                        [0,0,85,104]
+												
+                       ]
+              }              
               
               ]
 }

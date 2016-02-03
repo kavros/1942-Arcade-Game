@@ -18,7 +18,10 @@ typedef enum SpriteType {
     ALIEN_SHIP = 4,
     POWER_UPS = 5,
     GAME_INFO = 6,
-    UNDEFINED = 7 
+    UNDEFINED = 7 ,
+	First_SpriteType = MAIN_MENU_SINGLEPLAYER,
+	Last_SpriteType = UNDEFINED
+
 }SpriteType;
 
 typedef enum SpriteState {

@@ -9,7 +9,14 @@ Sprite::Sprite(){
 
 Sprite::Sprite(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point point,bool isVisible,SpriteType type,AnimationFilm* currFilm){
    
-    assert( id!="" && frameNo>=0 && type>=0 && type<SpriteType(SPRITE_TYPE_SIZE) && currFilm);
+   // assert( id!="" && frameNo>=0 && type>=0 && type<SpriteType(SPRITE_TYPE_SIZE) && currFilm);
+	
+	assert(frameNo >= First_SpriteType);
+	assert(type <= Last_SpriteType);
+	assert(type >= 0);
+	assert(currFilm);
+	assert(id != "");
+
 
     setId(id);
     setCurrFilm(currFilm);

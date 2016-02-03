@@ -249,7 +249,7 @@
                                                       "delay": 60
                                                       }]
                                             }, {
-                                            "id": "GreenMediumPlaneCycleAnimation",
+                                            "id": "MediumPlaneCycleAnimation",
                                             "continuous": false,
                                             "paths": [{
                                                       "dx": -5,

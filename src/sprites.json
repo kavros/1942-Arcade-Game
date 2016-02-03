@@ -124,6 +124,17 @@
                 "enemyType" : 6,
                 "animFilmId": "green_medium_plane"
                 },{
+                "id": "MedGreenTripleEng",
+                "frameNo": 0,
+                "destRect": [0, 100, 63, 58],
+                "repetition": 4,
+                "point": [0, 0],
+                "visible": false,
+                "spriteType": 4,
+                "remainingBullets": 4,
+                "enemyType" : 9,
+                "animFilmId": "green_medium_triple"
+                },{
                 "id": "MedGreyDoubleEng",
                 "frameNo": 0,
                 "destRect": [400, 0, 62, 53],
@@ -133,10 +144,10 @@
                 "spriteType": 4,
                 "remainingBullets": 8,
                 "enemyType" : 11,
-                "animFilmId": "grey_medium_plane_2"
+                "animFilmId": "grey_medium_plane_1945"
                 },{
                 "id": "MedGreenSingleEng",
-                "frameNo": 19,
+                "frameNo": 18,
                 "destRect": [200, 768, 63, 58],
                 "repetition": 4,
                 "point": [0, 0],
@@ -145,6 +156,28 @@
                 "remainingBullets": 4,
                 "enemyType" : 7,
                 "animFilmId": "green_medium_plane"
+                },{
+                "id": "MedGreySingleEng",
+                "frameNo": 0,
+                "destRect": [500, 768, 63, 58],
+                "repetition": 4,
+                "point": [0, 0],
+                "visible": false,
+                "spriteType": 4,
+                "remainingBullets": 4,
+                "enemyType" : 10,
+                "animFilmId": "grey_medium_planes_2"
+                },{
+                "id": "MedGreyTripleEng",
+                "frameNo": 1,
+                "destRect": [768, 500, 63, 58],
+                "repetition": 4,
+                "point": [0, 0],
+                "visible": false,
+                "spriteType": 4,
+                "remainingBullets": 4,
+                "enemyType" : 12,
+                "animFilmId": "grey_medium_planes_2"
                 },{
                 "id": "BigGreen",
                 "frameNo": 0,
