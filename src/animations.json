@@ -91,6 +91,10 @@
                                       "delay": 9000,
                                       "repetitions": 4
                                       }, {
+                                      "id": "medGreenTripleEngTickAnimation",
+                                      "delay": 9000,
+                                      "repetitions": 4
+                                      }, {
                                       "id": "medGreenSingleEngTickAnimation",
                                       "delay": 9000,
                                       "repetitions": 4
@@ -511,13 +515,29 @@
                                                       "dx": 0,
                                                       "dy": -2,
                                                       "visibility": true,
-                                                      "frameNo": 17,
+                                                      "frameNo": 16,
                                                       "delay": 20
                                                       },{
                                                       "dx": 0,
                                                       "dy":-2,
                                                       "visibility": true,
-                                                      "frameNo": 17,
+                                                      "frameNo": 16,
+                                                      "delay": 20
+                                                      }]
+                                            },{
+                                            "id": "GreenMediumPlaneMovingRightAnimation",
+                                            "continuous": true,
+                                            "paths": [{
+                                                      "dx": 2,
+                                                      "dy": 0,
+                                                      "visibility": true,
+                                                      "frameNo": 0,
+                                                      "delay": 20
+                                                      },{
+                                                      "dx": 2,
+                                                      "dy": 0,
+                                                      "visibility": true,
+                                                      "frameNo": 0,
                                                       "delay": 20
                                                       }]
                                             }, {

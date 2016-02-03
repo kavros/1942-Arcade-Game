@@ -551,7 +551,15 @@ void triggerMedGreyTripleAnimator(){
 	assert(animator);
 	animator->start(Game::getGameTime());
 }
+void triggerMedGreenTripleEngAnimator(){
+	static int nameId = 0;
+	string name = "MedGreenTripleEngAnimator" + std::to_string(nameId);
+	nameId++;
 
+	MovingPathAnimator* animator = (MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator(name);
+	assert(animator);
+	animator->start(Game::getGameTime());
+}
 void AnimatorHolder::startTimeTickAnimators(){
     
     //SuperAce
@@ -573,6 +581,8 @@ void AnimatorHolder::startTimeTickAnimators(){
 	//medium plane
 	TimerTickAnimator::startTimeTickAnimator("medGreenDoubleEngTickAnimation", triggerMedGreenDoubleEngAnimator);
 	TimerTickAnimator::startTimeTickAnimator("medGreenSingleEngTickAnimation", triggerMedGreenSingleEngAnimator);
+	TimerTickAnimator::startTimeTickAnimator("medGreenTripleEngTickAnimation", triggerMedGreenTripleEngAnimator);
+
 
 	TimerTickAnimator::startTimeTickAnimator("medGreyDoubleEngTickAnimation", triggerMedGreyDoubleAnimator);	
 	TimerTickAnimator::startTimeTickAnimator("medGreySingleEngTickAnimation", triggerMedGreySingleAnimator);
