@@ -155,7 +155,7 @@
                 "spriteType": 4,
                 "remainingBullets": 8,
                 "enemyType" : 11,
-                "animFilmId": "grey_medium_plane_1945"
+                "animFilmId": "grey_medium_plane"
                 },{
                 "id": "MedGreenSingleEng",
                 "frameNo": 18,
