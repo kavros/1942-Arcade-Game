@@ -305,12 +305,13 @@ void triggerRedPlaneTickAnimations(){
     string redPlaneTickAnimationId ;
     if(id % 2 == 1){
         redPlaneTickAnimationId = "redJetRightTickAnimation" +  std::to_string(id/2);
-		TimerTickAnimator::startTimeTickAnimator(redPlaneTickAnimationId, triggerRedJetLeftAnimator);
+        TimerTickAnimator::startTimeTickAnimator(redPlaneTickAnimationId, triggerRedJetRightAnimator );
     }else{
-        redPlaneTickAnimationId = "redJetRightTickAnimation" + std::to_string(id/2);
+        redPlaneTickAnimationId = "redJetLeftTickAnimation" + std::to_string(id/2);
         TimerTickAnimator::startTimeTickAnimator(redPlaneTickAnimationId, triggerRedJetLeftAnimator );
     }
     id++;
+    
 }
 
 void triggerMiniGreyJetTickAnimator(){
@@ -579,8 +580,7 @@ void triggerMedGreyTripleAnimator(){
 	assert(animator);
 	animator->start(Game::getGameTime());
 }
-void triggerMedGreenRightAnimator(){
-
+void triggerMedGreenTripleEngAnimator(){
 	static int nameId = 0;
 	string name = "MedGreenTripleEngAnimator" + std::to_string(nameId);
 	nameId++;
@@ -588,29 +588,7 @@ void triggerMedGreenRightAnimator(){
 	MovingPathAnimator* animator = (MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator(name);
 	assert(animator);
 	animator->start(Game::getGameTime());
-
 }
-
-void triggerMedGreenTripleEngAnimator(){
-	/*static int nameId = 0;
-	string name = "MedGreenTripleEngAnimator" + std::to_string(nameId);
-	nameId++;
-
-	MovingPathAnimator* animator = (MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator(name);
-	assert(animator);
-	animator->start(Game::getGameTime());
-	*/
-
-	static int id = 0;
-	string medGreenPlaneTickAnimationId;
-	assert(id == 0);
-	medGreenPlaneTickAnimationId = "medGreenTripleEngAnimation" + std::to_string(id);
-	TimerTickAnimator::startTimeTickAnimator(medGreenPlaneTickAnimationId, triggerMedGreenRightAnimator);
-	
-	
-	id++;
-}
-
 void triggerMiniGreyDoubleEngAnimator(){
 	static int nameId = 0;
 	string name = "MiniGreyDoubleEngAnimator" + std::to_string(nameId);
@@ -646,7 +624,7 @@ void AnimatorHolder::startTimeTickAnimators(){
 	//green medium plane
 	//TimerTickAnimator::startTimeTickAnimator("medGreenDoubleEngTickAnimation", triggerMedGreenDoubleEngAnimator);
 	//TimerTickAnimator::startTimeTickAnimator("medGreenSingleEngTickAnimation", triggerMedGreenSingleEngAnimator);
-	TimerTickAnimator::startTimeTickAnimator("medGreenTripleEngTickAnimation", triggerMedGreenTripleEngAnimator);
+	//TimerTickAnimator::startTimeTickAnimator("medGreenTripleEngTickAnimation", triggerMedGreenTripleEngAnimator);
 
 	//grey medium plane
 	//TimerTickAnimator::startTimeTickAnimator("medGreyDoubleEngTickAnimation", triggerMedGreyDoubleAnimator);
@@ -944,27 +922,27 @@ void  updateGreyJetAnimation(MovingPathAnimator* grayJetAnimator){
         int apostashStonX = superAcePositionOnX - grayJetPositionOnY;
         if (apostashStonX < 0){
             apostashStonX = apostashStonX*(-1);
-		}
+        }
         if (grayJetPositionOnY > WIN_HEIGHT - 80 ||   apostashStonX < 50){
             //cout << "DOWN" << endl;
             grayJetAnimation->changeDxDy(0, 4);
             
             grayJetAnimator->getSprite()->setFrame(0);
             return;
-	}
-    
+        }
+        
         if (superAcePositionOnX +10 > grayJetPositionOnX ){
             
             if (grayJetAnimation->getPath().front()._dx <= 0){
-    
+                
                 grayJetAnimation->setPath(((MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("GreenJetRightDownAnimation"))->getPath());
             }
         }
         else if (superAcePositionOnX -10< grayJetPositionOnX ){
             if (grayJetAnimation->getPath().front()._dx >= 0){
                 grayJetAnimation->setPath(((MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("GreenJetLeftDownAnimation"))->getPath());
-	
-}
+                
+            }
         }
     }
 }*/
