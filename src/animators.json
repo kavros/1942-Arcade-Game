@@ -117,13 +117,19 @@
                             "repetition": 4,
                             "spriteType": 4,
                             "spriteId": "MiniGreenDoubleEng"
-                            }, {
+                            },{
+                            "id": "MiniGreyDoubleEngAnimator",
+                            "animationId": "MiniGreyDoubleEngMovingDownAnimation",
+                            "repetition": 4,
+                            "spriteType": 4,
+                            "spriteId": "MiniGreyDoubleEng"
+                            },{
                             "id": "MiniGreenJetAnimator",
                             "animationId": "circle_250_250_30",
                             "repetition": 4,
                             "spriteType": 4,
                             "spriteId": "MiniGreenJet"
-                            }, {
+                            },{
                             "id": "MiniGreenOneEngAnimator",
                             "animationId": "MiniGreenOneEngStraight",
                             "repetition": 4,

@@ -74,7 +74,11 @@
                                       "id": "miniGreyOneEngTickAnimation",
                                       "delay": 8000,
                                       "repetitions": 4
-                                      }, {
+                                      },{
+                                      "id": "miniGreyDoubleEngTickAnimation",
+                                      "delay": 8000,
+                                      "repetitions": 4
+                                      },{
                                       "id": "medGreenDoubleEngTickAnimation",
                                       "delay": 9000,
                                       "repetitions": 4
@@ -1067,6 +1071,16 @@
                                                       "dx": 8,
                                                       "dy": 0,
                                                       "frameNo": 4,
+                                                      "visibility": true,
+                                                      "delay": 80
+                                                      }]
+                                            },{
+                                            "id": "MiniGreyDoubleEngMovingDownAnimation",
+                                            "continuous": true,
+                                            "paths": [{
+                                                      "dx": 0,
+                                                      "dy": 5,
+                                                      "frameNo": 0,
                                                       "visibility": true,
                                                       "delay": 80
                                                       }]
