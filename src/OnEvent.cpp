@@ -107,12 +107,28 @@ void Game::singleplayerGameOnEvent(){
             superAce->doManeuever();
 		}
 		else if (event.key.keysym.sym == SDLK_c){
-			if (superAce->getState() == FLYING){
+			if (!superAce->getUndefeatable()){
 				SoundHolder::playSound("i_will_never_die");
-				superAce->setState(UNDEFEATABLE);
-			} else if(superAce->getState() == UNDEFEATABLE){
-				superAce->setState(FLYING);
-				//sound for this case
+                superAce->setUndefeatable(true);
+                /*
+                if( superAce->getAttached(RIGHT_FIGHTER) ){
+                    superAce->getAttached(RIGHT_FIGHTER)->setUndefeatable(true);
+                }
+                if( superAce->getAttached(LEFT_FIGHTER) ){
+                    superAce->getAttached(LEFT_FIGHTER)->setUndefeatable(true);
+                }
+                */
+			} else if(superAce->getUndefeatable()){
+                //sound for this case
+                superAce->setUndefeatable(false);
+                /*
+                if( superAce->getAttached(RIGHT_FIGHTER) ){
+                    superAce->getAttached(RIGHT_FIGHTER)->setUndefeatable(false);
+                }
+                if( superAce->getAttached(LEFT_FIGHTER) ){
+                    superAce->getAttached(LEFT_FIGHTER)->setUndefeatable(false);
+                }
+                 */
 			}
 
 		}

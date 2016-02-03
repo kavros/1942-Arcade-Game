@@ -28,11 +28,9 @@ typedef enum SpriteState {
 	STARTING = 3,
     IN_COLUSION = 4,
 	ENDING = 5 ,
-	UNDEFEATABLE =6,
-
 
 	First_SpriteState = FLYING,
-	Last_SpriteState = UNDEFEATABLE
+	Last_SpriteState = ENDING
 }SpriteState;
 
 class Sprite : public LatelyDestroyable{
@@ -85,7 +83,7 @@ protected:
     Attached _attached;
     Sprite* _parent;
     std::string _name; //inspect this
-    
+    bool undefeatable;
     void moveAttached(int dx, int dy);
     
     ~Sprite();
@@ -105,6 +103,7 @@ public:
     void setDstRectX(int x);
     void setDstRectY(int y);
     void setCurrFilm(AnimationFilm* currFilm);
+    void setUndefeatable(bool flag);
 
     //getters
     std::string getId(void) const;
@@ -118,6 +117,7 @@ public:
     void changeDstRectY(int dy);
     AnimationFilm* getCurrFilm(void) const;
     Sprite* getParent();
+    bool getUndefeatable();
     
 	//constructors
     Sprite();

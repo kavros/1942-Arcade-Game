@@ -4,6 +4,7 @@
 #include "PowerUp.hpp"
 
 void updateScore(EnemyFighter* s);
+
 void Sprite::fireHandler::operator()(Sprite* bullet,Sprite* arg) const{
     
     assert(bullet && arg);
@@ -15,22 +16,10 @@ void Sprite::fireHandler::operator()(Sprite* bullet,Sprite* arg) const{
 	if( !bullet->getVisibility() || !arg->getVisibility() )
         return;
     
-    if (arg == superAce && arg->_state == MANEUVER){
-        //cout << " AND Super Ace state is MANEUVER" << endl;
+    if (arg == superAce && arg->getState() == MANEUVER){
         return;
     }
-	
-	/*
-	if (arg == superAce || bullet == superAce || bullet == superAce->getParent() || arg == superAce->getParent()){
-		if (superAce->getState() == UNDEFEATABLE){
-			return;
-		}
-	}*/
-	if (arg == superAce || arg == superAce->getAttached(RIGHT_FIGHTER) || arg == superAce->getAttached(LEFT_FIGHTER) ){
-		if (superAce->getState() == UNDEFEATABLE){
-			return;
-		}
-	}
+    
     bullet->setState(IN_COLUSION);
     arg->setVisibility(false);
     bullet->setVisibility(false);
@@ -171,19 +160,6 @@ void Sprite::touchHandler::operator()(Sprite* aircraft,Sprite* arg) const{
 
     if( !aircraft->getVisibility() || !arg->getVisibility())
         return;
-
-
-
-	if (arg == superAce || arg == superAce->getAttached(RIGHT_FIGHTER) || arg == superAce->getAttached(LEFT_FIGHTER)){
-		if (superAce->getState() == UNDEFEATABLE){
-			return;
-		}
-	}
-	if (aircraft == superAce || aircraft == superAce->getAttached(RIGHT_FIGHTER) || aircraft == superAce->getAttached(LEFT_FIGHTER)){
-		if (superAce->getState() == UNDEFEATABLE){
-			return;
-		}
-	}
 
     aircraft->setVisibility(false);
     arg->setVisibility(false);
