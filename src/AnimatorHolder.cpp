@@ -506,6 +506,17 @@ void triggerDeathStarAnimator(){
     assert(animator);
     animator->start(Game::getGameTime());
 }
+
+void triggerMedGreyDoubleAnimator(){
+	static int nameId = 0;
+	string name = "MedGreyDoubleEngAnimator" + std::to_string(nameId); 
+	nameId++;
+
+	MovingPathAnimator* animator = (MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator(name);
+	assert(animator);
+	animator->start(Game::getGameTime());
+}
+
 void AnimatorHolder::startTimeTickAnimators(){
     
     //SuperAce
@@ -527,6 +538,7 @@ void AnimatorHolder::startTimeTickAnimators(){
 	//medium plane
 	TimerTickAnimator::startTimeTickAnimator("medGreenDoubleEngTickAnimation", triggerMedGreenDoubleEngAnimator);
 	TimerTickAnimator::startTimeTickAnimator("medGreenSingleEngTickAnimation", triggerMedGreenSingleEngAnimator);
+	TimerTickAnimator::startTimeTickAnimator("medGreyDoubleEngTickAnimation", triggerMedGreyDoubleAnimator);
 
     //big plane
     TimerTickAnimator::startTimeTickAnimator("bigGreenIntroTickAnimation", triggerBigGreenIntroTickAnimators );
@@ -623,11 +635,40 @@ void AnimatorHolder::updateAllGreyPlaneAnimations(){
 			grayPlaneAnimator= (MovingPathAnimator*) (*it);
             updateGreyJetAnimation(grayPlaneAnimator);
         }
+
+
+
+
         it = it2;
     }
     
 }
 
+void updateGreyMedPlaneAnimation(MovingPathAnimator* grayMedPlaneAnimator){
+	SuperAce* superAce = (SuperAce*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce0");
+
+	MovingPathAnimation* grayMedPlaneAnimation = grayMedPlaneAnimator->getMovingPathAnimation();
+
+	assert(grayMedPlaneAnimator);
+	assert(grayMedPlaneAnimation);
+	if (!grayMedPlaneAnimator->isAlive()){
+		return;
+	}
+
+	int grayMedPlanePositionOnY = grayMedPlaneAnimator->getSprite()->getDstRect().y;
+	int SuperAcePositionOnY = superAce->getDstRect().y;
+
+
+	if (grayMedPlanePositionOnY > SuperAcePositionOnY - 400){
+
+		//stop
+		((EnemyFighter*)grayMedPlaneAnimator->getSprite())->setEnemyFireEnable(false);
+		grayMedPlaneAnimator->setState(ANIMATOR_FINISHED);// _state = ANIMATOR_FINISHED;
+		grayMedPlaneAnimator->stop();
+
+
+	}
+}
 void updateGreyPlaneAnimation(MovingPathAnimator* grayJetAnimator){
     //assert(0);
     
@@ -707,17 +748,7 @@ void updateGreyPlaneAnimation(MovingPathAnimator* grayJetAnimator){
         grayJetAnimator->setState(ANIMATOR_FINISHED);// _state = ANIMATOR_FINISHED;
         grayJetAnimator->stop();
         
-        /*if (grayJetAnimation->getPath().front()._dy > 0){
-            path._dy = -5;
-            path._dx = -5;
-            path._frame = 1;
-            
-            
-            std::list<PathEntry> p;
-            p.push_front(path);
-            grayJetAnimation->setPath(p);
-            
-        }*/
+      
     }
 }
 
@@ -735,14 +766,7 @@ void  updateGreyJetAnimation(MovingPathAnimator* grayJetAnimator){
     
     MovingPathAnimation* grayJetAnimation = grayJetAnimator->getMovingPathAnimation();
     assert(grayJetAnimation);
-    //const PathEntry path;
-    //path._dx = 1;
-    //path._dy = 0;
-   /* path._frame = grayJetAnimation->getPath().front()._frame;
-    path._delay = grayJetAnimation->getPath().front()._delay;
-    path._visibility = true;
-    */
-    //int superAcePositionOnX = superAce->getDstRect().x;
+
     int grayJetPositionOnX = grayJetAnimator->getSprite()->getDstRect().x;
 	int superAcePositionOnX = superAce->getDstRect().x;
     
@@ -779,28 +803,7 @@ void  updateGreyJetAnimation(MovingPathAnimator* grayJetAnimator){
 	}
     
     
-	/*
-    if (grayJetPositionOnY > WIN_HEIGHT - 100){
-        if (grayJetAnimation->getPath().front()._dy > 0){
-            grayJetAnimation->changeDxDy(-17, 0);
-            grayJetAnimator->getSprite()->getCurrFilm()->setDegrees(90);
-            
-        }
-    }
-    if (grayJetPositionOnX < 100){
-        if (grayJetAnimation->getPath().front()._dx < 0){
-            grayJetAnimation->changeDxDy(0, -17);
-            grayJetAnimator->getSprite()->getCurrFilm()->setDegrees(180);
-            
-        }
-    }
-    if (grayJetPositionOnY < 100){
-        if (grayJetAnimation->getPath().front()._dy < 0){
-            grayJetAnimation->changeDxDy(17, 0);
-            grayJetAnimator->getSprite()->getCurrFilm()->setDegrees(270);
-            
-        }
-    }*/
+	
 }
 
 
