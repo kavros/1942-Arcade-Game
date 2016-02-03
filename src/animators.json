@@ -82,71 +82,197 @@
                             "spriteType": 3,
                             "spriteId": "SuperAce"
                             }, {
-                            "id": "RedJetAnimator",
-                            "animationId": "straight",
-                            "repetition": 35,
+                            "id": "RedJetRightAnimator",
+                            "animationId": "RedJetLeft",
+                            "repetition": 15,
                             "spriteType": 4,
-                            "spriteId": "RedJet"
+                            "spriteId": "RedJetRight"
                             }, {
-                            "id": "Chain1RedJetAnimator",
+                            "id": "Chain1RedJetRightAnimator",
                             "animationId": "only_circle_250_250_50_34",
-                            "repetition": 35,
+                            "repetition": 15,
                             "spriteType": 4,
-                            "spriteId": "RedJet"
+                            "spriteId": "RedJetRight"
                             }, {
-                            "id": "Chain2Chain1RedJetAnimator",
-                            "animationId": "straight",
-                            "repetition": 35,
+                            "id": "Chain2Chain1RedJetRightAnimator",
+                            "animationId": "RedJetLeft",
+                            "repetition": 15,
                             "spriteType": 4,
-                            "spriteId": "RedJet"
+                            "spriteId": "RedJetRight"
                             }, {
-                            "id": "Chain3Chain2Chain1RedJetAnimator",
+                            "id": "Chain3Chain2Chain1RedJetRightAnimator",
                             "animationId": "only_circle_250_250_50_34",
-                            "repetition": 35,
+                            "repetition": 15,
                             "spriteType": 4,
-                            "spriteId": "RedJet"
+                            "spriteId": "RedJetRight"
                             }, {
-                            "id": "Chain4Chain3Chain2Chain1RedJetAnimator",
-                            "animationId": "RedPlaneRightContinousAnimation",
-                            "repetition": 35,
+                            "id": "Chain4Chain3Chain2Chain1RedJetRightAnimator",
+                            "animationId": "RedJetLeftContinousAnimation",
+                            "repetition": 15,
                             "spriteType": 4,
-                            "spriteId": "RedJet"
+                            "spriteId": "RedJetRight"
                             }, {
-                            "id": "MiniGreenDoubleEngAnimator",
-                            "animationId": "circle_250_250_30",
+                            "id": "RedJetLeftAnimator",
+                            "animationId": "RedJetRight",
+                            "repetition": 20,
+                            "spriteType": 4,
+                            "spriteId": "RedJetLeft"
+                            }, {
+                            "id": "Chain1RedJetLeftAnimator",
+                            "animationId": "only_circle_250_250_50_34",
+                            "repetition": 20,
+                            "spriteType": 4,
+                            "spriteId": "RedJetLeft"
+                            }, {
+                            "id": "Chain2Chain1RedJetLeftAnimator",
+                            "animationId": "RedJetRight",
+                            "repetition": 20,
+                            "spriteType": 4,
+                            "spriteId": "RedJetLeft"
+                            }, {
+                            "id": "Chain3Chain2Chain1RedJetLeftAnimator",
+                            "animationId": "only_circle_250_250_50_34",
+                            "repetition": 20,
+                            "spriteType": 4,
+                            "spriteId": "RedJetLeft"
+                            }, {
+                            "id": "Chain4Chain3Chain2Chain1RedJetLeftAnimator",
+                            "animationId": "RedJetRightContinousAnimation",
+                            "repetition": 20,
+                            "spriteType": 4,
+                            "spriteId": "RedJetLeft"
+                            }, {
+                            "id": "MiniGreenDoubleEngRightAnimator",
+                            "animationId": "MiniGreenDoubleEngLeft",
                             "repetition": 4,
                             "spriteType": 4,
-                            "spriteId": "MiniGreenDoubleEng"
+                            "spriteId": "MiniGreenDoubleEngRight"
                             },{
+                            "id": "Chain1MiniGreenDoubleEngRightAnimator",
+                            "animationId": "only_circle_250_250_40_34",
+                            "repetition": 4,
+                            "spriteType": 4,
+                            "spriteId": "MiniGreenDoubleEngRight"
+                            },{
+                            "id": "Chain2Chain1MiniGreenDoubleEngRightAnimator",
+                            "animationId": "MiniGreenDoubleEngLeft",
+                            "repetition": 4,
+                            "spriteType": 4,
+                            "spriteId": "MiniGreenDoubleEngRight"
+                            },{
+                            "id": "Chain3Chain2Chain1MiniGreenDoubleEngRightAnimator",
+                            "animationId": "only_circle_250_250_40_34",
+                            "repetition": 4,
+                            "spriteType": 4,
+                            "spriteId": "MiniGreenDoubleEngRight"
+                            },{
+                            "id": "Chain4Chain3Chain2Chain1MiniGreenDoubleEngRightAnimator",
+                            "animationId": "MiniGreenDoubleEngLeftDown",
+                            "repetition": 4,
+                            "spriteType": 4,
+                            "spriteId": "MiniGreenDoubleEngRight"
+                            }, {
+                            "id": "MiniGreenDoubleEngLeftAnimator",
+                            "animationId": "MiniGreenDoubleEngRight",
+                            "repetition": 4,
+                            "spriteType": 4,
+                            "spriteId": "MiniGreenDoubleEngLeft"
+                            },{
+                            "id": "Chain1MiniGreenDoubleEngLeftAnimator",
+                            "animationId": "only_circle_250_250_40_34",
+                            "repetition": 4,
+                            "spriteType": 4,
+                            "spriteId": "MiniGreenDoubleEngLeft"
+                            },{
+                            "id": "Chain2Chain1MiniGreenDoubleEngLeftAnimator",
+                            "animationId": "MiniGreenDoubleEngRight",
+                            "repetition": 4,
+                            "spriteType": 4,
+                            "spriteId": "MiniGreenDoubleEngLeft"
+                            },{
+                            "id": "Chain3Chain2Chain1MiniGreenDoubleEngLeftAnimator",
+                            "animationId": "only_circle_250_250_40_34",
+                            "repetition": 4,
+                            "spriteType": 4,
+                            "spriteId": "MiniGreenDoubleEngLeft"
+                            },{
+                            "id": "Chain4Chain3Chain2Chain1MiniGreenDoubleEngLeftAnimator",
+                            "animationId": "MiniGreenDoubleEngRightDown",
+                            "repetition": 4,
+                            "spriteType": 4,
+                            "spriteId": "MiniGreenDoubleEngLeft"
+                            }, {
                             "id": "MiniGreyDoubleEngAnimator",
-                            "animationId": "MiniGreyDoubleEngMovingDownAnimation",
+                            "animationId": "MiniGreyDoubleEngDown",
                             "repetition": 4,
                             "spriteType": 4,
                             "spriteId": "MiniGreyDoubleEng"
                             },{
+                            "id": "Chain1MiniGreyDoubleEngAnimator",
+                            "animationId": "only_circle_250_250_40_34",
+                            "repetition": 4,
+                            "spriteType": 4,
+                            "spriteId": "MiniGreyDoubleEng"
+                            },{
+                            "id": "Chain2Chain1MiniGreyDoubleEngAnimator",
+                            "animationId": "MiniGreyDoubleEngDown",
+                            "repetition": 4,
+                            "spriteType": 4,
+                            "spriteId": "MiniGreyDoubleEng"
+                            },{
+                            "id": "Chain3Chain2Chain1MiniGreyDoubleEngAnimator",
+                            "animationId": "only_circle_250_250_40_34",
+                            "repetition": 4,
+                            "spriteType": 4,
+                            "spriteId": "MiniGreyDoubleEng"
+                            },{
+                            "id": "Chain4Chain3Chain2Chain1MiniGreyDoubleEngAnimator",
+                            "animationId": "MiniGreyDoubleEngDownCont",
+                            "repetition": 4,
+                            "spriteType": 4,
+                            "spriteId": "MiniGreyDoubleEng"
+                            }, {
                             "id": "MiniGreenJetAnimator",
-                            "animationId": "circle_250_250_30",
+                            "animationId": "only_circle_250_250_40_34",
                             "repetition": 4,
                             "spriteType": 4,
                             "spriteId": "MiniGreenJet"
-                            },{
-                            "id": "MiniGreenOneEngAnimator",
-                            "animationId": "MiniGreenOneEngStraight",
+                            }, {
+                            "id": "MiniGreenOneEngLeftAnimator",
+                            "animationId": "MiniGreenOneEngRight",
                             "repetition": 4,
                             "spriteType": 4,
-                            "spriteId": "MiniGreenOneEng"
+                            "spriteId": "MiniGreenOneEngLeft"
                             }, {
-                            "id": "Chain1MiniGreenOneEngAnimator",
+                            "id": "Chain1MiniGreenOneEngLeftAnimator",
                             "animationId": "only_circle_250_250_100_68",
                             "repetition": 4,
                             "spriteType": 4,
-                            "spriteId": "MiniGreenOneEng"
+                            "spriteId": "MiniGreenOneEngLeft"
                             }, {
-                            "id": "Chain2Chain1MiniGreenOneEngAnimator",
+                            "id": "Chain2Chain1MiniGreenOneEngLeftAnimator",
                             "animationId": "MiniGreenOneEngDownRightContinousAnimation",
                             "repetition": 4,
                             "spriteType": 4,
-                            "spriteId": "MiniGreenOneEng"
+                            "spriteId": "MiniGreenOneEngLeft"
+                            }, {
+                            "id": "MiniGreenOneEngRightAnimator",
+                            "animationId": "MiniGreenOneEngLeft",
+                            "repetition": 4,
+                            "spriteType": 4,
+                            "spriteId": "MiniGreenOneEngRight"
+                            }, {
+                            "id": "Chain1MiniGreenOneEngRightAnimator",
+                            "animationId": "only_circle_250_250_100_68",
+                            "repetition": 4,
+                            "spriteType": 4,
+                            "spriteId": "MiniGreenOneEngRight"
+                            }, {
+                            "id": "Chain2Chain1MiniGreenOneEngRightAnimator",
+                            "animationId": "MiniGreenOneEngDownLeftContinousAnimation",
+                            "repetition": 4,
+                            "spriteType": 4,
+                            "spriteId": "MiniGreenOneEngRight"
                             }, {
                             "WARNING ATTENTION WATCH OUT ": "IT NEEDS MULTIPLE ANIMATIONS",
                             "id": "MiniGreyOneEngAnimator",

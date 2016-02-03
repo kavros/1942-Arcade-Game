@@ -213,11 +213,23 @@ void    SpritesHolder::Load (const std::string& cataloge/*,SDL_Renderer* _render
 
 SDL_Rect getRandomDestRect(EnemyFighterType e,SDL_Rect dst){
     switch (e) {
+            
         case EnemyFighterType(3):{
-            dst.x = 0;
+            //dst.x = 0;
             dst.y = rand() % 384 + 92; // random between 92 - 476
             break;}
-        
+        case EnemyFighterType(5):{
+            //dst.x = 0;
+            dst.y = rand() % 384 + 92; // random between 92 - 476
+            break;}
+        case EnemyFighterType(6):{
+            //dst.x = 0;
+            dst.x = rand() % 384 + 192; // random between 192 - 576
+            break;}
+        case EnemyFighterType(4):{
+            //dst.x = 0;
+            dst.x = rand() % 690 + 40; // random between  40 - 730
+            break;}
         default:break;
     }
     return dst;
@@ -254,6 +266,34 @@ bool SpritesHolder::uniqueAliveFromTeam(Sprite* sprite){
     
     SpritesHolder* h = SpritesHolder::getSpritesHolder();
     SpriteList* st = h->getSprites(sprite->getType(  ));
+   
+    
+    
+    
+    
+        
+    int enemyId,groupId = 0;
+    std::size_t found;
+    std::string bonusId = sprite->getId();
+    std::string s = "RedJetRight";
+    std::string g = "RedJetLeft";
+    std::string* last;
+    found = bonusId.find(s);
+    if (found == 0){
+        bonusId.erase(found, s.length());
+        groupId = std::stoi( bonusId )/5;
+        last = &s;
+    }else {
+        found = bonusId.find(g);
+        if (found == 0){
+            bonusId.erase(found, g.length());
+            groupId = std::stoi( bonusId )/5;
+            last = &g;
+        }else {
+            
+            assert(0);
+        }
+    }
     
     if( sprite->getType() == ALIEN_SHIP ){
         
@@ -266,9 +306,18 @@ bool SpritesHolder::uniqueAliveFromTeam(Sprite* sprite){
                 enemyFighter = (EnemyFighter*)(*it);
                 
                 if( enemyFighter->getEnemyFighterType() == RED_PLANE &&  enemyFighter!=sprite ){
-                    if( enemyFighter->isAlive() && enemyFighter->getVisibility() ){
-                        return false;
+                    bonusId = enemyFighter->getId();
+                    found = bonusId.find(*last);
+                    if (found == 0){
+                        bonusId.erase(found, (*last).length());
+                        enemyId = std::stoi( bonusId );
+                        if( enemyFighter->isAlive() && /*enemyFighter->getVisibility() &&*/ (enemyId >= groupId*5) && (enemyId < (groupId+1)*5) ){
+                            return false;
+                        }
                     }
+                    /*if( enemyFighter->isAlive() && enemyFighter->getVisibility() && (enemyId >= groupId*5) && (enemyId < (groupId+1)*5) ){
+                        return false;
+                    }*/
                 }
                 
                 ++it;

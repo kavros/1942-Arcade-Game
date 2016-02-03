@@ -14,13 +14,24 @@
                 "spriteType": 3,
                 "animFilmId": "Super.Ace.1942"
                 },{
-                "id": "RedJet",
+                "id": "RedJetRight",
+                "frameNo": 0,
+                "destRect": [768, 200, 25, 25],
+                "point": [0, 0],
+                "visible": false,
+                "spriteType": 4,
+                "repetition": 15,
+                "remainingBullets": 0,
+                "enemyType" : 0,
+                "animFilmId": "red_plane"
+                },{
+                "id": "RedJetLeft",
                 "frameNo": 0,
                 "destRect": [0, 200, 25, 25],
                 "point": [0, 0],
                 "visible": false,
                 "spriteType": 4,
-                "repetition": 35,
+                "repetition": 20,
                 "remainingBullets": 0,
                 "enemyType" : 0,
                 "animFilmId": "red_plane"
@@ -47,7 +58,18 @@
                 "enemyType" : 2,
                 "animFilmId": "gray_jet"
                 },{
-                "id": "MiniGreenOneEng",
+                "id": "MiniGreenOneEngRight",
+                "frameNo": 0,
+                "destRect": [768, 200, 35, 35],
+                "point": [0, 0],
+                "repetition": 4,
+                "visible": false,
+                "spriteType": 4,
+                "remainingBullets": 2,
+                "enemyType" : 3,
+                "animFilmId": "mini_green_one_eng"
+                },{
+                "id": "MiniGreenOneEngLeft",
                 "frameNo": 0,
                 "destRect": [0, 200, 35, 35],
                 "point": [0, 0],
@@ -69,7 +91,7 @@
                 "enemyType" : 4,
                 "animFilmId": "min_gray_plane"
                 },{
-                "id": "MiniGreenDoubleEng",
+                "id": "MiniGreenDoubleEngLeft",
                 "frameNo": 0,
                 "destRect": [0, 40, 35, 35],
                 "point": [0, 0],
@@ -80,9 +102,20 @@
                 "enemyType" : 5,
                 "animFilmId": "green_double_engine"
                 },{
+                "id": "MiniGreenDoubleEngRight",
+                "frameNo": 0,
+                "destRect": [768, 40, 35, 35],
+                "point": [0, 0],
+                "repetition": 4,
+                "visible": false,
+                "spriteType": 4,
+                "remainingBullets": 2,
+                "enemyType" : 5,
+                "animFilmId": "green_double_engine"
+                },{
                 "id": "MiniGreyDoubleEng",
                 "frameNo": 0,
-                "destRect": [600, 0, 35, 35],
+                "destRect": [0, 0, 35, 35],
                 "point": [0, 0],
                 "repetition": 4,
                 "visible": false,

@@ -18,34 +18,69 @@ void MovingPathAnimator::chooseCallBack(string id){
     string* str = nullptr;
     
     
-    found = id.find("MiniGreenOneEngAnimator");
-    if (found == 0)
-    str = new string("Chain1"+ id);
-    found = id.find("Chain1MiniGreenOneEngAnimator");
-    if (found == 0)
-    str = new string("Chain2"+ id);
+    
     found = id.find("MedGreenDoubleEngAnimator");
     if (found == 0)
-    str = new string("Chain1"+ id);
+        str = new string("Chain1"+ id);
     found = id.find("Chain1MedGreenDoubleEngAnimator");
     if (found == 0)
-    str = new string("Chain2"+ id);
+        str = new string("Chain2"+ id);
     found = id.find("Chain1MiniGreyOneEngAnimator");
     if (found == 0)
         str = new string("Chain2"+ id);
+    
     found = id.find("MiniGreyOneEngAnimator");
     if (found == 0)
         str = new string("Chain1"+ id);
-    found = id.find("RedJetAnimator");
+    
+    //redJet
+    found = id.find("RedJet");
     if (found == 0)
         str = new string("Chain1"+ id);
-    found = id.find("Chain1RedJetAnimator");
+    found = id.find("Chain1RedJet");
     if (found == 0)
         str = new string("Chain2"+ id);
-    found = id.find("Chain2Chain1RedJetAnimator");
+    found = id.find("Chain2Chain1RedJet");
     if (found == 0)
         str = new string("Chain3"+ id);
-    found = id.find("Chain3Chain2Chain1RedJetAnimator");
+    found = id.find("Chain3Chain2Chain1RedJet");
+    if (found == 0)
+        str = new string("Chain4"+ id);
+    
+    //miniGreenOneEng
+    found = id.find("MiniGreenOneEng");
+    if (found == 0)
+        str = new string("Chain1"+ id);
+    found = id.find("Chain1MiniGreenOneEng");
+    if (found == 0)
+        str = new string("Chain2"+ id);
+    
+    
+    //miniGreenDoubleEng
+    found = id.find("MiniGreenDoubleEng");
+    if (found == 0)
+        str = new string("Chain1"+ id);
+    found = id.find("Chain1MiniGreenDoubleEng");
+    if (found == 0)
+        str = new string("Chain2"+ id);
+    found = id.find("Chain2Chain1MiniGreenDoubleEng");
+    if (found == 0)
+        str = new string("Chain3"+ id);
+    found = id.find("Chain3Chain2Chain1MiniGreenDoubleEng");
+    if (found == 0)
+        str = new string("Chain4"+ id);
+    
+    //miniGreyDoubleEng
+    found = id.find("MiniGreyDoubleEng");
+    if (found == 0)
+        str = new string("Chain1"+ id);
+    found = id.find("Chain1MiniGreyDoubleEng");
+    if (found == 0)
+        str = new string("Chain2"+ id);
+    found = id.find("Chain2Chain1MiniGreyDoubleEng");
+    if (found == 0)
+        str = new string("Chain3"+ id);
+    found = id.find("Chain3Chain2Chain1MiniGreyDoubleEng");
     if (found == 0)
         str = new string("Chain4"+ id);
     
