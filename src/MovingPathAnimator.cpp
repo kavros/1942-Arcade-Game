@@ -28,6 +28,7 @@ void MovingPathAnimator::chooseCallBack(string id){
     found = id.find("Chain1MiniGreyOneEngAnimator");
     if (found == 0)
         str = new string("Chain2"+ id);
+    
     found = id.find("MiniGreyOneEngAnimator");
     if (found == 0)
         str = new string("Chain1"+ id);

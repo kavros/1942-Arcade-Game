@@ -74,7 +74,7 @@
                                       "repetitions": 4
                                       }, {
                                       "id": "medGreenDoubleEngTickAnimation",
-                                      "delay": 9000,
+                                      "delay": 4000,
                                       "repetitions": 4
                                       }, {
                                       "id": "medGreyDoubleEngTickAnimation",
@@ -1051,13 +1051,13 @@
                                             "continuous": false,
                                             "doWhile": true,
                                             "maxX": 0,
-                                            "maxY": 92,
+                                            "maxY": 140,
                                             "paths": [{
                                                       "dx": 0,
-                                                      "dy": 4,
+                                                      "dy": 5,
                                                       "visibility": true,
                                                       "frameNo": 8,
-                                                      "delay": 30
+                                                      "delay": 40
                                                       }]
                                             
                                             
