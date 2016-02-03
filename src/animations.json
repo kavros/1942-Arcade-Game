@@ -108,23 +108,23 @@
                                       "repetitions": 4
                                       }, {
                                       "id": "endOfStageTickAnimation",
-                                      "delay": 8000,
+                                      "delay": 40000,
                                       "repetitions": 1
                                       }, {
                                       "id": "endOfStageMoveToCenterTickAnimation",
                                       "delay": 100,
-                                      "repetitions": 0
+                                      "repetitions": 50
                                       }, {
                                       "id": "endOfStageCreateAircraftTickAnimation",
                                       "delay": 6000,
                                       "repetitions": 1
                                       }, {
                                       "id": "endOfStageLandPlaneTickAnimation",
-                                      "delay": 9000,
+                                      "delay":10000,
                                       "repetitions": 1
                                       }, {
                                       "id": "endOfStageStopBackgroundTickAnimation",
-                                      "delay": 12000,
+                                      "delay": 15000,
                                       "repetitions": 1
                                       }, {
                                       "id": "deathStarTickAnimation",

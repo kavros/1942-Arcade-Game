@@ -62,6 +62,12 @@ void Background::initBackgroundObjects(){
     initialAircraft->setDstRectX(WIN_WIDTH/2-initialAircraft->getDstRect().w/2 + 13);
     initialAircraft->setDstRectY(WIN_HEIGHT-initialAircraft->getDstRect().h);
     
+    Sprite* finishAircraft = SpritesHolder::getSprite(TERRAIN, "spriteAircraftCarrier1");
+    assert(finishAircraft);
+    
+    finishAircraft->setDstRectX(WIN_WIDTH/2-initialAircraft->getDstRect().w/2 + 13);
+    finishAircraft->setDstRectY(-finishAircraft->getDstRect().h);
+    
     addBackgroundObject("spriteAircraftCarrier0");
     startBackgroundObjectAnimator("aircraftAnimator0");
 

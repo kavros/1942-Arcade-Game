@@ -21,7 +21,7 @@ class AnimatorHolder{
 private:
     typedef std::map<std::string, Animator*> AnimatorMap;
     typedef std::list<Animator*> AnimatorList;
-private:
+    
 	class ProgressFunctor : public std::unary_function<Animator*, void> {
 		timestamp_t _t;
 	public:
@@ -74,6 +74,7 @@ public:
 	static void pauseAnimators();
     static void Load (const std::string& cataloge);
     static void startTimeTickAnimators();
+    static void triggerEndOfStageAnimators();
 
 
 	
