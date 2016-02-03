@@ -337,7 +337,7 @@
                             },{
                             "id": "MedGreyTripleEngAnimator",
                             "animationId": "GreyMediumPlaneMovingLeftAnimation",
-                            "repetition": 4,
+                            "repetition": 2,
                             "spriteType": 4,
                             "spriteId": "MedGreyTripleEng"
                             },{
