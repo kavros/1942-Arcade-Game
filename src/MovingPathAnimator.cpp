@@ -33,47 +33,28 @@ void MovingPathAnimator::chooseCallBack(string id){
     if (found == 0)
         str = new string("Chain1"+ id);
     
-    //redJetLeft
-    found = id.find("RedJetLeftAnimator");
+    //redJet
+    found = id.find("RedJet");
     if (found == 0)
         str = new string("Chain1"+ id);
-    found = id.find("Chain1RedJetLeftAnimator");
+    found = id.find("Chain1RedJet");
     if (found == 0)
         str = new string("Chain2"+ id);
-    found = id.find("Chain2Chain1RedJetLeftAnimator");
+    found = id.find("Chain2Chain1RedJet");
     if (found == 0)
         str = new string("Chain3"+ id);
-    found = id.find("Chain3Chain2Chain1RedJetLeftAnimator");
+    found = id.find("Chain3Chain2Chain1RedJet");
     if (found == 0)
         str = new string("Chain4"+ id);
     
-    //redJetRight
-    found = id.find("RedJetRightAnimator");
+    //miniGreenOneEng
+    found = id.find("MiniGreenOneEng");
     if (found == 0)
         str = new string("Chain1"+ id);
-    found = id.find("Chain1RedJetRightAnimator");
+    found = id.find("Chain1MiniGreenOneEng");
     if (found == 0)
         str = new string("Chain2"+ id);
-    found = id.find("Chain2Chain1RedJetRightAnimator");
-    if (found == 0)
-        str = new string("Chain3"+ id);
-    found = id.find("Chain3Chain2Chain1RedJetRightAnimator");
-    if (found == 0)
-        str = new string("Chain4"+ id);
-    //miniGreenOneEngRight
-    found = id.find("MiniGreenOneEngRightAnimator");
-    if (found == 0)
-        str = new string("Chain1"+ id);
-    found = id.find("Chain1MiniGreenOneEngRightAnimator");
-    if (found == 0)
-        str = new string("Chain2"+ id);
-    //miniGreenOneEngLeft
-    found = id.find("MiniGreenOneEngLeftAnimator");
-    if (found == 0)
-        str = new string("Chain1"+ id);
-    found = id.find("Chain1MiniGreenOneEngLeftAnimator");
-    if (found == 0)
-        str = new string("Chain2"+ id);
+    
     
     //miniGreenDoubleEng
     found = id.find("MiniGreenDoubleEng");
@@ -86,6 +67,20 @@ void MovingPathAnimator::chooseCallBack(string id){
     if (found == 0)
         str = new string("Chain3"+ id);
     found = id.find("Chain3Chain2Chain1MiniGreenDoubleEng");
+    if (found == 0)
+        str = new string("Chain4"+ id);
+    
+    //miniGreyDoubleEng
+    found = id.find("MiniGreyDoubleEng");
+    if (found == 0)
+        str = new string("Chain1"+ id);
+    found = id.find("Chain1MiniGreyDoubleEng");
+    if (found == 0)
+        str = new string("Chain2"+ id);
+    found = id.find("Chain2Chain1MiniGreyDoubleEng");
+    if (found == 0)
+        str = new string("Chain3"+ id);
+    found = id.find("Chain3Chain2Chain1MiniGreyDoubleEng");
     if (found == 0)
         str = new string("Chain4"+ id);
     

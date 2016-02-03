@@ -202,6 +202,36 @@
                             "spriteType": 4,
                             "spriteId": "MiniGreenDoubleEngLeft"
                             }, {
+                            "id": "MiniGreyDoubleEngAnimator",
+                            "animationId": "MiniGreyDoubleEngDown",
+                            "repetition": 4,
+                            "spriteType": 4,
+                            "spriteId": "MiniGreyDoubleEng"
+                            },{
+                            "id": "Chain1MiniGreyDoubleEngAnimator",
+                            "animationId": "only_circle_250_250_40_34",
+                            "repetition": 4,
+                            "spriteType": 4,
+                            "spriteId": "MiniGreyDoubleEng"
+                            },{
+                            "id": "Chain2Chain1MiniGreyDoubleEngAnimator",
+                            "animationId": "MiniGreyDoubleEngDown",
+                            "repetition": 4,
+                            "spriteType": 4,
+                            "spriteId": "MiniGreyDoubleEng"
+                            },{
+                            "id": "Chain3Chain2Chain1MiniGreyDoubleEngAnimator",
+                            "animationId": "only_circle_250_250_40_34",
+                            "repetition": 4,
+                            "spriteType": 4,
+                            "spriteId": "MiniGreyDoubleEng"
+                            },{
+                            "id": "Chain4Chain3Chain2Chain1MiniGreyDoubleEngAnimator",
+                            "animationId": "MiniGreyDoubleEngDownCont",
+                            "repetition": 4,
+                            "spriteType": 4,
+                            "spriteId": "MiniGreyDoubleEng"
+                            }, {
                             "id": "MiniGreenJetAnimator",
                             "animationId": "only_circle_250_250_40_34",
                             "repetition": 4,

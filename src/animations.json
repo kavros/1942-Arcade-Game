@@ -74,7 +74,7 @@
                                       "repetitions": 4
                                       },{
                                       "id": "miniGreyDoubleEngTickAnimation",
-                                      "delay": 8000,
+                                      "delay": 3500,
                                       "repetitions": 4
                                       },{
                                       "id": "medGreenDoubleEngTickAnimation",
@@ -1101,6 +1101,29 @@
                                                       "dx": 4,
                                                       "dy": 0,
                                                       "frameNo": 4,
+                                                      "visibility": true,
+                                                      "delay": 40
+                                                      }]
+                                            }, {
+                                            "id": "MiniGreyDoubleEngDown",
+                                            "continuous": false,
+                                            "doWhile": true,
+                                            "maxX": 0,
+                                            "maxY": 180,
+                                            "paths": [{
+                                                      "dx": 0,
+                                                      "dy": 4,
+                                                      "frameNo": 0,
+                                                      "visibility": true,
+                                                      "delay": 40
+                                                      }]
+                                            }, {
+                                            "id": "MiniGreyDoubleEngDownCont",
+                                            "continuous": true,
+                                            "paths": [{
+                                                      "dx": 0,
+                                                      "dy": 4,
+                                                      "frameNo": 0,
                                                       "visibility": true,
                                                       "delay": 40
                                                       }]
