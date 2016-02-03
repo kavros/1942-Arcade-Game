@@ -84,6 +84,14 @@ void MovingPathAnimator::chooseCallBack(string id){
     if (found == 0)
         str = new string("Chain4"+ id);
     
+    //miniGreenJet
+    //redJet
+    found = id.find("MiniGreenJetAnimator");
+    if (found == 0)
+        str = new string("Chain1"+ id);
+    found = id.find("Chain1MiniGreenJetAnimator");
+    if (found == 0)
+        str = new string("Chain2"+ id);
 	//med grey
 	found = id.find("MedGreyDoubleEngAnimator");
 	if (found == 0)
