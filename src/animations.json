@@ -526,7 +526,7 @@
                                                       }]
                                             
                                             }, {
-                                            "id": "straight",
+                                            "id": "RedJetLeft",
                                             "continuous": false,
                                             "doWhile":true,
                                             "maxY":0,
@@ -535,6 +535,19 @@
                                                       "dx": 5,
                                                       "dy": 0,
                                                       "frameNo": 4,
+                                                      "visibility": true,
+                                                      "delay": 90
+                                                      }]
+                                            }, {
+                                            "id": "RedJetRight",
+                                            "continuous": false,
+                                            "doWhile":true,
+                                            "maxY":0,
+                                            "maxX":-200,
+                                            "paths": [{
+                                                      "dx": -5,
+                                                      "dy": 0,
+                                                      "frameNo": 12,
                                                       "visibility": true,
                                                       "delay": 90
                                                       }]

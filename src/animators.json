@@ -83,7 +83,7 @@
                             "spriteId": "SuperAce"
                             }, {
                             "id": "RedJetAnimator",
-                            "animationId": "straight",
+                            "animationId": "RedJetRight",
                             "repetition": 35,
                             "spriteType": 4,
                             "spriteId": "RedJet"
@@ -95,7 +95,7 @@
                             "spriteId": "RedJet"
                             }, {
                             "id": "Chain2Chain1RedJetAnimator",
-                            "animationId": "straight",
+                            "animationId": "RedJetRight",
                             "repetition": 35,
                             "spriteType": 4,
                             "spriteId": "RedJet"

@@ -254,6 +254,24 @@ bool SpritesHolder::uniqueAliveFromTeam(Sprite* sprite){
     
     SpritesHolder* h = SpritesHolder::getSpritesHolder();
     SpriteList* st = h->getSprites(sprite->getType(  ));
+   
+    
+    
+    
+    
+    
+        
+    int enemyId,groupId = 0;
+    std::size_t found;
+    std::string bonusId = sprite->getId();
+    std::string s = "RedJet";
+    found = bonusId.find(s);
+    if (found == 0){
+        bonusId.erase(found, s.length());
+        groupId = std::stoi( bonusId )/5;
+    }else{
+        assert(0);
+    }
     
     if( sprite->getType() == ALIEN_SHIP ){
         
@@ -266,7 +284,15 @@ bool SpritesHolder::uniqueAliveFromTeam(Sprite* sprite){
                 enemyFighter = (EnemyFighter*)(*it);
                 
                 if( enemyFighter->getEnemyFighterType() == RED_PLANE &&  enemyFighter!=sprite ){
-                    if( enemyFighter->isAlive() && enemyFighter->getVisibility() ){
+                    bonusId = enemyFighter->getId();
+                    found = bonusId.find(s);
+                    if (found == 0){
+                        bonusId.erase(found, s.length());
+                        enemyId = std::stoi( bonusId );
+                    }else{
+                        assert(0);
+                    }
+                    if( enemyFighter->isAlive() && enemyFighter->getVisibility() && (enemyId >= groupId*5) && (enemyId < (groupId+1)*5) ){
                         return false;
                     }
                 }

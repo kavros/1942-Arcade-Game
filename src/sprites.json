@@ -16,7 +16,7 @@
                 },{
                 "id": "RedJet",
                 "frameNo": 0,
-                "destRect": [0, 200, 25, 25],
+                "destRect": [768, 200, 25, 25],
                 "point": [0, 0],
                 "visible": false,
                 "spriteType": 4,
