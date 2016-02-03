@@ -49,6 +49,16 @@ void MovingPathAnimator::chooseCallBack(string id){
     if (found == 0)
         str = new string("Chain4"+ id);
     
+	//med grey
+	found = id.find("MedGreyDoubleEngAnimator");
+	if (found == 0)
+		str = new string("Chain1" + id);
+	found = id.find("Chain1MedGreyDoubleEngAnimator");
+	if (found == 0)
+		str = new string("Chain2" + id);
+
+
+
     if(str!=nullptr)
         setOnFinished(nextAnimator,(void*)str);
 }
