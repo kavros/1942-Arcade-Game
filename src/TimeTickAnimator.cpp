@@ -70,3 +70,13 @@ void TimerTickAnimator::startTimeTickAnimator(animid_t id, std::function<void(vo
     
     timerTickAnimator->start( Game::getGameTime() );
 }
+
+void TimerTickAnimator::stopTimeTickAnimator(animid_t id){
+    
+    TickAnimation* tickAnimation = (TickAnimation*)AnimationHolder::getAnimationHolder()->getAnimation(id);
+    assert(tickAnimation);
+    
+    TimerTickAnimator* timerTickAnimator = (TimerTickAnimator*)AnimatorHolder::getAnimator(id);
+    
+    timerTickAnimator->stop();
+}

@@ -29,6 +29,8 @@ public:
     
     static void startTimeTickAnimator(animid_t id, std::function<void(void)> f);
 
+    static void stopTimeTickAnimator(animid_t id);
+
 };
 
 #endif

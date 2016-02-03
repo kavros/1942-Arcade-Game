@@ -63,9 +63,10 @@ void Game::gameOver(){
         SpriteStringHolder::getSpriteString("numberOne")->setVisibility(false);
         firstTime = false;
         
+        //Game::cleanUpHolders();
+        //setState(SINGLEPLAYER_MENU);
     }else{
-        //exit();
-        //   assert(0);
+        //assert(0);
     }
 }
 

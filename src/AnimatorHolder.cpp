@@ -376,6 +376,14 @@ void triggerBigGreenOutroTickAnimators(){
 
 }
 
+int setD(int big,int small){
+    if(big-small >4){ cout<<4<<endl;return 4;}
+    else if(big-small >=2){ cout<<2<<endl;return 2;}
+    else if(big-small ==1){ cout<<1<<endl;return 0;}
+    else if(big-small ==0){ cout<<0<<endl;return 0;}
+    else{cout<<0<<endl;return 0;}
+}
+
 void updateEndOfStageAnimation(){
 
     static int times = 0;
@@ -393,41 +401,51 @@ void updateEndOfStageAnimation(){
         return;
     }
     
-    int dstX = 384;
+    int dx =0;
+    int dy =0;
+    int dstX = WIN_WIDTH/2-superAce->getDstRect().w/2;
     int dstY = 100;
-
+    
     int superAceX = superAce->getDstRect().x;
     int superAceY = superAce->getDstRect().y;
     
     
     if (superAceX > dstX){
+        dx = setD(superAceX,dstX);
         if (superAceY > dstY){
-            animation->changeDxDy(-4, -4);
+            dy = setD(superAceY,dstY);
+            animation->changeDxDy(-dx, -dy);
         }
         else if (superAceY < dstY){
-            animation->changeDxDy(-4, 4);
+            dy = setD(dstY,superAceY);
+            animation->changeDxDy(-dx, dy);
         }
         else{
-            animation->changeDxDy(-4, 0);
+            animation->changeDxDy(-dx, 0);
         }
     }
     else if (superAceX < dstX){
+        dx = setD(dstX,superAceX);
         if (superAceY > dstY){
-            animation->changeDxDy(4, -4);
+            dy = setD(superAceY,dstY);
+            animation->changeDxDy(dx, -dy);
         }
         else if (superAceY < dstY){
-            animation->changeDxDy(4, 4);
+            dy = setD(dstY,superAceY);
+            animation->changeDxDy(dx,dy);
         }
         else{
-            animation->changeDxDy(4, 0);
+            animation->changeDxDy(dx, 0);
         }
     }
     else{
         if (superAceY > dstY){
-            animation->changeDxDy(0, -4);
+            dy = setD(superAceY,dstY);
+            animation->changeDxDy(0, -dy);
         }
         else if (superAceY < dstY){
-            animation->changeDxDy(0, 4);
+            dy = setD(dstY,superAceY);
+            animation->changeDxDy(0, dy);
         }
         else{
         }
@@ -437,19 +455,15 @@ void updateEndOfStageAnimation(){
 
 }
 
-void triggerEndOfStageMoveToCenterAnimator(){
-    MovingPathAnimator* animator = (MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator("endOfStageMoveToCenterAnimator0");
-    assert(animator);
-    animator->start(Game::getGameTime());
-    
-}
-
 void triggerEndOfStageCreateAircraftAnimator(){
+
     MovingPathAnimator* prevAnimator = (MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator("endOfStageMoveToCenterAnimator0");
+
     assert(prevAnimator);
+
     prevAnimator->setState(ANIMATOR_FINISHED);
     prevAnimator->stop();
-    
+
     Background::startBackgroundObjectAnimator("aircraftAnimator1");
 }
 
@@ -475,11 +489,13 @@ void triggerEndOfStageStopBackgroundAnimator(){
     Game::setState(END_OF_STAGE);
 }
 
-void triggerEndOfStageAnimators(){
-    
+void AnimatorHolder::triggerEndOfStageAnimators(){
+    static unsigned times = 0;
+    assert(times == 0);
+    times++;
+
     //move super ace to the center up of the screen
-    TimerTickAnimator::startTimeTickAnimator("endOfStageMoveToCenterTickAnimation", updateEndOfStageAnimation );
-    //TimerTickAnimator::startTimeTickAnimator("endOfStageMoveToCenterTickAnimation", triggerEndOfStageMoveToCenterAnimator );
+    TimerTickAnimator::startTimeTickAnimator("endOfStageMoveToCenterTickAnimation", updateEndOfStageAnimation );    //repeatition 100
 
     //create the finish aircraft
     TimerTickAnimator::startTimeTickAnimator("endOfStageCreateAircraftTickAnimation", triggerEndOfStageCreateAircraftAnimator );
@@ -524,7 +540,7 @@ void AnimatorHolder::startTimeTickAnimators(){
     
     //Bullets
     TimerTickAnimator::startTimeTickAnimator("enemyBulletsTickAnimation", AnimatorHolder::triggerBullets);
-
+    
     //Bonus Planes
     TimerTickAnimator::startTimeTickAnimator("redPlaneTickAnimations", triggerRedPlaneTickAnimations );
      
@@ -549,7 +565,7 @@ void AnimatorHolder::startTimeTickAnimators(){
     TimerTickAnimator::startTimeTickAnimator("deathStarTickAnimation", triggerDeathStarAnimator );
     
     //end of stage
-    //TimerTickAnimator::startTimeTickAnimator("endOfStageTickAnimation", triggerEndOfStageAnimators );
+    TimerTickAnimator::startTimeTickAnimator("endOfStageTickAnimation", AnimatorHolder::triggerEndOfStageAnimators );
     
 }
 
