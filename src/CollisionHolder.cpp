@@ -49,7 +49,8 @@ void Sprite::fireHandler::operator()(Sprite* bullet,Sprite* arg) const{
         enemyFighter->setEnemyFighterLifes( enemyFighter->getEnemyFighterLifes() -1 );
         if(enemyFighter->getEnemyFighterType()!= BULLET)
             updateScore(enemyFighter);
-        
+		Game::setToDeadEnemiesOneMore();
+	
     }
     else if( arg->getType() == SUPER_ACE ){
         Sprite* rightFighter = superAce->getAttached(RIGHT_FIGHTER);

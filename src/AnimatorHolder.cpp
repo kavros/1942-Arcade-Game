@@ -572,15 +572,40 @@ void triggerEndOfStageMinimizePlaneAnimator(){
 void triggerEndOfStageStopBackgroundAnimator(){
     
     SpriteStringHolder::getSpriteString("shootingString")->setVisibility(true);
-    SpriteStringHolder::getSpriteString("downString")->setVisibility(true);
+	
+
+	SpriteStringHolder::getSpriteString("downString")->setVisibility(true);
+	//cout << "shootingDownEnemies = " << std::to_string(Game::getDeadEnemies()) << endl;
+	
+	double shooting_down_percent_number = ((double)Game::getDeadEnemies() / (double)Game::getTotalEnemies()) * 100;
+	string shooting_down_percent_str = (std::to_string((int)shooting_down_percent_number)) + "%";
+	
+	cout << "total enemies = " << Game::getTotalEnemies() << endl;
+	cout << "total shooted enemies = " << Game::getDeadEnemies() << endl;
+	cout << "shooting_down_percent_number = " << shooting_down_percent_number << endl;
+
+	SpriteStringHolder::getSpriteString("shootingDownPercent")->changeString(shooting_down_percent_str, (WIN_WIDTH / 2) + 40, (WIN_HEIGHT / 2));
+	SpriteStringHolder::getSpriteString("shootingDownPercent")->setVisibility(true);
     SpriteStringHolder::getSpriteString("shootingDownPercent")->setVisibility(true);
     SpriteStringHolder::getSpriteString("endingBonusString")->setVisibility(true);
     SpriteStringHolder::getSpriteString("pointsString")->setVisibility(true);
-    SpriteStringHolder::getSpriteString("points")->setVisibility(true);
+
+	//SpriteStringHolder::getSpriteString("points")->changeString();
+	SpriteStringHolder::getSpriteString("points")->setVisibility(true);
     SpriteStringHolder::getSpriteString("letterR")->setVisibility(true);
     SpriteStringHolder::getSpriteString("1000Points")->setVisibility(true);
     SpriteStringHolder::getSpriteString("letterR")->setVisibility(true);
-    
+	SpriteStringHolder::getSpriteString("equals")->setVisibility(true);
+	SpriteStringHolder::getSpriteString("pointsString2")->setVisibility(true);
+
+	//last line with points
+	SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce0");
+	assert(superAce);
+	int last_points_number = superAce->getSuperAceLoops() * 1000;
+	string last_points_str = std::to_string(last_points_number);
+	SpriteStringHolder::getSpriteString("LastPoints")->changeString(last_points_str, (WIN_WIDTH / 2) + 50, (WIN_HEIGHT / 2) + 135);
+	SpriteStringHolder::getSpriteString("LastPoints")->setVisibility(true);
+	//
     Game::setState(END_OF_STAGE);
 }
 
@@ -695,11 +720,11 @@ void triggerstartEnemyPlanesTickAnimator(){
     
     //Bonus Planes
     TimerTickAnimator::startTimeTickAnimator("redPlaneTickAnimations", triggerRedPlaneTickAnimations );
-    
+	
     //mini green Planes/jets
-    TimerTickAnimator::startTimeTickAnimator("miniGreenOneEngTickAnimation", triggerMiniGreenOneEngAnimator );
-    TimerTickAnimator::startTimeTickAnimator("miniGreenDoubleEngTickAnimation", triggerMiniGreenDoubleEngAnimator );
-    TimerTickAnimator::startTimeTickAnimator("miniGreenJetTickAnimation", triggerMiniGreenJetAnimator );
+   /* TimerTickAnimator::startTimeTickAnimator("miniGreenOneEngTickAnimation", triggerMiniGreenOneEngAnimator );
+   TimerTickAnimator::startTimeTickAnimator("miniGreenDoubleEngTickAnimation", triggerMiniGreenDoubleEngAnimator );
+   TimerTickAnimator::startTimeTickAnimator("miniGreenJetTickAnimation", triggerMiniGreenJetAnimator );
     
     //mini  grey Planes/jets
     TimerTickAnimator::startTimeTickAnimator("miniGreyJetTickAnimation", triggerMiniGreyJetTickAnimator);
@@ -725,13 +750,16 @@ void triggerstartEnemyPlanesTickAnimator(){
     
     //death star
     TimerTickAnimator::startTimeTickAnimator("deathStarTickAnimation", triggerDeathStarAnimator );
-    
+   */
 }
 
 void AnimatorHolder::startTimeTickAnimators(){
 
     //start of stage
     TimerTickAnimator::startTimeTickAnimator("startOfStageTickAnimation", AnimatorHolder::triggerStartOfStageAnimators );
+
+
+
 
     //end of stage
     TimerTickAnimator::startTimeTickAnimator("endOfStageTickAnimation", AnimatorHolder::triggerEndOfStageAnimators );

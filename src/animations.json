@@ -159,7 +159,7 @@
                                       },
                                       {
                                       "id": "endOfStageTickAnimation",
-                                      "delay": 50000,
+                                      "delay": 15000,
                                       "repetitions": 1
                                       },{
                                       "id": "endOfStageMoveToCenterTickAnimation",
