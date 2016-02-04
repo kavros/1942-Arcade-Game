@@ -19,7 +19,8 @@ void Sprite::fireHandler::operator()(Sprite* bullet,Sprite* arg) const{
     if (arg == superAce && arg->getState() == MANEUVER){
         return;
     }
-    
+
+	
     bullet->setState(IN_COLUSION);
     arg->setVisibility(false);
     bullet->setVisibility(false);
@@ -160,6 +161,7 @@ void Sprite::touchHandler::operator()(Sprite* aircraft,Sprite* arg) const{
 
     if( !aircraft->getVisibility() || !arg->getVisibility())
         return;
+
 
     aircraft->setVisibility(false);
     arg->setVisibility(false);

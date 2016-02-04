@@ -4,9 +4,11 @@
 
 void Game::singleplayerGameOnEvent(){
 
+	
+
     SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce0");
     assert(superAce);
-    
+	
     MovingPathAnimator* superAceStartingAnimator = (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceStartingAnimator0");
     assert(superAceStartingAnimator);
     
@@ -22,8 +24,8 @@ void Game::singleplayerGameOnEvent(){
         
     }
     
-    if (event.type == SDL_KEYDOWN || event.type == SDL_CONTROLLERBUTTONDOWN){
-        
+	if (event.type == SDL_KEYDOWN || event.type == SDL_CONTROLLERBUTTONDOWN){
+
         MovingPathAnimator* superAceAnimatorLeft =
         (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorLeft0");
         
@@ -101,28 +103,14 @@ void Game::singleplayerGameOnEvent(){
             superAce->doManeuever();
 		}
 		else if (event.key.keysym.sym == SDLK_c){
-			if (!superAce->getUndefeatable()){
+			if (!superAce->isUndefeatable()){
 				SoundHolder::playSound("i_will_never_die");
                 superAce->setUndefeatable(true);
-                /*
-                if( superAce->getAttached(RIGHT_FIGHTER) ){
-                    superAce->getAttached(RIGHT_FIGHTER)->setUndefeatable(true);
-                }
-                if( superAce->getAttached(LEFT_FIGHTER) ){
-                    superAce->getAttached(LEFT_FIGHTER)->setUndefeatable(true);
-                }
-                */
-			} else if(superAce->getUndefeatable()){
+              
+			} else if(superAce->isUndefeatable()){
                 //sound for this case
                 superAce->setUndefeatable(false);
-                /*
-                if( superAce->getAttached(RIGHT_FIGHTER) ){
-                    superAce->getAttached(RIGHT_FIGHTER)->setUndefeatable(false);
-                }
-                if( superAce->getAttached(LEFT_FIGHTER) ){
-                    superAce->getAttached(LEFT_FIGHTER)->setUndefeatable(false);
-                }
-                 */
+
 			}
 
 		}

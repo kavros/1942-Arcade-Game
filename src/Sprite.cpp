@@ -74,7 +74,7 @@ void Sprite::setUndefeatable(bool flag){
     this->undefeatable = flag;
 }
 
-bool Sprite::getUndefeatable(){
+bool Sprite::isUndefeatable(){
     return this->undefeatable;
 }
 
@@ -211,31 +211,27 @@ void Sprite::notifyCollision(Sprite* arg){
     SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce0");
 
     if( superAce == this || arg == superAce){
-        if(superAce->getState()==MANEUVER || superAce->getUndefeatable()){
+        if(superAce->getState()==MANEUVER || superAce->isUndefeatable()){
             if( arg->getType()!=POWER_UPS && this->getType()!=POWER_UPS )
                 return;
         }
     }
-    /*
-    Sprite* right = superAce->getAttached(RIGHT_FIGHTER);
-    Sprite* left = superAce->getAttached(LEFT_FIGHTER);
-    
-    if( right && ( right == this || arg == right ) ){
-        if(right->getState()==MANEUVER || right->getUndefeatable()){
-            assert(0);
-            if( arg->getType()!=POWER_UPS && this->getType()!=POWER_UPS )
-                return;
-        }
-    }
+	
+	Sprite* right = superAce->getAttached(RIGHT_FIGHTER);
+	Sprite* left = superAce->getAttached(LEFT_FIGHTER);
 
-    if( left && ( left == this || arg == left ) ){
-        if(left->getState()==MANEUVER || left->getUndefeatable()){
-            assert(0);
-            if( arg->getType()!=POWER_UPS && this->getType()!=POWER_UPS )
-                return;
-        }
-    }
-    */
+	
+	if (this == right || arg == right || this == left || arg == left){
+		if (arg->getType() == POWER_UPS || this->getType() == POWER_UPS){
+			//get power up 
+		}else if (superAce->isUndefeatable()){	
+			return;
+		}
+	}
+    
+
+	
+    
     while(i!=_handlers.end()){
         i2=i;
         i2++;

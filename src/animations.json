@@ -154,7 +154,7 @@
                                       "repetitions": 5
                                       },{
                                       "id": "startEnemyPlanesTickAnimation",
-                                      "delay": 8000,
+                                      "delay": 4000,
                                       "repetitions": 1
                                       },
                                       {
