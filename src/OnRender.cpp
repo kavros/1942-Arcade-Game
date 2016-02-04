@@ -29,9 +29,10 @@ void Game::OnRender() {
             SpritesHolder::displayGameSprites(_renderer);
 
             break;
-		case END_OF_STAGE:
+        case END_OF_STAGE:{
 			SpritesHolder::getSpritesHolder()->displayGameSprites(_renderer);
 			break;
+        }
         default:
             assert(0);
             break;

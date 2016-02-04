@@ -137,10 +137,31 @@
                                       "delay": 6000,
                                       "repetitions": 8
                                       }, {
-                                      "id": "endOfStageTickAnimation",
+                                      "id": "startOfStageTickAnimation",
+                                      "delay": 0,
+                                      "repetitions": 1
+                                      },{
+                                      "id": "startOfStageStartAnimatorsTickAnimation",
+                                      "delay": 4000,
+                                      "repetitions": 1
+                                      },{
+                                      "id": "startOfStageTakeOffTickAnimation",
+                                      "delay": 4000,
+                                      "repetitions": 1
+                                      },{
+                                      "id": "startOfStageMaximizePlaneTickAnimation",
+                                      "delay": 600,
+                                      "repetitions": 5
+                                      },{
+                                      "id": "startEnemyPlanesTickAnimation",
                                       "delay": 8000,
                                       "repetitions": 1
-                                      }, {
+                                      },
+                                      {
+                                      "id": "endOfStageTickAnimation",
+                                      "delay": 50000,
+                                      "repetitions": 1
+                                      },{
                                       "id": "endOfStageMoveToCenterTickAnimation",
                                       "delay": 100,
                                       "repetitions": 50
@@ -1322,12 +1343,6 @@
                                             "id": "backgroundObjectsAnimation",
                                             "continuous": true,
                                             "paths": [{
-                                                      "dx": 0,
-                                                      "dy": 2,
-                                                      "frameNo": 0,
-                                                      "visibility": true,
-                                                      "delay": 50
-                                                      }, {
                                                       "dx": 0,
                                                       "dy": 2,
                                                       "frameNo": 0,

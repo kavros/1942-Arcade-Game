@@ -31,8 +31,9 @@ public:
     
     static void InitBackground();
 
-    void initBackgroundObjects();
+    static void initBackgroundObjects();
     
+    static void startBackgroundObjectAnimators();
     static void startBackgroundObjectAnimator(string id);
 
     void addBackgroundObject(string id);

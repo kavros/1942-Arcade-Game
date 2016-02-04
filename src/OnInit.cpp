@@ -20,7 +20,6 @@ bool Game::OnInit(){
     
     InitGame();
     
-
     return true;
 }
 
@@ -32,10 +31,12 @@ void Game::InitGame(){
     
     InitGameInfo();
     
-    AnimatorHolder::startTimeTickAnimators();
-    
     Background::InitBackground();
 
+    AnimatorHolder::startTimeTickAnimators();
+    
+
+    
 }
 
 void Game::InitGamePad(){

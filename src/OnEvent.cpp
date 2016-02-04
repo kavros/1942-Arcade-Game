@@ -10,12 +10,6 @@ void Game::singleplayerGameOnEvent(){
     MovingPathAnimator* superAceStartingAnimator = (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceStartingAnimator0");
     assert(superAceStartingAnimator);
     
-    
-    if (superAce->getState() == STARTING){
-        superAceStartingAnimator->start(getGameTime());
-
-    }
-    
     //if starting animator running then don't start any animator
     //when starting animator is finished remove all letters
     if (superAceStartingAnimator->getState() == ANIMATOR_RUNNING){
