@@ -20,7 +20,6 @@ bool Game::OnInit(){
     
     InitGame();
     
-
     return true;
 }
 
@@ -32,10 +31,12 @@ void Game::InitGame(){
     
     InitGameInfo();
     
-    AnimatorHolder::startTimeTickAnimators();
-    
     Background::InitBackground();
 
+    AnimatorHolder::startTimeTickAnimators();
+    
+
+    
 }
 
 void Game::InitGamePad(){
@@ -230,7 +231,7 @@ bool Game::InitGameInfo(){
     SpriteStringHolder::getSpriteString("shootingString")->setVisibility(false);
     SpriteStringHolder::addSpriteString("downString", new SpriteString("DOWN", (WIN_WIDTH / 2)-40, (WIN_HEIGHT / 2)) );
     SpriteStringHolder::getSpriteString("downString")->setVisibility(false);
-    SpriteStringHolder::addSpriteString("shootingDownPercent", new SpriteString("100%", (WIN_WIDTH / 2) + 40, (WIN_HEIGHT / 2)) );
+    SpriteStringHolder::addSpriteString("shootingDownPercent", new SpriteString("0%", (WIN_WIDTH / 2) + 40, (WIN_HEIGHT / 2)) );
     SpriteStringHolder::getSpriteString("shootingDownPercent")->setVisibility(false);
     SpriteStringHolder::addSpriteString("endingBonusString", new SpriteString("BONUS", (WIN_WIDTH / 2) -70, (WIN_HEIGHT / 2)+70) );
     SpriteStringHolder::getSpriteString("endingBonusString")->setVisibility(false);
@@ -242,8 +243,43 @@ bool Game::InitGameInfo(){
     SpriteStringHolder::getSpriteString("letterR")->setVisibility(false);
     SpriteStringHolder::addSpriteString("1000Points", new SpriteString("1000", (WIN_WIDTH / 2) - 60, (WIN_HEIGHT / 2) + 135) );
     SpriteStringHolder::getSpriteString("1000Points")->setVisibility(false);
-    SpriteStringHolder::addSpriteString("equals", new	SpriteString("=", (WIN_WIDTH / 2) + 30, (WIN_HEIGHT / 2) + 135) );
+    SpriteStringHolder::addSpriteString("equals", new	SpriteString("=", (WIN_WIDTH / 2) + 15, (WIN_HEIGHT / 2) + 135) );
     SpriteStringHolder::getSpriteString("equals")->setVisibility(false);
+
+	SpriteStringHolder::addSpriteString("LastPoints", new SpriteString("3000", (WIN_WIDTH / 2) + 50, (WIN_HEIGHT / 2) + 135));
+	SpriteStringHolder::getSpriteString("LastPoints")->setVisibility(false);
+
+	SpriteStringHolder::addSpriteString("pointsString2", new SpriteString("PTS", (WIN_WIDTH / 2) + 100, (WIN_HEIGHT / 2) + 135));
+	SpriteStringHolder::getSpriteString("pointsString2")->setVisibility(false);
+
+
+/*
+	SpriteStringHolder::getSpriteString("shootingString")->setVisibility(true);
+
+
+	SpriteStringHolder::getSpriteString("downString")->setVisibility(true);
+	//SpriteStringHolder::getSpriteString("shootingDownPercent")->changeString(); 
+	SpriteStringHolder::getSpriteString("shootingDownPercent")->setVisibility(true);
+	SpriteStringHolder::getSpriteString("shootingDownPercent")->setVisibility(true);
+	SpriteStringHolder::getSpriteString("endingBonusString")->setVisibility(true);
+	SpriteStringHolder::getSpriteString("pointsString")->setVisibility(true);
+
+	//SpriteStringHolder::getSpriteString("points")->changeString();
+	SpriteStringHolder::getSpriteString("points")->setVisibility(true);
+	SpriteStringHolder::getSpriteString("letterR")->setVisibility(true);
+	SpriteStringHolder::getSpriteString("1000Points")->setVisibility(true);
+	SpriteStringHolder::getSpriteString("letterR")->setVisibility(true);
+	SpriteStringHolder::getSpriteString("equals")->setVisibility(true);
+	SpriteStringHolder::getSpriteString("pointsString2")->setVisibility(true);
+
+	//last line with points
+	//SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce0");
+	assert(superAce);
+	int last_points_number = superAce->getSuperAceLoops() * 1000;
+	string last_points_str = std::to_string(last_points_number);
+	SpriteStringHolder::getSpriteString("LastPoints")->changeString(last_points_str, (WIN_WIDTH / 2) + 50, (WIN_HEIGHT / 2) + 135);
+	SpriteStringHolder::getSpriteString("LastPoints")->setVisibility(true);
+	//*/
     return true;
 }
 

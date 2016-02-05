@@ -19,7 +19,8 @@ void Sprite::fireHandler::operator()(Sprite* bullet,Sprite* arg) const{
     if (arg == superAce && arg->getState() == MANEUVER){
         return;
     }
-    
+
+	
     bullet->setState(IN_COLUSION);
     arg->setVisibility(false);
     bullet->setVisibility(false);
@@ -48,7 +49,8 @@ void Sprite::fireHandler::operator()(Sprite* bullet,Sprite* arg) const{
         enemyFighter->setEnemyFighterLifes( enemyFighter->getEnemyFighterLifes() -1 );
         if(enemyFighter->getEnemyFighterType()!= BULLET)
             updateScore(enemyFighter);
-        
+		Game::setToDeadEnemiesOneMore();
+	
     }
     else if( arg->getType() == SUPER_ACE ){
         Sprite* rightFighter = superAce->getAttached(RIGHT_FIGHTER);
@@ -160,6 +162,7 @@ void Sprite::touchHandler::operator()(Sprite* aircraft,Sprite* arg) const{
 
     if( !aircraft->getVisibility() || !arg->getVisibility())
         return;
+
 
     aircraft->setVisibility(false);
     arg->setVisibility(false);

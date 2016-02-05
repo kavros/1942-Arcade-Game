@@ -27,6 +27,8 @@ int Game::_highScore = 0;
 int Game::_score = 0;
 unsigned long Game::_currTime = 0;
 
+unsigned int Game::_totalEnemies = 0;
+unsigned int Game::_deadEnemies  = 0;
 //controller
 SDL_GameController* Game::_controller = nullptr;
 
@@ -74,7 +76,18 @@ GameState Game::getState(){
 /*void Game::setRemainingLoops(int loops){
     Game::_remaining_loops_num = loops;
 }*/
-
+unsigned int Game::getTotalEnemies(){
+	return _totalEnemies;
+}
+unsigned int Game::getDeadEnemies(){
+	return _deadEnemies;
+}
+void Game::setToDeadEnemiesOneMore(){
+	++_deadEnemies;
+}
+void Game::increaceTotalEnemies(){
+	_totalEnemies++;
+}
 void Game::setState(GameState gameState){
     Game::_gameState = gameState;
 }

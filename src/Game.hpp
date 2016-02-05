@@ -59,10 +59,14 @@ private:
     static float _spriteSize;
     static int _highScore;
     static int _score;
-    static bool _mute;
+	static unsigned int _totalEnemies;
+	static unsigned int _deadEnemies;
+
+	static bool _mute;
     //controller
 	static SDL_GameController *_controller;
 
+	
 public:
     
     //basic functions
@@ -108,13 +112,15 @@ public:
     static float getSpriteSize(void)  ;
     static int getScore(void)  ;
     static unsigned getNextPowerUpType();
+	static unsigned int getTotalEnemies();
+	static unsigned int getDeadEnemies();
+
     //static int getRemainingLoops(void);
     
     //updates
     static void updateHighScoreJson(const std::string& cataloge);
     static void updateHighScoreSprite();
     static void updateScoreSprite();
-
 	static void UpdateAllGrayPlaneAnimations();
 
     //set
@@ -123,6 +129,8 @@ public:
     static void setSpriteSize(float s);
     static void setHighScore(int s);
     static void setNextPowerUpType(unsigned);
+	static void setToDeadEnemiesOneMore();
+	
     //static void setRemainingLoops(int loops);
 
     //boolean
@@ -137,6 +145,8 @@ public:
     //animation functions
     static void setGameTime();
 
+	static void increaceTotalEnemies();
 };
+
 
 #endif /* Game_hpp */

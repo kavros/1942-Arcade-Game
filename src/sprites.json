@@ -8,7 +8,7 @@
                 "id": "SuperAce",
                 "frameNo": 0,
                 "destRect": [0, 0, 54, 40],
-                "point": [0, 0],
+                "point": [27, 20],
                 "repetition": 2,
                 "visible": false,
                 "spriteType": 3,
@@ -258,7 +258,7 @@
                 {
                 "id": "spriteEurope",
                 "frameNo": 0,
-                "destRect": [-150, -2400, 1500, 2000],
+                "destRect": [-150, -2000, 1500, 2000],
                 "point": [0, 0],
                 "repetition": 1,
                 "visible": true,

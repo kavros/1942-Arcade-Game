@@ -74,6 +74,8 @@ public:
 	static void pauseAnimators();
     static void Load (const std::string& cataloge);
     static void startTimeTickAnimators();
+    
+    static void triggerStartOfStageAnimators();
     static void triggerEndOfStageAnimators();
 
 

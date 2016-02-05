@@ -25,7 +25,8 @@ Background::Background(){
 
 Background::Background(std::string id, unsigned  _frameNo, SDL_Rect _dstRect,SDL_Point  _point,bool _isVisible,SpriteType _type,AnimationFilm* _currFilm):
 Sprite(id,_frameNo,_dstRect,_point,_isVisible,_type,_currFilm){
-    _terrainObjects = new SpriteList;
+    Background::_holder = this;
+    Background::_holder->_terrainObjects = new SpriteList;
 }
 
 Background::~Background(){
@@ -34,14 +35,6 @@ Background::~Background(){
 void Background::InitBackground(){
     
     assert(Background::_holder);
-    /*
-    MovingPathAnimation* backgroundAnimation = (MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("backgroundAnimation");
-    assert(backgroundAnimation);
-    */
-    MovingPathAnimator* backgroundAnimator = (MovingPathAnimator*) AnimatorHolder::getAnimatorHolder()->getAnimator("backgroundAnimator0");
-    assert(backgroundAnimator);
-    
-    backgroundAnimator->start(Game::getGameTime());
 
     Background::_holder->initBackgroundObjects();
 }
@@ -53,48 +46,48 @@ void Background::startBackgroundObjectAnimator(string id){
     backgroundAnimator->start(Game::getGameTime());
 }
 
-void Background::initBackgroundObjects(){
-    //aircraftAnimator
+void Background::startBackgroundObjectAnimators(){
+    static int times = 0;
+    assert(times==0);
+    times++;
+    
+    MovingPathAnimator* backgroundAnimator = (MovingPathAnimator*) AnimatorHolder::getAnimatorHolder()->getAnimator("backgroundAnimator0");
+    assert(backgroundAnimator);
+    
+    backgroundAnimator->start(Game::getGameTime());
 
-    Sprite* initialAircraft = SpritesHolder::getSprite(TERRAIN, "spriteAircraftCarrier0");
-    assert(initialAircraft);
-    
-    initialAircraft->setDstRectX(WIN_WIDTH/2-initialAircraft->getDstRect().w/2 + 13);
-    initialAircraft->setDstRectY(WIN_HEIGHT-initialAircraft->getDstRect().h);
-    
-    Sprite* finishAircraft = SpritesHolder::getSprite(TERRAIN, "spriteAircraftCarrier1");
-    assert(finishAircraft);
-    
-    finishAircraft->setDstRectX(WIN_WIDTH/2-initialAircraft->getDstRect().w/2 + 13);
-    finishAircraft->setDstRectY(-finishAircraft->getDstRect().h);
-    
-    addBackgroundObject("spriteAircraftCarrier0");
     startBackgroundObjectAnimator("aircraftAnimator0");
-
-    addBackgroundObject("spriteAircraftCarrier1");
-
-    addBackgroundObject("spriteLand0");
-    startBackgroundObjectAnimator("spriteLandAnimator0");
     
-    addBackgroundObject("spriteEurope0");
-    startBackgroundObjectAnimator("spriteEuropeAnimator0");
+   // startBackgroundObjectAnimator("spriteEurope0");
+    // startBackgroundObjectAnimator("spriteLand0");
+
+
+}
+void Background::initBackgroundObjects(){
+
+   // Background::_holder->addBackgroundObject("spriteEurope0");
+
+    Background::_holder->addBackgroundObject("spriteAircraftCarrier1");
+
+    //Background::_holder->addBackgroundObject("spriteLand0");
+        
 }
 
 void Background::addBackgroundObject(string id){
     Sprite* s= SpritesHolder::getSprite(TERRAIN, id);
     assert(s);
     
-    _terrainObjects->push_back(s);
+    Background::_holder->_terrainObjects->push_back(s);
 }
 
 void Background::displayTerrain(SDL_Renderer* renderer){
     SpritesHolder::displaySprites(renderer, TERRAIN);
     
-    if(_terrainObjects->empty()){
+    if(Background::_holder->_terrainObjects->empty()){
         return;
     }
     
-    for (std::list<Sprite*>::iterator it=_terrainObjects->begin(); it != _terrainObjects->end(); ++it){
+    for (std::list<Sprite*>::iterator it=Background::_holder->_terrainObjects->begin(); it != Background::_holder->_terrainObjects->end(); ++it){
         if((*it)->getVisibility() == true){
             (*it)->display(renderer);
         }
@@ -105,7 +98,7 @@ void Background::displayTerrain(SDL_Renderer* renderer){
 Background::SpriteList Background::getVisibleObjects(){
     SpriteList* sl = new SpriteList;
     
-    for (std::list<Sprite*>::iterator it=_terrainObjects->begin(); it != _terrainObjects->end(); ++it){
+    for (std::list<Sprite*>::iterator it=Background::_holder->_terrainObjects->begin(); it !=Background::_holder-> _terrainObjects->end(); ++it){
         if((*it)->getVisibility() == true){
             sl->push_back(*it);
         }

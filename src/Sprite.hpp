@@ -121,7 +121,7 @@ public:
     void changeDstRectY(int dy);
     AnimationFilm* getCurrFilm(void) const;
     Sprite* getParent();
-    bool getUndefeatable();
+    bool isUndefeatable();
     SDL_Point getPoint();
 
 	//constructors

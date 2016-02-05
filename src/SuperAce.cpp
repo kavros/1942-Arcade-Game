@@ -246,7 +246,7 @@ void SideFighter::fire (void) {
 
 void SuperAce::addSideFighters(){
     static unsigned times =0;
-    assert(times==0);
+  assert(times==0);
     times++;
     
     AnimationFilm* anim = AnimationFilmHolder::Get()->GetFilm("sideFighters");
