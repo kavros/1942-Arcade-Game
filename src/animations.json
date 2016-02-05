@@ -507,13 +507,13 @@
                                                       "dx": -3,
                                                       "dy": 2,
                                                       "visibility": true,
-                                                      "frameNo": 13,
+                                                      "frameNo": 14,
                                                       "delay": 40
                                                       },{
                                                       "dx": -3,
                                                       "dy": 2,
                                                       "visibility": true,
-                                                      "frameNo": 13,
+                                                      "frameNo": 14,
                                                       "delay": 40
                                                       }]
                                             }, {
@@ -523,13 +523,29 @@
                                                       "dx": 3,
                                                       "dy": 2,
                                                       "visibility": true,
-                                                      "frameNo": 3,
+                                                      "frameNo": 2,
                                                       "delay": 40
                                                       },{
                                                       "dx": 3,
                                                       "dy": 2,
                                                       "visibility": true,
-                                                      "frameNo": 3,
+                                                      "frameNo": 2,
+                                                      "delay": 40
+                                                      }]
+                                            }, {
+                                            "id": "GreenJetDownAnimation",
+                                            "continuous": true,
+                                            "paths": [{
+                                                      "dx": 0,
+                                                      "dy": 4,
+                                                      "visibility": true,
+                                                      "frameNo": 0,
+                                                      "delay": 40
+                                                      },{
+                                                      "dx": 0,
+                                                      "dy": 4,
+                                                      "visibility": true,
+                                                      "frameNo": 0,
                                                       "delay": 40
                                                       }]
                                             }, {

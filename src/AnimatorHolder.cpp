@@ -4,7 +4,7 @@ void updateGreyPlaneAnimation(MovingPathAnimator* grayJetAnimator);
 void updateGreyJetAnimation(MovingPathAnimator* grayJetAnimator);
 void triggerMediumGreenPlaneAnimator();
 
-//void  updateGreenJetAnimation(MovingPathAnimator* grayJetAnimator);
+void  updateGreenJetAnimation(MovingPathAnimator* grayJetAnimator);
 
 AnimatorHolder* AnimatorHolder::_holder = 0;
 bool AnimatorHolder::movingEnable = false;
@@ -731,7 +731,7 @@ void AnimatorHolder::triggerstartEnemyPlanesTickAnimator(){
     
     //Bonus Planes
     //TimerTickAnimator::startTimeTickAnimator("redPlaneTickAnimations", triggerRedPlaneTickAnimations );
-	
+    
     //mini green Planes/jets
     //TimerTickAnimator::startTimeTickAnimator("miniGreenOneEngTickAnimation", triggerMiniGreenOneEngAnimator );
     //TimerTickAnimator::startTimeTickAnimator("miniGreenDoubleEngTickAnimation", triggerMiniGreenDoubleEngAnimator );
@@ -760,7 +760,7 @@ void AnimatorHolder::triggerstartEnemyPlanesTickAnimator(){
     //TimerTickAnimator::startTimeTickAnimator("bigGreenOutroTickAnimation", triggerBigGreenOutroTickAnimators );
     
     //death star
-    //TimerTickAnimator::startTimeTickAnimator("deathStarTickAnimation", triggerDeathStarAnimator );
+    TimerTickAnimator::startTimeTickAnimator("deathStarTickAnimation", triggerDeathStarAnimator );
    
 }
 
@@ -856,10 +856,10 @@ void AnimatorHolder::updateAllGreyPlaneAnimations(){
             updateGreyJetAnimation(grayPlaneAnimator);
         }
 
-       /* if (str == "Chain2Chain1MiniGreenJetAnimator"){
+        if (str == "Chain2Chain1MiniGreenJetAnimator"){
             grayPlaneAnimator= (MovingPathAnimator*) (*it);
             updateGreenJetAnimation(grayPlaneAnimator);
-        }*/
+        }
 
 
 
@@ -1016,18 +1016,18 @@ void  updateGreyJetAnimation(MovingPathAnimator* grayJetAnimator){
     
 		if (grayJetAnimation->getPath().front()._dx <= 0){
     
-			grayJetAnimation->setPath(((MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("GreyJetRightDownAnimation"))->getPath());
+			grayJetAnimator->setAnimation(((MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("GreyJetRightDownAnimation")));
 		}
 	}
 	else if (superAcePositionOnX < grayJetPositionOnX -10){
 		if (grayJetAnimation->getPath().front()._dx >= 0){
-			grayJetAnimation->setPath(((MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("GreyJetLeftDownAnimation"))->getPath());
+			grayJetAnimator->setAnimation(((MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("GreyJetLeftDownAnimation")));
     
 		}
 	}
 }
 
-/*void  updateGreenJetAnimation(MovingPathAnimator* grayJetAnimator){
+void  updateGreenJetAnimation(MovingPathAnimator* grayJetAnimator){
     
     assert(grayJetAnimator);
     
@@ -1055,27 +1055,22 @@ void  updateGreyJetAnimation(MovingPathAnimator* grayJetAnimator){
             apostashStonX = apostashStonX*(-1);
         }
         if (grayJetPositionOnY > WIN_HEIGHT - 80 ||   apostashStonX < 50){
-            //cout << "DOWN" << endl;
-            grayJetAnimation->changeDxDy(0, 4);
-            
-            grayJetAnimator->getSprite()->setFrame(0);
+            grayJetAnimator->setAnimation(((MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("GreenJetDownAnimation")));
             return;
         }
         
-        if (superAcePositionOnX +10 > grayJetPositionOnX ){
-            
+        if (superAcePositionOnX > grayJetPositionOnX +10 ){
             if (grayJetAnimation->getPath().front()._dx <= 0){
-                
-                grayJetAnimation->setPath(((MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("GreenJetRightDownAnimation"))->getPath());
+                grayJetAnimator->setAnimation(((MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("GreenJetRightDownAnimation")));
             }
         }
-        else if (superAcePositionOnX -10< grayJetPositionOnX ){
+        else if (superAcePositionOnX < grayJetPositionOnX -10 ){
             if (grayJetAnimation->getPath().front()._dx >= 0){
-                grayJetAnimation->setPath(((MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("GreenJetLeftDownAnimation"))->getPath());
+                grayJetAnimator->setAnimation(((MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("GreenJetLeftDownAnimation")));
                 
             }
         }
     }
-}*/
+}
 
 

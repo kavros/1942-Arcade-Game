@@ -13,6 +13,10 @@ Animator(id){
     
 }
 
+void MovingPathAnimator::setAnimation(MovingPathAnimation* mp){
+    _anim = mp;
+}
+
 void MovingPathAnimator::chooseCallBack(string id){
     std::size_t found;
     string* str = nullptr;

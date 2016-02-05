@@ -24,7 +24,7 @@ public:
 
     //setters
     void setContinuous(bool b);
-    
+    void setAnimation(MovingPathAnimation* mp);
     
     void chooseCallBack(string id);
 
