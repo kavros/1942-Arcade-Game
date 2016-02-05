@@ -3,10 +3,11 @@
 void updateGreyPlaneAnimation(MovingPathAnimator* grayJetAnimator);
 void updateGreyJetAnimation(MovingPathAnimator* grayJetAnimator);
 void triggerMediumGreenPlaneAnimator();
-void triggerstartEnemyPlanesTickAnimator();
+
 //void  updateGreenJetAnimation(MovingPathAnimator* grayJetAnimator);
 
 AnimatorHolder* AnimatorHolder::_holder = 0;
+bool AnimatorHolder::movingEnable = false;
 
 void AnimatorHolder::Register(Animator* a) {
     assert(AnimatorHolder::getAnimatorHolder()->_map[a->getId()] == nullptr);
@@ -420,11 +421,8 @@ void triggerStartOfStageMaximizePlaneAnimator(){
 void triggerStartOfStageTakeOffTickAnimator(){
     AnimatorHolder::wakeUpAnimators(Game::getGameTime());
     
-    SuperAce* superAce = (SuperAce*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce0");
-    
     MovingPathAnimator* superAceStartingAnimator = (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceStartingAnimator0");
     assert(superAceStartingAnimator);
-    assert(superAce->getState() == STARTING);
     
     superAceStartingAnimator->start(Game::getGameTime());
     
@@ -440,12 +438,12 @@ void AnimatorHolder::triggerStartOfStageAnimators(){
     times++;
     
     //set items
+    
+    //SuperAce
     SuperAce* superAce = (SuperAce*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce0");
     superAce->setVisibility(true);
     superAce->setDstRect({WIN_WIDTH/2-superAce->getDstRect().w,WIN_HEIGHT/2-superAce->getDstRect().h,40,30});
-    //or
-    //SuperAce
-    //TimerTickAnimator::startTimeTickAnimator("superAceMovingPathTickAnimation", triggerSuperAceMovingPathAnimator );
+    TimerTickAnimator::startTimeTickAnimator("superAceMovingPathTickAnimation", triggerSuperAceMovingPathAnimator );
     
     Sprite* initialAircraft = SpritesHolder::getSprite(TERRAIN, "spriteAircraftCarrier0");
     assert(initialAircraft);
@@ -467,7 +465,7 @@ void AnimatorHolder::triggerStartOfStageAnimators(){
     
    
     //start enemy planes
-    TimerTickAnimator::startTimeTickAnimator("startEnemyPlanesTickAnimation", triggerstartEnemyPlanesTickAnimator );
+    TimerTickAnimator::startTimeTickAnimator("startEnemyPlanesTickAnimation", AnimatorHolder::triggerstartEnemyPlanesTickAnimator );
 }
 
 
@@ -614,6 +612,8 @@ void AnimatorHolder::triggerEndOfStageAnimators(){
     assert(times == 0);
     times++;
 
+    AnimatorHolder::movingEnable = false;
+    
     //move super ace to the center up of the screen
     TimerTickAnimator::startTimeTickAnimator("endOfStageMoveToCenterTickAnimation", updateEndOfStageAnimation );    //repeatition 100
 
@@ -714,17 +714,28 @@ void triggerMedGreenTripleEngAnimators(){
     
 }
 
-void triggerstartEnemyPlanesTickAnimator(){
+void AnimatorHolder::triggerstartEnemyPlanesTickAnimator(){
+    static int times = 0;
+    assert(times == 0);
+    times++;
+    
+    AnimatorHolder::movingEnable = true;
+    
+    //remove starting logo
+    SpriteStringHolder::getSpriteString("startingReadyLogo")->setVisibility(false);
+    SpriteStringHolder::getSpriteString("startingPlayerLogo")->setVisibility(false);
+    SpriteStringHolder::getSpriteString("numberOne")->setVisibility(false);
+    
     //Bullets
     TimerTickAnimator::startTimeTickAnimator("enemyBulletsTickAnimation", AnimatorHolder::triggerBullets);
     
     //Bonus Planes
     TimerTickAnimator::startTimeTickAnimator("redPlaneTickAnimations", triggerRedPlaneTickAnimations );
-	
+    
     //mini green Planes/jets
-   /* TimerTickAnimator::startTimeTickAnimator("miniGreenOneEngTickAnimation", triggerMiniGreenOneEngAnimator );
-   TimerTickAnimator::startTimeTickAnimator("miniGreenDoubleEngTickAnimation", triggerMiniGreenDoubleEngAnimator );
-   TimerTickAnimator::startTimeTickAnimator("miniGreenJetTickAnimation", triggerMiniGreenJetAnimator );
+    TimerTickAnimator::startTimeTickAnimator("miniGreenOneEngTickAnimation", triggerMiniGreenOneEngAnimator );
+    TimerTickAnimator::startTimeTickAnimator("miniGreenDoubleEngTickAnimation", triggerMiniGreenDoubleEngAnimator );
+    TimerTickAnimator::startTimeTickAnimator("miniGreenJetTickAnimation", triggerMiniGreenJetAnimator );
     
     //mini  grey Planes/jets
     TimerTickAnimator::startTimeTickAnimator("miniGreyJetTickAnimation", triggerMiniGreyJetTickAnimator);
@@ -750,21 +761,16 @@ void triggerstartEnemyPlanesTickAnimator(){
     
     //death star
     TimerTickAnimator::startTimeTickAnimator("deathStarTickAnimation", triggerDeathStarAnimator );
-   */
+   
 }
 
 void AnimatorHolder::startTimeTickAnimators(){
 
     //start of stage
     TimerTickAnimator::startTimeTickAnimator("startOfStageTickAnimation", AnimatorHolder::triggerStartOfStageAnimators );
-   
-    //SuperAce
-    //TimerTickAnimator::startTimeTickAnimator("superAceMovingPathTickAnimation", triggerSuperAceMovingPathAnimator );
-
-
 
     //end of stage
-    //TimerTickAnimator::startTimeTickAnimator("endOfStageTickAnimation", AnimatorHolder::triggerEndOfStageAnimators );
+    TimerTickAnimator::startTimeTickAnimator("endOfStageTickAnimation", AnimatorHolder::triggerEndOfStageAnimators );
 }
 
 using namespace rapidjson;

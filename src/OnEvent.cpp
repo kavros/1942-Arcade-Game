@@ -4,24 +4,12 @@
 
 void Game::singleplayerGameOnEvent(){
 
-	
-
     SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce0");
     assert(superAce);
-	
-    MovingPathAnimator* superAceStartingAnimator = (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceStartingAnimator0");
-    assert(superAceStartingAnimator);
-    
-    //if starting animator running then don't start any animator
-    //when starting animator is finished remove all letters
-    if (superAceStartingAnimator->getState() == ANIMATOR_RUNNING){
+
+    if(!AnimatorHolder::movingEnable){
+        //can't move during start or end
         return;
-    }else{
-        
-        SpriteStringHolder::getSpriteString("startingReadyLogo")->setVisibility(false);
-        SpriteStringHolder::getSpriteString("startingPlayerLogo")->setVisibility(false);
-        SpriteStringHolder::getSpriteString("numberOne")->setVisibility(false);
-        
     }
     
 	if (event.type == SDL_KEYDOWN || event.type == SDL_CONTROLLERBUTTONDOWN){
@@ -120,100 +108,7 @@ void Game::singleplayerGameOnEvent(){
 }
 
 void Game::multiplayerGameOnEvent(){
-    
-    SuperAce* superAce2 = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce1");
-    if(!superAce2 || superAce2->getState() == IN_COLUSION)
-        return;
-    
-    superAce2->setVisibility(true);
-    
-    MovingPathAnimator* superAce2StartingAnimator = (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceStartingAnimator1");
-    assert(superAce2StartingAnimator);
-    
-    
-    if (superAce2->getState() == STARTING){
-        superAce2StartingAnimator->start(getGameTime());
-    }
-    
-    if (event.type == SDL_KEYDOWN || event.type == SDL_CONTROLLERBUTTONDOWN){
-        
-        MovingPathAnimator* superAce2AnimatorLeft =
-        (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorLeft1");
-        
-        MovingPathAnimator* superAce2AnimatorLeftLeft =
-        (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorLeftLeft1");
-        
-        MovingPathAnimator* superAce2AnimatorRight =
-        (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorRight1");
-        
-        MovingPathAnimator* superAce2AnimatorRightRight =
-        (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorRightRight1");
-        
-        MovingPathAnimator* superAce2AnimatorUp =
-        (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorUp1");
-        
-        MovingPathAnimator* superAce2AnimatorDown =
-        (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorDown1");
-        
-        if (event.key.keysym.sym == SDLK_j/* || event.cbutton.button == SDL_CONTROLLER_BUTTON_DPAD_LEFT*/) {
-            
-            if(event.key.keysym.sym != prevEvent.key.keysym.sym)
-                superAce2AnimatorLeft->start(getGameTime());
-            else
-                superAce2AnimatorLeftLeft->start(getGameTime());
-            
-            if(superAce2->getAttached(RIGHT_FIGHTER)){
-                MovingPathAnimator* rightSideFighterAnimatorLeft =
-                (MovingPathAnimator*)AnimatorHolder::getAnimator("RightSideFighterAnimatorLeft");
-                assert(rightSideFighterAnimatorLeft);
-                rightSideFighterAnimatorLeft->start(getGameTime());
-            }
-            if(superAce2->getAttached(LEFT_FIGHTER)){
-                MovingPathAnimator* leftSideFighterAnimatorLeft =
-                (MovingPathAnimator*)AnimatorHolder::getAnimator("LeftSideFighterAnimatorLeft");
-                assert(leftSideFighterAnimatorLeft);
-                leftSideFighterAnimatorLeft->start(getGameTime());
-            }
-            
-        }
-        else if (event.key.keysym.sym == SDLK_l/* || event.cbutton.button == SDL_CONTROLLER_BUTTON_DPAD_RIGHT*/){
-            
-            if(event.key.keysym.sym != prevEvent.key.keysym.sym)
-                superAce2AnimatorRight->start(getGameTime());
-            else
-                superAce2AnimatorRightRight->start(getGameTime());
-            
-            if(superAce2->getAttached(RIGHT_FIGHTER)){
-                MovingPathAnimator* rightSideFighterAnimatorRight =
-                (MovingPathAnimator*)AnimatorHolder::getAnimator("RightSideFighterAnimatorRight");
-                rightSideFighterAnimatorRight->start(getGameTime());
-            }
-            if(superAce2->getAttached(LEFT_FIGHTER)){
-                MovingPathAnimator* leftSideFighterAnimatorRight =
-                (MovingPathAnimator*)AnimatorHolder::getAnimator("LeftSideFighterAnimatorRight");
-                leftSideFighterAnimatorRight->start(getGameTime());
-            }
-            
-        }
-        else if (event.key.keysym.sym == SDLK_i/* || event.cbutton.button == SDL_CONTROLLER_BUTTON_DPAD_UP*/){
-            superAce2AnimatorUp->start(getGameTime());
-        }
-        else if (event.key.keysym.sym == SDLK_k/* || event.cbutton.button == SDL_CONTROLLER_BUTTON_DPAD_DOWN*/){
-            superAce2AnimatorDown->start(getGameTime());
-            
-        }
-        else if (event.key.keysym.sym == SDLK_t/* || event.cbutton.button == SDL_CONTROLLER_BUTTON_A*/){
-            
-            superAce2->fire();
-            
-            prevEvent = event;
-        }
-        else if (event.key.keysym.sym == SDLK_y/* || event.cbutton.button == SDL_CONTROLLER_BUTTON_X*/){
-            superAce2->doManeuever();
-        }
-        
-    }
-    prevEvent = event;
+    assert(0);
 }
 
 void Game::pauseManager(){
@@ -291,6 +186,24 @@ void Game::pauseManager(){
     }
 }
 
+void Game::singleplayerMenuOnEvent(){
+    if (Game::event.key.keysym.sym == SDLK_SPACE){
+        setState(SINGLEPLAYER_GAME);
+    }
+    else if (Game::event.key.keysym.sym == SDLK_DOWN){
+        setState(MULTIPLAYER_MENU);
+    }
+}
+
+void Game::multiplayerMenuOnEvent(){
+    if (Game::event.key.keysym.sym == SDLK_SPACE){
+        setState(MULTIPLAYER_GAME);
+    }
+    else if (Game::event.key.keysym.sym == SDLK_UP){
+        setState(SINGLEPLAYER_MENU);
+    }
+}
+
 void Game::OnEvent() {
 
     if (Game::event.type == SDL_QUIT){
@@ -312,21 +225,11 @@ void Game::OnEvent() {
     
     switch (getState()) {
         case SINGLEPLAYER_MENU:{
-            if (Game::event.key.keysym.sym == SDLK_SPACE){
-                setState(SINGLEPLAYER_GAME);
-            }
-            else if (Game::event.key.keysym.sym == SDLK_DOWN){
-                setState(MULTIPLAYER_MENU);
-            }
+            singleplayerMenuOnEvent();
             break;
         }
         case MULTIPLAYER_MENU:{
-            if (Game::event.key.keysym.sym == SDLK_SPACE){
-                setState(MULTIPLAYER_GAME);
-            }
-            else if (Game::event.key.keysym.sym == SDLK_UP){
-                setState(SINGLEPLAYER_MENU);
-            }
+            multiplayerMenuOnEvent();
             break;
         }
         case SINGLEPLAYER_GAME:{
@@ -353,8 +256,9 @@ void Game::OnEvent() {
             setState(GAME_OVER);
             break;
         }
-        case EXIT:
+        case EXIT:{
             break;
+        }
         default:{
             setState(EXIT);
             break;

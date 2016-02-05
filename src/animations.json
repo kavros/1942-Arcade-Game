@@ -154,12 +154,12 @@
                                       "repetitions": 5
                                       },{
                                       "id": "startEnemyPlanesTickAnimation",
-                                      "delay": 4000,
+                                      "delay": 10000,
                                       "repetitions": 1
                                       },
                                       {
                                       "id": "endOfStageTickAnimation",
-                                      "delay": 15000,
+                                      "delay": 50000,
                                       "repetitions": 1
                                       },{
                                       "id": "endOfStageMoveToCenterTickAnimation",
