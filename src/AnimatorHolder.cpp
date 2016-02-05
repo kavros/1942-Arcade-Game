@@ -714,11 +714,7 @@ void triggerMedGreenTripleEngAnimators(){
     
 }
 
-void AnimatorHolder::startTimeTickAnimators(){
-    
-    //SuperAce
-    TimerTickAnimator::startTimeTickAnimator("superAceMovingPathTickAnimation", triggerSuperAceMovingPathAnimator );
-    
+void triggerstartEnemyPlanesTickAnimator(){
     //Bullets
     TimerTickAnimator::startTimeTickAnimator("enemyBulletsTickAnimation", AnimatorHolder::triggerBullets);
     
@@ -754,10 +750,21 @@ void AnimatorHolder::startTimeTickAnimators(){
     
     //death star
     TimerTickAnimator::startTimeTickAnimator("deathStarTickAnimation", triggerDeathStarAnimator );
-    
+   */
+}
+
+void AnimatorHolder::startTimeTickAnimators(){
+
+    //start of stage
+    TimerTickAnimator::startTimeTickAnimator("startOfStageTickAnimation", AnimatorHolder::triggerStartOfStageAnimators );
+   
+    //SuperAce
+    //TimerTickAnimator::startTimeTickAnimator("superAceMovingPathTickAnimation", triggerSuperAceMovingPathAnimator );
+
+
+
     //end of stage
     //TimerTickAnimator::startTimeTickAnimator("endOfStageTickAnimation", AnimatorHolder::triggerEndOfStageAnimators );
-    
 }
 
 using namespace rapidjson;
