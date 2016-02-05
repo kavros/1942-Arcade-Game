@@ -3,11 +3,9 @@
 AnimationHolder* AnimationHolder::_holder = 0;//singleton
 
 AnimationHolder::AnimationHolder(){
-    
 }
 
 AnimationHolder::~AnimationHolder(){
-    
 }
 
 AnimationHolder* AnimationHolder::getAnimationHolder(){

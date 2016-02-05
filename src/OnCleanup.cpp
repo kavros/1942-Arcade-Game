@@ -8,6 +8,7 @@ void Game::cleanUpHolders(){
     SoundHolder::cleanUp();
 
     DestructionManager::commit();
+    ;
 }
 
 void Game::OnCleanup(){
