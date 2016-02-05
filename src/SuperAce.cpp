@@ -5,10 +5,10 @@ Sprite(id,frameNo,dstRect,point,isVisible,type,currFilm){
 
     assert(type == SUPER_ACE);
 
-    setDstRect( { WIN_WIDTH/2-getDstRect().w/2 , 3*(WIN_HEIGHT/4) , getDstRect().w , getDstRect().h } );
+    setDstRect( { WIN_WIDTH/2-getDstRect().w/2 , WIN_HEIGHT-2*(getDstRect().h) , getDstRect().w , getDstRect().h } );
     
-    setSuperAceDstRect({ WIN_WIDTH/2-getDstRect().w/2 -10 , 3*(WIN_HEIGHT/4) - 50 , static_cast<int>(1.5*getDstRect().w) , static_cast<int>(1.5*getDstRect().h) });
-    setMiniSuperAceDstRect({ WIN_WIDTH/2-getDstRect().w/2 , 3*(WIN_HEIGHT/4) , getDstRect().w , getDstRect().h });
+    setSuperAceDstRect({ WIN_WIDTH/2-getDstRect().w/2 -10 , WIN_HEIGHT-2*(getDstRect().h)-15 , static_cast<int>(1.5*getDstRect().w) , static_cast<int>(1.5*getDstRect().h) });
+    setMiniSuperAceDstRect({ WIN_WIDTH/2-getDstRect().w/2 , WIN_HEIGHT-2*(getDstRect().h) , getDstRect().w , getDstRect().h });
     
     _superAceLives = 1;
 
