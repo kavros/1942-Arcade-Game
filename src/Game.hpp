@@ -55,7 +55,6 @@ private:
     static std::list<unsigned> _powerUpsOfStage;
     //Game Variables
 	static unsigned long _currTime ;
-	//static unsigned _remaining_loops_num ;
     static float _spriteSize;
     static int _highScore;
     static int _score;
@@ -68,39 +67,40 @@ private:
 
 	
 public:
-    
     //basic functions
-    static int OnExecute();
     
+    //on init
     static bool OnInit();
-    
-    static void singleplayerGameOnEvent();
-    static void multiplayerGameOnEvent();
-    static void OnEvent();
-    static void pauseManager();
-    static void gameOver();
-    static void LoadGameInfo (const std::string& cataloge);
-    
-    static void destructionManagerOnLoop();
-    static void GameOnLoop();
-    static void OnLoop();
-
-    static void InitGame();
-    static void OnRender();
-    
-    static void cleanUpHolders();
-    static void OnCleanup();
-
-
     static bool InitWindow();
     static bool InitRenderer();
     static bool InitData();
+    static void InitGame();
+    static void InitGamePad();
     static bool InitGameInfo();
-
-	//static void InitSuperAceAnimator();
-
-	static void InitGamePad();
+    static void LoadGameInfo (const std::string& cataloge);
+    static int OnExecute();
     
+    //on event
+    static void OnEvent();
+    static void singleplayerMenuOnEvent();
+    static void multiplayerMenuOnEvent();
+    static void singleplayerGameOnEvent();
+    static void multiplayerGameOnEvent();
+    static void pauseManager();
+    static void gameOver();
+    
+    //on loop
+    static void OnLoop();
+    static void GameOnLoop();
+    static void destructionManagerOnLoop();
+
+    //on render
+    static void OnRender();
+    
+    //on cleanup
+    static void cleanUpHolders();
+    static void OnCleanup();
+
     //get
     static SDL_Window * getWindow();
     static SDL_Renderer * getRenderer();
@@ -114,8 +114,6 @@ public:
     static unsigned getNextPowerUpType();
 	static unsigned int getTotalEnemies();
 	static unsigned int getDeadEnemies();
-
-    //static int getRemainingLoops(void);
     
     //updates
     static void updateHighScoreJson(const std::string& cataloge);
@@ -131,8 +129,6 @@ public:
     static void setNextPowerUpType(unsigned);
 	static void setToDeadEnemiesOneMore();
 	
-    //static void setRemainingLoops(int loops);
-
     //boolean
     static bool isExit();
     static bool isMainMenu();
@@ -144,8 +140,8 @@ public:
 
     //animation functions
     static void setGameTime();
-
 	static void increaceTotalEnemies();
+    
 };
 
 
