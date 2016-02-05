@@ -741,7 +741,7 @@ void AnimatorHolder::triggerstartEnemyPlanesTickAnimator(){
     SpriteStringHolder::getSpriteString("startingReadyLogo")->setVisibility(false);
     SpriteStringHolder::getSpriteString("startingPlayerLogo")->setVisibility(false);
     SpriteStringHolder::getSpriteString("numberOne")->setVisibility(false);
-    /*
+    
     //Bullets
     TimerTickAnimator::startTimeTickAnimator("enemyBulletsTickAnimation", AnimatorHolder::triggerBullets);
 	
@@ -777,7 +777,7 @@ void AnimatorHolder::triggerstartEnemyPlanesTickAnimator(){
     
     //death star
     TimerTickAnimator::startTimeTickAnimator("deathStarTickAnimation", triggerDeathStarAnimator );
-    */
+    
 }
 
 void AnimatorHolder::startTimeTickAnimators(){
