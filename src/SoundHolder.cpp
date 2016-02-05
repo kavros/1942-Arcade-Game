@@ -32,6 +32,7 @@ void SoundHolder::initSounds(){
     SoundHolder::addSound("explosion", Mix_LoadWAV(  (string(SOUNDS_PATH) + string("explosion.wav")).c_str()  ));
 	SoundHolder::addSound("PowerUp", Mix_LoadWAV((string(SOUNDS_PATH) + string("PowerUp.ogg")).c_str()));
 	SoundHolder::addSound("i_will_never_die",Mix_LoadWAV((string(SOUNDS_PATH) + string("i_will_never_die.ogg")).c_str()));
+	SoundHolder::addSound("gameplay", Mix_LoadWAV((string(SOUNDS_PATH) + string("gameplay.ogg")).c_str()));
     while(it != sh->soundMap.end()){
         if( !(*it).second ){
             printf("Could not load %s : %s \n",(*it).first.c_str() ,Mix_GetError());

@@ -4,9 +4,11 @@ SuperAce::SuperAce(std::string id, unsigned  frameNo,SDL_Rect dstRect,SDL_Point 
 Sprite(id,frameNo,dstRect,point,isVisible,type,currFilm){
 
     assert(type == SUPER_ACE);
+
+    setDstRect( { WIN_WIDTH/2-getDstRect().w/2 , 3*(WIN_HEIGHT/4) , getDstRect().w , getDstRect().h } );
     
-    setDstRectX(WIN_WIDTH/2-getDstRect().w/2);
-    setDstRectY(WIN_HEIGHT-getDstRect().h);
+    setSuperAceDstRect({ WIN_WIDTH/2-getDstRect().w/2 -10 , 3*(WIN_HEIGHT/4) - 50 , static_cast<int>(1.5*getDstRect().w) , static_cast<int>(1.5*getDstRect().h) });
+    setMiniSuperAceDstRect({ WIN_WIDTH/2-getDstRect().w/2 , 3*(WIN_HEIGHT/4) , getDstRect().w , getDstRect().h });
     
     _superAceLives = 1;
 
@@ -45,6 +47,14 @@ unsigned int SuperAce::getBulletFrame(){
     return bulletFrame;
 }
 
+SDL_Rect SuperAce::getSuperAceDstRect(){
+    return superAceDstRect;
+}
+
+SDL_Rect SuperAce::getMiniSuperAceDstRect(){
+    return miniSuperAceDstRect;
+}
+
 //set
 void SuperAce::setSuperAceLives(unsigned int superAceLives){
     this->_superAceLives = superAceLives;
@@ -61,6 +71,14 @@ void SuperAce::setBulletFrame(unsigned int _bulletFrame){
     bulletFrame = _bulletFrame;
     
     getBulletDstRect();
+}
+
+void SuperAce::setSuperAceDstRect(SDL_Rect superAceDstRect){
+    this->superAceDstRect = superAceDstRect;
+}
+
+void SuperAce::setMiniSuperAceDstRect(SDL_Rect miniSuperAceDstRect){
+    this->miniSuperAceDstRect = miniSuperAceDstRect;
 }
 
 void SuperAce::setBulletDstRect(SDL_Rect bulletDstRect){

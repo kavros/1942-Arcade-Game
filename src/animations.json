@@ -142,11 +142,11 @@
                                       "repetitions": 1
                                       },{
                                       "id": "startOfStageStartAnimatorsTickAnimation",
-                                      "delay": 4000,
+                                      "delay": 1000,
                                       "repetitions": 1
                                       },{
                                       "id": "startOfStageTakeOffTickAnimation",
-                                      "delay": 4000,
+                                      "delay": 2000,
                                       "repetitions": 1
                                       },{
                                       "id": "startOfStageMaximizePlaneTickAnimation",
@@ -154,12 +154,12 @@
                                       "repetitions": 5
                                       },{
                                       "id": "startEnemyPlanesTickAnimation",
-                                      "delay": 10000,
+                                      "delay": 5000,
                                       "repetitions": 1
                                       },
                                       {
                                       "id": "endOfStageTickAnimation",
-                                      "delay": 50000,
+                                      "delay": 15000,
                                       "repetitions": 1
                                       },{
                                       "id": "endOfStageMoveToCenterTickAnimation",
@@ -175,8 +175,8 @@
                                       "repetitions": 1
                                       },{
                                       "id": "endOfStageMinimizePlaneTickAnimation",
-                                      "delay": 10000,
-                                      "repetitions": 10
+                                      "delay": 600,
+                                      "repetitions": 5
                                       },
                                       {
                                       "id": "endOfStageStopBackgroundTickAnimation",

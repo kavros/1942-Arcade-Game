@@ -413,8 +413,20 @@ int setD(int big,int small){
 
 void triggerStartOfStageMaximizePlaneAnimator(){
     SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce0");
-    //superAce->setPoint({ superAce->getDstRect().x+superAce->getDstRect().w , superAce->getDstRect().y+superAce->getDstRect().y });
-    superAce->setDstRect({superAce->getDstRect().x,superAce->getDstRect().y,(20*superAce->getDstRect().w)/19,(20*superAce->getDstRect().h)/19});
+    
+    SDL_Rect dRect = {
+        (superAce->getDstRect().x - superAce->getMiniSuperAceDstRect().x)/5  ,
+        (superAce->getDstRect().y - superAce->getMiniSuperAceDstRect().y)/5,
+        (superAce->getDstRect().w - superAce->getMiniSuperAceDstRect().w)/5  ,
+        (superAce->getDstRect().h - superAce->getMiniSuperAceDstRect().h)/5  ,
+    };
+    
+    superAce->setDstRect({
+        superAce->getSuperAceDstRect().x + dRect.x,
+        superAce->getSuperAceDstRect().y + dRect.y,
+        superAce->getSuperAceDstRect().w + dRect.w,
+        superAce->getSuperAceDstRect().h + dRect.h,
+    });
 }
 
 
@@ -442,21 +454,20 @@ void AnimatorHolder::triggerStartOfStageAnimators(){
     //SuperAce
     SuperAce* superAce = (SuperAce*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce0");
     superAce->setVisibility(true);
-    superAce->setDstRect({WIN_WIDTH/2-superAce->getDstRect().w,WIN_HEIGHT/2-superAce->getDstRect().h,40,30});
+    
     TimerTickAnimator::startTimeTickAnimator("superAceMovingPathTickAnimation", triggerSuperAceMovingPathAnimator );
     
     Sprite* initialAircraft = SpritesHolder::getSprite(TERRAIN, "spriteAircraftCarrier0");
     assert(initialAircraft);
     
-    initialAircraft->setDstRectX(WIN_WIDTH/2-initialAircraft->getDstRect().w/2 - 20);
-    initialAircraft->setDstRectY(WIN_HEIGHT/2-initialAircraft->getDstRect().h/2);
+    initialAircraft->setDstRectX(WIN_WIDTH/2-initialAircraft->getDstRect().w/2 +15 );
+    initialAircraft->setDstRectY(WIN_HEIGHT-initialAircraft->getDstRect().h);
     
     Sprite* finishAircraft = SpritesHolder::getSprite(TERRAIN, "spriteAircraftCarrier1");
     assert(finishAircraft);
-    
-    finishAircraft->setDstRectX(WIN_WIDTH/2-initialAircraft->getDstRect().w/2 -20);
+    finishAircraft->setDstRectX(WIN_WIDTH/2-initialAircraft->getDstRect().w/2 + 15 );
     finishAircraft->setDstRectY(-finishAircraft->getDstRect().h);
-    
+
     //start the animators
     TimerTickAnimator::startTimeTickAnimator("startOfStageStartAnimatorsTickAnimation", Background::startBackgroundObjectAnimators );
     
@@ -490,7 +501,8 @@ void updateEndOfStageAnimation(){
     
     int dx =0;
     int dy =0;
-    int dstX = WIN_WIDTH/2-superAce->getDstRect().w/2-29;
+
+    int dstX = WIN_WIDTH/2-superAce->getDstRect().w/2;
     int dstY = WIN_HEIGHT/4;
     
     int superAceX = superAce->getDstRect().x;
@@ -563,8 +575,20 @@ void triggerEndOfStageLandPlaneAnimator(){
 
 void triggerEndOfStageMinimizePlaneAnimator(){
     SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce0");
-    superAce->setPoint({ superAce->getDstRect().x+superAce->getDstRect().w , superAce->getDstRect().y+superAce->getDstRect().y });
-    superAce->setDstRect({superAce->getDstRect().x,superAce->getDstRect().y,(3*superAce->getDstRect().w)/4,(3*superAce->getDstRect().h)/4});
+    
+    SDL_Rect dRect = {
+        (superAce->getMiniSuperAceDstRect().x - superAce->getDstRect().x)/5  ,
+        (superAce->getMiniSuperAceDstRect().y - superAce->getDstRect().y)/5,
+        (superAce->getMiniSuperAceDstRect().w - superAce->getDstRect().w)/5  ,
+        (superAce->getMiniSuperAceDstRect().h - superAce->getDstRect().h)/5  ,
+    };
+    
+    superAce->setDstRect({
+        superAce->getDstRect().x + dRect.x,
+        superAce->getDstRect().y + dRect.y,
+        superAce->getDstRect().w + dRect.w,
+        superAce->getDstRect().h + dRect.h,
+    });
 }
 
 void triggerEndOfStageStopBackgroundAnimator(){
@@ -612,6 +636,14 @@ void AnimatorHolder::triggerEndOfStageAnimators(){
     assert(times == 0);
     times++;
 
+    SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce0");
+    superAce->setMiniSuperAceDstRect({
+        superAce->getSuperAceDstRect().x,
+        WIN_HEIGHT/4,
+        superAce->getMiniSuperAceDstRect().w,
+        superAce->getMiniSuperAceDstRect().h
+    });
+    
     AnimatorHolder::movingEnable = false;
     
     //move super ace to the center up of the screen
@@ -753,7 +785,7 @@ void AnimatorHolder::triggerstartEnemyPlanesTickAnimator(){
     //TimerTickAnimator::startTimeTickAnimator("medGreySingleEngTickAnimation", triggerMedGreySingleAnimator);
     //TimerTickAnimator::startTimeTickAnimator("medGreyTripleEngTickAnimation", triggerMedGreyTripleAnimator);
     
-    
+	
     //big plane
     //TimerTickAnimator::startTimeTickAnimator("bigGreenIntroTickAnimation", triggerBigGreenIntroTickAnimators );
     //TimerTickAnimator::startTimeTickAnimator("bigGreenStayStillTickAnimation", triggerBigGreenStayStillTickAnimators );
@@ -761,7 +793,7 @@ void AnimatorHolder::triggerstartEnemyPlanesTickAnimator(){
     
     //death star
     TimerTickAnimator::startTimeTickAnimator("deathStarTickAnimation", triggerDeathStarAnimator );
-   
+   */
 }
 
 void AnimatorHolder::startTimeTickAnimators(){
@@ -770,7 +802,7 @@ void AnimatorHolder::startTimeTickAnimators(){
     TimerTickAnimator::startTimeTickAnimator("startOfStageTickAnimation", AnimatorHolder::triggerStartOfStageAnimators );
 
     //end of stage
-    TimerTickAnimator::startTimeTickAnimator("endOfStageTickAnimation", AnimatorHolder::triggerEndOfStageAnimators );
+    //TimerTickAnimator::startTimeTickAnimator("endOfStageTickAnimation", AnimatorHolder::triggerEndOfStageAnimators );
 }
 
 using namespace rapidjson;
