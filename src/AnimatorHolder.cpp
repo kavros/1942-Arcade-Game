@@ -230,12 +230,6 @@ void AnimatorHolder::pauseAnimators(){
 	}
 }
 
-void triggerSuperAceMovingPathAnimator(){
-    MovingPathAnimator* movingSuperAce = (MovingPathAnimator*) AnimatorHolder::getAnimator("SuperAceMovingAnimator0");
-    assert(movingSuperAce);
-    movingSuperAce->start(Game::getGameTime());
-}
-
 void triggerRedJetRightAnimator(){
     
     static int nameId=0;
@@ -432,12 +426,10 @@ void triggerStartOfStageMaximizePlaneAnimator(){
 
 void triggerStartOfStageTakeOffTickAnimator(){
     AnimatorHolder::wakeUpAnimators(Game::getGameTime());
-    
-    MovingPathAnimator* superAceStartingAnimator = (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceStartingAnimator0");
-    assert(superAceStartingAnimator);
-    
-    superAceStartingAnimator->start(Game::getGameTime());
-    
+
+    SuperAce* superAce = (SuperAce*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce0");
+    superAce->doLoop();
+
     //maximize the plane
     TimerTickAnimator::startTimeTickAnimator("startOfStageMaximizePlaneTickAnimation", triggerStartOfStageMaximizePlaneAnimator );
     
@@ -451,11 +443,7 @@ void AnimatorHolder::triggerStartOfStageAnimators(){
     
     //set items
     
-    //SuperAce
-    SuperAce* superAce = (SuperAce*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce0");
-    superAce->setVisibility(true);
-    
-    TimerTickAnimator::startTimeTickAnimator("superAceMovingPathTickAnimation", triggerSuperAceMovingPathAnimator );
+    AnimatorHolder::superAceMovingAnimator();
     
     Sprite* initialAircraft = SpritesHolder::getSprite(TERRAIN, "spriteAircraftCarrier0");
     assert(initialAircraft);
@@ -570,7 +558,7 @@ void triggerEndOfStageLandPlaneAnimator(){
     
     SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce0");
     assert(superAce);
-    superAce->doManeuever();
+    superAce->doLoop();
 }
 
 void triggerEndOfStageMinimizePlaneAnimator(){
@@ -757,7 +745,7 @@ void AnimatorHolder::triggerstartEnemyPlanesTickAnimator(){
     SpriteStringHolder::getSpriteString("startingReadyLogo")->setVisibility(false);
     SpriteStringHolder::getSpriteString("startingPlayerLogo")->setVisibility(false);
     SpriteStringHolder::getSpriteString("numberOne")->setVisibility(false);
-    
+    /*
     //Bullets
     TimerTickAnimator::startTimeTickAnimator("enemyBulletsTickAnimation", AnimatorHolder::triggerBullets);
     
@@ -793,7 +781,7 @@ void AnimatorHolder::triggerstartEnemyPlanesTickAnimator(){
     
     //death star
     TimerTickAnimator::startTimeTickAnimator("deathStarTickAnimation", triggerDeathStarAnimator );
-   
+    */
 }
 
 void AnimatorHolder::startTimeTickAnimators(){
@@ -1056,55 +1044,25 @@ void  updateGreyJetAnimation(MovingPathAnimator* grayJetAnimator){
 	}
 }
 
-/*void  updateGreenJetAnimation(MovingPathAnimator* grayJetAnimator){
+void AnimatorHolder::superAceMovingAnimator(){
     
-    assert(grayJetAnimator);
-    
-    if (!grayJetAnimator->isAlive()){
-        return;
-    }
-    std::size_t found;
+    static int nameId=0;
+    string animatorMovingId = "animatorMovingId" + std::to_string(nameId);
+    nameId++;
     
     
+    //SuperAce
+    SuperAce* superAce = (SuperAce*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce0");
+    superAce->setVisibility(true);
     
-    found = grayJetAnimator->getId().find("Chain2Chain1MiniGreenJetAnimator");
-    if (found == 0){
-        SuperAce* superAce = (SuperAce*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce0");
-        
-        MovingPathAnimation* grayJetAnimation = grayJetAnimator->getMovingPathAnimation();
-        assert(grayJetAnimation);
-        
-        int grayJetPositionOnX = grayJetAnimator->getSprite()->getDstRect().x;
-        int superAcePositionOnX = superAce->getDstRect().x;
-        
-        int grayJetPositionOnY = grayJetAnimator->getSprite()->getDstRect().y;
-        
-        int apostashStonX = superAcePositionOnX - grayJetPositionOnY;
-        if (apostashStonX < 0){
-            apostashStonX = apostashStonX*(-1);
-        }
-        if (grayJetPositionOnY > WIN_HEIGHT - 80 ||   apostashStonX < 50){
-            //cout << "DOWN" << endl;
-            grayJetAnimation->changeDxDy(0, 4);
-            
-            grayJetAnimator->getSprite()->setFrame(0);
-            return;
-        }
-        
-        if (superAcePositionOnX +10 > grayJetPositionOnX ){
-            
-            if (grayJetAnimation->getPath().front()._dx <= 0){
-                
-                grayJetAnimation->setPath(((MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("GreenJetRightDownAnimation"))->getPath());
-            }
-        }
-        else if (superAcePositionOnX -10< grayJetPositionOnX ){
-            if (grayJetAnimation->getPath().front()._dx >= 0){
-                grayJetAnimation->setPath(((MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("GreenJetLeftDownAnimation"))->getPath());
-                
-            }
-        }
-    }
-}*/
+    MovingPathAnimation* superAceManeuverAnimation = (MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("superAceMovingAnimation");
+    assert(superAceManeuverAnimation);
+    
+    MovingPathAnimator* superAceManeuverAnimator = new MovingPathAnimator(animatorMovingId, superAce, (MovingPathAnimation*)superAceManeuverAnimation);
+    assert(superAceManeuverAnimator);
+    
+    superAceManeuverAnimator->start(Game::getGameTime());
+
+}
 
 

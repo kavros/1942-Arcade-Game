@@ -125,7 +125,7 @@ void MovingPathAnimator::progress(timestamp_t currTime){
         if(_currPath == _anim->getPath().end() && !_anim->getContinuous()){
 			
 			//!!! only Maneuver Animation can change state from maneuever to Flying 
-			if (_sprite->getState() == MANEUVER && getId() == "SuperAceAnimatorManeuver0"){
+			if (_sprite->getState() == MANEUVER){
 				_sprite->setState(FLYING);
 			}
 			_state = ANIMATOR_FINISHED;
