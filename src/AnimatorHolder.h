@@ -37,6 +37,9 @@ private:
     ~AnimatorHolder();
 
 public:
+    
+    static bool movingEnable;
+    
     static void Register(Animator* a);
     static void cancel(Animator* a);
 	
@@ -77,7 +80,7 @@ public:
     
     static void triggerStartOfStageAnimators();
     static void triggerEndOfStageAnimators();
-
+    static void triggerstartEnemyPlanesTickAnimator();
 
 	
 };
