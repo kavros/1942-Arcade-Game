@@ -716,41 +716,41 @@ void triggerMedGreenTripleEngAnimators(){
 
 void triggerstartEnemyPlanesTickAnimator(){
     //Bullets
-    TimerTickAnimator::startTimeTickAnimator("enemyBulletsTickAnimation", AnimatorHolder::triggerBullets);
+    //TimerTickAnimator::startTimeTickAnimator("enemyBulletsTickAnimation", AnimatorHolder::triggerBullets);
     
     //Bonus Planes
-    TimerTickAnimator::startTimeTickAnimator("redPlaneTickAnimations", triggerRedPlaneTickAnimations );
+    //TimerTickAnimator::startTimeTickAnimator("redPlaneTickAnimations", triggerRedPlaneTickAnimations );
 	
     //mini green Planes/jets
-   /* TimerTickAnimator::startTimeTickAnimator("miniGreenOneEngTickAnimation", triggerMiniGreenOneEngAnimator );
-   TimerTickAnimator::startTimeTickAnimator("miniGreenDoubleEngTickAnimation", triggerMiniGreenDoubleEngAnimator );
-   TimerTickAnimator::startTimeTickAnimator("miniGreenJetTickAnimation", triggerMiniGreenJetAnimator );
+    //TimerTickAnimator::startTimeTickAnimator("miniGreenOneEngTickAnimation", triggerMiniGreenOneEngAnimator );
+    //TimerTickAnimator::startTimeTickAnimator("miniGreenDoubleEngTickAnimation", triggerMiniGreenDoubleEngAnimator );
+    TimerTickAnimator::startTimeTickAnimator("miniGreenJetTickAnimation", triggerMiniGreenJetAnimator );
     
     //mini  grey Planes/jets
-    TimerTickAnimator::startTimeTickAnimator("miniGreyJetTickAnimation", triggerMiniGreyJetTickAnimator);
-    TimerTickAnimator::startTimeTickAnimator("miniGreyOneEngTickAnimation", triggerMiniGreyOneEngAnimator);
-    TimerTickAnimator::startTimeTickAnimator("miniGreyDoubleEngTickAnimation", triggerMiniGreyDoubleEngAnimator);
+    //TimerTickAnimator::startTimeTickAnimator("miniGreyJetTickAnimation", triggerMiniGreyJetTickAnimator);
+    //TimerTickAnimator::startTimeTickAnimator("miniGreyOneEngTickAnimation", triggerMiniGreyOneEngAnimator);
+    //TimerTickAnimator::startTimeTickAnimator("miniGreyDoubleEngTickAnimation", triggerMiniGreyDoubleEngAnimator);
     
     
     //green medium plane
-    TimerTickAnimator::startTimeTickAnimator("medGreenDoubleEngTickAnimation", triggerMedGreenDoubleEngAnimator);
-    TimerTickAnimator::startTimeTickAnimator("medGreenSingleEngTickAnimation", triggerMedGreenSingleEngAnimator);
-    TimerTickAnimator::startTimeTickAnimator("medGreenTripleEngTickAnimations", triggerMedGreenTripleEngAnimators);
+    //TimerTickAnimator::startTimeTickAnimator("medGreenDoubleEngTickAnimation", triggerMedGreenDoubleEngAnimator);
+    //TimerTickAnimator::startTimeTickAnimator("medGreenSingleEngTickAnimation", triggerMedGreenSingleEngAnimator);
+    //TimerTickAnimator::startTimeTickAnimator("medGreenTripleEngTickAnimations", triggerMedGreenTripleEngAnimators);
     
     //grey medium plane
-    TimerTickAnimator::startTimeTickAnimator("medGreyDoubleEngTickAnimation", triggerMedGreyDoubleAnimator);
-    TimerTickAnimator::startTimeTickAnimator("medGreySingleEngTickAnimation", triggerMedGreySingleAnimator);
-    TimerTickAnimator::startTimeTickAnimator("medGreyTripleEngTickAnimation", triggerMedGreyTripleAnimator);
+    //TimerTickAnimator::startTimeTickAnimator("medGreyDoubleEngTickAnimation", triggerMedGreyDoubleAnimator);
+    //TimerTickAnimator::startTimeTickAnimator("medGreySingleEngTickAnimation", triggerMedGreySingleAnimator);
+    //TimerTickAnimator::startTimeTickAnimator("medGreyTripleEngTickAnimation", triggerMedGreyTripleAnimator);
     
     
     //big plane
-    TimerTickAnimator::startTimeTickAnimator("bigGreenIntroTickAnimation", triggerBigGreenIntroTickAnimators );
-    TimerTickAnimator::startTimeTickAnimator("bigGreenStayStillTickAnimation", triggerBigGreenStayStillTickAnimators );
-    TimerTickAnimator::startTimeTickAnimator("bigGreenOutroTickAnimation", triggerBigGreenOutroTickAnimators );
+    //TimerTickAnimator::startTimeTickAnimator("bigGreenIntroTickAnimation", triggerBigGreenIntroTickAnimators );
+    //TimerTickAnimator::startTimeTickAnimator("bigGreenStayStillTickAnimation", triggerBigGreenStayStillTickAnimators );
+    //TimerTickAnimator::startTimeTickAnimator("bigGreenOutroTickAnimation", triggerBigGreenOutroTickAnimators );
     
     //death star
-    TimerTickAnimator::startTimeTickAnimator("deathStarTickAnimation", triggerDeathStarAnimator );
-   */
+    //TimerTickAnimator::startTimeTickAnimator("deathStarTickAnimation", triggerDeathStarAnimator );
+   
 }
 
 void AnimatorHolder::startTimeTickAnimators(){
@@ -931,6 +931,7 @@ void updateGreyPlaneAnimation(MovingPathAnimator* grayJetAnimator){
         if (grayJetAnimation->getPath().front()._dx >= 0){
             path._dx = -4;
             path._dy = 4;
+            path._frame = 6;
             std::list<PathEntry> p;
             p.push_front(path);
             grayJetAnimation->setPath(p);
@@ -940,6 +941,7 @@ void updateGreyPlaneAnimation(MovingPathAnimator* grayJetAnimator){
         if (grayJetAnimation->getPath().front()._dx <= 0){
             path._dx = 4;
             path._dy = 4;
+            path._frame = 7;
             std::list<PathEntry> p;
             p.push_front(path);
             grayJetAnimation->setPath(p);
@@ -952,6 +954,7 @@ void updateGreyPlaneAnimation(MovingPathAnimator* grayJetAnimator){
             
             path._dx = 0;
             path._dy = 4;
+            path._frame = 0;
             std::list<PathEntry> p;
             p.push_front(path);
             grayJetAnimation->setPath(p);

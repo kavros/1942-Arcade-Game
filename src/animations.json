@@ -1158,7 +1158,7 @@
                                             "id": "MiniGreenOneEngRight",
                                             "continuous": false,
                                             "doWhile": true,
-                                            "maxX": 180,
+                                            "maxX": 240,
                                             "maxY": 0,
                                             "paths": [{
                                                       "dx": 4,

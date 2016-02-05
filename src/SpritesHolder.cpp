@@ -215,7 +215,6 @@ SDL_Rect getRandomDestRect(EnemyFighterType e,SDL_Rect dst){
     switch (e) {
             
         case EnemyFighterType(1):{
-            dst.x = -dst.w;
             dst.y = rand() % 384 + 92; // random between 92 - 476
             break;}
         case EnemyFighterType(2):{
@@ -223,15 +222,13 @@ SDL_Rect getRandomDestRect(EnemyFighterType e,SDL_Rect dst){
             dst.x = rand() % 384 + 192; // random between 192 - 576
             break;}
         case EnemyFighterType(3):{
-            dst.x = -dst.w;
-            dst.y = rand() % 384 + 92; // random between 92 - 476
+            dst.y = rand() % 384 + 192; // random between 92 - 376
             break;}
         case EnemyFighterType(4):{
             dst.y = -dst.h;
             dst.x = rand() % 690 + 40; // random between  40 - 730
             break;}
         case EnemyFighterType(5):{
-            dst.x = -dst.w;
             dst.y = rand() % 384 + 92; // random between 92 - 476
             break;}
         case EnemyFighterType(6):{
