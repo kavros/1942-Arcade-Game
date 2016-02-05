@@ -36,6 +36,8 @@ public:
 class SuperAce:public Sprite{
     
 private:
+    SDL_Rect miniSuperAceDstRect;
+    SDL_Rect superAceDstRect;
     unsigned int bulletFrame;
     SDL_Rect _bulletDstRect;
     unsigned int _superAceLives;
@@ -54,6 +56,8 @@ public:
 	void render(SDL_Renderer * renderer);
 
 	//get
+    SDL_Rect getSuperAceDstRect();
+    SDL_Rect getMiniSuperAceDstRect();
     SDL_Rect getBulletDstRect();
     unsigned int getSuperAceLives();
     unsigned int getSuperAceLoops();
@@ -64,6 +68,8 @@ public:
     void setSuperAceLoops(unsigned int superAceLoops);
     void setBulletFrame(unsigned int bulletFrame);
     void setBulletDstRect(SDL_Rect bulletDstRect);
+    void setSuperAceDstRect(SDL_Rect SuperAceDstRect);
+    void setMiniSuperAceDstRect(SDL_Rect miniSuperAceDstRect);
     void setBulletAnimationFilm(AnimationFilm* anim);
     
     //functionality
