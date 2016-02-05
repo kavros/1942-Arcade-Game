@@ -629,7 +629,7 @@ void triggerMedGreenTripleEngAnimators(){
 }
 
 void AnimatorHolder::startTimeTickAnimators(){
-    /*
+    
     //SuperAce
     TimerTickAnimator::startTimeTickAnimator("superAceMovingPathTickAnimation", triggerSuperAceMovingPathAnimator );
     
@@ -668,9 +668,9 @@ void AnimatorHolder::startTimeTickAnimators(){
     
     //death star
     TimerTickAnimator::startTimeTickAnimator("deathStarTickAnimation", triggerDeathStarAnimator );
-    */
+    
     //end of stage
-    TimerTickAnimator::startTimeTickAnimator("endOfStageTickAnimation", AnimatorHolder::triggerEndOfStageAnimators );
+    //TimerTickAnimator::startTimeTickAnimator("endOfStageTickAnimation", AnimatorHolder::triggerEndOfStageAnimators );
     
 }
 
