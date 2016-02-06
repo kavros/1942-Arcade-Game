@@ -793,7 +793,6 @@ void AnimatorHolder::triggerstartEnemyPlanesTickAnimator(){
     
     //death star
     TimerTickAnimator::startTimeTickAnimator("deathStarTickAnimation", triggerDeathStarAnimator );
-   */
 }
 
 void AnimatorHolder::startTimeTickAnimators(){
