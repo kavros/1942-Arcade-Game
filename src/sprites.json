@@ -36,11 +36,22 @@
                 "enemyType" : 0,
                 "animFilmId": "red_plane"
                 },{
-                "id": "MiniGreenJet",
+                "id": "MiniGreenJetRight",
+                "frameNo": 0,
+                "destRect": [768, 60, 35, 35],
+                "point": [0, 0],
+                "repetition": 4,
+                "visible": false,
+                "spriteType": 4,
+                "remainingBullets": 2,
+                "enemyType" : 1,
+                "animFilmId": "green_jet"
+                },{
+                "id": "MiniGreenJetLeft",
                 "frameNo": 0,
                 "destRect": [0, 60, 35, 35],
                 "point": [0, 0],
-                "repetition": 8,
+                "repetition": 4,
                 "visible": false,
                 "spriteType": 4,
                 "remainingBullets": 2,

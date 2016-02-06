@@ -256,7 +256,12 @@ void triggerRedJetLeftAnimator(){
 
 void triggerMiniGreenJetAnimator(){
     static int nameId=0;
-    string name = "MiniGreenJetAnimator" + std::to_string(nameId);
+    string name;
+    if(nameId % 2 == 0){
+        name = "MiniGreenJetLeftAnimator" + std::to_string(nameId/2);
+    }else{
+        name = "MiniGreenJetRightAnimator" + std::to_string(nameId/2);
+    }
     nameId++;
     
     MovingPathAnimator* animator = (MovingPathAnimator*) AnimatorHolder::getAnimatorHolder()->getAnimator(name);
@@ -762,12 +767,12 @@ void AnimatorHolder::triggerstartEnemyPlanesTickAnimator(){
     //green medium plane
     //TimerTickAnimator::startTimeTickAnimator("medGreenDoubleEngTickAnimation", triggerMedGreenDoubleEngAnimator);
     //TimerTickAnimator::startTimeTickAnimator("medGreenSingleEngTickAnimation", triggerMedGreenSingleEngAnimator);
-    //TimerTickAnimator::startTimeTickAnimator("medGreenTripleEngTickAnimations", triggerMedGreenTripleEngAnimators);
+    TimerTickAnimator::startTimeTickAnimator("medGreenTripleEngTickAnimations", triggerMedGreenTripleEngAnimators);
     
     //grey medium plane
     //TimerTickAnimator::startTimeTickAnimator("medGreyDoubleEngTickAnimation", triggerMedGreyDoubleAnimator);
     //TimerTickAnimator::startTimeTickAnimator("medGreySingleEngTickAnimation", triggerMedGreySingleAnimator);
-    //TimerTickAnimator::startTimeTickAnimator("medGreyTripleEngTickAnimation", triggerMedGreyTripleAnimator);
+    TimerTickAnimator::startTimeTickAnimator("medGreyTripleEngTickAnimation", triggerMedGreyTripleAnimator);
     
 	
     //big plane
@@ -876,7 +881,7 @@ void AnimatorHolder::updateAllGreyPlaneAnimations(){
             updateGreyJetAnimation(grayPlaneAnimator);
         }
 
-        if (str == "Chain2Chain1MiniGreenJetAnimator"){
+        if (str == "Chain2Chain1MiniGreenJetLeftAnimator" || str == "Chain2Chain1MiniGreenJetRightAnimator"){
             grayPlaneAnimator= (MovingPathAnimator*) (*it);
             updateGreenJetAnimation(grayPlaneAnimator);
         }
