@@ -1,12 +1,6 @@
 TO DO LIST:
 
-	primary:
 		super ace lives ( continue lives lives==0 -> must restart the stage )
-		create stage end ( after all of the animator's destructions )
-		dynamic animators using current player's position
-		chain animators ( automate examples )
-		add animator to a new json file
-		
-	secondary:
-		reorder game loop ( see savidis lectures)
+		update score sprites ( AnimatorHolder::createUpdateScoreAnimator )
+		side fighters intro
 		after game exit create a report with game info (etc FPS(min,max,avg), no. collisions, no. inputs)

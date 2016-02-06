@@ -71,7 +71,7 @@ public:
     void fireSideLeftBullet();
     void fireStraightBullet();
 	void createPowerUp();
-
+    void updateScore();
 };
 
 #endif

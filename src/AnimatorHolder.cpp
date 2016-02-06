@@ -755,7 +755,7 @@ void AnimatorHolder::triggerstartEnemyPlanesTickAnimator(){
     
     //mini  grey Planes/jets
     //TimerTickAnimator::startTimeTickAnimator("miniGreyJetTickAnimation", triggerMiniGreyJetTickAnimator);
-    TimerTickAnimator::startTimeTickAnimator("miniGreyOneEngTickAnimation", triggerMiniGreyOneEngAnimator);
+    //TimerTickAnimator::startTimeTickAnimator("miniGreyOneEngTickAnimation", triggerMiniGreyOneEngAnimator);
     //TimerTickAnimator::startTimeTickAnimator("miniGreyDoubleEngTickAnimation", triggerMiniGreyDoubleEngAnimator);
     
     
@@ -777,6 +777,10 @@ void AnimatorHolder::triggerstartEnemyPlanesTickAnimator(){
     
     //death star
     //TimerTickAnimator::startTimeTickAnimator("deathStarTickAnimation", triggerDeathStarAnimator );
+ 
+    SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce0");
+    superAce->addSideFighters();
+
     
 }
 
@@ -1086,5 +1090,47 @@ void AnimatorHolder::stopSuperAceMovingAnimator(){
     }
 }
 
+void AnimatorHolder::createUpdateScoreAnimator(SDL_Rect rect,int points){
+/*
+    static int nameId=0;
+    string scoreSpriteId = "scoreSprite" + std::to_string(nameId);
+    string scoreAnimatorId = "scoreAnimator" + std::to_string(nameId);
+    unsigned frameNo = 0;
+    nameId++;
+    
+    AnimationFilm* scoreFilm = AnimationFilmHolder::Get()->GetFilm("");
+    assert(scoreFilm);
+    
+    switch (points) {
+        case 1000:{
+            //frameNo = 0;
+            break;
+        }
+        case 1500:{
+            //frameNo = 1;
+            break;
+        }
+        case 2000:{
+            //frameNo = 2;
+            break;
+        }
+        default:{
+            assert(0);
+            break;
+        }
+    }
+    
+    Sprite* scoreSprite = new Sprite(scoreSpriteId, frameNo, rect , {0,0}, true, GAME_INFO, scoreFilm);
+    assert(scoreSprite);
+    
+    Animation* scoreAnimation = AnimationHolder::getAnimationHolder()->getAnimation("");
+    assert(scoreAnimation);
+    
+    MovingPathAnimator* scoreAnimator = new MovingPathAnimator(scoreAnimatorId, scoreSprite, (MovingPathAnimation*)scoreAnimation);
+    assert(scoreAnimator);
+    
+    scoreAnimator->start(Game::getGameTime());
+*/
+}
 
 

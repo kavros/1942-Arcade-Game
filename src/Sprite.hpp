@@ -144,7 +144,7 @@ public:
     void display (SDL_Renderer* renderer);
     
     bool isOutOfWindow();
-    
+  
 };
 
 #endif

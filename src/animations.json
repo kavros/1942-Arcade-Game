@@ -355,6 +355,28 @@
                                                       "delay": 30
                                                       }]
                                             }, {
+                                            "id": "sideFighterAttachAnimationRight",
+                                            "continuous": true,
+                                            "paths": [{
+                                                      "dx": 0,
+                                                      "dy": 0,
+                                                      "frameNo": 1,
+                                                      "visibility": true,
+                                                      "delay": 30
+                                                      }
+                                                      ]
+                                            },{
+                                            "id": "sideFighterAttachAnimationLeft",
+                                            "continuous": true,
+                                            "paths": [{
+                                                      "dx": 0,
+                                                      "dy": 0,
+                                                      "frameNo": 1,
+                                                      "visibility": true,
+                                                      "delay": 30
+                                                      }
+                                                      ]
+                                            },{
                                             "id": "explosion",
                                             "continuous": false,
                                             "paths": [{

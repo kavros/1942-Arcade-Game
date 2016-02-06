@@ -3,8 +3,6 @@
 #include "Game.hpp"
 #include "PowerUp.hpp"
 
-void updateScore(EnemyFighter* s);
-
 void Sprite::fireHandler::operator()(Sprite* bullet,Sprite* arg) const{
     
     assert(bullet && arg);
@@ -42,15 +40,17 @@ void Sprite::fireHandler::operator()(Sprite* bullet,Sprite* arg) const{
         EnemyFighter* enemyFighter = ( EnemyFighter* )arg;
         
         if(enemyFighter->getEnemyFighterLifes() == 1){
+            
             enemyFighter->setState(IN_COLUSION);
-            if(enemyFighter->getEnemyFighterType() == RED_PLANE && SpritesHolder::uniqueAliveFromTeam(enemyFighter) )
+            Game::setToDeadEnemiesOneMore();
+
+            if(enemyFighter->getEnemyFighterType() == RED_PLANE && SpritesHolder::uniqueAliveFromTeam(enemyFighter) ){
                 enemyFighter->createPowerUp();
+            }
+            
         }
         enemyFighter->setEnemyFighterLifes( enemyFighter->getEnemyFighterLifes() -1 );
-        if(enemyFighter->getEnemyFighterType()!= BULLET)
-            updateScore(enemyFighter);
-		Game::setToDeadEnemiesOneMore();
-	
+        enemyFighter->updateScore();
     }
     else if( arg->getType() == SUPER_ACE ){
         Sprite* rightFighter = superAce->getAttached(RIGHT_FIGHTER);
@@ -69,8 +69,8 @@ void Sprite::fireHandler::operator()(Sprite* bullet,Sprite* arg) const{
     AnimatorHolder::createExplosion( arg->getDstRect() );
 }
 
-void updateScore(EnemyFighter* s){
-    EnemyFighterType t = s->getEnemyFighterType();
+void EnemyFighter::updateScore(){
+    EnemyFighterType t = this->getEnemyFighterType();
     int i =0;
     switch (t){
         case EnemyFighterType(0): i = 30; break;
@@ -81,72 +81,94 @@ void updateScore(EnemyFighter* s){
         case EnemyFighterType(MIN_GREEN_DOUBLE_ENG): i = 70; break;
         case EnemyFighterType(MIN_GREY_DOUBLE_ENG): i = 70; break;
         case EnemyFighterType(MED_GREEN_ONE_ENG): {
-            if(s->getState() == IN_COLUSION)
+            if(this->getState() == IN_COLUSION){
                 i = 1000;
+                AnimatorHolder::createUpdateScoreAnimator(this->getDstRect(),1000);
+            }
             else
                 i = 100;
             break;
         }
         case EnemyFighterType(MED_GREEN_DOUBLE_ENG):{
-            if(s->getState() == IN_COLUSION)
+            if(this->getState() == IN_COLUSION){
                 i = 1000;
+                AnimatorHolder::createUpdateScoreAnimator(this->getDstRect(),1000);
+            }
             else
                 i = 100;
             break;
         }
         case EnemyFighterType(MED_GREEN_TRIPLE_ENG):{
-            if(s->getState() == IN_COLUSION)
+            if(this->getState() == IN_COLUSION){
                 i = 1000;
+                AnimatorHolder::createUpdateScoreAnimator(this->getDstRect(),1000);
+            }
             else
                 i = 100;
             break;
         }
         case EnemyFighterType(MED_GREY_ONE_ENG): {
-            if(s->getState() == IN_COLUSION)
+            if(this->getState() == IN_COLUSION){
                 i = 1500;
+                AnimatorHolder::createUpdateScoreAnimator(this->getDstRect(),1500);
+            }
             else
                 i = 100;
             break;
         }
         case EnemyFighterType(MED_GREY_DOUBLE_ENG): {
-            if(s->getState() == IN_COLUSION)
+            if(this->getState() == IN_COLUSION){
                 i = 1500;
+                AnimatorHolder::createUpdateScoreAnimator(this->getDstRect(),1500);
+            }
             else
                 i = 100;
             break;
         }
         case EnemyFighterType(MED_GREY_TRIPLE_ENG): {
-            if(s->getState() == IN_COLUSION)
+            if(this->getState() == IN_COLUSION){
                 i = 1500;
+                AnimatorHolder::createUpdateScoreAnimator(this->getDstRect(),1500);
+            }
             else
                 i = 100;
             break;
         }
         case EnemyFighterType(BIG_GREEN): {
-            if(s->getState() == IN_COLUSION)
+            if(this->getState() == IN_COLUSION){
                 i = 2000;
+                AnimatorHolder::createUpdateScoreAnimator(this->getDstRect(),2000);
+            }
             else
                 i = 100;
             break;
         }
         case EnemyFighterType(BIG_GREY): {
-            if(s->getState() == IN_COLUSION)
+            if(this->getState() == IN_COLUSION){
                 i = 2000;
+                AnimatorHolder::createUpdateScoreAnimator(this->getDstRect(),2000);
+            }
             else
                 i = 100;
             break;
         }
         case EnemyFighterType(DEATH_STAR): {
-            if(s->getState() == IN_COLUSION)
+            if(this->getState() == IN_COLUSION){
                 i = 1000;
+                AnimatorHolder::createUpdateScoreAnimator(this->getDstRect(),1000);
+            }
             else
                 i = 100;
+            break;
+        }
+        case EnemyFighterType(BULLET): {
             break;
         }
         default: assert(0);
     }
     Game::setScore(Game::getScore()+ i);
 }
+
 Sprite::fireHandler* Sprite::fireHandler::Clone(void) const{
     return new Sprite::fireHandler();
 }

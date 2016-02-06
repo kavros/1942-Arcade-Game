@@ -83,7 +83,8 @@ public:
     static void triggerEndOfStageAnimators();
     static void triggerstartEnemyPlanesTickAnimator();
     static void superAceMovingAnimator();
-	
+    static void createUpdateScoreAnimator(SDL_Rect rect,int points);
+
 };
 
 #endif
