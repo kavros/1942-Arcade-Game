@@ -548,6 +548,19 @@
                                                       "delay": 40
                                                       }]
                                             }, {
+                                            "id": "GreenJetLeftAnimation",
+                                            "continuous": false,
+                                            "doWhile":true,
+                                            "maxX":-200,
+                                            "maxY":0,
+                                            "paths": [{
+                                                      "dx": -4,
+                                                      "dy": 0,
+                                                      "visibility": true,
+                                                      "frameNo": 12,
+                                                      "delay": 40
+                                                      }]
+                                            }, {
                                             "id": "GreenMediumPlaneMovingDownAnimation",
                                             "continuous": true,
                                             "paths": [{

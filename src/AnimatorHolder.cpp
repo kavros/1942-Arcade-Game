@@ -256,7 +256,12 @@ void triggerRedJetLeftAnimator(){
 
 void triggerMiniGreenJetAnimator(){
     static int nameId=0;
-    string name = "MiniGreenJetAnimator" + std::to_string(nameId);
+    string name;
+    if(nameId % 2 == 0){
+        name = "MiniGreenJetLeftAnimator" + std::to_string(nameId/2);
+    }else{
+        name = "MiniGreenJetRightAnimator" + std::to_string(nameId/2);
+    }
     nameId++;
     
     MovingPathAnimator* animator = (MovingPathAnimator*) AnimatorHolder::getAnimatorHolder()->getAnimator(name);
@@ -751,11 +756,11 @@ void AnimatorHolder::triggerstartEnemyPlanesTickAnimator(){
     //mini green Planes/jets
     //TimerTickAnimator::startTimeTickAnimator("miniGreenOneEngTickAnimation", triggerMiniGreenOneEngAnimator );
     //TimerTickAnimator::startTimeTickAnimator("miniGreenDoubleEngTickAnimation", triggerMiniGreenDoubleEngAnimator );
-    //TimerTickAnimator::startTimeTickAnimator("miniGreenJetTickAnimation", triggerMiniGreenJetAnimator );
+    TimerTickAnimator::startTimeTickAnimator("miniGreenJetTickAnimation", triggerMiniGreenJetAnimator );
     
     //mini  grey Planes/jets
     //TimerTickAnimator::startTimeTickAnimator("miniGreyJetTickAnimation", triggerMiniGreyJetTickAnimator);
-    TimerTickAnimator::startTimeTickAnimator("miniGreyOneEngTickAnimation", triggerMiniGreyOneEngAnimator);
+    //TimerTickAnimator::startTimeTickAnimator("miniGreyOneEngTickAnimation", triggerMiniGreyOneEngAnimator);
     //TimerTickAnimator::startTimeTickAnimator("miniGreyDoubleEngTickAnimation", triggerMiniGreyDoubleEngAnimator);
     
     
@@ -872,7 +877,7 @@ void AnimatorHolder::updateAllGreyPlaneAnimations(){
             updateGreyJetAnimation(grayPlaneAnimator);
         }
 
-        if (str == "Chain2Chain1MiniGreenJetAnimator"){
+        if (str == "Chain2Chain1MiniGreenJetLeftAnimator" || str == "Chain2Chain1MiniGreenJetRightAnimator"){
             grayPlaneAnimator= (MovingPathAnimator*) (*it);
             updateGreenJetAnimation(grayPlaneAnimator);
         }
