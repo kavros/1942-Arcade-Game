@@ -59,15 +59,15 @@
                                       }, {
                                       "id": "miniGreenJetTickAnimation",
                                       "delay": 3500,
-                                      "repetitions": 4
+                                      "repetitions": 8
                                       }, {
                                       "id": "miniGreenDoubleEngTickAnimation",
                                       "delay": 3500,
                                       "repetitions": 8
                                       }, {
                                       "id": "miniGreyOneEngTickAnimation",
-                                      "delay": 8000,
-                                      "repetitions": 4
+                                      "delay": 3000,
+                                      "repetitions": 8
                                       },{
                                       "id": "miniGreyDoubleEngTickAnimation",
                                       "delay": 3500,
@@ -110,8 +110,8 @@
                                       "repetitions": 4
                                       }, {
                                       "id": "miniGreyJetTickAnimation",
-                                      "delay": 9000,
-                                      "repetitions": 4
+                                      "delay": 2000,
+                                      "repetitions": 8
                                       }, {
                                       "id": "shortTickAnimation",
                                       "delay": 5000,
@@ -421,47 +421,7 @@
                                                       "delay": 40
                                                       }]
                                             }, {
-                                            "id": "minGreyPlaneAnimation0",
-                                            "continuous": true,
-                                            "paths": [{
-                                                      "dx": 0,
-                                                      "dy": 5,
-                                                      "visibility": true,
-                                                      "frameNo": 0,
-                                                      "delay": 40
-                                                      }]
-                                            }, {
-                                            "id": "minGreyPlaneAnimation1",
-                                            "continuous": true,
-                                            "paths": [{
-                                                      "dx": 0,
-                                                      "dy": 5,
-                                                      "visibility": true,
-                                                      "frameNo": 0,
-                                                      "delay": 40
-                                                      }]
-                                            }, {
-                                            "id": "minGreyPlaneAnimation2",
-                                            "continuous": true,
-                                            "paths": [{
-                                                      "dx": 0,
-                                                      "dy": 5,
-                                                      "visibility": true,
-                                                      "frameNo": 0,
-                                                      "delay": 40
-                                                      }]
-                                            }, {
-                                            "id": "minGreyPlaneAnimation3",
-                                            "continuous": true,
-                                            "paths": [{
-                                                      "dx": 0,
-                                                      "dy": 5,
-                                                      "visibility": true,
-                                                      "frameNo": 0,
-                                                      "delay": 40
-                                                      }]
-                                            }, {
-                                            "id": "GreyJetDownAnimation",
+                                            "id": "MiniGreyJetDownAnimation",
                                             "continuous": true,
                                             "paths": [{
                                                       "dx": 0,
@@ -494,6 +454,36 @@
                                                       "dy": 4,
                                                       "visibility": true,
                                                       "frameNo": 2,
+                                                      "delay": 40
+                                                      }]
+                                            }, {
+                                            "id": "MiniGreyOneEngRightDownAnimation",
+                                            "continuous": true,
+                                            "paths": [{
+                                                      "dx": 4,
+                                                      "dy": 4,
+                                                      "visibility": true,
+                                                      "frameNo": 7,
+                                                      "delay": 40
+                                                      }]
+                                            }, {
+                                            "id": "MiniGreyOneEngLeftDownAnimation",
+                                            "continuous": true,
+                                            "paths": [{
+                                                      "dx": -4,
+                                                      "dy": 4,
+                                                      "visibility": true,
+                                                      "frameNo": 6,
+                                                      "delay": 40
+                                                      }]
+                                            }, {
+                                            "id": "MiniGreyOneEngDownAnimation",
+                                            "continuous": true,
+                                            "paths": [{
+                                                      "dx": 0,
+                                                      "dy": 4,
+                                                      "visibility": true,
+                                                      "frameNo": 0,
                                                       "delay": 40
                                                       }]
                                             },{

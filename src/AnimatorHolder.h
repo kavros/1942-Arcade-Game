@@ -45,6 +45,7 @@ public:
 	
     //get
     static AnimatorHolder* getAnimatorHolder();
+    static void stopSuperAceMovingAnimator();
     
 	static void updateAllGreyPlaneAnimations();
 

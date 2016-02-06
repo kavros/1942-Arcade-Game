@@ -136,15 +136,7 @@ void SuperAce::doLoop(void){
     
     static int nameId=0;
     string animatorManeuverId = "animatorManeuverId" + std::to_string(nameId);
-    
-    string animatorMovingId = "animatorMovingId" + std::to_string(nameId);
-
-    MovingPathAnimator* superAceMovingAnimation = (MovingPathAnimator*) AnimatorHolder::getAnimatorHolder()->getAnimator(animatorMovingId);
-    assert(superAceMovingAnimation);
-    
-    superAceMovingAnimation->setState(ANIMATOR_FINISHED);
-    superAceMovingAnimation->stop();
-    
+    AnimatorHolder::stopSuperAceMovingAnimator();
     MovingPathAnimation* superAceManeuverAnimation = (MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("superAceManeuverAnimation");
     assert(superAceManeuverAnimation);
     

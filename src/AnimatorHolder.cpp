@@ -751,11 +751,11 @@ void AnimatorHolder::triggerstartEnemyPlanesTickAnimator(){
     //mini green Planes/jets
     //TimerTickAnimator::startTimeTickAnimator("miniGreenOneEngTickAnimation", triggerMiniGreenOneEngAnimator );
     //TimerTickAnimator::startTimeTickAnimator("miniGreenDoubleEngTickAnimation", triggerMiniGreenDoubleEngAnimator );
-    TimerTickAnimator::startTimeTickAnimator("miniGreenJetTickAnimation", triggerMiniGreenJetAnimator );
+    //TimerTickAnimator::startTimeTickAnimator("miniGreenJetTickAnimation", triggerMiniGreenJetAnimator );
     
     //mini  grey Planes/jets
     //TimerTickAnimator::startTimeTickAnimator("miniGreyJetTickAnimation", triggerMiniGreyJetTickAnimator);
-    //TimerTickAnimator::startTimeTickAnimator("miniGreyOneEngTickAnimation", triggerMiniGreyOneEngAnimator);
+    TimerTickAnimator::startTimeTickAnimator("miniGreyOneEngTickAnimation", triggerMiniGreyOneEngAnimator);
     //TimerTickAnimator::startTimeTickAnimator("miniGreyDoubleEngTickAnimation", triggerMiniGreyDoubleEngAnimator);
     
     
@@ -833,8 +833,8 @@ void    AnimatorHolder::Load (const std::string& cataloge){
             id2 = id + std::to_string(i);
             spriteId2 = spriteId + std::to_string(i);
             animationId2 = animationId;
-            if (id.compare("MiniGreyOneEngAnimator") == 0)
-                animationId2 +=  std::to_string(i);
+            //if (id.compare("MiniGreyOneEngAnimator") == 0)
+              //  animationId2 +=  std::to_string(i);
             
             Sprite* sprite= SpritesHolder::getSprite(spriteType, spriteId2);
             assert(sprite);
@@ -909,93 +909,64 @@ void updateGreyMedPlaneAnimation(MovingPathAnimator* grayMedPlaneAnimator){
 
 	}
 }
+
+
 void updateGreyPlaneAnimation(MovingPathAnimator* grayJetAnimator){
     //assert(0);
     
-    SuperAce* superAce = (SuperAce*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce0");
-    
-    MovingPathAnimation* grayJetAnimation = grayJetAnimator->getMovingPathAnimation();
-    
     assert(grayJetAnimator);
-    assert(grayJetAnimation);
+    
+    
     if (!grayJetAnimator->isAlive()){
         return;
     }
+    SuperAce* superAce = (SuperAce*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce0");
     
-    
+    MovingPathAnimation* grayJetAnimation = grayJetAnimator->getMovingPathAnimation();
+    assert(grayJetAnimation);
     
     if (grayJetAnimation->getPath().front()._dy < 0){
         return;
     }
     
-    PathEntry path;
-    //path._dx = 1;
-    //path._dy = 0;
-    path._frame = grayJetAnimation->getPath().front()._frame;
-    path._delay = 40;
-    path._visibility = true;
-    
-    
-    
-    int superAcePositionOnX = superAce->getDstRect().x;
     int grayJetPositionOnX = grayJetAnimator->getSprite()->getDstRect().x;
-    
+    int superAcePositionOnX = superAce->getDstRect().x;
+    int superAcePositionOnY = superAce->getDstRect().y;
     
     int grayJetPositionOnY = grayJetAnimator->getSprite()->getDstRect().y;
-    int SuperAcePositionOnY = superAce->getDstRect().y;
     
+    int apostashStonX = superAcePositionOnX - grayJetPositionOnX;
     
-    
-    
-    if (grayJetPositionOnX > superAcePositionOnX + 10){
+    if (apostashStonX < -10  ){
         //an o superace einai pio aristera apo to gray kai
         //to gray kinite deksia h den kinitai tote vale to na pigenei aristera
         if (grayJetAnimation->getPath().front()._dx >= 0){
-            path._dx = -4;
-            path._dy = 4;
-            path._frame = 6;
-            std::list<PathEntry> p;
-            p.push_front(path);
-            grayJetAnimation->setPath(p);
+            grayJetAnimator->setAnimation(((MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("MiniGreyOneEngLeftDownAnimation")));
         }
     }
-    else if (grayJetPositionOnX < superAcePositionOnX - 10){
+    else if (apostashStonX > 10){
         if (grayJetAnimation->getPath().front()._dx <= 0){
-            path._dx = 4;
-            path._dy = 4;
-            path._frame = 7;
-            std::list<PathEntry> p;
-            p.push_front(path);
-            grayJetAnimation->setPath(p);
+            grayJetAnimator->setAnimation(((MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("MiniGreyOneEngRightDownAnimation")));
         }
         
     }
     else {
-        //do not move on x axis
         if (grayJetAnimation->getPath().front()._dx != 0){
-            
-            path._dx = 0;
-            path._dy = 4;
-            path._frame = 0;
-            std::list<PathEntry> p;
-            p.push_front(path);
-            grayJetAnimation->setPath(p);
+            grayJetAnimator->setAnimation(((MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("MiniGreyOneEngDownAnimation")));
         }
     }
     
     
-    if (grayJetPositionOnY > SuperAcePositionOnY - 100){
+    if (grayJetPositionOnY > superAcePositionOnY - 100){
         
         //stop
         ((EnemyFighter*)grayJetAnimator->getSprite())->setEnemyFireEnable(false);
         grayJetAnimator->setState(ANIMATOR_FINISHED);// _state = ANIMATOR_FINISHED;
         grayJetAnimator->stop();
         
-      
+        
     }
 }
-
-
 
 
 void  updateGreyJetAnimation(MovingPathAnimator* grayJetAnimator){
@@ -1009,39 +980,67 @@ void  updateGreyJetAnimation(MovingPathAnimator* grayJetAnimator){
     
     MovingPathAnimation* grayJetAnimation = grayJetAnimator->getMovingPathAnimation();
     assert(grayJetAnimation);
-
+    
     int grayJetPositionOnX = grayJetAnimator->getSprite()->getDstRect().x;
-	int superAcePositionOnX = superAce->getDstRect().x;
+    int superAcePositionOnX = superAce->getDstRect().x;
     
     int grayJetPositionOnY = grayJetAnimator->getSprite()->getDstRect().y;
-	//int superAcePositionOnY = superAce->getDstRect().y;
-
-	int apostashStonX = superAcePositionOnX - grayJetPositionOnY;
-	if (apostashStonX < 0){
-		apostashStonX = apostashStonX*(-1);
-	}
-	if (grayJetPositionOnY > WIN_HEIGHT - 250 || apostashStonX < 50){
-		//cout << "DOWN" << endl;
-		grayJetAnimation->changeDxDy(0, 4);
-		
-		grayJetAnimator->getSprite()->setFrame(0);
-		return;
-	}
-
-	if (superAcePositionOnX > grayJetPositionOnX +10){
     
-		if (grayJetAnimation->getPath().front()._dx <= 0){
+    int apostashStonX = superAcePositionOnX - grayJetPositionOnX;
     
-			grayJetAnimator->setAnimation(((MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("GreyJetRightDownAnimation")));
-		}
-	}
-	else if (superAcePositionOnX < grayJetPositionOnX -10){
-		if (grayJetAnimation->getPath().front()._dx >= 0){
-			grayJetAnimator->setAnimation(((MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("GreyJetLeftDownAnimation")));
+    if (grayJetPositionOnY > WIN_HEIGHT -   50 || (apostashStonX < 10 && apostashStonX > -10)){
+        grayJetAnimator->setAnimation(((MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("MiniGreyJetDownAnimation")));
+        return;
+    }
     
-		}
-	}
+    if ( apostashStonX >=  10){
+        if (grayJetAnimation->getPath().front()._dx <= 0){
+            grayJetAnimator->setAnimation(((MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("GreyJetRightDownAnimation")));
+        }
+    }
+    else if (apostashStonX <=  -10){
+        if (grayJetAnimation->getPath().front()._dx >= 0){
+            grayJetAnimator->setAnimation(((MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("GreyJetLeftDownAnimation")));
+        }
+    }
 }
+
+void  updateGreenJetAnimation(MovingPathAnimator* grayJetAnimator){
+    
+    assert(grayJetAnimator);
+    
+    if (!grayJetAnimator->isAlive()){
+        return;
+    }
+    SuperAce* superAce = (SuperAce*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce0");
+    
+    MovingPathAnimation* grayJetAnimation = grayJetAnimator->getMovingPathAnimation();
+    assert(grayJetAnimation);
+    
+    int grayJetPositionOnX = grayJetAnimator->getSprite()->getDstRect().x;
+    int superAcePositionOnX = superAce->getDstRect().x;
+    
+    int grayJetPositionOnY = grayJetAnimator->getSprite()->getDstRect().y;
+    
+    int apostashStonX = superAcePositionOnX - grayJetPositionOnX;
+    
+    if (grayJetPositionOnY > WIN_HEIGHT -   50 || (apostashStonX < 10 && apostashStonX > -10)){
+        grayJetAnimator->setAnimation(((MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("GreenJetDownAnimation")));
+        return;
+    }
+    
+    if ( apostashStonX >=  10){
+        if (grayJetAnimation->getPath().front()._dx <= 0){
+            grayJetAnimator->setAnimation(((MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("GreenJetRightDownAnimation")));
+        }
+    }
+    else if (apostashStonX <=  -10){
+        if (grayJetAnimation->getPath().front()._dx >= 0){
+            grayJetAnimator->setAnimation(((MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("GreenJetLeftDownAnimation")));
+        }
+    }
+}
+
 
 void AnimatorHolder::superAceMovingAnimator(){
     
@@ -1063,49 +1062,29 @@ void AnimatorHolder::superAceMovingAnimator(){
 
 }
 
-void  updateGreenJetAnimation(MovingPathAnimator* grayJetAnimator){
+void AnimatorHolder::stopSuperAceMovingAnimator(){
+    AnimatorHolder* ah = AnimatorHolder::getAnimatorHolder();
+    MovingPathAnimator* superAceMovingAnimation = nullptr;
     
-    assert(grayJetAnimator);
+    string id = "animatorMovingId";
+    string first;
     
-    if (!grayJetAnimator->isAlive()){
-        return;
-    }
-    std::size_t found;
+    AnimatorMap::const_iterator it = ah->_map.begin();
+    AnimatorMap::const_iterator it2;
     
-    
-    
-    found = grayJetAnimator->getId().find("Chain2Chain1MiniGreenJetAnimator");
-    if (found == 0){
-        SuperAce* superAce = (SuperAce*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce0");
-        
-        MovingPathAnimation* grayJetAnimation = grayJetAnimator->getMovingPathAnimation();
-        assert(grayJetAnimation);
-        
-        int grayJetPositionOnX = grayJetAnimator->getSprite()->getDstRect().x;
-        int superAcePositionOnX = superAce->getDstRect().x;
-        
-        int grayJetPositionOnY = grayJetAnimator->getSprite()->getDstRect().y;
-        
-        int apostashStonX = superAcePositionOnX - grayJetPositionOnY;
-        if (apostashStonX < 0){
-            apostashStonX = apostashStonX*(-1);
+    while (it != ah->_map.end()){
+        it2=it;
+        it2++;
+        first = (string)(*it).first;
+        if( first.find(id) != string::npos ){
+            superAceMovingAnimation = (MovingPathAnimator*) (*it).second;
+            assert(superAceMovingAnimation);
+            superAceMovingAnimation->setState(ANIMATOR_FINISHED);
+            superAceMovingAnimation->stop();
         }
-        if (grayJetPositionOnY > WIN_HEIGHT - 80 ||   apostashStonX < 50){
-            grayJetAnimator->setAnimation(((MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("GreenJetDownAnimation")));
-            return;
-        }
-        
-        if (superAcePositionOnX > grayJetPositionOnX +10 ){
-            if (grayJetAnimation->getPath().front()._dx <= 0){
-                grayJetAnimator->setAnimation(((MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("GreenJetRightDownAnimation")));
-            }
-        }
-        else if (superAcePositionOnX < grayJetPositionOnX -10 ){
-            if (grayJetAnimation->getPath().front()._dx >= 0){
-                grayJetAnimator->setAnimation(((MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("GreenJetLeftDownAnimation")));
-                
-            }
-        }
+        it=it2;
     }
 }
+
+
 

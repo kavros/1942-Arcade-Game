@@ -15,6 +15,7 @@ Animator(id){
 
 void MovingPathAnimator::setAnimation(MovingPathAnimation* mp){
     _anim = mp;
+    _currPath = _anim->getPath().begin();
 }
 
 void MovingPathAnimator::chooseCallBack(string id){

@@ -215,19 +215,19 @@
                             }, {
                             "id": "MiniGreenJetAnimator",
                             "animationId": "GreenJetRightAnimation",
-                            "repetition": 4,
+                            "repetition": 8,
                             "spriteType": 4,
                             "spriteId": "MiniGreenJet"
                             }, {
                             "id": "Chain1MiniGreenJetAnimator",
                             "animationId": "only_circle_250_250_100_68",
-                            "repetition": 4,
+                            "repetition": 8,
                             "spriteType": 4,
                             "spriteId": "MiniGreenJet"
                             }, {
                             "id": "Chain2Chain1MiniGreenJetAnimator",
-                            "animationId": "GreyJetDownAnimation",
-                            "repetition": 4,
+                            "animationId": "MiniGreyJetDownAnimation",
+                            "repetition": 8,
                             "spriteType": 4,
                             "spriteId": "MiniGreenJet"
                             }, {
@@ -267,28 +267,27 @@
                             "spriteType": 4,
                             "spriteId": "MiniGreenOneEngRight"
                             }, {
-                            "WARNING ATTENTION WATCH OUT ": "IT NEEDS MULTIPLE ANIMATIONS",
                             "id": "MiniGreyOneEngAnimator",
-                            "animationId": "minGreyPlaneAnimation",
-                            "repetition": 4,
+                            "animationId": "MiniGreyOneEngDownAnimation",
+                            "repetition": 8,
                             "spriteType": 4,
                             "spriteId": "MiniGreyOneEng"
                             }, {
                             "id": "Chain1MiniGreyOneEngAnimator",
                             "animationId": "flipMinGreyPlaneAnimation",
-                            "repetition": 4,
+                            "repetition": 8,
                             "spriteType": 4,
                             "spriteId": "MiniGreyOneEng"
                             }, {
                             "id": "Chain2Chain1MiniGreyOneEngAnimator",
                             "animationId": "minGreyPlaneRightBackAnimation",
-                            "repetition": 4,
+                            "repetition": 8,
                             "spriteType": 4,
                             "spriteId": "MiniGreyOneEng"
                             }, {
                             "id": "MiniGreyJetAnimator",
-                            "animationId": "GreyJetDownAnimation",
-                            "repetition": 4,
+                            "animationId": "MiniGreyJetDownAnimation",
+                            "repetition": 8,
                             "spriteType": 4,
                             "spriteId": "MiniGreyJet"
                             }, {
