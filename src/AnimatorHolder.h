@@ -81,7 +81,7 @@ public:
     static void triggerStartOfStageAnimators();
     static void triggerEndOfStageAnimators();
     static void triggerstartEnemyPlanesTickAnimator();
-
+    static void superAceMovingAnimator();
 	
 };
 

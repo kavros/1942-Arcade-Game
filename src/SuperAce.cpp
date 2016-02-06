@@ -5,10 +5,10 @@ Sprite(id,frameNo,dstRect,point,isVisible,type,currFilm){
 
     assert(type == SUPER_ACE);
 
-    setDstRect( { WIN_WIDTH/2-getDstRect().w/2 , 3*(WIN_HEIGHT/4) , getDstRect().w , getDstRect().h } );
+    setDstRect( { WIN_WIDTH/2-getDstRect().w/2 , WIN_HEIGHT-2*(getDstRect().h) , getDstRect().w , getDstRect().h } );
     
-    setSuperAceDstRect({ WIN_WIDTH/2-getDstRect().w/2 -10 , 3*(WIN_HEIGHT/4) - 50 , static_cast<int>(1.5*getDstRect().w) , static_cast<int>(1.5*getDstRect().h) });
-    setMiniSuperAceDstRect({ WIN_WIDTH/2-getDstRect().w/2 , 3*(WIN_HEIGHT/4) , getDstRect().w , getDstRect().h });
+    setSuperAceDstRect({ WIN_WIDTH/2-getDstRect().w/2 -10 , WIN_HEIGHT-2*(getDstRect().h)-15 , static_cast<int>(1.5*getDstRect().w) , static_cast<int>(1.5*getDstRect().h) });
+    setMiniSuperAceDstRect({ WIN_WIDTH/2-getDstRect().w/2 , WIN_HEIGHT-2*(getDstRect().h) , getDstRect().w , getDstRect().h });
     
     _superAceLives = 1;
 
@@ -20,6 +20,8 @@ Sprite(id,frameNo,dstRect,point,isVisible,type,currFilm){
     _bulletDstRect.x=this->getDstRect().x + this->getDstRect().w/2 - _bulletDstRect.w/2;
     _bulletDstRect.y=this->getDstRect().y - _bulletDstRect.h;
 
+    setSuperAceLoops(3);
+    
     this->addCollisionHandler(Sprite::touchHandler());
 
 }
@@ -125,21 +127,51 @@ void SuperAce::fire(void){
 	
 }
 
+void nextMovingAnimator(Animator* anim,void* b){
+    AnimatorHolder::markAsSuspended(anim);
+    AnimatorHolder::superAceMovingAnimator();
+}
+
+void SuperAce::doLoop(void){
+    
+    static int nameId=0;
+    string animatorManeuverId = "animatorManeuverId" + std::to_string(nameId);
+    
+    string animatorMovingId = "animatorMovingId" + std::to_string(nameId);
+
+    MovingPathAnimator* superAceMovingAnimation = (MovingPathAnimator*) AnimatorHolder::getAnimatorHolder()->getAnimator(animatorMovingId);
+    assert(superAceMovingAnimation);
+    
+    superAceMovingAnimation->setState(ANIMATOR_FINISHED);
+    superAceMovingAnimation->stop();
+    
+    MovingPathAnimation* superAceManeuverAnimation = (MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("superAceManeuverAnimation");
+    assert(superAceManeuverAnimation);
+    
+    MovingPathAnimator* superAceManeuverAnimator = new MovingPathAnimator(animatorManeuverId, this, (MovingPathAnimation*)superAceManeuverAnimation);
+    assert(superAceManeuverAnimator);
+
+    superAceManeuverAnimator->start(Game::getGameTime());
+    superAceManeuverAnimator->setOnFinished(nextMovingAnimator,nullptr);
+    nameId++;
+
+}
+
 void SuperAce::doManeuever(void){
     if(getState() == MANEUVER){       
         return;
     }
-
-    MovingPathAnimator* superAceAnimatorManeuever = (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorManeuver0");
-    SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce0");
-    int loops = superAce->getSuperAceLoops();
+    
+    int loops = this->getSuperAceLoops();
 	
     if (loops > 0){
-        setState(MANEUVER);
-        superAceAnimatorManeuever->start(Game::getGameTime());
+
+        doLoop();
         
+        setState(MANEUVER);
+
         loops-=1;
-        superAce->setSuperAceLoops(loops); 
+        this->setSuperAceLoops(loops);
         std::string _remainingLoops = "";
         for(int i = 0; i <  loops ; i++){
             _remainingLoops += "R";
