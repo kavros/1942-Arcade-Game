@@ -776,7 +776,8 @@ void AnimatorHolder::triggerstartEnemyPlanesTickAnimator(){
     //TimerTickAnimator::startTimeTickAnimator("bigGreenOutroTickAnimation", triggerBigGreenOutroTickAnimators );
     
     //death star
-    TimerTickAnimator::startTimeTickAnimator("deathStarTickAnimation", triggerDeathStarAnimator );
+    //TimerTickAnimator::startTimeTickAnimator("deathStarTickAnimation", triggerDeathStarAnimator );
+    
 }
 
 void AnimatorHolder::startTimeTickAnimators(){
@@ -785,7 +786,7 @@ void AnimatorHolder::startTimeTickAnimators(){
     TimerTickAnimator::startTimeTickAnimator("startOfStageTickAnimation", AnimatorHolder::triggerStartOfStageAnimators );
 
     //end of stage
-    TimerTickAnimator::startTimeTickAnimator("endOfStageTickAnimation", AnimatorHolder::triggerEndOfStageAnimators );
+    //TimerTickAnimator::startTimeTickAnimator("endOfStageTickAnimation", AnimatorHolder::triggerEndOfStageAnimators );
 }
 
 using namespace rapidjson;
@@ -1042,7 +1043,7 @@ void  updateGreyJetAnimation(MovingPathAnimator* grayJetAnimator){
 	}
 }
 
-void  updateGreenJetAnimation(MovingPathAnimator* grayJetAnimator){
+void AnimatorHolder::superAceMovingAnimator(){
     
     static int nameId=0;
     string animatorMovingId = "animatorMovingId" + std::to_string(nameId);
@@ -1057,6 +1058,21 @@ void  updateGreenJetAnimation(MovingPathAnimator* grayJetAnimator){
     
     MovingPathAnimator* superAceManeuverAnimator = new MovingPathAnimator(animatorMovingId, superAce, (MovingPathAnimation*)superAceManeuverAnimation);
     assert(superAceManeuverAnimator);
+    
+    superAceManeuverAnimator->start(Game::getGameTime());
+
+}
+
+void  updateGreenJetAnimation(MovingPathAnimator* grayJetAnimator){
+    
+    assert(grayJetAnimator);
+    
+    if (!grayJetAnimator->isAlive()){
+        return;
+    }
+    std::size_t found;
+    
+    
     
     found = grayJetAnimator->getId().find("Chain2Chain1MiniGreenJetAnimator");
     if (found == 0){
@@ -1092,5 +1108,4 @@ void  updateGreenJetAnimation(MovingPathAnimator* grayJetAnimator){
         }
     }
 }
-
 
