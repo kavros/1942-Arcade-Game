@@ -224,79 +224,79 @@
                                             "id": "superAceAnimationUp",
                                             "continuous": false,
                                             "doWhile": true,
-                                            "maxY": -48,
+                                            "maxY": -24,
                                             "maxX": 0,
                                             "paths": [{
                                                       "dx": 0,
-                                                      "dy": -4,
+                                                      "dy": -2,
                                                       "frameNo": 7,
                                                       "visibility": true,
-                                                      "delay": 30
+                                                      "delay": 10
                                                       }]
                                             }, {
                                             "id": "superAceAnimationDown",
                                             "continuous": false,
                                             "doWhile": true,
-                                            "maxY": 48,
+                                            "maxY": 24,
                                             "maxX": 0,
                                             "paths": [{
                                                       "dx": 0,
-                                                      "dy": 4,
+                                                      "dy": 2,
                                                       "visibility": true,
                                                       "frameNo": 0,
-                                                      "delay": 30
+                                                      "delay": 10
                                                       }]
                                             }, {
                                             "id": "superAceAnimationLeft",
                                             "continuous": false,
                                             "doWhile": true,
                                             "maxY": 0,
-                                            "maxX": -36,
+                                            "maxX": -20,
                                             "paths": [{
-                                                      "dx": -3,
+                                                      "dx": -2,
                                                       "dy": 0,
                                                       "frameNo": 2,
                                                       "visibility": true,
-                                                      "delay": 30
+                                                      "delay": 10
                                                       }]
                                             }, {
                                             "id": "superAceAnimationLeftLeft",
                                             "continuous": false,
                                             "doWhile": true,
                                             "maxY": 0,
-                                            "maxX": -48,
+                                            "maxX": -24,
                                             "paths": [{
-                                                      "dx": -4,
+                                                      "dx": -2,
                                                       "dy": 0,
                                                       "frameNo": 4,
                                                       "visibility": true,
-                                                      "delay": 30
+                                                      "delay": 10
                                                       }]
                                             }, {
                                             "id": "superAceAnimationRight",
                                             "continuous": false,
                                             "doWhile": true,
                                             "maxY": 0,
-                                            "maxX": 36,
+                                            "maxX": 20,
                                             "paths": [{
-                                                      "dx": 3,
+                                                      "dx": 2,
                                                       "dy": 0,
                                                       "frameNo": 1,
                                                       "visibility": true,
-                                                      "delay": 30
+                                                      "delay": 10
                                                       }]
                                             }, {
                                             "id": "superAceAnimationRightRight",
                                             "continuous": false,
                                             "doWhile": true,
                                             "maxY": 0,
-                                            "maxX": 48,
+                                            "maxX": 24,
                                             "paths": [{
-                                                      "dx": 4,
+                                                      "dx": 2,
                                                       "dy": 0,
                                                       "frameNo": 3,
                                                       "visibility": true,
-                                                      "delay": 30
+                                                      "delay": 10
                                                       }]
                                             }, {
                                             "id": "sideFighterAnimationRight",
