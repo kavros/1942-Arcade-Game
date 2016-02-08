@@ -21,7 +21,7 @@ void Game::AIOnLoop(){
         setState(GAME_OVER);
         return;
     }
-    
+
     static int i = 0;
 
     if(i % 50000 ==0){
@@ -37,8 +37,8 @@ void Game::AIOnLoop(){
             left = AnimatorHolder::updateSideFighterAnimation(LEFT_FIGHTER);
         }
     }
-}
-
+    }
+    
 void Game::GameOnLoop(){
 
     // AI
