@@ -697,6 +697,20 @@ void triggerMedGreyTripleAnimator(){
 	animator->start(Game::getGameTime());
 }
 
+void triggerMedGreyTripleEngAnimators(){
+    
+    static int nameId = 0;
+    string name = "medGreyTripleEngTickAnimation" + std::to_string(nameId);
+    
+    assert(nameId<3);
+    
+    nameId++;
+    
+    //call a tick for 3 times
+    TimerTickAnimator::startTimeTickAnimator(name, triggerMedGreyTripleAnimator);
+    
+}
+
 void triggerMiniGreyDoubleEngAnimator(){
     static int nameId = 0;
     string name = "MiniGreyDoubleEngAnimator" + std::to_string(nameId);
@@ -772,7 +786,7 @@ void AnimatorHolder::triggerstartEnemyPlanesTickAnimator(){
     //grey medium plane
     //TimerTickAnimator::startTimeTickAnimator("medGreyDoubleEngTickAnimation", triggerMedGreyDoubleAnimator);
     //TimerTickAnimator::startTimeTickAnimator("medGreySingleEngTickAnimation", triggerMedGreySingleAnimator);
-    TimerTickAnimator::startTimeTickAnimator("medGreyTripleEngTickAnimation", triggerMedGreyTripleAnimator);
+    TimerTickAnimator::startTimeTickAnimator("medGreyTripleEngTickAnimations", triggerMedGreyTripleEngAnimators);
     
 	
     //big plane
