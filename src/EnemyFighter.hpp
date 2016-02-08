@@ -69,6 +69,8 @@ public:
     void fire();
     void fireSideRightBullet();
     void fireSideLeftBullet();
+    void fireSideRightRightBullet();
+    void fireSideLeftLeftBullet();
     void fireStraightBullet();
 	void createPowerUp();
     void updateScore();

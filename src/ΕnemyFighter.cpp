@@ -175,6 +175,67 @@ void EnemyFighter::fireSideRightBullet(){
     
 }
 
+void EnemyFighter::fireSideRightRightBullet(){
+    assert(this->isAlive() && !this->isOutOfWindow() && this->getVisibility());
+    
+    static int number = 0;
+    string spriteEnemySideRightFireId = "spriteEnemySideRightRightFire" + std::to_string (number);
+    string animatorEnemySideRightFireId = "animatorEnemySideRightRightFireId" + std::to_string (number);
+    number++;
+    
+    AnimationFilm* fireAnimationFilm = AnimationFilmHolder::Get()->GetFilm("bullets");
+    assert(fireAnimationFilm);
+    
+    Sprite* spriteEnemySideRightFire = new EnemyFighter(spriteEnemySideRightFireId, getBulletFrame(),getEnemyBulletDstRect() , {0,0}, true, ALIEN_SHIP, fireAnimationFilm,BULLET,0);
+    assert(spriteEnemySideRightFire);
+    
+    //play sound for fire
+    SoundHolder::playSound("gunshot");
+    
+    //fireAnimation
+    MovingPathAnimation* fireRightAnimation = (MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("enemySideRightRightFire");
+    assert(fireRightAnimation);
+    
+    MovingPathAnimator* fireRightAnimator = new MovingPathAnimator(animatorEnemySideRightFireId, spriteEnemySideRightFire, (MovingPathAnimation*)fireRightAnimation);
+    assert(fireRightAnimator);
+    
+    fireRightAnimator->start(Game::getGameTime());
+    
+    spriteEnemySideRightFire->addCollisionHandler(Sprite::fireHandler());
+    
+}
+
+
+void EnemyFighter::fireSideLeftLeftBullet(){
+    assert(this->isAlive() && !this->isOutOfWindow() && this->getVisibility());
+    
+    static int number = 0;
+    string spriteEnemySideLeftFireId = "spriteEnemySideLeftLeftFire" + std::to_string (number);
+    string animatorEnemySideLeftFireId = "animatorEnemySideLeftLeftFireId" + std::to_string (number);
+    number++;
+    
+    AnimationFilm* fireAnimationFilm = AnimationFilmHolder::Get()->GetFilm("bullets");
+    assert(fireAnimationFilm);
+    
+    Sprite* spriteEnemySideLeftFire = new EnemyFighter(spriteEnemySideLeftFireId, getBulletFrame(),getEnemyBulletDstRect() , {0,0}, true, ALIEN_SHIP, fireAnimationFilm,BULLET,0);
+    assert(spriteEnemySideLeftFire);
+    
+    //play sound for fire
+    SoundHolder::playSound("gunshot");
+    
+    //fireAnimation
+    MovingPathAnimation* fireLeftAnimation = (MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("enemySideLeftLeftFire");
+    assert(fireLeftAnimation);
+    
+    MovingPathAnimator* fireLeftAnimator = new MovingPathAnimator(animatorEnemySideLeftFireId, spriteEnemySideLeftFire, (MovingPathAnimation*)fireLeftAnimation);
+    assert(fireLeftAnimator);
+    
+    fireLeftAnimator->start(Game::getGameTime());
+    
+    spriteEnemySideLeftFire->addCollisionHandler(Sprite::fireHandler());
+    
+}
+
 void EnemyFighter::fireSideLeftBullet(){
     assert(this->isAlive() && !this->isOutOfWindow() && this->getVisibility());
     
@@ -223,11 +284,22 @@ void EnemyFighter::fire(void){
     unsigned r = rand() % 10; // r in the range 0 to 2
 
     if( r<2 ){
-        if( this->getEnemyFighterType() == BIG_GREEN || this->getEnemyFighterType() == BIG_GREY ){
+        if( this->getEnemyFighterType() == BIG_GREEN  ){
             if( getRemainingBullets() >= 3 ){
                 setRemainingBullets( getRemainingBullets() - 3);
                 fireSideRightBullet();
                 fireSideLeftBullet();
+            }
+            else{
+                return;
+            }
+        }else if(this->getEnemyFighterType() == BIG_GREY){
+            if( getRemainingBullets() >= 5 ){
+                setRemainingBullets( getRemainingBullets() - 5);
+                fireSideRightBullet();
+                fireSideRightRightBullet();
+                fireSideLeftBullet();
+                fireSideLeftLeftBullet();
             }
             else{
                 return;

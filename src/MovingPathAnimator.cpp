@@ -104,7 +104,13 @@ void MovingPathAnimator::chooseCallBack(string id){
 	if (found == 0)
 		str = new string("Chain2" + id);
 
-
+    //BigGreen + BigGrey
+    found = id.find("Big");
+    if (found == 0)
+        str = new string("Chain1"+ id);
+    found = id.find("Chain1Big");
+    if (found == 0)
+        str = new string("Chain2"+ id);
 
     if(str!=nullptr)
         setOnFinished(nextAnimator,(void*)str);
