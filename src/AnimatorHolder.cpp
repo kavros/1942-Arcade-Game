@@ -826,8 +826,6 @@ void AnimatorHolder::triggerstartEnemyPlanesTickAnimator(){
     //death star
     TimerTickAnimator::startTimeTickAnimator("deathStarTickAnimation", triggerDeathStarAnimator );
      
-    //SuperAce* sp =(SuperAce*) SpritesHolder::getSprite(SUPER_ACE, "SuperAce0");
-    //sp->addSideFighters();
 }
 
 void AnimatorHolder::startTimeTickAnimators(){
@@ -1225,21 +1223,17 @@ bool  AnimatorHolder::updateSideFighterAnimation(string fighter){
     
     if( dx<2 && dx>-2 && dy<2 && dy>-2 ){
         //stop the animator
-        
-        MovingPathAnimator* animator;
-        animator = (MovingPathAnimator*) AnimatorHolder::getAnimator("sideFighterAttachAnimatorRight");
-        assert(animator);
-        animator->setState(ANIMATOR_FINISHED);
-        animator->stop();
-        
-        animator = (MovingPathAnimator*) AnimatorHolder::getAnimator("sideFighterAttachAnimatorLeft");
-        assert(animator);
-        animator->setState(ANIMATOR_FINISHED);
-        animator->stop();
-        
+  
         //start the side fighter's moving animators
-        
+        MovingPathAnimator* animator;
+
         if( fighter == LEFT_FIGHTER){
+            
+            animator = (MovingPathAnimator*) AnimatorHolder::getAnimator("sideFighterAttachAnimatorLeft");
+            assert(animator);
+            animator->setState(ANIMATOR_FINISHED);
+            animator->stop();
+            
             animation = (MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("sideFighterAnimationRight");
             assert(animation);
             animator = new MovingPathAnimator("LeftSideFighterAnimatorRight", sideFighter, animation);
@@ -1252,6 +1246,12 @@ bool  AnimatorHolder::updateSideFighterAnimation(string fighter){
 
         }
         else if( fighter == RIGHT_FIGHTER){
+            
+            animator = (MovingPathAnimator*) AnimatorHolder::getAnimator("sideFighterAttachAnimatorRight");
+            assert(animator);
+            animator->setState(ANIMATOR_FINISHED);
+            animator->stop();
+            
             animation = (MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("sideFighterAnimationRight");
             assert(animation);
             animator = new MovingPathAnimator( "RightSideFighterAnimatorRight", sideFighter, animation);
