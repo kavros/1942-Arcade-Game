@@ -218,8 +218,7 @@ void EnemyFighter::fire(void){
             }
         }
         else{
-            if( r<3)
-                setRemainingBullets( getRemainingBullets() - 1);
+            setRemainingBullets( getRemainingBullets() - 1);
         }
     }
     else{

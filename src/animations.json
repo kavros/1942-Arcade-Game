@@ -10,8 +10,8 @@
                                         "id": "enemyFire",
                                         "continuous": true,
                                         "dx": 0,
-                                        "dy": 4,
-                                        "delay": 10
+                                        "dy": 5,
+                                        "delay": 18
                                         }, {
                                         "id": "powerUp",
                                         "dx": 0,
@@ -204,65 +204,41 @@
                                             "id": "EnemySideRightFire",
                                             "continuous": true,
                                             "paths": [{
-                                                      "dx": 2,
-                                                      "dy": 2,
+                                                      "dx": 3,
+                                                      "dy": 4,
                                                       "frameNo": 0,
                                                       "visibility": true,
-                                                      "delay": 10
-                                                      },{
-                                                      "dx": 2,
-                                                      "dy": 2,
-                                                      "frameNo": 0,
-                                                      "visibility": true,
-                                                      "delay": 10
+                                                      "delay": 18
                                                       }]
                                             },{
                                             "id": "EnemySideRightRightFire",
                                             "continuous": true,
                                             "paths": [{
-                                                      "dx": 1,
-                                                      "dy": 2,
+                                                      "dx": 4,
+                                                      "dy": 3,
                                                       "frameNo": 0,
                                                       "visibility": true,
-                                                      "delay": 10
-                                                      },{
-                                                      "dx": 1,
-                                                      "dy": 2,
-                                                      "frameNo": 0,
-                                                      "visibility": true,
-                                                      "delay": 10
+                                                      "delay": 18
                                                       }]
                                             }, {
                                             "id": "EnemySideLeftFire",
                                             "continuous": true,
                                             "paths": [{
-                                                      "dx": -2,
-                                                      "dy": 2,
+                                                      "dx": -3,
+                                                      "dy": 4,
                                                       "frameNo": 0,
                                                       "visibility": true,
-                                                      "delay": 10
-                                                      },{
-                                                      "dx": -2,
-                                                      "dy": 2,
-                                                      "frameNo": 0,
-                                                      "visibility": true,
-                                                      "delay": 10
+                                                      "delay": 18
                                                       }]
                                             }, {
                                             "id": "EnemySideLeftLeftFire",
                                             "continuous": true,
                                             "paths": [{
-                                                      "dx": -1,
-                                                      "dy": 2,
+                                                      "dx": -4,
+                                                      "dy": 3,
                                                       "frameNo": 0,
                                                       "visibility": true,
-                                                      "delay": 10
-                                                      },{
-                                                      "dx": -1,
-                                                      "dy": 2,
-                                                      "frameNo": 0,
-                                                      "visibility": true,
-                                                      "delay": 10
+                                                      "delay": 18
                                                       }]
                                             }, {
                                             "id": "superAceMovingAnimation",

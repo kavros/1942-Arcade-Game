@@ -220,7 +220,7 @@
                 "visible": false,
                 "spriteType": 4,
                 "remainingBullets": 50,
-                "enemyType" : 13,
+                "enemyType" : 14,
                 "animFilmId": "bigGrey"
                 },{
                 "id": "ReadyLogo",
