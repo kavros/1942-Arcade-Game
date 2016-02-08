@@ -202,7 +202,6 @@ void    SpritesHolder::Load (const std::string& cataloge/*,SDL_Renderer* _render
             }else if(spriteType == SpriteType::TERRAIN && id2.compare("backgroundSprite0")==0 ){
                 new Background(id2, frameNo, destRect, point, isVisible, spriteType,animationFilm);
             }else{
-                cout << id2 << endl;
                 new Sprite(id2, frameNo, destRect, point, isVisible, spriteType,animationFilm);
             }
             

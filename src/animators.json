@@ -62,7 +62,7 @@
                             "repetition": 2,
                             "spriteType": 3,
                             "spriteId": "SuperAce"
-                            }, {
+                            },{
                             "id": "RedJetRightAnimator",
                             "animationId": "RedJetLeft",
                             "repetition": 15,

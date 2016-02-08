@@ -208,12 +208,8 @@ void MovingPathAnimator::finishCallB(Animator* anim,void* b){
 void MovingPathAnimator::checkAnimatorForDelete(void){
     
     assert(_sprite && _anim );
-    /*
-    if( (_sprite->isOutOfWindow() || _sprite->getState() == SpriteState::IN_COLUSION || this->getState() == ANIMATOR_STOPPED ) && _sprite->getId().compare("SuperAce0") != 0 &&  _sprite->getId().find("SideFighter") == string::npos ){
-        // doesnt contains SideFighter
-        // it is not SuperAce0
-        */
-    if(   (_sprite->isOutOfWindow() || _sprite->getState() == SpriteState::IN_COLUSION || this->getState() == ANIMATOR_STOPPED ) && _sprite->getId().compare("SuperAce0") != 0 && _sprite->getType() != TERRAIN){
+
+    if(   (_sprite->isOutOfWindow() || _sprite->getState() == SpriteState::IN_COLUSION || this->getState() == ANIMATOR_STOPPED ) && _sprite->getId().compare("SuperAce0") != 0 && _sprite->getId().compare("SuperAce1") != 0 && _sprite->getType() != TERRAIN){
         
         
         if( _sprite->getParent() ){
