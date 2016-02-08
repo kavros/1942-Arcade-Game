@@ -779,13 +779,13 @@ void AnimatorHolder::triggerstartEnemyPlanesTickAnimator(){
     
     
     //green medium plane
-    //TimerTickAnimator::startTimeTickAnimator("medGreenDoubleEngTickAnimation", triggerMedGreenDoubleEngAnimator);
-    //TimerTickAnimator::startTimeTickAnimator("medGreenSingleEngTickAnimation", triggerMedGreenSingleEngAnimator);
+    TimerTickAnimator::startTimeTickAnimator("medGreenDoubleEngTickAnimation", triggerMedGreenDoubleEngAnimator);
+    TimerTickAnimator::startTimeTickAnimator("medGreenSingleEngTickAnimation", triggerMedGreenSingleEngAnimator);
     TimerTickAnimator::startTimeTickAnimator("medGreenTripleEngTickAnimations", triggerMedGreenTripleEngAnimators);
     
     //grey medium plane
-    //TimerTickAnimator::startTimeTickAnimator("medGreyDoubleEngTickAnimation", triggerMedGreyDoubleAnimator);
-    //TimerTickAnimator::startTimeTickAnimator("medGreySingleEngTickAnimation", triggerMedGreySingleAnimator);
+    TimerTickAnimator::startTimeTickAnimator("medGreyDoubleEngTickAnimation", triggerMedGreyDoubleAnimator);
+    TimerTickAnimator::startTimeTickAnimator("medGreySingleEngTickAnimation", triggerMedGreySingleAnimator);
     TimerTickAnimator::startTimeTickAnimator("medGreyTripleEngTickAnimations", triggerMedGreyTripleEngAnimators);
     
 	

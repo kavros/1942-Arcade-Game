@@ -137,7 +137,7 @@
                 },{
                 "id": "MedGreenDoubleEng",
                 "frameNo": 0,
-                "destRect": [200, 0, 63, 58],
+                "destRect": [200, 0, 58, 63],
                 "repetition": 4,
                 "point": [0, 0],
                 "visible": false,
@@ -159,7 +159,7 @@
                 },{
                 "id": "MedGreyDoubleEng",
                 "frameNo": 0,
-                "destRect": [400, 0, 62, 53],
+                "destRect": [400, 0, 58, 63],
                 "repetition": 4,
                 "point": [0, 0],
                 "visible": false,
@@ -170,7 +170,7 @@
                 },{
                 "id": "MedGreenSingleEng",
                 "frameNo": 18,
-                "destRect": [200, 768, 63, 58],
+                "destRect": [200, 768, 58, 63],
                 "repetition": 4,
                 "point": [0, 0],
                 "visible": false,
@@ -181,7 +181,7 @@
                 },{
                 "id": "MedGreySingleEng",
                 "frameNo": 0,
-                "destRect": [500, 768, 63, 58],
+                "destRect": [500, 768, 58, 63],
                 "repetition": 4,
                 "point": [0, 0],
                 "visible": false,

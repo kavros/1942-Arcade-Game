@@ -235,7 +235,30 @@ SDL_Rect getRandomDestRect(EnemyFighterType e,SDL_Rect dst){
             dst.y = -dst.h;
             dst.x = rand() % 384 + 192; // random between 192 - 576
             break;}
-        
+        case EnemyFighterType(7):{
+            //dst.y = -dst.h;
+            dst.x = rand() % 484 + 192; // random between 192 - 676
+            break;}
+        case EnemyFighterType(8):{
+            //dst.y = -dst.h;
+            dst.x = rand() % 484 + 192; // random between 192 - 676
+            break;}
+        case EnemyFighterType(9):{
+            //dst.y = -dst.h;
+            dst.y = rand() % 384 + 192; // random between 192 - 576
+            break;}
+        case EnemyFighterType(10):{
+            //dst.y = -dst.h;
+            dst.x = rand() % 484 + 192; // random between 192 - 676
+            break;}
+        case EnemyFighterType(11):{
+            //dst.y = -dst.h;
+            dst.x = rand() % 484 + 192; // random between 192 - 676
+            break;}
+        case EnemyFighterType(12):{
+            //dst.y = -dst.h;
+            dst.y = rand() % 384 + 192; // random between 192 - 576
+            break;}
         
         default:break;
     }
