@@ -346,8 +346,26 @@ void SuperAce::addSideFighters(){
     assert(sideFighterAttachAnimatorLeft);
     sideFighterAttachAnimatorLeft->start(Game::getGameTime());
     
-    
-    
+	////
+	SideFighter* rightSideFighter = (SideFighter*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, RIGHT_FIGHTER);
+	SideFighter* leftSideFighter = (SideFighter*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, LEFT_FIGHTER);
+	assert(leftSideFighter);
+	assert(rightSideFighter);
+
+
+	MovingPathAnimation* superAceMovingSideFighterAnimation = (MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("superAceMovingSideFighterAnimation");
+	assert(superAceMovingSideFighterAnimation);
+
+	MovingPathAnimator* superAceMovingSideFighterAnimator_right = new MovingPathAnimator("superAceMovingSideFighterAnimator", rightSideFighter, (MovingPathAnimation*)superAceMovingSideFighterAnimation);
+	MovingPathAnimator* superAceMovingSideFighterAnimator_left = new MovingPathAnimator("superAceMovingSideFighterAnimator", leftSideFighter, (MovingPathAnimation*)superAceMovingSideFighterAnimation);
+	assert(superAceMovingSideFighterAnimator_right);
+	assert(superAceMovingSideFighterAnimator_left);
+
+	superAceMovingSideFighterAnimator_right->start(Game::getGameTime());
+	superAceMovingSideFighterAnimator_left->start(Game::getGameTime());
+
+    /////
+
     assert(getAttached(RIGHT_FIGHTER));
     assert(getAttached(LEFT_FIGHTER));
     

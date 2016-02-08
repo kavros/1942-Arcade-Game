@@ -256,6 +256,22 @@
                                                       "visibility": true,
                                                       "delay": 100
                                                       }]
+                                            },{
+                                            "id": "superAceMovingSideFighterAnimation",
+                                            "continuous": true,
+                                            "paths": [{
+                                                      "dx": 0,
+                                                      "dy": 0,
+                                                      "frameNo": 1,
+                                                      "visibility": true,
+                                                      "delay": 100
+                                                      }, {
+                                                      "dx": 0,
+                                                      "dy": 0,
+                                                      "frameNo": 6,
+                                                      "visibility": true,
+                                                      "delay": 100
+                                                      }]
                                             }, {
                                             "id": "superAceAnimationUp",
                                             "continuous": false,
