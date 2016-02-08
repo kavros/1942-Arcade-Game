@@ -44,8 +44,8 @@ void Background::startBackgroundObjectAnimators(){
 
     startBackgroundObjectAnimator("backgroundAnimator0");
     startBackgroundObjectAnimator("aircraftAnimator0");
-    //startBackgroundObjectAnimator("spriteEurope0");
-    //startBackgroundObjectAnimator("spriteLand0");
+    startBackgroundObjectAnimator("spriteEuropeAnimator0");
+    startBackgroundObjectAnimator("spriteLandAnimator0");
 
     
 }

@@ -261,7 +261,7 @@
                 }, {
                 "id": "spriteLand",
                 "frameNo": 0,
-                "destRect": [0, -6000, 1024, 2435],
+                "destRect": [0, -4700, 1024, 2435],
                 "point": [0, 0],
                 "repetition": 1,
                 "visible": true,
@@ -271,7 +271,7 @@
                 {
                 "id": "spriteEurope",
                 "frameNo": 0,
-                "destRect": [-150, -2000, 1500, 2000],
+                "destRect": [-150, -2300, 1500, 2000],
                 "point": [0, 0],
                 "repetition": 1,
                 "visible": true,
