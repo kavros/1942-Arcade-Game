@@ -132,7 +132,7 @@ void    Game::LoadGameInfo (const std::string& cataloge){
     superAce->setSuperAceLives(document["superAceLives"].GetInt());
     superAce->setSuperAceLoops(document["superAceLoops"].GetInt());
     
-    SuperAce* superAce2 = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce20");
+    SuperAce* superAce2 = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce1");
     superAce2->setSuperAceLives(document["superAceLives"].GetInt());
     superAce2->setSuperAceLoops(document["superAceLoops"].GetInt());
     
