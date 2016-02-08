@@ -821,8 +821,6 @@ void AnimatorHolder::triggerstartEnemyPlanesTickAnimator(){
     //TimerTickAnimator::startTimeTickAnimator("deathStarTickAnimation", triggerDeathStarAnimator );
  
     SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce0");
-    superAce->addSideFighters();
-
     
 }
 
@@ -1269,27 +1267,31 @@ bool  AnimatorHolder::updateSideFighterAnimation(string fighter){
 }
 
 void AnimatorHolder::createUpdateScoreAnimator(SDL_Rect rect,int points){
-/*
+
     static int nameId=0;
     string scoreSpriteId = "scoreSprite" + std::to_string(nameId);
     string scoreAnimatorId = "scoreAnimator" + std::to_string(nameId);
     unsigned frameNo = 0;
     nameId++;
-    
-    AnimationFilm* scoreFilm = AnimationFilmHolder::Get()->GetFilm("");
+    rect.x = rect.x + rect.w/2; 
+    rect.y = rect.y + rect.h/2;
+    rect.w = 30;
+    rect.h = 20;
+
+    AnimationFilm* scoreFilm = AnimationFilmHolder::Get()->GetFilm("scores");
     assert(scoreFilm);
     
     switch (points) {
         case 1000:{
-            //frameNo = 0;
+            frameNo = 0;
             break;
         }
         case 1500:{
-            //frameNo = 1;
+            frameNo = 2;
             break;
         }
         case 2000:{
-            //frameNo = 2;
+            frameNo = 1;
             break;
         }
         default:{
@@ -1301,14 +1303,14 @@ void AnimatorHolder::createUpdateScoreAnimator(SDL_Rect rect,int points){
     Sprite* scoreSprite = new Sprite(scoreSpriteId, frameNo, rect , {0,0}, true, GAME_INFO, scoreFilm);
     assert(scoreSprite);
     
-    Animation* scoreAnimation = AnimationHolder::getAnimationHolder()->getAnimation("");
+    Animation* scoreAnimation = AnimationHolder::getAnimationHolder()->getAnimation("powerUp");
     assert(scoreAnimation);
     
-    MovingPathAnimator* scoreAnimator = new MovingPathAnimator(scoreAnimatorId, scoreSprite, (MovingPathAnimation*)scoreAnimation);
+    MovingAnimator* scoreAnimator = new MovingAnimator(scoreAnimatorId, scoreSprite, (MovingAnimation*)scoreAnimation);
     assert(scoreAnimator);
     
     scoreAnimator->start(Game::getGameTime());
-*/
+
 }
 
 
