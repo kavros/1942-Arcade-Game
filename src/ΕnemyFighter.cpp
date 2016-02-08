@@ -28,10 +28,10 @@ Sprite(id,frameNo,dstRect,point,isVisible,type,currFilm)
         enemyFighterLifes = 4;
     }
     else if( e == BIG_GREEN ){
-        enemyFighterLifes = 5;
+        enemyFighterLifes = 8;
     }
     else if(e == BIG_GREY){
-        enemyFighterLifes = 6;
+        enemyFighterLifes = 10;
     }
     else{
         enemyFighterLifes = 1;
