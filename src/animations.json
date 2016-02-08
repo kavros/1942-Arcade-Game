@@ -201,9 +201,15 @@
                                       }]
                    }, {
                    "MovingPathAnimations": [{
-                                            "id": "enemySideRightFire",
+                                            "id": "EnemySideRightFire",
                                             "continuous": true,
                                             "paths": [{
+                                                      "dx": 2,
+                                                      "dy": 2,
+                                                      "frameNo": 0,
+                                                      "visibility": true,
+                                                      "delay": 10
+                                                      },{
                                                       "dx": 2,
                                                       "dy": 2,
                                                       "frameNo": 0,
@@ -219,11 +225,23 @@
                                                       "frameNo": 0,
                                                       "visibility": true,
                                                       "delay": 10
+                                                      },{
+                                                      "dx": 1,
+                                                      "dy": 2,
+                                                      "frameNo": 0,
+                                                      "visibility": true,
+                                                      "delay": 10
                                                       }]
                                             }, {
-                                            "id": "enemySideLeftFire",
+                                            "id": "EnemySideLeftFire",
                                             "continuous": true,
                                             "paths": [{
+                                                      "dx": -2,
+                                                      "dy": 2,
+                                                      "frameNo": 0,
+                                                      "visibility": true,
+                                                      "delay": 10
+                                                      },{
                                                       "dx": -2,
                                                       "dy": 2,
                                                       "frameNo": 0,
@@ -234,6 +252,12 @@
                                             "id": "enemySideLeftLeftFire",
                                             "continuous": true,
                                             "paths": [{
+                                                      "dx": -1,
+                                                      "dy": 2,
+                                                      "frameNo": 0,
+                                                      "visibility": true,
+                                                      "delay": 10
+                                                      },{
                                                       "dx": -1,
                                                       "dy": 2,
                                                       "frameNo": 0,
