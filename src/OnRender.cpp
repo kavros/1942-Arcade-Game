@@ -30,7 +30,7 @@ void Game::OnRender() {
 
             break;
         case END_OF_STAGE:{
-			SpritesHolder::getSpritesHolder()->displayGameSprites(_renderer);
+            SpritesHolder::displayGameSprites(_renderer);
 			break;
         }
         default:

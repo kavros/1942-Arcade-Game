@@ -67,8 +67,7 @@ public:
     
     //functionallity
     void fire();
-    void fireSideRightBullet();
-    void fireSideLeftBullet();
+    void fireSideBullet(std::string id);
     void fireStraightBullet();
 	void createPowerUp();
     void updateScore();

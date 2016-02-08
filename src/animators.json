@@ -375,17 +375,35 @@
                             "spriteType": 4,
                             "spriteId": "BigGreen"
                             }, {
-                            "id": "BigGreen1Animator",
+                            "id": "Chain1BigGreenAnimator",
                             "animationId": "BigPlaneStayStillAnimation",
                             "repetition": 1,
                             "spriteType": 4,
                             "spriteId": "BigGreen"
                             }, {
-                            "id": "BigGreen2Animator",
+                            "id": "Chain2Chain1BigGreenAnimator",
                             "animationId": "BigPlaneOutroAnimation",
                             "repetition": 1,
                             "spriteType": 4,
                             "spriteId": "BigGreen"
+                            }, {
+                            "id": "BigGreyAnimator",
+                            "animationId": "BigGreyIntroAnimation",
+                            "repetition": 1,
+                            "spriteType": 4,
+                            "spriteId": "BigGrey"
+                            }, {
+                            "id": "Chain1BigGreyAnimator",
+                            "animationId": "BigPlaneStayStillAnimation",
+                            "repetition": 1,
+                            "spriteType": 4,
+                            "spriteId": "BigGrey"
+                            }, {
+                            "id": "Chain2Chain1BigGreyAnimator",
+                            "animationId": "BigGreyOutroAnimation",
+                            "repetition": 1,
+                            "spriteType": 4,
+                            "spriteId": "BigGrey"
                             }, {
                             "id": "endOfStageMoveToCenterAnimator",
                             "animationId": "endOfStageMoveToCenterAnimation",

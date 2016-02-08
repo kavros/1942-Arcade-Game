@@ -104,7 +104,13 @@ void MovingPathAnimator::chooseCallBack(string id){
 	if (found == 0)
 		str = new string("Chain2" + id);
 
-
+    //BigGreen + BigGrey
+    found = id.find("Big");
+    if (found == 0)
+        str = new string("Chain1"+ id);
+    found = id.find("Chain1Big");
+    if (found == 0)
+        str = new string("Chain2"+ id);
 
     if(str!=nullptr)
         setOnFinished(nextAnimator,(void*)str);
@@ -207,7 +213,7 @@ void MovingPathAnimator::checkAnimatorForDelete(void){
         // doesnt contains SideFighter
         // it is not SuperAce0
         */
-    if(   (_sprite->isOutOfWindow() || _sprite->getState() == SpriteState::IN_COLUSION || this->getState() == ANIMATOR_STOPPED ) && _sprite->getId().compare("SuperAce0") != 0){
+    if(   (_sprite->isOutOfWindow() || _sprite->getState() == SpriteState::IN_COLUSION || this->getState() == ANIMATOR_STOPPED ) && _sprite->getId().compare("SuperAce0") != 0 && _sprite->getType() != TERRAIN){
         
         
         if( _sprite->getParent() ){

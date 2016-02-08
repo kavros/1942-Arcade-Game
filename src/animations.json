@@ -10,8 +10,8 @@
                                         "id": "enemyFire",
                                         "continuous": true,
                                         "dx": 0,
-                                        "dy": 4,
-                                        "delay": 10
+                                        "dy": 5,
+                                        "delay": 18
                                         }, {
                                         "id": "powerUp",
                                         "dx": 0,
@@ -133,6 +133,10 @@
                                       "delay": 11000,
                                       "repetitions": 1
                                       }, {
+                                      "id": "bigGreyIntroTickAnimation",
+                                      "delay": 12000,
+                                      "repetitions": 1
+                                      }, {
                                       "id": "bigGreenStayStillTickAnimation",
                                       "delay": 16000,
                                       "repetitions": 1
@@ -197,24 +201,44 @@
                                       }]
                    }, {
                    "MovingPathAnimations": [{
-                                            "id": "enemySideRightFire",
+                                            "id": "EnemySideRightFire",
                                             "continuous": true,
                                             "paths": [{
-                                                      "dx": 2,
-                                                      "dy": 2,
+                                                      "dx": 3,
+                                                      "dy": 4,
                                                       "frameNo": 0,
                                                       "visibility": true,
-                                                      "delay": 10
+                                                      "delay": 18
+                                                      }]
+                                            },{
+                                            "id": "EnemySideRightRightFire",
+                                            "continuous": true,
+                                            "paths": [{
+                                                      "dx": 4,
+                                                      "dy": 3,
+                                                      "frameNo": 0,
+                                                      "visibility": true,
+                                                      "delay": 18
                                                       }]
                                             }, {
-                                            "id": "enemySideLeftFire",
+                                            "id": "EnemySideLeftFire",
                                             "continuous": true,
                                             "paths": [{
-                                                      "dx": -2,
-                                                      "dy": 2,
+                                                      "dx": -3,
+                                                      "dy": 4,
                                                       "frameNo": 0,
                                                       "visibility": true,
-                                                      "delay": 10
+                                                      "delay": 18
+                                                      }]
+                                            }, {
+                                            "id": "EnemySideLeftLeftFire",
+                                            "continuous": true,
+                                            "paths": [{
+                                                      "dx": -4,
+                                                      "dy": 3,
+                                                      "frameNo": 0,
+                                                      "visibility": true,
+                                                      "delay": 18
                                                       }]
                                             }, {
                                             "id": "superAceMovingAnimation",
@@ -727,49 +751,77 @@
                                                       }]
                                             }, {
                                             "id": "BigPlaneIntroAnimation",
-                                            "continuous": true,
+                                            "doWhile":true,
+                                            "continuous": false,
+                                            "maxX":0,
+                                            "maxY":-600,
                                             "paths": [{
                                                       "dx": 0,
-                                                      "dy": -3,
+                                                      "dy": -4,
                                                       "visibility": true,
                                                       "frameNo": 0,
-                                                      "delay": 20
-                                                      }, {
-                                                      "dx": 0,
-                                                      "dy": -3,
-                                                      "visibility": true,
-                                                      "frameNo": 1,
-                                                      "delay": 20
+                                                      "delay": 40
                                                       }]
                                             
                                             }, {
                                             "id": "BigPlaneStayStillAnimation",
-                                            "continuous": true,
+                                            "continuous": false,
                                             "paths": [{
                                                       "dx": 0,
                                                       "dy": 0,
                                                       "visibility": true,
                                                       "frameNo": 0,
-                                                      "delay": 70
-                                                      }, {
+                                                      "delay": 2000
+                                                      },{
                                                       "dx": 0,
                                                       "dy": 0,
                                                       "visibility": true,
-                                                      "frameNo": 1,
-                                                      "delay": 70
+                                                      "frameNo": 0,
+                                                      "delay": 200
                                                       }]
                                             
                                             }, {
                                             "id": "BigPlaneOutroAnimation",
                                             "continuous": true,
                                             "paths": [{
-                                                      "dx": 3,
+                                                      "dx": 1,
                                                       "dy": 0,
                                                       "visibility": true,
-                                                      "frameNo": 1,
+                                                      "frameNo": 0,
                                                       "delay": 20
                                                       }, {
-                                                      "dx": 3,
+                                                      "dx": 1,
+                                                      "dy": 0,
+                                                      "visibility": true,
+                                                      "frameNo": 0,
+                                                      "delay": 20
+                                                      }]
+                                            
+                                            },{
+                                            "id": "BigGreyIntroAnimation",
+                                            "doWhile":true,
+                                            "continuous": false,
+                                            "maxX":0,
+                                            "maxY":-600,
+                                            "paths": [{
+                                                      "dx": 0,
+                                                      "dy": -5,
+                                                      "visibility": true,
+                                                      "frameNo": 0,
+                                                      "delay": 40
+                                                      }]
+                                            
+                                            }, {
+                                            "id": "BigGreyOutroAnimation",
+                                            "continuous": true,
+                                            "paths": [{
+                                                      "dx": -2,
+                                                      "dy": 0,
+                                                      "visibility": true,
+                                                      "frameNo": 0,
+                                                      "delay": 20
+                                                      }, {
+                                                      "dx": -2,
                                                       "dy": 0,
                                                       "visibility": true,
                                                       "frameNo": 0,

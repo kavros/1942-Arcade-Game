@@ -590,6 +590,19 @@
                          [181, 114, 169, 92]
                          ]
               },{
+              "id": "bigGreen",
+              "path": "bigGreen.png",
+              "rects":  [
+                         [0, 0, 300, 227],
+                         [340, 0, 300, 227]
+                         ]
+              },{
+              "id": "bigGrey",
+              "path": "bigGrey.png",
+              "rects":  [
+                         [0, 0, 300, 227]
+                         ]
+              },{
               "id": "deathStarFilm",
               "path": "deathStarFilm.png",
               "rects":  [
@@ -717,7 +730,15 @@
                         [0,0,85,104]
 												
                        ]
-              }              
+              }  ,{
+              "id": "scores",
+              "path": "scores.png",
+              "rects": [
+                        [0,1,18,10],
+                        [19,1,21,11],
+                        [44,2,19,10]
+                        ]
+              }
               
               ]
 }

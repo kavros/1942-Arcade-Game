@@ -210,7 +210,18 @@
                 "spriteType": 4,
                 "remainingBullets": 50,
                 "enemyType" : 13,
-                "animFilmId": "bigPlanes"
+                "animFilmId": "bigGreen"
+                },{
+                "id": "BigGrey",
+                "frameNo": 0,
+                "destRect": [600, 768, 120, 100],
+                "point": [0, 0],
+                "repetition": 4,
+                "visible": false,
+                "spriteType": 4,
+                "remainingBullets": 50,
+                "enemyType" : 14,
+                "animFilmId": "bigGrey"
                 },{
                 "id": "ReadyLogo",
                 "frameNo": 0,
@@ -238,15 +249,6 @@
                 "visible": true,
                 "spriteType": 1,
                 "animFilmId": "mainMenuMultiplayer"
-                }, {
-                "id": "backgroundSprite",
-                "frameNo": 0,
-                "destRect": [0, 0, 768, 768],
-                "point": [0, 0], 
-                "repetition": 1,
-                "visible": true,
-                "spriteType": 2,
-                "animFilmId": "empty_sea_background"
                 },{
                 "id": "spriteAircraftCarrier",
                 "frameNo": 0,
@@ -259,7 +261,7 @@
                 }, {
                 "id": "spriteLand",
                 "frameNo": 0,
-                "destRect": [0, -6000, 1024, 2435],
+                "destRect": [0, -4700, 1024, 2435],
                 "point": [0, 0],
                 "repetition": 1,
                 "visible": true,
@@ -269,7 +271,7 @@
                 {
                 "id": "spriteEurope",
                 "frameNo": 0,
-                "destRect": [-150, -2000, 1500, 2000],
+                "destRect": [-150, -2300, 1500, 2000],
                 "point": [0, 0],
                 "repetition": 1,
                 "visible": true,
@@ -295,6 +297,15 @@
                 "remainingBullets": 50,
                 "enemyType" : 16,
                 "animFilmId": "deathStarFilm"
+                }, {
+                "id": "backgroundSprite",
+                "frameNo": 0,
+                "destRect": [0, 0, 768, 768],
+                "point": [0, 0],
+                "repetition": 1,
+                "visible": true,
+                "spriteType": 2,
+                "animFilmId": "empty_sea_background"
                 }
                 ]
 }
