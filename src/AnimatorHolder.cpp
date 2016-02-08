@@ -362,6 +362,21 @@ void triggerBigGreenIntroTickAnimators(){
     animator->start(Game::getGameTime());
 }
 
+void triggerBigGreyIntroTickAnimators(){
+    
+    static int nameId = 0;
+    string bigPlaneIntroAnimatorString = "BigGreyAnimator" + std::to_string(nameId); //Intro animator
+    nameId++;
+    
+    if(! SpritesHolder::getSprite( ALIEN_SHIP , "BigGrey0" ) )
+        return;
+    
+    MovingPathAnimator* animator = (MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator(bigPlaneIntroAnimatorString);
+    assert(animator);
+    animator->start(Game::getGameTime());
+}
+
+
 void triggerBigGreenStayStillTickAnimators(){
     
     static int nameId = 0;
@@ -460,6 +475,8 @@ void AnimatorHolder::triggerStartOfStageAnimators(){
     
     //start enemy planes
     TimerTickAnimator::startTimeTickAnimator("startEnemyPlanesTickAnimation", AnimatorHolder::triggerstartEnemyPlanesTickAnimator );
+	SoundHolder::playSound("propeller");
+
 }
 
 int setD(int big,int small){
@@ -760,7 +777,11 @@ void AnimatorHolder::triggerstartEnemyPlanesTickAnimator(){
     SpriteStringHolder::getSpriteString("startingReadyLogo")->setVisibility(false);
     SpriteStringHolder::getSpriteString("startingPlayerLogo")->setVisibility(false);
     SpriteStringHolder::getSpriteString("numberOne")->setVisibility(false);
-    
+	//SoundHolder::playSound("gameplay");
+	//play gameplay music
+	if (SoundHolder::playMusic() == -1){
+		printf("Mix_PlayMusic: %s\n", Mix_GetError());
+	}
     //Bullets
     TimerTickAnimator::startTimeTickAnimator("enemyBulletsTickAnimation", AnimatorHolder::triggerBullets);
     
@@ -784,13 +805,15 @@ void AnimatorHolder::triggerstartEnemyPlanesTickAnimator(){
     //TimerTickAnimator::startTimeTickAnimator("medGreenTripleEngTickAnimations", triggerMedGreenTripleEngAnimators);
     
     //grey medium plane
-    TimerTickAnimator::startTimeTickAnimator("medGreyDoubleEngTickAnimation", triggerMedGreyDoubleAnimator);
+    //TimerTickAnimator::startTimeTickAnimator("medGreyDoubleEngTickAnimation", triggerMedGreyDoubleAnimator);
     //TimerTickAnimator::startTimeTickAnimator("medGreySingleEngTickAnimation", triggerMedGreySingleAnimator);
     //TimerTickAnimator::startTimeTickAnimator("medGreyTripleEngTickAnimations", triggerMedGreyTripleEngAnimators);
     
 	
     //big plane
-    //TimerTickAnimator::startTimeTickAnimator("bigGreenIntroTickAnimation", triggerBigGreenIntroTickAnimators );
+    TimerTickAnimator::startTimeTickAnimator("bigGreenIntroTickAnimation", triggerBigGreenIntroTickAnimators );
+    TimerTickAnimator::startTimeTickAnimator("bigGreyIntroTickAnimation", triggerBigGreyIntroTickAnimators );
+    //WARNING DONT USE THE ABOVE 2 ANIMATORS
     //TimerTickAnimator::startTimeTickAnimator("bigGreenStayStillTickAnimation", triggerBigGreenStayStillTickAnimators );
     //TimerTickAnimator::startTimeTickAnimator("bigGreenOutroTickAnimation", triggerBigGreenOutroTickAnimators );
     

@@ -210,7 +210,18 @@
                 "spriteType": 4,
                 "remainingBullets": 50,
                 "enemyType" : 13,
-                "animFilmId": "bigPlanes"
+                "animFilmId": "bigGreen"
+                },{
+                "id": "BigGrey",
+                "frameNo": 0,
+                "destRect": [600, 768, 120, 100],
+                "point": [0, 0],
+                "repetition": 4,
+                "visible": false,
+                "spriteType": 4,
+                "remainingBullets": 50,
+                "enemyType" : 13,
+                "animFilmId": "bigGrey"
                 },{
                 "id": "ReadyLogo",
                 "frameNo": 0,
