@@ -43,7 +43,7 @@
                 "repetition": 4,
                 "visible": false,
                 "spriteType": 4,
-                "remainingBullets": 2,
+                "remainingBullets": 1,
                 "enemyType" : 1,
                 "animFilmId": "green_jet"
                 },{
@@ -54,7 +54,7 @@
                 "repetition": 4,
                 "visible": false,
                 "spriteType": 4,
-                "remainingBullets": 2,
+                "remainingBullets": 1,
                 "enemyType" : 1,
                 "animFilmId": "green_jet"
                 },{
@@ -76,7 +76,7 @@
                 "repetition": 4,
                 "visible": false,
                 "spriteType": 4,
-                "remainingBullets": 2,
+                "remainingBullets": 1,
                 "enemyType" : 3,
                 "animFilmId": "mini_green_one_eng"
                 },{
@@ -87,7 +87,7 @@
                 "repetition": 4,
                 "visible": false,
                 "spriteType": 4,
-                "remainingBullets": 2,
+                "remainingBullets": 1,
                 "enemyType" : 3,
                 "animFilmId": "mini_green_one_eng"
                 },{
@@ -109,7 +109,7 @@
                 "repetition": 4,
                 "visible": false,
                 "spriteType": 4,
-                "remainingBullets": 2,
+                "remainingBullets": 1,
                 "enemyType" : 5,
                 "animFilmId": "green_double_engine"
                 },{
@@ -120,7 +120,7 @@
                 "repetition": 4,
                 "visible": false,
                 "spriteType": 4,
-                "remainingBullets": 2,
+                "remainingBullets": 1,
                 "enemyType" : 5,
                 "animFilmId": "green_double_engine"
                 },{
@@ -137,7 +137,7 @@
                 },{
                 "id": "MedGreenDoubleEng",
                 "frameNo": 0,
-                "destRect": [200, 0, 63, 58],
+                "destRect": [200, 0, 63, 63],
                 "repetition": 4,
                 "point": [0, 0],
                 "visible": false,
@@ -148,7 +148,7 @@
                 },{
                 "id": "MedGreenTripleEng",
                 "frameNo": 0,
-                "destRect": [0, 100, 63, 58],
+                "destRect": [0, 100, 63, 63],
                 "repetition": 9,
                 "point": [0, 0],
                 "visible": false,
@@ -159,7 +159,7 @@
                 },{
                 "id": "MedGreyDoubleEng",
                 "frameNo": 0,
-                "destRect": [400, 0, 62, 53],
+                "destRect": [400, 0, 63, 63],
                 "repetition": 4,
                 "point": [0, 0],
                 "visible": false,
@@ -170,7 +170,7 @@
                 },{
                 "id": "MedGreenSingleEng",
                 "frameNo": 18,
-                "destRect": [200, 768, 63, 58],
+                "destRect": [200, 768, 63, 63],
                 "repetition": 4,
                 "point": [0, 0],
                 "visible": false,
@@ -181,7 +181,7 @@
                 },{
                 "id": "MedGreySingleEng",
                 "frameNo": 0,
-                "destRect": [500, 768, 63, 58],
+                "destRect": [500, 768, 63, 63],
                 "repetition": 4,
                 "point": [0, 0],
                 "visible": false,
@@ -192,7 +192,7 @@
                 },{
                 "id": "MedGreyTripleEng",
                 "frameNo": 1,
-                "destRect": [768, 500, 63, 58],
+                "destRect": [768, 500, 63, 63],
                 "repetition": 9,
                 "point": [0, 0],
                 "visible": false,

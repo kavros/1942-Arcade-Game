@@ -81,7 +81,8 @@ void SoundHolder::playSound(string id){
 }
 
 int SoundHolder::playMusic(){
-	return Mix_PlayMusic(_gameplayMusic, -1);
+	if (!getMute())
+		return Mix_PlayMusic(_gameplayMusic, -1);
 }
 
 void SoundHolder::setMute(bool m ){

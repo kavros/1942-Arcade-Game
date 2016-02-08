@@ -615,7 +615,7 @@
                                             "continuous": true,
                                             "paths": [{
                                                       "dx": 0,
-                                                      "dy": 2,
+                                                      "dy": 3,
                                                       "visibility": true,
                                                       "frameNo": 8,
                                                       "delay": 20
@@ -634,7 +634,7 @@
                                             "maxY": 150,
                                             "paths": [{
                                                       "dx": 0,
-                                                      "dy": 2,
+                                                      "dy": 3,
                                                       "visibility": true,
                                                       "frameNo": 8,
                                                       "delay": 20
@@ -682,7 +682,7 @@
                                             "continuous": true,
                                             "paths": [{
                                                       "dx": 0,
-                                                      "dy": -2,
+                                                      "dy": -3,
                                                       "visibility": true,
                                                       "frameNo": 0,
                                                       "delay": 20
@@ -697,7 +697,7 @@
                                             "id": "GreyMediumPlaneMovingLeftAnimation",
                                             "continuous": true,
                                             "paths": [{
-                                                      "dx": -2,
+                                                      "dx": -3,
                                                       "dy": 0,
                                                       "visibility": true,
                                                       "frameNo": 1,
@@ -996,7 +996,7 @@
                                             "maxY": 140,
                                             "paths": [{
                                                       "dx": 0,
-                                                      "dy": 5,
+                                                      "dy": 4,
                                                       "visibility": true,
                                                       "frameNo": 8,
                                                       "delay": 40

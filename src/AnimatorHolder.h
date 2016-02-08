@@ -84,6 +84,7 @@ public:
     static void triggerstartEnemyPlanesTickAnimator();
     static void superAceMovingAnimator();
     static void createUpdateScoreAnimator(SDL_Rect rect,int points);
+    static bool  updateSideFighterAnimation(string fighter);
 
 };
 

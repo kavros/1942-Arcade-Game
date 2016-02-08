@@ -141,14 +141,16 @@ void Sprite::attach (Sprite* s, const std::string& name){
 }
 
 void Sprite::detach(const std::string& name, bool forDestroy){
+    
     auto i  (_attached.find(name));
     assert(i != _attached.end());
-    auto* s (i->second);
-    s->_parent = nullptr;
-    s->_name.clear();
+    //auto* s (i->second);
+    //s->_parent = nullptr;
+    //s->_name.clear();
     _attached.erase(i);
-    if (forDestroy)
-        s->destroySprite();
+    //if (forDestroy)
+    //    s->destroySprite();
+
 }
 
 Sprite* Sprite::getAttached(const std::string& name) const{
@@ -295,8 +297,8 @@ void Sprite::destroySprite(void){
     LatelyDestroyable::destroy();
     
     // supports auto detach policy
-    if (_parent)	// is attached
-        _parent->detach(_name, false);
+    if (getParent())	// is attached
+        getParent()->detach(this->getId(), false);
 }
 
 Sprite* Sprite::getParent(){
