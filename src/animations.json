@@ -217,7 +217,7 @@
                                                       "delay": 10
                                                       }]
                                             },{
-                                            "id": "enemySideRightRightFire",
+                                            "id": "EnemySideRightRightFire",
                                             "continuous": true,
                                             "paths": [{
                                                       "dx": 1,
@@ -249,7 +249,7 @@
                                                       "delay": 10
                                                       }]
                                             }, {
-                                            "id": "enemySideLeftLeftFire",
+                                            "id": "EnemySideLeftLeftFire",
                                             "continuous": true,
                                             "paths": [{
                                                       "dx": -1,
