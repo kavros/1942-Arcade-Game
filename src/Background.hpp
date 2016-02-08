@@ -19,18 +19,15 @@ private:
 
     static Background* _holder;
     
+public:
+
     //constructor destructor
     Background();
     Background(std::string id, unsigned  _frameNo, SDL_Rect _dstRect,SDL_Point  _point,bool _isVisible,SpriteType _type,AnimationFilm* _currFilm);
     ~Background();
-    
-public:
 
     static Background* Get();
-    static Background* Get(std::string id, unsigned  _frameNo, SDL_Rect _dstRect,SDL_Point  _point,bool _isVisible,SpriteType _type,AnimationFilm* _currFilm);
     
-    static void InitBackground();
-
     static void initBackgroundObjects();
     
     static void startBackgroundObjectAnimators();
@@ -40,9 +37,8 @@ public:
     
     virtual void filterMotion(int* dx, int* dy) const override;
     
-    void displayTerrain(SDL_Renderer* renderer);
+    static void displayTerrain(SDL_Renderer* renderer);
     
-    SpriteList getVisibleObjects();
 };
 
 

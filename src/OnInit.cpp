@@ -24,18 +24,18 @@ bool Game::OnInit(){
 }
 
 void Game::InitGame(){
+    
     InitData();
+    
     SoundHolder::initSounds();
 
     LoadGameInfo("config.json");
     
     InitGameInfo();
     
-    Background::InitBackground();
+    Background::initBackgroundObjects();
 
     AnimatorHolder::startTimeTickAnimators();
-    
-
     
 }
 
