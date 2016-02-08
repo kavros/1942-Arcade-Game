@@ -241,6 +241,22 @@
                                                       "delay": 18
                                                       }]
                                             }, {
+                                            "id": "BigMovingAnimation",
+                                            "continuous": true,
+                                            "paths": [{
+                                                      "dx": 0,
+                                                      "dy": 0,
+                                                      "frameNo": 1,
+                                                      "visibility": true,
+                                                      "delay": 200
+                                                      }, {
+                                                      "dx": 0,
+                                                      "dy": 0,
+                                                      "frameNo": 0,
+                                                      "visibility": true,
+                                                      "delay": 200
+                                                      }]
+                                            }, {
                                             "id": "superAceMovingAnimation",
                                             "continuous": true,
                                             "paths": [{
@@ -768,17 +784,17 @@
                                             "id": "BigPlaneOutroAnimation",
                                             "continuous": true,
                                             "paths": [{
-                                                      "dx": 1,
+                                                      "dx": 2,
                                                       "dy": 0,
                                                       "visibility": true,
                                                       "frameNo": 0,
-                                                      "delay": 20
+                                                      "delay": 50
                                                       }, {
-                                                      "dx": 1,
+                                                      "dx": 2,
                                                       "dy": 0,
                                                       "visibility": true,
                                                       "frameNo": 0,
-                                                      "delay": 20
+                                                      "delay": 50
                                                       }]
                                             
                                             },{

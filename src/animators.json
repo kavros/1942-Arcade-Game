@@ -387,6 +387,18 @@
                             "spriteType": 4,
                             "spriteId": "BigGreen"
                             }, {
+                            "id": "BigGreenMovingAnimator",
+                            "animationId": "BigMovingAnimation",
+                            "repetition": 1,
+                            "spriteType": 4,
+                            "spriteId": "BigGreen"
+                            }, {
+                            "id": "BigGreyMovingAnimator",
+                            "animationId": "BigMovingAnimation",
+                            "repetition": 1,
+                            "spriteType": 4,
+                            "spriteId": "BigGrey"
+                            }, {
                             "id": "BigGreyAnimator",
                             "animationId": "BigGreyIntroAnimation",
                             "repetition": 1,

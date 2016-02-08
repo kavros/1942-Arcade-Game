@@ -352,6 +352,7 @@ void triggerBigGreenIntroTickAnimators(){
     
     static int nameId = 0;
     string bigPlaneIntroAnimatorString = "BigGreenAnimator" + std::to_string(nameId); //Intro animator
+    string bigPlaneMovingAnimId = "BigGreenMovingAnimator" +std::to_string(nameId);
     nameId++;
     
     if(! SpritesHolder::getSprite( ALIEN_SHIP , "BigGreen0" ) )
@@ -359,7 +360,11 @@ void triggerBigGreenIntroTickAnimators(){
     
     MovingPathAnimator* animator = (MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator(bigPlaneIntroAnimatorString);
     assert(animator);
+    
+    MovingPathAnimator* animator2 = (MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator(bigPlaneMovingAnimId);
+    assert(animator2 );
     animator->start(Game::getGameTime());
+    animator2->start(Game::getGameTime());
 }
 
 void triggerBigGreyIntroTickAnimators(){
