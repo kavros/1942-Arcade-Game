@@ -2,21 +2,14 @@
 
 #include "Background.hpp"
 
-Background *Background::_holder = 0;
+Background* Background::_holder = nullptr;
 
 void Background::filterMotion(int* dx, int* dy) const{
-
 }
 
 Background* Background::Get(){
-    assert(Background::_holder);
-    return Background::_holder;
-}
-
-Background* Background::Get(std::string id, unsigned  _frameNo, SDL_Rect _dstRect,SDL_Point  _point,bool _isVisible,SpriteType _type,AnimationFilm* _currFilm){
-    Background::_holder = new Background(id,_frameNo,_dstRect,_point,_isVisible,_type,_currFilm);
-    assert(Background::_holder);
-    return Background::_holder;
+    assert(_holder);
+    return _holder;
 }
 
 Background::Background(){
@@ -25,18 +18,16 @@ Background::Background(){
 
 Background::Background(std::string id, unsigned  _frameNo, SDL_Rect _dstRect,SDL_Point  _point,bool _isVisible,SpriteType _type,AnimationFilm* _currFilm):
 Sprite(id,_frameNo,_dstRect,_point,_isVisible,_type,_currFilm){
+    static int times = 0;
+    assert(times==0);
+    times++;
+    
     Background::_holder = this;
-    Background::_holder->_terrainObjects = new SpriteList;
+    this->setUndefeatable(true);
+    this->_terrainObjects = new SpriteList;
 }
 
 Background::~Background(){
-}
-
-void Background::InitBackground(){
-    
-    assert(Background::_holder);
-
-    Background::_holder->initBackgroundObjects();
 }
 
 void Background::startBackgroundObjectAnimator(string id){
@@ -50,61 +41,54 @@ void Background::startBackgroundObjectAnimators(){
     static int times = 0;
     assert(times==0);
     times++;
-    
-    MovingPathAnimator* backgroundAnimator = (MovingPathAnimator*) AnimatorHolder::getAnimatorHolder()->getAnimator("backgroundAnimator0");
-    assert(backgroundAnimator);
-    
-    backgroundAnimator->start(Game::getGameTime());
 
+    startBackgroundObjectAnimator("backgroundAnimator0");
     startBackgroundObjectAnimator("aircraftAnimator0");
+    //startBackgroundObjectAnimator("spriteEurope0");
+    //startBackgroundObjectAnimator("spriteLand0");
+
     
-   // startBackgroundObjectAnimator("spriteEurope0");
-    // startBackgroundObjectAnimator("spriteLand0");
-
-
 }
 void Background::initBackgroundObjects(){
+    static int times = 0;
+    assert(times==0);
+    times++;
 
-   // Background::_holder->addBackgroundObject("spriteEurope0");
+    Background* b = Background::Get();
+    assert(b);
+    
+    b->addBackgroundObject("spriteAircraftCarrier0");
 
-    Background::_holder->addBackgroundObject("spriteAircraftCarrier1");
+    b->addBackgroundObject("spriteAircraftCarrier1");
 
-    //Background::_holder->addBackgroundObject("spriteLand0");
-        
+    b->addBackgroundObject("spriteEurope0");
+
+    b->addBackgroundObject("spriteLand0");
+  
 }
 
 void Background::addBackgroundObject(string id){
     Sprite* s= SpritesHolder::getSprite(TERRAIN, id);
     assert(s);
-    
-    Background::_holder->_terrainObjects->push_back(s);
+    this->_terrainObjects->push_back(s);
+    assert(!this->_terrainObjects->empty());
 }
 
 void Background::displayTerrain(SDL_Renderer* renderer){
-    SpritesHolder::displaySprites(renderer, TERRAIN);
+
+    Background* b = Background::Get();
+    assert(b);
+    b->display(renderer);
     
-    if(Background::_holder->_terrainObjects->empty()){
+    if(b->_terrainObjects->empty()){
         return;
     }
     
-    for (std::list<Sprite*>::iterator it=Background::_holder->_terrainObjects->begin(); it != Background::_holder->_terrainObjects->end(); ++it){
+    for (std::list<Sprite*>::iterator it=b->_terrainObjects->begin(); it != b->_terrainObjects->end(); ++it){
         if((*it)->getVisibility() == true){
             (*it)->display(renderer);
         }
     }
+     
 }
-
-
-Background::SpriteList Background::getVisibleObjects(){
-    SpriteList* sl = new SpriteList;
-    
-    for (std::list<Sprite*>::iterator it=Background::_holder->_terrainObjects->begin(); it !=Background::_holder-> _terrainObjects->end(); ++it){
-        if((*it)->getVisibility() == true){
-            sl->push_back(*it);
-        }
-    }
-    
-    return *sl;
-}
-
 

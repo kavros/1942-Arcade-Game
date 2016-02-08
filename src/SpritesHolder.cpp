@@ -117,7 +117,7 @@ void SpritesHolder::displaySprites(SDL_Renderer* renderer, SpriteType type){
 
 void SpritesHolder::displayGameSprites(SDL_Renderer* renderer){
     assert(renderer);
-    Background::Get()->displayTerrain(renderer);
+    Background::displayTerrain(renderer);
     
     for( SpriteType type = SpriteType(TERRAIN+1); type< SpriteType(SPRITE_TYPE_SIZE); type =SpriteType(type+1) )
         displaySprites(renderer, type);
@@ -200,8 +200,9 @@ void    SpritesHolder::Load (const std::string& cataloge/*,SDL_Renderer* _render
                 new EnemyFighter(id2, frameNo, destRect, point, isVisible, spriteType,animationFilm,e,remainingBullets);
                 
             }else if(spriteType == SpriteType::TERRAIN && id2.compare("backgroundSprite0")==0 ){
-                Background::Get(id2, frameNo, destRect, point, isVisible, spriteType,animationFilm);
+                new Background(id2, frameNo, destRect, point, isVisible, spriteType,animationFilm);
             }else{
+                cout << id2 << endl;
                 new Sprite(id2, frameNo, destRect, point, isVisible, spriteType,animationFilm);
             }
             

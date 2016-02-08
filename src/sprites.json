@@ -238,15 +238,6 @@
                 "visible": true,
                 "spriteType": 1,
                 "animFilmId": "mainMenuMultiplayer"
-                }, {
-                "id": "backgroundSprite",
-                "frameNo": 0,
-                "destRect": [0, 0, 768, 768],
-                "point": [0, 0], 
-                "repetition": 1,
-                "visible": true,
-                "spriteType": 2,
-                "animFilmId": "empty_sea_background"
                 },{
                 "id": "spriteAircraftCarrier",
                 "frameNo": 0,
@@ -295,6 +286,15 @@
                 "remainingBullets": 50,
                 "enemyType" : 16,
                 "animFilmId": "deathStarFilm"
+                }, {
+                "id": "backgroundSprite",
+                "frameNo": 0,
+                "destRect": [0, 0, 768, 768],
+                "point": [0, 0],
+                "repetition": 1,
+                "visible": true,
+                "spriteType": 2,
+                "animFilmId": "empty_sea_background"
                 }
                 ]
 }
