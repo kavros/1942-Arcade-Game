@@ -356,8 +356,8 @@ void SuperAce::addSideFighters(){
 	MovingPathAnimation* superAceMovingSideFighterAnimation = (MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("superAceMovingSideFighterAnimation");
 	assert(superAceMovingSideFighterAnimation);
 
-	MovingPathAnimator* superAceMovingSideFighterAnimator_right = new MovingPathAnimator("superAceMovingSideFighterAnimator", rightSideFighter, (MovingPathAnimation*)superAceMovingSideFighterAnimation);
-	MovingPathAnimator* superAceMovingSideFighterAnimator_left = new MovingPathAnimator("superAceMovingSideFighterAnimator", leftSideFighter, (MovingPathAnimation*)superAceMovingSideFighterAnimation);
+	MovingPathAnimator* superAceMovingSideFighterAnimator_right = new MovingPathAnimator("superAceMovingSideFighterRightAnimator", rightSideFighter, (MovingPathAnimation*)superAceMovingSideFighterAnimation);
+	MovingPathAnimator* superAceMovingSideFighterAnimator_left = new MovingPathAnimator("superAceMovingSideFighterLeftAnimator", leftSideFighter, (MovingPathAnimation*)superAceMovingSideFighterAnimation);
 	assert(superAceMovingSideFighterAnimator_right);
 	assert(superAceMovingSideFighterAnimator_left);
 
