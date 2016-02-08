@@ -3,6 +3,7 @@
 #include "MovingPathAnimator.h"
 
 void Game::singleplayerGameOnEvent(){
+	
 
     SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce0");
     assert(superAce);
@@ -124,7 +125,8 @@ void Game::pauseManager(){
     
     if( firstTime ){
         AnimatorHolder::pauseAnimators();
-        
+		SoundHolder::pauseSounds();
+
         SpriteStringHolder::getSpriteString("exit")->setVisibility(true);
         SpriteStringHolder::getSpriteString("pause")->setVisibility(true);
         
@@ -158,8 +160,9 @@ void Game::pauseManager(){
         //selection
         if(Game::event.key.keysym.sym == SDLK_ESCAPE || Game::event.cbutton.button == SDL_CONTROLLER_BUTTON_START){
             AnimatorHolder::wakeUpAnimators(getGameTime());
+			SoundHolder::resumeSounds();
             setState(SINGLEPLAYER_GAME);
-            
+
             SpriteStringHolder::getSpriteString("pause")->setVisibility(false);
             SpriteStringHolder::getSpriteString("exit")->setVisibility(false);
             s->setVisibility(false);
@@ -169,6 +172,8 @@ void Game::pauseManager(){
         else if (Game::event.key.keysym.sym == SDLK_SPACE){
             if( s->getDstRect().y == down_y ){
                 AnimatorHolder::wakeUpAnimators(getGameTime());
+				SoundHolder::resumeSounds();
+
                 setState(SINGLEPLAYER_GAME);
             }
             else if(  s->getDstRect().y == up_y ){

@@ -23,7 +23,7 @@ void Game::GameOnLoop(){
         setState(GAME_OVER);
         return;
     }
-
+	
     if(i % 50000 ==0){
         AnimatorHolder::getAnimatorHolder()->updateAllGreyPlaneAnimations();
     }

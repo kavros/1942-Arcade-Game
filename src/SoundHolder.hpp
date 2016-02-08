@@ -9,7 +9,9 @@ private:
     static bool _mute;
     SoundMap soundMap;
     static SoundHolder* holder;
-    
+	static Mix_Music *_gameplayMusic;
+	static Mix_Music *_propellerSound;
+
     //constructor
     SoundHolder();
     
@@ -27,6 +29,9 @@ public:
     static bool getMute();
     static Mix_Chunk* getSound(string id);
     static void cleanUp();
+	static int playMusic();
+	static void pauseSounds();
+	static void resumeSounds();
     static void playSound(string id);
 };
 

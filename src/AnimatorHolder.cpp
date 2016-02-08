@@ -460,6 +460,8 @@ void AnimatorHolder::triggerStartOfStageAnimators(){
     
     //start enemy planes
     TimerTickAnimator::startTimeTickAnimator("startEnemyPlanesTickAnimation", AnimatorHolder::triggerstartEnemyPlanesTickAnimator );
+	SoundHolder::playSound("propeller");
+
 }
 
 int setD(int big,int small){
@@ -760,7 +762,11 @@ void AnimatorHolder::triggerstartEnemyPlanesTickAnimator(){
     SpriteStringHolder::getSpriteString("startingReadyLogo")->setVisibility(false);
     SpriteStringHolder::getSpriteString("startingPlayerLogo")->setVisibility(false);
     SpriteStringHolder::getSpriteString("numberOne")->setVisibility(false);
-    
+	//SoundHolder::playSound("gameplay");
+	//play gameplay music
+	if (SoundHolder::playMusic() == -1){
+		printf("Mix_PlayMusic: %s\n", Mix_GetError());
+	}
     //Bullets
     //TimerTickAnimator::startTimeTickAnimator("enemyBulletsTickAnimation", AnimatorHolder::triggerBullets);
     
