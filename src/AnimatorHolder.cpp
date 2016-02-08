@@ -463,11 +463,11 @@ void AnimatorHolder::triggerStartOfStageAnimators(){
 }
 
 int setD(int big,int small){
-    if(big-small >4){ cout<<2<<endl;return 2;}
-    else if(big-small >=2){ cout<<1<<endl;return 1;}
-    else if(big-small ==1){ cout<<1<<endl;return 1;}
-    else if(big-small ==0){ cout<<0<<endl;return 0;}
-    else{cout<<0<<endl;return 0;}
+    if(big-small >4){return 2;}
+    else if(big-small >=2){return 1;}
+    else if(big-small ==1){return 0;}
+    else if(big-small ==0){return 0;}
+    else{return 0;}
 }
 
 void updateEndOfStageAnimation(){
@@ -1107,6 +1107,142 @@ void AnimatorHolder::stopSuperAceMovingAnimator(){
         }
         it=it2;
     }
+}
+
+int setDA(int big,int small){
+    if(big-small >4){return 6;}
+    if(big-small >3){return 4;}
+    if(big-small ==3){return 2;}
+    else if(big-small ==2){return 1;}
+    else if(big-small ==1){return 0;}
+    else if(big-small ==0){return 0;}
+    else{return 0;}
+}
+
+bool  AnimatorHolder::updateSideFighterAnimation(string fighter){
+    
+    string animationName;
+    int dstX;
+    int dstY;
+    
+    SuperAce* superAce = (SuperAce*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, "SuperAce0");
+    assert(superAce);
+    
+    SideFighter* sideFighter =(SideFighter*) superAce->getAttached(fighter);
+    assert(sideFighter);
+
+    if( fighter == LEFT_FIGHTER){
+        animationName = "sideFighterAttachAnimationLeft";
+        dstX = superAce->getDstRect().x - sideFighter->getDstRect().w;
+        dstY = superAce->getDstRect().y;
+    }
+    else if( fighter == RIGHT_FIGHTER){
+        animationName = "sideFighterAttachAnimationRight";
+        dstX = superAce->getDstRect().x + superAce->getDstRect().w;
+        dstY = superAce->getDstRect().y;
+    }
+    else{
+        assert(0);
+    }
+    
+    MovingPathAnimation* animation = (MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation(animationName);
+    assert(animation);
+    
+    int dx = 0;
+    int dy = 0;
+
+    int currX = sideFighter->getDstRect().x;
+    int currY = sideFighter->getDstRect().y;
+    
+    
+    if (currX > dstX){
+        dx = setDA(currX,dstX);
+        if (currY > dstY){
+            dy = setDA(currY,dstY);
+            animation->changeDxDy(-dx, -dy);
+        }
+        else if (currY < dstY){
+            dy = setDA(dstY,currY);
+            animation->changeDxDy(-dx, dy);
+        }
+        else{
+            animation->changeDxDy(-dx, 0);
+        }
+    }
+    else if (currX < dstX){
+        dx = setDA(dstX,currX);
+        if (currY > dstY){
+            dy = setDA(currY,dstY);
+            animation->changeDxDy(dx, -dy);
+        }
+        else if (currY < dstY){
+            dy = setDA(dstY,currY);
+            animation->changeDxDy(dx,dy);
+        }
+        else{
+            animation->changeDxDy(dx, 0);
+        }
+    }
+    else{
+        if (currY > dstY){
+            dy = setDA(currY,dstY);
+            animation->changeDxDy(0, -dy);
+        }
+        else if (currY < dstY){
+            dy = setDA(dstY,currY);
+            animation->changeDxDy(0, dy);
+        }
+        else{
+        }
+    }
+    
+    if( dx<2 && dx>-2 && dy<2 && dy>-2 ){
+        //stop the animator
+        
+        MovingPathAnimator* animator;
+        animator = (MovingPathAnimator*) AnimatorHolder::getAnimator("sideFighterAttachAnimatorRight");
+        assert(animator);
+        animator->setState(ANIMATOR_FINISHED);
+        animator->stop();
+        
+        animator = (MovingPathAnimator*) AnimatorHolder::getAnimator("sideFighterAttachAnimatorLeft");
+        assert(animator);
+        animator->setState(ANIMATOR_FINISHED);
+        animator->stop();
+        
+        //start the side fighter's moving animators
+        
+        if( fighter == LEFT_FIGHTER){
+            animation = (MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("sideFighterAnimationRight");
+            assert(animation);
+            animator = new MovingPathAnimator("LeftSideFighterAnimatorRight", sideFighter, animation);
+            assert(animator);
+
+            animation = (MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("sideFighterAnimationLeft");
+            assert(animation);
+            animator	= new MovingPathAnimator("LeftSideFighterAnimatorLeft", sideFighter, animation);
+            assert(animator);
+
+        }
+        else if( fighter == RIGHT_FIGHTER){
+            animation = (MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("sideFighterAnimationRight");
+            assert(animation);
+            animator = new MovingPathAnimator( "RightSideFighterAnimatorRight", sideFighter, animation);
+            assert(animator);
+            
+            animation=(MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("sideFighterAnimationLeft");
+            assert(animation);
+            animator= new MovingPathAnimator("RightSideFighterAnimatorLeft", sideFighter, animation);
+            assert(animator);
+        }
+        else{
+            assert(0);
+        }
+
+        return false;
+    }
+    
+    return true;
 }
 
 void AnimatorHolder::createUpdateScoreAnimator(SDL_Rect rect,int points){

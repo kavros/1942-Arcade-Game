@@ -13,9 +13,7 @@ void Game::destructionManagerOnLoop(){
     loopsRemainingToDelete--;
 }
 
-void Game::GameOnLoop(){
-    static int i = 0;
-    
+void Game::AIOnLoop(){
     SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce0");
     assert(superAce);
     
@@ -23,11 +21,28 @@ void Game::GameOnLoop(){
         setState(GAME_OVER);
         return;
     }
+    
+    static int i = 0;
 
     if(i % 50000 ==0){
         AnimatorHolder::getAnimatorHolder()->updateAllGreyPlaneAnimations();
+        
+        static bool right = true;
+        static bool left = true;
+        
+        if(superAce->getAttached(RIGHT_FIGHTER) && right){
+            right = AnimatorHolder::updateSideFighterAnimation(RIGHT_FIGHTER);
+        }
+        if(superAce->getAttached(LEFT_FIGHTER) && left){
+            left = AnimatorHolder::updateSideFighterAnimation(LEFT_FIGHTER);
+        }
     }
-    
+}
+
+void Game::GameOnLoop(){
+
+    // AI
+    Game::AIOnLoop();
     
     //commit destruction
     destructionManagerOnLoop();

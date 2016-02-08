@@ -47,13 +47,13 @@ void Game::singleplayerGameOnEvent(){
                 superAceAnimatorLeftLeft->start(getGameTime());
             if(superAce->getAttached(RIGHT_FIGHTER)){
                 MovingPathAnimator* rightSideFighterAnimatorLeft =(MovingPathAnimator*)AnimatorHolder::getAnimator("RightSideFighterAnimatorLeft");
-                assert(rightSideFighterAnimatorLeft);
-                rightSideFighterAnimatorLeft->start(getGameTime());
+                if(rightSideFighterAnimatorLeft)
+                    rightSideFighterAnimatorLeft->start(getGameTime());
             }
             if(superAce->getAttached(LEFT_FIGHTER)){
                 MovingPathAnimator* leftSideFighterAnimatorLeft =(MovingPathAnimator*)AnimatorHolder::getAnimator("LeftSideFighterAnimatorLeft");
-                assert(leftSideFighterAnimatorLeft);
-                leftSideFighterAnimatorLeft->start(getGameTime());
+                if(leftSideFighterAnimatorLeft)
+                    leftSideFighterAnimatorLeft->start(getGameTime());
             }
         }
         else if (event.key.keysym.sym == SDLK_RIGHT || event.cbutton.button == SDL_CONTROLLER_BUTTON_DPAD_RIGHT){
@@ -64,13 +64,13 @@ void Game::singleplayerGameOnEvent(){
                 superAceAnimatorRightRight->start(getGameTime());
             if(superAce->getAttached(RIGHT_FIGHTER)){
                 MovingPathAnimator* rightSideFighterAnimatorRight =(MovingPathAnimator*)AnimatorHolder::getAnimator("RightSideFighterAnimatorRight");
-                assert(rightSideFighterAnimatorRight);
-                rightSideFighterAnimatorRight->start(getGameTime());
+                if(rightSideFighterAnimatorRight)
+                    rightSideFighterAnimatorRight->start(getGameTime());
             }
             if(superAce->getAttached(LEFT_FIGHTER)){
                 MovingPathAnimator* leftSideFighterAnimatorRight = (MovingPathAnimator*)AnimatorHolder::getAnimator("LeftSideFighterAnimatorRight");
-                assert(leftSideFighterAnimatorRight);
-                leftSideFighterAnimatorRight->start(getGameTime());
+                if(leftSideFighterAnimatorRight)
+                    leftSideFighterAnimatorRight->start(getGameTime());
             }
         }
         else if (event.key.keysym.sym == SDLK_UP || event.cbutton.button == SDL_CONTROLLER_BUTTON_DPAD_UP){

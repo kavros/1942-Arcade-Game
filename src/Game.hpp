@@ -91,6 +91,7 @@ public:
     
     //on loop
     static void OnLoop();
+    static void AIOnLoop();
     static void GameOnLoop();
     static void destructionManagerOnLoop();
 
