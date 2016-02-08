@@ -9,7 +9,16 @@
                 "frameNo": 0,
                 "destRect": [0, 0, 35, 25],
                 "point": [0, 0],
-                "repetition": 2,
+                "repetition": 1,
+                "visible": false,
+                "spriteType": 3,
+                "animFilmId": "Super.Ace.1942.Scaled"
+                },{
+                "id": "SuperAce2",
+                "frameNo": 0,
+                "destRect": [0, 0, 35, 25],
+                "point": [0, 0],
+                "repetition": 1,
                 "visible": false,
                 "spriteType": 3,
                 "animFilmId": "Super.Ace.1942.Scaled"

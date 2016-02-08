@@ -29,39 +29,75 @@
                             },{
                             "id": "SuperAceAnimatorUp",
                             "animationId": "superAceAnimationUp",
-                            "repetition": 2,
+                            "repetition": 1,
                             "spriteType": 3,
                             "spriteId": "SuperAce"
                             }, {
                             "id": "SuperAceAnimatorDown",
                             "animationId": "superAceAnimationDown",
-                            "repetition": 2,
+                            "repetition": 1,
                             "spriteType": 3,
                             "spriteId": "SuperAce"
                             }, {
                             "id": "SuperAceAnimatorRight",
                             "animationId": "superAceAnimationRight",
-                            "repetition": 2,
+                            "repetition": 1,
                             "spriteType": 3,
                             "spriteId": "SuperAce"
                             }, {
                             "id": "SuperAceAnimatorRightRight",
                             "animationId": "superAceAnimationRightRight",
-                            "repetition": 2,
+                            "repetition": 1,
                             "spriteType": 3,
                             "spriteId": "SuperAce"
                             }, {
                             "id": "SuperAceAnimatorLeft",
                             "animationId": "superAceAnimationLeft",
-                            "repetition": 2,
+                            "repetition": 1,
                             "spriteType": 3,
                             "spriteId": "SuperAce"
                             }, {
                             "id": "SuperAceAnimatorLeftLeft",
                             "animationId": "superAceAnimationLeftLeft",
-                            "repetition": 2,
+                            "repetition": 1,
                             "spriteType": 3,
                             "spriteId": "SuperAce"
+                            },{
+                            "id": "SuperAceAnimatorUp2",
+                            "animationId": "superAceAnimationUp",
+                            "repetition": 1,
+                            "spriteType": 3,
+                            "spriteId": "SuperAce2"
+                            }, {
+                            "id": "SuperAceAnimatorDown2",
+                            "animationId": "superAceAnimationDown",
+                            "repetition": 1,
+                            "spriteType": 3,
+                            "spriteId": "SuperAce2"
+                            }, {
+                            "id": "SuperAceAnimatorRight2",
+                            "animationId": "superAceAnimationRight",
+                            "repetition": 1,
+                            "spriteType": 3,
+                            "spriteId": "SuperAce2"
+                            }, {
+                            "id": "SuperAceAnimatorRightRight2",
+                            "animationId": "superAceAnimationRightRight",
+                            "repetition": 1,
+                            "spriteType": 3,
+                            "spriteId": "SuperAce2"
+                            }, {
+                            "id": "SuperAceAnimatorLeft2",
+                            "animationId": "superAceAnimationLeft",
+                            "repetition": 1,
+                            "spriteType": 3,
+                            "spriteId": "SuperAce2"
+                            }, {
+                            "id": "SuperAceAnimatorLeftLeft2",
+                            "animationId": "superAceAnimationLeftLeft",
+                            "repetition": 1,
+                            "spriteType": 3,
+                            "spriteId": "SuperAce2"
                             }, {
                             "id": "RedJetRightAnimator",
                             "animationId": "RedJetLeft",
