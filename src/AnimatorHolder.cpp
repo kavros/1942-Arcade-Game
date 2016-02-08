@@ -819,9 +819,7 @@ void AnimatorHolder::triggerstartEnemyPlanesTickAnimator(){
     
     //death star
     //TimerTickAnimator::startTimeTickAnimator("deathStarTickAnimation", triggerDeathStarAnimator );
- 
-    SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce0");
-    
+     
 }
 
 void AnimatorHolder::startTimeTickAnimators(){
