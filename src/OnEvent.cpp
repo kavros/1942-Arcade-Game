@@ -284,7 +284,7 @@ void Game::OnEvent() {
         return ;
     }
     
-    if(Game::event.window.event == SDL_WINDOWEVENT_FOCUS_LOST){
+    if(Game::event.window.event == SDL_WINDOWEVENT_FOCUS_LOST ){
         setState(PAUSE_MENU);
     }
     

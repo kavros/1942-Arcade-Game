@@ -273,7 +273,7 @@ bool Game::InitGameInfo(){
     SpriteStringHolder::getSpriteString("endingBonusString")->setVisibility(false);
     SpriteStringHolder::addSpriteString("pointsString", new SpriteString("PTS", (WIN_WIDTH / 2) +5, (WIN_HEIGHT / 2)+95) );
     SpriteStringHolder::getSpriteString("pointsString")->setVisibility(false);
-    SpriteStringHolder::addSpriteString("points", new SpriteString("100000", (WIN_WIDTH / 2)-90, (WIN_HEIGHT / 2) + 95) );
+    SpriteStringHolder::addSpriteString("points", new SpriteString("10000", (WIN_WIDTH / 2)-90, (WIN_HEIGHT / 2) + 95) );
     SpriteStringHolder::getSpriteString("points")->setVisibility(false);
     SpriteStringHolder::addSpriteString("letterR", new SpriteString("R*", (WIN_WIDTH / 2) - 90, (WIN_HEIGHT / 2)+135) );
     SpriteStringHolder::getSpriteString("letterR")->setVisibility(false);
