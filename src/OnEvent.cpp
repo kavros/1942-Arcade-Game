@@ -7,8 +7,8 @@ void Game::singleplayerGameOnEvent(){
     SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce0");
     assert(superAce);
 
-    if(!AnimatorHolder::movingEnable){
-        //can't move during start or end
+    if(!AnimatorHolder::movingEnable || AnimatorHolder::onManuevuer()){
+        //can't move during start or end or onManuevuer
         return;
     }
     

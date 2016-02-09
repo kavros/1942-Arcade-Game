@@ -899,8 +899,9 @@ void AnimatorHolder::updateAllGreyPlaneAnimations(){
     
     MovingPathAnimator* grayPlaneAnimator;
     string grayPlaneAnimatorName, grayPlaneAnimationName;
-    AnimatorHolder::AnimatorList::const_iterator it2 = getAnimatorHolder()->_running.end();
-    AnimatorHolder::AnimatorList::const_iterator  it = getAnimatorHolder()->_running.begin();//_running.begin();
+    
+    AnimatorList::const_iterator it2 = getAnimatorHolder()->_running.end();
+    AnimatorList::const_iterator  it = getAnimatorHolder()->_running.begin();//_running.begin();
     
     while (it != getAnimatorHolder()->_running.end()){
         it2 = it;
@@ -1319,4 +1320,19 @@ void AnimatorHolder::createUpdateScoreAnimator(SDL_Rect rect,int points){
 
 }
 
+bool AnimatorHolder::onManuevuer(){
+   
+    AnimatorHolder* h = AnimatorHolder::getAnimatorHolder();
+    AnimatorList::iterator it = h->_running.begin();
+    
+    
+    while (it != h->_running.end()){
+        
+        if ((*it)->getId().find("animatorManeuverId") != string::npos ){
+            return true;
+        }
+        it++;
+    }
+    return false;
+}
 
