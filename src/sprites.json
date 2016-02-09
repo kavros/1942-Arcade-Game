@@ -261,7 +261,7 @@
                 }, {
                 "id": "spriteLand",
                 "frameNo": 0,
-                "destRect": [0, -4700, 1024, 2435],
+                "destRect": [0, -5200, 1024, 2435],
                 "point": [0, 0],
                 "repetition": 1,
                 "visible": true,

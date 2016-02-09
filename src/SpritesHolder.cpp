@@ -197,6 +197,7 @@ void    SpritesHolder::Load (const std::string& cataloge/*,SDL_Renderer* _render
                 enum EnemyFighterType e = EnemyFighterType(sprite["enemyType"].GetInt());
                 
                 destRect = getRandomDestRect(e,destRect);
+                Game::increaceTotalEnemies();
                 new EnemyFighter(id2, frameNo, destRect, point, isVisible, spriteType,animationFilm,e,remainingBullets);
                 
             }else if(spriteType == SpriteType::TERRAIN && id2.compare("backgroundSprite0")==0 ){

@@ -121,11 +121,16 @@ void MovingPathAnimator::progress(timestamp_t currTime){
 	while ( (currTime > _lastTime ) && (currTime - _lastTime >= _currPath->_delay)){
 
 
-        _sprite->move(_currPath->_dx, _currPath->_dy);
-		_sprite->setFrame(_currPath->_frame);
-        if(_sprite->isAlive())
-            _sprite->setVisibility(_currPath->_visibility);
 
+        if(_sprite->isAlive()){
+            _sprite->move(_currPath->_dx, _currPath->_dy);
+            _sprite->setFrame(_currPath->_frame);
+            _sprite->setVisibility(_currPath->_visibility);
+        }
+        else{
+            return;
+        }
+        
         _lastTime += (_currPath->_delay);
         //cout << "Curr time = " << currTime << "\tlast time = " << _lastTime << "\n";
 

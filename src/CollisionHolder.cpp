@@ -197,6 +197,7 @@ void Sprite::touchHandler::operator()(Sprite* aircraft,Sprite* arg) const{
 
             if(enemyFighter->getEnemyFighterLifes() == 1){
                 enemyFighter->setState(IN_COLUSION);
+                Game::setToDeadEnemiesOneMore();
             }
             enemyFighter->setEnemyFighterLifes( enemyFighter->getEnemyFighterLifes() -1 );
 
@@ -211,6 +212,7 @@ void Sprite::touchHandler::operator()(Sprite* aircraft,Sprite* arg) const{
             EnemyFighter* enemyFighter = ( EnemyFighter* )aircraft;
             if(enemyFighter->getEnemyFighterLifes() == 1){
                 enemyFighter->setState(IN_COLUSION);
+                Game::setToDeadEnemiesOneMore();
             }
             enemyFighter->setEnemyFighterLifes( enemyFighter->getEnemyFighterLifes() -1 );
         }

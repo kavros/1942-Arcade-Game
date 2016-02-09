@@ -680,25 +680,33 @@ void AnimatorHolder::triggerEndOfStageAnimators(){
 
 
 
-	if (superAce->getAttached(RIGHT_FIGHTER) && superAce->getAttached(LEFT_FIGHTER)){
-		SideFighter* leftSideFighter = (SideFighter*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, LEFT_FIGHTER);
-		SideFighter* rightSideFighter = (SideFighter*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, RIGHT_FIGHTER);
-		assert(leftSideFighter);
-		assert(rightSideFighter);
+    if (superAce->getAttached(RIGHT_FIGHTER)){
+        SideFighter* rightSideFighter = (SideFighter*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, RIGHT_FIGHTER);
+        assert(rightSideFighter);
+        
+        MovingPathAnimation* rightSideFighterByeByeAnimation = (MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("SideFighterRightByeByeAnimation");
+        assert(rightSideFighterByeByeAnimation);
+        
+        MovingPathAnimator* RightSideFighterAnimator = new MovingPathAnimator("SideFighterLeftByeByeAnimator2", rightSideFighter, (MovingPathAnimation*)rightSideFighterByeByeAnimation);
+        
+        assert(RightSideFighterAnimator);
+        
+        RightSideFighterAnimator->start(Game::getGameTime());
 
-		MovingPathAnimation* leftSideFighterByeByeAnimation = (MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("SideFighterLeftByeByeAnimation");
-		MovingPathAnimation* rightSideFighterByeByeAnimation = (MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("SideFighterRightByeByeAnimation");
-		assert(rightSideFighterByeByeAnimation);
-		assert(leftSideFighterByeByeAnimation);
-
-
-		MovingPathAnimator* LeftSideFighterAnimator = new MovingPathAnimator("SideFighterLeftByeByeAnimator", leftSideFighter, (MovingPathAnimation*)leftSideFighterByeByeAnimation);
-		MovingPathAnimator* RightSideFighterAnimator = new MovingPathAnimator("SideFighterLeftByeByeAnimator2", rightSideFighter, (MovingPathAnimation*)rightSideFighterByeByeAnimation);
-		assert(LeftSideFighterAnimator);
-		assert(RightSideFighterAnimator);
-	
-		LeftSideFighterAnimator->start(Game::getGameTime());
-		RightSideFighterAnimator->start(Game::getGameTime());
+    }
+    if(superAce->getAttached(LEFT_FIGHTER)){
+        SideFighter* leftSideFighter = (SideFighter*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, LEFT_FIGHTER);
+        assert(leftSideFighter);
+        
+        MovingPathAnimation* leftSideFighterByeByeAnimation = (MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("SideFighterLeftByeByeAnimation");
+        assert(leftSideFighterByeByeAnimation);
+        
+        
+        MovingPathAnimator* LeftSideFighterAnimator = new MovingPathAnimator("SideFighterLeftByeByeAnimator", leftSideFighter, (MovingPathAnimation*)leftSideFighterByeByeAnimation);
+        
+        assert(LeftSideFighterAnimator);
+        
+        LeftSideFighterAnimator->start(Game::getGameTime());
 
 	}
 
@@ -855,7 +863,7 @@ void AnimatorHolder::triggerstartEnemyPlanesTickAnimator(){
     
     //death star
     TimerTickAnimator::startTimeTickAnimator("deathStarTickAnimation", triggerDeathStarAnimator );
-     
+    
 }
 
 void AnimatorHolder::startTimeTickAnimators(){

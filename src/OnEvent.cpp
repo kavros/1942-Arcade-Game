@@ -13,7 +13,6 @@ void Game::singleplayerGameOnEvent(){
     }
     
 	if (event.type == SDL_KEYDOWN || event.type == SDL_CONTROLLERBUTTONDOWN){
-		static int i = 1;
 
         MovingPathAnimator* superAceAnimatorLeft =
         (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorLeft0");

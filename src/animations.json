@@ -145,7 +145,7 @@
                                       "repetitions": 1
                                       }, {
                                       "id": "bigGreyIntroTickAnimation",
-                                      "delay": 80000,
+                                      "delay": 120000,
                                       "repetitions": 1
                                       }, {
                                       "id": "bigGreenStayStillTickAnimation",
@@ -178,7 +178,7 @@
                                       },
                                       {
                                       "id": "endOfStageTickAnimation",
-                                      "delay": 150000,
+                                      "delay": 156000,
                                       "repetitions": 1
                                       },{
                                       "id": "endOfStageMoveToCenterTickAnimation",

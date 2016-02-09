@@ -136,6 +136,9 @@ void Game::updateScoreSprite(){
 void Game::updateHighScoreSprite(){
     std::string highScore = std::to_string(_highScore);
     SpriteStringHolder::getSpriteString("highScore")->changeString(highScore,WIN_WIDTH/2 - (int) (highScore.size()*6), 30);
+    
+    //write _highScore to config json     "highScore": 140
+
 }
 
 

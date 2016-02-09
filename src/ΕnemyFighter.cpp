@@ -10,8 +10,6 @@ Sprite(id,frameNo,dstRect,point,isVisible,type,currFilm)
 {
     assert( type == ALIEN_SHIP );
 
-	Game::increaceTotalEnemies();
-
     setEnemyFireEnable(true);
     setEnemyFighterType(e);
     
