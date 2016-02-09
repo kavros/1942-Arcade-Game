@@ -17,6 +17,7 @@ void AnimatorHolder::Register(Animator* a) {
 }
 void AnimatorHolder::cancel(Animator* a) {
     AnimatorHolder::getAnimatorHolder()->_suspended.remove(a);
+    AnimatorHolder::getAnimatorHolder()->_running.remove(a);
     
     AnimatorMap::const_iterator it = AnimatorHolder::getAnimatorHolder()->_map.begin();
     AnimatorMap::const_iterator it2;
@@ -71,8 +72,8 @@ void AnimatorHolder::progress(timestamp_t currTime) {
 		
 		it2 = it;
 		it2++;
-        
-        (*it)->progress(currTime);
+        if((*it)->isAlive())
+            (*it)->progress(currTime);
 
         it = it2;
 	}
@@ -835,14 +836,14 @@ void AnimatorHolder::triggerstartEnemyPlanesTickAnimator(){
     
     
     //green medium plane
-    //TimerTickAnimator::startTimeTickAnimator("medGreenDoubleEngTickAnimation", triggerMedGreenDoubleEngAnimator);
-    //TimerTickAnimator::startTimeTickAnimator("medGreenSingleEngTickAnimation", triggerMedGreenSingleEngAnimator);
-    //TimerTickAnimator::startTimeTickAnimator("medGreenTripleEngTickAnimations", triggerMedGreenTripleEngAnimators);
+    TimerTickAnimator::startTimeTickAnimator("medGreenDoubleEngTickAnimation", triggerMedGreenDoubleEngAnimator);
+    TimerTickAnimator::startTimeTickAnimator("medGreenSingleEngTickAnimation", triggerMedGreenSingleEngAnimator);
+    TimerTickAnimator::startTimeTickAnimator("medGreenTripleEngTickAnimations", triggerMedGreenTripleEngAnimators);
     
     //grey medium plane
-    //TimerTickAnimator::startTimeTickAnimator("medGreyDoubleEngTickAnimation", triggerMedGreyDoubleAnimator);
-    //TimerTickAnimator::startTimeTickAnimator("medGreySingleEngTickAnimation", triggerMedGreySingleAnimator);
-    // TimerTickAnimator::startTimeTickAnimator("medGreyTripleEngTickAnimations", triggerMedGreyTripleEngAnimators);
+    TimerTickAnimator::startTimeTickAnimator("medGreyDoubleEngTickAnimation", triggerMedGreyDoubleAnimator);
+    TimerTickAnimator::startTimeTickAnimator("medGreySingleEngTickAnimation", triggerMedGreySingleAnimator);
+    TimerTickAnimator::startTimeTickAnimator("medGreyTripleEngTickAnimations", triggerMedGreyTripleEngAnimators);
     
 	
     //big plane
