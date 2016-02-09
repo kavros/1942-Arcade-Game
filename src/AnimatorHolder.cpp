@@ -1,4 +1,4 @@
- #include "AnimatorHolder.h"
+#include "AnimatorHolder.h"
 
 void updateGreyPlaneAnimation(MovingPathAnimator* grayJetAnimator);
 void updateGreyJetAnimation(MovingPathAnimator* grayJetAnimator);
@@ -461,6 +461,7 @@ void AnimatorHolder::triggerStartOfStageAnimators(){
     
     //set items
     
+
     AnimatorHolder::superAceMovingAnimator();
     
     Sprite* initialAircraft = SpritesHolder::getSprite(TERRAIN, "spriteAircraftCarrier0");
@@ -483,6 +484,7 @@ void AnimatorHolder::triggerStartOfStageAnimators(){
     TimerTickAnimator::startTimeTickAnimator("startEnemyPlanesTickAnimation", AnimatorHolder::triggerstartEnemyPlanesTickAnimator );
 	SoundHolder::playSound("propeller");
 
+	//superAce->attach(LEFT_FIGHTER);
 }
 
 int setD(int big,int small){
@@ -563,7 +565,10 @@ void updateEndOfStageAnimation(){
     
     animator->start(Game::getGameTime());
 
+
 }
+
+
 
 void triggerEndOfStageCreateAircraftAnimator(){
 
@@ -672,6 +677,30 @@ void AnimatorHolder::triggerEndOfStageAnimators(){
 
     //stop the background and enable end text
     TimerTickAnimator::startTimeTickAnimator("endOfStageStopBackgroundTickAnimation", triggerEndOfStageStopBackgroundAnimator );
+
+
+
+	if (superAce->getAttached(RIGHT_FIGHTER) && superAce->getAttached(LEFT_FIGHTER)){
+		SideFighter* leftSideFighter = (SideFighter*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, LEFT_FIGHTER);
+		SideFighter* rightSideFighter = (SideFighter*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, RIGHT_FIGHTER);
+		assert(leftSideFighter);
+		assert(rightSideFighter);
+
+		MovingPathAnimation* leftSideFighterByeByeAnimation = (MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("SideFighterLeftByeByeAnimation");
+		MovingPathAnimation* rightSideFighterByeByeAnimation = (MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("SideFighterRightByeByeAnimation");
+		assert(rightSideFighterByeByeAnimation);
+		assert(leftSideFighterByeByeAnimation);
+
+
+		MovingPathAnimator* LeftSideFighterAnimator = new MovingPathAnimator("SideFighterLeftByeByeAnimator", leftSideFighter, (MovingPathAnimation*)leftSideFighterByeByeAnimation);
+		MovingPathAnimator* RightSideFighterAnimator = new MovingPathAnimator("SideFighterLeftByeByeAnimator2", rightSideFighter, (MovingPathAnimation*)rightSideFighterByeByeAnimation);
+		assert(LeftSideFighterAnimator);
+		assert(RightSideFighterAnimator);
+	
+		LeftSideFighterAnimator->start(Game::getGameTime());
+		RightSideFighterAnimator->start(Game::getGameTime());
+
+	}
 
 }
 
@@ -827,8 +856,6 @@ void AnimatorHolder::triggerstartEnemyPlanesTickAnimator(){
     //death star
     TimerTickAnimator::startTimeTickAnimator("deathStarTickAnimation", triggerDeathStarAnimator );
      
-    //SuperAce* sp =(SuperAce*) SpritesHolder::getSprite(SUPER_ACE, "SuperAce0");
-    //sp->addSideFighters();
 }
 
 void AnimatorHolder::startTimeTickAnimators(){
@@ -902,8 +929,9 @@ void AnimatorHolder::updateAllGreyPlaneAnimations(){
     
     MovingPathAnimator* grayPlaneAnimator;
     string grayPlaneAnimatorName, grayPlaneAnimationName;
-    AnimatorHolder::AnimatorList::const_iterator it2 = getAnimatorHolder()->_running.end();
-    AnimatorHolder::AnimatorList::const_iterator  it = getAnimatorHolder()->_running.begin();//_running.begin();
+    
+    AnimatorList::const_iterator it2 = getAnimatorHolder()->_running.end();
+    AnimatorList::const_iterator  it = getAnimatorHolder()->_running.begin();//_running.begin();
     
     while (it != getAnimatorHolder()->_running.end()){
         it2 = it;
@@ -1227,20 +1255,16 @@ bool  AnimatorHolder::updateSideFighterAnimation(string fighter){
     if( dx<2 && dx>-2 && dy<2 && dy>-2 ){
         //stop the animator
         
+        //start the side fighter's moving animators
         MovingPathAnimator* animator;
-        animator = (MovingPathAnimator*) AnimatorHolder::getAnimator("sideFighterAttachAnimatorRight");
-        assert(animator);
-        animator->setState(ANIMATOR_FINISHED);
-        animator->stop();
+
+        if( fighter == LEFT_FIGHTER){
         
         animator = (MovingPathAnimator*) AnimatorHolder::getAnimator("sideFighterAttachAnimatorLeft");
         assert(animator);
         animator->setState(ANIMATOR_FINISHED);
         animator->stop();
         
-        //start the side fighter's moving animators
-        
-        if( fighter == LEFT_FIGHTER){
             animation = (MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("sideFighterAnimationRight");
             assert(animation);
             animator = new MovingPathAnimator("LeftSideFighterAnimatorRight", sideFighter, animation);
@@ -1253,6 +1277,12 @@ bool  AnimatorHolder::updateSideFighterAnimation(string fighter){
 
         }
         else if( fighter == RIGHT_FIGHTER){
+            
+            animator = (MovingPathAnimator*) AnimatorHolder::getAnimator("sideFighterAttachAnimatorRight");
+            assert(animator);
+            animator->setState(ANIMATOR_FINISHED);
+            animator->stop();
+            
             animation = (MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("sideFighterAnimationRight");
             assert(animation);
             animator = new MovingPathAnimator( "RightSideFighterAnimatorRight", sideFighter, animation);
@@ -1320,4 +1350,19 @@ void AnimatorHolder::createUpdateScoreAnimator(SDL_Rect rect,int points){
 
 }
 
+bool AnimatorHolder::onManuevuer(){
+   
+    AnimatorHolder* h = AnimatorHolder::getAnimatorHolder();
+    AnimatorList::iterator it = h->_running.begin();
+    
+    
+    while (it != h->_running.end()){
+        
+        if ((*it)->getId().find("animatorManeuverId") != string::npos ){
+            return true;
+        }
+        it++;
+    }
+    return false;
+}
 

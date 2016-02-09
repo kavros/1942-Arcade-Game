@@ -7,12 +7,13 @@ void Game::singleplayerGameOnEvent(){
     SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce0");
     assert(superAce);
 
-    if(!AnimatorHolder::movingEnable){
-        //can't move during start or end
+    if(!AnimatorHolder::movingEnable || AnimatorHolder::onManuevuer()){
+        //can't move during start or end or onManuevuer
         return;
     }
     
 	if (event.type == SDL_KEYDOWN || event.type == SDL_CONTROLLERBUTTONDOWN){
+		static int i = 1;
 
         MovingPathAnimator* superAceAnimatorLeft =
         (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorLeft0");
