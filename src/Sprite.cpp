@@ -211,6 +211,14 @@ void Sprite::notifyCollision(Sprite* arg){
     Handlers::iterator i2;
     
     SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce0");
+	SuperAce* superAce2 = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce1");
+	
+	if (superAce2 == this || arg == superAce2){
+		if (superAce2->getState() == MANEUVER || superAce2->isUndefeatable()){
+			if (arg->getType() != POWER_UPS && this->getType() != POWER_UPS)
+				return;
+		}
+	}
 
     if( superAce == this || arg == superAce){
         if(superAce->getState()==MANEUVER || superAce->isUndefeatable()){

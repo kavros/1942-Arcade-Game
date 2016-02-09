@@ -112,7 +112,10 @@ void Game::multiplayerGameOnEvent(){
     static SDL_Event prev_event2;
     
     SuperAce* superAce2 = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce1");
-
+	
+	if (superAce2){
+		superAce2->setVisibility(true);
+	}
     if(!AnimatorHolder::movingEnable || !superAce2 ){
         //can't move during start or end
         return;
