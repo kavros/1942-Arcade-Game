@@ -11,7 +11,6 @@ void LatelyDestroyable::setAlive(bool a){
     alive = a;
 }
 
-
 //DestructionManager functions
 
 void DestructionManager::Register(LatelyDestroyable* o) {

@@ -185,31 +185,31 @@
                             }, {
                             "id": "MiniGreyDoubleEngAnimator",
                             "animationId": "MiniGreyDoubleEngDown",
-                            "repetition": 4,
+                            "repetition": 8,
                             "spriteType": 4,
                             "spriteId": "MiniGreyDoubleEng"
                             },{
                             "id": "Chain1MiniGreyDoubleEngAnimator",
                             "animationId": "only_circle_250_250_40_34",
-                            "repetition": 4,
+                            "repetition": 8,
                             "spriteType": 4,
                             "spriteId": "MiniGreyDoubleEng"
                             },{
                             "id": "Chain2Chain1MiniGreyDoubleEngAnimator",
                             "animationId": "MiniGreyDoubleEngDown",
-                            "repetition": 4,
+                            "repetition": 8,
                             "spriteType": 4,
                             "spriteId": "MiniGreyDoubleEng"
                             },{
                             "id": "Chain3Chain2Chain1MiniGreyDoubleEngAnimator",
                             "animationId": "only_circle_250_250_40_34",
-                            "repetition": 4,
+                            "repetition": 8,
                             "spriteType": 4,
                             "spriteId": "MiniGreyDoubleEng"
                             },{
                             "id": "Chain4Chain3Chain2Chain1MiniGreyDoubleEngAnimator",
                             "animationId": "MiniGreyDoubleEngDownCont",
-                            "repetition": 4,
+                            "repetition": 8,
                             "spriteType": 4,
                             "spriteId": "MiniGreyDoubleEng"
                             }, {
@@ -311,61 +311,61 @@
                             }, {
                             "id": "MedGreenDoubleEngAnimator",
                             "animationId": "GreenMediumPlaneMovingDownAnimation",
-                            "repetition": 4,
+                            "repetition": 2,
                             "spriteType": 4,
                             "spriteId": "MedGreenDoubleEng"
                             },{
                             "id": "MedGreenSingleEngAnimator",
                             "animationId": "GreenMediumPlaneMovingUpAnimation",
-                            "repetition": 4,
+                            "repetition": 2,
                             "spriteType": 4,
                             "spriteId": "MedGreenSingleEng"
                             },{
                             "id": "MedGreenTripleEngAnimator",
                             "animationId": "GreenMediumPlaneMovingRightAnimation",
-                            "repetition": 9,
+                            "repetition": 6,
                             "spriteType": 4,
                             "spriteId": "MedGreenTripleEng"
                             },{
                             "id": "MedGreySingleEngAnimator",
                             "animationId": "GreyMediumPlaneMovingUpAnimation",
-                            "repetition": 4,
+                            "repetition": 2,
                             "spriteType": 4,
                             "spriteId": "MedGreySingleEng"
                             },{
                             "id": "MedGreyTripleEngAnimator",
                             "animationId": "GreyMediumPlaneMovingLeftAnimation",
-                            "repetition": 9,
+                            "repetition": 6,
                             "spriteType": 4,
                             "spriteId": "MedGreyTripleEng"
                             },{
                             "id": "MedGreyDoubleEngAnimator",
                             "animationId": "GreyMediumPlaneMovingDownAnimation",
-                            "repetition": 4,
+                            "repetition": 2,
                             "spriteType": 4,
                             "spriteId": "MedGreyDoubleEng"
                             },{
                             "id": "Chain1MedGreyDoubleEngAnimator",
                             "animationId": "MediumPlaneCycleAnimation",
-                            "repetition": 4,
+                            "repetition": 2,
                             "spriteType": 4,
                             "spriteId": "MedGreyDoubleEng"
                             }, {
                             "id": "Chain2Chain1MedGreyDoubleEngAnimator",
                             "animationId": "GreyMediumPlaneMovingDownContinuousAnimation",
-                            "repetition": 4,
+                            "repetition": 2,
                             "spriteType": 4,
                             "spriteId": "MedGreyDoubleEng"
                             },{
                             "id": "Chain1MedGreenDoubleEngAnimator",
                             "animationId": "MediumPlaneCycleAnimation",
-                            "repetition": 4,
+                            "repetition": 2,
                             "spriteType": 4,
                             "spriteId": "MedGreenDoubleEng"
                             }, {
                             "id": "Chain2Chain1MedGreenDoubleEngAnimator",
                             "animationId": "GreenMediumPlaneMovingDownContinousAnimation",
-                            "repetition": 4,
+                            "repetition": 2,
                             "spriteType": 4,
                             "spriteId": "MedGreenDoubleEng"
                             }, {

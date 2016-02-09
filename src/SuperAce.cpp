@@ -315,7 +315,7 @@ void SuperAce::addSideFighters(){
     /*left side fighter*/
     sideFighterDstRect.x = -sideFighterDstRect.w +1;
     sideFighter = new SideFighter(this, LEFT_FIGHTER, sideFighterFrameNo, sideFighterDstRect, _point, _isVisible, _type, anim);
-
+    
     MovingPathAnimation* sideFighterAttachAnimationLeft = (MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("sideFighterAttachAnimationLeft");
     assert(sideFighterAttachAnimationLeft);
     MovingPathAnimator* sideFighterAttachAnimatorLeft	= new MovingPathAnimator("sideFighterAttachAnimatorLeft", sideFighter, sideFighterAttachAnimationLeft);
@@ -332,8 +332,8 @@ void SuperAce::addSideFighters(){
 	MovingPathAnimation* superAceMovingSideFighterAnimation = (MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("superAceMovingSideFighterAnimation");
 	assert(superAceMovingSideFighterAnimation);
 
-	MovingPathAnimator* superAceMovingSideFighterAnimator_right = new MovingPathAnimator("superAceMovingSideFighterRightAnimator", rightSideFighter, (MovingPathAnimation*)superAceMovingSideFighterAnimation);
-	MovingPathAnimator* superAceMovingSideFighterAnimator_left = new MovingPathAnimator("superAceMovingSideFighterLeftAnimator", leftSideFighter, (MovingPathAnimation*)superAceMovingSideFighterAnimation);
+	MovingPathAnimator* superAceMovingSideFighterAnimator_right = new MovingPathAnimator("superAceMovingSideFighterAnimatorRight", rightSideFighter, (MovingPathAnimation*)superAceMovingSideFighterAnimation);
+	MovingPathAnimator* superAceMovingSideFighterAnimator_left = new MovingPathAnimator("superAceMovingSideFighterAnimatorLeft", leftSideFighter, (MovingPathAnimation*)superAceMovingSideFighterAnimation);
 	assert(superAceMovingSideFighterAnimator_right);
 	assert(superAceMovingSideFighterAnimator_left);
 
