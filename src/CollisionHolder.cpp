@@ -20,7 +20,7 @@ void Sprite::fireHandler::operator()(Sprite* bullet,Sprite* arg) const{
 
 	
     bullet->setState(IN_COLUSION);
-    arg->setVisibility(false);
+    //arg->setVisibility(false);
     bullet->setVisibility(false);
     //Game::setScore(Game::getScore()+ 30);
     if (arg == superAce){
@@ -40,7 +40,8 @@ void Sprite::fireHandler::operator()(Sprite* bullet,Sprite* arg) const{
         EnemyFighter* enemyFighter = ( EnemyFighter* )arg;
         
         if(enemyFighter->getEnemyFighterLifes() == 1){
-            
+            arg->setVisibility(false);
+
             enemyFighter->setState(IN_COLUSION);
             if(enemyFighter->getEnemyFighterType()!=BULLET)
                 Game::setToDeadEnemiesOneMore();
