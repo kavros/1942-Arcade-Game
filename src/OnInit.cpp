@@ -219,8 +219,8 @@ bool Game::InitGameInfo(){
     SpriteStringHolder::addSpriteString("highString", new SpriteString("HIGH",(WIN_WIDTH/2)-56,10));
     SpriteStringHolder::addSpriteString("highScoreString", new SpriteString("SCORE",(WIN_WIDTH/2)-6,10));
     
-    SpriteStringHolder::addSpriteString("fpsString", new SpriteString("FPS",WIN_WIDTH-62,10));
-    SpriteStringHolder::addSpriteString("fps", new SpriteString("0000",WIN_WIDTH-62,30));
+    //SpriteStringHolder::addSpriteString("fpsString", new SpriteString("FPS",WIN_WIDTH-62,10));
+    //SpriteStringHolder::addSpriteString("fps", new SpriteString("0000",WIN_WIDTH-62,30));
 
     SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce0");
     std::string remainingLoopsString = "";
