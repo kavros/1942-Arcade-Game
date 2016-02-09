@@ -16,9 +16,9 @@ private:
   
     AnimationFilmHolder (void);
     ~AnimationFilmHolder();
-    void AddAnimationFilm(SDL_Texture* texture ,std::vector<SDL_Rect> boxes ,string id);
 public:
-    
+    void AddAnimationFilm(SDL_Texture* texture ,std::vector<SDL_Rect> boxes ,string id);
+
     //static const AnimationFilmHolder& Get(void);
     static AnimationFilmHolder* Get (void){
         if (!_holder)

@@ -5,8 +5,45 @@
 
 #include "MovingAnimation.h"
 
+void initialLogo(){
+
+
+    std::string path = "main_menu/wrong_logo.jpg";
+    //std::string path = "main_menu/initial_logo.png";
+
+    std::string  image = IMG_PATH + path;
+    
+    SDL_Surface* b = IMG_Load(image.c_str());
+    if(!b) {
+        printf("IMG_Load: %s\n", IMG_GetError());
+        // handle error
+        assert(0);
+    }
+    
+    SDL_Texture* texture = SDL_CreateTextureFromSurface(Game::getRenderer(), b);
+    if (!texture) {
+        fprintf(stderr, "CreateRGBSurface failed: %s\n", SDL_GetError());
+        assert(0);
+    }
+
+    std::vector<SDL_Rect> box;
+    //box.push_back({0,0,217,80});
+    box.push_back({0,0,550,286});
+
+    AnimationFilmHolder::Get()->AddAnimationFilm(texture , box ,"initialLogo");
+    AnimationFilm* an = (AnimationFilm*)AnimationFilmHolder::Get()->GetFilm("initialLogo");
+    //SDL_Rect r = {WIN_WIDTH/2-box[0].w/2,WIN_HEIGHT/2-box[0].h/2,WIN_WIDTH/4,WIN_HEIGHT/4};
+    SDL_Rect r = {0,0,WIN_WIDTH,WIN_HEIGHT};
+
+    Sprite* s = new Sprite("initialLogo",0,r,{0,0},true,SpriteType(0),an);
+    assert(s);
+    s->setVisibility(true);
+    Game::OnRender();
+}
+
 bool Game::OnInit(){
-	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER | SDL_INIT_GAMECONTROLLER) != 0){
+
+    if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER | SDL_INIT_GAMECONTROLLER) != 0){
 		std::cout << "SDL_Init Error: " << SDL_GetError() << std::endl;
 		return false;
 	}
@@ -18,8 +55,10 @@ bool Game::OnInit(){
 	
     InitRenderer();
     
+    initialLogo();
+
     InitGame();
-    
+
     return true;
 }
 
@@ -32,14 +71,6 @@ void Game::InitGame(){
     LoadGameInfo("config.json");
     
     InitGameInfo();
-    
-    /*
-    SDL_Rect r = {0,0,WIN_WIDTH,WIN_HEIGHT};
-    Sprite* s = new Sprite("initialLogo",0,r,{0,0});
-    //Sprite* s = new Sprite("initialLogo1", 0, r , {0,0}, true, 0, (AnimationFilm*)AnimationFilmHolder::Get()->GetFilm("initialLogo")  );
-    assert(s);
-    s->setVisibility(true);
-    */
     
     Background::initBackgroundObjects();
 
@@ -105,9 +136,8 @@ bool Game::InitData(){
     }
     unique++;
     
-    
     AnimationFilmHolder* anFh = AnimationFilmHolder::Get();
-	anFh->Load("films.json", _renderer);
+    anFh->Load("films.json", Game::getRenderer());
     
     SpritesHolder::Load("sprites.json");
     
@@ -262,34 +292,6 @@ bool Game::InitGameInfo(){
 	SpriteStringHolder::addSpriteString("pointsString2", new SpriteString("PTS", (WIN_WIDTH / 2) + 100, (WIN_HEIGHT / 2) + 135));
 	SpriteStringHolder::getSpriteString("pointsString2")->setVisibility(false);
 
-
-/*
-	SpriteStringHolder::getSpriteString("shootingString")->setVisibility(true);
-
-
-	SpriteStringHolder::getSpriteString("downString")->setVisibility(true);
-	//SpriteStringHolder::getSpriteString("shootingDownPercent")->changeString(); 
-	SpriteStringHolder::getSpriteString("shootingDownPercent")->setVisibility(true);
-	SpriteStringHolder::getSpriteString("shootingDownPercent")->setVisibility(true);
-	SpriteStringHolder::getSpriteString("endingBonusString")->setVisibility(true);
-	SpriteStringHolder::getSpriteString("pointsString")->setVisibility(true);
-
-	//SpriteStringHolder::getSpriteString("points")->changeString();
-	SpriteStringHolder::getSpriteString("points")->setVisibility(true);
-	SpriteStringHolder::getSpriteString("letterR")->setVisibility(true);
-	SpriteStringHolder::getSpriteString("1000Points")->setVisibility(true);
-	SpriteStringHolder::getSpriteString("letterR")->setVisibility(true);
-	SpriteStringHolder::getSpriteString("equals")->setVisibility(true);
-	SpriteStringHolder::getSpriteString("pointsString2")->setVisibility(true);
-
-	//last line with points
-	//SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce0");
-	assert(superAce);
-	int last_points_number = superAce->getSuperAceLoops() * 1000;
-	string last_points_str = std::to_string(last_points_number);
-	SpriteStringHolder::getSpriteString("LastPoints")->changeString(last_points_str, (WIN_WIDTH / 2) + 50, (WIN_HEIGHT / 2) + 135);
-	SpriteStringHolder::getSpriteString("LastPoints")->setVisibility(true);
-	//*/
     return true;
 }
 
