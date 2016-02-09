@@ -278,6 +278,15 @@
                 "spriteType": 2,
                 "animFilmId":"europe"
                 },{
+                "id": "spriteAfrica",
+                "frameNo": 0,
+                "destRect": [0, -5400, 768, 2135],
+                "point": [0, 0],
+                "repetition": 1,
+                "visible": true,
+                "spriteType": 2,
+                "animFilmId":"africa"
+                },{
                 "id": "spriteInfoPlane",
                 "frameNo": 0,
                 "destRect": [0, 0, 15, 17],
