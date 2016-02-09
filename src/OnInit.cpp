@@ -97,8 +97,8 @@ bool Game::InitWindow(){
     if(SDL_GetCurrentDisplayMode(0, &current))
         SDL_Log("Could not get display mode for video display #%d: %s", 0, SDL_GetError());
     
-    _window = SDL_CreateWindow("1942", current.w, current.h , WIN_WIDTH, WIN_HEIGHT, SDL_WINDOW_SHOWN);
-	//_window = SDL_CreateWindow("1942", 100, 100, WIN_WIDTH, WIN_HEIGHT-100,  SDL_WINDOW_SHOWN);
+    //_window = SDL_CreateWindow("1942", current.w, current.h , WIN_WIDTH, WIN_HEIGHT, SDL_WINDOW_SHOWN);
+	_window = SDL_CreateWindow("1942", 100, 1, WIN_WIDTH, WIN_HEIGHT,  SDL_WINDOW_SHOWN);
 
 	if (_window == nullptr){
         std::cout << "SDL_CreateWindow Error: " << SDL_GetError() << std::endl;

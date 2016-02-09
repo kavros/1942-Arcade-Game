@@ -283,10 +283,15 @@ void Game::OnEvent() {
         setState(EXIT);
         return ;
     }
-    
+	
     if(Game::event.window.event == SDL_WINDOWEVENT_FOCUS_LOST ){
-        setState(PAUSE_MENU);
+		if (Game::_gameState != MULTIPLAYER_GAME){
+			setState(PAUSE_MENU);
+		}
+		
     }
+
+
     
     switch (getState()) {
         case SINGLEPLAYER_MENU:{
