@@ -382,7 +382,13 @@
               "rects": [
                         [0, 0, 2971, 2223]
                         ]
-              }, {
+              },{
+              "id": "africa",
+              "path": "terrain/africa.png",
+              "rects": [
+                        [0, 0, 1840, 4912]
+                        ]
+              },  {
               "id": "mainMenuSingleplayer",
               "path": "main_menu/single.png",
               "rects": [

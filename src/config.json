@@ -3,7 +3,7 @@
     "mute": false,
     "superAceLifes": 2,
     "superAceLoops": 3,
-    "powerUpsOfStage": [2,1,0,4,3,5,6],
+    "powerUpsOfStage": [0,1,2,4,3,5,6],
     "superAceLives": 2,
     "spriteSize": 4 ,
     "highScore": 1400

@@ -27,6 +27,12 @@
                             "spriteType": 2,
                             "spriteId": "spriteEurope"
                             },{
+                            "id": "spriteAfricaAnimator",
+                            "animationId": "backgroundObjectsAnimation",
+                            "repetition": 1,
+                            "spriteType": 2,
+                            "spriteId": "spriteAfrica"
+                            },{
                             "id": "SuperAceAnimatorUp",
                             "animationId": "superAceAnimationUp",
                             "repetition": 2,
