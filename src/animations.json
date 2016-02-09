@@ -171,7 +171,7 @@
                                       },
                                       {
                                       "id": "endOfStageTickAnimation",
-                                      "delay": 50000,
+                                      "delay": 60000,
                                       "repetitions": 1
                                       },{
                                       "id": "endOfStageMoveToCenterTickAnimation",
@@ -273,6 +273,38 @@
                                                       "delay": 100
                                                       }]
                                             }, {
+                                            "id": "SideFighterRightByeByeAnimation",
+                                            "continuous": true,
+                                            "paths": [{
+                                                      "dx": 4,
+                                                      "dy": -4,
+                                                      "frameNo": 1,
+                                                      "visibility": true,
+                                                      "delay": 100
+                                                      }, {
+                                                      "dx": 4,
+                                                      "dy": -4,
+                                                      "frameNo": 6,
+                                                      "visibility": true,
+                                                      "delay": 100
+                                                      }]
+                                            },{
+                                            "id": "SideFighterLeftByeByeAnimation",
+                                            "continuous": true,
+                                            "paths": [{
+                                                      "dx": -4,
+                                                      "dy": -4,
+                                                      "frameNo": 1,
+                                                      "visibility": true,
+                                                      "delay": 100
+                                                      }, {
+                                                      "dx": -4,
+                                                      "dy": -4,
+                                                      "frameNo": 6,
+                                                      "visibility": true,
+                                                      "delay": 100
+                                                      }]
+                                            },{
                                             "id": "superAceAnimationUp",
                                             "continuous": false,
                                             "doWhile": true,

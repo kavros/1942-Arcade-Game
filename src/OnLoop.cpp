@@ -29,8 +29,9 @@ void Game::AIOnLoop(){
         
         static bool right = true;
         static bool left = true;
-        
+		
         if(superAce->getAttached(RIGHT_FIGHTER) && right){
+
             right = AnimatorHolder::updateSideFighterAnimation(RIGHT_FIGHTER);
         }
         if(superAce->getAttached(LEFT_FIGHTER) && left){

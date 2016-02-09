@@ -454,7 +454,8 @@ void AnimatorHolder::triggerStartOfStageAnimators(){
     times++;
     
     //set items
-    
+
+
     AnimatorHolder::superAceMovingAnimator();
     
     Sprite* initialAircraft = SpritesHolder::getSprite(TERRAIN, "spriteAircraftCarrier0");
@@ -476,7 +477,8 @@ void AnimatorHolder::triggerStartOfStageAnimators(){
     //start enemy planes
     TimerTickAnimator::startTimeTickAnimator("startEnemyPlanesTickAnimation", AnimatorHolder::triggerstartEnemyPlanesTickAnimator );
 	SoundHolder::playSound("propeller");
-
+	
+	//superAce->attach(LEFT_FIGHTER);
 }
 
 int setD(int big,int small){
@@ -556,8 +558,11 @@ void updateEndOfStageAnimation(){
     }
     
     animator->start(Game::getGameTime());
+	
 
 }
+
+
 
 void triggerEndOfStageCreateAircraftAnimator(){
 
@@ -666,6 +671,30 @@ void AnimatorHolder::triggerEndOfStageAnimators(){
 
     //stop the background and enable end text
     TimerTickAnimator::startTimeTickAnimator("endOfStageStopBackgroundTickAnimation", triggerEndOfStageStopBackgroundAnimator );
+
+
+
+	if (superAce->getAttached(RIGHT_FIGHTER) && superAce->getAttached(LEFT_FIGHTER)){
+		SideFighter* leftSideFighter = (SideFighter*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, LEFT_FIGHTER);
+		SideFighter* rightSideFighter = (SideFighter*)SpritesHolder::getSpritesHolder()->getSprite(SUPER_ACE, RIGHT_FIGHTER);
+		assert(leftSideFighter);
+		assert(rightSideFighter);
+
+		MovingPathAnimation* leftSideFighterByeByeAnimation = (MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("SideFighterLeftByeByeAnimation");
+		MovingPathAnimation* rightSideFighterByeByeAnimation = (MovingPathAnimation*)AnimationHolder::getAnimationHolder()->getAnimation("SideFighterRightByeByeAnimation");
+		assert(rightSideFighterByeByeAnimation);
+		assert(leftSideFighterByeByeAnimation);
+
+
+		MovingPathAnimator* LeftSideFighterAnimator = new MovingPathAnimator("SideFighterLeftByeByeAnimator", leftSideFighter, (MovingPathAnimation*)leftSideFighterByeByeAnimation);
+		MovingPathAnimator* RightSideFighterAnimator = new MovingPathAnimator("SideFighterLeftByeByeAnimator2", rightSideFighter, (MovingPathAnimation*)rightSideFighterByeByeAnimation);
+		assert(LeftSideFighterAnimator);
+		assert(RightSideFighterAnimator);
+	
+		LeftSideFighterAnimator->start(Game::getGameTime());
+		RightSideFighterAnimator->start(Game::getGameTime());
+
+	}
 
 }
 
@@ -786,7 +815,7 @@ void AnimatorHolder::triggerstartEnemyPlanesTickAnimator(){
     TimerTickAnimator::startTimeTickAnimator("enemyBulletsTickAnimation", AnimatorHolder::triggerBullets);
     
     //Bonus Planes
-    //TimerTickAnimator::startTimeTickAnimator("redPlaneTickAnimations", triggerRedPlaneTickAnimations );
+    TimerTickAnimator::startTimeTickAnimator("redPlaneTickAnimations", triggerRedPlaneTickAnimations );
     
     //mini green Planes/jets
     //TimerTickAnimator::startTimeTickAnimator("miniGreenOneEngTickAnimation", triggerMiniGreenOneEngAnimator );
@@ -826,9 +855,9 @@ void AnimatorHolder::startTimeTickAnimators(){
 
     //start of stage
     TimerTickAnimator::startTimeTickAnimator("startOfStageTickAnimation", AnimatorHolder::triggerStartOfStageAnimators );
-
-    //end of stage
-    //TimerTickAnimator::startTimeTickAnimator("endOfStageTickAnimation", AnimatorHolder::triggerEndOfStageAnimators );
+	
+	//end of stage
+    TimerTickAnimator::startTimeTickAnimator("endOfStageTickAnimation", AnimatorHolder::triggerEndOfStageAnimators );
 }
 
 using namespace rapidjson;
