@@ -71,7 +71,7 @@
                                       },{
                                       "id": "miniGreyDoubleEngTickAnimation",
                                       "delay": 12000,
-                                      "repetitions": 4
+                                      "repetitions": 8
                                       }, {
                                       "id": "miniGreenOneEngTickAnimation",
                                       "delay": 13000,
@@ -178,7 +178,7 @@
                                       },
                                       {
                                       "id": "endOfStageTickAnimation",
-                                      "delay": 140000,
+                                      "delay": 160000,
                                       "repetitions": 1
                                       },{
                                       "id": "endOfStageMoveToCenterTickAnimation",
