@@ -352,6 +352,7 @@ void triggerBigGreenIntroTickAnimators(){
     
     static int nameId = 0;
     string bigPlaneIntroAnimatorString = "BigGreenAnimator" + std::to_string(nameId); //Intro animator
+    string bigPlaneMovingAnimId = "BigGreenMovingAnimator" +std::to_string(nameId);
     nameId++;
     
     if(! SpritesHolder::getSprite( ALIEN_SHIP , "BigGreen0" ) )
@@ -359,7 +360,11 @@ void triggerBigGreenIntroTickAnimators(){
     
     MovingPathAnimator* animator = (MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator(bigPlaneIntroAnimatorString);
     assert(animator);
+    
+    MovingPathAnimator* animator2 = (MovingPathAnimator*)AnimatorHolder::getAnimatorHolder()->getAnimator(bigPlaneMovingAnimId);
+    assert(animator2 );
     animator->start(Game::getGameTime());
+    animator2->start(Game::getGameTime());
 }
 
 void triggerBigGreyIntroTickAnimators(){
@@ -454,7 +459,7 @@ void AnimatorHolder::triggerStartOfStageAnimators(){
     times++;
     
     //set items
-
+    
 
     AnimatorHolder::superAceMovingAnimator();
     
@@ -477,7 +482,7 @@ void AnimatorHolder::triggerStartOfStageAnimators(){
     //start enemy planes
     TimerTickAnimator::startTimeTickAnimator("startEnemyPlanesTickAnimation", AnimatorHolder::triggerstartEnemyPlanesTickAnimator );
 	SoundHolder::playSound("propeller");
-	
+
 	//superAce->attach(LEFT_FIGHTER);
 }
 
@@ -558,7 +563,7 @@ void updateEndOfStageAnimation(){
     }
     
     animator->start(Game::getGameTime());
-	
+
 
 }
 
@@ -811,6 +816,7 @@ void AnimatorHolder::triggerstartEnemyPlanesTickAnimator(){
 	if (SoundHolder::playMusic() == -1){
 		printf("Mix_PlayMusic: %s\n", Mix_GetError());
 	}
+    
     //Bullets
     TimerTickAnimator::startTimeTickAnimator("enemyBulletsTickAnimation", AnimatorHolder::triggerBullets);
     
@@ -818,14 +824,14 @@ void AnimatorHolder::triggerstartEnemyPlanesTickAnimator(){
     TimerTickAnimator::startTimeTickAnimator("redPlaneTickAnimations", triggerRedPlaneTickAnimations );
     
     //mini green Planes/jets
-    //TimerTickAnimator::startTimeTickAnimator("miniGreenOneEngTickAnimation", triggerMiniGreenOneEngAnimator );
-    //TimerTickAnimator::startTimeTickAnimator("miniGreenDoubleEngTickAnimation", triggerMiniGreenDoubleEngAnimator );
-    //TimerTickAnimator::startTimeTickAnimator("miniGreenJetTickAnimation", triggerMiniGreenJetAnimator );
+    TimerTickAnimator::startTimeTickAnimator("miniGreenOneEngTickAnimation", triggerMiniGreenOneEngAnimator );
+    TimerTickAnimator::startTimeTickAnimator("miniGreenDoubleEngTickAnimation", triggerMiniGreenDoubleEngAnimator );
+    TimerTickAnimator::startTimeTickAnimator("miniGreenJetTickAnimation", triggerMiniGreenJetAnimator );
     
     //mini  grey Planes/jets
-    //TimerTickAnimator::startTimeTickAnimator("miniGreyJetTickAnimation", triggerMiniGreyJetTickAnimator);
-    //TimerTickAnimator::startTimeTickAnimator("miniGreyOneEngTickAnimation", triggerMiniGreyOneEngAnimator);
-    //TimerTickAnimator::startTimeTickAnimator("miniGreyDoubleEngTickAnimation", triggerMiniGreyDoubleEngAnimator);
+    TimerTickAnimator::startTimeTickAnimator("miniGreyJetTickAnimation", triggerMiniGreyJetTickAnimator);
+    TimerTickAnimator::startTimeTickAnimator("miniGreyOneEngTickAnimation", triggerMiniGreyOneEngAnimator);
+    TimerTickAnimator::startTimeTickAnimator("miniGreyDoubleEngTickAnimation", triggerMiniGreyDoubleEngAnimator);
     
     
     //green medium plane
@@ -836,7 +842,7 @@ void AnimatorHolder::triggerstartEnemyPlanesTickAnimator(){
     //grey medium plane
     //TimerTickAnimator::startTimeTickAnimator("medGreyDoubleEngTickAnimation", triggerMedGreyDoubleAnimator);
     //TimerTickAnimator::startTimeTickAnimator("medGreySingleEngTickAnimation", triggerMedGreySingleAnimator);
-    //TimerTickAnimator::startTimeTickAnimator("medGreyTripleEngTickAnimations", triggerMedGreyTripleEngAnimators);
+    // TimerTickAnimator::startTimeTickAnimator("medGreyTripleEngTickAnimations", triggerMedGreyTripleEngAnimators);
     
 	
     //big plane
@@ -847,7 +853,7 @@ void AnimatorHolder::triggerstartEnemyPlanesTickAnimator(){
     //TimerTickAnimator::startTimeTickAnimator("bigGreenOutroTickAnimation", triggerBigGreenOutroTickAnimators );
     
     //death star
-    //TimerTickAnimator::startTimeTickAnimator("deathStarTickAnimation", triggerDeathStarAnimator );
+    TimerTickAnimator::startTimeTickAnimator("deathStarTickAnimation", triggerDeathStarAnimator );
      
 }
 
@@ -855,8 +861,8 @@ void AnimatorHolder::startTimeTickAnimators(){
 
     //start of stage
     TimerTickAnimator::startTimeTickAnimator("startOfStageTickAnimation", AnimatorHolder::triggerStartOfStageAnimators );
-	
-	//end of stage
+
+    //end of stage
     TimerTickAnimator::startTimeTickAnimator("endOfStageTickAnimation", AnimatorHolder::triggerEndOfStageAnimators );
 }
 
@@ -922,8 +928,9 @@ void AnimatorHolder::updateAllGreyPlaneAnimations(){
     
     MovingPathAnimator* grayPlaneAnimator;
     string grayPlaneAnimatorName, grayPlaneAnimationName;
-    AnimatorHolder::AnimatorList::const_iterator it2 = getAnimatorHolder()->_running.end();
-    AnimatorHolder::AnimatorList::const_iterator  it = getAnimatorHolder()->_running.begin();//_running.begin();
+    
+    AnimatorList::const_iterator it2 = getAnimatorHolder()->_running.end();
+    AnimatorList::const_iterator  it = getAnimatorHolder()->_running.begin();//_running.begin();
     
     while (it != getAnimatorHolder()->_running.end()){
         it2 = it;
@@ -1247,20 +1254,16 @@ bool  AnimatorHolder::updateSideFighterAnimation(string fighter){
     if( dx<2 && dx>-2 && dy<2 && dy>-2 ){
         //stop the animator
         
+        //start the side fighter's moving animators
         MovingPathAnimator* animator;
-        animator = (MovingPathAnimator*) AnimatorHolder::getAnimator("sideFighterAttachAnimatorRight");
-        assert(animator);
-        animator->setState(ANIMATOR_FINISHED);
-        animator->stop();
+
+        if( fighter == LEFT_FIGHTER){
         
         animator = (MovingPathAnimator*) AnimatorHolder::getAnimator("sideFighterAttachAnimatorLeft");
         assert(animator);
         animator->setState(ANIMATOR_FINISHED);
         animator->stop();
         
-        //start the side fighter's moving animators
-        
-        if( fighter == LEFT_FIGHTER){
             animation = (MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("sideFighterAnimationRight");
             assert(animation);
             animator = new MovingPathAnimator("LeftSideFighterAnimatorRight", sideFighter, animation);
@@ -1273,6 +1276,12 @@ bool  AnimatorHolder::updateSideFighterAnimation(string fighter){
 
         }
         else if( fighter == RIGHT_FIGHTER){
+            
+            animator = (MovingPathAnimator*) AnimatorHolder::getAnimator("sideFighterAttachAnimatorRight");
+            assert(animator);
+            animator->setState(ANIMATOR_FINISHED);
+            animator->stop();
+            
             animation = (MovingPathAnimation*) AnimationHolder::getAnimationHolder()->getAnimation("sideFighterAnimationRight");
             assert(animation);
             animator = new MovingPathAnimator( "RightSideFighterAnimatorRight", sideFighter, animation);
@@ -1340,4 +1349,19 @@ void AnimatorHolder::createUpdateScoreAnimator(SDL_Rect rect,int points){
 
 }
 
+bool AnimatorHolder::onManuevuer(){
+   
+    AnimatorHolder* h = AnimatorHolder::getAnimatorHolder();
+    AnimatorList::iterator it = h->_running.begin();
+    
+    
+    while (it != h->_running.end()){
+        
+        if ((*it)->getId().find("animatorManeuverId") != string::npos ){
+            return true;
+        }
+        it++;
+    }
+    return false;
+}
 

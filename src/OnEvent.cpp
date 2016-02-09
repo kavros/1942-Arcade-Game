@@ -4,12 +4,11 @@
 
 void Game::singleplayerGameOnEvent(){
 	
-
     SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce0");
     assert(superAce);
 
-    if(!AnimatorHolder::movingEnable){
-        //can't move during start or end
+    if(!AnimatorHolder::movingEnable || AnimatorHolder::onManuevuer()){
+        //can't move during start or end or onManuevuer
         return;
     }
     
@@ -110,7 +109,85 @@ void Game::singleplayerGameOnEvent(){
 }
 
 void Game::multiplayerGameOnEvent(){
-    assert(0);
+    static SDL_Event prev_event2;
+    
+    SuperAce* superAce2 = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce1");
+    assert(superAce2);
+    superAce2->setVisibility(true);
+
+    if(!AnimatorHolder::movingEnable){
+        //can't move during start or end
+        return;
+    }
+    
+    if (event.type == SDL_KEYDOWN || event.type == SDL_CONTROLLERBUTTONDOWN){
+        
+        MovingPathAnimator* superAceAnimatorLeft = (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorLeft1");
+        assert(superAceAnimatorLeft);
+        
+        MovingPathAnimator* superAceAnimatorLeftLeft = (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorLeftLeft1");
+        assert(superAceAnimatorLeftLeft);
+        
+        MovingPathAnimator* superAceAnimatorRight = (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorRight1");
+        assert(superAceAnimatorRight);
+        
+        MovingPathAnimator* superAceAnimatorRightRight = (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorRightRight1");
+        assert(superAceAnimatorRightRight);
+        
+        MovingPathAnimator* superAceAnimatorUp = (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorUp1");
+        assert(superAceAnimatorUp);
+        
+        MovingPathAnimator* superAceAnimatorDown = (MovingPathAnimator*)AnimatorHolder::getAnimator("SuperAceAnimatorDown1");
+        assert(superAceAnimatorDown);
+        
+        if (event.key.keysym.sym == SDLK_j) {
+            
+            if(event.key.keysym.sym != prev_event2.key.keysym.sym)
+                superAceAnimatorLeft->start(getGameTime());
+            else
+                superAceAnimatorLeftLeft->start(getGameTime());
+            
+            superAceAnimatorLeft->start(getGameTime());
+
+        }
+        else if (event.key.keysym.sym == SDLK_l){
+            
+            if(event.key.keysym.sym != prev_event2.key.keysym.sym)
+                superAceAnimatorRight->start(getGameTime());
+            else
+                superAceAnimatorRightRight->start(getGameTime());
+             
+            superAceAnimatorRight->start(getGameTime());
+        }
+        else if (event.key.keysym.sym == SDLK_i){
+            superAceAnimatorUp->start(getGameTime());
+        }
+        else if (event.key.keysym.sym == SDLK_k){
+            superAceAnimatorDown->start(getGameTime());
+            
+        }
+        else if (event.key.keysym.sym == SDLK_t){
+            superAce2->fire();
+            prevEvent = event;
+        }
+        else if (event.key.keysym.sym == SDLK_y){
+            
+            superAce2->doManeuever();
+        }
+        else if (event.key.keysym.sym == SDLK_x){
+            if (!superAce2->isUndefeatable()){
+                SoundHolder::playSound("i_will_never_die");
+                superAce2->setUndefeatable(true);
+                
+            } else if(superAce2->isUndefeatable()){
+                //sound for this case
+                superAce2->setUndefeatable(false);
+            }
+            
+        }
+        
+    }
+    prev_event2 = event;
 }
 
 void Game::pauseManager(){
@@ -170,7 +247,7 @@ void Game::pauseManager(){
             
             firstTime = true;
         }
-        else if (Game::event.key.keysym.sym == SDLK_SPACE){
+        else if (Game::event.key.keysym.sym == SDLK_RETURN){
             if( s->getDstRect().y == down_y ){
                 AnimatorHolder::wakeUpAnimators(getGameTime());
 				SoundHolder::resumeSounds();
@@ -193,7 +270,7 @@ void Game::pauseManager(){
 }
 
 void Game::singleplayerMenuOnEvent(){
-    if (Game::event.key.keysym.sym == SDLK_SPACE){
+    if (Game::event.key.keysym.sym == SDLK_RETURN){
         setState(SINGLEPLAYER_GAME);
     }
     else if (Game::event.key.keysym.sym == SDLK_DOWN){
@@ -202,7 +279,7 @@ void Game::singleplayerMenuOnEvent(){
 }
 
 void Game::multiplayerMenuOnEvent(){
-    if (Game::event.key.keysym.sym == SDLK_SPACE){
+    if (Game::event.key.keysym.sym == SDLK_RETURN){
         setState(MULTIPLAYER_GAME);
     }
     else if (Game::event.key.keysym.sym == SDLK_UP){
@@ -220,14 +297,6 @@ void Game::OnEvent() {
     if(Game::event.window.event == SDL_WINDOWEVENT_FOCUS_LOST){
         setState(PAUSE_MENU);
     }
-    
-    SuperAce* superAce = (SuperAce*)SpritesHolder::getSprite(SUPER_ACE, "SuperAce0");
-    assert(superAce);
-    
-    if(superAce->getState() == IN_COLUSION ){
-        setState(GAME_OVER);
-    }
-    
     
     switch (getState()) {
         case SINGLEPLAYER_MENU:{

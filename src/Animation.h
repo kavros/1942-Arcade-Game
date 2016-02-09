@@ -5,7 +5,7 @@
 class AnimationHolder;
 
 typedef signed short offset_t;
-typedef unsigned short delay_t;
+typedef unsigned long delay_t;
 typedef std::string animid_t;
 
 class Animation {

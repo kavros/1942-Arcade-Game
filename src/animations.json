@@ -54,40 +54,53 @@
                                       "repetitions": 5
                                       }, {
                                       "id": "redPlaneTickAnimations",
-                                      "delay": 10000,
+                                      "delay": 20000,
                                       "repetitions": 7
                                       }, {
                                       "id": "miniGreenJetTickAnimation",
-                                      "delay": 3500,
+                                      "delay": 14000,
                                       "repetitions": 8
                                       }, {
                                       "id": "miniGreenDoubleEngTickAnimation",
-                                      "delay": 3500,
+                                      "delay": 16000,
                                       "repetitions": 8
                                       }, {
                                       "id": "miniGreyOneEngTickAnimation",
-                                      "delay": 3000,
+                                      "delay": 9000,
                                       "repetitions": 8
                                       },{
                                       "id": "miniGreyDoubleEngTickAnimation",
-                                      "delay": 3500,
+                                      "delay": 12000,
                                       "repetitions": 4
+                                      }, {
+                                      "id": "miniGreenOneEngTickAnimation",
+                                      "delay": 13000,
+                                      "repetitions": 8
+                                      }, {
+                                      "id": "miniGreyJetTickAnimation",
+                                      "delay": 13000,
+                                      "before comment": 8,
+                                      "repetitions": 8
                                       },{
                                       "id": "medGreenDoubleEngTickAnimation",
-                                      "delay": 4000,
-                                      "repetitions": 4
+                                      "delay": 28000,
+                                      "before comment": 4,
+                                      "repetitions": 2
                                       }, {
                                       "id": "medGreyDoubleEngTickAnimation",
-                                      "delay": 9000,
-                                      "repetitions": 4
+                                      "delay": 29000,
+                                      "before comment": 4,
+                                      "repetitions": 2
                                       }, {
                                       "id": "medGreySingleEngTickAnimation",
-                                      "delay": 9000,
-                                      "repetitions": 4
+                                      "delay": 30000,
+                                      "before comment": 4,
+                                      "repetitions": 2
                                       }, {
                                       "id": "medGreyTripleEngTickAnimations",
-                                      "delay": 8000,
-                                      "repetitions": 3
+                                      "delay": 34000,
+                                      "before comment": 3,
+                                      "repetitions": 2
                                       }, {
                                       "id": "medGreyTripleEngTickAnimation0",
                                       "delay": 1000,
@@ -102,8 +115,9 @@
                                       "repetitions": 3
                                       }, {
                                       "id": "medGreenTripleEngTickAnimations",
-                                      "delay": 8000,
-                                      "repetitions": 3
+                                      "delay": 18000,
+                                      "before comment": 4,
+                                      "repetitions": 2
                                       }, {
                                       "id": "medGreenTripleEngTickAnimation0",
                                       "delay": 1000,
@@ -118,23 +132,20 @@
                                       "repetitions": 3
                                       },{
                                       "id": "medGreenSingleEngTickAnimation",
-                                      "delay": 9000,
-                                      "repetitions": 4
-                                      }, {
-                                      "id": "miniGreyJetTickAnimation",
-                                      "delay": 2000,
-                                      "repetitions": 8
+                                      "delay": 18000,
+                                      "before comment": 4,
+                                      "repetitions": 2
                                       }, {
                                       "id": "shortTickAnimation",
                                       "delay": 5000,
                                       "repetitions": 1
                                       }, {
                                       "id": "bigGreenIntroTickAnimation",
-                                      "delay": 11000,
+                                      "delay": 40000,
                                       "repetitions": 1
                                       }, {
                                       "id": "bigGreyIntroTickAnimation",
-                                      "delay": 12000,
+                                      "delay": 80000,
                                       "repetitions": 1
                                       }, {
                                       "id": "bigGreenStayStillTickAnimation",
@@ -144,10 +155,6 @@
                                       "id": "bigGreenOutroTickAnimation",
                                       "delay": 21000,
                                       "repetitions": 1
-                                      }, {
-                                      "id": "miniGreenOneEngTickAnimation",
-                                      "delay": 6000,
-                                      "repetitions": 8
                                       }, {
                                       "id": "startOfStageTickAnimation",
                                       "delay": 0,
@@ -171,7 +178,7 @@
                                       },
                                       {
                                       "id": "endOfStageTickAnimation",
-                                      "delay": 60000,
+                                      "delay": 140000,
                                       "repetitions": 1
                                       },{
                                       "id": "endOfStageMoveToCenterTickAnimation",
@@ -241,6 +248,22 @@
                                                       "delay": 18
                                                       }]
                                             }, {
+                                            "id": "BigMovingAnimation",
+                                            "continuous": true,
+                                            "paths": [{
+                                                      "dx": 0,
+                                                      "dy": 0,
+                                                      "frameNo": 1,
+                                                      "visibility": true,
+                                                      "delay": 200
+                                                      }, {
+                                                      "dx": 0,
+                                                      "dy": 0,
+                                                      "frameNo": 0,
+                                                      "visibility": true,
+                                                      "delay": 200
+                                                      }]
+                                            }, {
                                             "id": "superAceMovingAnimation",
                                             "continuous": true,
                                             "paths": [{
@@ -297,7 +320,7 @@
                                                       "frameNo": 1,
                                                       "visibility": true,
                                                       "delay": 100
-                                                      }, {
+                                            }, {
                                                       "dx": -4,
                                                       "dy": -4,
                                                       "frameNo": 6,
@@ -816,17 +839,17 @@
                                             "id": "BigPlaneOutroAnimation",
                                             "continuous": true,
                                             "paths": [{
-                                                      "dx": 1,
+                                                      "dx": 2,
                                                       "dy": 0,
                                                       "visibility": true,
                                                       "frameNo": 0,
-                                                      "delay": 20
+                                                      "delay": 50
                                                       }, {
-                                                      "dx": 1,
+                                                      "dx": 2,
                                                       "dy": 0,
                                                       "visibility": true,
                                                       "frameNo": 0,
-                                                      "delay": 20
+                                                      "delay": 50
                                                       }]
                                             
                                             },{

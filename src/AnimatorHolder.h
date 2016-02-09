@@ -17,10 +17,12 @@ class Animator;
 
 typedef unsigned long timestamp_t;
 
+typedef std::map<std::string, Animator*> AnimatorMap;
+typedef std::list<Animator*> AnimatorList;
+
 class AnimatorHolder{
 private:
-    typedef std::map<std::string, Animator*> AnimatorMap;
-    typedef std::list<Animator*> AnimatorList;
+
     
 	class ProgressFunctor : public std::unary_function<Animator*, void> {
 		timestamp_t _t;
@@ -84,7 +86,8 @@ public:
     static void triggerstartEnemyPlanesTickAnimator();
     static void superAceMovingAnimator();
     static void createUpdateScoreAnimator(SDL_Rect rect,int points);
-    static bool  updateSideFighterAnimation(string fighter);
+    static bool updateSideFighterAnimation(string fighter);
+    static bool onManuevuer();
 
 };
 
