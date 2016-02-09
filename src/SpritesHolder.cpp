@@ -59,7 +59,8 @@ Sprite* SpritesHolder::getSprite(SpriteType type, std::string id){
         if((*it)->getId().compare(id) == 0)
             return *it;
     }
-    cout<<"There is No Sprite with this id"<<std::endl;
+    
+	//cout<<"There is No Sprite with this id"<<std::endl;
     return nullptr;
 }
 
