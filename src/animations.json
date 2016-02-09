@@ -54,7 +54,7 @@
                                       "repetitions": 5
                                       }, {
                                       "id": "redPlaneTickAnimations",
-                                      "delay": 20000,
+                                      "delay": 16500,
                                       "repetitions": 7
                                       }, {
                                       "id": "miniGreenJetTickAnimation",
