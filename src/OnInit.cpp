@@ -33,6 +33,14 @@ void Game::InitGame(){
     
     InitGameInfo();
     
+    /*
+    SDL_Rect r = {0,0,WIN_WIDTH,WIN_HEIGHT};
+    Sprite* s = new Sprite("initialLogo",0,r,{0,0});
+    //Sprite* s = new Sprite("initialLogo1", 0, r , {0,0}, true, 0, (AnimationFilm*)AnimationFilmHolder::Get()->GetFilm("initialLogo")  );
+    assert(s);
+    s->setVisibility(true);
+    */
+    
     Background::initBackgroundObjects();
 
     AnimatorHolder::startTimeTickAnimators();

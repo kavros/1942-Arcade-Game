@@ -738,7 +738,12 @@
                         [19,1,21,11],
                         [44,2,19,10]
                         ]
+              },{
+              "id": "initialLogo",
+              "path": "main_menu/initial_logo.png",
+              "rects": [
+                        [0,0,217,80]
+                ]
               }
-              
-              ]
+            ]
 }

@@ -10,7 +10,7 @@
                 "destRect": [0, 0, 35, 25],
                 "point": [0, 0],
                 "repetition": 2,
-                "visible": false,
+                "visible": true,
                 "spriteType": 3,
                 "animFilmId": "Super.Ace.1942.Scaled"
                 },{
