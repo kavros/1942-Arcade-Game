@@ -7,9 +7,7 @@
 
 void initialLogo(){
 
-
-    std::string path = "main_menu/wrong_logo.jpg";
-    //std::string path = "main_menu/initial_logo.png";
+    std::string path = "main_menu/initial_logo.png";
 
     std::string  image = IMG_PATH + path;
     
@@ -27,13 +25,11 @@ void initialLogo(){
     }
 
     std::vector<SDL_Rect> box;
-    //box.push_back({0,0,217,80});
-    box.push_back({0,0,550,286});
+    box.push_back({0,0,217,80});
 
     AnimationFilmHolder::Get()->AddAnimationFilm(texture , box ,"initialLogo");
     AnimationFilm* an = (AnimationFilm*)AnimationFilmHolder::Get()->GetFilm("initialLogo");
-    //SDL_Rect r = {WIN_WIDTH/2-box[0].w/2,WIN_HEIGHT/2-box[0].h/2,WIN_WIDTH/4,WIN_HEIGHT/4};
-    SDL_Rect r = {0,0,WIN_WIDTH,WIN_HEIGHT};
+    SDL_Rect r = {WIN_WIDTH/2-box[0].w/2,WIN_HEIGHT/2-box[0].h/2,WIN_WIDTH/4,WIN_HEIGHT/4};
 
     Sprite* s = new Sprite("initialLogo",0,r,{0,0},true,SpriteType(0),an);
     assert(s);
