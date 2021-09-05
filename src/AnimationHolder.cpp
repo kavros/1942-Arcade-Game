@@ -1,4 +1,4 @@
-#include "AnimationHolder.h"
+#include "../includes/AnimationHolder.h"
 
 AnimationHolder* AnimationHolder::_holder = 0;//singleton
 
@@ -40,7 +40,7 @@ void    AnimationHolder::Load (const std::string& cataloge){
     std::string line, text;
     static  std::string  dataFilePath;
     
-   dataFilePath = SRC_PATH + string(cataloge);
+   dataFilePath = CONFIG_PATH + string(cataloge);
     
     std::ifstream file(dataFilePath);
     
@@ -102,7 +102,7 @@ void    AnimationHolder::LoadMovingPathAnim (const std::string& cataloge,int n){
     std::string line, text;
     static  std::string  dataFilePath;
     
-    dataFilePath = SRC_PATH + string(cataloge);
+    dataFilePath = CONFIG_PATH + string(cataloge);
     
     std::ifstream file(dataFilePath);
     

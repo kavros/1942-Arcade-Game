@@ -6,7 +6,7 @@
 //  Copyright © 2015 Nikos Xenakis. All rights reserved.
 //
 
-#include "Game.hpp"
+#include "../includes/Game.hpp"
 
 Uint32 Game::_fps_lasttime = SDL_GetTicks(); //the last recorded time.
 Uint32 Game::_fps_current = 0; //the last recorded time.

@@ -1,5 +1,4 @@
-#include "FrameListAnimation.h"
-
+#include "../includes/FrameListAnimation.h"
 
 const std::list<frame_t>& FrameListAnimation::GetFrames(void) const {
 	return frames;

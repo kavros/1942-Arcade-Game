@@ -1,4 +1,4 @@
-#include "LatelyDestroyable.h"
+#include "../includes/LatelyDestroyable.h"
 
 std::list<LatelyDestroyable*> DestructionManager::_dead;
 

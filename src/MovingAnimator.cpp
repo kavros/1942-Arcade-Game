@@ -1,4 +1,4 @@
-#include "MovingAnimator.h"
+#include "../includes/MovingAnimator.h"
 
 void MovingAnimator::start( timestamp_t t){
 

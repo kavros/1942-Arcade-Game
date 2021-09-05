@@ -1,7 +1,7 @@
 
-#include "SuperAce.h"
-#include "EnemyFighter.hpp"
-#include "SpritesHolder.hpp"
+#include "../includes/SuperAce.h"
+#include "../includes/EnemyFighter.hpp"
+#include "../includes/SpritesHolder.hpp"
 
 SDL_Rect getRandomDestRect(EnemyFighterType e,SDL_Rect dst);
 SpritesHolder* SpritesHolder::_holder = 0;
@@ -133,7 +133,7 @@ using namespace rapidjson;
 void    SpritesHolder::Load (const std::string& cataloge/*,SDL_Renderer* _renderer*/){
     std::string line, text;
 
-    static  std::string  dataFilePath = SRC_PATH + string(cataloge);
+    static  std::string  dataFilePath = CONFIG_PATH + string(cataloge);
     
     std::ifstream file(dataFilePath);
 	if (!file.is_open()){

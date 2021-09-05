@@ -1,6 +1,4 @@
-
-
-#include "Background.hpp"
+#include "../includes/Background.hpp"
 
 Background* Background::_holder = nullptr;
 

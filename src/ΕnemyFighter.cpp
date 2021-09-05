@@ -1,4 +1,4 @@
-#include "EnemyFighter.hpp"
+#include "../includes/EnemyFighter.hpp"
 
 EnemyFighter::EnemyFighter(){
     //illegal use
@@ -74,7 +74,7 @@ enum EnemyFighterType EnemyFighter::getEnemyFighterType(){
 
 void EnemyFighter::setFrame(unsigned i) {
     
-    assert(0 < i < _currFilm->getTotalFrames());
+    assert(0 < i && i < _currFilm->getTotalFrames());
     _frameNo = i;
     /*
     if(_enemyType != EnemyFighterType(RED_PLANE)){

@@ -1,4 +1,4 @@
-#include "SpriteString.hpp"
+#include "../includes/SpriteString.hpp"
 
 SpriteString::SpriteString(string str,int x, int y){
     int nx = x, ny = y;

@@ -1,6 +1,6 @@
-#include "Sprite.hpp"
-#include "SpritesHolder.hpp"
-#include "AnimatorHolder.h"
+#include "../includes/Sprite.hpp"
+#include "../includes/SpritesHolder.hpp"
+#include "../includes/AnimatorHolder.h"
 
 Sprite::Sprite(){
     //illegal use

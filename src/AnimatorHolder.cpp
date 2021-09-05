@@ -1,4 +1,4 @@
-#include "AnimatorHolder.h"
+#include "../includes/AnimatorHolder.h"
 
 void updateGreyPlaneAnimation(MovingPathAnimator* grayJetAnimator);
 void updateGreyJetAnimation(MovingPathAnimator* grayJetAnimator);
@@ -880,7 +880,7 @@ using namespace rapidjson;
 void    AnimatorHolder::Load (const std::string& cataloge){
     std::string line, text;
     
-    static  std::string  dataFilePath = SRC_PATH + string(cataloge);
+    static  std::string  dataFilePath = CONFIG_PATH + string(cataloge);
     
     std::ifstream file(dataFilePath);
     if (!file.is_open()){

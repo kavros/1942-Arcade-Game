@@ -1,7 +1,7 @@
-#include "Sprite.hpp"
-#include "AnimatorHolder.h"
-#include "Game.hpp"
-#include "PowerUp.hpp"
+#include "../includes/Sprite.hpp"
+#include "../includes/AnimatorHolder.h"
+#include "../includes/Game.hpp"
+#include "../includes/PowerUp.hpp"
 
 void Sprite::fireHandler::operator()(Sprite* bullet,Sprite* arg) const{
     

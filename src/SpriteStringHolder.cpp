@@ -1,4 +1,4 @@
-#include "SpriteStringHolder.hpp"
+#include "../includes/SpriteStringHolder.hpp"
 
 SpriteStringHolder* SpriteStringHolder::holder = nullptr;
 

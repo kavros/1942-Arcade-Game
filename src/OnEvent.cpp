@@ -1,6 +1,5 @@
-#include "Game.hpp"
-
-#include "MovingPathAnimator.h"
+#include "../includes/Game.hpp"
+#include "../includes/MovingPathAnimator.h"
 
 void Game::singleplayerGameOnEvent(){
 	

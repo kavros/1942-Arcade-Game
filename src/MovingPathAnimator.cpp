@@ -1,4 +1,4 @@
-#include "MovingPathAnimator.h"
+#include "../includes/MovingPathAnimator.h"
 
 //ctor
 MovingPathAnimator::MovingPathAnimator(std::string id, Sprite* sprite,MovingPathAnimation* anim):

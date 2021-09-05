@@ -1,4 +1,4 @@
-#include "Game.hpp"
+#include "../includes/Game.hpp"
 
 void Game::OnRender() {
     //Render the scene

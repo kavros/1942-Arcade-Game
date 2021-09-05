@@ -1,5 +1,5 @@
-#include "CollisionChecker.hpp"
-#include "Sprite.hpp"
+#include "../includes/CollisionChecker.hpp"
+#include "../includes/Sprite.hpp"
 
 CollisionChecker* CollisionChecker::_holder = 0;
 

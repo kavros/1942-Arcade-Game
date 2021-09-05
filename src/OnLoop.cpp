@@ -1,4 +1,4 @@
-#include "Game.hpp"
+#include "../includes/Game.hpp"
 
 void Game::destructionManagerOnLoop(){
     static int loopsRemainingToDelete = 10000 ;

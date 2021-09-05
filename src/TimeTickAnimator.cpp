@@ -1,4 +1,4 @@
-#include "TimerTickAnimator.h"
+#include "../includes/TimerTickAnimator.h"
 
 void TimerTickAnimator::start( timestamp_t t){
     

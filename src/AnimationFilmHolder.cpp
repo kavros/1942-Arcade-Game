@@ -1,4 +1,4 @@
-#include "AnimationFilmHolder.hpp"
+#include "../includes/AnimationFilmHolder.hpp"
 #include <iostream>
 #include <string>
 
@@ -14,7 +14,7 @@ using namespace rapidjson;
 void    AnimationFilmHolder::Load (const std::string& cataloge,SDL_Renderer* _renderer){
     std::string line, text;
 	
-	static  std::string  dataFilePath = SRC_PATH + string(cataloge);
+	static  std::string  dataFilePath = CONFIG_PATH + string(cataloge);
 
 	std::ifstream file(dataFilePath);
  

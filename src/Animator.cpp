@@ -1,5 +1,5 @@
-#include "Animator.h"
-#include "AnimatorHolder.h"
+#include "../includes/Animator.h"
+#include "../includes/AnimatorHolder.h"
 
 void Animator::start(timestamp_t t){
     

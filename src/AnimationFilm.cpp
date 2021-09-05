@@ -1,4 +1,4 @@
-#include "AnimationFilm.hpp"
+#include "../includes/AnimationFilm.hpp"
 
 //TODO Change Masked Blit to SLD Blit
 void AnimationFilm::displayFrame(SDL_Renderer* renderer, const SDL_Point point, unsigned frameNo, SDL_Rect dstRect) const{

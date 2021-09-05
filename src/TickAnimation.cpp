@@ -1,5 +1,5 @@
 
-#include "TickAnimation.h"
+#include "../includes/TickAnimation.h"
 
 TickAnimation::TickAnimation(animid_t id): Animation(id), _delay(0), _repetitions(1), _onTick(nullptr){
     

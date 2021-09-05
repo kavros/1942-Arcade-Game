@@ -1,9 +1,8 @@
-#include "Game.hpp"
-#include "../rapidjson/document.h"
-#include "../rapidjson/writer.h"
-#include "../rapidjson/stringbuffer.h"
-
-#include "MovingAnimation.h"
+#include "../includes/Game.hpp"
+#include "../includes/MovingAnimation.h"
+#include "../libs/rapidjson/document.h"
+#include "../libs/rapidjson/writer.h"
+#include "../libs/rapidjson/stringbuffer.h"
 
 void initialLogo(){
 
@@ -148,7 +147,7 @@ using namespace rapidjson;
 void    Game::LoadGameInfo (const std::string& cataloge){
     std::string line, text;
     
-    static  std::string  dataFilePath = SRC_PATH + string(cataloge);
+    static  std::string  dataFilePath = CONFIG_PATH + string(cataloge);
     
     std::ifstream file(dataFilePath);
     
@@ -187,7 +186,7 @@ void    Game::LoadGameInfo (const std::string& cataloge){
 void Game::updateHighScoreJson(const std::string& cataloge){
     std::string line, text;
     
-    static  std::string  dataFilePath = SRC_PATH + string(cataloge);
+    static  std::string  dataFilePath = CONFIG_PATH + string(cataloge);
     
     std::ifstream file(dataFilePath);
     
