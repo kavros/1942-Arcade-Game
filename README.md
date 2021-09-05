@@ -2,6 +2,8 @@
 The project is a redevelopment of the original arcade game using the original sprite sheets.
 Developed by Alexandro Kavroulaki, Niko Xenaki, Antonio Katsaraki for Game Development Course.
 
+[![CMake](https://github.com/kavros/1942-Arcade-Game/actions/workflows/cmake.yml/badge.svg)](https://github.com/kavros/1942-Arcade-Game/actions/workflows/cmake.yml)
+
 # Video
 You can find a gameplay video in the following [link](https://www.youtube.com/watch?v=DqQoP_M39lQ)
 
