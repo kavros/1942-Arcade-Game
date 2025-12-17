@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1942 Arcade Game - WebAssembly</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Courier New", monospace;
+        background: linear-gradient(to bottom, #1a1a2e 0%, #16213e 100%);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        color: white;
+        overflow: hidden;
+      }
+
+      #game-container {
+        background: #0f0f1e;
+        border: 4px solid #00ff88;
+        border-radius: 10px;
+        box-shadow: 0 0 30px rgba(0, 255, 136, 0.5);
+        padding: 20px;
+        text-align: center;
+      }
+
+      h1 {
+        font-size: 48px;
+        margin-bottom: 20px;
+        color: #00ff88;
+        text-shadow: 0 0 20px rgba(0, 255, 136, 1);
+        letter-spacing: 5px;
+      }
+
+      #canvas {
+        display: block;
+        margin: 0 auto;
+        border: 2px solid #00ff88;
+        background: #000;
+        image-rendering: crisp-edges;
+        image-rendering: pixelated;
+      }
+
+      #status {
+        margin-top: 15px;
+        padding: 10px;
+        background: rgba(0, 255, 136, 0.1);
+        border-radius: 5px;
+        color: #00ff88;
+      }
+
+      #progress {
+        width: 100%;
+        height: 20px;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+        overflow: hidden;
+        margin: 15px 0;
+      }
+
+      #progress-bar {
+        height: 100%;
+        background: linear-gradient(to right, #00ff88, #00cc70);
+        width: 0%;
+        transition: width 0.3s ease;
+      }
+
+      .spinner {
+        margin: 20px auto;
+        width: 50px;
+        height: 50px;
+        border: 5px solid rgba(0, 255, 136, 0.3);
+        border-top-color: #00ff88;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .controls {
+        margin-top: 20px;
+        padding: 15px;
+        background: rgba(0, 255, 136, 0.1);
+        border-radius: 5px;
+        font-size: 14px;
+        text-align: left;
+      }
+
+      .controls h3 {
+        color: #00ff88;
+        margin-bottom: 10px;
+      }
+
+      .controls p {
+        margin: 5px 0;
+        color: #aaffdd;
+      }
+
+      #output {
+        margin-top: 15px;
+        padding: 10px;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 5px;
+        max-height: 150px;
+        overflow-y: auto;
+        text-align: left;
+        font-size: 12px;
+        color: #aaffdd;
+        display: none;
+      }
+
+      .error {
+        color: #ff4444 !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="game-container">
+      <h1>1942</h1>
+
+      <div id="status">Loading...</div>
+
+      <div id="progress">
+        <div id="progress-bar"></div>
+      </div>
+
+      <div class="spinner"></div>
+
+      <canvas id="canvas" oncontextmenu="event.preventDefault()" tabindex="-1"></canvas>
+
+      <div class="controls">
+        <h3>Controls:</h3>
+        <p>Arrow Keys / WASD - Move</p>
+        <p>Space - Fire</p>
+        <p>P - Pause</p>
+        <p>ESC - Menu</p>
+      </div>
+
+      <div id="output"></div>
+    </div>
+
+    <script type="text/javascript">
+      var statusElement = document.getElementById("status");
+      var progressElement = document.getElementById("progress-bar");
+      var spinnerElement = document.querySelector(".spinner");
+      var outputElement = document.getElementById("output");
+
+      var Module = {
+        preRun: [],
+        postRun: [],
+        print: (function () {
+          return function (text) {
+            if (arguments.length > 1) text = Array.prototype.slice.call(arguments).join(" ");
+            console.log(text);
+            outputElement.style.display = "block";
+            outputElement.innerHTML += text + "\n";
+            outputElement.scrollTop = outputElement.scrollHeight;
+          };
+        })(),
+        printErr: function (text) {
+          if (arguments.length > 1) text = Array.prototype.slice.call(arguments).join(" ");
+          console.error(text);
+          outputElement.style.display = "block";
+          outputElement.innerHTML += '<span class="error">' + text + "</span>\n";
+          outputElement.scrollTop = outputElement.scrollHeight;
+        },
+        canvas: (function () {
+          var canvas = document.getElementById("canvas");
+          canvas.addEventListener(
+            "webglcontextlost",
+            function (e) {
+              alert("WebGL context lost. You will need to reload the page.");
+              e.preventDefault();
+            },
+            false
+          );
+          return canvas;
+        })(),
+        setStatus: function (text) {
+          if (!Module.setStatus.last) Module.setStatus.last = { time: Date.now(), text: "" };
+          if (text === Module.setStatus.last.text) return;
+          var m = text.match(/([^(]+)\((\d+(\.\d+)?)\/(\d+)\)/);
+          var now = Date.now();
+          if (m && now - Module.setStatus.last.time < 30) return;
+          Module.setStatus.last.time = now;
+          Module.setStatus.last.text = text;
+
+          if (m) {
+            text = m[1];
+            progressElement.style.width = (parseInt(m[2]) / parseInt(m[4])) * 100 + "%";
+          } else {
+            progressElement.style.width = "0%";
+          }
+
+          statusElement.innerHTML = text;
+        },
+        totalDependencies: 0,
+        monitorRunDependencies: function (left) {
+          this.totalDependencies = Math.max(this.totalDependencies, left);
+          Module.setStatus(
+            left
+              ? "Preparing... (" +
+                  (this.totalDependencies - left) +
+                  "/" +
+                  this.totalDependencies +
+                  ")"
+              : "All downloads complete."
+          );
+        },
+        onRuntimeInitialized: function () {
+          statusElement.innerHTML = "Game Ready! Starting...";
+          setTimeout(function () {
+            statusElement.innerHTML = "Game Running";
+            spinnerElement.style.display = "none";
+            progressElement.parentElement.style.display = "none";
+          }, 1000);
+        },
+      };
+
+      Module.setStatus("Downloading...");
+
+      window.onerror = function (event) {
+        Module.setStatus("Exception thrown, see JavaScript console");
+        spinnerElement.style.display = "none";
+        Module.setStatus = function (text) {
+          if (text) Module.printErr("[post-exception status] " + text);
+        };
+      };
+    </script>
+    {{{ SCRIPT }}}
+  </body>
+</html>

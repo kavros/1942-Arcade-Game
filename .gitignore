@@ -35,3 +35,13 @@ bin/
 build/
 .vscode/*
 vcpkg_installed/
+
+# WebAssembly build artifacts
+web/build-wasm/
+web/*.js
+web/*.wasm
+web/*.data
+web/*.html.mem
+web/rapidjson/
+web/rapidjson.zip
+emsdk/

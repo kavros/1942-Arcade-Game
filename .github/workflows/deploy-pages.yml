@@ -1,0 +1,80 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Emscripten
+        uses: mymindstorm/setup-emsdk@v14
+        with:
+          version: "latest"
+
+      - name: Install dependencies
+        run: |
+          cd web
+
+      - name: Download RapidJSON
+        run: |
+          cd web
+          wget https://github.com/Tencent/rapidjson/archive/refs/heads/master.zip -O rapidjson.zip
+          unzip -q rapidjson.zip
+          mv rapidjson-master rapidjson
+
+      - name: Build WebAssembly
+        run: |
+          cd web
+          mkdir -p build-wasm
+
+          # Collect all cpp files
+          CPP_FILES=$(find ../src -name "*.cpp" -printf "%p ")
+
+          emcc $CPP_FILES \
+            -I ../includes \
+            -I rapidjson/include \
+            -DEMSCRIPTEN_BUILD \
+            -DNDEBUG \
+            -o build-wasm/index.html \
+            -std=c++14 \
+            -s USE_SDL=2 \
+            -s USE_SDL_IMAGE=2 \
+            -s USE_SDL_MIXER=2 \
+            -s SDL2_IMAGE_FORMATS='["png","bmp"]' \
+            -s ALLOW_MEMORY_GROWTH=1 \
+            -s ASYNCIFY \
+            -s ASSERTIONS=0 \
+            --preload-file ../resources@/ \
+            --shell-file shell.html
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "web/build-wasm"
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
