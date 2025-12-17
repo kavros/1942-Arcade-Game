@@ -1,10 +1,18 @@
 #ifndef includes_h
 #define includes_h
 
+#ifdef EMSCRIPTEN_BUILD
+#define RESOURCES_PATH string("")
+#define CONFIG_PATH RESOURCES_PATH + string("config/")
+#define IMG_PATH RESOURCES_PATH + string("images/")
+#define SOUNDS_PATH RESOURCES_PATH + string("sounds/")
+#else
 #define RESOURCES_PATH string("")
 #define CONFIG_PATH RESOURCES_PATH + string("config\\")
 #define IMG_PATH RESOURCES_PATH + string("images\\")
 #define SOUNDS_PATH RESOURCES_PATH + string("sounds\\")
+#endif
+
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_mixer.h>
