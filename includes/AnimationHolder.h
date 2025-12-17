@@ -3,9 +3,9 @@
 
 #include "../includes/Animation.h"
 #include "../includes/includes.h"
-#include "../libs/rapidjson/document.h"
-#include "../libs/rapidjson/writer.h"
-#include "../libs/rapidjson/stringbuffer.h"
+#include <rapidjson/document.h>
+#include <rapidjson/writer.h>
+#include <rapidjson/stringbuffer.h>
 #include <fstream>
 #include "../includes/MovingPathAnimation.h"
 #include "../includes/MovingAnimation.h"

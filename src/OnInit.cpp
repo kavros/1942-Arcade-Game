@@ -1,8 +1,8 @@
 #include "../includes/Game.hpp"
 #include "../includes/MovingAnimation.h"
-#include "../libs/rapidjson/document.h"
-#include "../libs/rapidjson/writer.h"
-#include "../libs/rapidjson/stringbuffer.h"
+#include <rapidjson/document.h>
+#include <rapidjson/writer.h>
+#include <rapidjson/stringbuffer.h>
 
 void initialLogo(){
 

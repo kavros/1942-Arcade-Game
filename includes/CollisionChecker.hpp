@@ -13,7 +13,7 @@ private:
     typedef std::pair<Sprite*, Sprite*> Pair;
     typedef std::list<Pair> PairList;
     
-    struct checkFunctor : public std::unary_function<Pair, void> {
+    struct checkFunctor {
         void operator()(const Pair& p) const;
     };
     

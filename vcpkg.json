@@ -1,0 +1,10 @@
+{
+  "name": "1942-arcade-game",
+  "version-string": "1.0.0",
+  "dependencies": [
+    "sdl2",
+    "sdl2-image",
+    "sdl2-mixer",
+    "rapidjson"
+  ]
+}

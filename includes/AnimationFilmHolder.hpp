@@ -3,9 +3,9 @@
 
 #include "../includes/includes.h"
 #include <fstream>
-#include "../libs/rapidjson/document.h"
-#include "../libs/rapidjson/writer.h"
-#include "../libs/rapidjson/stringbuffer.h"
+#include <rapidjson/document.h>
+#include <rapidjson/writer.h>
+#include <rapidjson/stringbuffer.h>
 #include "../includes/AnimationFilm.hpp"
 class AnimationFilmHolder{
 private:

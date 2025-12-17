@@ -3,9 +3,9 @@
 
 #include "../includes/includes.h"
 #include "../includes/Sprite.hpp"
-#include "../libs/rapidjson/document.h"
-#include "../libs/rapidjson/writer.h"
-#include "../libs/rapidjson/stringbuffer.h"
+#include <rapidjson/document.h>
+#include <rapidjson/writer.h>
+#include <rapidjson/stringbuffer.h>
 #include "../includes/Background.hpp"
 #include <iostream>
 #include <string>

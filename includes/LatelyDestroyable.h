@@ -27,7 +27,7 @@ protected:
 	bool inDestruction;
     virtual ~LatelyDestroyable() { assert(inDestruction); }
     
-    class Delete : public std::unary_function<LatelyDestroyable*, void>{
+    class Delete {
     public:
         void operator()(LatelyDestroyable* o) const;
     };

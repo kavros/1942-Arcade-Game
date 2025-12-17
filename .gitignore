@@ -34,4 +34,4 @@
 bin/
 build/
 .vscode/*
-!libs/**
+vcpkg_installed/
