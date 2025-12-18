@@ -40,7 +40,12 @@ target_link_libraries(
     SDL2::SDL2main
     SDL2_image::SDL2_image
     SDL2_mixer::SDL2_mixer
-    rapidjson
+)
+
+target_include_directories(
+    ${PROJECT_NAME}
+    PRIVATE
+    ${RAPIDJSON_INCLUDE_DIRS}
 )
 
 add_custom_command(TARGET ${PROJECT_NAME}
