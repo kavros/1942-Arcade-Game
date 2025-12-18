@@ -1,4 +1,4 @@
-name: CMake
+name: Deploy to Windows
 
 on:
   push:
@@ -45,34 +45,63 @@ jobs:
         shell: pwsh
         run: |
           # Create release directory
-          $releaseDir = "${{github.workspace}}/release-package"
+          $releaseDir = Join-Path "${{github.workspace}}" "release-package"
+          Write-Host "Creating release directory: $releaseDir"
           New-Item -ItemType Directory -Force -Path $releaseDir
 
           # Copy the built executable
-          Copy-Item "${{github.workspace}}/build/Release/1942-arcade-game.exe" $releaseDir
+          $exePath = Join-Path "${{github.workspace}}" "build\Release\1942-arcade-game.exe"
+          Write-Host "Copying executable from: $exePath"
+          if (Test-Path $exePath) {
+            Copy-Item $exePath $releaseDir
+          } else {
+            Write-Error "Executable not found at: $exePath"
+            exit 1
+          }
 
           # Copy resources
-          Copy-Item -Recurse "${{github.workspace}}/resources" $releaseDir
+          $resourcesPath = Join-Path "${{github.workspace}}" "resources"
+          Write-Host "Copying resources from: $resourcesPath"
+          Copy-Item -Recurse $resourcesPath $releaseDir
 
           # Copy SDL2 DLLs from vcpkg (manifest mode installs to build/vcpkg_installed)
-          $vcpkgBinDir = "${{github.workspace}}/build/vcpkg_installed/x64-windows/bin"
-          Copy-Item "$vcpkgBinDir/SDL2.dll" $releaseDir
-          Copy-Item "$vcpkgBinDir/SDL2_image.dll" $releaseDir
-          Copy-Item "$vcpkgBinDir/SDL2_mixer.dll" $releaseDir
+          $vcpkgBinDir = Join-Path "${{github.workspace}}" "build\vcpkg_installed\x64-windows\bin"
+          Write-Host "Copying DLLs from: $vcpkgBinDir"
+          Copy-Item (Join-Path $vcpkgBinDir "SDL2.dll") $releaseDir -ErrorAction Stop
+          Copy-Item (Join-Path $vcpkgBinDir "SDL2_image.dll") $releaseDir -ErrorAction Stop
+          Copy-Item (Join-Path $vcpkgBinDir "SDL2_mixer.dll") $releaseDir -ErrorAction Stop
 
           # Copy additional image format DLLs that SDL2_image depends on
-          Get-ChildItem "$vcpkgBinDir/*.dll" | Where-Object { 
+          Get-ChildItem "$vcpkgBinDir\*.dll" | Where-Object { 
             $_.Name -match "(png|jpeg|tiff|webp|zlib)" 
-          } | Copy-Item -Destination $releaseDir
+          } | ForEach-Object { 
+            Write-Host "Copying DLL: $($_.Name)"
+            Copy-Item $_.FullName -Destination $releaseDir
+          }
+
+          # List contents of release directory
+          Write-Host "Contents of release directory:"
+          Get-ChildItem $releaseDir -Recurse | Select-Object FullName
 
           # Create zip archive
-          Compress-Archive -Path "$releaseDir/*" -DestinationPath "${{github.workspace}}/1942-arcade-game-windows.zip"
+          $zipPath = Join-Path "${{github.workspace}}" "1942-arcade-game-windows.zip"
+          Write-Host "Creating zip at: $zipPath"
+          Compress-Archive -Path "$releaseDir\*" -DestinationPath $zipPath -Force
+          
+          # Verify zip was created
+          if (Test-Path $zipPath) {
+            Write-Host "Zip file created successfully. Size: $((Get-Item $zipPath).Length) bytes"
+          } else {
+            Write-Error "Failed to create zip file"
+            exit 1
+          }
 
       - name: Create Release
         if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v1
         with:
-          files: ${{github.workspace}}/1942-arcade-game-windows.zip
+          files: 1942-arcade-game-windows.zip
+          fail_on_unmatched_files: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -81,4 +110,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: 1942-arcade-game-windows
-          path: ${{github.workspace}}/1942-arcade-game-windows.zip
+          path: 1942-arcade-game-windows.zip
