@@ -27,10 +27,6 @@ jobs:
         with:
           version: "latest"
 
-      - name: Install dependencies
-        run: |
-          cd web
-
       - name: Download RapidJSON
         run: |
           cd web
@@ -64,11 +60,6 @@ jobs:
             --preload-file ../resources@/ \
             --shell-file shell.html
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-        with:
-          enablement: true
-
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -77,6 +68,9 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Deploy to GitHub Pages
         id: deployment

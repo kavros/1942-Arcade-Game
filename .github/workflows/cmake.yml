@@ -21,7 +21,7 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Setup vcpkg
         uses: lukka/run-vcpkg@v11
@@ -58,7 +58,7 @@ jobs:
           Copy-Item "$vcpkgBinDir/SDL2.dll" $releaseDir
           Copy-Item "$vcpkgBinDir/SDL2_image.dll" $releaseDir
           Copy-Item "$vcpkgBinDir/SDL2_mixer.dll" $releaseDir
-          
+
           # Copy additional image format DLLs that SDL2_image depends on
           Get-ChildItem "$vcpkgBinDir/*.dll" | Where-Object { 
             $_.Name -match "(png|jpeg|tiff|webp|zlib)" 
@@ -77,7 +77,7 @@ jobs:
 
       - name: Upload Build Artifact
         if: "!startsWith(github.ref, 'refs/tags/')"
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: 1942-arcade-game-windows
           path: ${{github.workspace}}/1942-arcade-game-windows.zip
