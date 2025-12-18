@@ -28,9 +28,6 @@ jobs:
         with:
           vcpkgGitCommitId: "c8696863d371ab7f46e213d8f5ca923c4aef2a00"
 
-      - name: Install dependencies
-        run: vcpkg install sdl2 sdl2-image sdl2-mixer rapidjson --triplet=x64-windows
-
       - name: Configure CMake
         # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
         # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
