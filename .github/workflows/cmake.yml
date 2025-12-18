@@ -22,14 +22,19 @@ jobs:
       - name: Setup vcpkg
         uses: lukka/run-vcpkg@v11
 
-      - name: Install RapidJSON
+      - name: Download RapidJSON
         shell: pwsh
         run: |
-          cd ${{github.workspace}}/vcpkg
-          .\vcpkg.exe install rapidjson:x64-windows --no-binarycaching
+          $rapidJsonVersion = "2023-07-17"
+          $rapidJsonUrl = "https://github.com/Tencent/rapidjson/archive/refs/tags/v1.1.0.zip"
+          $rapidJsonDir = "${{github.workspace}}/rapidjson"
+
+          Invoke-WebRequest -Uri $rapidJsonUrl -OutFile rapidjson.zip
+          Expand-Archive -Path rapidjson.zip -DestinationPath .
+          Move-Item rapidjson-1.1.0 $rapidJsonDir
 
       - name: Configure CMake
-        run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_TOOLCHAIN_FILE=${{github.workspace}}/vcpkg/scripts/buildsystems/vcpkg.cmake
+        run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_TOOLCHAIN_FILE=${{github.workspace}}/vcpkg/scripts/buildsystems/vcpkg.cmake -DRAPIDJSON_INCLUDE_DIRS=${{github.workspace}}/rapidjson/include
 
       - name: Build
         run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}

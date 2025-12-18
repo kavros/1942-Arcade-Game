@@ -31,7 +31,7 @@ add_executable(
 find_package(SDL2 CONFIG REQUIRED)
 find_package(SDL2_image CONFIG REQUIRED)
 find_package(SDL2_mixer CONFIG REQUIRED)
-find_package(RapidJSON CONFIG REQUIRED)
+find_package(RapidJSON CONFIG)
 
 target_link_libraries(
     ${PROJECT_NAME}
@@ -42,11 +42,20 @@ target_link_libraries(
     SDL2_mixer::SDL2_mixer
 )
 
-target_include_directories(
-    ${PROJECT_NAME}
-    PRIVATE
-    ${RAPIDJSON_INCLUDE_DIRS}
-)
+# RapidJSON include directories
+if(RAPIDJSON_INCLUDE_DIRS)
+    target_include_directories(
+        ${PROJECT_NAME}
+        PRIVATE
+        ${RAPIDJSON_INCLUDE_DIRS}
+    )
+elseif(DEFINED ENV{RAPIDJSON_INCLUDE_DIRS})
+    target_include_directories(
+        ${PROJECT_NAME}
+        PRIVATE
+        $ENV{RAPIDJSON_INCLUDE_DIRS}
+    )
+endif()
 
 add_custom_command(TARGET ${PROJECT_NAME}
     POST_BUILD
