@@ -3,6 +3,8 @@ name: CMake
 on:
   push:
     branches: [master]
+    tags:
+      - "v*.*.*"
   pull_request:
     branches: [master]
 
@@ -37,3 +39,45 @@ jobs:
       - name: Build
         # Build your program with the given configuration
         run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
+
+      - name: Package Release
+        shell: pwsh
+        run: |
+          # Create release directory
+          $releaseDir = "${{github.workspace}}/release-package"
+          New-Item -ItemType Directory -Force -Path $releaseDir
+
+          # Copy the built executable
+          Copy-Item "${{github.workspace}}/build/Release/1942-arcade-game.exe" $releaseDir
+
+          # Copy resources
+          Copy-Item -Recurse "${{github.workspace}}/resources" $releaseDir
+
+          # Copy SDL2 DLLs from vcpkg
+          $vcpkgBinDir = "${{github.workspace}}/vcpkg_installed/x64-windows/bin"
+          Copy-Item "$vcpkgBinDir/SDL2.dll" $releaseDir
+          Copy-Item "$vcpkgBinDir/SDL2_image.dll" $releaseDir
+          Copy-Item "$vcpkgBinDir/SDL2_mixer.dll" $releaseDir
+          
+          # Copy additional image format DLLs that SDL2_image depends on
+          Get-ChildItem "$vcpkgBinDir/*.dll" | Where-Object { 
+            $_.Name -match "(png|jpeg|tiff|webp|zlib)" 
+          } | Copy-Item -Destination $releaseDir
+
+          # Create zip archive
+          Compress-Archive -Path "$releaseDir/*" -DestinationPath "${{github.workspace}}/1942-arcade-game-windows.zip"
+
+      - name: Create Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v1
+        with:
+          files: ${{github.workspace}}/1942-arcade-game-windows.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload Build Artifact
+        if: "!startsWith(github.ref, 'refs/tags/')"
+        uses: actions/upload-artifact@v3
+        with:
+          name: 1942-arcade-game-windows
+          path: ${{github.workspace}}/1942-arcade-game-windows.zip
