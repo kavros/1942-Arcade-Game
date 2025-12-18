@@ -51,6 +51,7 @@ jobs:
             -I rapidjson/include \
             -DEMSCRIPTEN_BUILD \
             -DNDEBUG \
+            -Wno-deprecated-declarations \
             -o build-wasm/index.html \
             -std=c++14 \
             -s USE_SDL=2 \

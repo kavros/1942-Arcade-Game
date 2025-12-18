@@ -8,8 +8,8 @@ This guide will help you compile your C++ game to run in a web browser using Ems
 
 **Windows:**
 
-```bash
-# Download and install using Git
+```powershell
+# Clone the Emscripten SDK
 git clone https://github.com/emscripten-core/emsdk.git
 cd emsdk
 
@@ -18,22 +18,7 @@ emsdk install latest
 emsdk activate latest
 
 # Set up environment variables for current session
-emsdk_env.bat
-```
-
-**Linux/Mac:**
-
-```bash
-# Download and install using Git
-git clone https://github.com/emscripten-core/emsdk.git
-cd emsdk
-
-# Install and activate the latest SDK
-./emsdk install latest
-./emsdk activate latest
-
-# Set up environment variables for current session
-source ./emsdk_env.sh
+"C:\Program Files\emsdk\emsdk_env.ps1"
 ```
 
 ## Building for Web
@@ -45,14 +30,6 @@ source ./emsdk_env.sh
 ```powershell
 cd web
 .\build.bat
-```
-
-**Linux/Mac:**
-
-```bash
-cd web
-chmod +x build.sh
-./build.sh
 ```
 
 The build script will:
@@ -126,22 +103,6 @@ cd web/build-wasm
 emrun --port 8000 game.html
 ```
 
-## Troubleshooting
-
-### Common Issues:
-
-1. **"SDL_Init failed"** - Make sure you're serving files over HTTP, not opening directly from filesystem
-
-2. **Resources not loading** - Verify the `--preload-file` path is correct and resources directory exists
-
-3. **Memory errors** - The game should use ALLOW_MEMORY_GROWTH, but if issues persist, you can set a fixed memory size:
-
-   ```
-   -s INITIAL_MEMORY=256MB
-   ```
-
-4. **Audio not working** - Web browsers require user interaction before playing audio. The game should handle this automatically.
-
 ## Optimization
 
 For production builds, add optimization flags:
@@ -177,15 +138,6 @@ To deploy to a web server:
    - `.data` → `application/octet-stream`
 
 3. For better performance, enable gzip compression on your server for `.js`, `.wasm`, and `.data` files.
-
-## Browser Compatibility
-
-The game should work on:
-
-- Chrome/Edge 57+
-- Firefox 52+
-- Safari 11+
-- Opera 44+
 
 ## Notes
 
