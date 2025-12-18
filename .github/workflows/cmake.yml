@@ -1,0 +1,87 @@
+name: CMake
+
+on:
+  push:
+    branches: [master]
+    tags:
+      - "v*.*.*"
+  pull_request:
+    branches: [master]
+
+env:
+  # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
+  BUILD_TYPE: Release
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup vcpkg
+        uses: lukka/run-vcpkg@v11
+
+      - name: Download RapidJSON
+        shell: pwsh
+        run: |
+          $rapidJsonVersion = "2023-07-17"
+          $rapidJsonUrl = "https://github.com/Tencent/rapidjson/archive/refs/tags/v1.1.0.zip"
+          $rapidJsonDir = "${{github.workspace}}/rapidjson"
+
+          Invoke-WebRequest -Uri $rapidJsonUrl -OutFile rapidjson.zip
+          Expand-Archive -Path rapidjson.zip -DestinationPath .
+          Move-Item rapidjson-1.1.0 $rapidJsonDir
+
+      - name: Configure CMake
+        env:
+          VCPKG_FORCE_SYSTEM_BINARIES: 1
+        run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_TOOLCHAIN_FILE=${{github.workspace}}/vcpkg/scripts/buildsystems/vcpkg.cmake -DRAPIDJSON_INCLUDE_DIRS=${{github.workspace}}/rapidjson/include -DVCPKG_FIXUP_PKGCONFIG=OFF
+
+      - name: Build
+        run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
+
+      - name: Package Release
+        shell: pwsh
+        run: |
+          # Create release directory
+          $releaseDir = Join-Path "${{github.workspace}}" "release-package"
+          New-Item -ItemType Directory -Force -Path $releaseDir
+
+          # Copy the built executable
+          $exePath = Join-Path "${{github.workspace}}" "build\Release\1942-arcade-game.exe"
+          Copy-Item $exePath $releaseDir
+
+          # Copy resources
+          $resourcesPath = Join-Path "${{github.workspace}}" "resources"
+          Copy-Item -Recurse $resourcesPath $releaseDir
+
+          # Copy SDL2 DLLs from vcpkg (manifest mode installs to build/vcpkg_installed)
+          $vcpkgBinDir = Join-Path "${{github.workspace}}" "build\vcpkg_installed\x64-windows\bin"
+          Copy-Item (Join-Path $vcpkgBinDir "SDL2.dll") $releaseDir
+          Copy-Item (Join-Path $vcpkgBinDir "SDL2_image.dll") $releaseDir
+          Copy-Item (Join-Path $vcpkgBinDir "SDL2_mixer.dll") $releaseDir
+
+          # Copy additional image format DLLs that SDL2_image depends on
+          Get-ChildItem "$vcpkgBinDir\*.dll" | Where-Object { 
+            $_.Name -match "(png|jpeg|tiff|webp|zlib)" 
+          } | Copy-Item -Destination $releaseDir
+
+          # Create zip archive
+          $zipPath = Join-Path "${{github.workspace}}" "1942-arcade-game-windows.zip"
+          Compress-Archive -Path "$releaseDir\*" -DestinationPath $zipPath -Force
+
+      - name: Create Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v1
+        with:
+          files: 1942-arcade-game-windows.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload Build Artifact
+        if: "!startsWith(github.ref, 'refs/tags/')"
+        uses: actions/upload-artifact@v4
+        with:
+          name: 1942-arcade-game-windows
+          path: 1942-arcade-game-windows.zip
