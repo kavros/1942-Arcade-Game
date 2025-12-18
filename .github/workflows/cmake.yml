@@ -34,7 +34,9 @@ jobs:
           Move-Item rapidjson-1.1.0 $rapidJsonDir
 
       - name: Configure CMake
-        run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_TOOLCHAIN_FILE=${{github.workspace}}/vcpkg/scripts/buildsystems/vcpkg.cmake -DRAPIDJSON_INCLUDE_DIRS=${{github.workspace}}/rapidjson/include
+        env:
+          VCPKG_FORCE_SYSTEM_BINARIES: 1
+        run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_TOOLCHAIN_FILE=${{github.workspace}}/vcpkg/scripts/buildsystems/vcpkg.cmake -DRAPIDJSON_INCLUDE_DIRS=${{github.workspace}}/rapidjson/include -DVCPKG_FIXUP_PKGCONFIG=OFF
 
       - name: Build
         run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}

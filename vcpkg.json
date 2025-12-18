@@ -1,6 +1,6 @@
 {
   "name": "1942-arcade-game",
   "version-string": "1.0.0",
-  "builtin-baseline": "01f602195983451bc83e72f4214af2cbc495aa94",
+  "builtin-baseline": "a20d95d3c76906363896754eb1cc93db2a694f16",
   "dependencies": ["sdl2", "sdl2-image", "sdl2-mixer"]
 }
